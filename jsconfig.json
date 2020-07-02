@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "Assets": [
+        "./assets/*"
+      ],
+      "Components": [
+        "./components/*"
+      ],
+      "Config": [
+        "./config.js"
+      ],
+      "Hooks": [
+        "./hooks/*"
+      ],
+      "Pages": [
+        "./pages/*"
+      ],
+      "Store": [
+        "./store/*"
+      ],
+      "Theme": [
+        "./theme.js"
+      ]
+    }
+  }
+}
