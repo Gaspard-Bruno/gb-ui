@@ -1,4 +1,19 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 55+ Website
+
+![](src/assets/logo.png)
+
+This repository contains the landing page and the client application for 55+
+
+# Table of Contents
+
+1. [Starting the project](#yarn-start)
+2. [Building](#yarn-build)
+3. [Learn More](#learn-more)
+
+
+---
+
+> This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)🚀 and uses [Styled Components](https://styled-components.com/docs)🌟
 
 ## Available Scripts
 
