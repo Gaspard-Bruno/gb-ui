@@ -1,3 +1,3 @@
 export default {
-  brandColor: "#db1e3b"
-}
+  brandColor: "#db1e3b",
+};

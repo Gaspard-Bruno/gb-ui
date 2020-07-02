@@ -2,11 +2,12 @@
 const {
   override,
   addWebpackAlias,
+  useEslintRc,
 } = require("customize-cra");
 const path = require("path");
 
 module.exports = override(
-  // add an alias for "ag-grid-react" imports
+  useEslintRc('./.eslintrc'),
   addWebpackAlias({
     Assets: path.resolve(__dirname, "src/assets/*"),
     Components: path.resolve(__dirname, "src/components/*"),
