@@ -1,10 +1,12 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import Navbar from "Components/Navbar";
+
 export default function Router() {
   return (
     <BrowserRouter>
       <div>
-        <nav>
+        <Navbar>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -16,7 +18,7 @@ export default function Router() {
               <Link to="/users">Users</Link>
             </li>
           </ul>
-        </nav>
+        </Navbar>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}

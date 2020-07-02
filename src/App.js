@@ -6,9 +6,7 @@ import AppRouter from "./router";
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <AppRouter />
-      </div>
+      <AppRouter />
     </ThemeProvider>
   );
 }
