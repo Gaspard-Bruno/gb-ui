@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import theme from "Theme";
 
 const media = {
   xs: (styles) => `
@@ -30,7 +29,7 @@ const media = {
 };
 
 const Page = styled.div`
-  width: calc(100% - ${theme.margin * 2}px);
+  width: ${(props) => `calc(100% - ${props.theme.margin * 2}px)`};
   margin: 0 auto;
 `;
 
