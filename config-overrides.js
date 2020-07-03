@@ -7,7 +7,6 @@ const {
 const path = require("path");
 
 module.exports = override(
-  useEslintRc("./.eslintrc"),
   addWebpackAlias({
     Assets: path.resolve(__dirname, "./src/assets"),
     Components: path.resolve(__dirname, "src/components"),

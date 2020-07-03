@@ -23,6 +23,39 @@
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
+  "eslintConfig": {
+      "extends": [
+        "plugin:jsx-a11y/strict",
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:prettier/recommended",
+        "react-app"
+      ],
+      "plugins": [
+        "react", "react-hooks", "jsx-a11y", "prettier", "babel"
+      ],
+      "rules": {
+        "react/jsx-filename-extension": [1, {
+          "extensions": [".js", ".jsx"]
+        }],
+        "react/boolean-prop-naming": ["warn", { "rule": "^(is|has)[A-Z]([A-Za-z0-9]?)+" }],
+        "react-hooks/rules-of-hooks": "warn",
+        "react/prop-types": 1,
+        "react-hooks/exhaustive-deps": "warn",
+        "no-console": "off",
+        "prettier/prettier": ["warn"]
+      },
+      "globals": {
+        "window": true,
+        "document": true,
+        "localStorage": true,
+        "FormData": true,
+        "FileReader": true,
+        "Blob": true,
+        "navigator": true,
+        "process": true
+      }
+  },
   "browserslist": {
     "production": [
       ">0.2%",
