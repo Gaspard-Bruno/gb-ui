@@ -1,3 +1,4 @@
 export default {
-  appName: '55+',
-}
+  appName: "55+",
+  locale: "PT",
+};
