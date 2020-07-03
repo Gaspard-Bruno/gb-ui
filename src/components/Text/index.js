@@ -1,3 +1,3 @@
 import StyledText from "./style";
 
-export const { Link } = StyledText;
+export const { Link, Title } = StyledText;

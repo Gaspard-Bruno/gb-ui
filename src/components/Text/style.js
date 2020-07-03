@@ -7,4 +7,11 @@ const StyledLink = styled(Link)`
   color: ${(props) => props.theme.white};
 `;
 
-export default { Link: StyledLink };
+const Title = styled.h1`
+  font-weight: bold;
+  text-decoration: none;
+  color: ${(props) => props.theme.black};
+  font-size: 37px;
+`;
+
+export default { Link: StyledLink, Title };
