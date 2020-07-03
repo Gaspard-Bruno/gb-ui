@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { useTranslate } from "polyglot-react-redux-sdk";
 
+import { Home, Login, App } from "Pages";
 import Navbar from "Components/Navbar";
 import { Link } from "Components/Text";
 
@@ -34,22 +34,4 @@ export default function Router() {
       </Switch>
     </BrowserRouter>
   );
-}
-
-function Home() {
-  const t = useTranslate("home");
-  return (
-    <div>
-      <h1>{t("title")}</h1>
-      <h1>{t("subTitle")}</h1>
-    </div>
-  );
-}
-
-function App() {
-  return <h2>App</h2>;
-}
-
-function Login() {
-  return <h2>App</h2>;
 }
