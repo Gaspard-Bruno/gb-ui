@@ -7,6 +7,9 @@
     "parser": "babel-eslint",
     "ecmaVersion": 2020,
     "sourceType": "module",
+    "rules": {
+      "strict": 0
+    },
     "ecmaFeatures": {
       "jsx": true,
       "modules": true
@@ -16,10 +19,11 @@
     "plugin:jsx-a11y/strict",
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "react-app"
   ],
   "plugins": [
-    "react", "react-hooks", "jsx-a11y", "prettier"
+    "react", "react-hooks", "jsx-a11y", "prettier", "babel"
   ],
   "rules": {
     "react/jsx-filename-extension": [1, {
