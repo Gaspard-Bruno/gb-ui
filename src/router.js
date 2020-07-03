@@ -12,19 +12,19 @@ export default function Router() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">App</Link>
+            <Link to="/App">App</Link>
           </li>
           <li>
-            <Link to="/users">Users</Link>
+            <Link to="/Login">Login</Link>
           </li>
         </ul>
       </Navbar>
       <Switch>
-        <Route path="/about">
-          <About />
+        <Route path="/Login">
+          <Login />
         </Route>
-        <Route path="/users">
-          <Users />
+        <Route path="/App">
+          <App />
         </Route>
         <Route path="/">
           <Home />
@@ -38,10 +38,10 @@ function Home() {
   return <h2>Home</h2>;
 }
 
-function About() {
-  return <h2>About</h2>;
+function App() {
+  return <h2>App</h2>;
 }
 
-function Users() {
-  return <h2>Users</h2>;
+function Login() {
+  return <h2>App</h2>;
 }
