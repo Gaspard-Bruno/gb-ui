@@ -16,7 +16,7 @@ const Navbar = styled.nav`
     display: flex;
     flex-flow: row nowrap;
     padding: 0;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     li {
       margin-right: ${(props) => props.theme.margin * 2}px;

@@ -2,7 +2,8 @@ import { useTranslate } from "polyglot-react-redux-sdk";
 import React from "react";
 
 import { Page, Col, Row } from "Components/Layout";
-import { Title } from "Components/Text";
+import { Jumbo, Tiny } from "Components/Text";
+import Card from "Components/Card";
 
 function Login() {
   const t = useTranslate("login");
@@ -10,17 +11,19 @@ function Login() {
     <Page>
       <Row>
         <Col size={1}>
-          <Title>{t("login")}</Title>
+          <Jumbo>{t("login")}</Jumbo>
         </Col>
         <Col size={2}>
-          <Title>{t("login")}</Title>
-          <Title>{t("login")}</Title>
+          <Card>
+            <Jumbo>{t("login")}</Jumbo>
+            <Jumbo>{t("login")}</Jumbo>
+          </Card>
         </Col>
       </Row>
       <Row>
         <Col size={2}>
-          <Title>{t("recoverPwd")}</Title>
-          <Title>{t("cancel")}</Title>
+          <Tiny>{t("recoverPwd")}</Tiny>
+          <Tiny>{t("cancel")}</Tiny>
         </Col>
       </Row>
     </Page>

@@ -96,7 +96,7 @@ export const ButtonText = styled.span`
   font-size: 16px;
   line-height: 24px;
   :hover {
-    color: ${(props) => props.theme.colors.grey};
+    color: ${(props) => props.theme.colors.darkBlue};
   }
   :active {
     color: ${(props) => props.theme.colors.darkBlue};

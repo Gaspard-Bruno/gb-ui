@@ -20,6 +20,9 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
+          <Link to="/services">{t("services")}</Link>
+        </li>
+        <li>
           <Link to="/about">{t("aboutUs")}</Link>
         </li>
         <li>
