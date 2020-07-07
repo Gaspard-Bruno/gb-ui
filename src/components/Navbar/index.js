@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import StyledNavbar from "./style";
-import Logo from "Assets/logo.png";
+import Logo from "Components/Logo";
 
 const Navbar = ({ children }) => (
   <StyledNavbar>
-    <img src={Logo} alt="logo" />
+    <Logo />
     {children}
   </StyledNavbar>
 );

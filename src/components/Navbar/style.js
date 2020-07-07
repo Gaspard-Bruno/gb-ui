@@ -9,14 +9,6 @@ const Navbar = styled.nav`
   background-color: ${(props) => props.theme.colors.white};
   color: ${(props) => props.theme.white};
   align-items: center;
-  > img {
-    height: 40px;
-    width: 100px;
-    margin-right: auto;
-    align-self: flex-end;
-    position: relative;
-    top: 3px;
-  }
   > ul {
     display: flex;
     flex-flow: row nowrap;
