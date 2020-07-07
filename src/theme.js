@@ -57,7 +57,7 @@ export default {
 
 export const GlobalStyles = createGlobalStyle`
     @font-face {
-        font-family: 'Space Grotesk';
+        font-family: Space Grotesk;
         src: local('Space Grotesk'), local('SpaceGrotesk'),
         url(${SpaceGroteskWoff2}) format('woff2'),
         url(${SpaceGroteskWoff}) format('woff');

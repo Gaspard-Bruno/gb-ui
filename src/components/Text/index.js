@@ -1,39 +1,87 @@
 import styled from "styled-components";
 import { Link as RouterLink } from "react-router-dom";
 
-export const Link = styled(RouterLink)`
+export const Jumbo = styled.h1`
+  font-family: Space Grotesk;
+  font-style: normal;
   font-weight: bold;
-  text-decoration: none;
-  color: ${(props) => props.theme.white};
+  font-size: 48px;
+  line-height: 64px;
+  color: ${(props) => props.theme.colors.darkBlue};
 `;
 
-export const Title = styled.h1`
-  font-weight: bold;
-  line-height: 150%;
-  font-family: "Space Grotesk";
-  text-decoration: none;
-  color: ${(props) => props.theme.black};
-  font-size: 37px;
-`;
-
-export const SubTitle = styled.h2`
-  font-weight: 600;
-  line-height: 125%;
-  color: ${(props) => props.theme.black};
+const headingSizes = [
+  `
+  font-size: 32px;
+  line-height: 40px;
+  `,
+  `
+  font-size: 24px;
+  line-height: 32px;
+  `,
+  `
+  font-size: 20px;
+  line-height: 24px;
+  `,
+  `
   font-size: 18px;
-`;
+  line-height: 24px;
+  `,
+  `
+  font-size: 16px;
+  line-height: 24px;
+  `,
+];
 
-export const Label = styled.h3`
+export const Heading = styled.h2`
+  font-family: Space Grotesk;
+  font-style: normal;
   font-weight: bold;
-  font-family: Muli;
-  line-height: 100%;
-  text-transform: uppercase;
-  color: ${(props) => props.theme.black};
-  font-size: 14px;
+  ${(props) => (props.size ? headingSizes[props.size - 1] : headingSizes[0])}
+  color: ${(props) => props.theme.colors.darkBlue};
 `;
 
-export const Text = styled.p`
-  line-height: 125%;
-  color: ${(props) => props.theme.black};
+export const Body = styled.p`
+  font-family: Muli;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: ${(props) => props.theme.colors.darkBlue};
+`;
+export const SmallBody = styled.p`
+  font-family: Muli;
+  font-style: normal;
+  font-weight: ${(props) => (props.bold ? "bold" : "normal")};
   font-size: 14px;
+  line-height: 16px;
+  color: ${(props) => props.theme.colors.darkBlue};
+`;
+export const Tiny = styled.h3`
+  font-family: Muli;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: ${(props) => props.theme.colors.darkBlue};
+`;
+
+export const Link = styled(RouterLink)`
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 500;
+  color: ${(props) => props.theme.colors.darkBlue};
+  font-size: 16px;
+  line-height: 24px;
+  :hover {
+    color: ${(props) => props.theme.colors.grey};
+  }
+  :active {
+    color: ${(props) => props.theme.colors.darkBlue};
+  }
+  :visited {
+    color: ${(props) => props.theme.colors.darkBlue};
+  }
 `;
