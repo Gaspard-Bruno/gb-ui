@@ -17,7 +17,7 @@ const media = {
     }
   `,
   desktop: (styles) => `
-    @media only screen and (max-width: 1440px) {
+    @media only screen and (min-width: 1024px) {
       ${styles}
     }
   `,

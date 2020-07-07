@@ -11,7 +11,7 @@ const Card = ({ hasBoxShadow, bg, text, children }) => (
 Card.propTypes = {
   hasBoxShadow: PropTypes.bool,
   bg: PropTypes.string,
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
   text: PropTypes.string,
 };
 

@@ -4,6 +4,7 @@ import { useTranslate } from "polyglot-react-redux-sdk";
 
 import { Link } from "Components/Text";
 import Icon from "Components/Icon";
+import Button from "Components/Button";
 import Logo from "Components/Logo";
 
 import { StyledNavbar, RightSection, LeftSection } from "./style";
@@ -22,8 +23,10 @@ const Navbar = ({ children }) => {
           <Link to="/about">{t("aboutUs")}</Link>
         </li>
         <li>
-          <Icon name="map-pin" />
-          {t("country")}
+          <Link to="/">
+            <Icon name="map-pin" />
+            {t("country")}
+          </Link>
         </li>
       </RightSection>
       <LeftSection>
@@ -31,7 +34,7 @@ const Navbar = ({ children }) => {
           <Link to="/register">{t("registerAs")}</Link>
         </li>
         <li>
-          <Link to="/register">{t("registerAs")}</Link>
+          <Button text={t("login")} />
         </li>
       </LeftSection>
     </StyledNavbar>
