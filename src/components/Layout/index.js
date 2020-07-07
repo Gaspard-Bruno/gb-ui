@@ -1,36 +1,42 @@
 import styled from "styled-components";
 
 const media = {
-  xs: (styles) => `
-    @media only screen and (max-width: 480px) {
+  mobile: (styles) => `
+    @media only screen and (max-width: 375px) {
       ${styles}
     }
   `,
-  s: (styles) => `
-    @media only screen and (max-width: 576px) {
-      ${styles}
-    }
-  `,
-  m: (styles) => `
+  tablet: (styles) => `
     @media only screen and (max-width: 768px) {
       ${styles}
     }
   `,
-  l: (styles) => `
-    @media only screen and (max-width: 992px) {
+  smallDesktop: (styles) => `
+    @media only screen and (max-width: 1024px) {
       ${styles}
     }
   `,
-  xl: (styles) => `
-    @media only screen and (max-width: 1200px) {
+  desktop: (styles) => `
+    @media only screen and (max-width: 1440px) {
       ${styles}
     }
   `,
 };
 
 const Page = styled.div`
-  width: ${(props) => `calc(100% - ${props.theme.margin * 2}px)`};
-  margin: 0 auto;
+  max-width: 1152px;
+  ${media.desktop(`
+    margin: 0 auto;
+  `)}
+  ${media.smallDesktop(`
+    margin: 0 120px;
+  `)}
+  ${media.tablet(`
+    margin: 0 48px;
+  `)}
+  ${media.mobile(`
+    margin: 0 48px;
+  `)}
 `;
 
 const Row = styled.div`
