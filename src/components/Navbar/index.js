@@ -9,7 +9,7 @@ import Logo from "Components/Logo";
 
 import { StyledNavbar, RightSection, LeftSection } from "./style";
 
-const Navbar = ({ children }) => {
+const Navbar = () => {
   const t = useTranslate("nav");
   return (
     <StyledNavbar>
@@ -39,10 +39,6 @@ const Navbar = ({ children }) => {
       </LeftSection>
     </StyledNavbar>
   );
-};
-
-Navbar.propTypes = {
-  children: PropTypes.element,
 };
 
 export default Navbar;

@@ -23,6 +23,16 @@ const media = {
   `,
 };
 
+const Hero = styled.div`
+  min-height: ${(props) => props.theme.heroSize}px;
+  z-index: -1;
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  position: relative;
+  top: -80px;
+`;
+
 const Page = styled.div`
   max-width: ${(props) => props.theme.maxWidth}px;
   ${media.desktop(`
@@ -55,4 +65,4 @@ const Col = styled.div`
   `)}
 `;
 
-export { media, Page, Row, Col };
+export { media, Page, Row, Col, Hero };

@@ -1,13 +1,37 @@
-import { useTranslate } from "polyglot-react-redux-sdk";
 import React from "react";
+import { useTranslate } from "polyglot-react-redux-sdk";
+
+import { Page, Col, Row, Hero } from "Components/Layout";
+import Card from "Components/Card";
+import { Jumbo, Body } from "Components/Text";
 
 function Home() {
   const t = useTranslate("home");
   return (
-    <div>
-      <h1>{t("title")}</h1>
-      <h1>{t("subTitle")}</h1>
-    </div>
+    <>
+      <Hero>
+        <Col size={0.5}>
+          <Card bg="alt" isHero>
+            <Col>
+              <Jumbo>{t("title")}</Jumbo>
+              <Body>{t("subTitle")}</Body>
+            </Col>
+          </Card>
+        </Col>
+        <Col size={0.5}>
+          <Card isHero>
+            <Jumbo>{t("title")}</Jumbo>
+            <Body>{t("subTitle")}</Body>
+          </Card>
+        </Col>
+      </Hero>
+      <Page>
+        <Row>
+          <Jumbo>{t("title")}</Jumbo>
+          <Body>{t("subTitle")}</Body>
+        </Row>
+      </Page>
+    </>
   );
 }
 

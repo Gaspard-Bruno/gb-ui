@@ -5,9 +5,9 @@ const Navbar = styled.nav`
   flex-flow: row-nowrap;
   margin: 0 auto;
   justify-content: space-between;
+  max-height: 80px;
   align-items: center;
-  padding: ${(props) => props.theme.margin * 1.5}px
-    ${(props) => props.theme.margin * 2}px;
+  padding: 0 ${(props) => props.theme.margin * 2}px;
   max-width: ${(props) => props.theme.maxWidth}px;
   background-color: ${(props) => props.theme.colors.white};
   color: ${(props) => props.theme.white};

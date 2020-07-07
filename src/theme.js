@@ -7,6 +7,7 @@ import MuliBold from "Assets/fonts/Muli-Bold.ttf";
 
 export default {
   margin: 12,
+  heroSize: 680,
   maxWidth: 1152,
   boxShadow: "0 0 3rem #333",
   //──── Colors ────────────────────────────────────────────────────────────────────────────
