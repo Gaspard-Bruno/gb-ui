@@ -5,8 +5,8 @@ const Navbar = styled.nav`
   flex-flow: row-nowrap;
   justify-content: flex-start;
   padding: 5px 25px 0px 25px;
-  max-width: ${(props) => props.theme.maxWidth};
-  background-color: ${(props) => props.theme.brandColor};
+  max-width: ${(props) => props.theme.maxWidth}px;
+  background-color: ${(props) => props.theme.colors.white};
   color: ${(props) => props.theme.white};
   align-items: center;
   > img {

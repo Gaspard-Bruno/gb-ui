@@ -24,7 +24,7 @@ const media = {
 };
 
 const Page = styled.div`
-  max-width: ${(props) => props.theme.maxWidth};
+  max-width: ${(props) => props.theme.maxWidth}px;
   ${media.desktop(`
     margin: 0 auto;
   `)}

@@ -1,3 +1,10 @@
+import { createGlobalStyle } from "styled-components";
+
+import SpaceGroteskWoff from "Assets/fonts/SpaceGrotesk-Bold.woff";
+import SpaceGroteskWoff2 from "Assets/fonts/SpaceGrotesk-Bold.woff2";
+import MuliRegular from "Assets/fonts/Muli-Regular.ttf";
+import MuliBold from "Assets/fonts/Muli-Bold.ttf";
+
 export default {
   margin: 12,
   maxWidth: 1152,
@@ -47,3 +54,43 @@ export default {
     },
   },
 };
+
+export const GlobalStyles = createGlobalStyle`
+    @font-face {
+        font-family: 'Space Grotesk';
+        src: local('Space Grotesk'), local('SpaceGrotesk'),
+        url(${SpaceGroteskWoff2}) format('woff2'),
+        url(${SpaceGroteskWoff}) format('woff');
+        font-weight: bold;
+        font-style: bold;
+    }
+
+    @font-face {
+      font-family: Muli;
+      src: url(${MuliRegular}) format("truetype");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: Muli;
+      src: url(${MuliBold}) format("truetype");
+      font-weight: bold;
+      font-style: bold;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    code {
+      font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+    }
+`;
