@@ -2,14 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import StyledCard from "./style";
 
-const Navbar = ({ hasBoxShadow, bg, text }) => (
-  <StyledCard boxShadow={hasBoxShadow} bg={bg} text={text} />
+const Card = ({ hasBoxShadow, bg, text, children }) => (
+  <StyledCard boxShadow={hasBoxShadow} bg={bg} text={text}>
+    {children}
+  </StyledCard>
 );
 
-Navbar.propTypes = {
+Card.propTypes = {
   hasBoxShadow: PropTypes.bool,
   bg: PropTypes.string,
+  children: PropTypes.element,
   text: PropTypes.string,
 };
 
-export default Navbar;
+export default Card;
