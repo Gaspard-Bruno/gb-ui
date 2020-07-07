@@ -42,6 +42,7 @@ const Page = styled.div`
 const Row = styled.div`
   display: flex;
   flex-flow: row wrap;
+  min-height: ${(props) => props.theme.margin * props.size}px;
 `;
 
 const Col = styled.div`

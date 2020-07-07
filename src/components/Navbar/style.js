@@ -3,23 +3,35 @@ import styled from "styled-components";
 const Navbar = styled.nav`
   display: flex;
   flex-flow: row-nowrap;
-  justify-content: flex-start;
-  padding: 5px 25px 0px 25px;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: ${(props) => props.theme.margin * 1.5}px
+    ${(props) => props.theme.margin * 2}px;
   max-width: ${(props) => props.theme.maxWidth}px;
   background-color: ${(props) => props.theme.colors.white};
   color: ${(props) => props.theme.white};
   align-items: center;
-  > ul {
+  ul {
     display: flex;
     flex-flow: row nowrap;
-    flex: 0.5;
-    margin: auto;
-    flex-shrink: 0;
+    padding: 0;
     justify-content: space-between;
+    align-items: center;
     li {
+      margin-right: ${(props) => props.theme.margin * 2}px;
       display: block;
     }
   }
 `;
 
-export default Navbar;
+const RightSection = styled.ul`
+  flex: 0.5;
+`;
+const LeftSection = styled.ul`
+  flex: 0.4;
+  li a {
+    color: ${(props) => props.theme.colors.accent.orange} !important;
+  }
+`;
+export { Navbar as StyledNavbar, RightSection, LeftSection };
