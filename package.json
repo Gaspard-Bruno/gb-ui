@@ -7,6 +7,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
+    "icomoon-react": "^2.0.16",
     "polyglot-react-redux-sdk": "https://github.com/Gaspard-Bruno/polyglot-react-redux-sdk",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -24,37 +25,54 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-      "extends": [
-        "plugin:jsx-a11y/strict",
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:prettier/recommended",
-        "react-app"
+    "extends": [
+      "plugin:jsx-a11y/strict",
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:prettier/recommended",
+      "react-app"
+    ],
+    "plugins": [
+      "react",
+      "react-hooks",
+      "jsx-a11y",
+      "prettier",
+      "babel"
+    ],
+    "rules": {
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
       ],
-      "plugins": [
-        "react", "react-hooks", "jsx-a11y", "prettier", "babel"
+      "react/boolean-prop-naming": [
+        "warn",
+        {
+          "rule": "^(is|has)[A-Z]([A-Za-z0-9]?)+"
+        }
       ],
-      "rules": {
-        "react/jsx-filename-extension": [1, {
-          "extensions": [".js", ".jsx"]
-        }],
-        "react/boolean-prop-naming": ["warn", { "rule": "^(is|has)[A-Z]([A-Za-z0-9]?)+" }],
-        "react-hooks/rules-of-hooks": "warn",
-        "react/prop-types": 1,
-        "react-hooks/exhaustive-deps": "warn",
-        "no-console": "off",
-        "prettier/prettier": ["warn"]
-      },
-      "globals": {
-        "window": true,
-        "document": true,
-        "localStorage": true,
-        "FormData": true,
-        "FileReader": true,
-        "Blob": true,
-        "navigator": true,
-        "process": true
-      }
+      "react-hooks/rules-of-hooks": "warn",
+      "react/prop-types": 1,
+      "react-hooks/exhaustive-deps": "warn",
+      "no-console": "off",
+      "prettier/prettier": [
+        "warn"
+      ]
+    },
+    "globals": {
+      "window": true,
+      "document": true,
+      "localStorage": true,
+      "FormData": true,
+      "FileReader": true,
+      "Blob": true,
+      "navigator": true,
+      "process": true
+    }
   },
   "browserslist": {
     "production": [
