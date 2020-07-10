@@ -3,6 +3,8 @@ import React from "react";
 
 import { Page, Col, Row } from "Components/Layout";
 import { Jumbo, Tiny } from "Components/Text";
+
+import TextInput from "Components/TextInput";
 import Card from "Components/Card";
 
 function Login() {
@@ -15,8 +17,8 @@ function Login() {
         </Col>
         <Col size={2}>
           <Card>
-            <Jumbo>{t("login")}</Jumbo>
-            <Jumbo>{t("login")}</Jumbo>
+            <TextInput label="email" />
+            <TextInput label="password" />
           </Card>
         </Col>
       </Row>

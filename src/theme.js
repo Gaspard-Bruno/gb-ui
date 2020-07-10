@@ -20,10 +20,14 @@ export default {
     main: {
       yellow: "#FEC35A",
       hover: "#FECE7B",
+      lighter: "#FED58B",
+      darker: '#FDAA15'
     },
     accent: {
       red: "#DB1E3B",
       orange: "#F0513A",
+      orangeLight: " #F37C6B",
+      orangeDark: "#DD2A10",
       blue: "#5CB5E6",
       lightBlue: "#C5E8F2",
     },
