@@ -4,6 +4,7 @@ import { useTranslate } from "polyglot-react-redux-sdk";
 import { Page, Col, Row, Hero } from "Components/Layout";
 import Card from "Components/Card";
 import { Jumbo, Body } from "Components/Text";
+import Search from "Components/Search";
 
 function Home() {
   const t = useTranslate("home");
@@ -22,6 +23,7 @@ function Home() {
           <Card isHero>
             <Jumbo>{t("title")}</Jumbo>
             <Body>{t("subTitle")}</Body>
+            <Search />
           </Card>
         </Col>
       </Hero>
