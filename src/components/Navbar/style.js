@@ -34,7 +34,7 @@ const RightSection = styled.ul`
 const LeftSection = styled.ul`
   flex: 0.4;
   li a {
-    color: ${props => props.theme.colors.accent.orange} !important;
+    color: ${props => props.theme.colors.brand.orange} !important;
   }
 `;
 export { Navbar as StyledNavbar, RightSection, LeftSection };

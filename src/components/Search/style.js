@@ -26,7 +26,7 @@ const Input = styled.input`
 const Button = styled.button`
   border-radius: 0 48px 48px 0;
   outline: none !important;
-  background-color: ${props => props.theme.colors.main.yellow};
+  background-color: ${props => props.theme.colors.brand.yellow};
   border: none;
   padding: 0 ${props => props.theme.margin * 1}px;
   flex: 1;

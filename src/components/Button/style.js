@@ -9,19 +9,19 @@ const Button = styled.button`
 
   background-color: ${props =>
     props.type === "primary"
-      ? props.theme.colors.main.yellow
+      ? props.theme.colors.brand.yellow
       : props.theme.colors.white};
 
   border: ${props =>
     props.type === "secondary"
-      ? `1px solid ${props.theme.colors.main.yellow}`
+      ? `1px solid ${props.theme.colors.brand.yellow}`
       : "transparent"};
 
   > * {
     margin: 0 auto;
   }
   &:hover {
-    background-color: ${props => props.theme.colors.main.lighter};
+    background-color: ${props => props.theme.colors.brand.lighter};
     cursor: pointer;
   }
 `;

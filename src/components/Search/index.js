@@ -4,12 +4,21 @@ import PropTypes from "prop-types";
 import { SmallBody, Body } from "Components/Text";
 import { Container, Input, Button } from "./style";
 
-const SearchInput = ({ error, placeholder, defaultValue, label, onChange }) => (
+const SearchInput = ({
+  error,
+  placeholder,
+  defaultValue,
+  label,
+  onChange,
+  style = "main"
+}) => (
   <Container>
     <Input></Input>
-    <Button>
-      <Body>Search</Body>
-    </Button>
+    {style === "main" && (
+      <Button>
+        <Body>Search</Body>
+      </Button>
+    )}
   </Container>
 );
 
@@ -18,6 +27,7 @@ SearchInput.propTypes = {
   placeholder: PropTypes.string,
   label: PropTypes.string,
   defaultValue: PropTypes.string,
+  style: PropTypes.oneOf(["noButton", "main", "secondary"]),
   onChange: PropTypes.func
 };
 

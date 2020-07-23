@@ -17,19 +17,17 @@ export default {
     mediumBeige: "#D2CCC6",
     lightBeige: "#F3E9E1",
     white: "#FFF",
-    main: {
+    brand: {
       yellow: "#FEC35A",
       hover: "#FECE7B",
       lighter: "#FED58B",
-      darker: "#FDAA15"
-    },
-    accent: {
-      red: "#DB1E3B",
+      darker: "#FDAA15",
       orange: "#F0513A",
       orangeLight: " #F37C6B",
       orangeDark: "#DD2A10",
       blue: "#5CB5E6",
-      lightBlue: "#C5E8F2"
+      lightBlue: "#C5E8F2",
+      red: "#DB1E3B"
     },
     feedback: {
       success: {
