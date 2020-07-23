@@ -5,7 +5,7 @@ const Button = styled.button`
   outline: none;
   padding: ${props =>
       props.small ? props.theme.margin * 0.75 : props.theme.margin}px
-    ${props => props.theme.margin * 4}px;
+    ${props => props.theme.margin * 2}px;
 
   background-color: ${props =>
     props.type === "primary"

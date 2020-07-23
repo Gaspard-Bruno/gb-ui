@@ -7,10 +7,13 @@ const Navbar = styled.nav`
   justify-content: space-between;
   max-height: 80px;
   align-items: center;
-  padding: 0 ${(props) => props.theme.margin * 2}px;
-  max-width: ${(props) => props.theme.maxWidth}px;
-  background-color: ${(props) => props.theme.colors.white};
-  color: ${(props) => props.theme.white};
+  padding: 0 ${props => props.theme.margin * 2}px;
+  max-width: ${props => props.theme.maxWidth}px;
+  background-color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.white};
+  position: sticky;
+  top: 0;
+  z-index: 10;
   align-items: center;
   ul {
     display: flex;
@@ -19,7 +22,7 @@ const Navbar = styled.nav`
     justify-content: flex-start;
     align-items: center;
     li {
-      margin-right: ${(props) => props.theme.margin * 2}px;
+      margin-right: ${props => props.theme.margin * 2}px;
       display: block;
     }
   }
@@ -31,7 +34,7 @@ const RightSection = styled.ul`
 const LeftSection = styled.ul`
   flex: 0.4;
   li a {
-    color: ${(props) => props.theme.colors.accent.orange} !important;
+    color: ${props => props.theme.colors.accent.orange} !important;
   }
 `;
 export { Navbar as StyledNavbar, RightSection, LeftSection };

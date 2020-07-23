@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { SmallBody, Body } from "Components/Text";
 import { Container, Input, Button } from "./style";
 
-const TextInput = ({ error, placeholder, defaultValue, label, onChange }) => (
+const SearchInput = ({ error, placeholder, defaultValue, label, onChange }) => (
   <Container>
     <Input></Input>
     <Button>
@@ -13,7 +13,7 @@ const TextInput = ({ error, placeholder, defaultValue, label, onChange }) => (
   </Container>
 );
 
-TextInput.propTypes = {
+SearchInput.propTypes = {
   error: PropTypes.string,
   placeholder: PropTypes.string,
   label: PropTypes.string,
@@ -21,4 +21,4 @@ TextInput.propTypes = {
   onChange: PropTypes.func
 };
 
-export default TextInput;
+export default SearchInput;

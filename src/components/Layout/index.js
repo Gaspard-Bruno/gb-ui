@@ -1,31 +1,30 @@
 import styled from "styled-components";
 
 const media = {
-  mobile: (styles) => `
+  mobile: styles => `
     @media only screen and (max-width: 375px) {
       ${styles}
     }
   `,
-  tablet: (styles) => `
+  tablet: styles => `
     @media only screen and (max-width: 768px) {
       ${styles}
     }
   `,
-  smallDesktop: (styles) => `
+  smallDesktop: styles => `
     @media only screen and (max-width: 1024px) {
       ${styles}
     }
   `,
-  desktop: (styles) => `
+  desktop: styles => `
     @media only screen and (min-width: 1024px) {
       ${styles}
     }
-  `,
+  `
 };
 
 const Hero = styled.div`
-  min-height: ${(props) => props.theme.heroSize}px;
-  z-index: -1;
+  min-height: ${props => props.theme.heroSize}px;
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
@@ -34,7 +33,7 @@ const Hero = styled.div`
 `;
 
 const Page = styled.div`
-  max-width: ${(props) => props.theme.maxWidth}px;
+  max-width: ${props => props.theme.maxWidth}px;
   ${media.desktop(`
     margin: 0 auto;
   `)}
@@ -52,13 +51,13 @@ const Page = styled.div`
 const Row = styled.div`
   display: flex;
   flex-flow: row wrap;
-  min-height: ${(props) => props.theme.margin * props.size}px;
+  min-height: ${props => props.theme.margin * props.size}px;
 `;
 
 const Col = styled.div`
-  flex: ${(props) => props.size};
+  flex: ${props => props.size};
 
-  ${(props) =>
+  ${props =>
     props.collapse &&
     media[props.collapse](`
   display: none;
