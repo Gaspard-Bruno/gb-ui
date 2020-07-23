@@ -1,8 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
-import SpaceGroteskWoff from "Assets/fonts/SpaceGrotesk-Bold.woff";
-import SpaceGroteskWoff2 from "Assets/fonts/SpaceGrotesk-Bold.woff2";
-import MuliRegular from "Assets/fonts/Muli-Regular.ttf";
+import SpaceGrotesk from "Assets/fonts/SpaceGrotesk-Regular.ttf";
+import SpaceGroteskBold from "Assets/fonts/SpaceGrotesk-Bold.ttf";
+import MuliRegular from "Assets/fonts/Muli.ttf";
 import MuliBold from "Assets/fonts/Muli-Bold.ttf";
 
 export default {
@@ -21,7 +21,7 @@ export default {
       yellow: "#FEC35A",
       hover: "#FECE7B",
       lighter: "#FED58B",
-      darker: '#FDAA15'
+      darker: "#FDAA15"
     },
     accent: {
       red: "#DB1E3B",
@@ -29,24 +29,24 @@ export default {
       orangeLight: " #F37C6B",
       orangeDark: "#DD2A10",
       blue: "#5CB5E6",
-      lightBlue: "#C5E8F2",
+      lightBlue: "#C5E8F2"
     },
     feedback: {
       success: {
         default: "#2DCA73",
         hover: "#57D48F",
-        background: "#EAF9F1",
+        background: "#EAF9F1"
       },
       error: {
         default: "#DB1E3B",
         hover: "#E24B61",
-        background: "#FBE8EB",
+        background: "#FBE8EB"
       },
       warning: {
         default: "#FEC35A",
         hover: "#FECE7B",
-        background: "#FEF8EE",
-      },
+        background: "#FEF8EE"
+      }
     },
     muted: {
       red: "#F1A5B1",
@@ -55,19 +55,26 @@ export default {
       blue: "#BEE1F5",
       lightBlue: "#E8F6FA",
       green: "#ABEAC7",
-      purple: "#CBABEA",
-    },
-  },
+      purple: "#CBABEA"
+    }
+  }
 };
 
 export const GlobalStyles = createGlobalStyle`
     @font-face {
         font-family: Space Grotesk;
         src: local('Space Grotesk'), local('SpaceGrotesk'),
-        url(${SpaceGroteskWoff2}) format('woff2'),
-        url(${SpaceGroteskWoff}) format('woff');
+        url(${SpaceGroteskBold}) format('truetype');
         font-weight: bold;
         font-style: bold;
+    }
+
+    @font-face {
+        font-family: Space Grotesk;
+        src: local('Space Grotesk'), local('SpaceGrotesk'),
+        url(${SpaceGrotesk}) format('truetype');
+        font-weight: normal;
+        font-style: normal;
     }
 
     @font-face {
