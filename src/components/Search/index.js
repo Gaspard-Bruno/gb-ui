@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { SmallBody, Body } from "Components/Text";
+import { Body } from "Components/Text";
 import { Container, Input, Button } from "./style";
 
 const SearchInput = ({

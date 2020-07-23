@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const InputContainer = styled.div`
+export const SelectContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
@@ -12,10 +12,17 @@ export const InputContainer = styled.div`
     margin: ${props => props.theme.margin / 2}px 0;
   }
 `;
+export const SelectOption = styled.option`
+  width: 100%;
+  color: ${props => props.theme.colors.darkBlue};
+  background-color: ${props => props.theme.colors.white};
+`;
 
-const Input = styled.input`
+const Select = styled.select`
   border-radius: 2px;
-  padding: ${props => props.theme.margin}px ${props => props.theme.margin / 2}px;
+  min-width: 150px;
+  height: 48px;
+  resize: none;
   border: 1px solid
     ${props =>
       props.error
@@ -26,8 +33,8 @@ const Input = styled.input`
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
-  color: ${props => props.theme.colors.darkBlue};
   outline: none;
+  color: ${props => props.theme.colors.darkBlue};
   &:focus {
     outline: none;
     border-radius: 2px;
@@ -40,6 +47,11 @@ const Input = styled.input`
     background-color: ${props => props.theme.colors.lightBeige};
     color: ${props => props.theme.colors.grey};
   }
+  option:hover {
+    color: red;
+    background-color: ${props => props.theme.colors.lightBeige};
+    box-shadow: 0 0 10px 100px red inset;
+  }
 `;
 
-export default Input;
+export default Select;

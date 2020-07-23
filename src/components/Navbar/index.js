@@ -1,5 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { useHistory } from "react-router-dom";
+
 import { useTranslate } from "polyglot-react-redux-sdk";
 
 import { Link } from "Components/Text";
@@ -9,7 +10,8 @@ import Logo from "Components/Logo";
 
 import { StyledNavbar, RightSection, LeftSection } from "./style";
 
-const Navbar = () => {
+const Navbar = props => {
+  const history = useHistory();
   const t = useTranslate("nav");
   return (
     <StyledNavbar>
@@ -37,7 +39,7 @@ const Navbar = () => {
           <Link to="/register">{t("registerAs")}</Link>
         </li>
         <li>
-          <Button text={t("login")} />
+          <Button text={t("login")} action={() => history.push("/login")} />
         </li>
       </LeftSection>
     </StyledNavbar>

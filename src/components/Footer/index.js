@@ -1,10 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { useTranslate } from "polyglot-react-redux-sdk";
 
 import { Link } from "Components/Text";
 import Icon from "Components/Icon";
-import Button from "Components/Button";
 import Logo from "Components/Logo";
 
 import {
