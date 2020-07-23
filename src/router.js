@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import { Home, Login, App } from "Pages";
 import Navbar from "Components/Navbar";
+import Footer from "Components/Footer";
 
 export default function Router() {
   return (
@@ -19,6 +20,7 @@ export default function Router() {
           <Home />
         </Route>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

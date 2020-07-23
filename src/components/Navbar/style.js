@@ -10,7 +10,6 @@ const Navbar = styled.nav`
   padding: 0 ${props => props.theme.margin * 2}px;
   max-width: ${props => props.theme.maxWidth}px;
   background-color: ${props => props.theme.colors.white};
-  color: ${props => props.theme.white};
   position: sticky;
   top: 0;
   z-index: 10;

@@ -23,7 +23,6 @@ function Home() {
           <Card isHero>
             <Jumbo>{t("title")}</Jumbo>
             <Body>{t("subTitle")}</Body>
-            <Search />
           </Card>
         </Col>
       </Hero>
@@ -31,6 +30,7 @@ function Home() {
         <Row>
           <Jumbo>{t("title")}</Jumbo>
           <Body>{t("subTitle")}</Body>
+          <Search />
         </Row>
       </Page>
     </>
