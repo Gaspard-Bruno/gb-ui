@@ -10,12 +10,10 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <GlobalStyles />
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <GlobalStyles />
+    <App />
+  </Provider>,
   document.getElementById("root")
 );
 
