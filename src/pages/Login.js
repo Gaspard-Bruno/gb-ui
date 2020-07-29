@@ -38,7 +38,11 @@ function Login() {
         <Select
           label="Cenas Selected"
           placeholder="Choose one"
-          options={["cenas fixes", "cenas bacansa", "coisas"]}
+          options={[
+            { value: "chocolate", label: "Chocolate", disabled: true },
+            { value: "strawberry", label: "Strawberry" },
+            { value: "vanilla", label: "Vanilla" }
+          ]}
         />
       </Row>
     </Page>

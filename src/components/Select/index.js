@@ -2,7 +2,7 @@ import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 
 import { ErrorText, Body } from "Components/Text";
-import StyledSelect, { SelectContainer, SelectOption } from "./style";
+import StyledSelect, { SelectContainer, selectStyles } from "./style";
 
 const Select = ({
   error,
@@ -10,38 +10,28 @@ const Select = ({
   options = [],
   label,
   onChange,
+  isDisabled,
   defaultValue
 }) => {
-  const handleSelectOption = e => {
-    const { value } = e.target;
-    if (onChange) {
-      onChange(value);
-    }
-  };
   // TODO Add different color to placeholder
   return (
     <SelectContainer error={error}>
       {label && <Body>{label}</Body>}
       <StyledSelect
+        isDisabled={isDisabled}
+        styles={selectStyles}
+        options={options}
         error={error}
-        onChange={handleSelectOption}
-        defaultValue={placeholder || defaultValue}
-      >
-        <SelectOption value={placeholder || ""} disabled hidden>
-          {placeholder || ""}
-        </SelectOption>
-        {options.map(o => (
-          <SelectOption key={o.key || o} value={o.key || o}>
-            {o.label || o}
-          </SelectOption>
-        ))}
-      </StyledSelect>
+        defaultValue={defaultValue}
+        placeholder={placeholder}
+      />
       {error && <ErrorText>{error}</ErrorText>}
     </SelectContainer>
   );
 };
 
 Select.propTypes = {
+  isDisabled: PropTypes.bool,
   error: PropTypes.string,
   placeholder: PropTypes.string,
   options: PropTypes.arrayOf(
