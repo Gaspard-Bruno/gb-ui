@@ -5,6 +5,7 @@ import { Page, Col, Row, Hero } from "Components/Layout";
 import Card from "Components/Card";
 import { Jumbo, Body } from "Components/Text";
 import Search from "Components/Search";
+import Tabs from "Components/Tabs";
 
 function Home() {
   const t = useTranslate("home");
@@ -27,11 +28,29 @@ function Home() {
         </Col>
       </Hero>
       <Page>
-        <Row>
-          <Jumbo>{t("title")}</Jumbo>
-          <Body>{t("subTitle")}</Body>
-          <Search />
-        </Row>
+        <Tabs
+          tabs={[
+            {
+              name: "Initial",
+              children: () => (
+                <Row>
+                  <Jumbo>{t("title")}</Jumbo>
+                  <Body>{t("subTitle")}</Body>
+                  <Search />
+                </Row>
+              )
+            },
+
+            {
+              name: "Second",
+              children: () => (
+                <Row>
+                  <Search />
+                </Row>
+              )
+            }
+          ]}
+        ></Tabs>
       </Page>
     </>
   );

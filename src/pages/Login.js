@@ -39,7 +39,7 @@ function Login() {
           label="Cenas Selected"
           placeholder="Choose one"
           options={[
-            { value: "chocolate", label: "Chocolate", disabled: true },
+            { value: "chocolate", label: "Chocolate" },
             { value: "strawberry", label: "Strawberry" },
             { value: "vanilla", label: "Vanilla" }
           ]}

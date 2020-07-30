@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import { ErrorText, Body } from "Components/Text";
@@ -18,6 +18,7 @@ const Select = ({
     <SelectContainer error={error}>
       {label && <Body>{label}</Body>}
       <StyledSelect
+        onChange={onChange}
         isDisabled={isDisabled}
         styles={selectStyles}
         options={options}
@@ -38,7 +39,7 @@ Select.propTypes = {
     PropTypes.oneOfType([
       PropTypes.shape({
         label: PropTypes.string,
-        key: PropTypes.string
+        value: PropTypes.string
       }),
       PropTypes.string
     ])
