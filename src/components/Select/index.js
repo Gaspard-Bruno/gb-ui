@@ -36,13 +36,10 @@ Select.propTypes = {
   error: PropTypes.string,
   placeholder: PropTypes.string,
   options: PropTypes.arrayOf(
-    PropTypes.oneOfType([
-      PropTypes.shape({
-        label: PropTypes.string,
-        value: PropTypes.string
-      }),
-      PropTypes.string
-    ])
+    PropTypes.shape({
+      label: PropTypes.string,
+      value: PropTypes.string
+    })
   ),
   label: PropTypes.string,
   defaultValue: PropTypes.string,

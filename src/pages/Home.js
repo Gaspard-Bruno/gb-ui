@@ -6,6 +6,7 @@ import Card from "Components/Card";
 import { Jumbo, Body } from "Components/Text";
 import Search from "Components/Search";
 import Tabs from "Components/Tabs";
+import Accordion from "Components/Accordion";
 
 function Home() {
   const t = useTranslate("home");
@@ -28,6 +29,10 @@ function Home() {
         </Col>
       </Hero>
       <Page>
+        <Accordion
+          title="accordion"
+          content={() => <Body>Cenas fixes</Body>}
+        ></Accordion>
         <Tabs
           tabs={[
             {

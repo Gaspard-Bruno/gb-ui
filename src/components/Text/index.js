@@ -12,6 +12,10 @@ export const Jumbo = styled.h1`
 
 const headingSizes = [
   `
+  font-size: 48px;
+  line-height: 64px;
+  `,
+  `
   font-size: 32px;
   line-height: 40px;
   `,
