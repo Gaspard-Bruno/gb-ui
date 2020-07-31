@@ -29,12 +29,10 @@ const Tabs = ({ tabs, initialTabIndex }) => {
 Tabs.propTypes = {
   initialTabIndex: PropTypes.number,
   tabs: PropTypes.arrayOf(
-    PropTypes.oneOfType([
-      PropTypes.shape({
-        name: PropTypes.string,
-        children: PropTypes.element
-      })
-    ])
+    PropTypes.shape({
+      name: PropTypes.string,
+      children: PropTypes.function
+    })
   )
 };
 

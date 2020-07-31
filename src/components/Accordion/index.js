@@ -24,7 +24,12 @@ const Accordion = ({ title, isOpen, content }) => {
 
 Accordion.propTypes = {
   title: PropTypes.string,
-  content: PropTypes.element,
+  content: PropTypes.func,
   isOpen: PropTypes.bool
+};
+
+Accordion.whyDidYouRender = {
+  logOnDifferentValues: true,
+  customName: "Accordion"
 };
 export default Accordion;

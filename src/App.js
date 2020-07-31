@@ -14,7 +14,7 @@ function App() {
   const { phrasesLoaded } = usePolyglot({
     default: config.locale,
     defaultPhrases: content,
-    useDefaultPhrases: true,
+    useDefaultPhrases: true
   });
   return (
     <Provider store={store}>
@@ -25,4 +25,8 @@ function App() {
   );
 }
 
+App.whyDidYouRender = {
+  logOnDifferentValues: true,
+  customName: "App"
+};
 export default App;

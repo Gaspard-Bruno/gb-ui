@@ -89,6 +89,7 @@
     ]
   },
   "devDependencies": {
+    "@welldone-software/why-did-you-render": "^4.2.7",
     "customize-cra": "^1.0.0",
     "dotenv": "^8.2.0",
     "eslint-config-prettier": "^6.11.0",
