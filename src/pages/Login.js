@@ -21,7 +21,7 @@ function Login() {
           <Col size={2}>
             <Card>
               <TextInput label="email" placeholder="placeholder" />
-              <TextInput label="password" />
+              <TextInput label="password" type="password" hasIcon />
             </Card>
           </Col>
         </Row>

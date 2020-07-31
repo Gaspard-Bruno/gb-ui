@@ -9,11 +9,11 @@ const Icon = ({ name, ...props }) => (
 );
 
 Icon.propTypes = {
-  name: PropTypes.string,
+  name: PropTypes.string
 };
 
 Icon.defaultProps = {
-  size: 24,
+  size: 24
 };
 
 export default Icon;

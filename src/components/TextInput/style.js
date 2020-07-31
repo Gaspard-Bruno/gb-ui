@@ -3,7 +3,14 @@ import styled from "styled-components";
 export const InputContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  & > nav {
+    position: absolute;
+    align-self: flex-end;
+    margin: 0px 5px 5px 5px;
+    background: white;
+    padding: 10px;
+  }
   color: ${props =>
     props.error
       ? props.theme.colors.feedback.error.default
@@ -15,7 +22,8 @@ export const InputContainer = styled.div`
 
 const Input = styled.input`
   border-radius: 2px;
-  padding: ${props => props.theme.margin}px ${props => props.theme.margin / 2}px;
+  padding: ${props => props.theme.margin}px ${props =>
+  props.theme.margin / 2}px;
   border: 1px solid
     ${props =>
       props.error
@@ -39,7 +47,7 @@ const Input = styled.input`
   &:disabled {
     background-color: ${props => props.theme.colors.lightBeige};
     color: ${props => props.theme.colors.grey};
-  }
+  },
 `;
 
 export default Input;
