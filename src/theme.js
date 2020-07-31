@@ -1,9 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-import SpaceGrotesk from "Assets/fonts/SpaceGrotesk-Regular.ttf";
-import SpaceGroteskBold from "Assets/fonts/SpaceGrotesk-Bold.ttf";
-import MuliRegular from "Assets/fonts/Muli.ttf";
-import MuliBold from "Assets/fonts/Muli-Bold.ttf";
+import "./fonts.css";
 
 export default {
   margin: 12,
@@ -59,35 +56,6 @@ export default {
 };
 
 export const GlobalStyles = createGlobalStyle`
-    @font-face {
-        font-family: Space Grotesk;
-        src: local('Space Grotesk'), local('SpaceGrotesk'),
-        url(${SpaceGroteskBold}) format('truetype');
-        font-weight: bold;
-        font-style: bold;
-    }
-
-    @font-face {
-        font-family: Space Grotesk;
-        src: local('Space Grotesk'), local('SpaceGrotesk'),
-        url(${SpaceGrotesk}) format('truetype');
-        font-weight: normal;
-        font-style: normal;
-    }
-
-    @font-face {
-      font-family: Muli;
-      src: url(${MuliRegular}) format("truetype");
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: Muli;
-      src: url(${MuliBold}) format("truetype");
-      font-weight: bold;
-      font-style: bold;
-    }
     html {
       scroll-behavior: smooth;
     }
