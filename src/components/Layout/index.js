@@ -28,8 +28,17 @@ const Hero = styled.div`
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
-  position: relative;
-  top: -80px;
+  background-color: ${props =>
+    props.bg === "alt"
+      ? props.theme.colors.lightBeige
+      : props.theme.colors.white};
+  ${props =>
+    props.top
+      ? `
+    position: relative;
+    top: -80px;
+  `
+      : ``}
 `;
 
 const Page = styled.div`
@@ -44,7 +53,7 @@ const Page = styled.div`
     margin: 0 48px;
   `)}
   ${media.mobile(`
-    margin: 0 48px;
+    margin: 0 32px;
   `)}
 `;
 

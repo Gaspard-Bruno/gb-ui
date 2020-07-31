@@ -12,7 +12,7 @@ function Home() {
   const t = useTranslate("home");
   return (
     <>
-      <Hero>
+      <Hero top>
         <Col size={0.5}>
           <Card bg="alt" isHero>
             <Col>
@@ -25,13 +25,14 @@ function Home() {
           <Card isHero>
             <Jumbo>{t("title")}</Jumbo>
             <Body>{t("subTitle")}</Body>
+            <Search />
           </Card>
         </Col>
       </Hero>
       <Page>
         <Accordion
           title="accordion"
-          content={() => <Body>Cenas fixes</Body>}
+          content={() => <Jumbo>Cenas fixes</Jumbo>}
         ></Accordion>
         <Tabs
           tabs={[
