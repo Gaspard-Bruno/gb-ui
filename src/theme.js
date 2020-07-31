@@ -21,7 +21,7 @@ export default {
       darker: "#FDAA15",
       orange: "#F0513A",
       orangeLight: " #F37C6B",
-      orangeDark: "#DD2A10",
+      orangeDarker: "#DD2A10",
       blue: "#5CB5E6",
       lightBlue: "#C5E8F2",
       red: "#DB1E3B"

@@ -7,6 +7,8 @@ import { Jumbo, Body } from "Components/Text";
 import Search from "Components/Search";
 import Tabs from "Components/Tabs";
 import Accordion from "Components/Accordion";
+import Button from "Components/Button";
+import Icon from "Components/Icon";
 
 function Home() {
   const t = useTranslate("home");
@@ -23,8 +25,13 @@ function Home() {
         </Col>
         <Col size={0.5}>
           <Card isHero>
-            <Jumbo>{t("title")}</Jumbo>
-            <Body>{t("subTitle")}</Body>
+            <Button
+              btnType="transparent"
+              text="text"
+              action={() => console.log("!setOpen")}
+            >
+              <Icon name="eye-off" color="orange" />
+            </Button>
             <Search />
           </Card>
         </Col>
