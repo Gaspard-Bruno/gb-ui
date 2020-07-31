@@ -7,6 +7,7 @@ import { Jumbo, Body } from "Components/Text";
 import Search from "Components/Search";
 import Tabs from "Components/Tabs";
 import Accordion from "Components/Accordion";
+import Badge from "Components/Badge";
 import Button from "Components/Button";
 import Icon from "Components/Icon";
 
@@ -40,6 +41,17 @@ function Home() {
         <Accordion
           title="accordion"
           content={() => <Jumbo>Cenas fixes</Jumbo>}
+        ></Accordion>
+        <Accordion
+          title="Badges"
+          content={() => (
+            <Row>
+              <Badge status="active" text="active" />
+              <Badge status="analysis" text="analysis" />
+              <Badge status="canceled" text="canceled" />
+              <Badge status="chip" text="chip" chip />
+            </Row>
+          )}
         ></Accordion>
         <Tabs
           tabs={[

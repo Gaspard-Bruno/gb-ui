@@ -75,7 +75,7 @@ export const Tiny = styled.h3`
 export const Link = styled(RouterLink)`
   text-decoration: none;
   font-family: Space Grotesk;
-  font-style: normal;
+  font-style: medium;
   font-weight: 500;
   color: ${props => props.theme.colors.darkBlue};
   font-size: 16px;
@@ -94,7 +94,7 @@ export const Link = styled(RouterLink)`
 export const ButtonText = styled.span`
   text-decoration: none;
   font-family: Space Grotesk;
-  font-style: normal;
+  font-style: medium;
   font-weight: 500;
   color: ${props => props.theme.colors.darkBlue};
   font-size: 16px;
