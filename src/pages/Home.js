@@ -49,7 +49,7 @@ function Home() {
               <Badge status="active" text="active" />
               <Badge status="analysis" text="analysis" />
               <Badge status="canceled" text="canceled" />
-              <Badge status="chip" text="chip" chip />
+              <Badge status="chip" text="chip" isChip />
             </Row>
           )}
         ></Accordion>

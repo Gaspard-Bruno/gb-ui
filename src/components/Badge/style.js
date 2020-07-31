@@ -6,11 +6,16 @@ const getColorFromStatus = (theme, status) =>
     received: theme.brand.blue,
     analysis: theme.brand.yellow,
     active: theme.feedback.success.default,
-    canceled: theme.feedback.error.default
+    canceled: theme.feedback.error.default,
+    house: theme.muted.blue,
+    accompaning: theme.muted.green,
+    lessons: theme.muted.yellow
   }[status]);
 
 const Badge = styled.span`
   height: 24px;
+  display: flex;
+  flex-flow: row nowrap;
   background-color: ${props =>
     props.chip
       ? props.theme.colors.lightBeige
@@ -20,6 +25,11 @@ const Badge = styled.span`
       props.chip ? props.theme.colors.darkBlue : props.theme.colors.white};
     margin: ${props => props.theme.margin / 4}px
       ${props => props.theme.margin * 0.75}px;
+  }
+  > svg {
+    vertical-align: middle;
+    margin: auto ${props => props.theme.margin * 0.75}px;
+    margin-left: 0;
   }
 `;
 

@@ -7,7 +7,6 @@ import { AccordionContainer, AccordionTitle, ContentContainer } from "./style";
 
 const Accordion = ({ title, isOpen, content }) => {
   const [setOpen, setSetOpen] = useState(isOpen);
-  console.log(setOpen);
   return (
     <AccordionContainer>
       <AccordionTitle isOpen={setOpen}>
