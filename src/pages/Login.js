@@ -8,8 +8,12 @@ import TextInput from "Components/TextInput";
 import TextArea from "Components/TextArea";
 import Select from "Components/Select";
 import Card from "Components/Card";
+import DropDownMenu from "Components/DropDownMenu";
+import { useHistory } from "react-router-dom";
 
 function Login() {
+  const history = useHistory();
+
   const t = useTranslate("login");
   return (
     <>
@@ -18,7 +22,7 @@ function Login() {
           <Col size={1}>
             <Jumbo>{t("login")}</Jumbo>
           </Col>
-          <Col size={2}>
+          <Col collapse="mobile" size={2}>
             <Card>
               <TextInput label="email" placeholder="placeholder" />
               <TextInput label="password" type="password" hasIcon />
@@ -30,6 +34,32 @@ function Login() {
             <Tiny>{t("recoverPwd")}</Tiny>
             <Tiny>{t("cancel")}</Tiny>
           </Col>
+        </Row>
+        <Row>
+          <Tiny>
+            <DropDownMenu
+              menuOptions={[
+                {
+                  label: "cenas",
+                  action: () => history.push("/"),
+                  hasIcon: { name: "Facebook" },
+                },
+                { label: "cenas", action: () => history.push("/") },
+                { label: "cenas", action: () => history.push("/") },
+              ]}
+            />
+            <DropDownMenu
+              menuOptions={[
+                {
+                  label: "cenas",
+                  action: () => history.push("/"),
+                  hasIcon: { name: "Facebook" },
+                },
+                { label: "cenas", action: () => history.push("/") },
+                { label: "cenas", action: () => history.push("/") },
+              ]}
+            />
+          </Tiny>
         </Row>
         <Row>
           <TextArea

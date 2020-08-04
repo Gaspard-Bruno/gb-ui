@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
-import store from "Store";
+import store from "redux/store";
 
 import "./wdyr";
 import { GlobalStyles } from "Theme";
