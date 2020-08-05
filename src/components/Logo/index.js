@@ -8,6 +8,7 @@ import { ReactComponent as LogoColorful } from "Assets/svg/logo-colorful.svg";
 import { ReactComponent as LogoBlackTag } from "Assets/svg/logo-black-tag.svg";
 import { ReactComponent as LogoWhiteTag } from "Assets/svg/logo-white-tag.svg";
 import { ReactComponent as LogoColorfulTag } from "Assets/svg/logo-colorful-tag.svg";
+import { ReactComponent as LogoHome } from "Assets/svg/logo-Home.svg";
 
 const LOGO_MAP = {
   colorful: <LogoColorful />,
@@ -16,6 +17,7 @@ const LOGO_MAP = {
   colorfulTag: <LogoColorfulTag />,
   whiteTag: <LogoWhiteTag />,
   blackTag: <LogoBlackTag />,
+  home: <LogoHome />
 };
 const Logo = ({ size, color }) => {
   return <LogoContainer size={size}>{LOGO_MAP[color]}</LogoContainer>;
@@ -23,11 +25,11 @@ const Logo = ({ size, color }) => {
 
 Logo.propTypes = {
   size: PropTypes.number,
-  color: PropTypes.string,
+  color: PropTypes.string
 };
 Logo.defaultProps = {
   size: 120,
-  color: "colorful",
+  color: "colorful"
 };
 
 export default Logo;

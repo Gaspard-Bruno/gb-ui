@@ -47,6 +47,7 @@ const getStyleFromBtnType = (type = "primary", theme) => {
       break;
   }
 };
+
 const Button = styled.button`
   border-radius: 40px;
   outline: none;

@@ -4,12 +4,16 @@ export default {
     aboutUs: "Sobre Nós",
     registerAs: "Regista-te como 55+",
     login: "Iniciar Sessão",
-    country: "PT"
+    country: "Lisboa"
   },
   home: {
     title: "Conte sempre com um especialista 55+ ao seu lado",
     subTitle:
       "Se procura um serviço de qualidade e confiança que o ajude nas tarefas do dia a dia, conte com a experiência e disponibilidade de um 55+, e ajude a proporcionar uma vida ativa a muitas mais pessoas.",
+    services: {
+      header: "Explore os nossos serviços em",
+      country: "Lisboa"
+    },
     button: {
       placeholder: "Procure por “Baby Sitting”"
     }

@@ -10,7 +10,8 @@ import {
   RightSection,
   LeftSection,
   FooterText,
-  CopyrightText
+  CopyrightText,
+  FooterBottomLine
 } from "./style";
 
 const Footer = () => {
@@ -40,6 +41,7 @@ const Footer = () => {
           {t("lang")}
         </FooterText>
       </LeftSection>
+      <FooterBottomLine />
     </StyledFooter>
   );
 };

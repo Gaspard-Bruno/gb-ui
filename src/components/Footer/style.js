@@ -52,10 +52,22 @@ const LeftSection = styled.div`
     margin: ${props => props.theme.margin}px;
   }
 `;
+
+const FooterBottomLine = styled.div`
+  background: linear-gradient(
+    to right,
+    #c5e8f2 0%,
+    #5cb5e6 80%,
+    #ffffff 80%,
+    #ffffff 100%
+  );
+`;
+
 export {
   Footer as StyledFooter,
   FooterText,
   CopyrightText,
   RightSection,
-  LeftSection
+  LeftSection,
+  FooterBottomLine
 };
