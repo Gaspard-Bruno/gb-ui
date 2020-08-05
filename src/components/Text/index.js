@@ -46,7 +46,6 @@ export const Heading = styled.h2`
 `;
 
 export const Body = styled.p`
-  text-indent: 145px;
   font-family: Muli;
   font-style: normal;
   font-weight: normal;

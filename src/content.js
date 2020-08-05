@@ -52,5 +52,6 @@ export default {
   },
   buttons: {
     searchBtn: "Pesquisar"
-  }
+  },
+  servicesPage: {}
 };
