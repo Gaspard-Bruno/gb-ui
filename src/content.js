@@ -20,6 +20,10 @@ export default {
         buttonLabel: "Saiba mais"
       }
     },
+    howItWorks: {
+      title: "Como Funciona",
+      subtitle: "Encontre o especialista ideal em poucos passos"
+    },
     button: {
       placeholder: "Procure por “Baby Sitting”"
     }

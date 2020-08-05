@@ -1,13 +1,15 @@
 import React from "react";
 
-import Header from "./HeaderTab";
-import Services from "./ServicesTab";
+import HeaderTab from "./HeaderTab";
+import ServicesTab from "./ServicesTab";
+import HowItWorksTab from "./HowItWorksTab";
 
 const Home = () => {
   return (
     <>
-      <Header />
-      <Services />
+      <HeaderTab />
+      <ServicesTab />
+      <HowItWorksTab />
     </>
   );
 };

@@ -1,12 +1,11 @@
 import React from "react";
 import { useTranslate } from "polyglot-react-redux-sdk";
 import { Col, Hero, Row } from "Components/Layout";
-import { Heading, ButtonText, Body } from "components/Text";
-import { Link } from "Components/Text";
-import Icon from "components/Icon";
+import { Heading, Body } from "components/Text";
+import Card from "Components/Card";
 import Button from "Components/Button";
 
-const Services = () => {
+const ServicesTab = () => {
   const t = useTranslate("home.services");
 
   const buttons = [
@@ -20,24 +19,15 @@ const Services = () => {
       icon: { name: "map-pin" }
     }
   ];
-
-  const styles = {
-    row: {
-      justifyContent: "center"
-    }
-  };
-
   return (
-    <Hero>
-      <Col size={1}>
-        {renderButtons(t, styles, buttons)}
-        {renderFooter(t, styles)}
-      </Col>
-    </Hero>
+    <Col>
+      {renderButtons(t, buttons)}
+      {renderFooter(t)}
+    </Col>
   );
 };
 
-const renderButtons = (t, styles, buttons) => {
+const renderButtons = (t, buttons) => {
   return (
     <Col>
       <Row justityCenter>
@@ -46,14 +36,14 @@ const renderButtons = (t, styles, buttons) => {
       <Row justityCenter>
         {buttons &&
           buttons.map((btn, index) => {
-            const hasIcon = btn?.icon?.name ?? false;
+            const icon = btn?.icon?.name ?? "";
             return (
               <Button
                 key={`${btn.label}-${index}`}
                 btnType="transparent"
                 text={btn.label}
                 action={btn.action}
-                icon={hasIcon}
+                icon={icon}
               />
             );
           })}
@@ -62,18 +52,16 @@ const renderButtons = (t, styles, buttons) => {
   );
 };
 
-const renderFooter = (t, styles) => {
+const renderFooter = t => {
   return (
-    <Col>
-      <Row justityCenter>
+    <Card bg="alt">
+      <Col>
         <Heading size={2}>{t("footer.title")}</Heading>
-      </Row>
-      <Row justityCenter>
         <Body>{t("footer.subTitle")}</Body>
-      </Row>
-      <Button btnType="borded" text={t("footer.buttonLabel")} />
-    </Col>
+        <Button btnType="borded" text={t("footer.buttonLabel")} />
+      </Col>
+    </Card>
   );
 };
 
-export default Services;
+export default ServicesTab;

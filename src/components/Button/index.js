@@ -49,7 +49,13 @@ Button.propTypes = {
   isSmall: PropTypes.bool,
   text: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
-  btnType: PropTypes.oneOf(["primary", "secondary", "terceary", "transparent"]),
+  btnType: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "terceary",
+    "transparent",
+    "borded"
+  ]),
   icon: PropTypes.string
 };
 

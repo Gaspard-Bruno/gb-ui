@@ -7,26 +7,24 @@ import { Jumbo, Body } from "Components/Text";
 import Search from "Components/Search";
 import Logo from "Components/Logo";
 
-const Header = () => {
+const HeaderTab = () => {
   const t = useTranslate("home");
   return (
     <Hero top>
-      <Col size={0.5}>
-        <Card bg="alt" isHero>
-          <Col padding={200}>
-            <Jumbo>{t("title")}</Jumbo>
-            <Body>{t("subTitle")}</Body>
-            <Search placeholder={t("button.placeholder")} />
-          </Col>
-        </Card>
-      </Col>
-      <Col>
-        <Card isHero>
-          <Logo size={"inherit"} color={"home"} />
-        </Card>
-      </Col>
+      <Card isHero bg="alt">
+        <Col padding={200} size={0.5}>
+          <Jumbo>{t("title")}</Jumbo>
+          <Body>{t("subTitle")}</Body>
+          <Search placeholder={t("button.placeholder")} />
+        </Col>
+        <Col size={0.5}>
+          <Card isHero>
+            <Logo size={500} color={"home"} />
+          </Card>
+        </Col>
+      </Card>
     </Hero>
   );
 };
 
-export default Header;
+export default HeaderTab;
