@@ -32,6 +32,17 @@ const getStyleFromBtnType = (type = "primary", theme) => {
       return `
         background-color: transparent;
         border: transparent;
+        > span {
+          color: ${theme.colors.brand.orange};
+          &:hover {
+            color: ${theme.colors.brand.orangeDarker};
+          }
+        }
+      `;
+    case "borded":
+      return `
+        background-color: transparent;
+        border: 1px solid ${theme.colors.black};
         &:hover {
           border: transparent;
           background-color: transparent;

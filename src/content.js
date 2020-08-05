@@ -12,7 +12,13 @@ export default {
       "Se procura um serviço de qualidade e confiança que o ajude nas tarefas do dia a dia, conte com a experiência e disponibilidade de um 55+, e ajude a proporcionar uma vida ativa a muitas mais pessoas.",
     services: {
       header: "Explore os nossos serviços em",
-      country: "Lisboa"
+      country: "Lisboa",
+      footer: {
+        title: "Quem sabe, faz bem.",
+        subTitle:
+          "Quem oferece, garante uma vida mais ativa e integrada na comunidade. Quem procura, encontra especialistas com anos de experiência em diversas áreas para o apoiar nas tarefas do dia-a-dia.",
+        buttonLabel: "Saiba mais"
+      }
     },
     button: {
       placeholder: "Procure por “Baby Sitting”"

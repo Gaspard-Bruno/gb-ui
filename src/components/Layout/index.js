@@ -60,6 +60,7 @@ const Page = styled.div`
 const Row = styled.div`
   display: flex;
   flex-flow: row wrap;
+  justifycontent: ${props => (props.justifyCenter ? "center" : "none")};
   min-height: ${props => props.theme.margin * props.size}px;
 `;
 
