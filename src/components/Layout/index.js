@@ -65,7 +65,7 @@ const Row = styled.div`
 
 const Col = styled.div`
   flex: ${props => props.size};
-
+  padding: ${props => props?.padding}px;
   ${props =>
     props.collapse &&
     media[props.collapse](`

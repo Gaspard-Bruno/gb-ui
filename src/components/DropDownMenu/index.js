@@ -7,7 +7,7 @@ const DropDownMenu = ({ menuOptions }) => {
   return <DropDownContainer>{renderMenuList(menuOptions)}</DropDownContainer>;
 };
 
-const renderMenuList = (menuOptions) => {
+const renderMenuList = menuOptions => {
   const list = menuOptions.map((item, index) => {
     const icon = item?.hasIcon?.name ?? false;
     return (
@@ -25,12 +25,12 @@ const renderMenuList = (menuOptions) => {
 };
 
 DropDownMenu.prototype = {
-  menuOptions: PropTypes.shape({
-    label: PropTypes.string,
-    action: PropTypes.func,
-    hasIcon: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }),
-  }),
+  menuOptions: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      action: PropTypes.func,
+      hasIcon: PropTypes.bool
+    })
+  )
 };
 export default DropDownMenu;

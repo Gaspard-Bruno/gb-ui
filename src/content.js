@@ -7,9 +7,12 @@ export default {
     country: "PT"
   },
   home: {
-    title: "Ajudamos pessoas +55 a terem uma vida activa",
+    title: "Conte sempre com um especialista 55+ ao seu lado",
     subTitle:
-      "Se procuras um serviço de qualidade e confiança que te ajude nas tarefas do dia a dia, conta com a experiência e disponibilidade de um 55+ e ajuda a proporcionar uma vida ativa a muitas pessoas."
+      "Se procura um serviço de qualidade e confiança que o ajude nas tarefas do dia a dia, conte com a experiência e disponibilidade de um 55+, e ajude a proporcionar uma vida ativa a muitas mais pessoas.",
+    button: {
+      placeholder: "Procure por “Baby Sitting”"
+    }
   },
   login: {
     login: "Iniciar Sessão",
@@ -20,8 +23,8 @@ export default {
   },
   footer: {
     address: `Convento de São Pedro de Alcântara
-Travessa de São Pedro, 8
-1200-119 Lisboa`,
+    Travessa de São Pedro, 8
+    1200-119 Lisboa`,
     phone: "M. (+351) 930 55 65 75",
     email: "info@55mais.pt",
     copyright: "Copyright © 2020. 55+",
@@ -32,5 +35,8 @@ Travessa de São Pedro, 8
     tnc: "Termos e Condições",
     pp: "Política de Privacidade",
     lang: "Português"
+  },
+  buttons: {
+    searchBtn: "Pesquisar"
   }
 };

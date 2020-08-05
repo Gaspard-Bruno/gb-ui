@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useTranslate } from "polyglot-react-redux-sdk";
 
 import { Body } from "Components/Text";
 import { Container, Input, Button } from "./style";
@@ -11,16 +12,19 @@ const SearchInput = ({
   label,
   onChange,
   style = "main"
-}) => (
-  <Container>
-    <Input></Input>
-    {style === "main" && (
-      <Button>
-        <Body>Search</Body>
-      </Button>
-    )}
-  </Container>
-);
+}) => {
+  const t = useTranslate("buttons");
+  return (
+    <Container>
+      <Input placeholder={placeholder} />
+      {style === "main" && (
+        <Button>
+          <Body>{t("searchBtn")}</Body>
+        </Button>
+      )}
+    </Container>
+  );
+};
 
 SearchInput.propTypes = {
   error: PropTypes.string,
