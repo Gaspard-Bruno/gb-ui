@@ -14,9 +14,4 @@ const Home = () => {
   );
 };
 
-Home.whyDidYouRender = {
-  logOnDifferentValues: true,
-  customName: "Home"
-};
-
 export default Home;
