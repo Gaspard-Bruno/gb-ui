@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 import { ButtonText } from "Components/Text";
 import { TabContainer, TabButton, TabGroup } from "./style";
 
-const Tabs = ({ tabs, initialTabIndex }) => {
+const Tabs = ({ justify, tabs, initialTabIndex }) => {
   const [selectedTab, setSelectedTab] = useState(initialTabIndex);
   return (
     <TabContainer>
-      <TabGroup>
+      <TabGroup justify={justify}>
         {tabs && tabs.length
           ? tabs.map((tab, i) => (
               <TabButton
@@ -27,6 +27,7 @@ const Tabs = ({ tabs, initialTabIndex }) => {
 };
 
 Tabs.propTypes = {
+  justify: PropTypes.string,
   initialTabIndex: PropTypes.number,
   tabs: PropTypes.arrayOf(
     PropTypes.shape({

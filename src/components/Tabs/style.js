@@ -11,6 +11,7 @@ export const TabGroup = styled.div`
   display: flex;
   width: 100%;
   flex-flow: row nowrap;
+  justify-content: ${props => (props.justify ? props.justify : "flex-start")};
 `;
 
 export const TabButton = styled.button`
