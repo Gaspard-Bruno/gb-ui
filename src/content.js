@@ -53,5 +53,11 @@ export default {
   buttons: {
     searchBtn: "Pesquisar"
   },
-  servicesPage: {}
+  servicesPage: {
+    header: {
+      title: "Explora os nossos serviços",
+      subtitle:
+        "Aqui encontras um conjunto de serviços e experiências de qualidade e muito úteis para o dia a dia."
+    }
+  }
 };

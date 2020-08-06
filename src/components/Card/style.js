@@ -3,7 +3,6 @@ import styled from "styled-components";
 const Card = styled.div`
   display: flex;
   flex-flow: row-nowrap;
-  justify-content: flex-start;
   padding: ${props => props.theme.margin}px;
   box-shadow: ${props => (props.shadow ? props.theme.boxShadow : 0)};
   background-color: ${props =>
@@ -13,6 +12,7 @@ const Card = styled.div`
   color: ${props => props.theme.colors.darkBlue};
   align-items: center;
   height: ${props => (props.hero ? `${props.theme.heroSize}px` : "none")};
+  justify-content: ${props => (props.justify ? `${props.justify}` : "none")};
 `;
 
 export default Card;
