@@ -3,7 +3,8 @@ import { ListContainer, ListItens } from "./styles";
 import { Body } from "Components/Text";
 import PropTypes from "prop-types";
 
-const List = ({ data, options }) => {
+const List = props => {
+  const { data, options, defaultList } = props;
   const { list, display } = options;
 
   const items =
@@ -15,10 +16,13 @@ const List = ({ data, options }) => {
         </ListItens>
       );
     });
-  return <ListContainer display={display}>{items}</ListContainer>;
+  return defaultList ? (
+    <ListContainer display={display}>{items}</ListContainer>
+  ) : null;
 };
 
 List.prototype = {
+  defaultList: PropTypes.bool,
   data: PropTypes.array,
   options: PropTypes.objectOf(
     PropTypes.shape({

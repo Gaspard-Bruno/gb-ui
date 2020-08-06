@@ -11,17 +11,17 @@ const HeaderTab = () => {
   const t = useTranslate("home");
   return (
     <Hero top>
-      <Col size={0.7}>
-        <Card isHero bg="alt">
-          <Row>
-            <Jumbo>{t("title")}</Jumbo>
-            <Body>{t("subTitle")}</Body>
-            <Search placeholder={t("button.placeholder")} />
-          </Row>
-        </Card>
-      </Col>
+      <Card isHero bg="alt">
+        <Row>
+          <Jumbo>{t("title")}</Jumbo>
+          <Body>{t("subTitle")}</Body>
+          <Search placeholder={t("button.placeholder")} />
+        </Row>
+      </Card>
       <Card isHero>
-        <Logo size={400} color={"home"} />
+        <Row>
+          <Logo size={400} color={"home"} />
+        </Row>
       </Card>
     </Hero>
   );

@@ -1,10 +1,11 @@
 import React from "react";
 import { useTranslate } from "polyglot-react-redux-sdk";
-import { Col, Hero, Row } from "Components/Layout";
-import { Heading, Body } from "components/Text";
+import { Col, Page } from "Components/Layout";
+import { Heading } from "components/Text";
 import List from "Components/List";
 import Card from "Components/Card";
 import Logo from "Components/Logo";
+
 const HowItWorksTab = () => {
   const t = useTranslate("home.howItWorks");
 
@@ -17,11 +18,13 @@ const HowItWorksTab = () => {
   ];
 
   return (
-    <Card>
-      <Logo size={"inherit"} color={"home"} />
-      <Heading size={6}>{t("title")}</Heading>
-      <Heading size={2}>{t("subtitle")}</Heading>
-      <List data={listArray} options={{ list: "none" }} />
+    <Card justify="space-evenly">
+      <Logo size={400} color={"home"} />
+      <Col>
+        <Heading size={6}>{t("title")}</Heading>
+        <Heading size={2}>{t("subtitle")}</Heading>
+        <List defaultList data={listArray} options={{ list: "decimal" }} />
+      </Col>
     </Card>
   );
 };

@@ -1,82 +1,73 @@
 import React from "react";
 import { useTranslate } from "polyglot-react-redux-sdk";
-import { Col, Hero, Row } from "Components/Layout";
+import { Col, Hero, Row, Page } from "Components/Layout";
 import { Heading, Body } from "components/Text";
 import Card from "Components/Card";
+import Tabs from "Components/Tabs";
 import Button from "Components/Button";
-import Select from "Components/Select";
+import Icon from "Components/Icon";
+
 const ServicesTab = () => {
   const t = useTranslate("home.services");
 
-  const buttons = [
+  const tabs = [
     {
-      label: "Todos",
-      action: () => alert("done me Todos!"),
-      type: "transparent"
+      name: "Todos",
+      children: () => true
     },
     {
-      label: "Acompanhamento",
-      action: () => alert("done me Acompanhamento!"),
-      type: "transparent"
+      name: "Acompanhamento",
+      children: () => true
     },
     {
-      label: "Casa",
-      action: () => alert("done me Casa!"),
-      type: "transparent"
+      name: "Casa",
+      children: () => true
     },
     {
-      label: "Aulas",
-      action: () => alert("done me Aulas!"),
-      type: "transparent"
+      name: "Aulas",
+      children: () => true
     }
   ];
 
   return (
     <Col>
-      {renderButtons(t, buttons)}
+      {renderTabs(t, tabs)}
       {renderFooter(t)}
     </Col>
   );
 };
 
-const renderButtons = (t, buttons) => {
+const renderTabs = (t, tabs) => {
   return (
-    <Col>
-      <Row justityCenter>
-        <Heading size={2}>{t("header")}</Heading>
-        <Button
-          btnType="transparent"
-          text={t("country")}
-          icon="map-pin"
-        ></Button>
-      </Row>
-      <Row justityCenter>
-        {buttons &&
-          buttons.map((btn, index) => {
-            const icon = btn?.icon?.name ?? "";
-            return (
-              <Button
-                key={`${btn.label}-${index}`}
-                btnType={btn.type}
-                text={btn.label}
-                action={btn.action}
-                icon={icon}
-              />
-            );
-          })}
-      </Row>
-    </Col>
+    <Card>
+      <Page>
+        <Col>
+          <Row align="baseline">
+            <Heading size={2}>{t("header")}</Heading>
+            <Icon style={{ color: "#F0513A" }} name="map-pin" />
+            <Heading style={{ color: "#F0513A" }} size={3}>
+              {t("country")}
+            </Heading>
+          </Row>
+          <Row>
+            <Tabs justify="center" tabs={tabs} initialTabIndex={0} />
+          </Row>
+        </Col>
+      </Page>
+    </Card>
   );
 };
 
 const renderFooter = t => {
   return (
     <Card bg="alt">
-      <Col>
-        <Heading size={2}>{t("footer.title")}</Heading>
-        <Body>{t("footer.subTitle")}</Body>
-        <Button btnType="borded" text={t("footer.buttonLabel")} />
-      </Col>
+      <Page>
+        <Col>
+          <Heading size={2}>{t("footer.title")}</Heading>
+          <Body>{t("footer.subTitle")}</Body>
+          <Button btnType="borded" text={t("footer.buttonLabel")} />
+        </Col>
+      </Page>
     </Card>
   );
 };
