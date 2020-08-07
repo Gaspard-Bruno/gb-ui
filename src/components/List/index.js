@@ -3,6 +3,7 @@ import { ListContainer, ListItens, itemIcon } from "./styles";
 import { Body } from "Components/Text";
 import Icon from "Components/Icon";
 import PropTypes from "prop-types";
+import { Col } from "Components/Layout";
 
 const List = ({ data, hasIcon }) => {
   const items =
@@ -10,7 +11,9 @@ const List = ({ data, hasIcon }) => {
     data.map((item, index) => {
       return (
         <ListItens hasIcon key={`${item}-${index}`}>
-          <Body>{item}</Body>
+          <Col size={0.55}>
+            <Body>{item}</Body>
+          </Col>
         </ListItens>
       );
     });
