@@ -25,6 +25,12 @@ export default {
       title: "Como Funciona",
       subtitle: "Encontre o especialista ideal em poucos passos"
     },
+    becomeSpecialist: {
+      title: "Torne-se num especialista 55+",
+      subTitle:
+        "Se tem mais de 55 anos de idade, torne-se um prestador de serviços 55+ e garanta uma vida ativa com rendimentos extra para si.",
+      buttonLabel: "Saiba mais"
+    },
     button: {
       placeholder: "Procure por “Baby Sitting”"
     }
