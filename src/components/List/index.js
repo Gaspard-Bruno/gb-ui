@@ -23,9 +23,9 @@ List.prototype = {
   options: PropTypes.objectOf(
     PropTypes.shape({
       list: PropTypes.string,
-      display: PropTypes.string,
+      display: PropTypes.string
     })
-  ),
+  )
 };
 
 export default List;

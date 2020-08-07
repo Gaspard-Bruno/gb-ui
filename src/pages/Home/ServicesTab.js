@@ -6,6 +6,7 @@ import Card from "Components/Card";
 import Tabs from "Components/Tabs";
 import Button from "Components/Button";
 import Icon from "Components/Icon";
+import ListCarousel from "Components/ListCarousel";
 
 const ServicesTab = () => {
   const t = useTranslate("home.services");
@@ -29,9 +30,43 @@ const ServicesTab = () => {
     }
   ];
 
+  const carouselList = [
+    {
+      img: "https://i.imgur.com/UPrs1EWl.jpg",
+      category: "house",
+      text: "Chef em casa"
+    },
+    {
+      img: "https://i.imgur.com/UPrs1EWl.jpg",
+      category: "accompaning",
+      text: "Acompanhamento familiar de crianças"
+    },
+    {
+      img: "https://i.imgur.com/UPrs1EWl.jpg",
+      category: "accompaning",
+      text: "Acompanhamento familiar de Seniores"
+    },
+    {
+      img: "https://i.imgur.com/UPrs1EWl.jpg",
+      category: "house",
+      text: "Chef em casa"
+    },
+    {
+      img: "https://i.imgur.com/UPrs1EWl.jpg",
+      category: "accompaning",
+      text: "Acompanhamento familiar de crianças"
+    },
+    {
+      img: "https://i.imgur.com/UPrs1EWl.jpg",
+      category: "accompaning",
+      text: "Acompanhamento familiar de Seniores"
+    }
+  ];
+
   return (
     <Col>
       {renderTabs(t, tabs)}
+      {renderCarousel(carouselList)}
       {renderFooter(t)}
     </Col>
   );
@@ -57,6 +92,8 @@ const renderTabs = (t, tabs) => {
     </Card>
   );
 };
+
+const renderCarousel = list => <ListCarousel list={list} />;
 
 const renderFooter = t => {
   return (
