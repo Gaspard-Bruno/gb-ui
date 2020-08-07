@@ -9,16 +9,22 @@ const Header = () => {
   const t = useTranslate("servicesPage.header");
 
   return (
-    <Card justify="center">
-      <Page>
-        <Row>
-          <Heading size={1}>{t("title")}</Heading>
+    <Page>
+      <Row justify="center">
+        <Col>
+          <Heading styles={{ marginBottom: "0px" }} size={1}>
+            {t("title")}
+          </Heading>
+        </Col>
+        <Row justify="center">
+          <Col padding={10} size={0.6}>
+            <Body style={{ textAlign: "center" }} collapse>
+              {t("subtitle")}
+            </Body>
+          </Col>
         </Row>
-        <Row>
-          <Body>{t("subtitle")}</Body>
-        </Row>
-      </Page>
-    </Card>
+      </Row>
+    </Page>
   );
 };
 
