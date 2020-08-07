@@ -3,23 +3,25 @@ import Slider from "react-slick";
 import Badge from "Components/Badge";
 import { Heading } from "Components/Text";
 import { Row } from "Components/Layout";
+import Button from "Components/Button";
 import { CarouselContainer, ItemContainer, ItemImage } from "./styles";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PropTypes from "prop-types";
 
-const ListCarousel = ({ list }) => {
+const ListCarousel = ({ list, hasButton, btnOptions }) => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: false,
     arrows: false,
-    speed: 500,
+    speed: 100,
     slidesToShow: 3,
     slidesToScroll: 1
   };
   return (
     <CarouselContainer>
       <Slider {...settings}>{renderItems(list)}</Slider>
+      {hasButton && <Button {...btnOptions} />}
     </CarouselContainer>
   );
 };
@@ -31,14 +33,14 @@ const renderItems = items => {
       return (
         <ItemContainer key={`${item.category}-${index}`}>
           <ItemImage alt="" src={item.img} />
-          <Badge
-            text={item.category}
-            category={item.category}
-            onClick={item.action}
-          />
-          <Row>
-            <Heading size={6}>{item.text}</Heading>
+          <Row justify="flex-start">
+            <Badge
+              text={item.category}
+              category={item.category}
+              onClick={item.action}
+            />
           </Row>
+          <Heading size={6}>{item.text}</Heading>
         </ItemContainer>
       );
     });

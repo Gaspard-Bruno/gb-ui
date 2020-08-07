@@ -65,19 +65,22 @@ const ServicesTab = () => {
 
   return (
     <Col>
-      {renderTabs(t, tabs)}
-      {renderCarousel(carouselList)}
+      {renderTabs(t, tabs, carouselList)}
       {renderFooter(t)}
     </Col>
   );
 };
 
-const renderTabs = (t, tabs) => {
+const renderTabs = (t, tabs, list) => {
+  const btnOptions = {
+    btnType: "primary",
+    text: t("carouselButton")
+  };
   return (
     <Card>
       <Page>
         <Col>
-          <Row align="baseline">
+          <Row justify="center" align="baseline">
             <Heading size={2}>{t("header")}</Heading>
             <Icon style={{ color: "#F0513A" }} name="map-pin" />
             <Heading style={{ color: "#F0513A" }} size={3}>
@@ -87,13 +90,12 @@ const renderTabs = (t, tabs) => {
           <Row>
             <Tabs justify="center" tabs={tabs} initialTabIndex={0} />
           </Row>
+          <ListCarousel hasButton btnOptions={btnOptions} list={list} />
         </Col>
       </Page>
     </Card>
   );
 };
-
-const renderCarousel = list => <ListCarousel list={list} />;
 
 const renderFooter = t => {
   return (
