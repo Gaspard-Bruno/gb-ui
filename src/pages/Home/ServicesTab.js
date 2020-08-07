@@ -103,11 +103,13 @@ const renderFooter = t => {
   return (
     <Card bg="alt">
       <Page>
-        <Col>
+        <Row justify="center" style={{ flex: 1, textAlign: "center" }}>
           <Heading size={2}>{t("footer.title")}</Heading>
           <Body>{t("footer.subTitle")}</Body>
-          <Button btnType="borded" text={t("footer.buttonLabel")} />
-        </Col>
+          <Row style={{ padding: 20 }}>
+            <Button btnType="borded" text={t("footer.buttonLabel")} />
+          </Row>
+        </Row>
       </Page>
     </Card>
   );

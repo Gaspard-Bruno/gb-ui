@@ -45,6 +45,7 @@ const Page = styled.div`
   max-width: ${props => props.theme.maxWidth}px;
   ${media.desktop(`
     margin: 0 auto;
+    flex: 0.6;
   `)}
   ${media.smallDesktop(`
     margin: 0 120px;
