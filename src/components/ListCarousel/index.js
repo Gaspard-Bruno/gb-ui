@@ -48,7 +48,9 @@ const renderItems = items => {
 };
 
 ListCarousel.prototype = {
-  list: PropTypes.array.isRequired
+  list: PropTypes.array.isRequired,
+  hasButton: PropTypes.bool,
+  btnOptions: PropTypes.object
 };
 
 export default ListCarousel;
