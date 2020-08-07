@@ -10,20 +10,24 @@ import Logo from "Components/Logo";
 const HeaderTab = () => {
   const t = useTranslate("home");
   return (
-    <Hero top>
-      <Card isHero bg="alt">
-        <Row>
-          <Jumbo>{t("title")}</Jumbo>
-          <Body>{t("subTitle")}</Body>
-          <Search placeholder={t("button.placeholder")} />
-        </Row>
-      </Card>
-      <Card isHero>
-        <Row>
-          <Logo size={400} color={"home"} />
-        </Row>
-      </Card>
-    </Hero>
+    <Card isHero bg="alt">
+      <Page>
+        <Hero top>
+          <Card isHero bg="alt">
+            <Row>
+              <Jumbo>{t("title")}</Jumbo>
+              <Body>{t("subTitle")}</Body>
+              <Search placeholder={t("button.placeholder")} />
+            </Row>
+          </Card>
+          <Card isHero>
+            <Row>
+              <Logo size={400} color={"home"} />
+            </Row>
+          </Card>
+        </Hero>
+      </Page>
+    </Card>
   );
 };
 

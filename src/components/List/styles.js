@@ -1,16 +1,25 @@
 import styled from "styled-components";
 
 export const ListContainer = styled.ul`
-  display: ${props => (props.display ? props.display : "block")};
+  padding: 0;
 `;
 
 export const ListItens = styled.li`
-  list-style: ${props => (props.list ? props.list : "none")};
-  &:hover {
-    background-color: : ${props => (props.list ? "red" : "transparent")};
-  }
+  counter-increment: liCounter;
+  display: flex;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  ${(props) => (props.hasIcon ? iconStyle : "")}
 `;
 
-export const itemIcon = styled.nav`
-  background-color: : ${props => (props.list ? "red" : "transparent")};
+const iconStyle = `
+    &::before {
+      content: "" counter(liCounter);
+      font-weight: bold;
+      font-size: 3rem;
+      margin-right: 1.5rem;
+      font-family: "Abril Fatface", serif;
+      color: white;
+      background: red;
+    }
 `;

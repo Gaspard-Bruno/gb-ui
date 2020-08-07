@@ -14,7 +14,7 @@ const HowItWorksTab = () => {
     "Nós analisaremos o seu pedido e ligamo-lo ao especialista ideal mais próximo de si.",
     "Efetue o pagamento facilmente, a partir de qualquer lugar.",
     "Receba o nosso especialista e usufrua do  serviço na data e hora agendados.",
-    "Envie-nos o seu feedback."
+    "Envie-nos o seu feedback.",
   ];
 
   return (
@@ -23,7 +23,7 @@ const HowItWorksTab = () => {
       <Col>
         <Heading size={6}>{t("title")}</Heading>
         <Heading size={2}>{t("subtitle")}</Heading>
-        <List defaultList data={listArray} options={{ list: "decimal" }} />
+        <List hasIcon data={listArray} />
       </Col>
     </Card>
   );

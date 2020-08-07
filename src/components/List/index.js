@@ -1,35 +1,31 @@
 import React from "react";
-import { ListContainer, ListItens } from "./styles";
+import { ListContainer, ListItens, itemIcon } from "./styles";
 import { Body } from "Components/Text";
+import Icon from "Components/Icon";
 import PropTypes from "prop-types";
 
-const List = props => {
-  const { data, options, defaultList } = props;
-  const { list, display } = options;
-
+const List = ({ data, hasIcon }) => {
   const items =
     data &&
     data.map((item, index) => {
       return (
-        <ListItens key={`${item}-${index}`} list={list}>
+        <ListItens hasIcon key={`${item}-${index}`}>
           <Body>{item}</Body>
         </ListItens>
       );
     });
-  return defaultList ? (
-    <ListContainer display={display}>{items}</ListContainer>
-  ) : null;
+  return <ListContainer>{items}</ListContainer>;
 };
 
 List.prototype = {
-  defaultList: PropTypes.bool,
+  hasIcon: PropTypes.bool,
   data: PropTypes.array,
   options: PropTypes.objectOf(
     PropTypes.shape({
       list: PropTypes.string,
-      display: PropTypes.string
+      display: PropTypes.string,
     })
-  )
+  ),
 };
 
 export default List;
