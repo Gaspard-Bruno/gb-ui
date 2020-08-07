@@ -74,8 +74,10 @@ const ServicesTab = () => {
 const renderTabs = (t, tabs, list) => {
   const btnOptions = {
     btnType: "primary",
-    text: t("carouselButton")
+    text: t("carouselButton"),
+    action: () => alert("See all services action")
   };
+
   return (
     <Card>
       <Page>
