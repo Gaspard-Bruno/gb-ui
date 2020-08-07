@@ -24,6 +24,10 @@ const Navbar = styled.nav`
       margin-right: ${props => props.theme.margin * 2}px;
       display: block;
     }
+
+    @media only screen and (max-width: 375px) {
+      maxwidth: 100%;
+    }
   }
 `;
 
@@ -36,4 +40,5 @@ const LeftSection = styled.ul`
     color: ${props => props.theme.colors.brand.orange} !important;
   }
 `;
+
 export { Navbar as StyledNavbar, RightSection, LeftSection };
