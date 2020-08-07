@@ -59,5 +59,15 @@ export default {
       subtitle:
         "Aqui encontras um conjunto de serviços e experiências de qualidade e muito úteis para o dia a dia."
     }
+  },
+  badges: {
+    complete: "Completo",
+    received: "Recebido",
+    analysis: "Em Análise",
+    active: "Activo",
+    canceled: "Cancelado",
+    house: "Casa",
+    accompaning: "Acompanhamento",
+    lessons: "Lições"
   }
 };
