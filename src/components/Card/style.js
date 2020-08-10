@@ -1,14 +1,22 @@
 import styled from "styled-components";
 
+const getSelectedBackground = props => {
+  switch (props.bg) {
+    case "alt":
+      return props.theme.colors.lightBeige;
+    case "terceary":
+      return props.theme.colors.brand.lightBlue;
+    default:
+      return props.theme.colors.white;
+  }
+};
+
 const Card = styled.div`
   display: flex;
   flex-flow: row-nowrap;
   padding: ${props => props.theme.margin}px;
   box-shadow: ${props => (props.shadow ? props.theme.boxShadow : 0)};
-  background-color: ${props =>
-    props.bg === "alt"
-      ? props.theme.colors.lightBeige
-      : props.theme.colors.white};
+  background-color: ${props => getSelectedBackground(props)};
   color: ${props => props.theme.colors.darkBlue};
   align-items: center;
   height: ${props => (props.hero ? `${props.theme.heroSize}px` : "none")};
