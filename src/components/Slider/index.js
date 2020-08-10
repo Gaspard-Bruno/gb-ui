@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PropTypes from "prop-types";
 
-const ListCarousel = ({ list, hasButton, btnOptions }) => {
+const CardSlider = ({ list, hasButton, btnOptions }) => {
   const settings = {
     speed: 500,
     slidesToShow: 3,
@@ -47,10 +47,10 @@ const renderItems = items => {
   return list;
 };
 
-ListCarousel.prototype = {
+CardSlider.prototype = {
   list: PropTypes.array.isRequired,
   hasButton: PropTypes.bool,
   btnOptions: PropTypes.object
 };
 
-export default ListCarousel;
+export default CardSlider;

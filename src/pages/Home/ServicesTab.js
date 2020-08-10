@@ -6,7 +6,7 @@ import Card from "Components/Card";
 import Tabs from "Components/Tabs";
 import Button from "Components/Button";
 import Icon from "Components/Icon";
-import ListCarousel from "Components/ListCarousel";
+import Slider from "Components/Slider";
 
 const ServicesTab = () => {
   const t = useTranslate("home.services");
@@ -30,7 +30,7 @@ const ServicesTab = () => {
     }
   ];
 
-  const carouselList = [
+  const sliderList = [
     {
       img: "https://i.imgur.com/UPrs1EWl.jpg",
       category: "house",
@@ -65,7 +65,7 @@ const ServicesTab = () => {
 
   return (
     <Col>
-      {renderTabs(t, tabs, carouselList)}
+      {renderTabs(t, tabs, sliderList)}
       {renderFooter(t)}
     </Col>
   );
@@ -92,7 +92,7 @@ const renderTabs = (t, tabs, list) => {
           <Row>
             <Tabs justify="center" tabs={tabs} initialTabIndex={0} />
           </Row>
-          <ListCarousel hasButton btnOptions={btnOptions} list={list} />
+          <Slider hasButton btnOptions={btnOptions} list={list} />
         </Col>
       </Page>
     </Card>
