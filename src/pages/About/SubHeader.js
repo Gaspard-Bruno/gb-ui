@@ -5,7 +5,7 @@ import { Page, Row, Col, Hero } from "Components/Layout";
 import Card from "Components/Card";
 import { Jumbo, Body, Heading } from "Components/Text";
 import Logo from "Components/Logo";
-import { SubHeaderContainer, CardContainer } from "./styles";
+import { SubHeaderContainer, CardContainer, ImageContainer } from "./styles";
 
 const SubHeader = () => {
   const t = useTranslate("about.subHeader");
@@ -16,13 +16,14 @@ const SubHeader = () => {
           <Body>{t("body")}</Body>
         </Col>
       </SubHeaderContainer>
-      {renderSuHeaderCards(t)}
+      {renderSubHeaderCards(t)}
+      {renderImage()}
     </Page>
   );
 };
 export default SubHeader;
 
-const renderSuHeaderCards = t => {
+const renderSubHeaderCards = t => {
   return (
     <Page>
       <CardContainer>
@@ -40,6 +41,14 @@ const renderSuHeaderCards = t => {
         </Card>
       </CardContainer>
     </Page>
+  );
+};
+
+const renderImage = () => {
+  return (
+    <ImageContainer>
+      <img alt="" src="https://i.imgur.com/UPrs1EWl.jpg" />
+    </ImageContainer>
   );
 };
 /* body:

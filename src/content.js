@@ -24,6 +24,11 @@ export default {
           "Encontram o apoio de verdadeiros especialistas com anos de experiência em diversas áreas para as tarefas do dia a dia, para além de contribuir para uma causa tão importante e necessária para a sociedade"
         ]
       }
+    },
+    bottomSection: {
+      header1: "Testemunhos",
+      header2: "O que os nossos clientes dizem",
+      partners: "Os nossos parceiros"
     }
   },
   home: {

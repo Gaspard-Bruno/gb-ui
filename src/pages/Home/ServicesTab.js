@@ -7,8 +7,10 @@ import Tabs from "Components/Tabs";
 import Button from "Components/Button";
 import Icon from "Components/Icon";
 import Slider from "Components/Slider";
+import { useHistory } from "react-router-dom";
 
 const ServicesTab = () => {
+  const history = useHistory();
   const t = useTranslate("home.services");
 
   const tabs = [
@@ -65,17 +67,17 @@ const ServicesTab = () => {
 
   return (
     <Col>
-      {renderTabs(t, tabs, sliderList)}
+      {renderTabs(t, tabs, sliderList, history)}
       {renderFooter(t)}
     </Col>
   );
 };
 
-const renderTabs = (t, tabs, list) => {
+const renderTabs = (t, tabs, list, history) => {
   const btnOptions = {
     btnType: "primary",
     text: t("carouselButton"),
-    action: () => alert("See all services action")
+    action: () => history.push("/services")
   };
 
   return (
