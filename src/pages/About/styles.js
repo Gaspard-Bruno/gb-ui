@@ -9,14 +9,14 @@ export const CardContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   & > div {
-    align-self: center;
+    align-items: flex-start;
     border: ${props => (props.borded ? "1px solid #D2CCC6" : "none")};
     box-sizing: ${props => (props.borded ? "border-box" : "none")};
     border-radius: ${props => (props.borded ? "20px" : "10px")};
     height: ${props => (props.borded ? "424px" : "auto")};
     width: 368px;
-    margin-right: 16px;
-    margin-top: 56px;
+    margin-right: 45px;
+    margin-top: 20px;
   }
 `;
 

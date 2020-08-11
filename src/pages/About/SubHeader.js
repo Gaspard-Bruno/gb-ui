@@ -88,7 +88,7 @@ const renderImage = () => {
             <SpecialistItemsListing key={e.logo}>
               <Logo color={e.logo} />
               <Heading size={2}>{e.amount}</Heading>
-              <Body alt>{e.body}</Body>
+              <Body>{e.body}</Body>
             </SpecialistItemsListing>
           );
         })}
