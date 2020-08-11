@@ -74,7 +74,7 @@ const renderPartners = t => {
   ];
 
   return (
-    <Col size={2}>
+    <Col style={{ marginTop: "40px" }}>
       <Row>
         <Heading size={4}>{t("partners")}</Heading>
       </Row>

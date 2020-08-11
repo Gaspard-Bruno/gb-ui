@@ -51,7 +51,8 @@ export const Body = styled.p`
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
-  color: ${props => props.theme.colors.darkBlue};
+  color: ${props =>
+    props.alt ? props.theme.colors.grey : props.theme.colors.darkBlue};
 `;
 export const SmallBody = styled.p`
   font-family: Muli;

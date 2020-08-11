@@ -35,10 +35,33 @@ export const PartnersSection = styled.div`
   flex-wrap: wrap;
   width: 1152px;
   margin-bottom: 80px;
+  justify-content: space-between;
   svg {
     width: 172px;
     height: 172px;
-    margin-right: 24px;
     margin-bottom: 24px;
+  }
+`;
+
+export const SpecialistsSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 92px;
+`;
+
+export const SpecialistItemsListing = styled.nav`
+  width: 368px;
+  height: 185px;
+  text-align: center;
+  margin-top: 25px;
+  h2 {
+    margin-top: 12px;
+    margin-bottom: 0px;
+  }
+  p {
+    margin-top: 4px;
   }
 `;

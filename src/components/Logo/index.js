@@ -25,6 +25,13 @@ import { ReactComponent as ptlSVG } from "Assets/svg/partners/pt_flag.svg";
 import { ReactComponent as ssSVG } from "Assets/svg/partners/ss-banner.svg";
 import { ReactComponent as cldsSVG } from "Assets/svg/partners/clsds-3g.svg";
 
+// co-workers
+import { ReactComponent as RegisteredSpecialists } from "Assets/svg/co-work/registered.svg";
+import { ReactComponent as ActiveEspecialists } from "Assets/svg/co-work/active.svg";
+import { ReactComponent as PerformedServices } from "Assets/svg/co-work/performed-services.svg";
+import { ReactComponent as ActiveHours } from "Assets/svg/co-work/active-hours.svg";
+import { ReactComponent as TotalAmount } from "Assets/svg/co-work/total-amount.svg";
+
 const LOGO_MAP = {
   colorful: <LogoColorful />,
   black: <LogoBlack />,
@@ -45,7 +52,12 @@ const LOGO_MAP = {
   euroLogo: <euroSVG />,
   ptLogo: <ptlSVG />,
   ssLogo: <ssSVG />,
-  cldsLogo: <cldsSVG />
+  cldsLogo: <cldsSVG />,
+  regEspecialistLogo: <RegisteredSpecialists />,
+  activeEspecialistLogo: <ActiveEspecialists />,
+  performedServicesLogo: <PerformedServices />,
+  activeHoursLogo: <ActiveHours />,
+  totalAmountLogo: <TotalAmount />
 };
 const Logo = ({ size, color }) => {
   return <LogoContainer size={size}>{LOGO_MAP[color]}</LogoContainer>;

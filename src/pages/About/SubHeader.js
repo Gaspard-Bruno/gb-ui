@@ -5,7 +5,13 @@ import { Page, Row, Col, Hero } from "Components/Layout";
 import Card from "Components/Card";
 import { Jumbo, Body, Heading } from "Components/Text";
 import Logo from "Components/Logo";
-import { SubHeaderContainer, CardContainer, ImageContainer } from "./styles";
+import {
+  SubHeaderContainer,
+  CardContainer,
+  ImageContainer,
+  SpecialistsSection,
+  SpecialistItemsListing
+} from "./styles";
 
 const SubHeader = () => {
   const t = useTranslate("about.subHeader");
@@ -45,9 +51,48 @@ const renderSubHeaderCards = t => {
 };
 
 const renderImage = () => {
+  const specialistsInfo = [
+    {
+      logo: "regEspecialistLogo",
+      amount: "1773",
+      body: "Especialistas 55+ inscritos"
+    },
+    {
+      logo: "activeEspecialistLogo",
+      amount: "120",
+      body: "Especialistas 55+ Activos"
+    },
+    {
+      logo: "performedServicesLogo",
+      amount: "1044",
+      body: "Serviços Realizados"
+    },
+    {
+      logo: "activeHoursLogo",
+      amount: "6951",
+      body: "Horas Activas"
+    },
+    {
+      logo: "totalAmountLogo",
+      amount: "40 594€",
+      body: "Montante Arrecadado"
+    }
+  ];
+
   return (
     <ImageContainer>
       <img alt="" src="https://i.imgur.com/UPrs1EWl.jpg" />
+      <SpecialistsSection>
+        {specialistsInfo.map(e => {
+          return (
+            <SpecialistItemsListing key={e.logo}>
+              <Logo color={e.logo} />
+              <Heading size={2}>{e.amount}</Heading>
+              <Body alt>{e.body}</Body>
+            </SpecialistItemsListing>
+          );
+        })}
+      </SpecialistsSection>
     </ImageContainer>
   );
 };
