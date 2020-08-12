@@ -9,6 +9,7 @@ import Card from "Components/Card";
 import Select from "Components/Select";
 import Icon from "Components/Icon";
 import TextInput from "Components/TextInput";
+
 const tabs = [
   {
     name: "Todos",
@@ -91,6 +92,8 @@ const ServicesList = () => {
   );
 };
 
+export default ServicesList;
+
 const servicesListFilter = t => {
   return (
     <Row style={{ alignItems: "center", justifyContent: "space-between" }}>
@@ -127,4 +130,3 @@ const servicesCardListing = (t, items) => {
     });
   return <Row>{list}</Row>;
 };
-export default ServicesList;

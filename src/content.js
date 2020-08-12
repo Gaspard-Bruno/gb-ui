@@ -73,6 +73,12 @@ export default {
       title: "Inscreva-se como Especialista 55+",
       subtitle:
         "Se tem mais de 55 anos de idade, torne-se um prestador de serviços 55+ e garanta uma vida ativa com rendimentos extra para si."
+    },
+    FAQ: {
+      title: "Tem Dúvidas?",
+      subtitle:
+        "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+      button: "Perguntas Frequentes"
     }
   },
   login: {

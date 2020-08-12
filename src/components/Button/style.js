@@ -41,10 +41,13 @@ const getStyleFromBtnType = (type = "primary", theme) => {
       `;
     case "borded":
       return `
+        border: 1px solid ${theme.colors.brand.yellow};
+        box-sizing: border-box;
+        border-radius: 100px;
         background-color: ${theme.colors.white};
-        border: 1px solid ${theme.colors.black};
         > span {
-          color: ${theme.colors.brand.orange};
+          margin: 0px 90px;
+          color: ${theme.colors.brand.darkBlue};
           &:hover {
             color: ${theme.colors.brand.orangeDarker};
           }

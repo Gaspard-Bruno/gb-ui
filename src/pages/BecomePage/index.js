@@ -3,14 +3,17 @@ import React from "react";
 import Header from "./Header";
 import HowItWorksTab from "./HowItWorksTab";
 import BecomeForm from "./BecomeForm";
-const Home = () => {
+import FAQTab from "./FAQTab";
+
+const Become = () => {
   return (
     <>
       <Header />
       <HowItWorksTab />
       <BecomeForm />
+      <FAQTab />
     </>
   );
 };
 
-export default Home;
+export default Become;
