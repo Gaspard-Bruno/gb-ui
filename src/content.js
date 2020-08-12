@@ -126,5 +126,8 @@ export default {
     house: "Casa",
     accompaning: "Acompanhamento",
     lessons: "Lições"
+  },
+  alerts: {
+    loginFailed: "Login failed. Invalid name or password."
   }
 };
