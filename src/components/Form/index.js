@@ -7,18 +7,30 @@ import Button from "Components/Button";
 
 import { FormContainer, StyledForm } from "./styles";
 
-const Form = ({ onSubmit, formFields, btnLabel = "Inscrever-se" }) => {
+const Form = ({
+  onSubmit,
+  formFields,
+  fullWidth,
+  btnLabel = "Inscrever-se",
+  children,
+  bg
+}) => {
   const formRef = useRef();
-  console.log(formFields);
   return (
-    <FormContainer>
-      <StyledForm ref={formRef} onSubmit={onSubmit}>
+    <FormContainer bg={bg}>
+      {children}
+      <StyledForm fullWidth={fullWidth} ref={formRef} onSubmit={onSubmit}>
         {formFields &&
           formFields.map((field, index) => {
             return renderFields(field);
           })}
-        <Button type="submit" text={btnLabel} />
       </StyledForm>
+      <Button
+        onClick={onSubmit}
+        btnType="primary"
+        type="submit"
+        text={btnLabel}
+      />
     </FormContainer>
   );
 };
@@ -29,7 +41,7 @@ const renderFields = ({ field }) => {
   switch (type) {
     case "text":
     case "password":
-      return <TextInput {...field} />;
+      return <TextInput label="cenas" {...field} />;
     case "text-area":
       return <TextArea {...field} />;
     default:

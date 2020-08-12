@@ -1,7 +1,9 @@
 import React from "react";
+import { useTranslate } from "polyglot-react-redux-sdk";
 import Form from "Components/Form";
 import Card from "Components/Card";
-import { Page } from "Components/Layout";
+import { Heading, Body } from "Components/Text";
+import { Page, Col, Row } from "Components/Layout";
 
 const BecomeForm = () => {
   const mockedFields = [
@@ -16,14 +18,27 @@ const BecomeForm = () => {
         "Ocasião (almoço/jantar, refeições semanais ou evento/festa), tipo de prato, composição do menu (entrada, prato ou sobremesa), nº de pessoas, data do serviço."
     }
   ];
+
+  const t = useTranslate("become.form");
+
   return (
     <Page>
-      <Card bg="alt">
-        <Form formFields={mockedFields} onSubmit={handleSubmit} />
-      </Card>
+      <Form
+        bg="alt"
+        fullWidth
+        formFields={mockedFields}
+        onSubmit={handleSubmit}
+      >
+        <Col>
+          <Row justify="center">
+            <Heading size={3}>{t("title")}</Heading>
+            <Body>{t("subtitle")}</Body>
+          </Row>
+        </Col>
+      </Form>
     </Page>
   );
 };
 
-const handleSubmit = () => alert("submited");
+const handleSubmit = () => console.log("submited");
 export default BecomeForm;

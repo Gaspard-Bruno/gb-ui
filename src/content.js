@@ -68,6 +68,11 @@ export default {
     howItWorks: {
       title: "Como Funciona",
       subtitle: "Inscreva-se em poucos passos"
+    },
+    form: {
+      title: "Inscreva-se como Especialista 55+",
+      subtitle:
+        "Se tem mais de 55 anos de idade, torne-se um prestador de serviços 55+ e garanta uma vida ativa com rendimentos extra para si."
     }
   },
   login: {
