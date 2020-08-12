@@ -110,6 +110,29 @@ export const ButtonText = styled.span`
   }
 `;
 
+export const AlertText = styled.p`
+  text-decoration: none;
+  font-family: Muli;
+  font-style: normal;
+  font-weigth: normal;
+  color: ${props => props.theme.colors.red};
+  font-size: 16px;
+  line-height: 24px;
+`;
+
+export const AlertTitle = styled.h3`
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-decoration: none;
+  font-family: Space Grotesk;
+  font-style: normal;
+  font-weigth: bolder;
+  color: ${props => props.theme.colors.red};
+  font-size: 16px;
+  line-height: 24px;
+`;
+
 export const ErrorText = styled(SmallBody)`
   color: ${props => props.theme.feedback.error.default};
 `;
