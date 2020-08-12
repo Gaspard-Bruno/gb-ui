@@ -104,7 +104,7 @@ const TitleAndTextContainer = styled.div`
 
 const StyledAlert = styled.button`
   display: block;
-  border-radius: ${props => props.type === "simpleFilled" ? 3 : 40}px;
+  border-radius: ${props => (props.type === "simpleFilled" ? 3 : 40)}px;
   outline: none;
   padding: ${props =>
     props.small ? props.theme.margin * 0.75 : props.theme.margin * 1.5}px;
