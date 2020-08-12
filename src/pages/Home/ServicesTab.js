@@ -74,12 +74,6 @@ const ServicesTab = () => {
 };
 
 const renderTabs = (t, tabs, list, history) => {
-  const btnOptions = {
-    btnType: "primary",
-    text: t("carouselButton"),
-    action: () => history.push("/services")
-  };
-
   return (
     <Card>
       <Page>
@@ -94,8 +88,19 @@ const renderTabs = (t, tabs, list, history) => {
           <Row>
             <Tabs justify="center" tabs={tabs} initialTabIndex={0} />
           </Row>
-          <Slider hasButton btnOptions={btnOptions} list={list} />
+          <Slider
+            hasButton
+            action={() => history.push("/services")}
+            list={list}
+          />
         </Col>
+        <Row justify="center">
+          <Button
+            btnType="primary"
+            text={t("button")}
+            action={() => history.push("/services")}
+          />
+        </Row>
       </Page>
     </Card>
   );

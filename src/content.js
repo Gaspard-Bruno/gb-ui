@@ -38,7 +38,7 @@ export default {
     services: {
       header: "Explore os nossos serviços em",
       country: "Lisboa",
-      carouselButton: "Ver todos",
+      button: "Ver todos",
       footer: {
         title: "Quem sabe, faz bem.",
         subTitle:

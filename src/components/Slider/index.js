@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PropTypes from "prop-types";
 
-const CardSlider = ({ list, hasButton, btnOptions }) => {
+const CardSlider = ({ list }) => {
   const settings = {
     speed: 500,
     slidesToShow: 3,
@@ -21,7 +21,6 @@ const CardSlider = ({ list, hasButton, btnOptions }) => {
       <Slider row slicesPerRow={3} {...settings}>
         {renderItems(list)}
       </Slider>
-      {hasButton && <Button {...btnOptions} />}
     </CarouselContainer>
   );
 };
@@ -49,8 +48,7 @@ const renderItems = items => {
 
 CardSlider.prototype = {
   list: PropTypes.array.isRequired,
-  hasButton: PropTypes.bool,
-  btnOptions: PropTypes.object
+  hasButton: PropTypes.bool
 };
 
 export default CardSlider;
