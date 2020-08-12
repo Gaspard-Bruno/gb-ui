@@ -4,6 +4,8 @@ const getSelectedBackground = props => {
   switch (props.bg) {
     case "alt":
       return props.theme.colors.lightBeige;
+    case "secondary":
+      return props.theme.colors.brand.yellow;
     case "terceary":
       return props.theme.colors.brand.lightBlue;
     default:

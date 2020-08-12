@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { Home, Login, About, ServicesPage } from "Pages";
+import { Home, Login, About, ServicesPage, BecomePage } from "Pages";
 import Navbar from "Components/Navbar";
 import Footer from "Components/Footer";
 
@@ -14,6 +14,7 @@ const routes = [
   { path: "/Login", component: Login },
   { path: "/services", component: ServicesPage },
   { path: "/about", component: About },
+  { path: "/become", component: BecomePage },
   { path: "/", component: Home }
 ];
 

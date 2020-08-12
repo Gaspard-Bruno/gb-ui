@@ -32,6 +32,10 @@ import { ReactComponent as PerformedServices } from "Assets/svg/co-work/performe
 import { ReactComponent as ActiveHours } from "Assets/svg/co-work/active-hours.svg";
 import { ReactComponent as TotalAmount } from "Assets/svg/co-work/total-amount.svg";
 
+// Become a Specialist
+import { ReactComponent as BecomeHeaderLogo } from "Assets/svg/becomeSpecialist/becomeHeaderLogo.svg";
+import { ReactComponent as BecomeBodyLogo } from "Assets/svg/becomeSpecialist/becomeBodyLogo.svg";
+
 const LOGO_MAP = {
   colorful: <LogoColorful />,
   black: <LogoBlack />,
@@ -39,8 +43,11 @@ const LOGO_MAP = {
   colorfulTag: <LogoColorfulTag />,
   whiteTag: <LogoWhiteTag />,
   blackTag: <LogoBlackTag />,
+  // homeLogos
   home: <LogoHome />,
+  // AboutLogos
   about: <LogoAbout />,
+  // partners Logo
   cmlLogo: <cmlSVG />,
   santaCasaLogo: <santaCasaSVG />,
   agakhanLogo: <agaKhanSVG />,
@@ -53,12 +60,17 @@ const LOGO_MAP = {
   ptLogo: <ptlSVG />,
   ssLogo: <ssSVG />,
   cldsLogo: <cldsSVG />,
+  // Co-workers
   regEspecialistLogo: <RegisteredSpecialists />,
   activeEspecialistLogo: <ActiveEspecialists />,
   performedServicesLogo: <PerformedServices />,
   activeHoursLogo: <ActiveHours />,
-  totalAmountLogo: <TotalAmount />
+  totalAmountLogo: <TotalAmount />,
+  // Become a Specialis tLogos
+  becomeHeaderLogo: <BecomeHeaderLogo />,
+  becomeBodyLogo: <BecomeBodyLogo />
 };
+
 const Logo = ({ size, color }) => {
   return <LogoContainer size={size}>{LOGO_MAP[color]}</LogoContainer>;
 };

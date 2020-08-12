@@ -60,6 +60,16 @@ export default {
       placeholder: "Procure por “Baby Sitting”"
     }
   },
+  become: {
+    title: "Registe-se como 55+",
+    subtitle: "Torne-se num Especialista 55+",
+    body:
+      "Existem atualmente 2,5 milhões de pessoas inativas com mais de 55 anos em Portugal. E se para muitos a idade pode ser um impedimento para uma vida mais ativa e saudável, para nós é uma excelente oportunidade para se fazer algo de que se gosta e que possa ser útil para a comunidade.",
+    howItWorks: {
+      title: "Como Funciona",
+      subtitle: "Inscreva-se em poucos passos"
+    }
+  },
   login: {
     login: "Iniciar Sessão",
     cancel: "Cancelar",
