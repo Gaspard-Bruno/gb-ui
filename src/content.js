@@ -1,3 +1,6 @@
+import TermsAndConditionsPage from "Pages";
+import PrivacyPolicyPage from "Pages";
+
 export default {
   nav: {
     services: "Serviços",
