@@ -35,9 +35,9 @@ const Footer = () => {
         <Link to="/">{t("becomeSpecialist")}</Link>
       </LeftSection>
       <LeftSection>
-        <Link to="/">{t("faqs")}</Link>
-        <Link to="/">{t("tnc")}</Link>
-        <Link to="/">{t("pp")}</Link>
+        <Link to="/FAQs">{t("faqs")}</Link>
+        <Link to="/TermsAndConditions">{t("tnc")}</Link>
+        <Link to="/PrivacyPolicy">{t("pp")}</Link>
         <FooterText>
           <Icon name="map-pin" color={"#fff"} />
           {t("lang")}
