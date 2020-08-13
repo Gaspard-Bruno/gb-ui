@@ -3,5 +3,6 @@ import ServicesPage from "./ServicesPage";
 import Login from "./Login";
 import About from "./About";
 import BecomePage from "./BecomePage";
+import FooterPages from "./FooterPages";
 
-export { Home, Login, About, ServicesPage, BecomePage };
+export { Home, Login, About, ServicesPage, BecomePage, FooterPages };

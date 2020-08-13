@@ -45,6 +45,14 @@ export const Heading = styled.h2`
   color: ${props => props.theme.colors.darkBlue};
 `;
 
+export const SubHeading = styled.h3`
+  font-family: Space Grotesk;
+  font-style: normal;
+  font-weight: bold;
+  ${props => (props.size ? headingSizes[props.size - 1] : headingSizes[2])}
+  color: ${props => props.theme.colors.darkBlue};
+`;
+
 export const Body = styled.p`
   font-family: Muli;
   font-style: normal;
@@ -61,6 +69,14 @@ export const SmallBody = styled.p`
   font-size: 14px;
   line-height: 16px;
   color: ${props => props.theme.colors.darkBlue};
+`;
+export const SmallBodyFAQ = styled.p`
+  font-family: Space Grotesk;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 24px;
+  color: ${props => props.theme.colors.grey};
 `;
 export const Tiny = styled.h3`
   font-family: Muli;
@@ -89,6 +105,9 @@ export const Link = styled(RouterLink)`
   }
   :visited {
     color: ${props => props.theme.colors.darkBlue};
+  }
+  :focus {
+    color: ${props => props.theme.colors.brand.red};
   }
 `;
 

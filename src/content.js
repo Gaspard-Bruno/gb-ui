@@ -1,3 +1,6 @@
+import TermsAndConditionsPage from "Pages";
+import PrivacyPolicyPage from "Pages";
+
 export default {
   nav: {
     services: "Serviços",
@@ -129,5 +132,31 @@ export default {
   },
   alerts: {
     loginFailed: "Login failed. Invalid name or password."
+  },
+  footerPages: {
+    FAQ: {
+      tnc: "Termos e Condições",
+      pp: "Política de Privacidade",
+      FAQLink: "F.A.Q's",
+      FAQTitle: "Perguntas Frequentes",
+      FAQSubtitle: "Respondemos regularmente às mesmas perguntas aos nossos clientes e + especialistas. Aqui, abordaremos as perguntas mais comuns para ajuda-lo a entender melhor a 55+.",
+      title: "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor",
+      content: "Natoque penatibus et magnis dis parturient montes. Nullam id dolor id nibh ultricies vehicula ut id elit donec ullamcorper nulla non metus auctor fringilla."
+    },
+    TermsAndConditions: {
+      title: "Termos e Condições",
+      subTitle: "Subtitle",
+      firstText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet luctus venenatis lectus magna fringilla urna. Vel fringilla est ullamcorper eget nulla facilisi etiam. Leo in vitae turpis massa sed elementum tempus egestas. Molestie nunc non blandit massa enim nec dui. Sollicitudin nibh sit amet commodo nulla. Gravida in fermentum et sollicitudin ac orci phasellus. Accumsan tortor posuere ac ut consequat semper viverra nam. Fermentum posuere urna nec tincidunt praesent semper feugiat. Metus dictum at tempor commodo. Non odio euismod lacinia at. Imperdiet sed euismod nisi porta lorem. Venenatis tellus in metus vulputate eu. Convallis a cras semper auctor neque. Auctor urna nunc id cursus metus aliquam. Nunc vel risus commodo viverra maecenas. Viverra justo nec ultrices dui. Tincidunt eget nullam non nisi.",
+      secondText: "Diam maecenas ultricies mi eget mauris. Orci porta non pulvinar neque laoreet. At augue eget arcu dictum varius. Elementum integer enim neque volutpat ac tincidunt vitae semper. Amet nisl suscipit adipiscing bibendum est ultricies integer quis auctor. Laoreet non curabitur gravida arcu ac tortor dignissim. Feugiat nibh sed pulvinar proin gravida hendrerit. Lorem ipsum dolor sit amet consectetur adipiscing elit. Morbi blandit cursus risus at ultrices. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue. Ultricies integer quis auctor elit sed vulputate mi sit amet. Tristique et egestas quis ipsum suspendisse ultrices gravida dictum. Hac habitasse platea dictumst quisque. Placerat duis ultricies lacus sed turpis tincidunt. Euismod in pellentesque massa placerat. Malesuada nunc vel risus commodo. Est velit egestas dui id.",
+      thirdText: "At augue eget arcu dictum varius. Elementum integer enim neque volutpat ac tincidunt vitae semper. Amet nisl suscipit adipiscing bibendum est ultricies integer quis auctor. Laoreet non curabitur gravida arcu ac tortor dignissim. Feugiat nibh sed pulvinar proin gravida hendrerit. Lorem ipsum dolor sit amet consectetur adipiscing elit. Morbi blandit cursus risus at ultrices. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue. Ultricies integer quis auctor elit sed vulputate mi sit amet. Tristique et egestas quis ipsum suspendisse ultrices gravida dictum. Hac habitasse platea dictumst quisque. Placerat duis ultricies lacus sed turpis tincidunt. Euismod in pellentesque massa placerat. Malesuada nunc vel risus commodo.",
+      iAmALink: "Est I’m a link."
+    },
+    PrivacyPolicy: {
+      title: "Política de Privacidade",
+      subTitle: "Subtitle",
+      firstText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet luctus venenatis lectus magna fringilla urna. Vel fringilla est ullamcorper eget nulla facilisi etiam. Leo in vitae turpis massa sed elementum tempus egestas. Molestie nunc non blandit massa enim nec dui. Sollicitudin nibh sit amet commodo nulla. Gravida in fermentum et sollicitudin ac orci phasellus. Accumsan tortor posuere ac ut consequat semper viverra nam. Fermentum posuere urna nec tincidunt praesent semper feugiat. Metus dictum at tempor commodo. Non odio euismod lacinia at. Imperdiet sed euismod nisi porta lorem. Venenatis tellus in metus vulputate eu. Convallis a cras semper auctor neque. Auctor urna nunc id cursus metus aliquam. Nunc vel risus commodo viverra maecenas. Viverra justo nec ultrices dui. Tincidunt eget nullam non nisi.",
+      secondText: "Diam maecenas ultricies mi eget mauris. Orci porta non pulvinar neque laoreet. At augue eget arcu dictum varius. Elementum integer enim neque volutpat ac tincidunt vitae semper. Amet nisl suscipit adipiscing bibendum est ultricies integer quis auctor. Laoreet non curabitur gravida arcu ac tortor dignissim. Feugiat nibh sed pulvinar proin gravida hendrerit. Lorem ipsum dolor sit amet consectetur adipiscing elit. Morbi blandit cursus risus at ultrices. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue. Ultricies integer quis auctor elit sed vulputate mi sit amet. Tristique et egestas quis ipsum suspendisse ultrices gravida dictum. Hac habitasse platea dictumst quisque. Placerat duis ultricies lacus sed turpis tincidunt. Euismod in pellentesque massa placerat. Malesuada nunc vel risus commodo. Est velit egestas dui id.",
+      thirdText: "At augue eget arcu dictum varius. Elementum integer enim neque volutpat ac tincidunt vitae semper. Amet nisl suscipit adipiscing bibendum est ultricies integer quis auctor. Laoreet non curabitur gravida arcu ac tortor dignissim. Feugiat nibh sed pulvinar proin gravida hendrerit. Lorem ipsum dolor sit amet consectetur adipiscing elit. Morbi blandit cursus risus at ultrices. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue. Ultricies integer quis auctor elit sed vulputate mi sit amet. Tristique et egestas quis ipsum suspendisse ultrices gravida dictum. Hac habitasse platea dictumst quisque. Placerat duis ultricies lacus sed turpis tincidunt. Euismod in pellentesque massa placerat. Malesuada nunc vel risus commodo."
+    }
   }
 };
