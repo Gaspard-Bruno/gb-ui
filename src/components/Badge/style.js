@@ -22,7 +22,7 @@ const Badge = styled.span`
       : getColorFromStatus(props.theme.colors, props.status)};
   > p {
     color: ${props =>
-      props.chip ? props.theme.colors.darkBlue : props.theme.colors.white};
+      props.chip ? props.theme.colors.darkBlue : props.theme.colors.black};
     margin: ${props => props.theme.margin / 4}px
       ${props => props.theme.margin * 0.75}px;
   }

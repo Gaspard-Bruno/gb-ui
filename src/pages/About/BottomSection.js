@@ -59,20 +59,8 @@ const renderTestimonials = items => {
 
 // Partners
 const renderPartners = t => {
-  const Logos = [
-    "home",
-    "home",
-    "home",
-    "home",
-    "home",
-    "home",
-    "home",
-    "home",
-    "home",
-    "home",
-    "home",
-    "home"
-    /* "cmlLogo",
+  const logos = [
+    "about",
     "santaCasaLogo",
     "agakhanLogo",
     "inpactHubLogo",
@@ -83,7 +71,7 @@ const renderPartners = t => {
     "euroLogo",
     "ptLogo",
     "ssLogo",
-    "cldsLogo" */
+    "cldsLogo"
   ];
 
   return (
@@ -92,7 +80,7 @@ const renderPartners = t => {
         <Heading size={4}>{t("partners")}</Heading>
       </Row>
       <PartnersSection>
-        {Logos.map(icon => {
+        {logos.map(icon => {
           return <Logo key={icon} color={icon} />;
         })}
       </PartnersSection>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
-
+import { media } from "Components/Layout";
+import theme from "Theme";
 export const SubHeaderContainer = styled.div`
   text-align: center;
 `;
@@ -7,14 +8,17 @@ export const SubHeaderContainer = styled.div`
 export const CardContainer = styled.div`
   display: flex;
   flex-direction: row;
+  ${media.tablet(`
+    flex-direction: column
+  `)}
   justify-content: center;
   & > div {
     align-items: flex-start;
     border: ${props => (props.borded ? "1px solid #D2CCC6" : "none")};
     box-sizing: ${props => (props.borded ? "border-box" : "none")};
     border-radius: ${props => (props.borded ? "20px" : "10px")};
-    height: ${props => (props.borded ? "424px" : "auto")};
     width: 368px;
+    max-width: 368px;
     margin-right: 45px;
     margin-top: 20px;
   }
@@ -22,10 +26,17 @@ export const CardContainer = styled.div`
 
 export const ImageContainer = styled.div`
   margin-top: 40px;
-  & > img {
-    border-radius: 2px;
+  display: flex;
+  flex-wrap: wrap;
+
+  img {
+    ${media.tablet(`
+    width: 1140px;
+  `)}
+
     width: 1150px;
-    height: 575px;
+    margin: 0 auto;
+    border-radius: 2px;
   }
 `;
 
@@ -33,12 +44,11 @@ export const PartnersSection = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 1152px;
-  margin-bottom: 80px;
+  width: 900px«;
   justify-content: space-between;
   svg {
-    width: 172px;
-    height: 172px;
+    max-width: 172px;
+    max-height: 172px;
     margin-bottom: 24px;
   }
 `;
@@ -49,7 +59,7 @@ export const SpecialistsSection = styled.div`
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
-  margin-bottom: 92px;
+  margin: ${theme.margin} 0px;
 `;
 
 export const SpecialistItemsListing = styled.nav`

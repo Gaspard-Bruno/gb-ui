@@ -10,22 +10,22 @@ const Header = () => {
   const t = useTranslate("about.header");
   return (
     <Hero top>
-      <Card isHero bg="terceary">
-        <Page>
-          <Col size={1}>
+      <Col size={1.5}>
+        <Card isHero justify="flex-end" align="center" bg="terceary">
+          <Col size={0.7}>
             <Heading size={6}>{t("title")}</Heading>
             <Jumbo size={6}>{t("subtitle")}</Jumbo>
             <Body>{t("body")}</Body>
           </Col>
-        </Page>
-      </Card>
-      <Card isHero>
-        <Page>
-          <Row>
+        </Card>
+      </Col>
+      <Col size={1}>
+        <Card justify="flex-start" align="center" isHero>
+          <Col padding="20">
             <Logo size={400} color={"about"} />
-          </Row>
-        </Page>
-      </Card>
+          </Col>
+        </Card>
+      </Col>
     </Hero>
   );
 };
