@@ -1,7 +1,15 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { Home, Login, About, ServicesPage, BecomePage } from "Pages";
+import {
+  Home,
+  Login,
+  About,
+  ServicesPage,
+  FooterPages,
+  BecomePage
+} from "Pages";
+
 import Navbar from "Components/Navbar";
 import Footer from "Components/Footer";
 
@@ -11,6 +19,9 @@ const AppRouter = ({ component: Component, path, props }) => {
 };
 
 const routes = [
+  { path: "/FAQs", component: FooterPages.FooterPages },
+  { path: "/TermsAndConditions", component: FooterPages.TermsAndConditions },
+  { path: "/PrivacyPolicy", component: FooterPages.PrivacyPolicy },
   { path: "/Login", component: Login },
   { path: "/services", component: ServicesPage },
   { path: "/about", component: About },
