@@ -19,6 +19,7 @@ const BecomeSpecilistTab = () => {
           <Body>{t("subTitle")}</Body>
           <Row justify="center" style={{ padding: 20 }}>
             <Button
+              fullWidth
               btnType="primary"
               text={t("buttonLabel")}
               action={handleNavigation}
