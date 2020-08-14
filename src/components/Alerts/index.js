@@ -3,7 +3,13 @@ import IcoMoon from "icomoon-react";
 import PropTypes from "prop-types";
 
 import { AlertText, AlertTitle } from "Components/Text";
-import StyledAlert from "./style";
+import {
+  StyledAlert,
+  AlertContainer,
+  IconContainer,
+  TitleAndTextContainer,
+  XContainer
+} from "./style";
 
 import iconSet from "Assets/fonts/icons/icons.json";
 import theme from "Theme";
@@ -46,20 +52,20 @@ const Alert = ({
         title={title}
         closeCross={closeCross}
       >
-        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingRight: 10}}>
+        <AlertContainer>
+          <IconContainer>
             <AlertIcon name={iconName} />
-          </div>
-          <div style={{display: 'flex', flexDirection: 'column'}}>
+          </IconContainer>
+          <TitleAndTextContainer>
             {title && <AlertTitle>{title}</AlertTitle>}
             {text && <AlertText>{text}</AlertText>}
-          </div>
+          </TitleAndTextContainer>
           { closeCross && 
-            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: 10}}>
-              <span style={{fontSize: 24}}>X</span>
-            </div>
+            <XContainer>
+              <span>X</span>
+            </XContainer>
           }
-        </div>
+        </AlertContainer>
       </StyledAlert>
     );
   } else if (text && title) {
@@ -71,15 +77,15 @@ const Alert = ({
         onClick={action}
         title={title}
       >
-        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingRight: 10}}>
+        <AlertContainer>
+          <IconContainer>
             <AlertIcon name={iconName} />
-          </div>
-          <div style={{display: 'flex', flexDirection: 'column'}}>
+          </IconContainer>
+          <TitleAndTextContainer>
             {title && <AlertTitle>{title}</AlertTitle>}
             {text && <AlertText>{text}</AlertText>}
-          </div>
-        </div>
+          </TitleAndTextContainer>
+        </AlertContainer>
       </StyledAlert>
     );
   } else if (text) {
@@ -90,17 +96,17 @@ const Alert = ({
         small={isSmall}
         onClick={action}
       >
-        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingRight: 10}}>
+        <AlertContainer>
+          <IconContainer>
             <AlertIcon name={iconName} />
-          </div>
+          </IconContainer>
           {text && <AlertText>{text}</AlertText>}
           { !closeCross &&
-            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: 10}}>
-              <span style={{fontSize: 24}}>X</span>
-            </div>
+            <XContainer>
+              <span>X</span>
+            </XContainer>
           }
-        </div>
+        </AlertContainer>
       </StyledAlert>
     );
   }
