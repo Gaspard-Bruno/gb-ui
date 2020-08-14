@@ -1,21 +1,35 @@
 import styled from "styled-components";
 
-const Footer = styled.footer`
-  display: flex;
+import { GridRow, GridCol } from "Components/Layout";
+
+const FooterContainer = styled.footer`
+  background-color: ${props => props.theme.colors.darkBlue};
+`;
+
+const Footer = styled(GridRow)`
+/*  display: flex;
   flex-flow: row-nowrap;
   margin: 0 auto;
   justify-content: center;
-  align-items: flex-start;
-  padding: ${props => props.theme.margin * 3.5}px;
+  align-items: flex-start;*/
+  padding: ${props => props.theme.margin * 2.5}px 0 ;
   background-color: ${props => props.theme.colors.darkBlue};
   color: ${props => props.theme.colors.white};
-  align-items: center;
+/*  align-items: center;*/
   * > a {
     color: ${props => props.theme.colors.white};
     &:visited {
       color: ${props => props.theme.colors.white};
     }
   }
+`;
+
+const BottomMargin = styled.div`
+  margin-bottom: ${props => props.theme.margin * props.size}px;
+`;
+
+const TopMargin = styled.div`
+  margin-top: ${props => props.theme.margin * props.size}px;
 `;
 
 const FooterText = styled.p`
@@ -33,11 +47,7 @@ const CopyrightText = styled.p`
   margin-top: ${props => props.theme.margin * 5}px;
 `;
 
-const RightSection = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  margin: inherit;
-  flex: 0.2;
+const LeftSection = styled(GridCol)`
   a {
     margin-bottom: ${props => props.theme.margin * 3}px;
   }
@@ -45,7 +55,7 @@ const RightSection = styled.div`
     margin-bottom: ${props => props.theme.margin * 0.75}px;
   }
 `;
-const LeftSection = styled.div`
+const RightSection = styled(GridCol)`
   display: flex;
   flex-flow: column nowrap;
   align-self: flex-start;
@@ -70,8 +80,6 @@ const FooterSocialLine = styled.div`
   flex-direction: row;
   align-self: flex-start;
   margin-left: -5px;
-  margin-top: ${props => props.theme.margin * 5}px;
-  margin-bottom: -10px;
   & > button {
     border: none;
     background-color: ${props => props.theme.colors.darkBlue};
@@ -83,7 +91,10 @@ const FooterSocialLine = styled.div`
 `;
 
 export {
+  FooterContainer,
   Footer as StyledFooter,
+  BottomMargin,
+  TopMargin,
   FooterText,
   CopyrightText,
   RightSection,
