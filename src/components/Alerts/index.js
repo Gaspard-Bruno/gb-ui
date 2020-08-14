@@ -34,15 +34,11 @@ const Alert = ({
 
   AlertIcon.defaultProps = {
     size: 20,
-    color: alertType.includes("default")
-      ? theme.colors.brand.red
-      : theme.colors.white
+    color: alertType.includes("default") ? theme.colors.brand.red : theme.colors.white
   };
 
   AlertTitle.defaultProps = {
-    color: alertType.includes("default")
-      ? theme.colors.brand.red
-      : theme.colors.white
+    color: alertType.includes("default") ? theme.colors.brand.red : theme.colors.white
   };
 
   if (closeCross && text && title) {
@@ -64,11 +60,11 @@ const Alert = ({
             {title && <AlertTitle>{title}</AlertTitle>}
             {text && <AlertText>{text}</AlertText>}
           </TitleAndTextContainer>
-          {closeCross && (
+          { closeCross && 
             <XContainer>
               <span>X</span>
             </XContainer>
-          )}
+          }
         </AlertContainer>
       </StyledAlert>
     );
@@ -105,11 +101,11 @@ const Alert = ({
             <AlertIcon name={iconName} />
           </IconContainer>
           {text && <AlertText>{text}</AlertText>}
-          {!closeCross && (
+          { !closeCross &&
             <XContainer>
               <span>X</span>
             </XContainer>
-          )}
+          }
         </AlertContainer>
       </StyledAlert>
     );
