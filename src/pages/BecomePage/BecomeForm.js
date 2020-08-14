@@ -7,10 +7,10 @@ import { Page, Col, Row } from "Components/Layout";
 
 const BecomeForm = () => {
   const mockedFields = [
-    { type: "text", label: "Nome" },
+    { type: "text", placeholder: "aa", label: "Nome" },
     { type: "text", label: "Apelido" },
-    { type: "text", label: "Endereço de Email" },
-    { type: "text", label: "Número de Telefone" },
+    { type: "email", label: "Endereço de Email" },
+    { type: "password", label: "Número de Telefone" },
     {
       type: "text-area",
       label: "details",
@@ -24,6 +24,7 @@ const BecomeForm = () => {
   return (
     <Page>
       <Form
+        top
         bg="alt"
         fullWidth
         formFields={mockedFields}

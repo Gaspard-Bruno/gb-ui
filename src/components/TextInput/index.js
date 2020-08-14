@@ -26,7 +26,6 @@ const TextInput = ({
     setInputType(newIcon.type);
     setDisplayedIcon(newIcon.name);
   };
-  console.log("textttRenderrrr", type);
   return (
     <InputContainer error={error}>
       {hasIcon && (

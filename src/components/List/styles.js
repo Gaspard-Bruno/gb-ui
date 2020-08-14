@@ -25,7 +25,6 @@ const iconStyle = `
       font-weight: bold;
       font-size: 16px;
       margin-right: 1.5rem;
-      font-family: "Abril Fatface",serif;
       color: white;
       background: #F0513A;
       border-radius: 2px;

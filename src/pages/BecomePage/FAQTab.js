@@ -20,6 +20,7 @@ const FAQTab = () => {
           <Body>{t("subtitle")}</Body>
           <Row justify="center" style={{ padding: 20 }}>
             <Button
+              fullWidth
               btnType="borded"
               text={t("button")}
               action={handleNavigation}

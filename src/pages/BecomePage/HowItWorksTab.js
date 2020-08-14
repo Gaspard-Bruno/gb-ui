@@ -19,7 +19,7 @@ const HowItWorksTab = () => {
 
   return (
     <Card justify="space-evenly">
-      <Logo size={400} color={"becomeBodyLogo"} />
+      <Logo size={400} color={"home"} />
       <Col>
         <Heading size={6}>{t("title")}</Heading>
         <Heading size={2}>{t("subtitle")}</Heading>
