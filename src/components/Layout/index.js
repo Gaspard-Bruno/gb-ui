@@ -23,6 +23,11 @@ const media = {
   `
 };
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 63581b287b9d499351bd6f6042a3c645f93fdad4
 const Page = styled.div`
   max-width: ${props => props.theme.maxWidth}px;
   ${media.desktop(`
@@ -80,7 +85,11 @@ const GridRow = styled.div`
 `;
 
 const GridCol = styled.div`
+<<<<<<< HEAD
   width: ${props => `${(100 * props.size) / 12}%`};
+=======
+  width: ${props => `${((100 * props.size) / 12)}%`};
+>>>>>>> 63581b287b9d499351bd6f6042a3c645f93fdad4
 
   ${props =>
     props.collapse &&
@@ -92,7 +101,11 @@ const GridCol = styled.div`
 const Hero = styled(GridRow)`
   ${media.tablet(`
     flex-flow: column;
+<<<<<<< HEAD
     
+=======
+    max-width: 100%;
+>>>>>>> 63581b287b9d499351bd6f6042a3c645f93fdad4
     top: 0px;
   `)}
   
