@@ -19,9 +19,9 @@ const HowItWorksTab = () => {
 
   return (
     <Page>
-      <Card justify="space-evenly">
+      <Card align="center" justify="space-evenly">
         <GridCol size={4}>
-          <Logo self="center" size={400} color={"home"} />
+          <Logo size={400} color={"home"} />
         </GridCol>
         <GridCol size={2} />
         <GridCol size={5}>

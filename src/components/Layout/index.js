@@ -80,13 +80,14 @@ const GridRow = styled.div`
 `;
 
 const GridCol = styled.div`
+  text-align: ${props => (props.text ? "center" : "left")};
   width: ${props => `${(100 * props.size) / 12}%`};
-
-  ${props =>
-    props.collapse &&
-    media[props.collapse](`
+  align-self: ${props => (props.self ? "center" : "")}
+    ${props =>
+      props.collapse &&
+      media[props.collapse](`
   display: none;
-  `)}
+  `)};
 `;
 
 const Hero = styled(GridRow)`
