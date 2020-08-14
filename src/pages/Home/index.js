@@ -4,17 +4,17 @@ import HeaderTab from "./HeaderTab";
 import ServicesTab from "./ServicesTab";
 import HowItWorksTab from "./HowItWorksTab";
 import BecomeSpecilistTab from "./BecomeSpecialistTab";
-import Alert from "Components/Alerts";
-import { useTranslate } from "polyglot-react-redux-sdk";
+
+import Alert from 'Components/Alerts';
 
 const Home = () => {
-  const t = useTranslate('alerts')
   return (
     <>
       <HeaderTab />
       <ServicesTab />
       <HowItWorksTab />
       <BecomeSpecilistTab />
+      <Alert text="Login Failed. Try Again." alertType="defaultWithCloseX" closeCross={true} iconName="cancel-circle"></Alert>
     </>
   );
 };
