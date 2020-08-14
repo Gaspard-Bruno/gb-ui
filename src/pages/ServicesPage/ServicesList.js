@@ -9,6 +9,7 @@ import Card from "Components/Card";
 import Select from "Components/Select";
 import Icon from "Components/Icon";
 import TextInput from "Components/TextInput";
+import { staticImages } from "Assets/img";
 
 const tabs = [
   {
@@ -31,52 +32,51 @@ const tabs = [
 
 const serviceList = [
   {
-    img: "https://i.imgur.com/UPrs1EWl.jpg",
-    category: "accompaning",
+    img: staticImages.kitchen,
+    category: "house",
     body:
-      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
-
+      "O serviço ideal para quem tem pouco tempo e muito apetite. Faça o seu pedido, e experimente já os melhores sabores pelas mãos de quem sabe.",
     heading: "Chef em casa"
   },
   {
-    img: "https://i.imgur.com/UPrs1EWl.jpg",
+    img: staticImages.babySitting,
     category: "accompaning",
     body:
-      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+      "Uma ida a uma consulta, ao banco ou ao supermercado podem ser tarefas difíceis. Conte com um especialista de confiança para o apoiar na execução de tarefas ou para companhia.",
 
-    heading: "Chef em casa"
+    heading: "Apoio familiar a Séniores"
   },
   {
-    img: "https://i.imgur.com/UPrs1EWl.jpg",
-    category: "accompaning",
+    img: staticImages.gardening,
+    category: "house",
     body:
-      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+      "Já escreveu um livro e teve um filho, só lhe falta plantar uma árvore - ou, pelo menos, ter um bom jardim. Experimente os serviços de jardinagem 55+ e mantenha as suas plantas saudáveis.",
 
-    heading: "Chef em casa"
+    heading: "Jardinagem"
   },
   {
-    img: "https://i.imgur.com/UPrs1EWl.jpg",
+    img: staticImages.petSitting,
     category: "accompaning",
     body:
-      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+      "Se o seu amigo de quatro patas está em casa sozinho enquanto trabalha ou não pode ir de férias consigo, conte com a ajuda de um pet sitter 55+ para o acompanhar.",
 
-    heading: "Chef em casa"
+    heading: "PetSitting"
   },
   {
-    img: "https://i.imgur.com/UPrs1EWl.jpg",
-    category: "accompaning",
+    img: staticImages.guitar,
+    category: "lessons",
     body:
-      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+      "Se sonha um dia subir ao palco e tocar para milhares de pessoas, pouco a pouco se vai longe. Comece por marcar uma aula de música e aprenda as primeiras notas.",
 
-    heading: "Chef em casa"
+    heading: "Aulas"
   },
   {
-    img: "https://i.imgur.com/UPrs1EWl.jpg",
-    category: "accompaning",
+    img: staticImages.repairs,
+    category: "house",
     body:
-      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+      "Pendurar uns quadros, pintar uma parede ou fazer uma reparação em casa? Conte com um especialista 55+ em pequenas reparações e bricolage.",
 
-    heading: "Chef em casa"
+    heading: "Pequenas Reparações"
   }
 ];
 

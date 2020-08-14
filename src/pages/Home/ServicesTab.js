@@ -8,6 +8,7 @@ import Button from "Components/Button";
 import Icon from "Components/Icon";
 import Slider from "Components/Slider";
 import { useHistory } from "react-router-dom";
+import { staticImage, staticImages } from "Assets/img";
 
 const ServicesTab = () => {
   const history = useHistory();
@@ -34,34 +35,34 @@ const ServicesTab = () => {
 
   const sliderList = [
     {
-      img: "https://i.imgur.com/UPrs1EWl.jpg",
+      img: staticImages.kitchen,
       category: "house",
       text: "Chef em casa"
     },
     {
-      img: "https://i.imgur.com/UPrs1EWl.jpg",
+      img: staticImages.babySitting,
       category: "accompaning",
       text: "Acompanhamento familiar de crianças"
     },
     {
-      img: "https://i.imgur.com/UPrs1EWl.jpg",
+      img: staticImages.senior,
       category: "accompaning",
       text: "Acompanhamento familiar de Seniores"
     },
     {
-      img: "https://i.imgur.com/UPrs1EWl.jpg",
-      category: "house",
-      text: "Chef em casa"
+      img: staticImages.repairs,
+      category: "repairs",
+      text: "Reparações"
     },
     {
-      img: "https://i.imgur.com/UPrs1EWl.jpg",
+      img: staticImages.coexist_184,
       category: "accompaning",
-      text: "Acompanhamento familiar de crianças"
+      text: "Acompanhamento"
     },
     {
-      img: "https://i.imgur.com/UPrs1EWl.jpg",
+      img: staticImages.coexist_200,
       category: "accompaning",
-      text: "Acompanhamento familiar de Seniores"
+      text: "Acompanhamento"
     }
   ];
 
@@ -96,6 +97,7 @@ const renderTabs = (t, tabs, list, history) => {
         </Col>
         <Row justify="center">
           <Button
+            fullWidth
             btnType="primary"
             text={t("button")}
             action={() => history.push("/services")}
@@ -113,8 +115,8 @@ const renderFooter = t => {
         <Row justify="center" style={{ flex: 1, textAlign: "center" }}>
           <Heading size={2}>{t("footer.title")}</Heading>
           <Body>{t("footer.subTitle")}</Body>
-          <Row style={{ padding: 20 }}>
-            <Button btnType="borded" text={t("footer.buttonLabel")} />
+          <Row>
+            <Button fullWidth btnType="borded" text={t("footer.buttonLabel")} />
           </Row>
         </Row>
       </Page>

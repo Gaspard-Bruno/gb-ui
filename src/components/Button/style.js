@@ -4,6 +4,7 @@ const getStyleFromBtnType = (type = "primary", theme) => {
   switch (type) {
     case "primary":
       return `
+        
         background-color: ${theme.colors.brand.yellow};
         border: transparent;
         &:hover {
@@ -46,7 +47,7 @@ const getStyleFromBtnType = (type = "primary", theme) => {
         border-radius: 100px;
         background-color: ${theme.colors.white};
         > span {
-          margin: 0px 90px;
+         
           color: ${theme.colors.brand.darkBlue};
           &:hover {
             color: ${theme.colors.brand.orangeDarker};
@@ -61,6 +62,9 @@ const getStyleFromBtnType = (type = "primary", theme) => {
 const Button = styled.button`
   border-radius: 40px;
   outline: none;
+  width: ${props => (props.fullWidth ? "244px" : "")};
+  margin-top: ${props => (props.fullWidth ? "20px" : "")};
+  margin-bottom: ${props => (props.fullWidth ? "20px" : "")};
   padding: ${props =>
     props.small ? props.theme.margin * 0.75 : props.theme.margin}px;
   ${props => getStyleFromBtnType(props.btnType, props.theme)}

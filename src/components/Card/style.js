@@ -20,7 +20,7 @@ const Card = styled.div`
   box-shadow: ${props => (props.shadow ? props.theme.boxShadow : 0)};
   background-color: ${props => getSelectedBackground(props)};
   color: ${props => props.theme.colors.darkBlue};
-  align-items: center;
+  align-items: ${props => (props.align ? `${props.align}` : "")};
   height: ${props => (props.hero ? `${props.theme.heroSize}px` : "none")};
   justify-content: ${props => (props.justify ? `${props.justify}` : "none")};
 `;

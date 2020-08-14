@@ -79,6 +79,7 @@ Logo.propTypes = {
   size: PropTypes.number,
   color: PropTypes.string
 };
+
 Logo.defaultProps = {
   size: 120,
   color: "colorful"

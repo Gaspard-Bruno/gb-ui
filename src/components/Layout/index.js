@@ -24,6 +24,13 @@ const media = {
 };
 
 const Hero = styled.div`
+
+${media.tablet(`
+  flex-flow: column;
+  max-width: 100%;
+  top: 0px;
+`)}
+  
   min-height: ${props => props.theme.heroSize}px;
   display: flex;
   flex-flow: row nowrap;
