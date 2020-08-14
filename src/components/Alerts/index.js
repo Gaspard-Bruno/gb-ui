@@ -3,7 +3,6 @@ import IcoMoon from "icomoon-react";
 import PropTypes from "prop-types";
 
 import { AlertText, AlertTitle } from "Components/Text";
-<<<<<<< HEAD
 import {
   StyledAlert,
   AlertContainer,
@@ -11,9 +10,6 @@ import {
   TitleAndTextContainer,
   XContainer
 } from "./style";
-=======
-import StyledAlert from "./style";
->>>>>>> 85851dc... Feat_create-alert-components
 
 import iconSet from "Assets/fonts/icons/icons.json";
 import theme from "Theme";
@@ -38,11 +34,15 @@ const Alert = ({
 
   AlertIcon.defaultProps = {
     size: 20,
-    color: alertType.includes("default") ? theme.colors.brand.red : theme.colors.white
+    color: alertType.includes("default")
+      ? theme.colors.brand.red
+      : theme.colors.white
   };
 
   AlertTitle.defaultProps = {
-    color: alertType.includes("default") ? theme.colors.brand.red : theme.colors.white
+    color: alertType.includes("default")
+      ? theme.colors.brand.red
+      : theme.colors.white
   };
 
   if (closeCross && text && title) {
@@ -56,7 +56,6 @@ const Alert = ({
         title={title}
         closeCross={closeCross}
       >
-<<<<<<< HEAD
         <AlertContainer>
           <IconContainer>
             <AlertIcon name={iconName} />
@@ -65,28 +64,12 @@ const Alert = ({
             {title && <AlertTitle>{title}</AlertTitle>}
             {text && <AlertText>{text}</AlertText>}
           </TitleAndTextContainer>
-          { closeCross && 
+          {closeCross && (
             <XContainer>
               <span>X</span>
             </XContainer>
-          }
+          )}
         </AlertContainer>
-=======
-        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingRight: 10}}>
-            <AlertIcon name={iconName} />
-          </div>
-          <div style={{display: 'flex', flexDirection: 'column'}}>
-            {title && <AlertTitle>{title}</AlertTitle>}
-            {text && <AlertText>{text}</AlertText>}
-          </div>
-          { closeCross && 
-            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: 10}}>
-              <span style={{fontSize: 24}}>X</span>
-            </div>
-          }
-        </div>
->>>>>>> 85851dc... Feat_create-alert-components
       </StyledAlert>
     );
   } else if (text && title) {
@@ -98,7 +81,6 @@ const Alert = ({
         onClick={action}
         title={title}
       >
-<<<<<<< HEAD
         <AlertContainer>
           <IconContainer>
             <AlertIcon name={iconName} />
@@ -108,17 +90,6 @@ const Alert = ({
             {text && <AlertText>{text}</AlertText>}
           </TitleAndTextContainer>
         </AlertContainer>
-=======
-        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingRight: 10}}>
-            <AlertIcon name={iconName} />
-          </div>
-          <div style={{display: 'flex', flexDirection: 'column'}}>
-            {title && <AlertTitle>{title}</AlertTitle>}
-            {text && <AlertText>{text}</AlertText>}
-          </div>
-        </div>
->>>>>>> 85851dc... Feat_create-alert-components
       </StyledAlert>
     );
   } else if (text) {
@@ -129,31 +100,17 @@ const Alert = ({
         small={isSmall}
         onClick={action}
       >
-<<<<<<< HEAD
         <AlertContainer>
           <IconContainer>
             <AlertIcon name={iconName} />
           </IconContainer>
           {text && <AlertText>{text}</AlertText>}
-          { !closeCross &&
+          {!closeCross && (
             <XContainer>
               <span>X</span>
             </XContainer>
-          }
+          )}
         </AlertContainer>
-=======
-        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingRight: 10}}>
-            <AlertIcon name={iconName} />
-          </div>
-          {text && <AlertText>{text}</AlertText>}
-          { !closeCross &&
-            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: 10}}>
-              <span style={{fontSize: 24}}>X</span>
-            </div>
-          }
-        </div>
->>>>>>> 85851dc... Feat_create-alert-components
       </StyledAlert>
     );
   }
