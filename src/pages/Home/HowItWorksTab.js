@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslate } from "polyglot-react-redux-sdk";
-import { Col, Page } from "Components/Layout";
+import { Col, Page, GridCol } from "Components/Layout";
 import { Heading } from "components/Text";
 import List from "Components/List";
 import Card from "Components/Card";
@@ -18,14 +18,20 @@ const HowItWorksTab = () => {
   ];
 
   return (
-    <Card justify="space-evenly">
-      <Logo self="center" size={400} color={"home"} />
-      <Col>
-        <Heading size={6}>{t("title")}</Heading>
-        <Heading size={2}>{t("subtitle")}</Heading>
-        <List hasIcon data={listArray} />
-      </Col>
-    </Card>
+    <Page>
+      <Card justify="space-evenly">
+        <GridCol size={4}>
+          <Logo self="center" size={400} color={"home"} />
+        </GridCol>
+        <GridCol size={2} />
+        <GridCol size={5}>
+          <Heading size={6}>{t("title")}</Heading>
+          <Heading size={2}>{t("subtitle")}</Heading>
+          <List hasIcon data={listArray} />
+        </GridCol>
+        <GridCol size={1} />
+      </Card>
+    </Page>
   );
 };
 

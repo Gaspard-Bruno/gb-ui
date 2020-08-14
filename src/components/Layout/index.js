@@ -23,8 +23,6 @@ const media = {
   `
 };
 
-
-
 const Page = styled.div`
   max-width: ${props => props.theme.maxWidth}px;
   ${media.desktop(`
@@ -63,8 +61,8 @@ const GridRow = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  align-items: ${props => (props.align ? props.align : 'none')};
-  justify-content: ${props => (props.justify ? props.justify : 'none')};
+  align-items: ${props => (props.align ? props.align : "none")};
+  justify-content: ${props => (props.justify ? props.justify : "none")};
   max-width: ${props => props.theme.maxWidth}px;
 
   ${media.desktop(`
@@ -82,7 +80,7 @@ const GridRow = styled.div`
 `;
 
 const GridCol = styled.div`
-  width: ${props => `${((100 * props.size) / 12)}%`};
+  width: ${props => `${(100 * props.size) / 12}%`};
 
   ${props =>
     props.collapse &&
@@ -94,7 +92,7 @@ const GridCol = styled.div`
 const Hero = styled(GridRow)`
   ${media.tablet(`
     flex-flow: column;
-    max-width: 100%;
+    
     top: 0px;
   `)}
   
