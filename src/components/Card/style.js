@@ -8,6 +8,8 @@ const getSelectedBackground = props => {
       return props.theme.colors.brand.yellow;
     case "terceary":
       return props.theme.colors.brand.lightBlue;
+    case "transparent":
+      return 'transparent';
     default:
       return props.theme.colors.white;
   }

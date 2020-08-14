@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslate } from "polyglot-react-redux-sdk";
-import { Col, Hero, Row, Page } from "Components/Layout";
+import { Col, Hero, Row, Page, GridCol, GridRow } from "Components/Layout";
 import { Heading, Body } from "components/Text";
 import Card from "Components/Card";
 import Tabs from "Components/Tabs";
@@ -67,10 +67,10 @@ const ServicesTab = () => {
   ];
 
   return (
-    <Col>
+    <GridCol>
       {renderTabs(t, tabs, sliderList, history)}
       {renderFooter(t)}
-    </Col>
+    </GridCol>
   );
 };
 
@@ -78,31 +78,29 @@ const renderTabs = (t, tabs, list, history) => {
   return (
     <Card>
       <Page>
-        <Col>
-          <Row justify="center" align="baseline">
-            <Heading size={2}>{t("header")}</Heading>
-            <Icon style={{ color: "#F0513A" }} name="map-pin" />
-            <Heading style={{ color: "#F0513A" }} size={3}>
-              {t("country")}
-            </Heading>
-          </Row>
-          <Row>
-            <Tabs justify="center" tabs={tabs} initialTabIndex={0} />
-          </Row>
-          <Slider
-            hasButton
-            action={() => history.push("/services")}
-            list={list}
-          />
-        </Col>
-        <Row justify="center">
+        <GridRow justify="center">
+          <Heading size={2}>{t("header")}</Heading>
+          <Icon style={{ color: "#F0513A" }} name="map-pin" />
+          <Heading style={{ color: "#F0513A" }} size={3}>
+            {t("country")}
+          </Heading>
+        </GridRow>
+        <Row>
+          <Tabs tabs={tabs} initialTabIndex={0} />
+        </Row>
+        <Slider
+          hasButton
+          action={() => history.push("/services")}
+          list={list}
+        />
+        <GridRow justify="center">
           <Button
             fullWidth
             btnType="primary"
             text={t("button")}
             action={() => history.push("/services")}
           />
-        </Row>
+        </GridRow>
       </Page>
     </Card>
   );

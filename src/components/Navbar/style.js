@@ -1,44 +1,43 @@
 import styled from "styled-components";
 
-const Navbar = styled.nav`
+import { GridRow, GridCol } from 'components/Layout';
+
+const Navbar = styled(GridRow)`
   display: flex;
-  flex-flow: row-nowrap;
-  margin: 0 auto;
-  justify-content: space-between;
-  max-height: 80px;
-  align-items: center;
-  padding: 0 ${props => props.theme.margin * 2}px;
-  max-width: ${props => props.theme.maxWidth}px;
+  height: 80px;
   background-color: ${props => props.theme.colors.white};
   position: sticky;
   top: 0;
   z-index: 10;
-  align-items: center;
-  ul {
-    display: flex;
-    flex-flow: row nowrap;
-    padding: 0;
-    justify-content: flex-start;
-    align-items: center;
-    li {
-      margin-right: ${props => props.theme.margin * 2}px;
-      display: block;
-    }
 
-    @media only screen and (max-width: 375px) {
-      maxwidth: 100%;
-    }
+  a {
+    margin-right: ${props => props.theme.margin * 2}px;
   }
 `;
 
-const RightSection = styled.ul`
-  flex: 0.5;
+const LeftSection = styled(GridCol)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: ${props => props.theme.margin * 1.5}px;
 `;
-const LeftSection = styled.ul`
-  flex: 0.4;
-  li a {
+const RightSection = styled(GridCol)`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: ${props => props.theme.margin * 1.5}px;
+
+  a {
     color: ${props => props.theme.colors.brand.orange} !important;
   }
+
+  button {
+    margin-left: ${props => props.theme.margin * 1.5}px;
+  }
 `;
 
-export { Navbar as StyledNavbar, RightSection, LeftSection };
+const Spacer = styled(GridCol)`
+`;
+
+export { Navbar as StyledNavbar, RightSection, LeftSection, Spacer };

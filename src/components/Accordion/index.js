@@ -17,7 +17,7 @@ const Accordion = ({ title, isOpen, content }) => {
           action={() => setSetOpen(!setOpen)}
         />
       </AccordionTitle>
-      <ContentContainer isOpen={setOpen}>{content()}</ContentContainer>
+      <ContentContainer isOpen={setOpen}>{content}</ContentContainer>
     </AccordionContainer>
   );
 };

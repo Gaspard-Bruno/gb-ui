@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 import "./fonts.css";
 
 export default {
-  margin: 12,
+  margin: 16,
   heroSize: 680,
   maxWidth: 1152,
   boxShadow: "0 0 3rem #333",
