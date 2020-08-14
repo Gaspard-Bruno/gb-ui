@@ -84,6 +84,24 @@ const getAlertType = (type, theme) => {
   }
 };
 
+const AlertContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const IconContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 10;
+`;
+
+const TitleAndTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const StyledAlert = styled.button`
   display: block;
   border-radius: ${props => props.type === "simpleFilled" ? 3 : 40}px;
@@ -96,4 +114,20 @@ const StyledAlert = styled.button`
   }
 `;
 
-export default StyledAlert;
+const XContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10;
+  > span {
+    font-size: 24px;
+  }
+`;
+
+export default {
+  StyledAlert,
+  AlertContainer,
+  IconContainer,
+  TitleAndTextContainer,
+  XContainer
+};
