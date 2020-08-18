@@ -71,9 +71,9 @@ const LOGO_MAP = {
   becomeBodyLogo: <BecomeBodyLogo />
 };
 
-const Logo = ({ size, self, color }) => {
+const Logo = ({ size, isCenter = true, color }) => {
   return (
-    <LogoContainer self={self} size={size}>
+    <LogoContainer center={isCenter} size={size}>
       {LOGO_MAP[color]}
     </LogoContainer>
   );
@@ -81,7 +81,7 @@ const Logo = ({ size, self, color }) => {
 
 Logo.propTypes = {
   size: PropTypes.number,
-  self: PropTypes.string,
+  isCenter: PropTypes.bool,
   color: PropTypes.string
 };
 

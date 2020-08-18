@@ -2,14 +2,22 @@ import React from "react";
 import PropTypes from "prop-types";
 import StyledCard from "./style";
 
-const Card = ({ justify, align, hasBoxShadow, bg, text, children, isHero }) => (
+const Card = ({
+  justify,
+  padding,
+  align,
+  hasBoxShadow,
+  bg,
+  text,
+  children
+}) => (
   <StyledCard
     justify={justify}
     align={align}
     boxShadow={hasBoxShadow}
+    padding={padding}
     bg={bg}
     text={text}
-    hero={isHero}
   >
     {children}
   </StyledCard>
@@ -17,10 +25,10 @@ const Card = ({ justify, align, hasBoxShadow, bg, text, children, isHero }) => (
 
 Card.propTypes = {
   justify: PropTypes.string,
+  padding: PropTypes.number,
   align: PropTypes.string,
   hasBoxShadow: PropTypes.bool,
   bg: PropTypes.string,
-  isHero: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
   text: PropTypes.string
 };

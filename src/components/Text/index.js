@@ -43,6 +43,7 @@ export const Heading = styled.h2`
   font-weight: bold;
   ${props => (props.size ? headingSizes[props.size - 1] : headingSizes[0])}
   color: ${props => props.theme.colors.darkBlue};
+  ${props => props.center && `text-align: center`}
 `;
 
 export const SubHeading = styled.h3`

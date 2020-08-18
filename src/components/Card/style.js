@@ -9,21 +9,19 @@ const getSelectedBackground = props => {
     case "terceary":
       return props.theme.colors.brand.lightBlue;
     case "transparent":
-      return 'transparent';
+      return "transparent";
     default:
       return props.theme.colors.white;
   }
 };
 
 const Card = styled.div`
-  display: flex;
-  flex-flow: row-nowrap;
-  padding: ${props => props.theme.margin}px;
+  border-radius: 16px;
+  padding: ${props => props.theme.margin * (props.padding || 1)}px;
   box-shadow: ${props => (props.shadow ? props.theme.boxShadow : 0)};
   background-color: ${props => getSelectedBackground(props)};
   color: ${props => props.theme.colors.darkBlue};
   align-items: ${props => (props.align ? `${props.align}` : "")};
-  height: ${props => (props.hero ? `${props.theme.heroSize}px` : "none")};
   justify-content: ${props => (props.justify ? `${props.justify}` : "none")};
 `;
 

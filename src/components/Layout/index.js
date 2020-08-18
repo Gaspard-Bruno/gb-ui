@@ -34,6 +34,17 @@ const getPageBackground = props => {
 };
 const Page = styled.div`
   background-color: ${props => getPageBackground(props)};
+  min-height: 100vh;
+  padding: ${props => props.theme.margin * 2.5}px;
+`;
+
+const Row = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  align-items: ${props => (props.align ? props.align : "none")};
+  max-width: ${props => props.theme.maxWidth}px;
+  justify-content: ${props => (props.justify ? props.justify : "none")};
+  min-height: ${props => props.theme.margin * props.size}px;
   ${media.desktop(`
     margin: 0 auto;
   `)}
@@ -48,23 +59,15 @@ const Page = styled.div`
   `)}
 `;
 
-const Row = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  align-items: ${props => (props.align ? props.align : "none")};
-  max-width: ${props => props.theme.maxWidth}px;
-  justify-content: ${props => (props.justify ? props.justify : "none")};
-  min-height: ${props => props.theme.margin * props.size}px;
-`;
-
 const Col = styled.div`
   flex: ${props => props.size};
-  padding: ${props => props?.padding}px;
+  padding: ${props => props.padding || props.theme.margin}px;
   ${props =>
     props.collapse &&
     media[props.collapse](`
   display: none;
   `)}
+  ${props => props.center && "margin: 0 auto;"}
 `;
 
 const GridRow = styled.div`
@@ -92,7 +95,8 @@ const GridRow = styled.div`
 const GridCol = styled.div`
   text-align: ${props => (props.text ? "center" : "left")};
   width: ${props => `${(100 * props.size) / 12}%`};
-  align-self: ${props => (props.self ? "center" : "")};
+
+  ${props => props.center && "margin: 0 auto;"}
   ${props =>
     props.collapse &&
     media[props.collapse](`
