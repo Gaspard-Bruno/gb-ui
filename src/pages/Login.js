@@ -1,19 +1,13 @@
 import { useTranslate } from "polyglot-react-redux-sdk";
 import React from "react";
 
-import { Page, Col, Row, Hero } from "Components/Layout";
+import { Page, Col, Row } from "Components/Layout";
 import { Jumbo, Tiny } from "Components/Text";
 
 import TextInput from "Components/TextInput";
-import TextArea from "Components/TextArea";
-import Select from "Components/Select";
 import Card from "Components/Card";
-import DropDownMenu from "Components/DropDownMenu";
-import { useHistory } from "react-router-dom";
 
 function Login() {
-  const history = useHistory();
-
   const t = useTranslate("login");
   return (
     <>
