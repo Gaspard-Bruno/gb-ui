@@ -22,9 +22,18 @@ const media = {
     }
   `
 };
-
+const getPageBackground = props => {
+  switch (props.bg) {
+    case "white":
+      return props.theme.colors.white;
+    case "orange":
+      return props.theme.colors.brand.orange;
+    default:
+      return props.theme.colors.white;
+  }
+};
 const Page = styled.div`
-  max-width: ${props => props.theme.maxWidth}px;
+  background-color: ${props => getPageBackground(props)};
   ${media.desktop(`
     margin: 0 auto;
   `)}
@@ -43,6 +52,7 @@ const Row = styled.div`
   display: flex;
   flex-flow: row wrap;
   align-items: ${props => (props.align ? props.align : "none")};
+  max-width: ${props => props.theme.maxWidth}px;
   justify-content: ${props => (props.justify ? props.justify : "none")};
   min-height: ${props => props.theme.margin * props.size}px;
 `;
@@ -82,33 +92,12 @@ const GridRow = styled.div`
 const GridCol = styled.div`
   text-align: ${props => (props.text ? "center" : "left")};
   width: ${props => `${(100 * props.size) / 12}%`};
-  align-self: ${props => (props.self ? "center" : "")}
-    ${props =>
-      props.collapse &&
-      media[props.collapse](`
+  align-self: ${props => (props.self ? "center" : "")};
+  ${props =>
+    props.collapse &&
+    media[props.collapse](`
   display: none;
   `)};
 `;
 
-const Hero = styled(GridRow)`
-  ${media.tablet(`
-    flex-flow: column;
-    
-    top: 0px;
-  `)}
-  
-    min-height: ${props => props.theme.heroSize}px;
-    background-color: ${props =>
-      props.bg === "alt"
-        ? props.theme.colors.lightBeige
-        : props.theme.colors.white};
-    ${props =>
-      props.top
-        ? `
-      position: relative;
-      top: -80px;
-    `
-        : ``}
-`;
-
-export { media, Page, Row, Col, Hero, GridRow, GridCol };
+export { media, Page, Row, Col, GridRow, GridCol };

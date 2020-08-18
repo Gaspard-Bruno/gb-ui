@@ -17,13 +17,13 @@ function Login() {
   const t = useTranslate("login");
   return (
     <>
-      <Page>
+      <Page bg="orange">
         <Row>
           <Col size={1}>
             <Jumbo>{t("login")}</Jumbo>
           </Col>
           <Col collapse="mobile" size={2}>
-            <Card>
+            <Card bg="secondary">
               <TextInput label="email" placeholder="placeholder" />
               <TextInput label="password" type="password" hasIcon />
             </Card>
@@ -35,44 +35,11 @@ function Login() {
             <Tiny>{t("cancel")}</Tiny>
           </Col>
         </Row>
-        <Row>
-          <Tiny>
-            <DropDownMenu
-              menuOptions={[
-                {
-                  label: "cenas",
-                  action: () => history.push("/"),
-                  hasIcon: { name: "Facebook" },
-                },
-                { label: "cenas", action: () => history.push("/") },
-                { label: "cenas", action: () => history.push("/") },
-              ]}
-            />
-            <DropDownMenu
-              menuOptions={[
-                {
-                  label: "cenas",
-                  action: () => history.push("/"),
-                  hasIcon: { name: "Facebook" },
-                },
-                { label: "cenas", action: () => history.push("/") },
-                { label: "cenas", action: () => history.push("/") },
-              ]}
-            />
-          </Tiny>
-        </Row>
-        <Row>
-          <TextArea
-            label="write something bout urself"
-            placeholder="cenas"
-          ></TextArea>
-          <Select label="Cenas Selected" placeholder="Choose one" />
-        </Row>
       </Page>
-      <Hero bg="alt">
+      <Card bg="alt">
         <Tiny>{t("recoverPwd")}</Tiny>
         <Tiny>{t("cancel")}</Tiny>
-      </Hero>
+      </Card>
     </>
   );
 }

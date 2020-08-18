@@ -1,6 +1,5 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { Provider } from "react-redux";
 import { usePolyglot } from "polyglot-react-redux-sdk";
 
 import theme from "Theme";
@@ -13,7 +12,7 @@ function App() {
   const { phrasesLoaded } = usePolyglot({
     default: config.locale,
     defaultPhrases: content,
-    useDefaultPhrases: true,
+    useDefaultPhrases: true
   });
   return (
     <ThemeProvider theme={theme}>
@@ -24,6 +23,6 @@ function App() {
 
 App.whyDidYouRender = {
   logOnDifferentValues: true,
-  customName: "App",
+  customName: "App"
 };
 export default App;

@@ -1,11 +1,13 @@
 import React from "react";
-import { ListContainer, ListItens, itemIcon } from "./styles";
+import { ListContainer, ListItens } from "./styles";
 import { Body } from "Components/Text";
-import Icon from "Components/Icon";
 import PropTypes from "prop-types";
 import { Col } from "Components/Layout";
 
-const List = ({ data, hasIcon }) => {
+const List = ({
+  data
+  //hasIcon
+}) => {
   const items =
     data &&
     data.map((item, index) => {
@@ -20,7 +22,7 @@ const List = ({ data, hasIcon }) => {
   return <ListContainer>{items}</ListContainer>;
 };
 
-List.prototype = {
+List.propTypes = {
   hasIcon: PropTypes.bool,
   data: PropTypes.array,
   options: PropTypes.objectOf(
