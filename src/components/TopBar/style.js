@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 const StyledTopBar = styled.div`
-    padding-left: 240px;
+height: 80px;
 `
 
 export const LeftSection = styled.div`
     display: flex;
-    padding-left: 32px;
     align-items: center;
 
     svg {
@@ -32,10 +31,7 @@ export const LeftSection = styled.div`
 
 export const RightSection = styled.div`
     display: flex;
-    padding-right: 32px;
     align-items: center;
-
-
 `;
 
 export default StyledTopBar;

@@ -2,14 +2,18 @@ import styled from "styled-components";
 
 const getColorFromStatus = (theme, status) =>
   ({
-    complete: theme.brand.blue,
+    contact: theme.brand.blue,
     received: theme.brand.blue,
+    complete: theme.brand.blue,
+    closed: theme.brand.blue,
     analysis: theme.brand.yellow,
-    active: theme.feedback.success.default,
+    awaiting_specialist: theme.brand.yellow,
+    awaiting_visit_payment: theme.brand.yellow,
+    awaiting_interview: theme.brand.yellow,
+    awaiting_payment: theme.brand.yellow,
+    awaiting_visit: theme.brand.yellow,
     canceled: theme.feedback.error.default,
-    house: theme.muted.blue,
-    accompaning: theme.muted.green,
-    lessons: theme.muted.yellow
+    rejected: theme.feedback.error.default
   }[status]);
 
 const Badge = styled.span`

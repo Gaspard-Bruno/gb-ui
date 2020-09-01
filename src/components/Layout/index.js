@@ -73,7 +73,7 @@ const Row = styled.div`
 
 const Col = styled.div`
   flex: ${props => props.size};
-  display: flex;
+  display: ${props => props.display ? props.display : 'block'};
   flex-flow: column nowrap;
   align-items: ${props => (props.center ? "center" : "flex-start")};
   padding: ${props => props.padding || props.theme.margin}px;

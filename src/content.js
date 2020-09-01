@@ -38,5 +38,19 @@ export default {
     members: 'Membros',
     team: 'Equipas',
     services: 'Serviços'
-  }
+  },
+  badges: {
+    contact: "Contacto",
+    received: "Recebido",
+    complete: "Completo",
+    closed: "Fechado",
+    analysis: "Análise",
+    awaiting_specialist: "Aguarda Especialista",
+    awaiting_visit_payment: "Aguarda Pagamento Visito",
+    awaiting_interview: "Aguarda Entrevista",
+    awaiting_payment: "Aguarda Pagamento Serviço",
+    awaiting_visit: "Aguarda Visita",
+    canceled: "Cancelado",
+    rejected: "Rejeitado" 
+  },
 };

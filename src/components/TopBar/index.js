@@ -4,14 +4,14 @@ import { useHistory } from "react-router-dom";
 import { useTranslate } from 'polyglot-react-redux-sdk';
 
 import { Link } from 'Components/Text';
-import { Row, Col, GridCol } from 'Components/Layout';
+import { Row } from 'Components/Layout';
 
 import Icon from 'Components/Icon';
 import Avatar from 'Components/Avatar';
 
 import StyledTopBar, { LeftSection, RightSection } from './style';
 
-const TopBar = ({location, title, back}) => {
+const TopBar = ({location, title, back, user}) => {
     console.log(back)
     const history = useHistory();
     return (
@@ -31,7 +31,9 @@ const TopBar = ({location, title, back}) => {
 
                 <RightSection>
                     <Icon name="eye-off"/>
-                    {/* <Avatar /> */}
+                    <Avatar 
+                    size="medium" hasCarat={true} hasText={true} user={user}
+                    />
                 </RightSection>
             </Row>
         </StyledTopBar>
