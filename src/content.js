@@ -28,5 +28,15 @@ export default {
     tnc: "Termos e Condições",
     pp: "Política de Privacidade",
     lang: "Português"
+  },
+  sidebar: {
+    requests: 'Pedidos',
+    archive: 'Arquivo',
+    candidates: 'Novos Candidatos',
+    specialists: 'Especialistas 55+',
+    clients: 'Clientes',
+    members: 'Membros',
+    team: 'Equipas',
+    services: 'Serviços'
   }
 };
