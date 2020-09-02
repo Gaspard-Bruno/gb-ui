@@ -7,12 +7,12 @@ export const ACTION_TYPES = {
   LOGIN_USER_SUCCESS: `${REDUCER}/LOGIN_USER_SUCCESS`
 };
 
-const getServicesListing = dispatch => {
+const getServicesListing = (dispatch, { email, password }) => {
   dispatch({
     type: ACTION_TYPES.LOGIN_USER
   });
   authClient
-    .getServiceListing()
+    .loginUser({ email, password })
     .then(res => {
       if (res && res.data) {
         dispatch({
@@ -24,7 +24,7 @@ const getServicesListing = dispatch => {
     .catch(e => {
       dispatch({
         type: ACTION_TYPES.LOGIN_USER_FAIL,
-        error: "Error getting services from the server"
+        error: "Error getting logging in"
       });
     });
 };

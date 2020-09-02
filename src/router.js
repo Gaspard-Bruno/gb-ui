@@ -10,7 +10,17 @@ const AppRouter = ({ component: Component, path, props }) => {
   return <Route path={path} render={() => <Component {...props} />} />;
 };
 
-const routes = [{ path: "/", component: Login }];
+const routes = [
+  { path: "/", component: Login },
+  {
+    path: "/dashboard",
+    component: (
+      <Page bgColor="yellow">
+        <h1>Dashboard</h1>
+      </Page>
+    )
+  }
+];
 
 export default function Router() {
   return (
