@@ -15,20 +15,18 @@ const routes = [{ path: "/", component: Login }];
 export default function Router() {
   return (
     <BrowserRouter>
-      <Page bg="orange">
-        <Switch>
-          {routes.map((route, index) => {
-            return (
-              <AppRouter
-                key={route.path}
-                path={route.path}
-                isPrivate={route.isPrivate}
-                component={route.component}
-              />
-            );
-          })}
-        </Switch>
-      </Page>
+      <Switch>
+        {routes.map((route, index) => {
+          return (
+            <AppRouter
+              key={route.path}
+              path={route.path}
+              isPrivate={route.isPrivate}
+              component={route.component}
+            />
+          );
+        })}
+      </Switch>
     </BrowserRouter>
   );
 }

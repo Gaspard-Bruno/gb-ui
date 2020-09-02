@@ -35,7 +35,7 @@ const getPageBackground = props => {
 const Page = styled.div`
   background-color: ${props => getPageBackground(props)};
   min-height: 100vh;
-  padding: ${props => props.theme.margin * 2.5}px;
+  padding: ${props => props.theme.margin * 2.5}px 0px;
 `;
 
 const Row = styled.div`
@@ -45,7 +45,7 @@ const Row = styled.div`
   max-width: ${props => props.theme.maxWidth}px;
   justify-content: ${props => (props.justify ? props.justify : "none")};
   min-height: ${props => props.theme.margin * props.size}px;
-  ${media.desktop(`
+    ${media.desktop(`
     margin: 0 auto;
   `)}
   ${media.smallDesktop(`
