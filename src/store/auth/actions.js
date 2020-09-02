@@ -7,7 +7,7 @@ export const ACTION_TYPES = {
   LOGIN_USER_SUCCESS: `${REDUCER}/LOGIN_USER_SUCCESS`
 };
 
-const getServicesListing = (dispatch, { email, password }) => {
+const getServicesListing = (dispatch, { email, password, callback }) => {
   dispatch({
     type: ACTION_TYPES.LOGIN_USER
   });
@@ -19,12 +19,13 @@ const getServicesListing = (dispatch, { email, password }) => {
           type: ACTION_TYPES.LOGIN_USER_SUCCESS,
           payload: res.data
         });
+        callback();
       }
     })
     .catch(e => {
       dispatch({
         type: ACTION_TYPES.LOGIN_USER_FAIL,
-        error: "Error getting logging in"
+        error: "Error getting logging in "
       });
     });
 };
