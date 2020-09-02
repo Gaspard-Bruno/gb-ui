@@ -1,4 +1,4 @@
-import authClient from "Services/authClient";
+import authClient from "Services/authService";
 
 const REDUCER = "auth";
 export const ACTION_TYPES = {
@@ -7,12 +7,12 @@ export const ACTION_TYPES = {
   LOGIN_USER_SUCCESS: `${REDUCER}/LOGIN_USER_SUCCESS`
 };
 
-const getServicesListing = (dispatch, { email, password, callback }) => {
+const loginUser = (dispatch, { email, password, callback }) => {
   dispatch({
     type: ACTION_TYPES.LOGIN_USER
   });
   authClient
-    .loginUser({ email, password })
+    .postUserLogin({ email, password })
     .then(res => {
       if (res && res.data) {
         dispatch({
@@ -30,4 +30,4 @@ const getServicesListing = (dispatch, { email, password, callback }) => {
     });
 };
 
-export { getServicesListing };
+export { loginUser };

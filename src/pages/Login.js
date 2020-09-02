@@ -1,16 +1,20 @@
+import React, { useState } from "react";
 import { useTranslate } from "polyglot-react-redux-sdk";
-import React from "react";
 
 import { Col, Row, Page } from "Components/Layout";
 import { Heading, Link } from "Components/Text";
-
 import TextInput from "Components/TextInput";
 import Logo from "Components/Logo";
 import Button from "Components/Button";
+import useAuth from "Hooks/useAuth";
+
 import { LoginCard } from "./styles";
 
-function Login() {
+const Login = () => {
   const t = useTranslate("login");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { signInAndRedirectToDashboard } = useAuth();
   return (
     <Page bg="orange">
       <Row justify="center">
@@ -22,13 +26,28 @@ function Login() {
               <Heading size={3} center>
                 {t("login")}
               </Heading>
-              <TextInput label="Email" placeholder="placeholder" />
-              <TextInput label="Password" type="password" hasIcon />
+              <TextInput
+                label="Email"
+                placeholder="placeholder"
+                onChange={v => setEmail(v)}
+              />
+              <TextInput
+                onChange={v => setPassword(v)}
+                label="Password"
+                type="password"
+                hasIcon
+              />
               <Row justify="center">
                 <Link>Esqueceu a sua senha ?</Link>
               </Row>
               <Row justify="center">
-                <Button text="Iniciar Sessão" />
+                <Button
+                  type="submit"
+                  text="Iniciar Sessão"
+                  action={() => {
+                    signInAndRedirectToDashboard(email, password);
+                  }}
+                />
               </Row>
             </LoginCard>
           </Row>
@@ -37,6 +56,6 @@ function Login() {
       </Row>
     </Page>
   );
-}
+};
 
 export default Login;

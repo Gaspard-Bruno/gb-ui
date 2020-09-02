@@ -34,7 +34,13 @@ const TextInput = ({
         </nav>
       )}
       {label && <Body>{label}</Body>}
-      <StyledInput type={inputType} error={error} placeholder={placeholder} />
+      <StyledInput
+        type={inputType}
+        error={error}
+        defaultValue={defaultValue}
+        placeholder={placeholder}
+        onChange={e => onChange(e.target.value)}
+      />
       {error && <ErrorText>{error}</ErrorText>}
     </InputContainer>
   );
