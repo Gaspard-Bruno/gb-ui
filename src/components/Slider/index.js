@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import Badge from "Components/Badge";
 import { Heading } from "Components/Text";
 import { Row } from "Components/Layout";
-import Button from "Components/Button";
 import { CarouselContainer, ItemContainer, ItemImage } from "./styles";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -46,9 +45,9 @@ const renderItems = items => {
   return list;
 };
 
-CardSlider.prototype = {
+CardSlider.propTypes = {
   list: PropTypes.array.isRequired,
-  hasButton: PropTypes.bool
+  hasButton: PropTypes.bool,
 };
 
 export default CardSlider;

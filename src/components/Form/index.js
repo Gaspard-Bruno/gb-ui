@@ -50,8 +50,8 @@ const renderFields = field => {
   }
 };
 
-Form.prototype = {
-  formFields: PropTypes.arrayOf(PropTypes.object)
+Form.propTypes = {
+  formFields: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Form;

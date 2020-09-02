@@ -24,13 +24,14 @@ const renderMenuList = menuOptions => {
   return list;
 };
 
-DropDownMenu.prototype = {
+
+DropDownMenu.propTypes = {
   menuOptions: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
       action: PropTypes.func,
-      hasIcon: PropTypes.bool
+      hasIcon: PropTypes.bool,
     })
-  )
+  ),
 };
 export default DropDownMenu;
