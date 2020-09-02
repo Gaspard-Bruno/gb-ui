@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTranslate } from "polyglot-react-redux-sdk";
 
 import { Col, Row, Page } from "Components/Layout";
-import { Heading, Link } from "Components/Text";
+import { Heading, Link, ErrorText } from "Components/Text";
 import TextInput from "Components/TextInput";
 import Logo from "Components/Logo";
 import Button from "Components/Button";
@@ -25,7 +25,7 @@ const Login = () => {
   const t = useTranslate("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { signInAndRedirectToDashboard } = useAuth();
+  const { signInAndRedirectToDashboard, error } = useAuth();
   return (
     <Page bg="orange">
       <Row justify="center">
@@ -53,6 +53,7 @@ const Login = () => {
                     signInAndRedirectToDashboard(email, password);
                   }}
                 />
+                {error && <ErrorText>{error}</ErrorText>}
               </Col>
             </Row>
           </Card>
