@@ -23,6 +23,8 @@ const getBorderStyles = (listPosition = "middle") => {
 const StyledRequestCard = styled.div`
     background-color: ${props => props.theme.colors.white};
     border: 1px solid ${props => props.theme.colors.mediumBeige};
+    display: flex;
+    
 
     ${props => getBorderStyles(props.listPosition)}
 

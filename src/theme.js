@@ -13,6 +13,7 @@ export default {
     grey: "#88827C",
     mediumBeige: "#D2CCC6",
     lightBeige: "#F3E9E1",
+    lightestBeige: "#F8F7F7",
     white: "#FFF",
     brand: {
       yellow: "#FEC35A",

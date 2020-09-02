@@ -1,7 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledTopBar = styled.div`
-height: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
 `
 
 export const LeftSection = styled.div`
@@ -32,6 +34,10 @@ export const LeftSection = styled.div`
 export const RightSection = styled.div`
     display: flex;
     align-items: center;
+
+    svg {
+        margin-right: 26px;
+    }
 `;
 
 export default StyledTopBar;

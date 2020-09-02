@@ -53,4 +53,18 @@ export default {
     canceled: "Cancelado",
     rejected: "Rejeitado" 
   },
+  requests: {
+    client: "Cliente",
+    specialist: "Esp.55",
+    recurring: "Recorrente"
+  },
+  archive: {
+    serviceType: 'Tipo de Serviço',
+    client: 'Cliente',
+    provider: 'Especialista 55+',
+    date: 'Datas',
+    totalHours: 'Total de Horas',
+    totalPrice: 'Montante Total',
+    hours: "Horas"
+  }
 };

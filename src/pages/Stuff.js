@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import Sidebar from "Components/Sidebar";
-import TopBar from "Components/TopBar";
+import Sidebar from 'Components/Sidebar';
+import TopBar from 'Components/TopBar';
 import MainContainer from 'Components/MainContainer';
-import RequestCard from "Components/RequestCard";
+import RequestCard from 'Components/RequestCard';
 
+import ArchiveTable from 'Components/ArchiveTable';
 
 const leads = [
     {
@@ -21,6 +22,8 @@ const leads = [
         admin: {
             fullName: "Elena"
         },
+        totalHours: 2,
+        totalPrice: 60.00
     },
     {
         status: "awaiting_payment",
@@ -35,6 +38,8 @@ const leads = [
         admin: {
             fullName: "Elena"
         },
+        totalHours: 3,
+        totalPrice: 30.00        
     },
     {
         status: "contact",
@@ -50,6 +55,8 @@ const leads = [
         admin: {
             fullName: "Elena"
         },
+        totalHours: 10,
+        totalPrice: 120.00        
     }        
 ];
 
@@ -70,7 +77,7 @@ const Stuff = () => {
         <MainContainer>
             <TopBar location='Pedidos' title='Pedidos' user={admin}/>
 
-            {leads && leads.map((lead, index) => {
+            {/* {leads && leads.map((lead, index) => {
                 let listPosition;
                 switch (index) {
                     case 0: listPosition = "top"; break;
@@ -82,7 +89,12 @@ const Stuff = () => {
                     <RequestCard lead={lead} listPosition={listPosition} />
                 )
             })
-            }
+            } */}
+
+            <ArchiveTable items={leads}>
+
+            </ArchiveTable>
+
         </MainContainer>
     </div>
   );

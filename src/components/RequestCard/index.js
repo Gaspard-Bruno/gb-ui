@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Row, Col } from 'Components/Layout';
+import { useTranslate } from 'polyglot-react-redux-sdk';
+
+import { Col } from 'Components/Layout';
 
 import Badge from 'Components/Badge';
 import Icon from 'Components/Icon';
@@ -18,9 +20,10 @@ const RequestCard = ({
     lead,
     listPosition
 }) => {
+    const t = useTranslate("requests");
+
     return (
         <StyledRequestCard listPosition={listPosition}>
-            <Row>
                 <Col size={4} display="flex" alignItems="center">
                     <Status>
                         <BadgeContainer>
@@ -32,8 +35,8 @@ const RequestCard = ({
 
                 <Col size={3} display="flex" alignItems="center">
                     <Details>
-                        <p>Cliente: {lead.client && <span>{lead.client.fullName}</span>}</p>
-                        <p>Esp.55: {lead.provider && <span>{lead.provider.fullName}</span>}</p>
+                        <p>{t('client')}: {lead.client && <span>{lead.client.fullName}</span>}</p>
+                        <p>{t('specialist')}: {lead.provider && <span>{lead.provider.fullName}</span>}</p>
                     </Details>
                 </Col>
 
@@ -44,7 +47,7 @@ const RequestCard = ({
                             <IconContainer>
                                 <Icon name="repeat" />
                             </IconContainer>
-                            <span>Recorrente</span>
+                            <span>{t('recurring')}</span>
                         </DateDetails>                           
                     :
                         <DateDetails>
@@ -64,7 +67,6 @@ const RequestCard = ({
                 <Col size={2}>
                     <Avatar size="small" hasText={true} user={lead.admin}/>
                 </Col>
-            </Row>
         </StyledRequestCard>
     )
 }
