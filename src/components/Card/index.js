@@ -9,6 +9,7 @@ const Card = ({
   hasBoxShadow,
   bg,
   text,
+  customStyle,
   children
 }) => (
   <StyledCard
@@ -16,6 +17,7 @@ const Card = ({
     align={align}
     boxShadow={hasBoxShadow}
     padding={padding}
+    customStyle={customStyle}
     bg={bg}
     text={text}
   >
@@ -27,6 +29,7 @@ Card.propTypes = {
   justify: PropTypes.string,
   padding: PropTypes.number,
   align: PropTypes.string,
+  customStyle: PropTypes.func,
   hasBoxShadow: PropTypes.bool,
   bg: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),

@@ -14,11 +14,13 @@ const loginUser = (dispatch, { email, password, callback }) => {
   authClient
     .postUserLogin({ email, password })
     .then(res => {
+      console.log("got res", res);
       if (res && res.data) {
         dispatch({
           type: ACTION_TYPES.LOGIN_USER_SUCCESS,
           payload: res.data
         });
+        console.log("great success in action");
         callback();
       }
     })

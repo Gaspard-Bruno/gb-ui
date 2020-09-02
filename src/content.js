@@ -11,7 +11,8 @@ export default {
     cancel: "Cancelar",
     recoverPwd: "Recuperar Palavra Chave",
     email: "Endereço de e-mail",
-    password: "Palavra Chave"
+    password: "Palavra Chave",
+    forgotPw: "Esqueceu a sua senha?"
   },
   footer: {
     address: `Convento de São Pedro de Alcântara

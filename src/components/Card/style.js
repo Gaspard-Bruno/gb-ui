@@ -23,6 +23,7 @@ const Card = styled.div`
   color: ${props => props.theme.colors.darkBlue};
   align-items: ${props => (props.align ? `${props.align}` : "")};
   justify-content: ${props => (props.justify ? `${props.justify}` : "none")};
+  ${props => props.customStyle(props)}
 `;
 
 export default Card;

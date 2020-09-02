@@ -35,7 +35,7 @@ const getPageBackground = props => {
 const Page = styled.div`
   background-color: ${props => getPageBackground(props)};
   min-height: 100vh;
-  padding: ${props => props.theme.margin * 2.5}px 0px;
+  overflow-x: hidden;
 `;
 
 const Row = styled.div`
@@ -45,6 +45,9 @@ const Row = styled.div`
   max-width: ${props => props.theme.maxWidth}px;
   justify-content: ${props => (props.justify ? props.justify : "none")};
   min-height: ${props => props.theme.margin * props.size}px;
+  ${props =>
+    (props.margin &&
+      `
     ${media.desktop(`
     margin: 0 auto;
   `)}
@@ -57,10 +60,15 @@ const Row = styled.div`
   ${media.mobile(`
     margin: 0 32px;
   `)}
+  `) ||
+    "margin: 0 auto"}
 `;
 
 const Col = styled.div`
   flex: ${props => props.size};
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: ${props => (props.center ? "center" : "flex-start")};
   padding: ${props => props.padding || props.theme.margin}px;
   ${props =>
     props.collapse &&

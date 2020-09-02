@@ -6,15 +6,17 @@ import { Login } from "Pages";
 import { Page } from "Components/Layout";
 
 // eslint-disable-next-line react/prop-types
-const AppRouter = ({ component: Component, path, props }) => {
-  return <Route path={path} render={() => <Component {...props} />} />;
+const AppRouter = ({ component: Component, path, props, exact }) => {
+  return (
+    <Route path={path} exact={exact} render={() => <Component {...props} />} />
+  );
 };
 
 const routes = [
-  { path: "/", component: Login },
+  { path: "/", component: Login, exact: true },
   {
     path: "/dashboard",
-    component: (
+    component: () => (
       <Page bgColor="yellow">
         <h1>Dashboard</h1>
       </Page>
@@ -31,6 +33,7 @@ export default function Router() {
             <AppRouter
               key={route.path}
               path={route.path}
+              exact={route.exact}
               isPrivate={route.isPrivate}
               component={route.component}
             />

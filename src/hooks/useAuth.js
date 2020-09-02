@@ -22,11 +22,19 @@ const useAuth = () => {
     [dispatch, loginUser]
   );
 
-  const signInAndRedirectToDashboard = useCallback(async (email, pw) => {
-    if (email && pw) {
-      await dispatchLoginUser(email, pw, () => history.push("/dashboard"));
-    }
-  });
+  const signInAndRedirectToDashboard = useCallback(
+    async (email, pw) => {
+      if (email && pw) {
+        console.log("cenas fixes");
+        await dispatchLoginUser(
+          email,
+          pw,
+          () => !console.log("success") && history.push("/dashboard")
+        );
+      }
+    },
+    [dispatchLoginUser, history]
+  );
 
   return {
     user,
