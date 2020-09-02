@@ -26,11 +26,7 @@ const useAuth = () => {
     async (email, pw) => {
       if (email && pw) {
         console.log("cenas fixes");
-        await dispatchLoginUser(
-          email,
-          pw,
-          () => !console.log("success") && history.push("/dashboard")
-        );
+        dispatchLoginUser(email, pw, () => history.push("/dashboard"));
       }
     },
     [dispatchLoginUser, history]

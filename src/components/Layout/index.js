@@ -29,13 +29,20 @@ const getPageBackground = props => {
     case "orange":
       return props.theme.colors.brand.orange;
     default:
-      return props.theme.colors.white;
+      return props.theme.colors.grey;
   }
 };
 const Page = styled.div`
   background-color: ${props => getPageBackground(props)};
   min-height: 100vh;
   overflow-x: hidden;
+  display: flex;
+`;
+const BackofficePage = styled.div`
+  background-color: ${props => getPageBackground(props)};
+  min-height: 100vh;
+  display: flex;
+  flex: 1;
 `;
 
 const Row = styled.div`
@@ -61,7 +68,7 @@ const Row = styled.div`
     margin: 0 32px;
   `)}
   `) ||
-    "margin: 0 auto"}
+    "margin: 0 auto;"}
 `;
 
 const Col = styled.div`
@@ -78,38 +85,4 @@ const Col = styled.div`
   ${props => props.center && "margin: 0 auto;"}
 `;
 
-const GridRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: ${props => (props.align ? props.align : "none")};
-  justify-content: ${props => (props.justify ? props.justify : "none")};
-  max-width: ${props => props.theme.maxWidth}px;
-
-  ${media.desktop(`
-    margin: 0 auto;
-  `)}
-  ${media.smallDesktop(`
-    margin: 0 120px;
-  `)}
-  ${media.tablet(`
-    margin: 0 48px;
-  `)}
-  ${media.mobile(`
-    margin: 0 32px;
-  `)}
-`;
-
-const GridCol = styled.div`
-  text-align: ${props => (props.text ? "center" : "left")};
-  width: ${props => `${(100 * props.size) / 12}%`};
-
-  ${props => props.center && "margin: 0 auto;"}
-  ${props =>
-    props.collapse &&
-    media[props.collapse](`
-  display: none;
-  `)};
-`;
-
-export { media, Page, Row, Col, GridRow, GridCol };
+export { media, Page, Row, Col, BackofficePage };

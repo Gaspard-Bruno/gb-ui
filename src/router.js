@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { Login } from "Pages";
+import { Login, Dashboard } from "Pages";
 
 import { Page } from "Components/Layout";
 
@@ -16,11 +16,7 @@ const routes = [
   { path: "/", component: Login, exact: true },
   {
     path: "/dashboard",
-    component: () => (
-      <Page bgColor="yellow">
-        <h1>Dashboard</h1>
-      </Page>
-    )
+    component: Dashboard
   }
 ];
 

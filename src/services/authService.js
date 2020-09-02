@@ -9,4 +9,4 @@ const postUserLogin = ({ email, password }) => {
   });
 };
 
-export default { postUserLogin };
+export default { postUserLogin, client };

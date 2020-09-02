@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 const Logo = styled.div`
-  min-width: 120px;
-  margin: 0 ${props => props.theme.margin / 2}px;
+  min-width: ${props => props.size || 120}px;
   ${props =>
     props.center &&
     `

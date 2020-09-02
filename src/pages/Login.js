@@ -43,6 +43,7 @@ const Login = () => {
               type="password"
               hasIcon
             />
+            {error && <ErrorText>{error}</ErrorText>}
             <Row>
               <Col size={4} center>
                 <Link to="/">{t("forgotPw")}</Link>
@@ -53,7 +54,6 @@ const Login = () => {
                     signInAndRedirectToDashboard(email, password);
                   }}
                 />
-                {error && <ErrorText>{error}</ErrorText>}
               </Col>
             </Row>
           </Card>
