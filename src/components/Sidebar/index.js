@@ -3,61 +3,73 @@ import { useRouteMatch } from "react-router-dom";
 
 import { useTranslate } from "polyglot-react-redux-sdk";
 
-import { Link } from "Components/Text";
 import Logo from "Components/Logo";
 
-import StyledSidebar, { NavSection, NavLink } from "./style";
+import StyledSidebar, { NavSection, NavLink, NavHeader } from "./style";
 
-const SidebarLink = ({ routePath, to, text, children }) => {
+const Sidebar = props => {
+  const t = useTranslate("sidebar");
+
+  // eslint-disable-next-line react/prop-types
+  const SidebarLink = ({ routePath, to, text, children }) => {
     let match = useRouteMatch(routePath);
 
     return (
-        <Link to={to}>
-            <NavLink active={!!match}>
-                { text ?
-                    <p>{text}</p>
-                    :
-                    children
-                }
-            </NavLink>
-        </Link>
-    )
-}
+      <NavLink to={to} active={!!match}>
+        {text ? <p>{text}</p> : children}
+      </NavLink>
+    );
+  };
 
-const Sidebar = props => {
-    const t = useTranslate("sidebar");
+  return (
+    <StyledSidebar>
+      <SidebarLink routePath={{ path: "/", exact: true }} to="/">
+        <Logo color={"white"} />
+      </SidebarLink>
 
-    return (
-        <StyledSidebar>
-            <SidebarLink routePath={{path: '/', exact: true}} to="/">
-                <Logo />
-            </SidebarLink>
+      <NavSection>
+        <NavHeader>{t("services")}</NavHeader>
+        <SidebarLink
+          routePath="/dashboard/requests"
+          to="/dashboard/requests"
+          text={t("requests")}
+        />
+        <SidebarLink
+          routePath="/dashboard/archive"
+          to="/dashboard/archive"
+          text={t("archive")}
+        />
+      </NavSection>
 
-            <NavSection>
-                <h5>{t('services')}</h5>
-                <SidebarLink routePath="/requests" to="/requests" text={t('requests')} />
-                <SidebarLink routePath="/archive" to="/archive" text={t('archive')} />
-            </NavSection>
+      <NavSection>
+        <NavHeader>{t("specialists")}</NavHeader>
+        <SidebarLink
+          routePath="/dashboard/candidates"
+          to="/dashboard/candidates"
+          text={t("candidates")}
+        />
+        <SidebarLink
+          routePath="/dashboard/specialists"
+          to="/dashboard/specialists"
+          text={t("specialists")}
+        />
+      </NavSection>
 
-            <NavSection>
-                <h5>{t('specialists')}</h5>
-                <SidebarLink routePath="/candidates" to="/candidates" text={t('candidates')} />
-                <SidebarLink routePath="/specialists" to="/specialists" text={t('specialists')} />                              
-            </NavSection>
+      <NavSection>
+        <NavHeader>{t("clients")}</NavHeader>
+        <SidebarLink
+          routePath="/dashboard/clients"
+          to="/clients"
+          text={t("clients")}
+        />
+      </NavSection>
 
-            <NavSection>
-                <h5>{t('clients')}</h5>
-                <SidebarLink routePath="/clients" to="/clients" text={t('clients')} />  
-            </NavSection>
-
-            <NavSection>
-                <h5>{t('team')}</h5>
-                <SidebarLink routePath="/members" to="/members" text={t('members')} />
-        
-            </NavSection>            
-
-        </StyledSidebar>
-    )
-}
+      <NavSection>
+        <NavHeader>{t("team")}</NavHeader>
+        <SidebarLink routePath="/members" to="/members" text={t("members")} />
+      </NavSection>
+    </StyledSidebar>
+  );
+};
 
 export default Sidebar;

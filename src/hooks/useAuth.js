@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { shallowEqual, useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { actions, selectors } from "Redux/auth";
@@ -8,7 +8,7 @@ const useAuth = () => {
   const history = useHistory();
 
   const { loginUser } = actions;
-  const { getAuthUser, getLoading, getError, getLoaded } = selectors;
+  const { getAuthUser, getLoading, getError } = selectors;
 
   const user = useSelector(state => getAuthUser(state), shallowEqual);
   const error = useSelector(state => getError(state));

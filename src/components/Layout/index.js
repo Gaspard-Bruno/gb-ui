@@ -29,18 +29,18 @@ const getPageBackground = props => {
     case "orange":
       return props.theme.colors.brand.orange;
     default:
-      return props.theme.colors.grey;
+      return props.theme.colors.white;
   }
 };
 const Page = styled.div`
   background-color: ${props => getPageBackground(props)};
-  min-height: 100vh;
+  height: 100vh;
   overflow-x: hidden;
   display: flex;
 `;
 const BackofficePage = styled.div`
   background-color: ${props => getPageBackground(props)};
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex: 1;
 `;
@@ -73,7 +73,7 @@ const Row = styled.div`
 
 const Col = styled.div`
   flex: ${props => props.size};
-  display: ${props => props.display ? props.display : 'block'};
+  display: flex;
   flex-flow: column nowrap;
   align-items: ${props => (props.center ? "center" : "flex-start")};
   padding: ${props => props.padding || props.theme.margin}px;

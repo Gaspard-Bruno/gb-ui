@@ -3,8 +3,6 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import { Login, Dashboard } from "Pages";
 
-import { Page } from "Components/Layout";
-
 // eslint-disable-next-line react/prop-types
 const AppRouter = ({ component: Component, path, props, exact }) => {
   return (
