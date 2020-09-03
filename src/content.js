@@ -77,5 +77,10 @@ export default {
   },
   specialists: {
     specialists: 'Especialistas 55+',
+    name: 'Nome',
+    service: 'Serviço',
+    totalRequests: 'Total de Pedidos',
+    totalHours: 'Total de Horas',
+    rating: 'Avaliação'
   }
 };

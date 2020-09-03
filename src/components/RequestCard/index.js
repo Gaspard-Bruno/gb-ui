@@ -22,7 +22,7 @@ const RequestCard = ({ lead, listPosition }) => {
 
   return (
     <StyledRequestCard listPosition={listPosition}>
-      <Col size={4} align="center">
+      <Col size={4} justify="center">
         <Status>
           <BadgeContainer>
             <Badge text={lead.status} status={lead.status} />
@@ -31,7 +31,7 @@ const RequestCard = ({ lead, listPosition }) => {
         </Status>
       </Col>
 
-      <Col size={3} align="center">
+      <Col size={3} justify="center">
         <Details>
           <p>
             {t("client")}: {lead.client && <span>{lead.client.fullName}</span>}
@@ -43,7 +43,7 @@ const RequestCard = ({ lead, listPosition }) => {
         </Details>
       </Col>
 
-      <Col size={3} align="center">
+      <Col size={3} justify="center">
         {lead.recurrent ? (
           <DateDetails>
             <IconContainer>
