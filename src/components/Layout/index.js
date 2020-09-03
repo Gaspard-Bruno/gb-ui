@@ -41,8 +41,11 @@ const Page = styled.div`
 const BackofficePage = styled.div`
   background-color: ${props => getPageBackground(props)};
   height: 100vh;
-  display: flex;
-  flex: 1;
+  width: calc(100vw - 240px);
+`;
+
+const BackofficeContainer = styled.div`
+  margin: 0px 32px;
 `;
 
 const Row = styled.div`
@@ -85,4 +88,4 @@ const Col = styled.div`
   ${props => props.center && "margin: 0 auto;"}
 `;
 
-export { media, Page, Row, Col, BackofficePage };
+export { media, Page, Row, Col, BackofficePage, BackofficeContainer };
