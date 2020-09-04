@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
+import { useDispatch, useSelector } from 'react-redux'
 
 import { useTranslate } from "polyglot-react-redux-sdk";
+
+import { actions as serviceActions } from 'redux/reducers/services'
+import { selectors as servicesSelectors } from 'redux/reducers/services'
 
 import { BackofficeContainer } from "Components/Layout";
 import TopBar from "Components/TopBar";
 import RequestCard from "Components/RequestCard";
+
+// import { getServices } from "Redux";
 
 const leads = [
   {
@@ -64,7 +70,19 @@ const admin = {
 };
 
 const Requests = () => {
+  const dispatch = useDispatch()
+
   const t = useTranslate("requests");
+
+  const getServices = useCallback(() => dispatch(serviceActions.getServices()), [dispatch])
+  const services = useSelector(servicesSelectors.getServices)  
+  
+  useEffect(() => {
+    getServices()
+  }, [])  
+  console.log(services)
+
+
 
   return (
     <>
