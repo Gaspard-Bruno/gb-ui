@@ -40,3 +40,9 @@ jobs:
           env:
             AWS_STAGING_BUCKET_NAME: ${{ secrets.AWS_STAGING_BUCKET_NAME }}
 
+        - name: Refresh cloudfront
+          shell: bash
+          run: |
+            aws cloudfront create-invalidation --distribution-id ${AWS_STAGING_CLOUDFRONT_ID} --paths /\*
+          env:
+            AWS_STAGING_CLOUDFRONT_ID: ${{ secrets.AWS_STAGING_CLOUDFRONT_ID }}
