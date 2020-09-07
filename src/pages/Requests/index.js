@@ -6,6 +6,11 @@ import { useTranslate } from "polyglot-react-redux-sdk";
 import { actions as serviceActions } from 'redux/reducers/services'
 import { selectors as servicesSelectors } from 'redux/reducers/services'
 
+import { actions as appointmentActions } from 'redux/reducers/appointments'
+import { selectors as appointmentSelectors } from 'redux/reducers/appointments'
+
+import useAppointments from "Hooks/useAppointments";
+
 import { BackofficeContainer } from "Components/Layout";
 import TopBar from "Components/TopBar";
 import RequestCard from "Components/RequestCard";
@@ -74,14 +79,23 @@ const Requests = () => {
 
   const t = useTranslate("requests");
 
-  const getServices = useCallback(() => dispatch(serviceActions.getServices()), [dispatch])
-  const services = useSelector(servicesSelectors.getServices)  
+  // const getServices = useCallback(() => dispatch(serviceActions.getServices()), [dispatch])
+  // const services = useSelector(servicesSelectors.getServices)  
   
-  useEffect(() => {
-    getServices()
-  }, [])  
-  console.log(services)
+  // useEffect(() => {
+  //   getServices()
+  // }, [])  
+  // console.log(services)
 
+  // const getAppointments = useCallback(() => dispatch(appointmentActions.getAppointments()), [dispatch])
+  // const appointments = useSelector(appointmentSelectors.getAppointments)  
+  
+  // useEffect(() => {
+  //   getAppointments()
+  // }, [])  
+  // console.log(appointments)
+
+  const { appointments } = useAppointments();
 
 
   return (

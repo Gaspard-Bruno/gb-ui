@@ -5,3 +5,17 @@ export const getServicesEntities = createSelector([
 ],
   (entities) => entities
 )
+
+
+export const getAppointmentsEntities = createSelector([
+  (state) => state.entities.appointments,
+],
+  (entities) => entities
+)
+
+
+export const getProvidersEntities = createSelector([
+  (state) => state.entities.providers,
+],
+  (entities) => entities
+)
