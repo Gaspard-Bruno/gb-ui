@@ -1,7 +1,11 @@
 import { createSelector } from 'reselect'
 
-const selectAppointmentsState = state => state.appointments;
+const selectEntitiesState = state => state.entities;
 
-const getAppointmentsEntities = createSelector(selectAppointmentsState, state => {
-    return state.entities.appointments || [];
+export const getAppointmentsEntities = createSelector(selectEntitiesState, state => {
+    return state.appointments || [];
   });
+
+export const getProvidersEntities = createSelector(selectEntitiesState, state => {
+    return state.providers || [];
+});

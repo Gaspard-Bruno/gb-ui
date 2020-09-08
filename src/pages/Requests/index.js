@@ -79,21 +79,6 @@ const Requests = () => {
 
   const t = useTranslate("requests");
 
-  // const getServices = useCallback(() => dispatch(serviceActions.getServices()), [dispatch])
-  // const services = useSelector(servicesSelectors.getServices)  
-  
-  // useEffect(() => {
-  //   getServices()
-  // }, [])  
-  // console.log(services)
-
-  // const getAppointments = useCallback(() => dispatch(appointmentActions.getAppointments()), [dispatch])
-  // const appointments = useSelector(appointmentSelectors.getAppointments)  
-  
-  // useEffect(() => {
-  //   getAppointments()
-  // }, [])  
-  // console.log(appointments)
 
   const { appointments } = useAppointments();
 
@@ -111,7 +96,7 @@ const Requests = () => {
                     }
 
                     return (
-                        <RequestCard lead={lead} listPosition={listPosition} />
+                        <RequestCard lead={lead} appointment={appointments[0]} listPosition={listPosition} />
                     )
                 })
                 }

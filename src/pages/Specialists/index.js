@@ -2,6 +2,8 @@ import React from "react";
 
 import { useTranslate } from "polyglot-react-redux-sdk";
 
+import useProviders from "Hooks/useProviders";
+
 import { BackofficeContainer } from "Components/Layout";
 import TopBar from "Components/TopBar";
 
@@ -74,6 +76,9 @@ const admin = {
 
 const Specialists = () => {
   const t = useTranslate("specialists");
+
+  const { providers } = useProviders();
+  console.log("provs", providers)
 
   return (
     <>

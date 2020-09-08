@@ -23,7 +23,6 @@ const getStyleFromAvatarSize = (size, theme) => {
 };
 
 const getRandomColor = theme => {
-  console.log(theme.colors);
   const keys = Object.keys(theme.colors.muted);
   return theme.colors.muted[keys[(keys.length * Math.random()) << 0]];
 };

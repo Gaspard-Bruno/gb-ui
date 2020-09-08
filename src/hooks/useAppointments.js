@@ -9,11 +9,9 @@ const useAppointments = () => {
   const { getAppointments, getLoading, getError, getLoaded } = selectors;
 
   const appointments = useSelector(
-    state => getAppointments(state)?.data || [],
+    state => getAppointments(state),
     shallowEqual
   );
-
-  console.log("+++++++", appointments)
 
   const error = useSelector(state => getError(state));
   const loading = useSelector(state => getLoading(state), shallowEqual);

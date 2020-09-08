@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import { useTranslate } from "polyglot-react-redux-sdk";
 
+import useFetchProvider from 'hooks/fetchProvider.js'
+
 import { Col } from "Components/Layout";
 
 import Badge from "Components/Badge";
@@ -17,8 +19,17 @@ import StyledRequestCard, {
   IconContainer
 } from "./style";
 
-const RequestCard = ({ lead, listPosition }) => {
+const RequestCard = ({ lead, appointment, listPosition }) => {
   const t = useTranslate("requests");
+
+  let providerId;
+  if (appointment) {
+    providerId = appointment.relationships.provider.data.id;
+
+  }
+  const provider = useFetchProvider("1")
+  console.log("91284udjjduj3~~~~~", provider)
+
 
   return (
     <StyledRequestCard listPosition={listPosition}>

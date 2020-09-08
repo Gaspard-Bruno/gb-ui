@@ -4,6 +4,7 @@ import normalize from 'json-api-normalizer';
 import { ACTION_TYPES } from "./actions";
 
 import { ACTION_TYPES as APPOINTMENT_ACTION_TYPES } from '../appointments/actions'
+import { ACTION_TYPES as PROVIDER_ACTION_TYPES } from '../providers/actions'
 
 const initialState = {
   appointments: {},
@@ -28,9 +29,9 @@ export default (state = initialState, action) => {
     return produce(state, draft => {
         switch (action.type) {
           // UPDATE ENTITIES DATA
-          case APPOINTMENT_ACTION_TYPES.GET_APPOINTMENTS_SUCCESS:   
+          case APPOINTMENT_ACTION_TYPES.GET_APPOINTMENTS_SUCCESS:
+          case PROVIDER_ACTION_TYPES.GET_PROVIDERS_SUCCESS:  
             const data = normalize(action.payload)
-            console.log("data", data)
 
             updateEntitiesData(state, draft, 'appointments', 'appointment', data)
             updateEntitiesData(state, draft, 'providers', 'provider', data)
