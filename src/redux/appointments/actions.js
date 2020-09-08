@@ -23,9 +23,7 @@ const getAppointmentsListing = dispatch => {
   appointmentsClient
     .getAppointments()
     .then(res => {
-      console.log("no errrrrroorrrr")
       if (res && res.data) {
-        console.log(res.data)
         dispatch({
           type: ACTION_TYPES.GET_APPOINTMENTS_SUCCESS,
           payload: res.data

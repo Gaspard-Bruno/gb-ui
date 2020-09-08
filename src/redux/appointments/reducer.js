@@ -15,7 +15,6 @@ export default (state = initialState, action) => {
         loading: true
       };
     case ACTION_TYPES.GET_APPOINTMENTS_FAIL:
-      console.log("--------", action)
       return {
         ...state,
         error: action.error,
@@ -23,12 +22,9 @@ export default (state = initialState, action) => {
         loaded: true
       };
     case ACTION_TYPES.GET_APPOINTMENTS_SUCCESS:
-      console.log("+++++++", action)
-      const a = action.payload.data.map((d) => d.id)
-      console.log(a)
       return {
         ...state,
-        appointments: action.payload.data,
+        appointments: action.payload.data.map((d) => d.id),
         loading: false,
         loaded: true
       };
