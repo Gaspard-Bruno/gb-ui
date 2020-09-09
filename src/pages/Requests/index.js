@@ -79,24 +79,35 @@ const Requests = () => {
 
   const t = useTranslate("requests");
 
-
   const { appointments } = useAppointments();
-
 
   return (
     <>
         <TopBar location={t('services')} title={t('requests')} user={admin} />
         <BackofficeContainer>
-            {leads && leads.map((lead, index) => {
+            {appointments && appointments.map((appointment, index) => {
                     let listPosition;
                     switch (index) {
                         case 0: listPosition = "top"; break;
-                        case (leads.length - 1): listPosition = "bottom"; break;
+                        case (appointments.length - 1): listPosition = "bottom"; break;
                         default: listPosition = "middle"; break;
                     }
 
+                    // provider can be null
+                    const providerId = appointment.relationships.provider.data ? appointment.relationships.provider.data.id : null
+                    // admin can be null
+                    const adminId = appointment.relationships.admin.data ? appointment.relationships.admin.data.id : null
+
                     return (
-                        <RequestCard lead={lead} appointment={appointments[0]} listPosition={listPosition} />
+                        <RequestCard 
+                          lead={leads[0]} 
+                          appointment={appointment} 
+                          providerId={providerId}
+                          clientId={appointment.relationships.client.data.id}
+                          adminId={appointment.relationships.admin.data.id}
+                          serviceId={appointment.relationships.service.data.id}
+                          listPosition={listPosition} 
+                        />
                     )
                 })
                 }

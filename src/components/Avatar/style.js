@@ -38,6 +38,7 @@ const getTextColor = (size, user, theme) => {
 };
 
 const AvatarContainer = styled.div`
+  text-transform: capitalize;
   height: 80px;
   display: flex;
   align-items: center;

@@ -7,26 +7,27 @@ const useFetchProvider = (fetchId) => {
   const [providerId, setProviderId] = useState(fetchId || null)
 
   const dispatch = useDispatch()
-  const { getProvider } = providersActions;
+  // const { getProvider } = providersActions;
   const { getProviderLoading, getProviderError, getProviderLoaded }  = providersSelectors;
 
   const error = useSelector(state => getProviderError(state));
   const loading = useSelector(state => getProviderLoading(state), shallowEqual);
   const loaded = useSelector(state => getProviderLoaded(state), shallowEqual);  
   
-  const dispatchGetProvider = useCallback((providerId) => {
-      getProvider(providerId, dispatch);
-  }, [dispatch, getProvider])
+  // const dispatchGetProvider = useCallback((providerId) => {
+  //     getProvider(providerId, dispatch);
+  // }, [dispatch, getProvider])
 
   const makeProvider = useMemo(providersSelectors.makeGetProvider, [])
   const provider = useSelector((state) => makeProvider(state, providerId))
-  console.log("prov", fetchId, provider)
+  
+  // console.log("prov", fetchId, provider)
 
-  useEffect(() => {
-      if (!loaded) {
-        dispatchGetProvider(providerId)
-      }
-  }, [dispatchGetProvider, loaded])
+  // useEffect(() => {
+  //     if (!provider) {
+  //       dispatchGetProvider(providerId)
+  //     }
+  // }, [provider])
 
   return {
       provider,

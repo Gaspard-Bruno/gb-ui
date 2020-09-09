@@ -9,3 +9,15 @@ export const getAppointmentsEntities = createSelector(selectEntitiesState, state
 export const getProvidersEntities = createSelector(selectEntitiesState, state => {
     return state.providers || [];
 });
+
+export const getClientsEntities = createSelector(selectEntitiesState, state => {
+  return state.clients || [];
+});
+
+export const getAdminEntities = createSelector(selectEntitiesState, state => {
+  return state.admins || [];
+});
+
+export const getServicesEntities = createSelector(selectEntitiesState, state => {
+  return state.services || [];
+});

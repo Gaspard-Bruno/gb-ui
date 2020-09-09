@@ -6,6 +6,7 @@ const StyledSidebar = styled.div`
   color: white;
   width: 240px;
   height: 100vh;
+  position: fixed;
   svg {
     margin-top: ${props => props.theme.margin * 2}px;
   }

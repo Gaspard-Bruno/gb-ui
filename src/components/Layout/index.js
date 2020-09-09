@@ -42,6 +42,7 @@ const BackofficePage = styled.div`
   background-color: ${props => getPageBackground(props)};
   height: 100vh;
   width: calc(100vw - 240px);
+  margin-left: 240px;
 `;
 
 const BackofficeContainer = styled.div`

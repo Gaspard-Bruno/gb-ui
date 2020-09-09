@@ -4,40 +4,40 @@ const initialState = {
   loading: false,
   loaded: false,
   error: false,
-  providers: [],
-  providerLoading: false,
-  providerLoaded: false,
-  providerError: false
+  clients: [],
+  clientLoading: false,
+  clientLoaded: false,
+  clientError: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ACTION_TYPES.GET_PROVIDERS:
+    case ACTION_TYPES.GET_CLIENTS:
       return {
         ...state,
         loading: true
       };
-    case ACTION_TYPES.GET_PROVIDERS_FAIL:
+    case ACTION_TYPES.GET_CLIENTS_FAIL:
       return {
         ...state,
         error: action.error,
         loading: false,
         loaded: true
       };
-    case ACTION_TYPES.GET_PROVIDERS_SUCCESS:
+    case ACTION_TYPES.GET_CLIENTS_SUCCESS:
       return {
         ...state,
-        providers: action.payload.data.map((d) => d.id),
+        clients: action.payload.data.map((d) => d.id),
         loading: false,
         loaded: true
       };
 
-    case ACTION_TYPES.GET_PROVIDER:
+    case ACTION_TYPES.GET_CLIENT:
         return {
             ...state,
-            providerLoading: true
+            clientLoading: true
         }
-    case ACTION_TYPES.GET_PROVIDER_SUCCESS:
+    case ACTION_TYPES.GET_CLIENT_SUCCESS:
         // console.log("ACTION ~~~~~~~~~~~~", action)
         // console.log("STATE ~~~~~~~~~~~~~", state)
         // let fetchedProvider = state.providers.find(providerId => providerId === action.payload.data.id)
@@ -45,16 +45,16 @@ export default (state = initialState, action) => {
 
         return {
           ...state,
-          providerLoading: false,
-          providerError: false,
-          providerLoaded: true
+          clientLoading: false,
+          clientError: false,
+          clientLoaded: true
         }
-    case ACTION_TYPES.GET_PROVIDER_FAIL:
+    case ACTION_TYPES.GET_CLIENT_FAIL:
         return {
             ...state,
-            providerError: action.error,
-            providerLoading: false,
-            providerLoaded: true
+            clientError: action.error,
+            clientLoading: false,
+            clientLoaded: true
         }
 
     default:

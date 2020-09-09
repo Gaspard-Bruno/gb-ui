@@ -55,6 +55,7 @@ export const Details = styled.div`
   color: ${props => props.theme.colors.grey};
   font-size: 14px;
   line-height: 16px;
+  text-transform: capitalize;
 
   p {
     margin: 0px;

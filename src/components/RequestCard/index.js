@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 import { useTranslate } from "polyglot-react-redux-sdk";
 
 import useFetchProvider from 'hooks/fetchProvider.js'
+import useFetchClient from 'hooks/fetchClient.js'
+import useFetchService from 'hooks/fetchService.js'
+import useFetchAdmin from 'hooks/fetchAdmin.js'
 
 import { Col } from "Components/Layout";
 
@@ -19,43 +22,52 @@ import StyledRequestCard, {
   IconContainer
 } from "./style";
 
-const RequestCard = ({ lead, appointment, listPosition }) => {
+const RequestCard = ({ 
+  lead,
+  appointment, 
+  providerId, 
+  clientId,
+  adminId,
+  serviceId,
+  listPosition 
+}) => {
   const t = useTranslate("requests");
 
-  let providerId;
-  if (appointment) {
-    providerId = appointment.relationships.provider.data.id;
-
-  }
-  const provider = useFetchProvider("1")
-  console.log("91284udjjduj3~~~~~", provider)
-
+  const provider = useFetchProvider(providerId)
+  const client = useFetchClient(clientId)
+  const service = useFetchService(serviceId)
+  const admin = useFetchAdmin(adminId)
 
   return (
     <StyledRequestCard listPosition={listPosition}>
       <Col size={4} justify="center">
         <Status>
           <BadgeContainer>
-            <Badge text={lead.status} status={lead.status} />
+            <Badge text={appointment.attributes.status} status={appointment.attributes.status} />
           </BadgeContainer>
-          {lead.serviceName && <span>{lead.serviceName}</span>}
+          {service.service.attributes.name && <span>{service.service.attributes.name}</span>}
         </Status>
       </Col>
 
       <Col size={3} justify="center">
         <Details>
           <p>
-            {t("client")}: {lead.client && <span>{lead.client.fullName}</span>}
+            {t("client")}: {client && <span>{client.fetchedClient.attributes.fullName}</span>}
           </p>
           <p>
             {t("specialist")}:{" "}
-            {lead.provider && <span>{lead.provider.fullName}</span>}
+            {provider.provider 
+              ?
+                <span>{provider.provider.attributes.fullName}</span>
+              : 
+                <span></span>
+            }
           </p>
         </Details>
       </Col>
 
       <Col size={3} justify="center">
-        {lead.recurrent ? (
+        {appointment.attributes.recurrent ? (
           <DateDetails>
             <IconContainer>
               <Icon name="repeat" />
@@ -64,12 +76,12 @@ const RequestCard = ({ lead, appointment, listPosition }) => {
           </DateDetails>
         ) : (
           <DateDetails>
-            {lead.deliveryDate && (
+            {appointment.attributes.deliveredOn && (
               <>
                 <IconContainer>
                   <Icon name="calendar" />
                 </IconContainer>
-                {lead.deliveryDate && <span>{lead.deliveryDate}</span>}
+                {appointment.attributes.deliveredOn && <span>{appointment.attributes.deliveredOn}</span>}
               </>
             )}
           </DateDetails>
@@ -77,10 +89,28 @@ const RequestCard = ({ lead, appointment, listPosition }) => {
       </Col>
 
       <Col size={2}>
-        <Avatar size="small" hasText={true} user={lead.admin} />
+        {admin.admin ? 
+          <Avatar size="small" hasText={true} user={admin.admin.attributes} />  
+        :
+          <div></div>
+        }
+        
       </Col>
     </StyledRequestCard>
   );
+};
+
+RequestCard.propTypes = {
+  appointment: PropTypes.object,
+  providerId: PropTypes.string,
+  clientId: PropTypes.string,
+  adminId: PropTypes.string,
+  serviceId: PropTypes.string,
+  listPosition: PropTypes.string
+};
+
+RequestCard.defaultProps = {
+  listPosition: "middle"
 };
 
 export default RequestCard;
