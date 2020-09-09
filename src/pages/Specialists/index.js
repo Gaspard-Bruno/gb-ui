@@ -8,6 +8,7 @@ import { BackofficeContainer } from "Components/Layout";
 import TopBar from "Components/TopBar";
 
 import Table from 'Components/Table';
+import SpecialistTable from 'Components/SpecialistTable';
 
 import Avatar from 'Components/Avatar';
 
@@ -89,10 +90,15 @@ const Specialists = () => {
                 items={leads}
             /> */}
 
-            <Table 
+            {/* <Table 
                 tableType="specialists"
                 items={leads}
-            />            
+            /> */}
+
+            <SpecialistTable 
+                items={providers}
+            />
+            
         </BackofficeContainer>
     </>
   );

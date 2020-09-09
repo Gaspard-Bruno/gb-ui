@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 
 import { useTranslate } from "polyglot-react-redux-sdk";
 
-import useFetchProvider from 'hooks/fetchProvider.js'
-import useFetchClient from 'hooks/fetchClient.js'
-import useFetchService from 'hooks/fetchService.js'
-import useFetchAdmin from 'hooks/fetchAdmin.js'
+import useFetchProvider from 'hooks/fetchProvider.js';
+import useFetchClient from 'hooks/fetchClient.js';
+import useFetchService from 'hooks/fetchService.js';
+import useFetchAdmin from 'hooks/fetchAdmin.js';
 
 import { Col } from "Components/Layout";
 

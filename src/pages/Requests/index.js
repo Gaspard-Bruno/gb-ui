@@ -3,12 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { useTranslate } from "polyglot-react-redux-sdk";
 
-import { actions as serviceActions } from 'redux/reducers/services'
-import { selectors as servicesSelectors } from 'redux/reducers/services'
-
-import { actions as appointmentActions } from 'redux/reducers/appointments'
-import { selectors as appointmentSelectors } from 'redux/reducers/appointments'
-
 import useAppointments from "Hooks/useAppointments";
 
 import { BackofficeContainer } from "Components/Layout";

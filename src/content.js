@@ -81,6 +81,9 @@ export default {
     service: 'Serviço',
     totalRequests: 'Total de Pedidos',
     totalHours: 'Total de Horas',
-    rating: 'Avaliação'
+    totalPrice: 'Montante Total',
+    rating: 'Avaliação',
+    state: 'Estado',
+    region: 'Região'
   }
 };

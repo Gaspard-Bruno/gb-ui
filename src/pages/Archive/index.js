@@ -2,6 +2,8 @@ import React from "react";
 
 import { useTranslate } from "polyglot-react-redux-sdk";
 
+import useAppointments from "Hooks/useAppointments";
+
 import { BackofficeContainer } from "Components/Layout";
 import TopBar from "Components/TopBar";
 
@@ -67,12 +69,14 @@ const admin = {
 const Archive = () => {
   const t = useTranslate("archive");
 
+  const { appointments } = useAppointments();
+
   return (
     <>
         <TopBar location={t('services')} title={t('archive')} user={admin} />
         <BackofficeContainer>
 
-            <ArchiveTable items={leads}/>
+            <ArchiveTable items={appointments}/>
         </BackofficeContainer>
     </>
   );

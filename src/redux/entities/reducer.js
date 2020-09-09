@@ -13,7 +13,7 @@ const initialState = {
   admins: {},
   clients: {},
   services: {},
-  leads: {}
+  providerServices: {}
 };
 
   const updateEntitiesData = (state, draft, entity, dataKey, data) => {
@@ -41,7 +41,7 @@ export default (state = initialState, action) => {
             updateEntitiesData(state, draft, 'admins', 'admin', data)
             updateEntitiesData(state, draft, 'clients', 'client', data)
             updateEntitiesData(state, draft, 'services', 'service', data)
-            updateEntitiesData(state, draft, 'leads', 'lead', data)
+            updateEntitiesData(state, draft, 'providerServices', 'providerService', data)
             break
   
           case ACTION_TYPES.RESET:
