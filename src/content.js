@@ -85,5 +85,12 @@ export default {
     rating: 'Avaliação',
     state: 'Estado',
     region: 'Região'
+  },
+  filters: {
+    responsible: 'Responsável',
+    date: 'Data',
+    service: 'Serviço',
+    status: 'Estado',
+    region: 'Região'
   }
 };

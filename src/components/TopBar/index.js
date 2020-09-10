@@ -28,7 +28,7 @@ const TopBar = ({location, title, back, user}) => {
             </LeftSection>
 
             <RightSection>
-                <Icon name="eye-off"/>
+                <Icon name="Bell"/>
                 <Avatar 
                 size="medium" hasCarat={true} hasText={true} user={user}
                 />

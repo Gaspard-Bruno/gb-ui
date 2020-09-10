@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useTranslate } from "polyglot-react-redux-sdk";
 
 import { Body } from "Components/Text";
+import Icon from 'Components/Icon';
 import { Container, Input, Button } from "./style";
 
 const SearchInput = ({
@@ -14,9 +15,32 @@ const SearchInput = ({
   style = "main"
 }) => {
   const t = useTranslate("buttons");
+
+  const [val, setVal] = useState('')
+  console.log(val)
+
+  const handleChange = (e) => {
+    console.log('val', e.target.value)
+    setVal(e.target.value)
+    onChange(e.target.value)
+  }
+
+  // const filters = []
+  // filters.push(newFilter)
+
+
   return (
     <Container>
-      <Input placeholder={placeholder} />
+      <Input
+        placeholder={placeholder}
+        type={style}
+        value={val}
+        onChange={handleChange}
+      />
+      {style === "service" && (
+        <Icon name="Search"/>
+      )}
+
       {style === "main" && (
         <Button>
           <Body>{t("searchBtn")}</Body>
@@ -31,7 +55,7 @@ SearchInput.propTypes = {
   placeholder: PropTypes.string,
   label: PropTypes.string,
   defaultValue: PropTypes.string,
-  style: PropTypes.oneOf(["noButton", "main", "secondary"]),
+  style: PropTypes.oneOf(["noButton", "main", "secondary", "service"]),
   onChange: PropTypes.func
 };
 
