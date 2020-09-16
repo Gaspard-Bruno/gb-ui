@@ -15,7 +15,7 @@ import adminReducer from './admin';
 
 const rootReducer = combineReducers({
   polyglot: polyglotReducer,
-  // auth: authReducer,
+  auth: authReducer,
   appointments: appointmentsReducer,
   providers: providersReducer,
   clients: clientsReducer,

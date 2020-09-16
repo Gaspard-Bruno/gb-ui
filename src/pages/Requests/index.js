@@ -111,9 +111,9 @@ const Requests = () => {
                           lead={leads[0]} 
                           appointment={appointment} 
                           providerId={providerId}
-                          clientId={appointment.relationships.client.data.id}
-                          adminId={appointment.relationships.admin.data.id}
-                          serviceId={appointment.relationships.service.data.id}
+                          clientId={appointment.relationships.client.data?.id}
+                          adminId={adminId}
+                          serviceId={appointment.relationships.service.data?.id}
                           listPosition={listPosition} 
                         />
                     )

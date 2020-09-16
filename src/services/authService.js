@@ -1,7 +1,7 @@
 import client from "./client";
 
 const postUserLogin = ({ email, password }) => {
-  return client.post("backoffice/sign_in", {
+  return client.post("sign_in", {
     admin: {
       email,
       password
