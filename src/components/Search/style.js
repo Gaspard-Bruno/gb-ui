@@ -10,6 +10,14 @@ const Container = styled.div`
   }
 `;
 
+const getStylesFromType = (type) => {
+  if (type === "service") {
+    return `
+    border-radius: 2px;
+  `
+  }
+}
+
 const Input = styled.input`
   flex: 3;
   border-radius: 48px 0 0 48px;
@@ -22,6 +30,7 @@ const Input = styled.input`
   font-size: 16px;
   line-height: 24px;
   color: ${props => props.theme.grey};
+  ${props => getStylesFromType(props.type)}
 `;
 const Button = styled.button`
   border-radius: 0 48px 48px 0;

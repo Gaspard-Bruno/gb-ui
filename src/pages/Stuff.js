@@ -69,7 +69,7 @@ const Stuff = () => {
     <div>
       <Sidebar></Sidebar>
       <div></div>
-      <MainContainer>
+      {/* <MainContainer> */}
         <TopBar location="Pedidos" title="Pedidos" user={admin} />
 
         {/* {leads && leads.map((lead, index) => {
@@ -87,7 +87,7 @@ const Stuff = () => {
             } */}
 
         <ArchiveTable items={leads}></ArchiveTable>
-      </MainContainer>
+      {/* </MainContainer> */}
     </div>
   );
 };

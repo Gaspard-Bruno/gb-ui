@@ -41,8 +41,12 @@ const Page = styled.div`
 const BackofficePage = styled.div`
   background-color: ${props => getPageBackground(props)};
   height: 100vh;
-  display: flex;
-  flex: 1;
+  width: calc(100vw - 240px);
+  margin-left: 240px;
+`;
+
+const BackofficeContainer = styled.div`
+  margin: 0px 32px;
 `;
 
 const Row = styled.div`
@@ -76,6 +80,7 @@ const Col = styled.div`
   display: flex;
   flex-flow: column nowrap;
   align-items: ${props => (props.center ? "center" : "flex-start")};
+  justify-content: ${props => (props.justify ? props.justify : "none")};  
   padding: ${props => props.padding || props.theme.margin}px;
   ${props =>
     props.collapse &&
@@ -85,4 +90,4 @@ const Col = styled.div`
   ${props => props.center && "margin: 0 auto;"}
 `;
 
-export { media, Page, Row, Col, BackofficePage };
+export { media, Page, Row, Col, BackofficePage, BackofficeContainer };

@@ -54,17 +54,43 @@ export default {
     rejected: "Rejeitado" 
   },
   requests: {
-    client: "Cliente",
-    specialist: "Esp.55",
-    recurring: "Recorrente"
+    services: 'Serviços',
+    requests: 'Pedidos',
+    client: 'Cliente',
+    specialist: 'Esp.55',
+    recurring: 'Recorrente'
   },
   archive: {
+    archive: 'Arquivo',
+    services: 'Serviços',
     serviceType: 'Tipo de Serviço',
     client: 'Cliente',
-    provider: 'Especialista 55+',
+    specialist: 'Especialista 55+',
     date: 'Datas',
     totalHours: 'Total de Horas',
     totalPrice: 'Montante Total',
-    hours: "Horas"
+    hours: 'Horas'
+  },
+  candidates: {
+    specialists: 'Especialistas 55+',
+    newCandidates: 'Novos Candidatos'
+  },
+  specialists: {
+    specialists: 'Especialistas 55+',
+    name: 'Nome',
+    service: 'Serviço',
+    totalRequests: 'Total de Pedidos',
+    totalHours: 'Total de Horas',
+    totalPrice: 'Montante Total',
+    rating: 'Avaliação',
+    state: 'Estado',
+    region: 'Região'
+  },
+  filters: {
+    responsible: 'Responsável',
+    date: 'Data',
+    service: 'Serviço',
+    status: 'Estado',
+    region: 'Região'
   }
 };

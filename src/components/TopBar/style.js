@@ -9,6 +9,7 @@ const StyledTopBar = styled.div`
 export const LeftSection = styled.div`
     display: flex;
     align-items: center;
+    padding-left: 32px;
 
     svg {
         margin-right: 24px;
