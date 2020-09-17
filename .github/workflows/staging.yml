@@ -1,0 +1,48 @@
+name: Staging Build
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+        - uses: actions/checkout@v1
+        - name: Use Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v1
+          with:
+            node-version: ${{ matrix.node-version }}
+        - name: Yarn Install
+          run: |
+            yarn install
+        - name: Production Build
+          run: |
+            yarn build
+          env:
+            CI: false
+        - name: Configure AWS credentials
+          uses: aws-actions/configure-aws-credentials@v1
+          with:
+            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws-region: ${{ secrets.AWS_REGION }}
+
+        - name: Deploy to S3
+          shell: bash
+          run: aws s3 sync ./build/ s3://$AWS_STAGING_BUCKET_NAME --acl public-read --follow-symlinks --delete
+          env:
+            AWS_STAGING_BUCKET_NAME: ${{ secrets.AWS_STAGING_BUCKET_NAME }}
+
+        - name: Refresh cloudfront
+          shell: bash
+          run: |
+            aws cloudfront create-invalidation --distribution-id ${AWS_STAGING_CLOUDFRONT_ID} --paths /\*
+          env:
+            AWS_STAGING_CLOUDFRONT_ID: ${{ secrets.AWS_STAGING_CLOUDFRONT_ID }}
