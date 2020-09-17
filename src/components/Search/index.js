@@ -4,7 +4,7 @@ import { useTranslate } from "polyglot-react-redux-sdk";
 
 import { Body } from "Components/Text";
 import Icon from 'Components/Icon';
-import { Container, Input, Button } from "./style";
+import { Container, Input, Button, SearchIconContainer } from "./style";
 
 const SearchInput = ({
   error,
@@ -38,7 +38,9 @@ const SearchInput = ({
         onChange={handleChange}
       />
       {style === "service" && (
-        <Icon name="Search"/>
+        <SearchIconContainer>
+          <Icon name="Search"/>
+        </SearchIconContainer>
       )}
 
       {style === "main" && (

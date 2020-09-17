@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types';
 
 import Icon from 'Components/Icon';
@@ -12,46 +12,48 @@ import StyledFilterBar, { Header, Filters, Selects } from './style';
 const admin = {
     fullName: "Elena"
   };
-  
-  const activeFilters = [
-    {
-      type: "responsible",
-      value: admin
-    },
-    {
-      type: "service",
-      value: "Jardinagem"
-    }
-  ]
 
 const FilterBar = ({ availableFilters }) => {
-  const [activFilters, setActivFilters] = useState([]);
-  
+  const [activeFilters, setActiveFilters] = useState([]);
+
   const handleQuery = (newQuery) => {
       console.log('newQuery', newQuery)
       // action to update query on reducer
     // setQuery(newQuery)
   }
 
-  const handleFilters = (newFilters) => {
-    console.log(newFilters)
-    // action to update filters on reducer
-    // setFilters(newFilters)
-  }
+  const handleToggleFilters = (newFilter) => {
+    console.log("new filterrrrrr", newFilter)
+    let filters = activeFilters;
 
-  const handleRemoveFilter = (removeFilter) => {
-
-      console.log(removeFilter)
+    if (filters.indexOf(newFilter) === -1) {
+      filters = filters.concat(newFilter)
+    } else {
+      filters = filters.filter(filter => filter !== newFilter)
+    };
+    setActiveFilters(filters);
   }
-  
-  console.log("avvvvvvv", availableFilters)
+ 
+  const handleFilterValues = (e, filter) => {
+    console.log("handlin shit")
+    console.log(e)
+    console.log(filter)
+
+    let newFilters = activeFilters.filter(filter => filter.label !== filter.label)
+    let newFilter = {label: filter.label, value: e.label}
+    newFilters = newFilters.concat(newFilter)
+    setActiveFilters(newFilters);
+  }
 
   return (
     <StyledFilterBar>
         <Header>
             <Selects>
                 <Search style="service" onChange={handleQuery} />
-                <Select options={availableFilters} onFilters={handleFilters} />
+                <Select 
+                  placeholder="Filtros"
+                  options={availableFilters} 
+                  onChange={handleToggleFilters} />
             </Selects>
             <IconSwitch switchType="layout"/>
         </Header>
@@ -60,9 +62,11 @@ const FilterBar = ({ availableFilters }) => {
             {activeFilters && activeFilters.map(filter => {
                     return (
                         <FilterButton 
-                            filterType={filter.type} 
+                            filter={filter}
+                            filterLabel={filter.label} 
                             filterValue={filter.value}
-                            onClose={handleRemoveFilter}
+                            onClose={handleToggleFilters}
+                            onChange={handleFilterValues}
                         />
                     )
                 })

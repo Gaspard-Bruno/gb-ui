@@ -8,15 +8,31 @@ const Container = styled.div`
   input {
     border: 1px solid ${props => props.theme.mediumBeige};
   }
+  position: relative;  
 `;
 
-const getStylesFromType = (type) => {
+const getStylesFromType = (theme, type) => {
   if (type === "service") {
     return `
     border-radius: 2px;
+    padding-left: 40px;
+    color: ${theme.colors.mediumBeige};
+    position: relative;
+    &:focus {
+      outline: ${theme.colors.darkBlue};
+    } 
   `
   }
 }
+
+export const SearchIconContainer = styled.div`
+  position: absolute;
+  margin: 12px 0px 0px 8px;
+  
+  svg {
+    height: 20px;
+  }
+`;
 
 const Input = styled.input`
   flex: 3;
@@ -30,7 +46,7 @@ const Input = styled.input`
   font-size: 16px;
   line-height: 24px;
   color: ${props => props.theme.grey};
-  ${props => getStylesFromType(props.type)}
+  ${props => getStylesFromType(props.theme, props.type)}
 `;
 const Button = styled.button`
   border-radius: 0 48px 48px 0;

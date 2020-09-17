@@ -76,7 +76,24 @@ const admin = {
 const Requests = () => {
   const dispatch = useDispatch()
 
-  const filters = ["responsible", "date", "service", "status"]
+  const filters = [
+    {
+      label: "responsible",
+      value: "todo"
+    }, 
+    {
+      label: "date",
+      value: "todo"
+    },
+    {
+      label: "service", 
+      value: "todo"
+    },
+    {
+      label: "status", 
+      value: "todo"
+    }
+  ]
 
   const t = useTranslate("requests");
 
