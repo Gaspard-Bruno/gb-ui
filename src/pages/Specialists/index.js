@@ -7,6 +7,8 @@ import useProviders from "Hooks/useProviders";
 import { BackofficeContainer } from "Components/Layout";
 import TopBar from "Components/TopBar";
 
+import FilterBar from 'Components/FilterBar';
+
 import Table from 'Components/Table';
 import SpecialistTable from 'Components/SpecialistTable';
 
@@ -69,7 +71,25 @@ const leads = [
     }
   ];
 
-
+  const filters = [
+    {
+      label: "responsible",
+      value: "todo"
+    }, 
+    {
+      label: "date",
+      value: "todo"
+    },
+    {
+      label: "service", 
+      value: "todo"
+    },
+    {
+      label: "status", 
+      value: "todo"
+    }
+  ];
+  
 
 const admin = {
   fullName: "Elena"
@@ -85,16 +105,7 @@ const Specialists = () => {
     <>
         <TopBar location={t('specialists')} title={t('specialists')} user={admin} />
         <BackofficeContainer>
-            {/* <Table 
-                tableType="archive"
-                items={leads}
-            /> */}
-
-            {/* <Table 
-                tableType="specialists"
-                items={leads}
-            /> */}
-
+          <FilterBar availableFilters={filters}/>
             <SpecialistTable 
                 items={providers}
             />

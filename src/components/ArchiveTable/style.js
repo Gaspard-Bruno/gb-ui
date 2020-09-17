@@ -20,6 +20,7 @@ export const StyledTableRow = styled.div`
     display: flex;
     align-items: center;
     font-weight: normal;
+    height: 80px;
     border-bottom: 1px solid ${props => props.theme.colors.mediumBeige};
 
     .service {

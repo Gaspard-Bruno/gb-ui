@@ -4,6 +4,11 @@ const StyledTopBar = styled.div`
     height: 80px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(113, 109, 106, 0.05);
+    -moz-box-shadow:    0px 2px 2px 0px rgba(113, 109, 106, 0.05);
+    box-shadow:         0px 2px 2px 0px rgba(113, 109, 106, 0.05);
 `
 
 export const LeftSection = styled.div`

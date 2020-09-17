@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledFilterBar = styled.div`
-
+    margin-bottom: 32px;
 `;
 
 export const Header = styled.div`

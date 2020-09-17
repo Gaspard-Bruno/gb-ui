@@ -104,12 +104,8 @@ const Requests = () => {
         <TopBar location={t('services')} title={t('requests')} user={admin} />
         <BackofficeContainer>
 
-          <br/>
-          <br/>
-          <FilterBar availableFilters={filters}/>
+          <FilterBar availableFilters={filters} showLayout={true}/>
 
-          <br/>
-          <br/>
             {appointments && appointments.map((appointment, index) => {
                     let listPosition;
                     switch (index) {
@@ -129,7 +125,7 @@ const Requests = () => {
                           appointment={appointment} 
                           providerId={providerId}
                           clientId={appointment.relationships.client.data.id}
-                          adminId={appointment.relationships.admin.data.id}
+                          adminId={adminId}
                           serviceId={appointment.relationships.service.data.id}
                           listPosition={listPosition} 
                         />

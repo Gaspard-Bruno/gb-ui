@@ -37,7 +37,8 @@ const TableRow = ({ item }) => {
                 </Col>
 
                 <Col size={2}>
-                    {item.attributes.deliveredOn}
+                    {item.attributes.deliveredOn &&
+                    new Date(item.attributes.deliveredOn).toLocaleDateString()}
                 </Col>
 
                 <Col size={2}>

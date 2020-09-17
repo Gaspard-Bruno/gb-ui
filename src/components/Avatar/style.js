@@ -5,17 +5,17 @@ const getStyleFromAvatarSize = (size, theme) => {
     case "small":
       return `
         height: 32px;
-        width: 32px;
+        min-width: 32px;
        `;
     case "medium":
       return `
         height: 40px;
-        width: 40px;
+        min-width: 40px;
        `;
     case "large":
       return `
         height: 80px;
-        width: 80px;
+        min-width: 80px;
         `;
     default:
       return;
@@ -39,7 +39,6 @@ const getTextColor = (size, user, theme) => {
 
 const AvatarContainer = styled.div`
   text-transform: capitalize;
-  height: 80px;
   display: flex;
   align-items: center;
   color: ${props => getTextColor(props.size, props.user, props.theme)};

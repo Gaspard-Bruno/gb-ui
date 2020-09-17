@@ -13,7 +13,7 @@ const admin = {
     fullName: "Elena"
   };
 
-const FilterBar = ({ availableFilters }) => {
+const FilterBar = ({ availableFilters, showLayout }) => {
   const [activeFilters, setActiveFilters] = useState([]);
 
   const handleQuery = (newQuery) => {
@@ -55,7 +55,9 @@ const FilterBar = ({ availableFilters }) => {
                   options={availableFilters} 
                   onChange={handleToggleFilters} />
             </Selects>
-            <IconSwitch switchType="layout"/>
+            {showLayout && 
+              <IconSwitch switchType="layout"/>
+            }
         </Header>
 
         <Filters>
@@ -88,6 +90,7 @@ FilterBar.propTypes = {
             "region",
         ])
     ),
+    showLayout: PropTypes.bool
     // leftChecked: PropTypes.bool,
     // onChange: PropTypes.func,
     // leftIcon: PropTypes.string,

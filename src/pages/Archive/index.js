@@ -1,13 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import { useTranslate } from "polyglot-react-redux-sdk";
+import { useTranslate } from 'polyglot-react-redux-sdk';
 
-import useAppointments from "Hooks/useAppointments";
+import useAppointments from 'Hooks/useAppointments';
 
-import { BackofficeContainer } from "Components/Layout";
-import TopBar from "Components/TopBar";
+import { BackofficeContainer } from 'Components/Layout';
+import TopBar from 'Components/TopBar';
 
-import ArchiveTable from "Components/ArchiveTable";
+import ArchiveTable from 'Components/ArchiveTable';
+import FilterBar from 'Components/FilterBar';
+import Pagination from 'Components/Pagination';
 
 const leads = [
   {
@@ -62,6 +64,25 @@ const leads = [
   }
 ];
 
+const filters = [
+  {
+    label: "responsible",
+    value: "todo"
+  }, 
+  {
+    label: "date",
+    value: "todo"
+  },
+  {
+    label: "service", 
+    value: "todo"
+  },
+  {
+    label: "status", 
+    value: "todo"
+  }
+];
+
 const admin = {
   fullName: "Elena"
 };
@@ -75,8 +96,10 @@ const Archive = () => {
     <>
         <TopBar location={t('services')} title={t('archive')} user={admin} />
         <BackofficeContainer>
+            <FilterBar availableFilters={filters}/>
 
             <ArchiveTable items={appointments}/>
+            <Pagination totalPages={"79"} currentPage={"21"}/>
         </BackofficeContainer>
     </>
   );
