@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { ThemeProvider } from "styled-components";
 import { usePolyglot } from "polyglot-react-redux-sdk";
 
@@ -14,10 +14,13 @@ function App() {
     defaultPhrases: content,
     useDefaultPhrases: true
   });
+
   return (
-    <ThemeProvider theme={theme}>
-      {(phrasesLoaded && <AppRouter />) || ""}
-    </ThemeProvider>
+
+      <ThemeProvider theme={theme}>
+        {(phrasesLoaded && <AppRouter />) || ""}
+      </ThemeProvider>
+
   );
 }
 

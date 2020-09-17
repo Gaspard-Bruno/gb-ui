@@ -6,26 +6,41 @@ import { Heading } from "Components/Text";
 import Logo from "Components/Logo";
 import Sidebar from "Components/Sidebar";
 
+import Archive from 'pages/Archive'
+import Requests from 'pages/Requests'
+import Specialists from 'pages/Specialists'
+import Candidates from 'pages/Candidates'
+
+const routes = [
+  { path: "/dashboard/archive", component: Archive },
+  { path: "/dashboard/requests", component: Requests },
+  { path: "/dashboard/specialists", component: Specialists },
+  { path: "/dashboard/candidates", component: Candidates },
+];
+
 const Dashboard = () => {
   return (
     <Page>
-      <Sidebar />
-      <BackofficePage bg="white">
-        <BrowserRouter>
-          <Switch>
-            <Route
-              path={"/dashboard"}
-              exact
-              render={() => <Logo color="home" />}
-            />
-            <Route
-              path={"/dashboard/requests"}
-              exact
-              render={() => <Heading>Pedidos</Heading>}
-            />
-          </Switch>
-        </BrowserRouter>
-      </BackofficePage>
+      <BrowserRouter>
+        <Sidebar />
+        <BackofficePage bg="white">
+            <Switch>
+              <Route
+                path={"/dashboard"}
+                exact
+                render={() => <Logo color="home" />}
+              />
+              {routes.map((route, index) => {
+                return (
+                  <Route 
+                    path={route.path}
+                    component={route.component}
+                  />
+                )
+              })}
+            </Switch>
+        </BackofficePage>
+      </BrowserRouter>
     </Page>
   );
 };
