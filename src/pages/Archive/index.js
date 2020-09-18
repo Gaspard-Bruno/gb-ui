@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useSelector } from "react-redux";
 
 import { useTranslate } from 'polyglot-react-redux-sdk';
 
@@ -10,59 +11,7 @@ import TopBar from 'Components/TopBar';
 import ArchiveTable from 'Components/ArchiveTable';
 import FilterBar from 'Components/FilterBar';
 import Pagination from 'Components/Pagination';
-
-const leads = [
-  {
-    status: "contact",
-    serviceName: "Acompanhamento de Crianças",
-    client: {
-      fullName: "Inês Saraiva"
-    },
-    provider: {
-      fullName: "Joana Madeira"
-    },
-    recurrent: true,
-    deliveryDate: "20 Aug, 2020, 9:00",
-    admin: {
-      fullName: "Elena"
-    },
-    totalHours: 2,
-    totalPrice: 60.0
-  },
-  {
-    status: "awaiting_payment",
-    serviceName: "Acompanhamento de Crianças",
-    client: {
-      fullName: "Inês Saraiva"
-    },
-    provider: {
-      fullName: "Joana Madeira"
-    },
-    recurrent: false,
-    admin: {
-      fullName: "Elena"
-    },
-    totalHours: 3,
-    totalPrice: 30.0
-  },
-  {
-    status: "contact",
-    serviceName: "Acompanhamento de Crianças",
-    client: {
-      fullName: "Inês Saraiva"
-    },
-    provider: {
-      fullName: "Joana Madeira"
-    },
-    recurrent: false,
-    deliveryDate: "20 Aug, 2020, 9:00",
-    admin: {
-      fullName: "Elena"
-    },
-    totalHours: 10,
-    totalPrice: 120.0
-  }
-];
+import { getAppointmentsTotalPages } from 'Redux/appointments/selectors';
 
 const filters = [
   {
@@ -90,7 +39,14 @@ const admin = {
 const Archive = () => {
   const t = useTranslate("archive");
 
-  const { appointments } = useAppointments();
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = useSelector(state => getAppointmentsTotalPages(state))
+
+  const { appointments } = useAppointments(currentPage);
+
+  const handleNavigation = useCallback((pageNumber) =>{
+    setCurrentPage(pageNumber);
+  }, [])
 
   return (
     <>
@@ -99,7 +55,11 @@ const Archive = () => {
             <FilterBar availableFilters={filters}/>
 
             <ArchiveTable items={appointments}/>
-            <Pagination totalPages={"79"} currentPage={"21"}/>
+            <Pagination 
+              totalPages={totalPages} 
+              currentPage={currentPage} 
+              action={handleNavigation}
+            />
         </BackofficeContainer>
     </>
   );

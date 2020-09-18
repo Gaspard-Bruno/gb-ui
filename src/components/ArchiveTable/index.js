@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useTranslate } from 'polyglot-react-redux-sdk';
 
-import useFetchProvider from 'hooks/fetchProvider.js';
-import useFetchClient from 'hooks/fetchClient.js';
-import useFetchService from 'hooks/fetchService.js';
+import { selectors as clientsSelectors} from 'redux/clients';
+import { selectors as servicesSelectors} from 'redux/services';
+import { selectors as providersSelectors} from 'redux/providers';
 
 import { Col } from 'Components/Layout';
 import Avatar from 'Components/Avatar';
@@ -14,26 +15,47 @@ import StyledArchiveTable, { Header, StyledTableRow } from './style';
 const TableRow = ({ item }) => {
     const t = useTranslate("archive");
 
-    // const provider = useFetchProvider(item.relationships.provider.data.id)
-    const client = useFetchClient(item.relationships.client.data.id)
-    const service = useFetchService(item.relationships.service.data.id)
+    const [clientId, setClientId] = useState(item.relationships.client.data.id)
+    const [serviceId, setServiceId] = useState(item.relationships.service.data.id)
+    const [providerId, setProviderId] = useState(() => {
+        if (item.relationships.provider.data) { return item.relationships.provider.data.id }
+        else { return 0 }
+    })
+
+    const dispatch = useDispatch()
+    const makeClient = useMemo(clientsSelectors.makeGetClient, [])
+    const client = useSelector((state) => makeClient(state, clientId))
+
+    const makeService = useMemo(servicesSelectors.makeGetService, [])
+    const service = useSelector((state) => makeService(state, serviceId))
+
+    const makeProvider = useMemo(providersSelectors.makeGetProvider, [])
+    const provider = useSelector((state) => makeProvider(state, providerId))
+
+    useEffect(() => {
+        setClientId(item.relationships.client.data.id)
+        setServiceId(item.relationships.service.data.id)
+        if (item.relationships.provider.data) { setProviderId(item.relationships.provider.data.id) };
+    }, [item])
 
     return (
         <StyledTableRow>
                 <Col size={2}>
-                    {service.service.attributes && 
-                        <span className="service">{service.service.attributes.name}</span>
+                    {service.attributes && 
+                        <span className="service">{service.attributes.name}</span>
                     }
                 </Col>
 
                 <Col size={2}>
-                    {client.fetchedClient.attributes && 
-                        <Avatar size="small" hasText={true} user={client.fetchedClient.attributes}/>
+                    {client.attributes && 
+                        <Avatar size="small" hasText={true} user={client.attributes}/>
                     }
                 </Col>
 
                 <Col size={2}>
-                    {/* <Avatar size="small" hasText={true} user={provider.attributes}/> */}
+                    {provider &&
+                        <Avatar size="small" hasText={true} user={provider.attributes}/>
+                    }
                 </Col>
 
                 <Col size={2}>

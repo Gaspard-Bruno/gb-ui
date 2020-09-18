@@ -11,7 +11,12 @@ const Avatar = ({ action, size, hasCarat, hasText, user }) => {
       {size && user && user.avatar ? (
         <AvatarImage avatar={`${user.avatar}`} size={size}></AvatarImage>
       ) : (
-        <AvatarInitials size={size}>{user.fullName ? user.fullName.slice(0, 2) : ""}</AvatarInitials>
+        <AvatarInitials 
+          size={size}
+          avatarDefault={user.avatarDefault}
+        >
+          {user.fullName ? user.fullName.slice(0, 2) : ""}
+        </AvatarInitials>
       )}
       {hasText && <p>{user.fullName}</p>}
       {hasCarat && <Icon name="chevron-down" />}

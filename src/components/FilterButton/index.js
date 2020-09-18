@@ -54,11 +54,8 @@ const FilterButton = ({ filter, filterLabel, filterValue, onChange, onClose }) =
     const [showDropdown, setShowDropdown] = useState(false);
 
     const options = getFilterOptions(filter);
-    console.log("dem options", options)
-
     
   const handleOpen = e => {
-    console.log("loggginnng shit", e)
     setShowDropdown(!showDropdown)
   }
 

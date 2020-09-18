@@ -4,7 +4,10 @@ const initialState = {
   loading: false,
   loaded: false,
   error: false,
-  appointments: []
+  appointments: [],
+  appointmentsTotalCount: null,
+  appointmentsTotalPages: null,
+  appointmentsCurrentPage: null,
 };
 
 export default (state = initialState, action) => {
@@ -25,6 +28,9 @@ export default (state = initialState, action) => {
       return {
         ...state,
         appointments: action.payload.data.map((d) => d.id),
+        appointmentsTotalCount: parseInt(action.payload.meta['Total-Count']),
+        appointmentsTotalPages: parseInt(action.payload.meta['Total-Pages']),
+        appointmentsCurrentPage: parseInt(action.payload.meta['Current-Page']),
         loading: false,
         loaded: true
       };

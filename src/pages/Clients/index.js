@@ -36,10 +36,8 @@ const admin = {
 
 const Clients = () => {
   const t = useTranslate("clients");
-  console.log("clients and stuff")
 
   const { clients } = useClients();
-  console.log(clients)
 
   return (
     <>

@@ -16,12 +16,13 @@ export const ACTION_TYPES = {
     UPDATE_APPOINTMENT_FAIL: `${REDUCER}/UPDATE_APPOINTMENT_FAIL`,
 };
 
-const getAppointmentsListing = dispatch => {
+const getAppointmentsListing = (dispatch, pageNumber) => {
   dispatch({
     type: ACTION_TYPES.GET_APPOINTMENTS
   });
+
   appointmentsClient
-    .getAppointments()
+    .getAppointments(pageNumber)
     .then(res => {
       if (res && res.data) {
         dispatch({

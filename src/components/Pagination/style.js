@@ -19,7 +19,6 @@ export const Right = styled.div`
 `;
 
 const getActiveStyles = (theme, isActive, type) => {
-    console.log("tyyyyype", type)
     if (isActive) {
         return `
             border: ${type === 'ellipsis' ? 'none' : '1px solid ' + theme.colors.darkBlue};
@@ -49,6 +48,10 @@ export const StyledTracker = styled.div`
     border-radius: 2px;
     font-size: 12px;
     ${props => getActiveStyles(props.theme, props.isActive, props.type)};
+
+    &:hover {
+        cursor: pointer;
+    }
 
     h3 {
         margin: 0px;

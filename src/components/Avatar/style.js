@@ -22,7 +22,9 @@ const getStyleFromAvatarSize = (size, theme) => {
   }
 };
 
-const getRandomColor = theme => {
+const getRandomColor = (avatarDefault, theme) => {
+  if (avatarDefault) { return avatarDefault; }
+
   const keys = Object.keys(theme.colors.muted);
   return theme.colors.muted[keys[(keys.length * Math.random()) << 0]];
 };
@@ -58,7 +60,7 @@ export const AvatarImage = styled.div`
 
 export const AvatarInitials = styled.div`
   border-radius: 50%;
-  background-color: ${props => getRandomColor(props.theme)};
+  background-color: ${props => getRandomColor(props.avatarDefault, props.theme)};
   display: flex;
   justify-content: center;
   align-items: center;
