@@ -30,3 +30,7 @@ export const getServicesEntities = createSelector(
     return state?.services || [];
   }
 );
+
+export const getCandidateLeadsEntities = createSelector(selectEntitiesState, state => {
+  return state.candidateLeads || [];
+});

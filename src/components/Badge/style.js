@@ -13,7 +13,9 @@ const getColorFromStatus = (theme, status) =>
     awaiting_payment: theme.brand.yellow,
     awaiting_visit: theme.brand.yellow,
     canceled: theme.feedback.error.default,
-    rejected: theme.feedback.error.default
+    rejected: theme.feedback.error.default,
+    new_candidate: theme.brand.blue,
+    accepted: theme.brand.green,
   }[status]);
 
 const Badge = styled.span`

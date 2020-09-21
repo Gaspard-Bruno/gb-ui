@@ -49,6 +49,17 @@ const BackofficeContainer = styled.div`
   margin: 0px 32px;
 `;
 
+const BackofficeKanbanContainer = styled.div`
+  display: flex;
+  height: 70vh;  
+  overflow-x: scroll;
+  overflow-y: hidden;  
+
+  > * {
+    margin-right: 16px;
+  }
+`;
+
 const Row = styled.div`
   display: flex;
   flex-flow: row wrap;
@@ -90,4 +101,4 @@ const Col = styled.div`
   ${props => props.center && "margin: 0 auto;"}
 `;
 
-export { media, Page, Row, Col, BackofficePage, BackofficeContainer };
+export { media, Page, Row, Col, BackofficePage, BackofficeContainer, BackofficeKanbanContainer };

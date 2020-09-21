@@ -1,29 +1,51 @@
 import styled from "styled-components";
 
-const getSelectedBackground = props => {
-  switch (props.bg) {
-    case "alt":
-      return props.theme.colors.lightBeige;
-    case "secondary":
-      return props.theme.colors.brand.yellow;
-    case "terceary":
-      return props.theme.colors.brand.lightBlue;
-    case "transparent":
-      return "transparent";
-    default:
-      return props.theme.colors.white;
-  }
-};
-
 const KanbanCard = styled.div`
-  border-radius: 16px;
-  padding: ${props => props.theme.margin * (props.padding || 1)}px;
-  box-shadow: ${props => (props.shadow ? props.theme.boxShadow : 0)};
-  background-color: ${props => getSelectedBackground(props)};
-  color: ${props => props.theme.colors.darkBlue};
-  align-items: ${props => (props.align ? `${props.align}` : "")};
-  justify-content: ${props => (props.justify ? `${props.justify}` : "none")};
-  ${props => props?.customStyle(props) ?? ""}
+  width: 260px;
+  border: 1px solid ${props => props.theme.colors.mediumBeige};
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 16px 8px 8px;
+  background-color: white;
 `;
 
-export default Card;
+export const BadgeContainer = styled.div`
+  padding: 0px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: flex-start;
+
+  p {
+    color: white !important;
+  }  
+`;
+
+export const IconContainer = styled.div`
+  min-height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background-color: ${props => props.theme.colors.lightBeige};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+
+  svg {
+    width: 14px;
+  }
+`;
+
+export const AdminContainer = styled.div`
+  margin-top: 16px;
+  padding-top: 8px;
+  border-top: 1px solid ${props => props.theme.colors.mediumBeige};
+`;
+
+export const Details = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 14px;
+`;
+
+
+export default KanbanCard;

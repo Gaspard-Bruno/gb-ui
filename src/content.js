@@ -52,7 +52,11 @@ export default {
     awaiting_visit: "Aguarda Visita",
     awaiting_conclusion: "Aguarda Conclusão",
     canceled: "Cancelado",
-    rejected: "Rejeitado"
+    rejected: "Rejeitado",
+    new_candidate: "Candidato",
+    awaiting_details: "Aguarda Detalhes",
+    reopened: "Reaberto",
+    accepted: "Aceite"
   },
   requests: {
     services: "Serviços",
@@ -76,8 +80,16 @@ export default {
     of: "de"
   },
   candidates: {
-    specialists: "Especialistas 55+",
-    newCandidates: "Novos Candidatos"
+    specialists: 'Especialistas 55+',
+    newCandidates: 'Novos Candidatos',
+    newRequests: 'Novos Pedidos',
+    inAnalysis: 'Em Análise',
+    pending: 'A Aguardar',
+    reopened: 'Reaberto',
+    accepted: 'Aceite',
+    rejected: 'Rejeitado',
+    closed: 'Fechado',
+    cancelled: 'Cancelado'
   },
   specialists: {
     specialists: "Especialistas 55+",
