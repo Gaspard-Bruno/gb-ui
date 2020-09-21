@@ -7,7 +7,8 @@ import TextInput from "Components/TextInput";
 import Logo from "Components/Logo";
 import Button from "Components/Button";
 import Card from "Components/Card";
-// import useAuth from "Hooks/useAuth";
+
+import useAuth from "Hooks/useAuth";
 
 export const customCardStyle = props => `
   min-width: 311px;
@@ -25,7 +26,9 @@ const Login = () => {
   const t = useTranslate("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const { signInAndRedirectToDashboard, error } = useAuth();
+
+  const { signInAndRedirectToDashboard, error } = useAuth();
+
   return (
     <Page bg="orange">
       <Row justify="center">
@@ -43,16 +46,14 @@ const Login = () => {
               type="password"
               hasIcon
             />
-            {/* {error && <ErrorText>{error}</ErrorText>} */}
+            { error && <ErrorText>{error}</ErrorText> }
             <Row>
               <Col size={4} center>
                 <Link to="/">{t("forgotPw")}</Link>
                 <Button
                   type="submit"
                   text={t("login")}
-                  action={() => {
-                    // signInAndRedirectToDashboard(email, password);
-                  }}
+                  action={() => signInAndRedirectToDashboard(email, password)}
                 />
               </Col>
             </Row>
