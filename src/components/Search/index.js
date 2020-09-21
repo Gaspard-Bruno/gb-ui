@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useTranslate } from "polyglot-react-redux-sdk";
 
 import { Body } from "Components/Text";
-import Icon from 'Components/Icon';
+import Icon from "Components/Icon";
 import { Container, Input, Button, SearchIconContainer } from "./style";
 
 const SearchInput = ({
@@ -16,18 +16,15 @@ const SearchInput = ({
 }) => {
   const t = useTranslate("buttons");
 
-  const [val, setVal] = useState('')
-  console.log(val)
+  const [val, setVal] = useState("");
 
-  const handleChange = (e) => {
-    console.log('val', e.target.value)
-    setVal(e.target.value)
-    onChange(e.target.value)
-  }
+  const handleChange = e => {
+    setVal(e.target.value);
+    onChange(e.target.value);
+  };
 
   // const filters = []
   // filters.push(newFilter)
-
 
   return (
     <Container>
@@ -39,7 +36,7 @@ const SearchInput = ({
       />
       {style === "service" && (
         <SearchIconContainer>
-          <Icon name="Search"/>
+          <Icon name="Search" />
         </SearchIconContainer>
       )}
 

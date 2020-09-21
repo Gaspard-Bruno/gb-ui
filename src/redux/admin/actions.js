@@ -2,9 +2,9 @@ import adminClient from "Services/adminService";
 
 const REDUCER = "admins";
 export const ACTION_TYPES = {
-    GET_ADMIN: `${REDUCER}/GET_ADMIN`,
-    GET_ADMIN_SUCCESS: `${REDUCER}/GET_ADMIN_SUCCESS`,
-    GET_ADMIN_FAIL: `${REDUCER}/GET_ADMIN_FAIL`
+  GET_ADMIN: `${REDUCER}/GET_ADMIN`,
+  GET_ADMIN_SUCCESS: `${REDUCER}/GET_ADMIN_SUCCESS`,
+  GET_ADMIN_FAIL: `${REDUCER}/GET_ADMIN_FAIL`
 };
 
 const getAdmin = (id, dispatch) => {
@@ -19,7 +19,6 @@ const getAdmin = (id, dispatch) => {
           type: ACTION_TYPES.GET_ADMIN_SUCCESS,
           payload: res.data
         });
-        console.log("great success in action");
       }
     })
     .catch(e => {
@@ -29,6 +28,5 @@ const getAdmin = (id, dispatch) => {
       });
     });
 };
-
 
 export { getAdmin };

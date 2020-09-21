@@ -23,7 +23,6 @@ const loginUser = (dispatch, { email, password, callback }) => {
           type: ACTION_TYPES.LOGIN_USER_SUCCESS,
           payload: res.data
         });
-        console.log("great success in action");
         callback();
       }
     })

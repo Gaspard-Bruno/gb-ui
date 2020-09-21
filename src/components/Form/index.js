@@ -38,7 +38,6 @@ const Form = ({
 };
 
 const renderFields = field => {
-  console.log("field", field);
   switch (field?.type) {
     case "text":
     case "password":
@@ -51,7 +50,7 @@ const renderFields = field => {
 };
 
 Form.propTypes = {
-  formFields: PropTypes.arrayOf(PropTypes.object),
+  formFields: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default Form;

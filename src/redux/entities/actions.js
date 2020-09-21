@@ -1,11 +1,10 @@
-const REDUCER = "entities"
+const REDUCER = "entities";
 export const ACTION_TYPES = {
-    RESET: `${REDUCER}/RESET`
-}
-
+  RESET: `${REDUCER}/RESET`
+};
 
 export const reset = dispatch => {
-    dispatch({
-        type: ACTION_TYPES.RESET
-    });
-}
+  dispatch({
+    type: ACTION_TYPES.RESET
+  });
+};
