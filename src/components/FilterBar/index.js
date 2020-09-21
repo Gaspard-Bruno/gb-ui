@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 
-import Icon from 'Components/Icon';
 import Search from 'Components/Search';
 import Select from 'Components/Select';
 import FilterButton from 'Components/FilterButton';
 import IconSwitch from 'Components/IconSwitch';
 
 import StyledFilterBar, { Header, Filters, Selects } from './style';
-
-const admin = {
-    fullName: "Elena"
-  };
 
 const FilterBar = ({ availableFilters, showLayout }) => {
   const [activeFilters, setActiveFilters] = useState([]);
@@ -23,7 +18,6 @@ const FilterBar = ({ availableFilters, showLayout }) => {
   }
 
   const handleToggleFilters = (newFilter) => {
-    console.log("new filterrrrrr", newFilter)
     let filters = activeFilters;
 
     if (filters.indexOf(newFilter) === -1) {
@@ -35,9 +29,6 @@ const FilterBar = ({ availableFilters, showLayout }) => {
   }
  
   const handleFilterValues = (e, filter) => {
-    console.log("handlin shit")
-    console.log(e)
-    console.log(filter)
 
     let newFilters = activeFilters.filter(filter => filter.label !== filter.label)
     let newFilter = {label: filter.label, value: e.label}

@@ -62,9 +62,9 @@ const Pagination = ({ totalPages, currentPage, action }) => {
   const getBoxes = (currentPage, totalPages) => {
     if (totalPages >= 4) {
         if (
-            currentPage == 1 ||
-            currentPage == totalPages ||
-            currentPage == (totalPages-1)
+            currentPage === 1 ||
+            currentPage === totalPages ||
+            currentPage === (totalPages-1)
         ) {
             return [1, 2, (totalPages-1), totalPages];
         } else {

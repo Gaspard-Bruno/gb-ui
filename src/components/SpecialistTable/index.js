@@ -2,22 +2,12 @@ import React from 'react';
 
 import { useTranslate } from 'polyglot-react-redux-sdk';
 
-import useFetchProvider from 'hooks/fetchProvider.js';
-import useFetchClient from 'hooks/fetchClient.js';
-import useFetchService from 'hooks/fetchService.js';
-
 import { Col } from 'Components/Layout';
 import Avatar from 'Components/Avatar';
-import Badge from 'Components/Badge';
 
 import StyledSpecialistTable, { Header, StyledTableRow } from './style';
 
 const TableRow = ({ item }) => {
-    const t = useTranslate("specialists");
-
-    console.log("*****")
-    console.log(item)
-
     const formatServiceCell = (serviceNames) => {
         if (serviceNames.length >= 2) {
             return `${serviceNames[0]}, ${serviceNames[1]}...`;

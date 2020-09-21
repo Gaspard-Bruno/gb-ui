@@ -1,5 +1,4 @@
-import React, { useEffect, useCallback } from "react";
-import { useDispatch, useSelector } from 'react-redux'
+import React from "react";
 
 import { useTranslate } from 'polyglot-react-redux-sdk';
 
@@ -10,10 +9,7 @@ import TopBar from 'Components/TopBar';
 import RequestCard from 'Components/RequestCard';
 
 import FilterBar from 'Components/FilterBar';
-import FilterButton from 'Components/FilterButton';
-import IconSwitch from 'Components/IconSwitch';
 
-// import { getServices } from "Redux";
 
 const leads = [
   {
@@ -74,7 +70,6 @@ const admin = {
 
 
 const Requests = () => {
-  const dispatch = useDispatch()
 
   const filters = [
     {

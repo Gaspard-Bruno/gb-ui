@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { useTranslate } from 'polyglot-react-redux-sdk';
 
 import Icon from 'Components/Icon';
-import { SmallBody, Link } from 'Components/Text';
-import Search from 'Components/Search';
 import Select from 'Components/Select';
 
 
@@ -13,11 +11,11 @@ import StyledFilterButton, { CloseContainer, FilterTitle, Dropdown } from './sty
 
 const getIconName = (filterLabel) => {
     switch (filterLabel.label) {
-        case "responsible": return "User"; break;
-        case "date": return "calendar"; break;
-        case "service": return "tool-1"; break;
-        case "status": return "activity"; break;
-        case "region": return "Language"; break;
+        case "responsible": return "User";
+        case "date": return "calendar";
+        case "service": return "tool-1";
+        case "status": return "activity";
+        case "region": return "Language";
         default: return "User";
     }
 }
@@ -30,19 +28,14 @@ const getFilterOptions = (filter) => {
                 {label: "Admin2", value: "admin1"},
                 {label: "Admin3", value: "admin1"}
             ]; 
-            break;
         case "date": 
             return "calendar"; 
-            break;
         case "service": 
             return ["Service1", "Service2", "Service3", "Service4"]; 
-            break;
         case "status": 
             return ["Status1", "Status2"]; 
-            break;
         case "region": 
             return "Language"; 
-            break;
         default: 
             return "User";        
     }

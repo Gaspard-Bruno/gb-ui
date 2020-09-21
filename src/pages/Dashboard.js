@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import { BackofficePage, Page } from "Components/Layout";
-import { Heading } from "Components/Text";
 import Logo from "Components/Logo";
 import Sidebar from "Components/Sidebar";
 

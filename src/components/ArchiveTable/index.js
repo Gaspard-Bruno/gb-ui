@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { useTranslate } from 'polyglot-react-redux-sdk';
 
@@ -22,7 +22,6 @@ const TableRow = ({ item }) => {
         else { return 0 }
     })
 
-    const dispatch = useDispatch()
     const makeClient = useMemo(clientsSelectors.makeGetClient, [])
     const client = useSelector((state) => makeClient(state, clientId))
 

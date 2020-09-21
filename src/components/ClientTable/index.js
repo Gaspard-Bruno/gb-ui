@@ -2,16 +2,12 @@ import React from 'react';
 
 import { useTranslate } from 'polyglot-react-redux-sdk';
 
-import useFetchClient from 'hooks/fetchClient.js';
-
 import { Col } from 'Components/Layout';
 import Avatar from 'Components/Avatar';
 
 import StyledClientTable, { Header, StyledTableRow } from './style';
 
 const TableRow = ({ item }) => {
-    const t = useTranslate("clients");
-
     return (
         <StyledTableRow>
                 <Col size={9}>

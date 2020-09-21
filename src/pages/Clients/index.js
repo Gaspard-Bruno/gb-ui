@@ -8,7 +8,6 @@ import { BackofficeContainer } from 'Components/Layout';
 
 import TopBar from 'Components/TopBar';
 import FilterBar from 'Components/FilterBar';
-import Table from 'Components/Table';
 import ClientTable from 'Components/ClientTable';
 
 const filters = [
@@ -44,7 +43,6 @@ const Clients = () => {
         <TopBar location={t('clients')} title={t('clients')} user={admin} />
         <BackofficeContainer>
             <FilterBar availableFilters={filters}/>
-            {/* <Table tableType="clients" items={clients}/> */}
             <ClientTable items={clients}/>
 
         </BackofficeContainer>

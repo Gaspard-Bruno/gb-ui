@@ -1,8 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { useTranslate } from 'polyglot-react-redux-sdk';
-
 import { Link } from 'Components/Text';
 
 import Icon from 'Components/Icon';
