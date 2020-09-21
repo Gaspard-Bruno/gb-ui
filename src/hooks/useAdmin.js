@@ -36,6 +36,7 @@ const useFetchAdmin = adminId => {
 
   return {
     admin,
+    admins,
     error,
     loaded,
     loading

@@ -13,6 +13,8 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case ACTION_TYPES.GET_PROVIDERS:
+      console.log("action triggered", action);
+      debugger;
       return {
         ...state,
         loading: true
@@ -27,35 +29,35 @@ export default (state = initialState, action) => {
     case ACTION_TYPES.GET_PROVIDERS_SUCCESS:
       return {
         ...state,
-        providers: action.payload.data.map((d) => d.id),
+        providers: action.payload.data.map(d => d.id),
         loading: false,
         loaded: true
       };
 
     case ACTION_TYPES.GET_PROVIDER:
-        return {
-            ...state,
-            providerLoading: true
-        }
+      return {
+        ...state,
+        providerLoading: true
+      };
     case ACTION_TYPES.GET_PROVIDER_SUCCESS:
-        // console.log("ACTION ~~~~~~~~~~~~", action)
-        // console.log("STATE ~~~~~~~~~~~~~", state)
-        // let fetchedProvider = state.providers.find(providerId => providerId === action.payload.data.id)
-        // console.log("testetststest", state)
+      // console.log("ACTION ~~~~~~~~~~~~", action)
+      // console.log("STATE ~~~~~~~~~~~~~", state)
+      // let fetchedProvider = state.providers.find(providerId => providerId === action.payload.data.id)
+      // console.log("testetststest", state)
 
-        return {
-          ...state,
-          providerLoading: false,
-          providerError: false,
-          providerLoaded: true
-        }
+      return {
+        ...state,
+        providerLoading: false,
+        providerError: false,
+        providerLoaded: true
+      };
     case ACTION_TYPES.GET_PROVIDER_FAIL:
-        return {
-            ...state,
-            providerError: action.error,
-            providerLoading: false,
-            providerLoaded: true
-        }
+      return {
+        ...state,
+        providerError: action.error,
+        providerLoading: false,
+        providerLoaded: true
+      };
 
     default:
       return state;

@@ -11,12 +11,8 @@ const useProviders = providerId => {
   const providers = useSelector(state => getProviders(state), shallowEqual);
 
   const error = useSelector(state => getError(state));
-  const loading = useSelector(state => getLoading(state), shallowEqual);
-  const loaded = useSelector(state => getLoaded(state), shallowEqual);
-
-  const dispatchGetProvidersListing = useCallback(() => {
-    getProvidersListing(dispatch);
-  }, [dispatch, getProvidersListing]);
+  const loading = useSelector(state => getLoading(state));
+  const loaded = useSelector(state => getLoaded(state));
 
   const provider = useMemo(() => providers?.[providerId]?.attributes, [
     providers,
@@ -24,10 +20,12 @@ const useProviders = providerId => {
   ]);
 
   useEffect(() => {
-    if (!loaded) {
-      dispatchGetProvidersListing();
+    if (!loaded && !loading) {
+      console.log("triggering GET", loading, loaded);
+      getProvidersListing(dispatch);
     }
-  }, [dispatchGetProvidersListing, loaded]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return {
     providers,

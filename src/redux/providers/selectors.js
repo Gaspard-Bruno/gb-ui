@@ -9,10 +9,10 @@ const getProviders = createSelector(
   providers => providers
 );
 const getLoading = createSelector(selectProvidersState, state => {
-  return state.loading || false;
+  return state.loading || state.providerLoading || false;
 });
 const getLoaded = createSelector(selectProvidersState, state => {
-  return state.loaded || false;
+  return state.loaded || state.providerLoaded || false;
 });
 const getError = createSelector(selectProvidersState, state => {
   return state.error || null;

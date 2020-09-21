@@ -3,6 +3,10 @@ import React from "react";
 import { useTranslate } from "polyglot-react-redux-sdk";
 
 import useAppointments from "Hooks/useAppointments";
+import useProviders from "Hooks/useProviders.js";
+import useClients from "Hooks/useClients.js";
+import useServices from "Hooks/useServices";
+import useAdmin from "Hooks/useAdmin.js";
 
 import { BackofficeContainer } from "Components/Layout";
 import TopBar from "Components/TopBar";
@@ -91,6 +95,10 @@ const Requests = () => {
 
   const { appointments } = useAppointments();
 
+  const { providers } = useProviders();
+  const { clients } = useClients();
+  const { services } = useServices();
+  const { admins } = useAdmin();
   return (
     <>
       <TopBar location={t("services")} title={t("requests")} user={admin} />
@@ -99,6 +107,7 @@ const Requests = () => {
 
         {appointments &&
           appointments.map((appointment, index) => {
+            console.log("appointments", appointment);
             let listPosition;
             switch (index) {
               case 0:
@@ -120,15 +129,25 @@ const Requests = () => {
             const adminId = appointment.relationships.admin.data
               ? appointment.relationships.admin.data.id
               : null;
-
+            const clientId = appointment.relationships.client.data
+              ? appointment.relationships.client.data.id
+              : null;
+            const serviceId = appointment.relationships.service.data
+              ? appointment.relationships.service.data.id
+              : null;
+            const provider = providers?.[providerId];
+            const client = clients?.[clientId];
+            const admin = admins?.[adminId];
+            const service = services?.[serviceId];
             return (
               <RequestCard
+                key={"request" + index}
                 lead={leads[0]}
                 appointment={appointment}
-                providerId={providerId}
-                clientId={appointment.relationships.client.data?.id}
-                adminId={adminId}
-                serviceId={appointment.relationships.service.data?.id}
+                provider={provider}
+                client={client}
+                admin={admin}
+                service={service}
                 listPosition={listPosition}
               />
             );

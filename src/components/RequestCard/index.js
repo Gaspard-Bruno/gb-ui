@@ -25,18 +25,13 @@ import StyledRequestCard, {
 const RequestCard = ({
   lead,
   appointment,
-  providerId,
-  clientId,
-  adminId,
-  serviceId,
+  provider,
+  client,
+  admin,
+  service,
   listPosition
 }) => {
   const t = useTranslate("requests");
-
-  const { provider } = useProviders(providerId);
-  const { client } = useClients(clientId);
-  const { service } = useServices(serviceId);
-  const { admin } = useAdmin(adminId);
 
   return (
     <StyledRequestCard listPosition={listPosition}>
