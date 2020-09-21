@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-const StyledSpecialistTable = styled.div`
+const StyledClientTable = styled.div`
     font-size: 14px;
     line-height: 16px;
     color: ${props => props.theme.colors.darkBlue};
-    text-transform: capitalize;
+
 `;
 
 export const Header = styled.div`
@@ -20,6 +20,7 @@ export const StyledTableRow = styled.div`
     display: flex;
     align-items: center;
     font-weight: normal;
+    height: 80px;
     border-bottom: 1px solid ${props => props.theme.colors.mediumBeige};
 
     .service {
@@ -31,4 +32,4 @@ export const StyledTableRow = styled.div`
 `;
 
 
-export default StyledSpecialistTable;
+export default StyledClientTable;

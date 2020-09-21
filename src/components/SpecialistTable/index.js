@@ -2,29 +2,19 @@ import React from 'react';
 
 import { useTranslate } from 'polyglot-react-redux-sdk';
 
-import useFetchProvider from 'hooks/fetchProvider.js';
-import useFetchClient from 'hooks/fetchClient.js';
-import useFetchService from 'hooks/fetchService.js';
-
 import { Col } from 'Components/Layout';
 import Avatar from 'Components/Avatar';
 
 import StyledSpecialistTable, { Header, StyledTableRow } from './style';
 
 const TableRow = ({ item }) => {
-    const t = useTranslate("specialists");
-
-    // const client = useFetchClient(item.relationships.client.data.id)
-    // const service = useFetchService(item.relationships.service.data.id)
-
-    console.log("*****")
-    console.log(item)
-    // let services;
-    // item.relationships.services.data.forEach(service => {
-    //     let service = useFetchService(service.id)
-    //     services.push(service)
-    // })
-    
+    const formatServiceCell = (serviceNames) => {
+        if (serviceNames.length >= 2) {
+            return `${serviceNames[0]}, ${serviceNames[1]}...`;
+        } else if (serviceNames.length > 0) {
+            return `${serviceNames[0]}`;
+        } 
+    }
 
     return (
         <StyledTableRow>
@@ -35,11 +25,13 @@ const TableRow = ({ item }) => {
                 </Col>
 
                 <Col size={3}>
-
+                    {item.attributes.serviceNames &&
+                        <span>{formatServiceCell(item.attributes.serviceNames)}</span>
+                    }
                 </Col>
 
                 <Col size={2}>
-                    {/* <Avatar size="small" hasText={true} user={provider.attributes}/> */}
+                    Lisboa
                 </Col>
 
                 <Col size={2}>
@@ -47,13 +39,7 @@ const TableRow = ({ item }) => {
                 </Col>
 
                 <Col size={2}>
-                    {/* {item.attributes.totalHours 
-                        ?
-                            <span>{item.attributes.totalHours} {t('hours')}</span>
-                        :
-                            <span></span>
-                    } */}
-                    
+                    <span>{item.attributes.status}</span>
                 </Col>
 
         </StyledTableRow>

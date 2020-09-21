@@ -3,7 +3,7 @@ import { shallowEqual, useSelector, useDispatch } from "react-redux";
 
 import { actions, selectors } from "Redux/appointments";
 
-const useAppointments = () => {
+const useAppointments = (pageNumber) => {
   const dispatch = useDispatch();
   const { getAppointmentsListing } = actions;
   const { getAppointments, getLoading, getError, getLoaded } = selectors;
@@ -17,15 +17,15 @@ const useAppointments = () => {
   const loading = useSelector(state => getLoading(state), shallowEqual);
   const loaded = useSelector(state => getLoaded(state), shallowEqual);
 
-  const dispatchGetAppointmentsListing = useCallback(() => {
-    getAppointmentsListing(dispatch);
+  const dispatchGetAppointmentsListing = useCallback((pageNumber) => {
+    getAppointmentsListing(dispatch, pageNumber);
   }, [dispatch, getAppointmentsListing]);
 
   useEffect(() => {
-    if (!loaded) {
-      dispatchGetAppointmentsListing();
+    if (!loaded || pageNumber) {
+      dispatchGetAppointmentsListing(pageNumber);
     }
-  }, [dispatchGetAppointmentsListing, loaded]);
+  }, [dispatchGetAppointmentsListing, loaded, pageNumber]);
 
   return {
     appointments,

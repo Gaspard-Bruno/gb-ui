@@ -59,7 +59,7 @@ const Sidebar = props => {
         <NavHeader>{t("clients")}</NavHeader>
         <SidebarLink
           routePath="/dashboard/clients"
-          to="/clients"
+          to="/dashboard/clients"
           text={t("clients")}
         />
       </NavSection>

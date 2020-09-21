@@ -1,64 +1,34 @@
-import React from "react";
+import React, { useState, useCallback } from 'react';
+import { useSelector } from "react-redux";
 
-import { useTranslate } from "polyglot-react-redux-sdk";
+import { useTranslate } from 'polyglot-react-redux-sdk';
 
-import useAppointments from "Hooks/useAppointments";
+import useAppointments from 'Hooks/useAppointments';
 
-import { BackofficeContainer } from "Components/Layout";
-import TopBar from "Components/TopBar";
+import { BackofficeContainer } from 'Components/Layout';
+import TopBar from 'Components/TopBar';
 
-import ArchiveTable from "Components/ArchiveTable";
+import ArchiveTable from 'Components/ArchiveTable';
+import FilterBar from 'Components/FilterBar';
+import Pagination from 'Components/Pagination';
+import { getAppointmentsTotalPages } from 'Redux/appointments/selectors';
 
-const leads = [
+const filters = [
   {
-    status: "contact",
-    serviceName: "Acompanhamento de Crianças",
-    client: {
-      fullName: "Inês Saraiva"
-    },
-    provider: {
-      fullName: "Joana Madeira"
-    },
-    recurrent: true,
-    deliveryDate: "20 Aug, 2020, 9:00",
-    admin: {
-      fullName: "Elena"
-    },
-    totalHours: 2,
-    totalPrice: 60.0
+    label: "responsible",
+    value: "todo"
+  }, 
+  {
+    label: "date",
+    value: "todo"
   },
   {
-    status: "awaiting_payment",
-    serviceName: "Acompanhamento de Crianças",
-    client: {
-      fullName: "Inês Saraiva"
-    },
-    provider: {
-      fullName: "Joana Madeira"
-    },
-    recurrent: false,
-    admin: {
-      fullName: "Elena"
-    },
-    totalHours: 3,
-    totalPrice: 30.0
+    label: "service", 
+    value: "todo"
   },
   {
-    status: "contact",
-    serviceName: "Acompanhamento de Crianças",
-    client: {
-      fullName: "Inês Saraiva"
-    },
-    provider: {
-      fullName: "Joana Madeira"
-    },
-    recurrent: false,
-    deliveryDate: "20 Aug, 2020, 9:00",
-    admin: {
-      fullName: "Elena"
-    },
-    totalHours: 10,
-    totalPrice: 120.0
+    label: "status", 
+    value: "todo"
   }
 ];
 
@@ -69,14 +39,27 @@ const admin = {
 const Archive = () => {
   const t = useTranslate("archive");
 
-  const { appointments } = useAppointments();
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = useSelector(state => getAppointmentsTotalPages(state))
+
+  const { appointments } = useAppointments(currentPage);
+
+  const handleNavigation = useCallback((pageNumber) =>{
+    setCurrentPage(pageNumber);
+  }, [])
 
   return (
     <>
         <TopBar location={t('services')} title={t('archive')} user={admin} />
         <BackofficeContainer>
+            <FilterBar availableFilters={filters}/>
 
             <ArchiveTable items={appointments}/>
+            <Pagination 
+              totalPages={totalPages} 
+              currentPage={currentPage} 
+              action={handleNavigation}
+            />
         </BackofficeContainer>
     </>
   );

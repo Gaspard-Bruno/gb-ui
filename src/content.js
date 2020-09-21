@@ -51,7 +51,7 @@ export default {
     awaiting_payment: "Aguarda Pagamento Serviço",
     awaiting_visit: "Aguarda Visita",
     canceled: "Cancelado",
-    rejected: "Rejeitado" 
+    rejected: "Rejeitado",
   },
   requests: {
     services: 'Serviços',
@@ -65,11 +65,13 @@ export default {
     services: 'Serviços',
     serviceType: 'Tipo de Serviço',
     client: 'Cliente',
-    specialist: 'Especialista 55+',
+    provider: 'Especialista 55+',
     date: 'Datas',
     totalHours: 'Total de Horas',
     totalPrice: 'Montante Total',
-    hours: 'Horas'
+    hours: 'Horas',
+    page: 'Página',
+    of: 'de'
   },
   candidates: {
     specialists: 'Especialistas 55+',
@@ -85,6 +87,11 @@ export default {
     rating: 'Avaliação',
     state: 'Estado',
     region: 'Região'
+  },
+  clients: {
+    clients: 'Clientes',
+    region: 'Região',
+    name: 'Nome'
   },
   filters: {
     responsible: 'Responsável',

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React from "react";
 import { ThemeProvider } from "styled-components";
 import { usePolyglot } from "polyglot-react-redux-sdk";
 

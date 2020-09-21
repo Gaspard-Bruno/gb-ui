@@ -18,5 +18,22 @@ const getLoaded = createSelector(selectAppointmentsState, state => {
 const getError = createSelector(selectAppointmentsState, state => {
   return state.error || null;
 });
+const getAppointmentsTotalCount = createSelector(selectAppointmentsState, state => {
+  return state.appointmentsTotalCount || null;
+});
+const getAppointmentsTotalPages = createSelector(selectAppointmentsState, state => {
+  return state.appointmentsTotalPages || null;
+});
+const getAppointmentsCurrentPage = createSelector(selectAppointmentsState, state => {
+  return state.appointmentsCurrentPage || null;
+});
 
-export { getAppointments, getLoading, getError, getLoaded };
+export { 
+  getAppointments, 
+  getLoading, 
+  getError, 
+  getLoaded,
+  getAppointmentsTotalCount,
+  getAppointmentsTotalPages,
+  getAppointmentsCurrentPage
+ };

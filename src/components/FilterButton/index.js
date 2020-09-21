@@ -4,43 +4,62 @@ import PropTypes from 'prop-types';
 import { useTranslate } from 'polyglot-react-redux-sdk';
 
 import Icon from 'Components/Icon';
-import { SmallBody, Link } from 'Components/Text';
+import Select from 'Components/Select';
 
-import StyledFilterButton, { CloseContainer, FilterTitle } from './style';
 
-const getIconName = (filterType) => {
-    switch (filterType) {
-        case "responsible": return "User"; break;
-        case "date": return "calendar"; break;
-        case "service": return "tool-1"; break;
-        case "status": return "activity"; break;
-        case "region": return "Language"; break;
+import StyledFilterButton, { CloseContainer, FilterTitle, Dropdown } from './style';
+
+const getIconName = (filterLabel) => {
+    switch (filterLabel.label) {
+        case "responsible": return "User";
+        case "date": return "calendar";
+        case "service": return "tool-1";
+        case "status": return "activity";
+        case "region": return "Language";
         default: return "User";
     }
 }
 
-const FilterButton = ({ filterType, filterValue, options, onChange, onClose }) => {
-//   const [checked, setChecked] = useState(leftChecked)
+const getFilterOptions = (filter) => {
+    switch (filter.label) {
+        case "responsible": 
+            return [
+                {label: "Admin1", value: "admin1"},
+                {label: "Admin2", value: "admin1"},
+                {label: "Admin3", value: "admin1"}
+            ]; 
+        case "date": 
+            return "calendar"; 
+        case "service": 
+            return ["Service1", "Service2", "Service3", "Service4"]; 
+        case "status": 
+            return ["Status1", "Status2"]; 
+        case "region": 
+            return "Language"; 
+        default: 
+            return "User";        
+    }
+}
+
+const FilterButton = ({ filter, filterLabel, filterValue, onChange, onClose }) => {
     const t = useTranslate("filters");
 
+    const [showDropdown, setShowDropdown] = useState(false);
+
+    const options = getFilterOptions(filter);
     
-
-  const handleChange = () => {
-    // onChange(!checked)
-    // setChecked(!checked)
-  }
-
-  const handleClose = () => {
-      // action to remove filter from filter list
+  const handleOpen = e => {
+    setShowDropdown(!showDropdown)
   }
 
   return (
     <StyledFilterButton>
-        <FilterTitle filterType={filterType}>
-            <Icon name={getIconName(filterType)} />
-            <span>{t(filterType)}:</span>
+        <FilterTitle filterLabel={filterLabel}>
+            <Icon name={getIconName(filterLabel)} />
+            <span>{t(filterLabel)}:</span>
         </FilterTitle>
-        <Link>
+
+        <div onClick={e => handleOpen(e)}>
             {/* {filterValue ? 
                 <>{filterValue}</>
             :
@@ -48,11 +67,18 @@ const FilterButton = ({ filterType, filterValue, options, onChange, onClose }) =
             }  */}
             Todo
             <Icon name="chevron-down"/>
-        </Link>
-
-        <CloseContainer onClick={e => onClose(filterType)}>
+        </div>
+        
+        <CloseContainer onClick={e => onClose(filter)}>
             <Icon name="Close"/>
         </CloseContainer>
+        
+        {showDropdown && 
+            <Dropdown length={options.length}>
+                {/* <Search /> */}
+                <Select options={options} onChange={e => onChange(e, filter)}/>
+            </Dropdown>    
+        }
     </StyledFilterButton>
 
   )

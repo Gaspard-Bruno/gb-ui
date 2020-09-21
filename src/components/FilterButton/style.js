@@ -8,6 +8,7 @@ const StyledFilterButton = styled.div`
     width: fit-content;
     align-items: center;
     padding: 0px 15px 0px 10px;
+    position: relative;
 
     svg {
         height: 16px;
@@ -15,8 +16,17 @@ const StyledFilterButton = styled.div`
     }
 `;
 
-const getIconColor = (filterType, theme) => {
-    if (filterType === 'service') {
+export const Dropdown = styled.div`
+    position: absolute;
+    top: 40px;
+    background-color: white;
+    padding: 5px;
+    border: solid 1px ${props => props.theme.colors.mediumBeige};
+    width: 280px;
+`;
+
+const getIconColor = (filterLabel, theme) => {
+    if (filterLabel === 'service') {
         return `fill: ${theme.colors.darkBlue}`
     } else {
         return `fill: ${theme.colors.grey}`
@@ -34,7 +44,7 @@ export const FilterTitle = styled.div`
     line-height: 16px;
     
     path {
-        ${props => getIconColor(props.filterType, props.theme)}
+        ${props => getIconColor(props.filterLabel, props.theme)}
     }
 
     span {

@@ -1,5 +1,4 @@
-import React, { useEffect, useCallback } from "react";
-import { useDispatch, useSelector } from 'react-redux'
+import React from "react";
 
 import { useTranslate } from 'polyglot-react-redux-sdk';
 
@@ -10,10 +9,7 @@ import TopBar from 'Components/TopBar';
 import RequestCard from 'Components/RequestCard';
 
 import FilterBar from 'Components/FilterBar';
-import FilterButton from 'Components/FilterButton';
-import IconSwitch from 'Components/IconSwitch';
 
-// import { getServices } from "Redux";
 
 const leads = [
   {
@@ -74,9 +70,25 @@ const admin = {
 
 
 const Requests = () => {
-  const dispatch = useDispatch()
 
-  const filters = ["responsible", "date", "service", "status"]
+  const filters = [
+    {
+      label: "responsible",
+      value: "todo"
+    }, 
+    {
+      label: "date",
+      value: "todo"
+    },
+    {
+      label: "service", 
+      value: "todo"
+    },
+    {
+      label: "status", 
+      value: "todo"
+    }
+  ]
 
   const t = useTranslate("requests");
 
@@ -87,12 +99,8 @@ const Requests = () => {
         <TopBar location={t('services')} title={t('requests')} user={admin} />
         <BackofficeContainer>
 
-          <br/>
-          <br/>
-          <FilterBar availableFilters={filters}/>
+          <FilterBar availableFilters={filters} showLayout={true}/>
 
-          <br/>
-          <br/>
             {appointments && appointments.map((appointment, index) => {
                     let listPosition;
                     switch (index) {

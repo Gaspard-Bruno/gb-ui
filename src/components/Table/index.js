@@ -69,6 +69,18 @@ const getRowDetails = (tableType, item=null) => {
                 header: "rating",
                 content: <>sttarrrrs</>
             }                                    
+        ],
+        clients: [
+            {
+                size: 9,
+                header: "name",
+                content: <Avatar size="medium" hasText={true} user={item.client}/>
+            },
+            {
+                size: 9,
+                header: "region",
+                content: "region"
+            }
         ]
     }
 

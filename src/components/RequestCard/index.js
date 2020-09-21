@@ -81,7 +81,7 @@ const RequestCard = ({
                 <IconContainer>
                   <Icon name="calendar" />
                 </IconContainer>
-                {appointment.attributes.deliveredOn && <span>{appointment.attributes.deliveredOn}</span>}
+                {appointment.attributes.deliveredOn && <span>{new Date(appointment.attributes.deliveredOn).toLocaleDateString()}</span>}
               </>
             )}
           </DateDetails>

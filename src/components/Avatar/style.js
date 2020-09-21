@@ -5,24 +5,26 @@ const getStyleFromAvatarSize = (size, theme) => {
     case "small":
       return `
         height: 32px;
-        width: 32px;
+        min-width: 32px;
        `;
     case "medium":
       return `
         height: 40px;
-        width: 40px;
+        min-width: 40px;
        `;
     case "large":
       return `
         height: 80px;
-        width: 80px;
+        min-width: 80px;
         `;
     default:
       return;
   }
 };
 
-const getRandomColor = theme => {
+const getRandomColor = (avatarDefault, theme) => {
+  if (avatarDefault) { return avatarDefault; }
+
   const keys = Object.keys(theme.colors.muted);
   return theme.colors.muted[keys[(keys.length * Math.random()) << 0]];
 };
@@ -39,7 +41,6 @@ const getTextColor = (size, user, theme) => {
 
 const AvatarContainer = styled.div`
   text-transform: capitalize;
-  height: 80px;
   display: flex;
   align-items: center;
   color: ${props => getTextColor(props.size, props.user, props.theme)};
@@ -59,7 +60,7 @@ export const AvatarImage = styled.div`
 
 export const AvatarInitials = styled.div`
   border-radius: 50%;
-  background-color: ${props => getRandomColor(props.theme)};
+  background-color: ${props => getRandomColor(props.avatarDefault, props.theme)};
   display: flex;
   justify-content: center;
   align-items: center;
