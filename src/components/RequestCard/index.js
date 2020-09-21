@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 
 import { useTranslate } from "polyglot-react-redux-sdk";
 
-import useFetchProvider from 'hooks/fetchProvider.js';
-import useFetchClient from 'hooks/fetchClient.js';
-import useFetchService from 'hooks/fetchService.js';
-import useFetchAdmin from 'hooks/fetchAdmin.js';
+import useProviders from "Hooks/useProviders.js";
+import useClients from "Hooks/useClients.js";
+import useServices from "Hooks/useServices";
+import useAdmin from "Hooks/useAdmin.js";
 
 import { Col } from "Components/Layout";
 
@@ -22,52 +22,50 @@ import StyledRequestCard, {
   IconContainer
 } from "./style";
 
-const RequestCard = ({ 
+const RequestCard = ({
   lead,
-  appointment, 
-  providerId, 
+  appointment,
+  providerId,
   clientId,
   adminId,
   serviceId,
-  listPosition 
+  listPosition
 }) => {
   const t = useTranslate("requests");
 
-  const provider = useFetchProvider(providerId)
-  const client = useFetchClient(clientId)
-  const service = useFetchService(serviceId)
-  const admin = useFetchAdmin(adminId)
+  const { provider } = useProviders(providerId);
+  const { client } = useClients(clientId);
+  const { service } = useServices(serviceId);
+  const { admin } = useAdmin(adminId);
 
   return (
     <StyledRequestCard listPosition={listPosition}>
       <Col size={4} justify="center">
         <Status>
           <BadgeContainer>
-            <Badge text={appointment.attributes.status} status={appointment.attributes.status} />
+            <Badge
+              text={appointment?.attributes.status}
+              status={appointment?.attributes.status}
+            />
           </BadgeContainer>
-          {service.service.attributes.name && <span>{service.service.attributes.name}</span>}
+          {service?.name && <span>{service?.name}</span>}
         </Status>
       </Col>
 
       <Col size={3} justify="center">
         <Details>
           <p>
-            {t("client")}: {client && <span>{client.fetchedClient.attributes.fullName}</span>}
+            {t("client")}: {client && <span>{client?.fullName}</span>}
           </p>
           <p>
             {t("specialist")}:{" "}
-            {provider.provider 
-              ?
-                <span>{provider.provider.attributes.fullName}</span>
-              : 
-                <span></span>
-            }
+            {provider ? <span>{provider?.fullName}</span> : <span></span>}
           </p>
         </Details>
       </Col>
 
       <Col size={3} justify="center">
-        {appointment.attributes.recurrent ? (
+        {appointment?.attributes.recurrent ? (
           <DateDetails>
             <IconContainer>
               <Icon name="repeat" />
@@ -76,12 +74,18 @@ const RequestCard = ({
           </DateDetails>
         ) : (
           <DateDetails>
-            {appointment.attributes.deliveredOn && (
+            {appointment?.attributes.deliveredOn && (
               <>
                 <IconContainer>
                   <Icon name="calendar" />
                 </IconContainer>
-                {appointment.attributes.deliveredOn && <span>{new Date(appointment.attributes.deliveredOn).toLocaleDateString()}</span>}
+                {appointment?.attributes.deliveredOn && (
+                  <span>
+                    {new Date(
+                      appointment?.attributes.deliveredOn
+                    ).toLocaleDateString()}
+                  </span>
+                )}
               </>
             )}
           </DateDetails>
@@ -89,12 +93,11 @@ const RequestCard = ({
       </Col>
 
       <Col size={2}>
-        {admin.admin ? 
-          <Avatar size="small" hasText={true} user={admin.admin.attributes} />  
-        :
+        {admin ? (
+          <Avatar size="small" hasText={true} user={admin} />
+        ) : (
           <div></div>
-        }
-        
+        )}
       </Col>
     </StyledRequestCard>
   );

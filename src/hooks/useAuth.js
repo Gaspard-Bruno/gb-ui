@@ -25,7 +25,6 @@ const useAuth = () => {
   const signInAndRedirectToDashboard = useCallback(
     async (email, pw) => {
       if (email && pw) {
-        console.log("cenas fixes");
         dispatchLoginUser(email, pw, () => history.push("/dashboard"));
       }
     },
