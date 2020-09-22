@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 
 import { useTranslate } from "polyglot-react-redux-sdk";
 
@@ -7,6 +7,9 @@ import useProviders from "Hooks/useProviders.js";
 import useClients from "Hooks/useClients.js";
 import useServices from "Hooks/useServices";
 import useAdmin from "Hooks/useAdmin.js";
+
+import { selectors as appointmentSelectors} from 'Redux/appointments';
+import { actions as appointmentActions} from 'Redux/appointments';
 
 import { BackofficeContainer, BackofficeKanbanContainer } from 'Components/Layout';
 import TopBar from 'Components/TopBar';
@@ -133,13 +136,10 @@ const Requests = () => {
         default: break;
       }
     })
-
     return columns;
   }
 
   const columns = filterStatus(appointments);
-  console.log(columns)
-
 
   const [filterHeight, setFilterHeight] = useState(0);
   const [containerHeight, setContainerHeight] = useState(0);
@@ -151,6 +151,18 @@ const Requests = () => {
   useEffect(() => {
     updateFilterHeight()
   })  
+
+  // const testAppId = 1565;
+  // const updateLoading = useSelector(appointmentSelectors.getUpdateAppointmentLoading);
+  // const updateError = useSelector(appointmentSelectors.getUpdateAppointmentError);
+
+  // const dispatch = useDispatch();
+  // const updateAppointment = useCallback((newStatus, appointmentId) => {
+  //   appointmentActions.updateAppointment(dispatch, newStatus, appointmentId);
+  // }, [dispatch, appointmentActions.updateAppointment]);
+
+  // updateAppointment("pending", testAppId);
+
 
   return (
     <>

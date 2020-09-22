@@ -7,5 +7,14 @@ const getAppointments = (pageNumber) => {
   return client.get("/appointments");
 };
 
-export default { getAppointments, client };
+const updateAppointment = (newStatus, appointmentId) => {
+  return client.put(`/appointments/${appointmentId}`),
+  { data: { appointment: { status : newStatus }}};
+}
+
+export default { 
+  getAppointments, 
+  updateAppointment,
+  client 
+};
 

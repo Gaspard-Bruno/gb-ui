@@ -39,4 +39,29 @@ const getAppointmentsListing = (dispatch, pageNumber) => {
     });
 };
 
-export { getAppointmentsListing };
+const updateAppointment = (dispatch, newStatus, appointmentId) => {
+
+  dispatch({
+    type: ACTION_TYPES.UPDATE_APPOINTMENT
+  });
+
+  appointmentsClient
+    .updateAppointment(newStatus, appointmentId)
+    .then(res => {
+      console.log("ressssssssss", res)
+      if (res && res.data) {
+        dispatch({
+          type: ACTION_TYPES.UPDATE_APPOINTMENT_SUCCESS,
+
+        })
+      }
+    })
+    .catch(e => {
+      dispatch({
+        type: ACTION_TYPES.UPDATE_APPOINTMENT_FAIL,
+        error: "Error updating appointment"
+      });
+    });
+}
+
+export { getAppointmentsListing, updateAppointment };

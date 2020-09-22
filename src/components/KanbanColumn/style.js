@@ -17,7 +17,6 @@ const KanbanColumn = styled.div`
 `;
 
 const getColumnHeight = (itemsHeight, containerHeight) => {
-    console.log("items: ", itemsHeight, "cont: ", containerHeight);
     if (itemsHeight > containerHeight) { return ``}
     else { return `height: calc(64px + ${itemsHeight}px);`}
 }

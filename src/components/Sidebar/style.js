@@ -27,13 +27,22 @@ export const NavSection = styled.div`
     &:visited {
       color: white;
     }
-
-    &:hover {
-      color: white;
-      background-color: red;
-    }
   }
 `;
+
+const getActiveLinkStyle = (theme, active, isLogo) => {
+  if (isLogo || !active) {
+    return `
+      background-color: none;
+      border-left: solid 2px transparent;
+      `
+  } else {
+    return `
+      background-color: ${theme.colors.brand.orangeLight};
+      border-left: solid 2px white;
+      `    
+  }
+}
 
 export const NavLink = styled(Link)`
   padding: 0px 30px;
@@ -41,10 +50,11 @@ export const NavLink = styled(Link)`
   display: flex;
   align-items: center;
 
-  background-color: ${props =>
-    props.active ? props.theme.colors.brand.orangeLight : "none"};
-  border-left: ${props =>
-    props.active ? "solid 2px white" : "solid 2px transparent"};
+  ${props => getActiveLinkStyle(props.theme, props.active, props.isLogo)}
+`;
+
+export const LogoContainer = styled.div`
+  margin: 30px 0px 80px;
 `;
 
 export default StyledSidebar;

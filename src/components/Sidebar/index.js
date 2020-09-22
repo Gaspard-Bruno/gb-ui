@@ -5,17 +5,17 @@ import { useTranslate } from "polyglot-react-redux-sdk";
 
 import Logo from "Components/Logo";
 
-import StyledSidebar, { NavSection, NavLink, NavHeader } from "./style";
+import StyledSidebar, { NavSection, NavLink, NavHeader, LogoContainer } from "./style";
 
 const Sidebar = props => {
   const t = useTranslate("sidebar");
 
   // eslint-disable-next-line react/prop-types
-  const SidebarLink = ({ routePath, to, text, children }) => {
+  const SidebarLink = ({ routePath, to, text, children, isLogo }) => {
     let match = useRouteMatch(routePath);
 
     return (
-      <NavLink to={to} active={!!match}>
+      <NavLink to={to} active={!!match} isLogo={isLogo}>
         {text ? <p>{text}</p> : children}
       </NavLink>
     );
@@ -23,9 +23,11 @@ const Sidebar = props => {
 
   return (
     <StyledSidebar>
-      <SidebarLink routePath={{ path: "/", exact: true }} to="/">
-        <Logo color={"white"} />
-      </SidebarLink>
+      <LogoContainer>
+        <SidebarLink routePath={{ path: "/", exact: true }} to="/" isLogo={true}>
+            <Logo color={"white"} />
+        </SidebarLink>
+      </LogoContainer>
 
       <NavSection>
         <NavHeader>{t("services")}</NavHeader>

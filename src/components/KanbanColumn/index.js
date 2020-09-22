@@ -23,8 +23,6 @@ const KanbanColumn = ({
     setColumnHeight(itemsRef.current.clientHeight)
   }, [items])
 
-  console.log(columnHeight)
-
   const getCardPropsFromType = (item) => {
       if (kanbanType === 'candidates') {
           return {

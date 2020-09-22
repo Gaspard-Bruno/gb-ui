@@ -49,8 +49,6 @@ const KanbanCard = ({
   const testAdmin = {
     fullName: "Elena"
   }
-  console.log(status, serviceId, clientId, providerId, adminId, recurrent, cardType)
-  console.log(recurrent)
 
   return (
     <StyledKanbanCard
@@ -132,7 +130,7 @@ KanbanCard.propTypes = {
   adminId: PropTypes.string,
   recurrent: PropTypes.bool,
   cardType: PropTypes.oneOf(['requests', 'candidates']),
-  serviceList: PropTypes
+  serviceList: PropTypes.string
 };
 
 export default KanbanCard;

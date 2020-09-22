@@ -8,6 +8,8 @@ const initialState = {
   appointmentsTotalCount: null,
   appointmentsTotalPages: null,
   appointmentsCurrentPage: null,
+  updateAppointmentLoading: null,
+  updateAppointmentError: null
 };
 
 export default (state = initialState, action) => {
@@ -34,6 +36,27 @@ export default (state = initialState, action) => {
         loading: false,
         loaded: true
       };
+
+
+    // UPDATE
+    case ACTION_TYPES.UPDATE_APPOINTMENT:
+        return {
+          ...state,
+          updateAppointmentLoading: true,
+        };
+    case ACTION_TYPES.UPDATE_APPOINTMENT_SUCCESS:
+        return {
+          ...state,
+          updateAppointmentLoading: false,
+          updateAppointmentError: false
+        };
+    case ACTION_TYPES.UPDATE_APPOINTMENT_FAIL:
+        return {
+          ...state,
+          updateAppointmentError: true,
+          updateAppointmentLoading: false
+        };        
+
     default:
       return state;
   }

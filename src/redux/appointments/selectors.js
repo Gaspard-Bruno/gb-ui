@@ -28,6 +28,14 @@ const getAppointmentsCurrentPage = createSelector(selectAppointmentsState, state
   return state.appointmentsCurrentPage || null;
 });
 
+// UPDATE
+const getUpdateAppointmentLoading = createSelector(selectAppointmentsState, state => {
+  return state.updateAppointmentLoading || null;
+})
+const getUpdateAppointmentError = createSelector(selectAppointmentsState, state => {
+  return state.updateAppointmentError || null;
+})
+
 export { 
   getAppointments, 
   getLoading, 
@@ -35,5 +43,7 @@ export {
   getLoaded,
   getAppointmentsTotalCount,
   getAppointmentsTotalPages,
-  getAppointmentsCurrentPage
+  getAppointmentsCurrentPage,
+  getUpdateAppointmentLoading,
+  getUpdateAppointmentError
  };
