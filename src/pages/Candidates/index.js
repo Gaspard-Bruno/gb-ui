@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useLayoutEffect, useRef, useEffect } from 'react';
 
 import { useTranslate } from 'polyglot-react-redux-sdk';
 
@@ -68,27 +68,39 @@ const Candidates = () => {
 
   const columns = filterStatus(candidateLeads);
 
+  const [filterHeight, setFilterHeight] = useState(0);
+  const [containerHeight, setContainerHeight] = useState(0);
+  const filterRef = useRef(null);
+  const updateFilterHeight = () => {
+    setFilterHeight(filterRef.current.clientHeight)
+    setContainerHeight(226 + filterHeight)
+  }
+  useEffect(() => {
+    updateFilterHeight()
+  })
+
   return (
     <>
         <TopBar location={t('specialists')} title={t('newCandidates')} user={admin} />
         <BackofficeContainer>
-            <FilterBar availableFilters={filters}/>
+            <div ref={filterRef}>
+              <FilterBar availableFilters={filters} updateFilterHeight={updateFilterHeight}/>
+            </div>
             
-            <BackofficeKanbanContainer>
+              <BackofficeKanbanContainer filterHeight={filterHeight}>
+                {columns && Object.keys(columns).map(key => {
+                  return (
+                    <KanbanColumn
+                      status={key}
+                      items={columns[key]}
+                      kanbanType='candidates'
+                      containerHeight={containerHeight}
+                    />
+                  )
+                })
+                }
 
-              {columns && Object.keys(columns).map(key => {
-                return (
-                  <KanbanColumn
-                    status={key}
-                    items={columns[key]}
-                    kanbanType='candidates'
-                  />
-                )
-              })
-              }
-
-            </BackofficeKanbanContainer>
-
+              </BackofficeKanbanContainer>
         </BackofficeContainer>
     </>
   );

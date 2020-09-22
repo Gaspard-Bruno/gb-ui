@@ -49,6 +49,7 @@ export default {
     awaiting_visit_payment: "Aguarda Pagamento Visito",
     awaiting_interview: "Aguarda Entrevista",
     awaiting_payment: "Aguarda Pagamento Serviço",
+    awaiting_conclusion: "Aguarda Conclusão",
     awaiting_visit: "Aguarda Visita",
     awaiting_conclusion: "Aguarda Conclusão",
     canceled: "Cancelado",
@@ -59,11 +60,18 @@ export default {
     accepted: "Aceite"
   },
   requests: {
-    services: "Serviços",
-    requests: "Pedidos",
-    client: "Cliente",
-    specialist: "Esp.55",
-    recurring: "Recorrente"
+    services: 'Serviços',
+    requests: 'Pedidos',
+    client: 'Cliente',
+    specialist: 'Esp.55',
+    recurring: 'Recorrente',
+    newRequests: 'Novos Pedidos',
+    inAnalysis: 'Em Análise',
+    pending: 'A Aguardar',
+    active: 'Activo',
+    requiresAttention: 'Requer Atenção',
+    closed: 'Concluido',
+    cancelled: 'Cancelado'
   },
   archive: {
     archive: "Arquivo",

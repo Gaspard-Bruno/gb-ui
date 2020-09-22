@@ -8,13 +8,19 @@ const KanbanColumn = styled.div`
     align-items: center;
     padding: 0px 16px 16px 16px;
     min-width: 260px;
-    height: 70vh;
-    overflow-y: scroll;    
+    overflow-y: scroll;
+    ${props => getColumnHeight(props.itemsHeight, props.containerHeight)}
 
-    > * {
+    .items > * {
         margin-bottom: 16px;
     }
 `;
+
+const getColumnHeight = (itemsHeight, containerHeight) => {
+    console.log("items: ", itemsHeight, "cont: ", containerHeight);
+    if (itemsHeight > containerHeight) { return ``}
+    else { return `height: calc(64px + ${itemsHeight}px);`}
+}
 
 export const Header = styled.div`
     display: flex;
@@ -25,6 +31,10 @@ export const Header = styled.div`
     justify-content: space-between;
     width: 85%;
     padding: 0px 30px;
+
+    h3 {
+        font-size: 16px;
+    }
 `;
 
 export const IconContainer = styled.div`

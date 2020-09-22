@@ -5,12 +5,13 @@ import Icon from 'Components/Icon';
 
 import StyledSwitch, { Left, Right } from './style';
 
-const IconSwitch = ({ leftChecked=false, leftIcon, rightIcon, onChange }) => {
+const IconSwitch = ({ leftChecked=true, leftIcon, rightIcon, onChange }) => {
   const [checked, setChecked] = useState(leftChecked)
 
   const handleChange = () => {
     // onChange(!checked)
     setChecked(!checked)
+    onChange();
   }
 
   return (
@@ -24,16 +25,6 @@ const IconSwitch = ({ leftChecked=false, leftIcon, rightIcon, onChange }) => {
         </Right>
 
     </StyledSwitch>
-
-    // <div className="switch-component">
-    //   { label &&
-    //     <p className="switch-label">{label}</p>
-    //   }
-    //   <label className="switch">
-    //     <input type="checkbox" checked={checked} onChange={handleChange}/>
-    //     <span className="slider round"/>
-    //   </label>
-    // </div>
   )
 }
 

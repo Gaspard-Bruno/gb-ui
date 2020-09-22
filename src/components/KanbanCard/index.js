@@ -18,7 +18,9 @@ import StyledKanbanCard, {
   BadgeContainer,
   Details,
   IconContainer,
-  AdminContainer
+  AdminContainer,
+  ServiceDetails,
+  Recurrent
 } from "./style";
 
 const KanbanCard = ({
@@ -47,8 +49,8 @@ const KanbanCard = ({
   const testAdmin = {
     fullName: "Elena"
   }
-
-  console.log("prov", provider)
+  console.log(status, serviceId, clientId, providerId, adminId, recurrent, cardType)
+  console.log(recurrent)
 
   return (
     <StyledKanbanCard
@@ -63,37 +65,58 @@ const KanbanCard = ({
           ?
             provider?.attributes.fullName
           :
-            service?.name
+            service?.attributes.name
         }
       </Link>
 
-      {provider.attributes?.serviceList && 
-        <Details>
-          <IconContainer>
-            <Icon name='tool-1'/>
-          </IconContainer>
+      {cardType === 'candidates' 
+        ?
+          <div>
+            {provider?.attributes?.serviceList && 
+              <Details>
+                <IconContainer>
+                  <Icon name='tool-1'/>
+                </IconContainer>
 
-          <SmallBody>
-            {provider.attributes.serviceList}
-          </SmallBody>
-        </Details>
+                <SmallBody>
+                  {provider?.attributes.serviceList}
+                </SmallBody>
+              </Details>
+            }
+
+            {provider?.attributes?.district &&
+              <Details>
+                <IconContainer>
+                  <Icon name='map-pin'/>
+                </IconContainer>
+
+                <SmallBody>
+                  {provider?.attributes.district}
+                </SmallBody>          
+              </Details>
+            }
+          </div>
+        :
+          <div>
+            {client &&
+              <ServiceDetails><span>{t('client')}:  </span>{client.attributes.fullName}</ServiceDetails>
+            }
+            {provider &&
+              <ServiceDetails><span>{t('specialist')}:  </span>{provider.attributes.fullName}</ServiceDetails>
+            }
+            {recurrent &&
+              <Recurrent>
+
+              </Recurrent>
+            }
+
+          </div>
       }
 
-      {provider.attributes?.district &&
-        <Details>
-          <IconContainer>
-            <Icon name='map-pin'/>
-          </IconContainer>
-
-          <SmallBody>
-            {provider.attributes.district}
-          </SmallBody>          
-        </Details>
-      }
 
       {admin &&
         <AdminContainer>
-          <Avatar user={admin.attributes} size="small" hasText={true}></Avatar>
+          <Avatar user={admin?.attributes} size="small" hasText={true}></Avatar>
         </AdminContainer>
       }
 
@@ -103,12 +126,12 @@ const KanbanCard = ({
 
 KanbanCard.propTypes = {
   status: PropTypes.string,
-  serviceId: PropTypes.number,
-  clientId: PropTypes.number,
-  providerId: PropTypes.number,
-  adminId: PropTypes.number,
+  serviceId: PropTypes.string,
+  clientId: PropTypes.string,
+  providerId: PropTypes.string,
+  adminId: PropTypes.string,
   recurrent: PropTypes.bool,
-  cardType: PropTypes.oneOf(['service', 'candidates']),
+  cardType: PropTypes.oneOf(['requests', 'candidates']),
   serviceList: PropTypes
 };
 

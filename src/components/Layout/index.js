@@ -51,12 +51,26 @@ const BackofficeContainer = styled.div`
 
 const BackofficeKanbanContainer = styled.div`
   display: flex;
-  height: 70vh;  
+  height: calc(100vh - 114px - ${props => props.filterHeight}px - 102px);  
   overflow-x: scroll;
-  overflow-y: hidden;  
+  overflow-y: hidden;
+  padding-bottom: 40px;
+  transition: height 0.3s ease-out;
 
   > * {
     margin-right: 16px;
+  }
+
+  &::-webkit-scrollbar {
+    margin-top: 32px;
+    height: 4px;
+    background-color: ${props => props.theme.colors.lightestBeige};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    margin-top: 30px;
+    background: ${props => props.theme.colors.darkBlue};
+    border-radius: 30px;
   }
 `;
 

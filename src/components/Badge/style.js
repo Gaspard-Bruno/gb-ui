@@ -12,6 +12,7 @@ const getColorFromStatus = (theme, status) =>
     awaiting_interview: theme.brand.yellow,
     awaiting_payment: theme.brand.yellow,
     awaiting_visit: theme.brand.yellow,
+    awaiting_conclusion: theme.feedback.success.default,
     canceled: theme.feedback.error.default,
     rejected: theme.feedback.error.default,
     new_candidate: theme.brand.blue,

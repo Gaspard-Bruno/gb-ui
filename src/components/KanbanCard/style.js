@@ -1,4 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+
+import { SmallBody } from 'Components/Text';
 
 const KanbanCard = styled.div`
   width: 260px;
@@ -47,5 +49,17 @@ export const Details = styled.div`
   margin-top: 14px;
 `;
 
+export const ServiceDetails = styled(SmallBody)`
+  margin: 8px 0px;
+  
+  span {
+    color: ${props => props.theme.colors.grey};
+  }
+`;
+
+export const Recurrent = styled.div`
+
+
+`;
 
 export default KanbanCard;
