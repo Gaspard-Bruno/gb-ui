@@ -4,7 +4,7 @@ const initialState = {
   loading: false,
   loaded: false,
   error: false,
-  user: []
+  user: null
 };
 
 export default (state = initialState, action) => {

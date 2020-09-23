@@ -31,11 +31,14 @@ const useAuth = () => {
     [dispatchLoginUser, history]
   );
 
+  const gotoSignInPage = useCallback(() => history.push("/"), [history]);
+
   return {
     user,
     error,
     loading,
-    signInAndRedirectToDashboard
+    signInAndRedirectToDashboard,
+    gotoSignInPage
   };
 };
 

@@ -41,7 +41,6 @@ const getServicesListing = dispatch => {
     .getServices()
     .then(res => {
       if (res && res.data) {
-        console.log(res.data, "DATA INCOMING");
         dispatch({
           type: ACTION_TYPES.GET_SERVICE_LISTING_SUCCESS,
           payload: res.data.data

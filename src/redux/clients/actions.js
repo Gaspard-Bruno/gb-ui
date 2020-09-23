@@ -48,7 +48,6 @@ const getClient = (id, dispatch) => {
       }
     })
     .catch(e => {
-      console.log("log errrror", e);
       dispatch({
         type: ACTION_TYPES.GET_CLIENT_FAIL,
         clientError: "Error getching client"

@@ -138,7 +138,6 @@ const Requests = () => {
             const client = clients?.[clientId]?.attributes;
             const admin = admins?.[adminId]?.attributes;
             const service = services?.[serviceId]?.attributes;
-            console.log("services", service, "all", services);
             return (
               <RequestCard
                 key={"request" + index}
