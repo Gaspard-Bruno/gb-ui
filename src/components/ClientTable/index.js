@@ -38,9 +38,12 @@ const ClientTable = ({ items }) => {
                 </Col>
             </Header>
 
-            {items && items.map((item) => {
+            {items && Object.keys(items).map((item, index) => {
                 return (
-                    <TableRow item={item} />
+                    <TableRow 
+                        key={"clientTable" + index}
+                        item={items[item]} 
+                    />
                 )
             })}
         </StyledClientTable>

@@ -14,13 +14,13 @@ const useServices = serviceId => {
     getServiceError,
     getServices,
     getServiceLoaded
-  } = servicesSelectors;
+  } = selectors;
 
-  const services = useSelector(state => getServices(state));
   const error = useSelector(state => getServiceError(state));
-  const loading = useSelector(state => getServiceLoading(state), shallowEqual);
-  const loaded = useSelector(state => getServiceLoaded(state), shallowEqual);
+  const loading = useSelector(state => getServiceLoading(state));
+  const loaded = useSelector(state => getServiceLoaded(state));
 
+  const services = useSelector(state => getServices(state), shallowEqual);
   const service = useMemo(() => services?.[serviceId]?.attributes, [
     services,
     serviceId
@@ -36,15 +36,8 @@ const useServices = serviceId => {
   //     getService(serviceId, dispatch);
   // }, [dispatch, getService])
 
-  // console.log("prov", fetchId, service)
-
-  // useEffect(() => {
-  //     if (!service) {
-  //       dispatchGetService(serviceId)
-  //     }
-  // }, [service])
-
   return {
+    services,
     service,
     services,
     loaded,

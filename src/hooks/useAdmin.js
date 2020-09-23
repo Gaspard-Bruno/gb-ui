@@ -19,6 +19,7 @@ const useFetchAdmin = adminId => {
   const error = useSelector(state => getAdminError(state));
   const loading = useSelector(state => getAdminLoading(state), shallowEqual);
   const loaded = useSelector(state => getAdminLoaded(state), shallowEqual);
+  
   const admins = useSelector(state => getAdmins(state));
   const admin = useMemo(() => admins?.[adminId]?.attributes, [admins, adminId]);
 

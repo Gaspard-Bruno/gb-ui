@@ -16,6 +16,8 @@ const TableRow = ({ item }) => {
         } 
     }
 
+    // console.log("item", item)
+
     return (
         <StyledTableRow>
                 <Col size={3}>
@@ -73,9 +75,13 @@ const SpecialistTable = ({ items }) => {
                 </Col>
             </Header>
 
-            {items && items.map((item) => {
+            {items && Object.keys(items).map((item, index) => {
+                console.log("things", item, index)
                 return (
-                    <TableRow item={item} />
+                    <TableRow 
+                        key={"specialistRow" + index}
+                        item={items[item]}
+                    />
                 )
             })}
         </StyledSpecialistTable>

@@ -103,6 +103,7 @@ const Requests = () => {
   }
 
   const { appointments } = useAppointments();
+  
   const filterStatus = (appointments) => {
     const columns = {
       newRequests: [],
@@ -182,9 +183,10 @@ const Requests = () => {
             ?
               //  K A N B A N   V I E W 
               <BackofficeKanbanContainer filterHeight={filterHeight}>
-                {columns && Object.keys(columns).map(key => {
+                {columns && Object.keys(columns).map((key, index) => {
                   return (
                     <KanbanColumn
+                      key={"requestCol" + index}
                       status={key}
                       items={columns[key]}
                       kanbanType='requests'

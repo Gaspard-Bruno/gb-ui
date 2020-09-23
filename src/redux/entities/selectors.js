@@ -16,12 +16,16 @@ export const getProvidersEntities = createSelector(
   }
 );
 
-export const getClientsEntities = createSelector(selectEntitiesState, state => {
-  return state?.clients || [];
+export const getClientsEntities = createSelector(
+  selectEntitiesState, 
+  state => {
+    return state?.clients || [];
 });
 
-export const getAdminEntities = createSelector(selectEntitiesState, state => {
-  return state?.admins || [];
+export const getAdminEntities = createSelector(
+  selectEntitiesState, 
+  state => {
+    return state?.admins || [];
 });
 
 export const getServicesEntities = createSelector(
@@ -31,6 +35,8 @@ export const getServicesEntities = createSelector(
   }
 );
 
-export const getCandidateLeadsEntities = createSelector(selectEntitiesState, state => {
-  return state.candidateLeads || [];
+export const getCandidateLeadsEntities = createSelector(
+  selectEntitiesState,
+  state => {
+    return state?.candidateLeads || [];
 });

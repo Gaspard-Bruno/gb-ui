@@ -35,7 +35,7 @@ const admin = {
 const Specialists = () => {
   const t = useTranslate("specialists");
 
-  const { providers } = useProviders();
+  const { providers } = useProviders(null, true);
 
   return (
     <>

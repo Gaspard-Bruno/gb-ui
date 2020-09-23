@@ -36,7 +36,7 @@ const admin = {
 const Clients = () => {
   const t = useTranslate("clients");
 
-  const { clients } = useClients();
+  const { clients } = useClients(null, true);
 
   return (
     <>

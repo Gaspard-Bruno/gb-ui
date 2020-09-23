@@ -1,13 +1,7 @@
-import React, { useMemo } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { useSelector } from 'react-redux';
 
 import { useTranslate } from 'polyglot-react-redux-sdk';
-
-import { selectors as clientsSelectors} from 'redux/clients';
-import { selectors as servicesSelectors} from 'redux/services';
-import { selectors as providersSelectors} from 'redux/providers';
-import { selectors as adminsSelectors} from 'redux/admin';
 
 import Badge from 'Components/Badge';
 import Icon from 'Components/Icon';
@@ -25,26 +19,14 @@ import StyledKanbanCard, {
 
 const KanbanCard = ({
   status,
-  serviceId,
-  clientId,
-  providerId,
-  adminId,
+  service,
+  client,
+  provider,
+  admin,
   recurrent,
   cardType,
 }) => {
   const t = useTranslate('requests');
-
-  const makeClient = useMemo(clientsSelectors.makeGetClient, [])
-  const client = useSelector((state) => makeClient(state, clientId))
-
-  const makeService = useMemo(servicesSelectors.makeGetService, [])
-  const service = useSelector((state) => makeService(state, serviceId))
-
-  const makeProvider = useMemo(providersSelectors.makeGetProvider, [])
-  const provider = useSelector((state) => makeProvider(state, providerId))
-
-  const makeAdmin = useMemo(adminsSelectors.makeGetAdmin, [])
-  const admin = useSelector((state) => makeAdmin(state, adminId))
 
   const testAdmin = {
     fullName: "Elena"
@@ -70,7 +52,7 @@ const KanbanCard = ({
       {cardType === 'candidates' 
         ?
           <div>
-            {provider?.attributes?.serviceList && 
+            {provider?.attributes.serviceList && 
               <Details>
                 <IconContainer>
                   <Icon name='tool-1'/>
@@ -82,7 +64,7 @@ const KanbanCard = ({
               </Details>
             }
 
-            {provider?.attributes?.district &&
+            {provider?.attributes.district &&
               <Details>
                 <IconContainer>
                   <Icon name='map-pin'/>

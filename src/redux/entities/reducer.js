@@ -39,21 +39,27 @@ export default (state = initialState, action) => {
           case CANDIDATE_LEAD_ACTION_TYPES.GET_CANDIDATE_LEADS_SUCCESS:
             const data = normalize(action.payload)
 
-            updateEntitiesData(state, draft, 'appointments', 'appointment', data)
-            updateEntitiesData(state, draft, 'providers', 'provider', data)
-            updateEntitiesData(state, draft, 'admins', 'admin', data)
-            updateEntitiesData(state, draft, 'clients', 'client', data)
-            updateEntitiesData(state, draft, 'services', 'service', data)
-            updateEntitiesData(state, draft, 'providerServices', 'providerService', data)
-            updateEntitiesData(state, draft, 'candidateLeads', 'candidateLead', data)
-            break
-  
-          case ACTION_TYPES.RESET:
-            draft.entities = initialState.entities
-            break
-    
-          default:
-            break;
-        }
-      })
+        updateEntitiesData(state, draft, "appointments", "appointment", data);
+        updateEntitiesData(state, draft, "providers", "provider", data);
+        updateEntitiesData(state, draft, "admins", "admin", data);
+        updateEntitiesData(state, draft, "clients", "client", data);
+        updateEntitiesData(state, draft, "services", "service", data);
+        updateEntitiesData(state, draft, 'candidateLeads', 'candidateLead', data);   
+        updateEntitiesData(
+          state,
+          draft,
+          "providerServices",
+          "providerService",
+          data
+        );
+        break;
+
+      case ACTION_TYPES.RESET:
+        draft.entities = initialState.entities;
+        break;
+
+      default:
+        break;
+    }
+  });
 };
