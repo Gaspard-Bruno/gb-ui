@@ -1,10 +1,12 @@
 import { ACTION_TYPES } from "./actions";
 
+const STORAGE_AUTH_TOKEN = JSON.parse(localStorage.getItem("AUTH_TOKEN"));
+const { user } = STORAGE_AUTH_TOKEN;
 const initialState = {
   loading: false,
   loaded: false,
   error: false,
-  user: null
+  user
 };
 
 export default (state = initialState, action) => {

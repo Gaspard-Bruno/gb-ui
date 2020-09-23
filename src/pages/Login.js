@@ -22,9 +22,12 @@ export const customCardStyle = props => `
   }
 `;
 
+const STORAGE_AUTH_TOKEN = JSON.parse(localStorage.getItem("AUTH_TOKEN"));
+const { user } = STORAGE_AUTH_TOKEN;
+
 const Login = () => {
   const t = useTranslate("login");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(user?.data?.attributes?.email);
   const [password, setPassword] = useState("");
 
   const { signInAndRedirectToDashboard, error } = useAuth();
@@ -39,7 +42,11 @@ const Login = () => {
             <Heading size={3} center>
               {t("login")}
             </Heading>
-            <TextInput label={t("email")} onChange={v => setEmail(v)} />
+            <TextInput
+              label={t("email")}
+              defaultValue={email}
+              onChange={v => setEmail(v)}
+            />
             <TextInput
               onChange={v => setPassword(v)}
               label={t("password")}

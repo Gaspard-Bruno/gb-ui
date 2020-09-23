@@ -15,10 +15,6 @@ const loginUser = (dispatch, { email, password, callback }) => {
     .postUserLogin({ email, password })
     .then(res => {
       if (res && res.data) {
-        if (res.headers["Authorization"]) {
-          authClient.client.defaults.headers.common["Authorization"] =
-            res.headers["Authorization"];
-        }
         dispatch({
           type: ACTION_TYPES.LOGIN_USER_SUCCESS,
           payload: res.data
