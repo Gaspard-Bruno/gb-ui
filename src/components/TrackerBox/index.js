@@ -40,7 +40,7 @@ const TrackerBox = ({
       onClick={e => handleClick(e, text, currentPage)}
       type={boxType}
     >
-      <Tiny>{text ? text : <Icon name={iconName} />}</Tiny>
+      {text ? <Tiny>{text}</Tiny> : <Icon name={iconName} />}
     </StyledTracker>
   );
 };

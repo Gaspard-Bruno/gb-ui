@@ -48,8 +48,8 @@ export const StyledTracker = styled.div`
   }
 
   svg {
-    height: 50%;
-    width: 50%;
+    height: 24px;
+    width: 24px;
   }
 `;
 
