@@ -1,11 +1,14 @@
-import { useMemo } from "react";
-import { shallowEqual, useSelector } from "react-redux";
+import { useMemo, useEffect } from "react";
+import { shallowEqual, useSelector, useDispatch } from "react-redux";
 
-import { selectors as servicesSelectors } from "redux/services";
+import {
+  selectors as servicesSelectors,
+  actions as servicesActions
+} from "redux/services";
 
 const useServices = serviceId => {
-  // const dispatch = useDispatch();
-  // const { getService } = servicesActions;
+  const dispatch = useDispatch();
+  const { getServicesListing } = servicesActions;
   const {
     getServiceLoading,
     getServiceError,
@@ -23,6 +26,12 @@ const useServices = serviceId => {
     serviceId
   ]);
 
+  useEffect(() => {
+    if (!loaded && !loading) {
+      getServicesListing(dispatch);
+    }
+  }, [dispatch, getServices, getServicesListing, loaded, loading]);
+
   // const dispatchGetService = useCallback((serviceId) => {
   //     getService(serviceId, dispatch);
   // }, [dispatch, getService])
@@ -37,6 +46,7 @@ const useServices = serviceId => {
 
   return {
     service,
+    services,
     loaded,
     error,
     loading

@@ -14,7 +14,6 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case ACTION_TYPES.GET_PROVIDERS:
       console.log("action triggered", action);
-      debugger;
       return {
         ...state,
         loading: true

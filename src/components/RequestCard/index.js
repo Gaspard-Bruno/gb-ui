@@ -31,6 +31,7 @@ const RequestCard = ({
   service,
   listPosition
 }) => {
+  console.log(service);
   const t = useTranslate("requests");
 
   return (

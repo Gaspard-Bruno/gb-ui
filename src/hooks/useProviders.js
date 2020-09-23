@@ -21,7 +21,6 @@ const useProviders = providerId => {
 
   useEffect(() => {
     if (!loaded && !loading) {
-      console.log("triggering GET", loading, loaded);
       getProvidersListing(dispatch);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

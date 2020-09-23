@@ -107,7 +107,6 @@ const Requests = () => {
 
         {appointments &&
           appointments.map((appointment, index) => {
-            console.log("appointments", appointment);
             let listPosition;
             switch (index) {
               case 0:
@@ -135,10 +134,11 @@ const Requests = () => {
             const serviceId = appointment.relationships.service.data
               ? appointment.relationships.service.data.id
               : null;
-            const provider = providers?.[providerId];
-            const client = clients?.[clientId];
-            const admin = admins?.[adminId];
-            const service = services?.[serviceId];
+            const provider = providers?.[providerId]?.attributes;
+            const client = clients?.[clientId]?.attributes;
+            const admin = admins?.[adminId]?.attributes;
+            const service = services?.[serviceId]?.attributes;
+            console.log("services", service, "all", services);
             return (
               <RequestCard
                 key={"request" + index}
