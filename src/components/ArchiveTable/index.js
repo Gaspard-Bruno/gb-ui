@@ -13,34 +13,8 @@ import Avatar from "Components/Avatar";
 import StyledArchiveTable, { Header, StyledTableRow } from "./style";
 
 const TableRow = ({ item }) => {
+  const { service, client, provider } = item;
   const t = useTranslate("archive");
-
-  const [clientId, setClientId] = useState(item.relationships.client.data.id);
-  const [serviceId, setServiceId] = useState(
-    item.relationships.service.data.id
-  );
-  const [providerId, setProviderId] = useState(() => {
-    if (item.relationships.provider.data) {
-      return item.relationships.provider.data.id;
-    } else {
-      return 0;
-    }
-  });
-
-  const { client } = useClients(clientId);
-
-  const { service } = useServices(serviceId);
-
-  const { provider } = useProviders(providerId);
-
-  useEffect(() => {
-    setClientId(item.relationships.client.data.id);
-    setServiceId(item.relationships.service.data.id);
-    if (item.relationships.provider.data) {
-      setProviderId(item.relationships.provider.data.id);
-    }
-  }, [item]);
-
   return (
     <StyledTableRow>
       <Col size={2}>
@@ -78,6 +52,12 @@ const TableRow = ({ item }) => {
 const ArchiveTable = ({ items }) => {
   const t = useTranslate("archive");
 
+  const { clients } = useClients();
+
+  const { services } = useServices();
+
+  const { providers } = useProviders();
+
   return (
     <StyledArchiveTable>
       <Header>
@@ -95,8 +75,20 @@ const ArchiveTable = ({ items }) => {
       </Header>
 
       {items &&
-        items.map(item => {
-          return <TableRow item={item} />;
+        items.map((item, index) => {
+          const clientId = item.relationships.client.data.id;
+          const serviceId = item.relationships.service.data.id;
+          const providerId = item?.relationships?.provider?.data?.id || 0;
+          const provider = providers?.[providerId]?.attributes;
+          const client = clients?.[clientId]?.attributes;
+          const service = services?.[serviceId]?.attributes;
+
+          return (
+            <TableRow
+              key={`archive-row` + index}
+              item={{ ...item, provider, client, service }}
+            />
+          );
         })}
     </StyledArchiveTable>
   );

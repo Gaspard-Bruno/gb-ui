@@ -3,11 +3,6 @@ import PropTypes from "prop-types";
 
 import { useTranslate } from "polyglot-react-redux-sdk";
 
-import useProviders from "Hooks/useProviders.js";
-import useClients from "Hooks/useClients.js";
-import useServices from "Hooks/useServices";
-import useAdmin from "Hooks/useAdmin.js";
-
 import { Col } from "Components/Layout";
 
 import Badge from "Components/Badge";
@@ -31,7 +26,6 @@ const RequestCard = ({
   service,
   listPosition
 }) => {
-  console.log(service);
   const t = useTranslate("requests");
 
   return (
