@@ -47,7 +47,7 @@ const renderItems = items => {
 
 CardSlider.propTypes = {
   list: PropTypes.array.isRequired,
-  hasButton: PropTypes.bool,
+  hasButton: PropTypes.bool
 };
 
 export default CardSlider;

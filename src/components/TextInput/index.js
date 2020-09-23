@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import { ErrorText, Body } from "Components/Text";
-import Icon from "components/Icon";
+import Icon from "Components/Icon";
 import StyledInput, { InputContainer } from "./style";
 
 const TextInput = ({

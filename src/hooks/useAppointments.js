@@ -25,7 +25,7 @@ const useAppointments = pageNumber => {
   );
 
   useEffect(() => {
-    if (!loaded || pageNumber) {
+    if (!loaded && pageNumber) {
       dispatchGetAppointmentsListing(pageNumber);
     }
   }, [dispatchGetAppointmentsListing, loaded, pageNumber]);

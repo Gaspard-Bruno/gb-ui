@@ -46,7 +46,7 @@ const Login = () => {
               type="password"
               hasIcon
             />
-            { error && <ErrorText>{error}</ErrorText> }
+            {error && <ErrorText>{error}</ErrorText>}
             <Row>
               <Col size={4} center>
                 <Link to="/">{t("forgotPw")}</Link>

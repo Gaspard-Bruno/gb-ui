@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useMemo } from "react";
-import { useSelector } from "react-redux";
-
+import React from "react";
+import PropTypes from "prop-types";
 import { useTranslate } from "polyglot-react-redux-sdk";
 
 import useProviders from "Hooks/useProviders.js";
@@ -8,46 +7,9 @@ import useClients from "Hooks/useClients.js";
 import useServices from "Hooks/useServices";
 
 import { Col } from "Components/Layout";
-import Avatar from "Components/Avatar";
+import TableRow from "Components/TableRow";
 
-import StyledArchiveTable, { Header, StyledTableRow } from "./style";
-
-const TableRow = ({ item }) => {
-  const { service, client, provider } = item;
-  const t = useTranslate("archive");
-  return (
-    <StyledTableRow>
-      <Col size={2}>
-        {service && <span className="service">{service.name}</span>}
-      </Col>
-
-      <Col size={2}>
-        {client && <Avatar size="small" hasText={true} user={client} />}
-      </Col>
-
-      <Col size={2}>
-        {provider && <Avatar size="small" hasText={true} user={provider} />}
-      </Col>
-
-      <Col size={2}>
-        {item.attributes.deliveredOn &&
-          new Date(item.attributes.deliveredOn).toLocaleDateString()}
-      </Col>
-
-      <Col size={2}>
-        {item.attributes.totalHours ? (
-          <span>
-            {item.attributes.totalHours} {t("hours")}
-          </span>
-        ) : (
-          <span></span>
-        )}
-      </Col>
-
-      <Col size={2}>{/* {item.totalPrice}€ */}</Col>
-    </StyledTableRow>
-  );
-};
+import StyledArchiveTable, { Header } from "./style";
 
 const ArchiveTable = ({ items }) => {
   const t = useTranslate("archive");
@@ -92,6 +54,10 @@ const ArchiveTable = ({ items }) => {
         })}
     </StyledArchiveTable>
   );
+};
+
+ArchiveTable.propTypes = {
+  items: PropTypes.array
 };
 
 export default ArchiveTable;

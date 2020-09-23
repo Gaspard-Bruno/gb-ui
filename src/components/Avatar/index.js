@@ -11,10 +11,7 @@ const Avatar = ({ action, size, hasCarat, hasText, user }) => {
       {size && user && user.avatar ? (
         <AvatarImage avatar={`${user.avatar}`} size={size}></AvatarImage>
       ) : (
-        <AvatarInitials 
-          size={size}
-          avatarDefault={user.avatarDefault}
-        >
+        <AvatarInitials size={size} avatarDefault={user.avatarDefault}>
           {user.fullName ? user.fullName.slice(0, 2) : ""}
         </AvatarInitials>
       )}
