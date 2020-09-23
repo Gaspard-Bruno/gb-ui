@@ -1,33 +1,33 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback } from "react";
 import { useSelector } from "react-redux";
 
-import { useTranslate } from 'polyglot-react-redux-sdk';
+import { useTranslate } from "polyglot-react-redux-sdk";
 
-import useAppointments from 'Hooks/useAppointments';
+import useAppointments from "Hooks/useAppointments";
 
-import { BackofficeContainer } from 'Components/Layout';
-import TopBar from 'Components/TopBar';
-
-import ArchiveTable from 'Components/ArchiveTable';
-import FilterBar from 'Components/FilterBar';
-import Pagination from 'Components/Pagination';
-import { getAppointmentsTotalPages } from 'Redux/appointments/selectors';
+import { BackofficeContainer } from "Components/Layout";
+import { SubHeading } from "Components/Text";
+import TopBar from "Components/TopBar";
+import ArchiveTable from "Components/ArchiveTable";
+import FilterBar from "Components/FilterBar";
+import Pagination from "Components/Pagination";
+import { getAppointmentsTotalPages } from "Redux/appointments/selectors";
 
 const filters = [
   {
     label: "responsible",
     value: "todo"
-  }, 
+  },
   {
     label: "date",
     value: "todo"
   },
   {
-    label: "service", 
+    label: "service",
     value: "todo"
   },
   {
-    label: "status", 
+    label: "status",
     value: "todo"
   }
 ];
@@ -40,27 +40,36 @@ const Archive = () => {
   const t = useTranslate("archive");
 
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = useSelector(state => getAppointmentsTotalPages(state))
+  const totalPages = useSelector(state => getAppointmentsTotalPages(state));
 
-  const { appointments } = useAppointments(currentPage);
+  const { appointments, getPageAppointments, loading } = useAppointments(
+    currentPage
+  );
 
-  const handleNavigation = useCallback((pageNumber) =>{
-    setCurrentPage(pageNumber);
-  }, [])
+  const handleNavigation = useCallback(
+    pageNumber => {
+      getPageAppointments(pageNumber);
+      setCurrentPage(pageNumber);
+    },
+    [getPageAppointments]
+  );
 
   return (
     <>
-        <TopBar location={t('services')} title={t('archive')} user={admin} />
-        <BackofficeContainer>
-            <FilterBar availableFilters={filters}/>
-
-            <ArchiveTable items={appointments}/>
-            <Pagination 
-              totalPages={totalPages} 
-              currentPage={currentPage} 
-              action={handleNavigation}
-            />
-        </BackofficeContainer>
+      <TopBar location={t("services")} title={t("archive")} user={admin} />
+      <BackofficeContainer>
+        <FilterBar availableFilters={filters} />
+        {loading ? (
+          <SubHeading>{t("loading")}</SubHeading>
+        ) : (
+          <ArchiveTable items={appointments} />
+        )}
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          action={handleNavigation}
+        />
+      </BackofficeContainer>
     </>
   );
 };

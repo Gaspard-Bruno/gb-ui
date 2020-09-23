@@ -63,6 +63,7 @@ export default {
   },
   archive: {
     archive: "Arquivo",
+    loading: "Loading",
     services: "Serviços",
     serviceType: "Tipo de Serviço",
     client: "Cliente",

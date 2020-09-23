@@ -32,6 +32,7 @@ const useAppointments = pageNumber => {
 
   return {
     appointments,
+    getPageAppointments: dispatchGetAppointmentsListing,
     error,
     loading
   };
