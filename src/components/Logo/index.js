@@ -8,22 +8,6 @@ import { ReactComponent as LogoColorful } from "Assets/svg/logo-colorful.svg";
 import { ReactComponent as LogoBlackTag } from "Assets/svg/logo-black-tag.svg";
 import { ReactComponent as LogoWhiteTag } from "Assets/svg/logo-white-tag.svg";
 import { ReactComponent as LogoColorfulTag } from "Assets/svg/logo-colorful-tag.svg";
-import { ReactComponent as LogoHome } from "Assets/svg/logo-Home.svg";
-import { ReactComponent as LogoAbout } from "Assets/svg/about-us-logo.svg";
-
-// Partners
-import { ReactComponent as cmlSVG } from "Assets/svg/partners/cml.svg";
-import { ReactComponent as santaCasaSVG } from "Assets/svg/partners/santa-casa.svg";
-import { ReactComponent as agaKhanSVG } from "Assets/svg/partners/aga-khan.svg";
-import { ReactComponent as inpactHubSVG } from "Assets/svg/partners/impact-hub.svg";
-import { ReactComponent as trowHatchSVG } from "Assets/svg/partners/trow-hatch.svg";
-import { ReactComponent as hCapitalSVG } from "Assets/svg/partners/h_capital.svg";
-import { ReactComponent as lx2020SVG } from "Assets/svg/partners/lisboa_2020.svg";
-import { ReactComponent as pt2020SVG } from "Assets/svg/partners/pt_2020.svg";
-import { ReactComponent as euroSVG } from "Assets/svg/partners/euro_flag.svg";
-import { ReactComponent as ptlSVG } from "Assets/svg/partners/pt_flag.svg";
-import { ReactComponent as ssSVG } from "Assets/svg/partners/ss-banner.svg";
-import { ReactComponent as cldsSVG } from "Assets/svg/partners/clsds-3g.svg";
 
 // co-workers
 import { ReactComponent as RegisteredSpecialists } from "Assets/svg/co-work/registered.svg";
@@ -31,11 +15,6 @@ import { ReactComponent as ActiveEspecialists } from "Assets/svg/co-work/active.
 import { ReactComponent as PerformedServices } from "Assets/svg/co-work/performed-services.svg";
 import { ReactComponent as ActiveHours } from "Assets/svg/co-work/active-hours.svg";
 import { ReactComponent as TotalAmount } from "Assets/svg/co-work/total-amount.svg";
-
-// Become a Specialist
-import { ReactComponent as BecomeHeaderLogo } from "Assets/svg/becomeSpecialist/becomeHeaderLogo.svg";
-import { ReactComponent as BecomeBodyLogo } from "Assets/svg/becomeSpecialist/becomeBodyLogo.svg";
-
 const LOGO_MAP = {
   colorful: <LogoColorful />,
   black: <LogoBlack />,
@@ -43,10 +22,6 @@ const LOGO_MAP = {
   colorfulTag: <LogoColorfulTag />,
   whiteTag: <LogoWhiteTag />,
   blackTag: <LogoBlackTag />,
-  // homeLogos
-  home: <LogoHome />,
-  // AboutLogos
-  about: <LogoAbout />,
   // partners Logo
   cmlLogo: <cmlSVG />,
   santaCasaLogo: <santaCasaSVG />,
@@ -65,10 +40,7 @@ const LOGO_MAP = {
   activeEspecialistLogo: <ActiveEspecialists />,
   performedServicesLogo: <PerformedServices />,
   activeHoursLogo: <ActiveHours />,
-  totalAmountLogo: <TotalAmount />,
-  // Become a Specialis tLogos
-  becomeHeaderLogo: <BecomeHeaderLogo />,
-  becomeBodyLogo: <BecomeBodyLogo />
+  totalAmountLogo: <TotalAmount />
 };
 
 const Logo = ({ size, isCenter = true, color }) => {
