@@ -4,7 +4,7 @@ const REDUCER = "services";
 export const ACTION_TYPES = {
   GET_SERVICES: `${REDUCER}/GET_SERVICES`,
   GET_SERVICES_SUCCESS: `${REDUCER}/GET_SERVICES_SUCCESS`,
-  GET_SERVICES_FAIL: `${REDUCER}/GET_SERVICES_FAIL`,  
+  GET_SERVICES_FAIL: `${REDUCER}/GET_SERVICES_FAIL`,
   GET_SERVICE: `${REDUCER}/GET_SERVICE`,
   GET_SERVICE_SUCCESS: `${REDUCER}/GET_SERVICE_SUCCESS`,
   GET_SERVICE_FAIL: `${REDUCER}/GET_SERVICE_FAIL`,
@@ -33,7 +33,7 @@ const getServicesListing = dispatch => {
         error: "Error getting services"
       });
     });
-}
+};
 
 const getService = (id, dispatch) => {
   dispatch({
@@ -59,5 +59,3 @@ const getService = (id, dispatch) => {
 };
 
 export { getServicesListing, getService };
-
-export { getService, getServicesListing };

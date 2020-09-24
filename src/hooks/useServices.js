@@ -13,8 +13,8 @@ const useServices = serviceId => {
     getServiceLoading,
     getServiceError,
     getServices,
-    getServiceLoaded
-  } = selectors;
+    getServiceLoaded,
+  } = servicesSelectors;
 
   const error = useSelector(state => getServiceError(state));
   const loading = useSelector(state => getServiceLoading(state));
