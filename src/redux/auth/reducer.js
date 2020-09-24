@@ -13,10 +13,12 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case ACTION_TYPES.LOGIN_USER:
+    case ACTION_TYPES.LOGOUT_USER:
       return {
         ...state,
         loading: true
       };
+    case ACTION_TYPES.LOGOUT_USER_FAIL:
     case ACTION_TYPES.LOGIN_USER_FAIL:
       return {
         ...state,
@@ -28,6 +30,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
+        loading: false,
+        loaded: true
+      };
+    case ACTION_TYPES.LOGOUT_USER_SUCCESS:
+      return {
+        ...state,
         loading: false,
         loaded: true
       };
