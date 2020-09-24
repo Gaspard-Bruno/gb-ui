@@ -3,7 +3,7 @@ import { shallowEqual, useSelector, useDispatch } from "react-redux";
 
 import { actions, selectors } from "Redux/appointments";
 
-const useAppointments = pageNumber => {
+const useAppointments = (pageNumber = 1) => {
   const dispatch = useDispatch();
   const { getAppointmentsListing } = actions;
   const { getAppointments, getLoading, getError, getLoaded } = selectors;
@@ -25,6 +25,7 @@ const useAppointments = pageNumber => {
   );
 
   useEffect(() => {
+    console.log("Page number", pageNumber);
     if (!loaded && pageNumber) {
       dispatchGetAppointmentsListing(pageNumber);
     }

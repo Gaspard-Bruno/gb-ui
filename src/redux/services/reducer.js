@@ -2,6 +2,7 @@ import { ACTION_TYPES } from "./actions";
 
 const initialState = {
   loading: false,
+  loaded: false,
   services: [],
   error: null,
   serviceLoading: false,

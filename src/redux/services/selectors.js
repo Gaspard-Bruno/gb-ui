@@ -10,11 +10,11 @@ export const getServices = createSelector(
 );
 
 export const getServiceLoading = createSelector(selectServicesState, state => {
-  return state.serviceLoading || false;
+  return state.serviceLoading || state.loading || false;
 });
 export const getServiceLoaded = createSelector(selectServicesState, state => {
-  return state.serviceLoaded || false;
+  return state.serviceLoaded || state.loaded || false;
 });
 export const getServiceError = createSelector(selectServicesState, state => {
-  return state.serviceError || null;
+  return state.serviceError || state.error || null;
 });

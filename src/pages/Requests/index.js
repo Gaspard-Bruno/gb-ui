@@ -194,6 +194,13 @@ const Requests = () => {
 
   // updateAppointment("pending", testAppId);
 
+  const kanbanData = {
+    providers,
+    services,
+    clients,
+    admins
+  };
+
   return (
     <>
       <TopBar location={t("services")} title={t("requests")} user={admin} />
@@ -217,6 +224,7 @@ const Requests = () => {
                   <KanbanColumn
                     key={"requestCol" + index}
                     status={key}
+                    data={kanbanData}
                     items={columns[key]}
                     kanbanType="requests"
                     containerHeight={containerHeight}

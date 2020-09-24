@@ -13,7 +13,7 @@ const useServices = serviceId => {
     getServiceLoading,
     getServiceError,
     getServices,
-    getServiceLoaded,
+    getServiceLoaded
   } = servicesSelectors;
 
   const error = useSelector(state => getServiceError(state));
@@ -28,6 +28,7 @@ const useServices = serviceId => {
 
   useEffect(() => {
     if (!loaded && !loading) {
+      console.log("loading n load", loading, loaded);
       getServicesListing(dispatch);
     }
   }, [dispatch, getServices, getServicesListing, loaded, loading]);
@@ -39,7 +40,6 @@ const useServices = serviceId => {
   return {
     services,
     service,
-    services,
     loaded,
     error,
     loading
