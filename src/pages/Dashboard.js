@@ -22,13 +22,14 @@ const routes = [
 ];
 
 const Dashboard = () => {
-  const { user, gotoSignInPage, tokenExpired } = useAuth();
+  const { user, gotoSignInPage } = useAuth();
 
   useEffect(() => {
-    if ((!user || tokenExpired()) && gotoSignInPage) {
+    if (!user) {
       gotoSignInPage();
     }
-  }, [gotoSignInPage, tokenExpired, user]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gotoSignInPage, user]);
 
   return (
     <Page>

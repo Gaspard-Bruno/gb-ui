@@ -1,13 +1,16 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { shallowEqual, useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+
+import useStorage from "Hooks/useStorage";
 import { actions, selectors } from "Redux/auth";
 
+const { clearStorage } = useStorage();
 const useAuth = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { loginUser } = actions;
+  const { loginUser, logoutUser } = actions;
   const { getAuthUser, getLoading, getError } = selectors;
 
   const user = useSelector(state => getAuthUser(state), shallowEqual);
@@ -22,22 +25,43 @@ const useAuth = () => {
     [dispatch, loginUser]
   );
 
+  const dispatchLogoutUser = useCallback(
+    (email, password, callback) => {
+      logoutUser(dispatch, { email, password, callback });
+    },
+    [dispatch, logoutUser]
+  );
+
+  const redirectToDashboard = useCallback(() => history.push("/dashboard"), [
+    history
+  ]);
+
   const signInAndRedirectToDashboard = useCallback(
     async (email, pw) => {
       if (email && pw) {
-        dispatchLoginUser(email, pw, () => history.push("/dashboard"));
+        dispatchLoginUser(email, pw, redirectToDashboard);
       }
     },
-    [dispatchLoginUser, history]
+    [dispatchLoginUser, redirectToDashboard]
   );
 
   const gotoSignInPage = useCallback(() => history.push("/"), [history]);
+
+  useEffect(() => {
+    if (!user) {
+      gotoSignInPage();
+      clearStorage();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatchLogoutUser, gotoSignInPage, user]);
 
   return {
     user,
     error,
     loading,
+    redirectToDashboard,
     signInAndRedirectToDashboard,
+    dispatchLogoutUser,
     gotoSignInPage
   };
 };

@@ -4,7 +4,7 @@ export default () => {
   const clearStorage = () => localStorage.clear();
   const getStorageItem = key => JSON.parse(localStorage.getItem(key));
   const setStorageItem = (key, value) =>
-    localStorage.getItem(key, JSON.stringify(value));
+    localStorage.setItem(key, JSON.stringify(value));
   // * Auth Token
   const STORAGE_AUTH_TOKEN = getStorageItem("AUTH_TOKEN") || {};
   const { user, token, tokenDate } = STORAGE_AUTH_TOKEN;

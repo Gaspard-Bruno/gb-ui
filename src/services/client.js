@@ -2,7 +2,7 @@ import axios from "axios";
 import CONFIG from "Config";
 import useStorage from "Hooks/useStorage";
 
-const { clientHeaders, setStorageAuthToken, clearStorage } = useStorage();
+const { clientHeaders, setStorageAuthToken } = useStorage();
 const instance = axios.create({
   baseURL: CONFIG.apiOrigin,
   headers: clientHeaders
