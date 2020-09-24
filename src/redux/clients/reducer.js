@@ -27,35 +27,35 @@ export default (state = initialState, action) => {
     case ACTION_TYPES.GET_CLIENTS_SUCCESS:
       return {
         ...state,
-        clients: action.payload.data.map((d) => d.id),
+        clients: action.payload.data.map(d => d.id),
         loading: false,
         loaded: true
       };
 
     case ACTION_TYPES.GET_CLIENT:
-        return {
-            ...state,
-            clientLoading: true
-        }
+      return {
+        ...state,
+        clientLoading: true
+      };
     case ACTION_TYPES.GET_CLIENT_SUCCESS:
-        // console.log("ACTION ~~~~~~~~~~~~", action)
-        // console.log("STATE ~~~~~~~~~~~~~", state)
-        // let fetchedProvider = state.providers.find(providerId => providerId === action.payload.data.id)
-        // console.log("testetststest", state)
+      // console.log("ACTION ~~~~~~~~~~~~", action)
+      // console.log("STATE ~~~~~~~~~~~~~", state)
+      // let fetchedProvider = state.providers.find(providerId => providerId === action.payload.data.id)
+      // console.log("testetststest", state)
 
-        return {
-          ...state,
-          clientLoading: false,
-          clientError: false,
-          clientLoaded: true
-        }
+      return {
+        ...state,
+        clientLoading: false,
+        clientError: false,
+        clientLoaded: true
+      };
     case ACTION_TYPES.GET_CLIENT_FAIL:
-        return {
-            ...state,
-            clientError: action.error,
-            clientLoading: false,
-            clientLoaded: true
-        }
+      return {
+        ...state,
+        clientError: action.error,
+        clientLoading: false,
+        clientLoaded: true
+      };
 
     default:
       return state;

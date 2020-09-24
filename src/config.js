@@ -4,5 +4,6 @@ export default {
   social: {
     facebook: "http://facebook.com"
   },
-  apiOrigin: process.env.REACT_APP_API_ORIGIN
+  apiOrigin: process.env.REACT_APP_API_ORIGIN,
+  sessionExpirationDays: 30
 };

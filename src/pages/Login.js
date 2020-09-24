@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslate } from "polyglot-react-redux-sdk";
 
 import { Col, Row, Page } from "Components/Layout";
@@ -8,6 +8,7 @@ import Logo from "Components/Logo";
 import Button from "Components/Button";
 import Card from "Components/Card";
 
+import useStorage from "Hooks/useStorage";
 import useAuth from "Hooks/useAuth";
 
 export const customCardStyle = props => `
@@ -22,15 +23,24 @@ export const customCardStyle = props => `
   }
 `;
 
-const STORAGE_AUTH_TOKEN = JSON.parse(localStorage.getItem("AUTH_TOKEN"));
-const { user } = STORAGE_AUTH_TOKEN;
-
 const Login = () => {
+  const { user } = useStorage();
   const t = useTranslate("login");
   const [email, setEmail] = useState(user?.data?.attributes?.email);
   const [password, setPassword] = useState("");
 
-  const { signInAndRedirectToDashboard, error } = useAuth();
+  const {
+    signInAndRedirectToDashboard,
+    error,
+    redirectToDashboard
+  } = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      redirectToDashboard();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Page bg="orange">

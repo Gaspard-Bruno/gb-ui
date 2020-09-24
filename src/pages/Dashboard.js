@@ -22,13 +22,13 @@ const routes = [
 ];
 
 const Dashboard = () => {
-  const { user, gotoSignInPage } = useAuth();
+  const { user, gotoSignInPage, tokenExpired } = useAuth();
 
   useEffect(() => {
-    if (!user && gotoSignInPage) {
+    if ((!user || tokenExpired()) && gotoSignInPage) {
       gotoSignInPage();
     }
-  }, [gotoSignInPage, user]);
+  }, [gotoSignInPage, tokenExpired, user]);
 
   return (
     <Page>
