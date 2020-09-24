@@ -5,7 +5,12 @@ import { useTranslate } from "polyglot-react-redux-sdk";
 
 import Logo from "Components/Logo";
 
-import StyledSidebar, { NavSection, NavLink, NavHeader, LogoContainer } from "./style";
+import StyledSidebar, {
+  NavSection,
+  NavLink,
+  NavHeader,
+  LogoContainer
+} from "./style";
 
 const Sidebar = props => {
   const t = useTranslate("sidebar");
@@ -24,8 +29,12 @@ const Sidebar = props => {
   return (
     <StyledSidebar>
       <LogoContainer>
-        <SidebarLink routePath={{ path: "/", exact: true }} to="/" isLogo={true}>
-            <Logo color={"white"} />
+        <SidebarLink
+          routePath={{ path: "/", exact: true }}
+          to="/"
+          isLogo={true}
+        >
+          <Logo color={"white"} />
         </SidebarLink>
       </LogoContainer>
 
@@ -50,11 +59,14 @@ const Sidebar = props => {
           to="/dashboard/candidates"
           text={t("candidates")}
         />
+        {/*
+
         <SidebarLink
           routePath="/dashboard/specialists"
           to="/dashboard/specialists"
           text={t("specialists")}
         />
+        */}
       </NavSection>
 
       <NavSection>
@@ -65,11 +77,13 @@ const Sidebar = props => {
           text={t("clients")}
         />
       </NavSection>
-
+      {/*
       <NavSection>
         <NavHeader>{t("team")}</NavHeader>
         <SidebarLink routePath="/members" to="/members" text={t("members")} />
       </NavSection>
+
+        */}
     </StyledSidebar>
   );
 };
