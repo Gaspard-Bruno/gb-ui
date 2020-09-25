@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 import Search from "Components/Search";
 import Select from "Components/Select";
@@ -8,7 +8,7 @@ import IconSwitch from "Components/IconSwitch";
 
 import StyledFilterBar, { Header, Filters, Selects } from "./style";
 
-const FilterBar = ({ availableFilters, showLayout, updateFilterHeight, handleLayoutChange }) => {
+const FilterBar = ({ availableFilters, showLayout, handleLayoutChange }) => {
   const [activeFilters, setActiveFilters] = useState([]);
 
   const handleQuery = newQuery => {
@@ -36,24 +36,21 @@ const FilterBar = ({ availableFilters, showLayout, updateFilterHeight, handleLay
     setActiveFilters(newFilters);
   };
 
-  useEffect(() => {
-    if (updateFilterHeight) { updateFilterHeight() };
-  }, [activeFilters])
-
   return (
     <StyledFilterBar>
-        <Header>
-            <Selects>
-                <Search style="service" onChange={handleQuery} />
-                <Select 
-                  placeholder="Filtros"
-                  options={availableFilters} 
-                  onChange={handleToggleFilters} />
-            </Selects>
-            {showLayout && 
-              <IconSwitch switchType="layout" onChange={handleLayoutChange}/>
-            }
-        </Header>
+      <Header>
+        <Selects>
+          <Search style="service" onChange={handleQuery} />
+          <Select
+            placeholder="Filtros"
+            options={availableFilters}
+            onChange={handleToggleFilters}
+          />
+        </Selects>
+        {showLayout && (
+          <IconSwitch switchType="layout" onChange={handleLayoutChange} />
+        )}
+      </Header>
 
       <Filters>
         {activeFilters &&
@@ -75,19 +72,13 @@ const FilterBar = ({ availableFilters, showLayout, updateFilterHeight, handleLay
 };
 
 FilterBar.propTypes = {
-    availableFilters: PropTypes.arrayOf(
-        PropTypes.oneOf([
-            "responsible",
-            "date",
-            "service",
-            "status",
-            "region",
-        ])
-    ),
-    showLayout: PropTypes.bool,
-    handleLayoutChange: PropTypes.func
-  };
-  
+  availableFilters: PropTypes.arrayOf(
+    PropTypes.oneOf(["responsible", "date", "service", "status", "region"])
+  ),
+  showLayout: PropTypes.bool,
+  handleLayoutChange: PropTypes.func
+};
+
 FilterBar.defaultProps = {
   // leftIcon: "kanban",
   // rightIcon: "List"

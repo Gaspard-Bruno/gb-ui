@@ -14,7 +14,7 @@ const KanbanColumn = ({ colName, items, kanbanType, data }) => {
   const t = useTranslate(kanbanType);
 
   const renderCards = useCallback(
-    dndProps =>
+    () =>
       items.map((item, index) => {
         const cardProps = {
           id: item.id,
@@ -27,7 +27,7 @@ const KanbanColumn = ({ colName, items, kanbanType, data }) => {
         return (
           <KanbanCard
             key={"kanbanCard" + item.id}
-            cardKey={"kanbanCard" + item.id}
+            cardKey={item.id}
             cardType={kanbanType}
             index={index}
             cardData={cardProps}
@@ -51,7 +51,7 @@ const KanbanColumn = ({ colName, items, kanbanType, data }) => {
             </IconContainer>
           </Header>
           {provided.placeholder}
-          {renderCards(provided)}
+          {renderCards()}
         </StyledKanbanColumn>
       )}
     </Droppable>

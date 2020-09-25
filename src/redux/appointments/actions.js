@@ -46,7 +46,6 @@ const updateAppointment = (dispatch, newStatus, appointmentId) => {
   appointmentsClient
     .updateAppointment(newStatus, appointmentId)
     .then(res => {
-      console.log("ressssssssss", res);
       if (res && res.data) {
         dispatch({
           type: ACTION_TYPES.UPDATE_APPOINTMENT_SUCCESS

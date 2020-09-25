@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import { DragDropContext } from "react-beautiful-dnd";
@@ -6,30 +6,57 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { BackofficeKanbanContainer } from "Components/Layout";
 import KanbanColumn from "Components/KanbanColumn";
 
-const Kanban = ({ items, filters, colNames, kanbanData, onChangeStatus }) => {
-  const COLUMNS = {};
-  colNames.forEach(cn => {
-    COLUMNS[cn] = [];
-  });
+const Kanban = ({ items, colNames, kanbanData, onChangeStatus }) => {
+  const [columns, setColumns] = useState({});
+  useEffect(() => {
+    const COLUMNS = {};
+    colNames.forEach(cn => {
+      COLUMNS[cn] = [];
+    });
 
-  filters.forEach(filter => {
-    if (!COLUMNS[filter.column]) {
-      return null;
-    }
-    COLUMNS[filter.column].push(filter);
-  });
+    items.forEach(item => {
+      if (!COLUMNS[item.column]) {
+        return null;
+      }
+      COLUMNS[item.column].push(item);
+    });
+    setColumns(COLUMNS);
+  }, [colNames, items]);
+
+  const handleChangeColumn = useCallback(
+    params => {
+      const cardId = params.draggableId;
+      const destinationColumn = params.destination.droppableId;
+      const sourceColumn = params.source.droppableId;
+      if (destinationColumn !== sourceColumn) {
+        const COLUMNS = {
+          ...columns,
+          [sourceColumn]: columns[sourceColumn].filter(c => c.id !== cardId)
+        };
+        COLUMNS[destinationColumn] = [
+          items.find(itm => itm.id === cardId),
+          ...columns[destinationColumn]
+        ];
+        setColumns(COLUMNS);
+        if (onChangeStatus) {
+          onChangeStatus(params);
+        }
+      }
+    },
+    [columns, items, onChangeStatus]
+  );
 
   return (
     <>
-      <DragDropContext onDragEnd={onChangeStatus}>
+      <DragDropContext onDragEnd={handleChangeColumn}>
         <BackofficeKanbanContainer>
-          {COLUMNS &&
-            Object.keys(COLUMNS).map((key, index) => {
+          {columns &&
+            Object.keys(columns).map((key, index) => {
               return (
                 <KanbanColumn
                   key={"kanbanCol" + index}
                   colName={key}
-                  items={COLUMNS[key]}
+                  items={columns[key]}
                   data={kanbanData}
                   kanbanType="requests"
                 />
@@ -44,13 +71,17 @@ const Kanban = ({ items, filters, colNames, kanbanData, onChangeStatus }) => {
 export default Kanban;
 
 Kanban.propTypes = {
-  filters: PropTypes.arrayOf(
+  items: PropTypes.arrayOf(
     PropTypes.shape({
       status: PropTypes.string,
       column: PropTypes.string
     })
   ),
-  items: PropTypes.object,
+  kanbanData: PropTypes.shape({
+    admins: PropTypes.object,
+    clients: PropTypes.object,
+    services: PropTypes.object
+  }),
   colNames: PropTypes.arrayOf(PropTypes.string),
   onChangeStatus: PropTypes.func
 };

@@ -5,7 +5,8 @@ import { actions, selectors } from "Redux/appointments";
 
 const useAppointments = (pageNumber = 1, filters = {}, type = 'request') => {
   const dispatch = useDispatch();
-  const { getAppointmentsListing } = actions;
+  const { getAppointmentsListing, updateAppointment } = actions;
+  const { getAppointments, getLoading, getError, getLoaded } = selectors;
   const { 
     getAppointments, 
     getArchivedAppointments, 
@@ -56,10 +57,17 @@ const useAppointments = (pageNumber = 1, filters = {}, type = 'request') => {
     }
   }, [dispatchGetAppointmentsListing, loaded, pageNumber]);
 
+  const dispatchUpdateAppointment = useCallback(
+    (newStatus, id) => {
+      updateAppointment(dispatch, newStatus, id);
+    },
+    [dispatch, updateAppointment]
+  );
   return {
     // appointments,
     archivedAppointments,
     requestAppointments,
+    updateAppointment: dispatchUpdateAppointment,
     getPageAppointments: dispatchGetAppointmentsListing,
     error,
     loading

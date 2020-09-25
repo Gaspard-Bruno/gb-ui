@@ -56,7 +56,7 @@ const Requests = () => {
 
   const { appointments } = useAppointments();
   const COLUMN_NAMES = new Set(Object.values(STATUS_COLUMNS));
-  const kanbanFilters = useMemo(
+  const kanbanItems = useMemo(
     () =>
       appointments?.map(a => ({
         ...a,
@@ -90,8 +90,9 @@ const Requests = () => {
         </div>
         {isKanban ? (
           <Kanban
-            filters={kanbanFilters}
-            items={appointments}
+            onChangeStatus={params => console.log("on Drag ENd", params)}
+            kanbanData={kanbanData}
+            items={kanbanItems}
             colNames={COLUMN_NAMES}
           />
         ) : (
