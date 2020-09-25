@@ -108,6 +108,7 @@ const Candidates = () => {
     candidateLeads,
     admins
   };
+  console.log("DAta", kanbanData);
 
   return (
     <>

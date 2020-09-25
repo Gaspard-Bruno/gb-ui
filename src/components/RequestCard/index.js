@@ -27,6 +27,8 @@ const RequestCard = ({
 }) => {
   const t = useTranslate("requests");
 
+    console.log("p", provider, "c", client, "a", admin, "s", service)
+
   return (
     <StyledRequestCard listPosition={listPosition}>
       <Col size={4} justify="center">
@@ -37,18 +39,18 @@ const RequestCard = ({
               status={appointment?.attributes.status}
             />
           </BadgeContainer>
-          {service?.name && <span>{service?.name}</span>}
+          {service?.attributes.name && <span>{service.attributes.name}</span>}
         </Status>
       </Col>
 
       <Col size={3} justify="center">
         <Details>
           <p>
-            {t("client")}: {client && <span>{client?.fullName}</span>}
+            {t("client")}: {client?.attributes.fullName && <span>{client.attributes.fullName}</span>}
           </p>
           <p>
             {t("specialist")}:{" "}
-            {provider ? <span>{provider?.fullName}</span> : <span></span>}
+            {provider?.attributes.fullName ? <span>{provider.attributes.fullName}</span> : <span></span>}
           </p>
         </Details>
       </Col>
@@ -83,7 +85,7 @@ const RequestCard = ({
 
       <Col size={2}>
         {admin ? (
-          <Avatar size="small" hasText={true} user={admin} />
+          <Avatar size="small" hasText={true} user={admin.attributes} />
         ) : (
           <div></div>
         )}

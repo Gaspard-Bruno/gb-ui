@@ -31,46 +31,41 @@ export default (state = initialState, action) => {
         loaded: true
       };
     case ACTION_TYPES.GET_APPOINTMENTS_SUCCESS:
-      console.log("in reducer")
-      console.log(action)
-      if (action.payload.meta) {
-        return {
-          ...state,
-          archivedAppointments: action.payload.data.map((d) => d.id),
-          appointmentsTotalCount: parseInt(action.payload.meta['Total-Count']),
-          appointmentsTotalPages: parseInt(action.payload.meta['Total-Pages']),
-          appointmentsCurrentPage: parseInt(action.payload.meta['Current-Page']),
-          loading: false,
-          loaded: true
-        };  
-      } else {
-        return {
-          ...state,
-          requestAppointments: action.payload.data.map((d) => d.id),
-          loading: false,
-          loaded: true          
-        }
-      }
+      return {
+        ...state,
+        appointments: action.payload.data.map(d => d.id),
 
+        appointmentsTotalCount: action.payload.meta
+          ? parseInt(action.payload.meta["Total-Count"])
+          : state.appointmentsTotalCount,
+        appointmentsTotalPages: action.payload.meta
+          ? parseInt(action.payload.meta["Total-Pages"])
+          : state.appointmentsTotalPages,
+        appointmentsCurrentPage: action.payload.meta
+          ? parseInt(action.payload.meta["Current-Page"])
+          : state.appointmentsCurrentPage,
+        loading: false,
+        loaded: true
+      };
 
     // UPDATE
     case ACTION_TYPES.UPDATE_APPOINTMENT:
-        return {
-          ...state,
-          updateAppointmentLoading: true,
-        };
+      return {
+        ...state,
+        updateAppointmentLoading: true
+      };
     case ACTION_TYPES.UPDATE_APPOINTMENT_SUCCESS:
-        return {
-          ...state,
-          updateAppointmentLoading: false,
-          updateAppointmentError: false
-        };
+      return {
+        ...state,
+        updateAppointmentLoading: false,
+        updateAppointmentError: false
+      };
     case ACTION_TYPES.UPDATE_APPOINTMENT_FAIL:
-        return {
-          ...state,
-          updateAppointmentError: true,
-          updateAppointmentLoading: false
-        };        
+      return {
+        ...state,
+        updateAppointmentError: true,
+        updateAppointmentLoading: false
+      };
 
     default:
       return state;

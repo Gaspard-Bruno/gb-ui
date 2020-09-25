@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 
 import { useTranslate } from "polyglot-react-redux-sdk";
+import { DragDropContext } from "react-beautiful-dnd";
 
 import useAppointments from "Hooks/useAppointments";
 import useProviders from "Hooks/useProviders.js";
@@ -128,22 +129,21 @@ const Requests = () => {
     updateFilterHeight();
   });
 
-  // const testAppId = 1565;
-  // const updateLoading = useSelector(appointmentSelectors.getUpdateAppointmentLoading);
-  // const updateError = useSelector(appointmentSelectors.getUpdateAppointmentError);
-
-  // const dispatch = useDispatch();
-  // const updateAppointment = useCallback((newStatus, appointmentId) => {
-  //   appointmentActions.updateAppointment(dispatch, newStatus, appointmentId);
-  // }, [dispatch, appointmentActions.updateAppointment]);
-
-  // updateAppointment("pending", testAppId);
-
   const kanbanData = {
     providers,
     services,
     clients,
     admins
+  };
+  console.log("Requests -> kanbanData", kanbanData);
+
+  const onDragEnd = (result, columns) => {
+    // if (!result.destination) return;
+    const { source, destination } = result;
+
+    console.log("wasssupppp ");
+    console.log("source", source, "destination", destination);
+    console.log(result.destination);
   };
 
   return (
@@ -159,25 +159,27 @@ const Requests = () => {
             handleLayoutChange={handleLayoutChange}
           />
         </div>
-
         {isKanban ? (
           //  K A N B A N   V I E W
           <BackofficeKanbanContainer filterHeight={filterHeight}>
-            {columns &&
-              Object.keys(columns).map((key, index) => {
-                return (
-                  <KanbanColumn
-                    key={"requestCol" + index}
-                    status={key}
-                    data={kanbanData}
-                    items={columns[key]}
-                    kanbanType="requests"
-                    containerHeight={containerHeight}
-                  />
-                );
-              })}
+            <DragDropContext onDragEnd={onDragEnd}>
+              {columns &&
+                Object.keys(columns).map((key, index) => {
+                  return (
+                    <KanbanColumn
+                      key={"requestCol" + index}
+                      status={key}
+                      items={columns[key]}
+                      data={kanbanData}
+                      kanbanType="requests"
+                      containerHeight={containerHeight}
+                    />
+                  );
+                })}
+            </DragDropContext>
           </BackofficeKanbanContainer>
         ) : (
+          // L I S T    V I E W
           <div>
             {requestAppointments &&
               requestAppointments.map((appointment, index) => {
@@ -187,6 +189,7 @@ const Requests = () => {
                     : (index === requestAppointments.length - 1 && "bottom") ||
                       "middle";
 
+                // provider can be null
                 const providerId = appointment.relationships.provider.data
                   ? appointment.relationships.provider.data.id
                   : null;
@@ -200,15 +203,14 @@ const Requests = () => {
                 const serviceId = appointment.relationships.service.data
                   ? appointment.relationships.service.data.id
                   : null;
-
-                const client = clients?.[clientId]?.attributes;
-                const provider = providers?.[providerId]?.attributes;
-                const admin = admins?.[adminId]?.attributes;
-                const service = services?.[serviceId]?.attributes;
-
+                const provider = providers?.[providerId];
+                const client = clients?.[clientId];
+                const admin = admins?.[adminId];
+                const service = services?.[serviceId];
                 return (
                   <RequestCard
                     key={"request" + index}
+                    appointment={appointment}
                     provider={provider}
                     client={client}
                     admin={admin}

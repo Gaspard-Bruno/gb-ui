@@ -20,7 +20,6 @@ const getAppointmentsListing = (dispatch, pageNumber, filters) => {
   dispatch({
     type: ACTION_TYPES.GET_APPOINTMENTS
   });
-
   appointmentsClient
     .getAppointments(pageNumber, filters)
     .then(res => {
@@ -40,7 +39,6 @@ const getAppointmentsListing = (dispatch, pageNumber, filters) => {
 };
 
 const updateAppointment = (dispatch, newStatus, appointmentId) => {
-
   dispatch({
     type: ACTION_TYPES.UPDATE_APPOINTMENT
   });
@@ -48,12 +46,11 @@ const updateAppointment = (dispatch, newStatus, appointmentId) => {
   appointmentsClient
     .updateAppointment(newStatus, appointmentId)
     .then(res => {
-      console.log("ressssssssss", res)
+      console.log("ressssssssss", res);
       if (res && res.data) {
         dispatch({
-          type: ACTION_TYPES.UPDATE_APPOINTMENT_SUCCESS,
-
-        })
+          type: ACTION_TYPES.UPDATE_APPOINTMENT_SUCCESS
+        });
       }
     })
     .catch(e => {
@@ -62,6 +59,6 @@ const updateAppointment = (dispatch, newStatus, appointmentId) => {
         error: "Error updating appointment"
       });
     });
-}
+};
 
 export { getAppointmentsListing, updateAppointment };

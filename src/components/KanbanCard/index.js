@@ -1,14 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { useTranslate } from 'polyglot-react-redux-sdk';
+import { useTranslate } from "polyglot-react-redux-sdk";
+import { Draggable } from "react-beautiful-dnd";
 
-import Badge from 'Components/Badge';
-import Icon from 'Components/Icon';
-import Avatar from 'Components/Avatar';
-import { Link, SmallBody } from 'Components/Text';
+import Badge from "Components/Badge";
+import Icon from "Components/Icon";
+import Avatar from "Components/Avatar";
+import { Link, SmallBody } from "Components/Text";
 
-import StyledKanbanCard, { 
+import StyledKanbanCard, {
   BadgeContainer,
   Details,
   IconContainer,
@@ -18,92 +19,99 @@ import StyledKanbanCard, {
 } from "./style";
 
 const KanbanCard = ({
+  key,
+  index,
   status,
   service,
   client,
   provider,
   admin,
   recurrent,
-  cardType,
+  cardType
 }) => {
-  const t = useTranslate('requests');
+  const t = useTranslate("requests");
 
   const testAdmin = {
     fullName: "Elena"
-  }
+  };
 
   console.log("rahrahrah", admin)
 
   return (
-    <StyledKanbanCard
+    <Draggable key={key} draggableId={"Card" + index} index={index}>
+      {(provided, snapshot) => {
+        return (
+          <div
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          >
+            <StyledKanbanCard>
+              <BadgeContainer>
+                <Badge text={status} status={status} />
+              </BadgeContainer>
 
-    >
-      <BadgeContainer>
-        <Badge text={status} status={status}/>
-      </BadgeContainer>
+              <Link>
+                {cardType === "candidates"
+                  ? provider?.attributes.fullName
+                  : service?.attributes.name}
+              </Link>
 
-      <Link>
-        {cardType === 'candidates' 
-          ?
-            provider?.attributes.fullName
-          :
-            service?.attributes.name
-        }
-      </Link>
+              {cardType === "candidates" ? (
+                <div>
+                  {provider?.attributes.serviceList && (
+                    <Details>
+                      <IconContainer>
+                        <Icon name="tool-1" />
+                      </IconContainer>
 
-      {cardType === 'candidates' 
-        ?
-          <div>
-            {provider?.attributes.serviceList && 
-              <Details>
-                <IconContainer>
-                  <Icon name='tool-1'/>
-                </IconContainer>
+                      <SmallBody>{provider?.attributes.serviceList}</SmallBody>
+                    </Details>
+                  )}
 
-                <SmallBody>
-                  {provider?.attributes.serviceList}
-                </SmallBody>
-              </Details>
-            }
+                  {provider?.attributes.district && (
+                    <Details>
+                      <IconContainer>
+                        <Icon name="map-pin" />
+                      </IconContainer>
 
-            {provider?.attributes.district &&
-              <Details>
-                <IconContainer>
-                  <Icon name='map-pin'/>
-                </IconContainer>
+                      <SmallBody>{provider?.attributes.district}</SmallBody>
+                    </Details>
+                  )}
+                </div>
+              ) : (
+                <div>
+                  {client && (
+                    <ServiceDetails>
+                      <span>{t("client")}: </span>
+                      {client.attributes.fullName}
+                    </ServiceDetails>
+                  )}
+                  {provider && (
+                    <ServiceDetails>
+                      <span>{t("specialist")}: </span>
+                      {provider.attributes.fullName}
+                    </ServiceDetails>
+                  )}
+                  {recurrent && <Recurrent></Recurrent>}
+                </div>
+              )}
 
-                <SmallBody>
-                  {provider?.attributes.district}
-                </SmallBody>          
-              </Details>
-            }
+              {admin && (
+                <AdminContainer>
+                  <Avatar
+                    user={admin?.attributes}
+                    size="small"
+                    hasText={true}
+                  ></Avatar>
+                </AdminContainer>
+              )}
+            </StyledKanbanCard>
           </div>
-        :
-          <div>
-            {client &&
-              <ServiceDetails><span>{t('client')}:  </span>{client.attributes.fullName}</ServiceDetails>
-            }
-            {provider &&
-              <ServiceDetails><span>{t('specialist')}:  </span>{provider.attributes.fullName}</ServiceDetails>
-            }
-            {recurrent &&
-              <Recurrent>
-
-              </Recurrent>
-            }
-
-          </div>
-      }
-
-
-      {admin &&
-        <AdminContainer>
-          <Avatar user={admin?.attributes} size="small" hasText={true}></Avatar>
-        </AdminContainer>
-      }
-
-    </StyledKanbanCard>
-  )
+        );
+      }}
+    </Draggable>
+  );
 };
 
 KanbanCard.propTypes = {
@@ -113,7 +121,7 @@ KanbanCard.propTypes = {
   providerId: PropTypes.string,
   adminId: PropTypes.string,
   recurrent: PropTypes.bool,
-  cardType: PropTypes.oneOf(['requests', 'candidates']),
+  cardType: PropTypes.oneOf(["requests", "candidates"]),
   serviceList: PropTypes.string
 };
 

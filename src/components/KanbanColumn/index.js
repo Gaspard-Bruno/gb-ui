@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
 import { useTranslate } from "polyglot-react-redux-sdk";
+import { Droppable } from "react-beautiful-dnd";
 
 import KanbanCard from "Components/KanbanCard";
 import Icon from "Components/Icon";
@@ -11,12 +12,12 @@ import StyledKanbanColumn, { Header, IconContainer } from "./style";
 
 const KanbanColumn = ({ status, items, kanbanType, containerHeight, data }) => {
   const t = useTranslate(kanbanType);
+  const providers = (data && data.providers) || null;
+  const clients = (data && data.clients) || null;
+  const services = (data && data.services) || null;
+  const admins = (data && data.admins) || null;
 
-  const [columnHeight, setColumnHeight] = useState(0);
   const itemsRef = useRef(null);
-  useEffect(() => {
-    setColumnHeight(itemsRef.current.clientHeight);
-  }, [items]);
 
   const getCardPropsFromType = item => {
     if (kanbanType === "candidates") {
@@ -36,55 +37,55 @@ const KanbanColumn = ({ status, items, kanbanType, containerHeight, data }) => {
       };
     }
   };
-  const { providers, clients, services, admins } = data;
 
   return (
-    <StyledKanbanColumn
-      itemsHeight={columnHeight}
-      containerHeight={containerHeight}
-    >
-      <Header>
-        {status && <SubHeading>{t(status)}</SubHeading>}
-        <IconContainer>
-          <Icon name="maximize" />
-        </IconContainer>
-      </Header>
+    <Droppable droppableId={status} key={"column" + status}>
+      {provided => (
+        <StyledKanbanColumn
+          containerHeight={containerHeight}
+          ref={provided.innerRef}
+        >
+          <Header>
+            {status && <SubHeading>{t(status)}</SubHeading>}
+            <IconContainer>
+              <Icon name="maximize" />
+            </IconContainer>
+          </Header>
+          {items &&
+            items.map((item, index) => {
+              const {
+                status,
+                cardType,
+                recurrent,
+                adminId,
+                clientId,
+                serviceId
+              } = getCardPropsFromType(item);
 
-      <div ref={itemsRef} className="items">
-        {items &&
-          items.map((item, index) => {
-            const {
-              status,
-              cardType,
-              recurrent,
-              adminId,
-              clientId,
-              serviceId
-            } = getCardPropsFromType(item);
-
-            const providerId = item.relationships.provider.data
-              ? item.relationships.provider.data.id
-              : null;
-            const provider = providers?.[providerId];
-            const client = clients?.[clientId];
-            const admin = admins?.[adminId];
-            const service = services?.[serviceId];
-
-            return (
-              <KanbanCard
-                key={"kanbanCard" + index}
-                status={status}
-                cardType={cardType}
-                admin={admin}
-                provider={provider}
-                client={client}
-                service={service}
-                recurrent={recurrent}
-              />
-            );
-          })}
-      </div>
-    </StyledKanbanColumn>
+              const providerId = item.relationships.provider.data
+                ? item.relationships.provider.data.id
+                : null;
+              const provider = providers?.[providerId];
+              const client = clients?.[clientId];
+              const admin = admins?.[adminId];
+              const service = services?.[serviceId];
+              console.log("provided", provided);
+              return (
+                <KanbanCard
+                  key={"kanbanCard" + index}
+                  status={status}
+                  cardType={cardType}
+                  admin={admin}
+                  provider={provider}
+                  client={client}
+                  service={service}
+                  recurrent={recurrent}
+                />
+              );
+            })}
+        </StyledKanbanColumn>
+      )}
+    </Droppable>
   );
 };
 
