@@ -16,7 +16,7 @@ import Clients from "Pages/Clients";
 const routes = [
   { path: "/dashboard/archive", component: Archive },
   { path: "/dashboard/requests", component: Requests },
-  { path: "/dashboard/specialists", compponent: Specialists },
+  { path: "/dashboard/specialists", component: Specialists },
   { path: "/dashboard/candidates", component: Candidates },
   { path: "/dashboard/clients", component: Clients }
 ];

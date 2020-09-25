@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import { useTranslate } from "polyglot-react-redux-sdk";
 
@@ -7,9 +7,6 @@ import useProviders from "Hooks/useProviders.js";
 import useClients from "Hooks/useClients.js";
 import useServices from "Hooks/useServices";
 import useAdmin from "Hooks/useAdmin.js";
-
-import { selectors as appointmentSelectors } from "Redux/appointments";
-import { actions as appointmentActions } from "Redux/appointments";
 
 import {
   BackofficeContainer,
@@ -20,59 +17,6 @@ import RequestCard from "Components/RequestCard";
 import KanbanColumn from "Components/KanbanColumn";
 
 import FilterBar from "Components/FilterBar";
-
-const leads = [
-  {
-    status: "contact",
-    serviceName: "Acompanhamento de Crianças",
-    client: {
-      fullName: "Inês Saraiva"
-    },
-    provider: {
-      fullName: "Joana Madeira"
-    },
-    recurrent: true,
-    deliveryDate: "20 Aug, 2020, 9:00",
-    admin: {
-      fullName: "Elena"
-    },
-    totalHours: 2,
-    totalPrice: 60.0
-  },
-  {
-    status: "awaiting_payment",
-    serviceName: "Acompanhamento de Crianças",
-    client: {
-      fullName: "Inês Saraiva"
-    },
-    provider: {
-      fullName: "Joana Madeira"
-    },
-    recurrent: false,
-    admin: {
-      fullName: "Elena"
-    },
-    totalHours: 3,
-    totalPrice: 30.0
-  },
-  {
-    status: "contact",
-    serviceName: "Acompanhamento de Crianças",
-    client: {
-      fullName: "Inês Saraiva"
-    },
-    provider: {
-      fullName: "Joana Madeira"
-    },
-    recurrent: false,
-    deliveryDate: "20 Aug, 2020, 9:00",
-    admin: {
-      fullName: "Elena"
-    },
-    totalHours: 10,
-    totalPrice: 120.0
-  }
-];
 
 const admin = {
   fullName: "Elena"
@@ -100,6 +44,9 @@ const Requests = () => {
 
   const t = useTranslate("requests");
 
+  const filter = {}
+  const { requestAppointments } = useAppointments(null, filter);
+
   const { providers } = useProviders();
   const { clients } = useClients();
   const { services } = useServices();
@@ -108,8 +55,6 @@ const Requests = () => {
   const handleLayoutChange = () => {
     setIsKanban(!isKanban);
   };
-
-  const { appointments } = useAppointments();
 
   const filterStatus = appointments => {
     const columns = {
@@ -122,7 +67,7 @@ const Requests = () => {
       cancelled: []
     };
 
-    appointments.forEach(appointment => {
+    requestAppointments.forEach(appointment => {
       switch (appointment.attributes.status) {
         case "received":
           columns.newRequests.push(appointment);
@@ -170,7 +115,7 @@ const Requests = () => {
     return columns;
   };
 
-  const columns = filterStatus(appointments);
+  const columns = filterStatus(requestAppointments);
 
   const [filterHeight, setFilterHeight] = useState(0);
   const [containerHeight, setContainerHeight] = useState(0);
@@ -234,12 +179,12 @@ const Requests = () => {
           </BackofficeKanbanContainer>
         ) : (
           <div>
-            {appointments &&
-              appointments.map((appointment, index) => {
+            {requestAppointments &&
+              requestAppointments.map((appointment, index) => {
                 const listPosition =
                   index === 0
                     ? "top"
-                    : (index === appointments.length - 1 && "bottom") ||
+                    : (index === requestAppointments.length - 1 && "bottom") ||
                       "middle";
 
                 const providerId = appointment.relationships.provider.data
@@ -263,7 +208,6 @@ const Requests = () => {
 
                 return (
                   <RequestCard
-                    lead={leads[0]}
                     key={"request" + index}
                     provider={provider}
                     client={client}
