@@ -24,10 +24,9 @@ const getAppointments = (pageNumber, filters) => {
 };
 
 const updateAppointment = (newStatus, appointmentId) => {
-  return (
-    client.put(`/appointments/${appointmentId}`),
-    { data: { appointment: { status: newStatus } } }
-  );
+  return client.put(`/appointments/${appointmentId}`, {
+    data: { appointment: { status: newStatus } }
+  });
 };
 
 export default {

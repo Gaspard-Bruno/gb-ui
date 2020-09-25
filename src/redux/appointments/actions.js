@@ -46,7 +46,6 @@ const updateAppointment = (dispatch, newStatus, appointmentId) => {
   dispatch({
     type: ACTION_TYPES.UPDATE_APPOINTMENT
   });
-
   appointmentsClient
     .updateAppointment(newStatus, appointmentId)
     .then(res => {

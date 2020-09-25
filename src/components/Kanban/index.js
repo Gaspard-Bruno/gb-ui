@@ -39,7 +39,7 @@ const Kanban = ({ items, colNames, kanbanData, onChangeStatus }) => {
         ];
         setColumns(COLUMNS);
         if (onChangeStatus) {
-          onChangeStatus(params);
+          onChangeStatus(destinationColumn, cardId);
         }
       }
     },

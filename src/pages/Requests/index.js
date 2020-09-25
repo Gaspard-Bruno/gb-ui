@@ -51,7 +51,7 @@ const Requests = () => {
     setIsKanban(!isKanban);
   };
 
-  const { appointments } = useAppointments();
+  const { appointments, updateAppointment } = useAppointments();
   const COLUMN_NAMES = new Set(Object.values(STATUS_COLUMNS));
   const kanbanItems = useMemo(
     () =>
@@ -86,7 +86,7 @@ const Requests = () => {
         </div>
         {isKanban ? (
           <Kanban
-            onChangeStatus={params => console.log("on Drag ENd", params)}
+            onChangeStatus={updateAppointment}
             kanbanData={kanbanData}
             items={kanbanItems}
             colNames={[...COLUMN_NAMES]}
