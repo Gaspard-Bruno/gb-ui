@@ -18,7 +18,6 @@ import StyledRequestCard, {
 } from "./style";
 
 const RequestCard = ({
-  lead,
   appointment,
   provider,
   client,

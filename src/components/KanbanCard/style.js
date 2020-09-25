@@ -47,10 +47,12 @@ export const Details = styled.div`
   display: flex;
   align-items: center;
   margin-top: 14px;
+  text-transform: capitalize;
 `;
 
 export const ServiceDetails = styled(SmallBody)`
   margin: 8px 0px;
+  text-transform: capitalize;
   
   span {
     color: ${props => props.theme.colors.grey};

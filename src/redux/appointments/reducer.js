@@ -2,9 +2,13 @@ import { ACTION_TYPES } from "./actions";
 
 const initialState = {
   loading: false,
-  loaded: false,
+  // loaded: false,
   error: false,
-  appointments: [],
+  // appointments: [],
+  requestAppointments: [],
+  requestLoaded: false,
+  archiveLoaded: false,
+  archivedAppointments: [],
   appointmentsTotalCount: null,
   appointmentsTotalPages: null,
   appointmentsCurrentPage: null,
@@ -27,15 +31,26 @@ export default (state = initialState, action) => {
         loaded: true
       };
     case ACTION_TYPES.GET_APPOINTMENTS_SUCCESS:
-      return {
-        ...state,
-        appointments: action.payload.data.map((d) => d.id),
-        appointmentsTotalCount: parseInt(action.payload.meta['Total-Count']),
-        appointmentsTotalPages: parseInt(action.payload.meta['Total-Pages']),
-        appointmentsCurrentPage: parseInt(action.payload.meta['Current-Page']),
-        loading: false,
-        loaded: true
-      };
+      console.log("in reducer")
+      console.log(action)
+      if (action.payload.meta) {
+        return {
+          ...state,
+          archivedAppointments: action.payload.data.map((d) => d.id),
+          appointmentsTotalCount: parseInt(action.payload.meta['Total-Count']),
+          appointmentsTotalPages: parseInt(action.payload.meta['Total-Pages']),
+          appointmentsCurrentPage: parseInt(action.payload.meta['Current-Page']),
+          loading: false,
+          loaded: true
+        };  
+      } else {
+        return {
+          ...state,
+          requestAppointments: action.payload.data.map((d) => d.id),
+          loading: false,
+          loaded: true          
+        }
+      }
 
 
     // UPDATE

@@ -32,6 +32,8 @@ const KanbanCard = ({
     fullName: "Elena"
   }
 
+  console.log("rahrahrah", admin)
+
   return (
     <StyledKanbanCard
 

@@ -42,17 +42,21 @@ const Archive = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = useSelector(state => getAppointmentsTotalPages(state));
 
-  const { appointments, getPageAppointments, loading } = useAppointments(
-    currentPage
+  const filters = {archived: true}
+  const { archivedAppointments, getPageAppointments, loading } = useAppointments(
+    currentPage,
+    filters
   );
 
   const handleNavigation = useCallback(
     pageNumber => {
-      getPageAppointments(pageNumber);
+      getPageAppointments(pageNumber, filters);
       setCurrentPage(pageNumber);
     },
     [getPageAppointments]
   );
+
+  
 
   return (
     <>
@@ -62,7 +66,7 @@ const Archive = () => {
         {loading ? (
           <SubHeading>{t("loading")}</SubHeading>
         ) : (
-          <ArchiveTable items={appointments} />
+          <ArchiveTable items={archivedAppointments} />
         )}
         <Pagination
           totalPages={totalPages}
