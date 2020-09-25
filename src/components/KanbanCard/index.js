@@ -7,7 +7,7 @@ import { Draggable } from "react-beautiful-dnd";
 import Badge from "Components/Badge";
 import Icon from "Components/Icon";
 import Avatar from "Components/Avatar";
-import { Link, SmallBody } from "Components/Text";
+import { ButtonText, SmallBody } from "Components/Text";
 
 import StyledKanbanCard, {
   BadgeContainer,
@@ -18,96 +18,81 @@ import StyledKanbanCard, {
   Recurrent
 } from "./style";
 
-const KanbanCard = ({
-  key,
-  index,
-  status,
-  service,
-  client,
-  provider,
-  admin,
-  recurrent,
-  cardType
-}) => {
+const KanbanCard = ({ cardKey, index, cardData, cardType }) => {
   const t = useTranslate("requests");
-
-  const testAdmin = {
-    fullName: "Elena"
-  };
-
-  console.log("rahrahrah", admin)
-
   return (
-    <Draggable key={key} draggableId={"Card" + index} index={index}>
+    <Draggable key={cardKey} draggableId={cardKey} index={index}>
       {(provided, snapshot) => {
         return (
-          <div
+          <StyledKanbanCard
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
-            <StyledKanbanCard>
-              <BadgeContainer>
-                <Badge text={status} status={status} />
-              </BadgeContainer>
+            <BadgeContainer>
+              <Badge text={cardData.status} status={cardData.status} />
+            </BadgeContainer>
 
-              <Link>
-                {cardType === "candidates"
-                  ? provider?.attributes.fullName
-                  : service?.attributes.name}
-              </Link>
+            <ButtonText>
+              {cardType === "candidates"
+                ? cardData.provider?.attributes.fullName
+                : cardData.service?.attributes.name}
+            </ButtonText>
 
-              {cardType === "candidates" ? (
-                <div>
-                  {provider?.attributes.serviceList && (
-                    <Details>
-                      <IconContainer>
-                        <Icon name="tool-1" />
-                      </IconContainer>
+            {cardType === "candidates" ? (
+              <div>
+                {cardData.provider?.attributes.serviceList && (
+                  <Details>
+                    <IconContainer>
+                      <Icon name="tool-1" />
+                    </IconContainer>
 
-                      <SmallBody>{provider?.attributes.serviceList}</SmallBody>
-                    </Details>
-                  )}
+                    <SmallBody>
+                      {cardData.provider?.attributes.serviceList}
+                    </SmallBody>
+                  </Details>
+                )}
 
-                  {provider?.attributes.district && (
-                    <Details>
-                      <IconContainer>
-                        <Icon name="map-pin" />
-                      </IconContainer>
+                {cardData.provider?.attributes.district && (
+                  <Details>
+                    <IconContainer>
+                      <Icon name="map-pin" />
+                    </IconContainer>
 
-                      <SmallBody>{provider?.attributes.district}</SmallBody>
-                    </Details>
-                  )}
-                </div>
-              ) : (
-                <div>
-                  {client && (
-                    <ServiceDetails>
-                      <span>{t("client")}: </span>
-                      {client.attributes.fullName}
-                    </ServiceDetails>
-                  )}
-                  {provider && (
-                    <ServiceDetails>
-                      <span>{t("specialist")}: </span>
-                      {provider.attributes.fullName}
-                    </ServiceDetails>
-                  )}
-                  {recurrent && <Recurrent></Recurrent>}
-                </div>
-              )}
+                    <SmallBody>
+                      {cardData.provider?.attributes.district}
+                    </SmallBody>
+                  </Details>
+                )}
+              </div>
+            ) : (
+              <div>
+                {cardData.client && (
+                  <ServiceDetails>
+                    <span>{t("client")}: </span>
+                    {cardData.client.attributes.fullName}
+                  </ServiceDetails>
+                )}
+                {cardData.provider && (
+                  <ServiceDetails>
+                    <span>{t("specialist")}: </span>
+                    {cardData.provider.attributes.fullName}
+                  </ServiceDetails>
+                )}
+                {cardData.isRecurrent && <Recurrent></Recurrent>}
+              </div>
+            )}
 
-              {admin && (
-                <AdminContainer>
-                  <Avatar
-                    user={admin?.attributes}
-                    size="small"
-                    hasText={true}
-                  ></Avatar>
-                </AdminContainer>
-              )}
-            </StyledKanbanCard>
-          </div>
+            {cardData.admin && (
+              <AdminContainer>
+                <Avatar
+                  user={cardData.admin?.attributes}
+                  size="small"
+                  hasText={true}
+                ></Avatar>
+              </AdminContainer>
+            )}
+          </StyledKanbanCard>
         );
       }}
     </Draggable>
@@ -115,14 +100,18 @@ const KanbanCard = ({
 };
 
 KanbanCard.propTypes = {
-  status: PropTypes.string,
-  serviceId: PropTypes.string,
-  clientId: PropTypes.string,
-  providerId: PropTypes.string,
-  adminId: PropTypes.string,
-  recurrent: PropTypes.bool,
+  cardKey: PropTypes.string,
+  index: PropTypes.number,
   cardType: PropTypes.oneOf(["requests", "candidates"]),
-  serviceList: PropTypes.string
+  cardData: PropTypes.shape({
+    id: PropTypes.string,
+    status: PropTypes.string,
+    isRecurrent: PropTypes.bool,
+    admin: PropTypes.object,
+    client: PropTypes.object,
+    provider: PropTypes.object,
+    service: PropTypes.object
+  })
 };
 
 export default KanbanCard;

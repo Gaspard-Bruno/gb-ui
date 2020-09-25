@@ -51,7 +51,7 @@ const BackofficeContainer = styled.div`
 
 const BackofficeKanbanContainer = styled.div`
   display: flex;
-  height: calc(100vh - 114px - ${props => props.filterHeight}px - 102px);  
+  max-height: calc(80vh);
   overflow-x: scroll;
   overflow-y: hidden;
   padding-bottom: 40px;
@@ -105,7 +105,7 @@ const Col = styled.div`
   display: flex;
   flex-flow: column nowrap;
   align-items: ${props => (props.center ? "center" : "flex-start")};
-  justify-content: ${props => (props.justify ? props.justify : "none")};  
+  justify-content: ${props => (props.justify ? props.justify : "none")};
   padding: ${props => props.padding || props.theme.margin}px;
   ${props =>
     props.collapse &&
@@ -115,4 +115,12 @@ const Col = styled.div`
   ${props => props.center && "margin: 0 auto;"}
 `;
 
-export { media, Page, Row, Col, BackofficePage, BackofficeContainer, BackofficeKanbanContainer };
+export {
+  media,
+  Page,
+  Row,
+  Col,
+  BackofficePage,
+  BackofficeContainer,
+  BackofficeKanbanContainer
+};

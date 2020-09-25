@@ -3,17 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { actions, selectors } from "Redux/clients";
 
-const useClients = (clientId, shouldFetch) => {
+const useClients = clientId => {
   const dispatch = useDispatch();
   const { getClientsListing } = actions;
 
-  const { 
-    getClients, 
-    getLoading, 
-    getError, 
-    getLoaded 
-  } = selectors;
-
+  const { getClients, getLoading, getError, getLoaded } = selectors;
 
   const error = useSelector(state => getError(state));
   const loading = useSelector(state => getLoading(state));
@@ -26,10 +20,10 @@ const useClients = (clientId, shouldFetch) => {
   ]);
 
   useEffect(() => {
-    if (!loaded && shouldFetch) {
+    if (!loaded && !loading) {
       getClientsListing(dispatch);
     }
-  }, [loaded, shouldFetch]);
+  }, [dispatch, getClientsListing, loaded, loading]);
 
   return {
     clients,
