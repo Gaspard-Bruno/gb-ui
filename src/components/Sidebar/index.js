@@ -59,14 +59,14 @@ const Sidebar = props => {
           to="/dashboard/candidates"
           text={t("candidates")}
         />
-        {/*
+        
 
         <SidebarLink
           routePath="/dashboard/specialists"
           to="/dashboard/specialists"
           text={t("specialists")}
         />
-        */}
+       
       </NavSection>
 
       <NavSection>
