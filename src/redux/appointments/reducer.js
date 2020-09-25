@@ -2,9 +2,9 @@ import { ACTION_TYPES } from "./actions";
 
 const initialState = {
   loading: false,
-  // loaded: false,
+  loaded: false,
   error: false,
-  // appointments: [],
+  appointments: [],
   requestAppointments: [],
   requestLoaded: false,
   archiveLoaded: false,
@@ -33,8 +33,9 @@ export default (state = initialState, action) => {
     case ACTION_TYPES.GET_APPOINTMENTS_SUCCESS:
       return {
         ...state,
-        appointments: action.payload.data.map(d => d.id),
-
+        loading: false,
+        loaded: true,
+        [action.meta.filter]: action.payload.data.map(d => d.id),
         appointmentsTotalCount: action.payload.meta
           ? parseInt(action.payload.meta["Total-Count"])
           : state.appointmentsTotalCount,
@@ -43,9 +44,7 @@ export default (state = initialState, action) => {
           : state.appointmentsTotalPages,
         appointmentsCurrentPage: action.payload.meta
           ? parseInt(action.payload.meta["Current-Page"])
-          : state.appointmentsCurrentPage,
-        loading: false,
-        loaded: true
+          : state.appointmentsCurrentPage
       };
 
     // UPDATE

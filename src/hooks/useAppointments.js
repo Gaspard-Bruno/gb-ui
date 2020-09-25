@@ -1,61 +1,19 @@
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect } from "react";
 import { shallowEqual, useSelector, useDispatch } from "react-redux";
 
 import { actions, selectors } from "Redux/appointments";
 
-const useAppointments = (pageNumber = 1, filters = {}, type = 'request') => {
+const useAppointments = (pageNumber = 1, filters = "appointments") => {
   const dispatch = useDispatch();
   const { getAppointmentsListing, updateAppointment } = actions;
   const { getAppointments, getLoading, getError, getLoaded } = selectors;
-  const { 
-    getAppointments, 
-    getArchivedAppointments, 
-    getRequestAppointments, 
-    getLoading, 
-    getError, 
-    getLoaded,
-    getRequestLoaded,
-    getArchiveLoaded
-  } = selectors;
-
-
-  // const appointments = useSelector(
-  //   state => getAppointments(state),
-  //   shallowEqual
-  // );
-
-  const archivedAppointments = useSelector(
-    state => getArchivedAppointments(state),
-    shallowEqual
-  )
-
-  const requestAppointments = useSelector(
-    state => getRequestAppointments(state),
-    shallowEqual
-  )
+  console.log(filters);
+  const appointments = useSelector(state => getAppointments(state, filters));
 
   const error = useSelector(state => getError(state));
   const loading = useSelector(state => getLoading(state), shallowEqual);
-  const requestLoaded = useSelector(state => getRequestLoaded(state), shallowEqual);
-  const archiveLoaded = useSelector(state => getArchiveLoaded(state), shallowEqual);
 
-  const loaded = useMemo(
-    () => type === 'request' ?
-      requestLoaded
-      :
-      archiveLoaded, [type, requestLoaded, archiveLoaded])
-
-  const dispatchGetAppointmentsListing = useCallback((pageNumber, filters) => {
-      getAppointmentsListing(dispatch, pageNumber, filters);
-    },
-    [dispatch, getAppointmentsListing]
-  );
-
-  useEffect(() => {
-    if (!loaded) {
-      dispatchGetAppointmentsListing(pageNumber, filters);
-    }
-  }, [dispatchGetAppointmentsListing, loaded, pageNumber]);
+  const loaded = useSelector(state => getLoaded(state), shallowEqual);
 
   const dispatchUpdateAppointment = useCallback(
     (newStatus, id) => {
@@ -63,10 +21,23 @@ const useAppointments = (pageNumber = 1, filters = {}, type = 'request') => {
     },
     [dispatch, updateAppointment]
   );
+
+  const dispatchGetAppointmentsListing = useCallback(
+    (pageNumber, filters) => {
+      getAppointmentsListing(dispatch, pageNumber, filters);
+    },
+    [dispatch, getAppointmentsListing]
+  );
+
+  useEffect(() => {
+    if ((!loaded && !loading) || (filters && !appointments.length)) {
+      dispatchGetAppointmentsListing(pageNumber, filters);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return {
-    // appointments,
-    archivedAppointments,
-    requestAppointments,
+    appointments,
     updateAppointment: dispatchUpdateAppointment,
     getPageAppointments: dispatchGetAppointmentsListing,
     error,

@@ -42,9 +42,6 @@ const Requests = () => {
 
   const t = useTranslate("requests");
 
-  const filter = {}
-  const { requestAppointments } = useAppointments(null, filter);
-
   const { providers } = useProviders();
   const { clients } = useClients();
   const { services } = useServices();
@@ -75,7 +72,6 @@ const Requests = () => {
   );
 
   const filterRef = useRef(null);
-
   return (
     <>
       <TopBar location={t("services")} title={t("requests")} user={admin} />
@@ -93,17 +89,17 @@ const Requests = () => {
             onChangeStatus={params => console.log("on Drag ENd", params)}
             kanbanData={kanbanData}
             items={kanbanItems}
-            colNames={COLUMN_NAMES}
+            colNames={[...COLUMN_NAMES]}
           />
         ) : (
           // L I S T    V I E W
           <div>
-            {requestAppointments &&
-              requestAppointments.map((appointment, index) => {
+            {appointments &&
+              appointments.map((appointment, index) => {
                 const listPosition =
                   index === 0
                     ? "top"
-                    : (index === requestAppointments.length - 1 && "bottom") ||
+                    : (index === appointments.length - 1 && "bottom") ||
                       "middle";
 
                 // provider can be null

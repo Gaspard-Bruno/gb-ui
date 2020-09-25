@@ -26,7 +26,11 @@ const getAppointmentsListing = (dispatch, pageNumber, filters) => {
       if (res && res.data) {
         dispatch({
           type: ACTION_TYPES.GET_APPOINTMENTS_SUCCESS,
-          payload: res.data
+          payload: res.data,
+          meta: {
+            filter:
+              (filters === "appointments" && filters) || JSON.stringify(filters)
+          }
         });
       }
     })

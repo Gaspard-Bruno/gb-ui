@@ -21,7 +21,7 @@ const Kanban = ({ items, colNames, kanbanData, onChangeStatus }) => {
       COLUMNS[item.column].push(item);
     });
     setColumns(COLUMNS);
-  }, [colNames, items]);
+  }, [colNames, items, kanbanData]);
 
   const handleChangeColumn = useCallback(
     params => {
