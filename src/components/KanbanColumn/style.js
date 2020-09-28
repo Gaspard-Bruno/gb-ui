@@ -8,13 +8,14 @@ const KanbanColumn = styled.div`
   align-items: center;
   padding: 0px 16px 16px 16px;
   min-width: 260px;
-  overflow-y: scroll;
-  ${props => getColumnHeight(props.itemsHeight, props.containerHeight)}
 
   .items > * {
     margin-bottom: 16px;
   }
+`;
 
+export const ColumnCardsContainer = styled.div`
+  overflow-y: scroll;
   &::-webkit-scrollbar {
     margin-top: 32px;
     height: 4px;
@@ -28,14 +29,6 @@ const KanbanColumn = styled.div`
     border-radius: 30px;
   }
 `;
-
-const getColumnHeight = (itemsHeight, containerHeight) => {
-  if (itemsHeight > containerHeight) {
-    return ``;
-  } else {
-    return `height: calc(64px + ${itemsHeight}px);`;
-  }
-};
 
 export const Header = styled.div`
   display: flex;

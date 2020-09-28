@@ -51,7 +51,7 @@ const BackofficeContainer = styled.div`
 
 const BackofficeKanbanContainer = styled.div`
   display: flex;
-  max-height: calc(80vh);
+  max-height: calc(70vh);
   overflow-x: scroll;
   overflow-y: hidden;
   padding-bottom: 40px;

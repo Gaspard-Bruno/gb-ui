@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { SmallBody } from 'Components/Text';
+import { SmallBody } from "Components/Text";
 
 const KanbanCard = styled.div`
   width: 260px;
@@ -9,6 +9,7 @@ const KanbanCard = styled.div`
   border-radius: 4px;
   padding: 16px 8px 8px;
   background-color: white;
+  margin-bottom: ${props => props.theme.margin}px;
 `;
 
 export const BadgeContainer = styled.div`
@@ -19,7 +20,7 @@ export const BadgeContainer = styled.div`
 
   p {
     color: white !important;
-  }  
+  }
 `;
 
 export const IconContainer = styled.div`
@@ -53,15 +54,12 @@ export const Details = styled.div`
 export const ServiceDetails = styled(SmallBody)`
   margin: 8px 0px;
   text-transform: capitalize;
-  
+
   span {
     color: ${props => props.theme.colors.grey};
   }
 `;
 
-export const Recurrent = styled.div`
-
-
-`;
+export const Recurrent = styled.div``;
 
 export default KanbanCard;

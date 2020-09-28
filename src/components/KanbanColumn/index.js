@@ -8,7 +8,11 @@ import KanbanCard from "Components/KanbanCard";
 import Icon from "Components/Icon";
 import { SubHeading } from "Components/Text";
 
-import StyledKanbanColumn, { Header, IconContainer } from "./style";
+import StyledKanbanColumn, {
+  Header,
+  IconContainer,
+  ColumnCardsContainer
+} from "./style";
 
 const KanbanColumn = ({ colName, items, kanbanType, data }) => {
   const t = useTranslate(kanbanType);
@@ -52,7 +56,7 @@ const KanbanColumn = ({ colName, items, kanbanType, data }) => {
             </IconContainer>
           </Header>
           {provided.placeholder}
-          {renderCards()}
+          <ColumnCardsContainer>{renderCards()}</ColumnCardsContainer>
         </StyledKanbanColumn>
       )}
     </Droppable>
