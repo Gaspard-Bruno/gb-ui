@@ -23,6 +23,18 @@ export default {
         cancelled: "cancelled",
         rejected: "cancelled"
       }
+    },
+    candidates: {
+      columns: {
+        new_candidate: "newCandidates",
+        analysis: "inAnalysis",
+        awaiting: "pending",
+        awaiting_details: "pending",
+        reopened: "reopened",
+        closed: "closed",
+        rejected: "rejected",
+        accepted: "accepted"
+      }
     }
   }
 };

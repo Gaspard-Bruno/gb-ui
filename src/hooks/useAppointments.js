@@ -7,7 +7,6 @@ const useAppointments = (pageNumber = 1, filters = "appointments") => {
   const dispatch = useDispatch();
   const { getAppointmentsListing, updateAppointment } = actions;
   const { getAppointments, getLoading, getError, getLoaded } = selectors;
-  console.log(filters);
   const appointments = useSelector(state => getAppointments(state, filters));
 
   const error = useSelector(state => getError(state));

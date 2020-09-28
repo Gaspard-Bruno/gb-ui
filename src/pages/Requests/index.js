@@ -1,7 +1,6 @@
 import React, { useState, useRef, useMemo } from "react";
-
-import CONFIG from "Config";
 import { useTranslate } from "polyglot-react-redux-sdk";
+import CONFIG from "Config";
 
 import useAppointments from "Hooks/useAppointments";
 import useProviders from "Hooks/useProviders.js";
@@ -71,19 +70,16 @@ const Requests = () => {
     [admins, clients, providers, services]
   );
 
-  const filterRef = useRef(null);
   return (
     <>
       <TopBar location={t("services")} title={t("requests")} user={admin} />
       <BackofficeContainer>
-        <div ref={filterRef}>
-          <FilterBar
-            availableFilters={filters}
-            showLayout={true}
-            layout={isKanban}
-            handleLayoutChange={handleLayoutChange}
-          />
-        </div>
+        <FilterBar
+          availableFilters={filters}
+          showLayout={true}
+          layout={isKanban}
+          handleLayoutChange={handleLayoutChange}
+        />
         {isKanban ? (
           <Kanban
             onChangeStatus={updateAppointment}

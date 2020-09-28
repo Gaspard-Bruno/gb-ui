@@ -20,9 +20,10 @@ const KanbanColumn = ({ colName, items, kanbanType, data }) => {
           id: item.id,
           status: item.attributes.status,
           isRecurrent: item.attributes.recurrent,
-          admin: data.admins[item.relationships.admin.data?.id],
-          client: data.clients[item.relationships.client.data?.id],
-          service: data.services[item.relationships.service.data?.id]
+          admin: data.admins[item.relationships?.admin?.data?.id],
+          client: data.clients[item.relationships?.client?.data?.id],
+          service: data.services[item.relationships?.service?.data?.id],
+          provider: data.providers[item.relationships?.provider?.data?.id]
         };
         return (
           <KanbanCard
@@ -34,7 +35,7 @@ const KanbanColumn = ({ colName, items, kanbanType, data }) => {
           />
         );
       }),
-    [data.admins, data.clients, data.services, items, kanbanType]
+    [data, items, kanbanType]
   );
 
   return (
@@ -64,6 +65,7 @@ KanbanColumn.propTypes = {
   colName: PropTypes.string,
   data: PropTypes.shape({
     admins: PropTypes.object,
+    providers: PropTypes.object,
     clients: PropTypes.object,
     services: PropTypes.object
   })

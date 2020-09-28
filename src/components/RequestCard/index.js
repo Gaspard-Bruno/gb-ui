@@ -27,8 +27,6 @@ const RequestCard = ({
 }) => {
   const t = useTranslate("requests");
 
-    console.log("p", provider, "c", client, "a", admin, "s", service)
-
   return (
     <StyledRequestCard listPosition={listPosition}>
       <Col size={4} justify="center">
@@ -46,11 +44,18 @@ const RequestCard = ({
       <Col size={3} justify="center">
         <Details>
           <p>
-            {t("client")}: {client?.attributes.fullName && <span>{client.attributes.fullName}</span>}
+            {t("client")}:{" "}
+            {client?.attributes.fullName && (
+              <span>{client.attributes.fullName}</span>
+            )}
           </p>
           <p>
             {t("specialist")}:{" "}
-            {provider?.attributes.fullName ? <span>{provider.attributes.fullName}</span> : <span></span>}
+            {provider?.attributes.fullName ? (
+              <span>{provider.attributes.fullName}</span>
+            ) : (
+              <span></span>
+            )}
           </p>
         </Details>
       </Col>
