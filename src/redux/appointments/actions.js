@@ -29,7 +29,8 @@ const getAppointmentsListing = (dispatch, pageNumber, filters) => {
           payload: res.data,
           meta: {
             filter:
-              (filters === "appointments" && filters) || JSON.stringify(filters)
+              (filters === "appointments" && filters) ||
+              `${JSON.stringify(filters)}-${pageNumber}`
           }
         });
       }

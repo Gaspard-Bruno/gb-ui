@@ -7,7 +7,9 @@ const useAppointments = (pageNumber = 1, filters = "appointments") => {
   const dispatch = useDispatch();
   const { getAppointmentsListing, updateAppointment } = actions;
   const { getAppointments, getLoading, getError, getLoaded } = selectors;
-  const appointments = useSelector(state => getAppointments(state, filters));
+  const appointments = useSelector(state =>
+    getAppointments(state, { filter: filters, pageNumber })
+  );
 
   const error = useSelector(state => getError(state));
   const loading = useSelector(state => getLoading(state), shallowEqual);
@@ -30,10 +32,12 @@ const useAppointments = (pageNumber = 1, filters = "appointments") => {
 
   useEffect(() => {
     if ((!loaded && !loading) || (filters && !appointments.length)) {
+      console.log("appoinbtments i have", appointments);
       dispatchGetAppointmentsListing(pageNumber, filters);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  console.log("appoinbtments i have in hook", appointments);
 
   return {
     appointments,

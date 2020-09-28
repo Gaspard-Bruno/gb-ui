@@ -5,10 +5,13 @@ import { getAppointmentsEntities } from "redux/entities/selectors";
 const selectAppointmentsState = state => state.appointments;
 
 const getAppointments = createSelector(
-  (state, filter) =>
-    selectAppointmentsState(state)[
-      (filter === "appointments" && filter) || JSON.stringify(filter)
-    ] || [],
+  (state, { filter, pageNumber }) =>
+    (!console.log(filter, pageNumber, " Filter page no") &&
+      selectAppointmentsState(state)[
+        (filter === "appointments" && filter) ||
+          `${JSON.stringify(filter)}-${pageNumber}`
+      ]) ||
+    [],
   state => getAppointmentsEntities(state) || {},
   (ids, appointments) => ids.map(id => appointments[id])
 );
