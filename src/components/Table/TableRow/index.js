@@ -1,12 +1,9 @@
 import React from "react";
 
-import { useTranslate } from "polyglot-react-redux-sdk";
-
 import { Col } from "Components/Layout";
-import Avatar from "Components/Avatar";
+import StyledTableRow from "./style";
 
-import TableRow from "./TableRow";
-import StyledTable, { Header } from "./style";
+import Avatar from "Components/Avatar";
 
 const getRowDetails = (tableType, item = null) => {
   if (item === null) item = { javascript: "is stupid" };
@@ -88,36 +85,21 @@ const getRowDetails = (tableType, item = null) => {
   return tableTypes[tableType];
 };
 
-const Table = ({ tableType, items }) => {
-  const t = useTranslate(tableType);
-
-  const cols = getRowDetails(tableType);
+const TableRow = ({ tableType, item }) => {
+  const cols = getRowDetails(tableType, item);
 
   return (
-    <StyledTable>
-      <Header>
-        {cols &&
-          cols.map((col, i) => {
-            return (
-              <Col key={"header row" + i} size={col.size}>
-                {t(col.header)}
-              </Col>
-            );
-          })}
-      </Header>
-
-      {items &&
-        items.map((item, i) => {
+    <StyledTableRow>
+      {cols &&
+        cols.map((col, i) => {
           return (
-            <TableRow
-              key={"header row" + i}
-              tableType={tableType}
-              item={item}
-            />
+            <Col key={i + "row"} size={col.size}>
+              {col.content}
+            </Col>
           );
         })}
-    </StyledTable>
+    </StyledTableRow>
   );
 };
 
-export default Table;
+export default TableRow;

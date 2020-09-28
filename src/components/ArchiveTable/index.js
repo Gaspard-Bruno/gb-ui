@@ -7,7 +7,7 @@ import useClients from "Hooks/useClients.js";
 import useServices from "Hooks/useServices";
 
 import { Col } from "Components/Layout";
-import TableRow from "Components/TableRow";
+import TableRow from "./TableRow";
 
 import StyledArchiveTable, { Header } from "./style";
 
@@ -47,7 +47,7 @@ const ArchiveTable = ({ items }) => {
 
           return (
             <TableRow
-              key={`archive-row` + index}
+              key={"archive-row" + index}
               item={{ ...item, provider, client, service }}
             />
           );

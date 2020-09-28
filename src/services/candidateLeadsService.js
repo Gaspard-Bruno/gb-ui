@@ -5,4 +5,3 @@ const getCandidateLeads = () => {
 };
 
 export default { getCandidateLeads, client };
-
