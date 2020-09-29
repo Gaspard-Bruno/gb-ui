@@ -13,6 +13,7 @@ import KanbanCard from "./KanbanCard";
 import {
   media,
   Page,
+  Code,
   Row,
   Col,
   BackofficePage,
@@ -35,6 +36,7 @@ const components = {
   Avatar,
   Badge,
   Button,
+  Code,
   Card,
   FilterBar,
   FilterButton,

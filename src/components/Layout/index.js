@@ -32,11 +32,23 @@ const getPageBackground = props => {
       return props.theme.colors.white;
   }
 };
+
+const Code = styled.div`
+  flex-flow: row nowrap;
+  max-width: 60%;
+  > pre {
+    max-height: 30vh;
+    padding: 16px;
+    background-color: ${props => props.theme.colors.mediumBeige}ff;
+  }
+`;
+
 const Page = styled.div`
   background-color: ${props => getPageBackground(props)};
   min-height: 100vh;
   display: flex;
   flex-flow: column nowrap;
+  flex: 1;
   margin: 0 ${props => props.theme.margin * 2}px;
 
   &::-webkit-scrollbar {
@@ -92,6 +104,7 @@ const Row = styled.div`
   flex-flow: row ${props => (props.noWrap ? "nowrap" : "wrap")};
   align-items: ${props => (props.align ? props.align : "none")};
   max-width: ${props => props.theme.maxWidth || 100}%;
+  width: 100%;
   justify-content: ${props => (props.justify ? props.justify : "none")};
   min-height: ${props => props.theme.margin * props.size}px;
   ${props =>
@@ -111,6 +124,7 @@ const Row = styled.div`
   `)}
   `) ||
     "margin: 0 auto;"}
+  ${props => props.inlineStyle || ""}
 `;
 
 const Col = styled.div`
@@ -134,6 +148,7 @@ export {
   Page,
   Row,
   Col,
+  Code,
   BackofficePage,
   BackofficeContainer,
   BackofficeKanbanContainer

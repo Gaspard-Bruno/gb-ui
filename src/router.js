@@ -20,6 +20,7 @@ const {
   KanbanCard,
   Page,
   Row,
+  Code,
   Col,
   BackofficePage,
   BackofficeContainer,
@@ -46,6 +47,16 @@ const components = [
     disabled: false,
     section: "General",
     component: props => <Avatar {...props} />
+  },
+  {
+    label: "Badge",
+    props: [
+      { category: "contact", text: "Text Badge" },
+      { category: "canceled", text: "Cancelled" }
+    ],
+    disabled: false,
+    section: "General",
+    component: props => <Badge {...props} />
   }
 ];
 
@@ -75,41 +86,54 @@ const Router = () => {
           <Sidebar sidebarSections={SECTIONS} />
           <Page>
             <Row>
-              {/*
-              <Col>
-                <Heading>ChangeTheme</Heading>
-              </Col>
-              */}
               <Col>
                 <Heading>Preview</Heading>
-                <Row>
-                  <Switch>
-                    {components.map((route, index) => {
-                      return (
-                        <Route
-                          key={"ui" + index}
-                          path={buildPathFromLabel(route.label)}
-                          component={() => route.component(route.props)}
-                        />
-                      );
-                    })}
-                    <Route
-                      path={"/"}
-                      component={() => (
-                        <Row>
-                          <Col
-                            size={2}
-                            inlineStyle={`border-right: 2px solid ${THEME.colors.brand.orange};`}
-                          >
-                            <Heading>
-                              Select a component from the sidebar
-                            </Heading>
+                <Switch>
+                  {components.map((route, index) => {
+                    return (
+                      <Route
+                        key={"ui" + index}
+                        path={buildPathFromLabel(route.label)}
+                        component={() =>
+                          Array.isArray(route.props)
+                            ? route.props.map((props, i) => (
+                                <Row
+                                  key={route.label + i}
+                                  inlineStyle={`padding-bottom: ${THEME.margin}px;
+                                    margin-top: ${THEME.margin}px;
+                                    border-bottom: 1px solid ${THEME.colors.grey};`}
+                                >
+                                  <Row>
+                                    <Code>
+                                      <Body>Props</Body>
+                                      <pre>{JSON.stringify(props)}</pre>
+                                    </Code>
+                                  </Row>
+                                  <Row>{route.component(props)}</Row>
+                                </Row>
+                              ))
+                            : route.component(route.props)
+                        }
+                      />
+                    );
+                  })}
+                  <Route
+                    path={"/"}
+                    component={() => (
+                      <Row>
+                        <Col
+                          size={2}
+                          inlineStyle={`border-right: 2px solid ${THEME.colors.brand.orange};`}
+                        >
+                          <Col>
+                            <Heading>ChangeTheme</Heading>
                           </Col>
-                        </Row>
-                      )}
-                    />
-                  </Switch>
-                </Row>
+                          <Heading>Select a component from the sidebar</Heading>
+                        </Col>
+                      </Row>
+                    )}
+                  />
+                </Switch>
               </Col>
             </Row>
           </Page>
