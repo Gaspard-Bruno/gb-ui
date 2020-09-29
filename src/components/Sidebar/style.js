@@ -4,31 +4,56 @@ import { Link, Tiny, ButtonText } from "Components/Text";
 const StyledSidebar = styled.div`
   background-color: ${props => props.theme.colors.brand.orange};
   color: white;
-  width: 240px;
+  transition: width 0.5s linear;
+  width: ${props => (props.open ? "240px" : "45px")};
   height: 100vh;
-  > div {
-    position: fixed;
-  }
   svg {
-    margin-top: ${props => props.theme.margin * 2}px;
+    margin-top: ${props => props.theme.margin}px;
+  }
+  > div {
+    transition: all 0.5s linear;
+
+    ${props =>
+      !props.open
+        ? `
+    position: fixed;
+    left: -240px;
+  `
+        : `
+    position: fixed;
+    left: 0px;`}
   }
 `;
 
 export const NavHeader = styled(Tiny)`
   text-transform: uppercase;
-  margin: 0px 32px 4px;
+  margin-top: ${props => props.theme.margin * 2};
   color: ${props => props.theme.colors.white};
 `;
 
 export const NavSection = styled.div`
-  margin-top: 40px;
-  a {
-    color: white;
-    font-size: 16px;
-    line-height: 24px;
-    &:visited {
-      color: white;
+  margin-bottom: ${props => props.theme.margin * 2}px;
+  button {
+    transition: all 0.5s;
+    svg {
+      transition: all 0.5s;
+      transform: ${props => (props.open ? "rotate(180deg)" : "rotate(0deg)")};
+      > path {
+        fill: ${props => props.theme.colors.white};
+      }
     }
+    ${props =>
+      !props.open
+        ? `
+    position: fixed;
+    top: 64px;
+    left: 8px;
+  `
+        : `
+    position: fixed;
+    top: 64px;
+    left: ${240 - 16}px;
+    `}
   }
 `;
 
@@ -51,8 +76,11 @@ export const NavLink = styled(Link)`
   height: 40px;
   display: flex;
   align-items: center;
-
-  ${props => getActiveLinkStyle(props.theme, props.disabled)}
+  color: ${props => props.theme.colors.white};
+  &:visited {
+    color: ${props => props.theme.colors.white};
+  }
+  ${props => getActiveLinkStyle(props.theme, props.disabled)};
 `;
 export const NavText = styled(ButtonText)`
   padding: 0px 30px;
@@ -60,11 +88,8 @@ export const NavText = styled(ButtonText)`
   display: flex;
   align-items: center;
 
+  color: ${props => props.theme.colors.white};
   ${props => getActiveLinkStyle(props.theme, props.disabled)}
-`;
-
-export const LogoContainer = styled.div`
-  margin: 30px 0px 80px;
 `;
 
 export default StyledSidebar;

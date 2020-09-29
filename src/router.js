@@ -83,7 +83,7 @@ const Router = () => {
       <GlobalStyles />
       <BrowserRouter>
         <Row noWrap>
-          <Sidebar sidebarSections={SECTIONS} />
+          <Sidebar sidebarSections={SECTIONS} isOpenable />
           <Page>
             <Row>
               <Col>

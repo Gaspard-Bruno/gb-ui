@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import t from "Utils/translation";
 
-import Logo from "Components/Logo";
-import { Col } from "Components/Layout";
+import { SubHeading } from "Components/Text";
+import Button from "Components/Button";
+import { Col, Row } from "Components/Layout";
 import StyledSidebar, {
   NavSection,
   NavLink,
   NavText,
-  NavHeader,
-  LogoContainer
+  NavHeader
 } from "./style";
 
-const Sidebar = ({ sidebarSections, translate }) => {
+const Sidebar = ({ sidebarSections, translate, isOpenable }) => {
+  const [isOpen, setIsOpen] = useState(true);
+
   // eslint-disable-next-line react/prop-types
   const SidebarLink = ({ route, text, disabled, disabledIcon }) => {
     return route && !disabled ? (
@@ -27,17 +29,25 @@ const Sidebar = ({ sidebarSections, translate }) => {
   };
 
   return (
-    <StyledSidebar>
+    <StyledSidebar open={isOpen}>
       <Col>
-        <LogoContainer>
-          <SidebarLink
-            routePath={{ path: "/", exact: true }}
-            to="/"
-            isLogo={true}
-          >
-            <Logo color={"white"} />
-          </SidebarLink>
-        </LogoContainer>
+        <NavSection open={isOpen}>
+          <Row align="center">
+            <Col>
+              <SubHeading color="lightestBeige">55+ UI Kit</SubHeading>
+              <NavHeader>by Gaspard+Bruno</NavHeader>
+            </Col>
+            {isOpenable && (
+              <Button
+                open={isOpen}
+                icon="arrow-left"
+                action={() => setIsOpen(!isOpen)}
+                btnType={"terceary"}
+              />
+            )}
+          </Row>
+        </NavSection>
+        <SidebarLink route={"/"} text="Home"></SidebarLink>
         {Object.keys(sidebarSections).map(s => {
           const section = sidebarSections[s];
           return (
@@ -61,6 +71,7 @@ const Sidebar = ({ sidebarSections, translate }) => {
 };
 
 Sidebar.propTypes = {
+  isOpenable: PropTypes.bool,
   translate: PropTypes.func,
   sidebarSections: PropTypes.arrayOf({
     title: PropTypes.string,

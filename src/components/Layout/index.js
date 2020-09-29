@@ -106,7 +106,7 @@ const Row = styled.div`
   max-width: ${props => props.theme.maxWidth || 100}%;
   width: 100%;
   justify-content: ${props => (props.justify ? props.justify : "none")};
-  min-height: ${props => props.theme.margin * props.size}px;
+  min-height: ${props => props.theme.margin * (props.size || 0)}px;
   ${props =>
     (props.margin &&
       `
