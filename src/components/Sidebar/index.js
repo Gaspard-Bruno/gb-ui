@@ -45,9 +45,9 @@ const Sidebar = ({ sidebarSections, translate }) => {
               <NavHeader>{t(translate, section.title)}</NavHeader>
               {section.items.map(item => (
                 <SidebarLink
-                  key={"sidebar-" + item.text}
+                  key={"sidebar-" + item.label}
                   route={item.route}
-                  text={t(translate, item.text)}
+                  text={t(translate, item.label)}
                   disabled={item.disabled}
                   disabledIcon="🚧"
                 />

@@ -89,7 +89,7 @@ const BackofficeKanbanContainer = styled.div`
 
 const Row = styled.div`
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row ${props => (props.noWrap ? "nowrap" : "wrap")};
   align-items: ${props => (props.align ? props.align : "none")};
   max-width: ${props => props.theme.maxWidth || 100}%;
   justify-content: ${props => (props.justify ? props.justify : "none")};
