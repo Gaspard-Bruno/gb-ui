@@ -1,39 +1,38 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { Login, Dashboard } from "Pages";
+import { BackofficePage, Page } from "Components/Layout";
+import Logo from "Components/Logo";
+import Sidebar from "Components/Sidebar";
 
-// eslint-disable-next-line react/prop-types
-const AppRouter = ({ component: Component, path, props, exact }) => {
+const routes = [];
+
+const Dashboard = () => {
   return (
-    <Route path={path} exact={exact} render={() => <Component {...props} />} />
+    <Page>
+      <BrowserRouter>
+        <Sidebar />
+        <BackofficePage bg="white">
+          <Switch>
+            <Route
+              path={"/dashboard"}
+              exact
+              render={() => <Logo color="home" />}
+            />
+            {routes.map((route, index) => {
+              return (
+                <Route
+                  key={"boRoute" + index}
+                  path={route.path}
+                  component={route.component}
+                />
+              );
+            })}
+          </Switch>
+        </BackofficePage>
+      </BrowserRouter>
+    </Page>
   );
 };
 
-const routes = [
-  { path: "/", component: Login, exact: true },
-  {
-    path: "/dashboard",
-    component: Dashboard
-  }
-];
-
-export default function Router() {
-  return (
-    <BrowserRouter>
-      <Switch>
-        {routes.map((route, index) => {
-          return (
-            <AppRouter
-              key={route.path}
-              path={route.path}
-              exact={route.exact}
-              isPrivate={route.isPrivate}
-              component={route.component}
-            />
-          );
-        })}
-      </Switch>
-    </BrowserRouter>
-  );
-}
+export default Dashboard;

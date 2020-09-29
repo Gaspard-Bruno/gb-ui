@@ -4,10 +4,7 @@
     "paths": {
       "Assets": ["./assets/*"],
       "Components": ["./components/*"],
-      "Hooks": ["./hooks/*"],
       "Pages": ["./pages/*"],
-      "Services": ["./services/*"],
-      "Redux": ["./redux/*"],
       "Config": ["./config.js"],
       "Theme": ["./theme.js"]
     }
