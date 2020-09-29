@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import { useTranslate } from "polyglot-react-redux-sdk";
 import Icon from "Components/Icon";
 import Select from "Components/Select";
+import Button from "Components/Button";
 
 import StyledFilterButton, {
   CloseContainer,
+  FilterLabel,
   FilterTitle,
   Dropdown
 } from "./style";
@@ -52,12 +53,11 @@ const getFilterOptions = filter => {
 const FilterButton = ({
   filter,
   filterLabel,
+  translate,
   filterValue,
   onChange,
   onClose
 }) => {
-  const t = useTranslate("filters");
-
   const [showDropdown, setShowDropdown] = useState(false);
 
   const options = getFilterOptions(filter);
@@ -70,18 +70,10 @@ const FilterButton = ({
     <StyledFilterButton>
       <FilterTitle filterLabel={filterLabel}>
         <Icon name={getIconName(filterLabel)} />
-        <span>{t(filterLabel)}:</span>
+        <FilterLabel>{filterLabel}</FilterLabel>
       </FilterTitle>
 
-      <div onClick={e => handleOpen(e)}>
-        {/* {filterValue ?
-                <>{filterValue}</>
-            :
-                <>Todos</>
-            }  */}
-        Todo
-        <Icon name="chevron-down" />
-      </div>
+      <Button onClick={e => handleOpen(e)} icon="chevron-down" />
 
       <CloseContainer onClick={e => onClose(filter)}>
         <Icon name="Close" />
@@ -106,6 +98,8 @@ FilterButton.propTypes = {
     "region"
   ]),
   filterValue: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
+  filterLabel: PropTypes.string,
+  translate: PropTypes.func,
   options: PropTypes.array,
   onChange: PropTypes.func,
   onClose: PropTypes.func
@@ -114,6 +108,7 @@ FilterButton.propTypes = {
 };
 
 FilterButton.defaultProps = {
+  translate: () => console.log("Changed Filters")
   // leftIcon: "kanban",
   // rightIcon: "List"
 };

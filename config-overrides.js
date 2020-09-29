@@ -7,10 +7,7 @@ module.exports = override(
     Assets: path.resolve(__dirname, "./src/assets"),
     Components: path.resolve(__dirname, "src/components"),
     Config: path.resolve(__dirname, "./src/config.js"),
-    Hooks: path.resolve(__dirname, "./src/hooks"),
-    Pages: path.resolve(__dirname, "./src/pages"),
+    Utils: path.resolve(__dirname, "./src/utils"),
     Theme: path.resolve(__dirname, "./src/theme.js"),
-    Redux: path.resolve(__dirname, "./src/redux"),
-    Services: path.resolve(__dirname, "./src/services"),
   })
 );

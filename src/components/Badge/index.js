@@ -1,15 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+import t from "Utils/translation";
+
 import { SmallBody } from "Components/Text";
 import Icon from "Components/Icon";
 import StyledBadge from "./style";
-import { useTranslate } from "polyglot-react-redux-sdk";
 
-const Badge = ({ status = "active", category, isChip, onClick, text }) => {
-  const t = useTranslate("badges");
+const Badge = ({
+  status = "active",
+  category,
+  isChip,
+  onClick,
+  text,
+  translate
+}) => {
   return (
     <StyledBadge onClick={onClick} status={category || status} chip={isChip}>
-      <SmallBody>{t(text)}</SmallBody>
+      <SmallBody>{t(translate, text)}</SmallBody>
       {isChip && <Icon name="Close" size={12} />}
     </StyledBadge>
   );
@@ -17,6 +25,7 @@ const Badge = ({ status = "active", category, isChip, onClick, text }) => {
 
 Badge.propTypes = {
   onClick: PropTypes.func,
+  translate: PropTypes.func,
   status: PropTypes.string,
   category: PropTypes.string,
   isChip: PropTypes.bool,

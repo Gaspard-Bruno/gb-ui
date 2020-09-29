@@ -1,12 +1,14 @@
 import styled from "styled-components";
-import { Link, Tiny } from "Components/Text";
+import { Link, Tiny, ButtonText } from "Components/Text";
 
 const StyledSidebar = styled.div`
   background-color: ${props => props.theme.colors.brand.orange};
   color: white;
   width: 240px;
   height: 100vh;
-  position: fixed;
+  > div {
+    position: fixed;
+  }
   svg {
     margin-top: ${props => props.theme.margin * 2}px;
   }
@@ -30,19 +32,19 @@ export const NavSection = styled.div`
   }
 `;
 
-const getActiveLinkStyle = (theme, active, isLogo) => {
-  if (isLogo || !active) {
+const getActiveLinkStyle = (theme, active) => {
+  if (!active) {
     return `
       background-color: none;
       border-left: solid 2px transparent;
-      `
+      `;
   } else {
     return `
       background-color: ${theme.colors.brand.orangeLight};
       border-left: solid 2px white;
-      `    
+      `;
   }
-}
+};
 
 export const NavLink = styled(Link)`
   padding: 0px 30px;
@@ -50,7 +52,15 @@ export const NavLink = styled(Link)`
   display: flex;
   align-items: center;
 
-  ${props => getActiveLinkStyle(props.theme, props.active, props.isLogo)}
+  ${props => getActiveLinkStyle(props.theme, props.disabled)}
+`;
+export const NavText = styled(ButtonText)`
+  padding: 0px 30px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+
+  ${props => getActiveLinkStyle(props.theme, props.disabled)}
 `;
 
 export const LogoContainer = styled.div`

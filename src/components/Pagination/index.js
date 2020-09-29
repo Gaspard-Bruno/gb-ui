@@ -1,15 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { useTranslate } from "polyglot-react-redux-sdk";
+import t from "Utils/translation";
 
 import { SmallBody } from "Components/Text";
 import TrackerBox from "Components/TrackerBox";
 import StyledPagination, { Left, Right } from "./style";
 
-const Pagination = ({ totalPages, currentPage, action }) => {
-  const t = useTranslate("archive");
-
+const Pagination = ({ totalPages, currentPage, action, translate }) => {
   const getBoxes = (currentPage, totalPages) => {
     if (totalPages >= 4) {
       if (
@@ -38,7 +36,7 @@ const Pagination = ({ totalPages, currentPage, action }) => {
     <StyledPagination>
       <Left>
         <SmallBody bold={true}>
-          {t("page")} {currentPage} {t("of")} {totalPages}
+          {t(translate, "page")} {currentPage} {t(translate, "of")} {totalPages}
         </SmallBody>
       </Left>
 

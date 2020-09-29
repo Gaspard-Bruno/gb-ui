@@ -1,7 +1,5 @@
 import React from "react";
 
-import { useTranslate } from "polyglot-react-redux-sdk";
-
 import { Col } from "Components/Layout";
 import Avatar from "Components/Avatar";
 
@@ -89,8 +87,6 @@ const getRowDetails = (tableType, item = null) => {
 };
 
 const Table = ({ tableType, items }) => {
-  const t = useTranslate(tableType);
-
   const cols = getRowDetails(tableType);
 
   return (
@@ -100,7 +96,7 @@ const Table = ({ tableType, items }) => {
           cols.map((col, i) => {
             return (
               <Col key={"header row" + i} size={col.size}>
-                {t(col.header)}
+                {col.header}
               </Col>
             );
           })}

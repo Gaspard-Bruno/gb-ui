@@ -4,7 +4,7 @@
     "paths": {
       "Assets": ["./assets/*"],
       "Components": ["./components/*"],
-      "Pages": ["./pages/*"],
+      "Utils": ["./utils/*"],
       "Config": ["./config.js"],
       "Theme": ["./theme.js"]
     }

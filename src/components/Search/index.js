@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { useTranslate } from "polyglot-react-redux-sdk";
 
 import { Body } from "Components/Text";
 import Icon from "Components/Icon";
@@ -14,8 +13,6 @@ const SearchInput = ({
   onChange,
   style = "main"
 }) => {
-  const t = useTranslate("buttons");
-
   const [val, setVal] = useState("");
 
   const handleChange = e => {
@@ -42,7 +39,7 @@ const SearchInput = ({
 
       {style === "main" && (
         <Button>
-          <Body>{t("searchBtn")}</Body>
+          <Body>Search</Body>
         </Button>
       )}
     </Container>

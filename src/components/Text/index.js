@@ -157,3 +157,17 @@ export const AlertTitle = styled.h3`
 export const ErrorText = styled(SmallBody)`
   color: ${props => props.theme.colors.feedback.error.default};
 `;
+export default {
+  Jumbo,
+  Heading,
+  SubHeading,
+  Body,
+  SmallBody,
+  SmallBodyFAQ,
+  Tiny,
+  Link,
+  ButtonText,
+  AlertText,
+  AlertTitle,
+  ErrorText
+};

@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 import PropTypes from "prop-types";
-
-import { useTranslate } from "polyglot-react-redux-sdk";
 import { Droppable } from "react-beautiful-dnd";
+
+import t from "Utils/translation";
 
 import KanbanCard from "Components/KanbanCard";
 import Icon from "Components/Icon";
@@ -14,9 +14,7 @@ import StyledKanbanColumn, {
   ColumnCardsContainer
 } from "./style";
 
-const KanbanColumn = ({ colName, items, kanbanType, data }) => {
-  const t = useTranslate(kanbanType);
-
+const KanbanColumn = ({ colName, items, kanbanType, data, translate }) => {
   const renderCards = useCallback(
     () =>
       items.map((item, index) => {
@@ -50,7 +48,7 @@ const KanbanColumn = ({ colName, items, kanbanType, data }) => {
           {...provided.droppableProps}
         >
           <Header>
-            {colName && <SubHeading>{t(colName)}</SubHeading>}
+            {colName && <SubHeading>{t(translate, colName)}</SubHeading>}
             <IconContainer>
               <Icon name="maximize" />
             </IconContainer>
@@ -65,6 +63,7 @@ const KanbanColumn = ({ colName, items, kanbanType, data }) => {
 
 KanbanColumn.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object),
+  translate: PropTypes.func,
   kanbanType: PropTypes.oneOf(["requests", "candidates"]),
   colName: PropTypes.string,
   data: PropTypes.shape({

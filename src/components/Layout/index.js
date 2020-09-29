@@ -34,9 +34,22 @@ const getPageBackground = props => {
 };
 const Page = styled.div`
   background-color: ${props => getPageBackground(props)};
-  height: 100vh;
-  overflow-x: hidden;
+  min-height: 100vh;
   display: flex;
+  flex-flow: column nowrap;
+  margin: 0 ${props => props.theme.margin * 2}px;
+
+  &::-webkit-scrollbar {
+    margin-top: 32px;
+    height: 4px;
+    background-color: ${props => props.theme.colors.lightestBeige};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    margin-top: 30px;
+    background: ${props => props.theme.colors.darkBlue};
+    border-radius: 30px;
+  }
 `;
 const BackofficePage = styled.div`
   background-color: ${props => getPageBackground(props)};
@@ -78,7 +91,7 @@ const Row = styled.div`
   display: flex;
   flex-flow: row wrap;
   align-items: ${props => (props.align ? props.align : "none")};
-  max-width: ${props => props.theme.maxWidth}px;
+  max-width: ${props => props.theme.maxWidth || 100}%;
   justify-content: ${props => (props.justify ? props.justify : "none")};
   min-height: ${props => props.theme.margin * props.size}px;
   ${props =>
@@ -101,7 +114,7 @@ const Row = styled.div`
 `;
 
 const Col = styled.div`
-  flex: ${props => props.size};
+  flex: ${props => props.size || 1};
   display: flex;
   flex-flow: column nowrap;
   align-items: ${props => (props.center ? "center" : "flex-start")};
@@ -113,6 +126,7 @@ const Col = styled.div`
   display: none;
   `)}
   ${props => props.center && "margin: 0 auto;"}
+  ${props => props.inlineStyle || ""}
 `;
 
 export {

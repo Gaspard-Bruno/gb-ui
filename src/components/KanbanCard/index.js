@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-import { useTranslate } from "polyglot-react-redux-sdk";
 import { Draggable } from "react-beautiful-dnd";
+
+import t from "Utils/translation";
 
 import Badge from "Components/Badge";
 import Icon from "Components/Icon";
@@ -18,8 +18,7 @@ import StyledKanbanCard, {
   Recurrent
 } from "./style";
 
-const KanbanCard = ({ cardKey, index, cardData, cardType }) => {
-  const t = useTranslate("requests");
+const KanbanCard = ({ cardKey, index, cardData, cardType, translate }) => {
   return (
     <Draggable key={cardKey} draggableId={cardKey} index={index}>
       {(provided, snapshot) => {
@@ -69,13 +68,13 @@ const KanbanCard = ({ cardKey, index, cardData, cardType }) => {
               <div>
                 {cardData.client && (
                   <ServiceDetails>
-                    <span>{t("client")}: </span>
+                    <span>{t(translate, "client")}: </span>
                     {cardData.client.attributes.fullName}
                   </ServiceDetails>
                 )}
                 {cardData.provider && (
                   <ServiceDetails>
-                    <span>{t("specialist")}: </span>
+                    <span>{t(translate, "specialist")}: </span>
                     {cardData.provider.attributes.fullName}
                   </ServiceDetails>
                 )}
@@ -103,6 +102,7 @@ KanbanCard.propTypes = {
   cardKey: PropTypes.string,
   index: PropTypes.number,
   cardType: PropTypes.oneOf(["requests", "candidates"]),
+  translate: PropTypes.func,
   cardData: PropTypes.shape({
     id: PropTypes.string,
     status: PropTypes.string,
