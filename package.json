@@ -2,12 +2,18 @@
   "name": "ui-kit-55",
   "version": "0.1.0",
   "private": true,
-  "main": "components/index.js",
+  "main": "components",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Gaspard-Bruno/ui-kit-55.git"
   },
+  "babel": {
+    "plugins": [
+      "@babel/plugin-transform-react-jsx"
+    ]
+  },
   "dependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.10.4",
     "@reduxjs/toolkit": "^1.4.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
