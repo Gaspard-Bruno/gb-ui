@@ -1,7 +1,12 @@
 {
-  "name": "55mais-website",
+  "name": "ui-kit-55",
   "version": "0.1.0",
   "private": true,
+  "main": "components/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gaspard-Bruno/ui-kit-55.git"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
     "@testing-library/jest-dom": "^4.2.4",
