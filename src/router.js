@@ -1,8 +1,9 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
 
-import THEME, { GlobalStyles } from 'Theme';
-import { ThemeProvider } from 'styled-components';
+import FORM from "Utils/form";
+import THEME, { GlobalStyles } from "Theme";
 
 import {
   Avatar,
@@ -69,6 +70,14 @@ const components = [
     component: props => <Badge {...props} />
   },
   {
+    label: "Form",
+    props: {
+      questions: FORM.schema
+    },
+    section: "Form",
+    component: props => <Form {...props} />
+  },
+  {
     label: 'ButtonGroup',
     props: {
       list: [
@@ -83,7 +92,7 @@ const components = [
       label: 'Button Group'
     },
     disabled: false,
-    section: 'General',
+    section: 'Form',
     component: props => <ButtonGroup {...props} />
   }
 ];

@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { useRef } from "react";
+import PropTypes from "prop-types";
+import sc from "lodash.startcase";
 
 import TextInput from '../TextInput';
 import TextArea from '../TextArea';
@@ -14,15 +15,36 @@ const Form = ({
   submitLabel,
   resetLabel,
   cancelLabel,
-  backgroundColor
+  backgroundColor,
+  fieldsWidgets
 }) => {
   const formRef = useRef();
+
+  const fieldRenderer = field => {
+    if (field.key) {
+      const fieldProps = {
+        label: sc(field.key)
+      };
+      switch (field?.type) {
+        case "text":
+        case "password":
+          return <TextInput key={field.label} {...fieldProps} />;
+        case "text-area":
+          return <TextArea key={field.label} {...fieldProps} />;
+        default:
+          return <TextInput key={field.label} {...fieldProps} />;
+      }
+    }
+  };
+
+  const renderFields = () => {
+    return questions.map(q => fieldRenderer(q));
+  };
+
   return (
     <FormContainer bg={backgroundColor}>
       <StyledForm ref={formRef} onSubmit={onSubmit}>
-        {questions?.map((field, index) => {
-          return renderFields(field);
-        })}
+        {renderFields()}
       </StyledForm>
       <Button
         fullWidth
@@ -35,18 +57,6 @@ const Form = ({
   );
 };
 
-const renderFields = (field) => {
-  switch (field?.type) {
-    case 'text':
-    case 'password':
-      return <TextInput key={field.label} {...field} />;
-    case 'text-area':
-      return <TextArea key={field.label} {...field} />;
-    default:
-      return <TextInput key={field.label} {...field} />;
-  }
-};
-
 Form.propTypes = {
   onSubmit: PropTypes.func,
   onChange: PropTypes.func,
@@ -54,6 +64,7 @@ Form.propTypes = {
   resetLabel: PropTypes.string,
   cancelLabel: PropTypes.string,
   backgroundColor: PropTypes.string,
+  fieldsWidgets: PropTypes.object,
   questions: PropTypes.arrayOf(
     // * Fields
     PropTypes.shape({

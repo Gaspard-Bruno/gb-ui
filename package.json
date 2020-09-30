@@ -26,6 +26,7 @@
     "axios": "^0.19.2",
     "icomoon-react": "^2.0.16",
     "lodash.get": "^4.4.2",
+    "lodash.startcase": "^4.4.0",
     "react": "^16.13.1",
     "react-beautiful-dnd": "^13.0.0",
     "react-dom": "^16.13.1",
