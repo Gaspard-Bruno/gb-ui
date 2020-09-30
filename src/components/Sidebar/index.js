@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import t from 'Utils/translation';
+import t from '../../utils/translation';
 
 import { SubHeading } from '../Text';
 import Button from '../Button';

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 
-import t from 'Utils/translation';
+import t from '../../utils/translation';
 
 import Badge from '../Badge';
 import Icon from '../Icon';

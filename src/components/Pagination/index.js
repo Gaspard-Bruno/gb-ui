@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import t from 'Utils/translation';
+import t from '../../utils/translation';
 
 import { SmallBody } from '../Text';
 import TrackerBox from '../TrackerBox';

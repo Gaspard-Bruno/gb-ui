@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';
 
-import t from 'Utils/translation';
+import t from '../../utils/translation';
 
 import KanbanCard from '../KanbanCard';
 import Icon from '../Icon';
