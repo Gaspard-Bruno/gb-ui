@@ -1,0 +1,261 @@
+{
+  "id": "7",
+  "type": "form",
+  "questions": [
+    { "type": "footnote", "question": "Morada para recolha do animal" },
+    {
+      "key": "country",
+      "type": "dropdown",
+      "options": [{ "label": "Portugal", "value": 1 }],
+      "question": "País"
+    },
+    {
+      "key": "district",
+      "type": "dropdown",
+      "options": [{ "label": "Lisboa", "value": 1 }],
+      "question": "Distrito"
+    },
+    { "key": "address", "type": "text", "question": "Morada" },
+    { "key": "postal-code", "type": "text", "question": "Código Postal" },
+    { "key": "location", "type": "text", "question": "Localidade" },
+    {
+      "key": "special-transportation",
+      "type": "radio",
+      "options": [
+        { "label": "Não", "value": 0 },
+        { "label": "Sim", "value": 1 }
+      ],
+      "question": "Precisamos do carro do especialista para transportar seu animal de estimação?"
+    },
+    { "type": "footnote", "question": "Tipo de Serviço" },
+    {
+      "key": "service-type",
+      "type": "radio",
+      "options": [
+        { "label": "Standard", "value": 0 },
+        { "label": "Premium", "value": 1 }
+      ]
+    },
+    {
+      "key": "number-of-animals",
+      "type": "dropdown",
+      "options": [
+        { "label": "1", "value": 1 },
+        { "label": "2", "value": 2 }
+      ],
+      "children": [
+        {
+          "key": "animal-species",
+          "type": "dropdown",
+          "dependencyType": "value-count",
+          "options": [
+            { "label": "Cão", "value": 0 },
+            { "label": "Gato", "value": 1 },
+            { "label": "Outro", "value": 2 }
+          ]
+        },
+        {
+          "key": "animal-size",
+          "type": "dropdown",
+          "dependencyType": "value-count",
+          "options": [
+            { "label": "Grande", "value": 0 },
+            { "label": "Médio", "value": 1 },
+            { "label": "Pequeno", "value": 2 }
+          ]
+        }
+      ]
+    },
+    { "type": "footnote", "question": "Tipo de oferta" },
+    {
+      "key": "offer-type",
+      "type": "radio",
+      "children": [
+        {
+          "key": "number-of-hours",
+          "type": "dropdown",
+          "options": [{ "label": "10", "value": 10 }],
+          "dependencyType": "value",
+          "dependencyValue": "single",
+          "question": "Número de horas"
+        },
+        {
+          "key": "start-date",
+          "type": "date",
+          "dependencyType": "value",
+          "dependencyValue": "single",
+          "question": "Data de Início"
+        },
+        {
+          "key": "start-date",
+          "type": "date",
+          "question": "Data de Início",
+          "dependencyType": "value",
+          "dependencyValue": "hour-package"
+        },
+        {
+          "key": "start-hour",
+          "options": [
+            { "label": "09:00", "value": "09:00" },
+            { "label": "09:30", "value": "09:30" },
+            { "label": "10:00", "value": "10:00" },
+            { "label": "10:30", "value": "10:30" },
+            { "label": "11:00", "value": "11:00" },
+            { "label": "11:30", "value": "11:30" },
+            { "label": "12:00", "value": "12:00" },
+            { "label": "12:30", "value": "12:30" },
+            { "label": "13:00", "value": "13:00" },
+            { "label": "13:30", "value": "13:30" },
+            { "label": "14:00", "value": "14:00" },
+            { "label": "14:30", "value": "14:30" },
+            { "label": "15:00", "value": "15:00" },
+            { "label": "15:30", "value": "15:30" },
+            { "label": "16:00", "value": "16:00" },
+            { "label": "16:30", "value": "16:30" },
+            { "label": "17:00", "value": "17:00" },
+            { "label": "17:30", "value": "17:30" },
+            { "label": "18:00", "value": "18:00" }
+          ],
+          "question": "Hora",
+          "dependencyType": "value",
+          "dependencyValue": "hour-package"
+        },
+        {
+          "key": "end-date",
+          "type": "date",
+          "question": "Data de Fim",
+          "dependencyType": "value",
+          "dependencyValue": "hour-package"
+        },
+        {
+          "key": "ending-hour",
+          "dependencyType": "value",
+          "dependencyValue": "hour-package",
+          "options": [
+            { "label": "09:00", "value": "09:00" },
+            { "label": "09:30", "value": "09:30" },
+            { "label": "10:00", "value": "10:00" },
+            { "label": "10:30", "value": "10:30" },
+            { "label": "11:00", "value": "11:00" },
+            { "label": "11:30", "value": "11:30" },
+            { "label": "12:00", "value": "12:00" },
+            { "label": "12:30", "value": "12:30" },
+            { "label": "13:00", "value": "13:00" },
+            { "label": "13:30", "value": "13:30" },
+            { "label": "14:00", "value": "14:00" },
+            { "label": "14:30", "value": "14:30" },
+            { "label": "15:00", "value": "15:00" },
+            { "label": "15:30", "value": "15:30" },
+            { "label": "16:00", "value": "16:00" },
+            { "label": "16:30", "value": "16:30" },
+            { "label": "17:00", "value": "17:00" },
+            { "label": "17:30", "value": "17:30" },
+            { "label": "18:00", "value": "18:00" }
+          ],
+          "question": "Hora"
+        }
+      ],
+      "options": [
+        {
+          "key": "single",
+          "label": "Simples",
+          "value": "single"
+        },
+        {
+          "key": "hour-package",
+          "label": "Pacote de Horas",
+          "value": "hour-package"
+        }
+      ]
+    },
+    { "type": "footnote", "question": "Notas" },
+    { "key": "notes", "type": "text-area" },
+    {
+      "key": "login-buttons",
+      "type": "tabs",
+      "options": [
+        {
+          "key": "guest",
+          "name": "Convidado",
+          "children": [
+            {
+              "name": "guest.firstName",
+              "type": "text",
+              "label": "Nome"
+            },
+            {
+              "name": "guest.lastName",
+              "type": "text",
+              "label": "Apelido",
+              "dependent": "login-tabs"
+            },
+            {
+              "name": "guest.email",
+              "type": "email",
+              "label": "Endereço de e-mail"
+            },
+            {
+              "name": "guest.telephone",
+              "type": "number",
+              "label": "Número de Telemóvel"
+            }
+          ]
+        },
+        {
+          "key": "login",
+          "name": "Iniciar Sessão",
+          "children": [
+            {
+              "name": "login.email",
+              "type": "email",
+              "label": "Endereço de e-mail"
+            },
+            {
+              "name": "login.telephone",
+              "type": "number",
+              "label": "Número de Telemóvel"
+            },
+            {
+              "name": "login.password",
+              "type": "password",
+              "label": "Senha"
+            }
+          ]
+        },
+        {
+          "key": "signup",
+          "name": "Criar Conta",
+          "children": [
+            {
+              "name": "signup.email",
+              "type": "email",
+              "label": "Endereço de e-mail"
+            },
+            {
+              "name": "signup.telephone",
+              "type": "number",
+              "label": "Número de Telemóvel"
+            },
+            {
+              "name": "signup.password",
+              "type": "password",
+              "label": "Senha"
+            },
+            {
+              "name": "signup.first-name",
+              "type": "text",
+              "label": "Nome"
+            },
+            {
+              "name": "signup.last-name",
+              "type": "text",
+              "label": "Apelido"
+            }
+          ]
+        }
+      ],
+      "question": "Número de criancas",
+      "displayText": false
+    }
+  ]
+}
