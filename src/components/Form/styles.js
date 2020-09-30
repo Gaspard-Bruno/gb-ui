@@ -8,7 +8,7 @@ const getSelectedBackground = props => {
     case "terceary":
       return props.theme.colors.brand.lightBlue;
     default:
-      return props.theme.colors.white;
+      return props.bg;
   }
 };
 
@@ -17,18 +17,15 @@ export const FormContainer = styled.div`
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  top: ${props => (props.top ? "-80px" : "0")};
-  margin 0 auto;
+  margin: 0 auto;
   max-width: 616px;
   text-align: center;
   div {
-    padding: 0;
+    padding: ${props => props.theme.margin}px 0;
   }
   button {
     align-self: center;
-    margin-bottom: 20px;
-    margin-top: 30px;
+    margin: ${props => props.theme.margin}px 0;
   }
 `;
 
