@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { ButtonText } from "Components/Text";
-import Icon from "Components/Icon";
-import StyledButton, { IconButton } from "./style";
+import { ButtonText } from '../Text';
+import Icon from '../Icon';
+import StyledButton, { IconButton } from './style';
 
 const Button = ({
   isDisabled,
@@ -14,7 +14,7 @@ const Button = ({
   action,
   type,
   isFullWidth,
-  children
+  children,
 }) => {
   if (text) {
     return (
@@ -56,17 +56,17 @@ Button.propTypes = {
   text: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
   btnType: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "terceary",
-    "transparent",
-    "borded"
+    'primary',
+    'secondary',
+    'terceary',
+    'transparent',
+    'borded',
   ]),
-  icon: PropTypes.string
+  icon: PropTypes.string,
 };
 
 Button.defaultProps = {
-  type: "primary"
+  type: 'primary',
 };
 
 export default Button;

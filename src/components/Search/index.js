@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-import { Body } from "Components/Text";
-import Icon from "Components/Icon";
-import { Container, Input, Button, SearchIconContainer } from "./style";
+import { Body } from '../Text';
+import Icon from '../Icon';
+import { Container, Input, Button, SearchIconContainer } from './style';
 
 const SearchInput = ({
   error,
@@ -11,11 +11,11 @@ const SearchInput = ({
   defaultValue,
   label,
   onChange,
-  style = "main"
+  style = 'main',
 }) => {
-  const [val, setVal] = useState("");
+  const [val, setVal] = useState('');
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setVal(e.target.value);
     onChange(e.target.value);
   };
@@ -31,13 +31,13 @@ const SearchInput = ({
         value={val}
         onChange={handleChange}
       />
-      {style === "service" && (
+      {style === 'service' && (
         <SearchIconContainer>
-          <Icon name="Search" />
+          <Icon name='Search' />
         </SearchIconContainer>
       )}
 
-      {style === "main" && (
+      {style === 'main' && (
         <Button>
           <Body>Search</Body>
         </Button>
@@ -51,8 +51,8 @@ SearchInput.propTypes = {
   placeholder: PropTypes.string,
   label: PropTypes.string,
   defaultValue: PropTypes.string,
-  style: PropTypes.oneOf(["noButton", "main", "secondary", "service"]),
-  onChange: PropTypes.func
+  style: PropTypes.oneOf(['noButton', 'main', 'secondary', 'service']),
+  onChange: PropTypes.func,
 };
 
 export default SearchInput;

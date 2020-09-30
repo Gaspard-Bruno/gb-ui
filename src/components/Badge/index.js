@@ -1,24 +1,24 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import t from "Utils/translation";
+import t from 'Utils/translation';
 
-import { SmallBody } from "Components/Text";
-import Icon from "Components/Icon";
-import StyledBadge from "./style";
+import { SmallBody } from '../Text';
+import Icon from '../Icon';
+import StyledBadge from './style';
 
 const Badge = ({
-  status = "active",
+  status = 'active',
   category,
   isChip,
   onClick,
   text,
-  translate
+  translate,
 }) => {
   return (
     <StyledBadge onClick={onClick} status={category || status} chip={isChip}>
       <SmallBody>{t(translate, text)}</SmallBody>
-      {isChip && <Icon name="Close" size={12} />}
+      {isChip && <Icon name='Close' size={12} />}
     </StyledBadge>
   );
 };
@@ -29,7 +29,7 @@ Badge.propTypes = {
   status: PropTypes.string,
   category: PropTypes.string,
   isChip: PropTypes.bool,
-  text: PropTypes.string
+  text: PropTypes.string,
 };
 
 export default Badge;

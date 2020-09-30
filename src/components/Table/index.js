@@ -1,86 +1,86 @@
-import React from "react";
+import React from 'react';
 
-import { Col } from "Components/Layout";
-import Avatar from "Components/Avatar";
+import { Col } from '../Layout';
+import Avatar from '../Avatar';
 
-import TableRow from "./TableRow";
-import StyledTable, { Header } from "./style";
+import TableRow from './TableRow';
+import StyledTable, { Header } from './style';
 
 const getRowDetails = (tableType, item = null) => {
-  if (item === null) item = { javascript: "is stupid" };
+  if (item === null) item = { javascript: 'is stupid' };
 
   const tableTypes = {
     archive: [
       {
         size: 2,
-        header: "serviceType",
-        content: <span className="service">{item.serviceName}</span>
+        header: 'serviceType',
+        content: <span className='service'>{item.serviceName}</span>,
       },
       {
         size: 2,
-        header: "client",
-        content: <Avatar size="small" hasText={true} user={item.client} />
+        header: 'client',
+        content: <Avatar size='small' hasText={true} user={item.client} />,
       },
       {
         size: 2,
-        header: "specialist",
-        content: <Avatar size="small" hasText={true} user={item.provider} />
+        header: 'specialist',
+        content: <Avatar size='small' hasText={true} user={item.provider} />,
       },
       {
         size: 2,
-        header: "date",
-        content: <>{item.deliveryDate}</>
+        header: 'date',
+        content: <>{item.deliveryDate}</>,
       },
       {
         size: 2,
-        header: "totalHours",
-        content: <>{item.totalHours} Horas</>
+        header: 'totalHours',
+        content: <>{item.totalHours} Horas</>,
       },
       {
         size: 2,
-        header: "totalPrice",
-        content: <>{item.totalPrice}€</>
-      }
+        header: 'totalPrice',
+        content: <>{item.totalPrice}€</>,
+      },
     ],
     specialists: [
       {
         size: 3,
-        header: "name",
-        content: <Avatar size="small" hasText={true} user={item.provider} />
+        header: 'name',
+        content: <Avatar size='small' hasText={true} user={item.provider} />,
       },
       {
         size: 3,
-        header: "service",
-        content: <>{item.serviceName}</>
+        header: 'service',
+        content: <>{item.serviceName}</>,
       },
       {
         size: 2,
-        header: "totalRequests",
-        content: <>{item.totalRequests}</>
+        header: 'totalRequests',
+        content: <>{item.totalRequests}</>,
       },
       {
         size: 2,
-        header: "totalHours",
-        content: <>{item.totalHours} Horas</>
+        header: 'totalHours',
+        content: <>{item.totalHours} Horas</>,
       },
       {
         size: 2,
-        header: "rating",
-        content: <>sttarrrrs</>
-      }
+        header: 'rating',
+        content: <>sttarrrrs</>,
+      },
     ],
     clients: [
       {
         size: 9,
-        header: "name",
-        content: <Avatar size="medium" hasText={true} user={item.client} />
+        header: 'name',
+        content: <Avatar size='medium' hasText={true} user={item.client} />,
       },
       {
         size: 9,
-        header: "region",
-        content: "region"
-      }
-    ]
+        header: 'region',
+        content: 'region',
+      },
+    ],
   };
 
   return tableTypes[tableType];
@@ -95,7 +95,7 @@ const Table = ({ tableType, items }) => {
         {cols &&
           cols.map((col, i) => {
             return (
-              <Col key={"header row" + i} size={col.size}>
+              <Col key={'header row' + i} size={col.size}>
                 {col.header}
               </Col>
             );
@@ -106,7 +106,7 @@ const Table = ({ tableType, items }) => {
         items.map((item, i) => {
           return (
             <TableRow
-              key={"header row" + i}
+              key={'header row' + i}
               tableType={tableType}
               item={item}
             />

@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { ErrorText, Body } from "Components/Text";
-import StyledSelect, { SelectContainer, selectStyles } from "./style";
+import { ErrorText, Body } from '../Text';
+import StyledSelect, { SelectContainer, selectStyles } from './style';
 
 const Select = ({
   error,
@@ -11,7 +11,7 @@ const Select = ({
   label,
   onChange,
   isDisabled,
-  defaultValue
+  defaultValue,
 }) => {
   // TODO Add different color to placeholder
   return (
@@ -38,12 +38,12 @@ Select.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
-      value: PropTypes.string
+      value: PropTypes.string,
     })
   ),
   label: PropTypes.string,
   defaultValue: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 export default Select;

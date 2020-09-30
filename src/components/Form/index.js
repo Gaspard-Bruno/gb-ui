@@ -1,20 +1,20 @@
-import React, { useRef } from "react";
-import PropTypes from "prop-types";
+import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 
-import TextInput from "Components/TextInput";
-import TextArea from "Components/TextArea";
-import Button from "Components/Button";
+import TextInput from '../TextInput';
+import TextArea from '../TextArea';
+import Button from '../Button';
 
-import { FormContainer, StyledForm } from "./styles";
+import { FormContainer, StyledForm } from './styles';
 
 const Form = ({
   onSubmit,
   formFields,
   top,
   fullWidth,
-  btnLabel = "Inscrever-se",
+  btnLabel = 'Inscrever-se',
   children,
-  bg
+  bg,
 }) => {
   const formRef = useRef();
   return (
@@ -29,20 +29,20 @@ const Form = ({
       <Button
         fullWidth
         onClick={onSubmit}
-        btnType="primary"
-        type="submit"
+        btnType='primary'
+        type='submit'
         text={btnLabel}
       />
     </FormContainer>
   );
 };
 
-const renderFields = field => {
+const renderFields = (field) => {
   switch (field?.type) {
-    case "text":
-    case "password":
+    case 'text':
+    case 'password':
       return <TextInput key={field.label} {...field} />;
-    case "text-area":
+    case 'text-area':
       return <TextArea key={field.label} {...field} />;
     default:
       return;
@@ -50,7 +50,7 @@ const renderFields = field => {
 };
 
 Form.propTypes = {
-  formFields: PropTypes.arrayOf(PropTypes.object)
+  formFields: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Form;

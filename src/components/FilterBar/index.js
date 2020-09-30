@@ -1,35 +1,35 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-import Search from "Components/Search";
-import Select from "Components/Select";
-import FilterButton from "Components/FilterButton";
-import IconSwitch from "Components/IconSwitch";
+import Search from '../Search';
+import Select from '../Select';
+import FilterButton from '../FilterButton';
+import IconSwitch from '../IconSwitch';
 
-import StyledFilterBar, { Header, Filters, Selects } from "./style";
+import StyledFilterBar, { Header, Filters, Selects } from './style';
 
 const FilterBar = ({ availableFilters, showLayout, handleLayoutChange }) => {
   const [activeFilters, setActiveFilters] = useState([]);
 
-  const handleQuery = newQuery => {
+  const handleQuery = (newQuery) => {
     // action to update query on reducer
     // setQuery(newQuery)
   };
 
-  const handleToggleFilters = newFilter => {
+  const handleToggleFilters = (newFilter) => {
     let filters = activeFilters;
 
     if (filters.indexOf(newFilter) === -1) {
       filters = filters.concat(newFilter);
     } else {
-      filters = filters.filter(filter => filter !== newFilter);
+      filters = filters.filter((filter) => filter !== newFilter);
     }
     setActiveFilters(filters);
   };
 
   const handleFilterValues = (e, filter) => {
     let newFilters = activeFilters.filter(
-      filter => filter.label !== filter.label
+      (filter) => filter.label !== filter.label
     );
     let newFilter = { label: filter.label, value: e.label };
     newFilters = newFilters.concat(newFilter);
@@ -40,21 +40,21 @@ const FilterBar = ({ availableFilters, showLayout, handleLayoutChange }) => {
     <StyledFilterBar>
       <Header>
         <Selects>
-          <Search style="service" onChange={handleQuery} />
+          <Search style='service' onChange={handleQuery} />
           <Select
-            placeholder="Filtros"
+            placeholder='Filtros'
             options={availableFilters}
             onChange={handleToggleFilters}
           />
         </Selects>
         {showLayout && (
-          <IconSwitch switchType="layout" onChange={handleLayoutChange} />
+          <IconSwitch switchType='layout' onChange={handleLayoutChange} />
         )}
       </Header>
 
       <Filters>
         {activeFilters &&
-          activeFilters.map(filter => {
+          activeFilters.map((filter) => {
             return (
               <FilterButton
                 filter={filter}
@@ -73,10 +73,10 @@ const FilterBar = ({ availableFilters, showLayout, handleLayoutChange }) => {
 
 FilterBar.propTypes = {
   availableFilters: PropTypes.arrayOf(
-    PropTypes.oneOf(["responsible", "date", "service", "status", "region"])
+    PropTypes.oneOf(['responsible', 'date', 'service', 'status', 'region'])
   ),
   showLayout: PropTypes.bool,
-  handleLayoutChange: PropTypes.func
+  handleLayoutChange: PropTypes.func,
 };
 
 FilterBar.defaultProps = {

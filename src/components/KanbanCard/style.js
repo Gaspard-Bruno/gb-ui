@@ -1,15 +1,15 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { SmallBody } from "Components/Text";
+import { SmallBody } from '../Text';
 
 const KanbanCard = styled.div`
   width: 260px;
-  border: 1px solid ${props => props.theme.colors.mediumBeige};
+  border: 1px solid ${(props) => props.theme.colors.mediumBeige};
   box-sizing: border-box;
   border-radius: 4px;
   padding: 16px 8px 8px;
   background-color: white;
-  margin-bottom: ${props => props.theme.margin}px;
+  margin-bottom: ${(props) => props.theme.margin}px;
 `;
 
 export const BadgeContainer = styled.div`
@@ -27,7 +27,7 @@ export const IconContainer = styled.div`
   min-height: 32px;
   min-width: 32px;
   border-radius: 50%;
-  background-color: ${props => props.theme.colors.lightBeige};
+  background-color: ${(props) => props.theme.colors.lightBeige};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,7 +41,7 @@ export const IconContainer = styled.div`
 export const AdminContainer = styled.div`
   margin-top: 16px;
   padding-top: 8px;
-  border-top: 1px solid ${props => props.theme.colors.mediumBeige};
+  border-top: 1px solid ${(props) => props.theme.colors.mediumBeige};
 `;
 
 export const Details = styled.div`
@@ -56,7 +56,7 @@ export const ServiceDetails = styled(SmallBody)`
   text-transform: capitalize;
 
   span {
-    color: ${props => props.theme.colors.grey};
+    color: ${(props) => props.theme.colors.grey};
   }
 `;
 

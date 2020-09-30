@@ -1,11 +1,16 @@
 {
-  "name": "ui-kit-55",
+  "name": "ui-55",
   "version": "0.1.0",
   "private": true,
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Gaspard-Bruno/-UI.55-"
+    "url": "git+https://github.com/Gaspard-Bruno/UI.55.git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn compile && git add . && git commit -m 'hook: compile changes'"
+    }
   },
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.10.4",

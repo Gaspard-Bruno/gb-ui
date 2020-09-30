@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import t from "Utils/translation";
+import t from 'Utils/translation';
 
-import { SmallBody } from "Components/Text";
-import TrackerBox from "Components/TrackerBox";
-import StyledPagination, { Left, Right } from "./style";
+import { SmallBody } from '../Text';
+import TrackerBox from '../TrackerBox';
+import StyledPagination, { Left, Right } from './style';
 
 const Pagination = ({ totalPages, currentPage, action, translate }) => {
   const getBoxes = (currentPage, totalPages) => {
@@ -36,14 +36,14 @@ const Pagination = ({ totalPages, currentPage, action, translate }) => {
     <StyledPagination>
       <Left>
         <SmallBody bold={true}>
-          {t(translate, "page")} {currentPage} {t(translate, "of")} {totalPages}
+          {t(translate, 'page')} {currentPage} {t(translate, 'of')} {totalPages}
         </SmallBody>
       </Left>
 
       <Right>
         <TrackerBox
-          iconName="chevron-left"
-          boxType="last"
+          iconName='chevron-left'
+          boxType='last'
           currentPage={currentPage}
           totalPages={totalPages}
           action={action}
@@ -59,14 +59,14 @@ const Pagination = ({ totalPages, currentPage, action, translate }) => {
                   action={action}
                 />
                 {index === 1 && pageNumberAry.length >= 4 && (
-                  <TrackerBox text="..." boxType="ellipsis" />
+                  <TrackerBox text='...' boxType='ellipsis' />
                 )}
               </>
             );
           })}
         <TrackerBox
-          iconName="chevron-right"
-          boxType="next"
+          iconName='chevron-right'
+          boxType='next'
           currentPage={currentPage}
           totalPages={totalPages}
           action={action}
@@ -79,7 +79,7 @@ const Pagination = ({ totalPages, currentPage, action, translate }) => {
 Pagination.propTypes = {
   totalPages: PropTypes.string,
   currentPage: PropTypes.string,
-  action: PropTypes.func
+  action: PropTypes.func,
 };
 
 export default Pagination;

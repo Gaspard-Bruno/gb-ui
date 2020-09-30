@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import t from "Utils/translation";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import t from 'Utils/translation';
 
-import { SubHeading } from "Components/Text";
-import Button from "Components/Button";
-import { Col, Row } from "Components/Layout";
+import { SubHeading } from '../Text';
+import Button from '../Button';
+import { Col, Row } from '../Layout';
 import StyledSidebar, {
   NavSection,
   NavLink,
   NavText,
-  NavHeader
-} from "./style";
+  NavHeader,
+} from './style';
 
 const Sidebar = ({ sidebarSections, translate, isOpenable }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -23,7 +23,7 @@ const Sidebar = ({ sidebarSections, translate, isOpenable }) => {
       </NavLink>
     ) : (
       <NavText disabled={disabled}>
-        {text} {disabledIcon || ""}
+        {text} {disabledIcon || ''}
       </NavText>
     );
   };
@@ -32,34 +32,34 @@ const Sidebar = ({ sidebarSections, translate, isOpenable }) => {
     <StyledSidebar open={isOpen}>
       <Col>
         <NavSection open={isOpen}>
-          <Row align="center">
+          <Row align='center'>
             <Col>
-              <SubHeading color="lightestBeige">55+ UI Kit</SubHeading>
+              <SubHeading color='lightestBeige'>55+ UI Kit</SubHeading>
               <NavHeader>by Gaspard+Bruno</NavHeader>
             </Col>
             {isOpenable && (
               <Button
                 open={isOpen}
-                icon="arrow-left"
+                icon='arrow-left'
                 action={() => setIsOpen(!isOpen)}
-                btnType={"terceary"}
+                btnType={'terceary'}
               />
             )}
           </Row>
         </NavSection>
-        <SidebarLink route={"/"} text="Home"></SidebarLink>
-        {Object.keys(sidebarSections).map(s => {
+        <SidebarLink route={'/'} text='Home'></SidebarLink>
+        {Object.keys(sidebarSections).map((s) => {
           const section = sidebarSections[s];
           return (
-            <NavSection key={"section-" + section.title}>
+            <NavSection key={'section-' + section.title}>
               <NavHeader>{t(translate, section.title)}</NavHeader>
-              {section.items.map(item => (
+              {section.items.map((item) => (
                 <SidebarLink
-                  key={"sidebar-" + item.label}
+                  key={'sidebar-' + item.label}
                   route={item.route}
                   text={t(translate, item.label)}
                   disabled={item.disabled}
-                  disabledIcon="🚧"
+                  disabledIcon='🚧'
                 />
               ))}
             </NavSection>
@@ -78,12 +78,12 @@ Sidebar.propTypes = {
     items: PropTypes.arrayOf({
       text: PropTypes.string,
       route: PropTypes.string,
-      disabled: PropTypes.bool
-    })
-  })
+      disabled: PropTypes.bool,
+    }),
+  }),
 };
 
 Sidebar.defaultProps = {
-  sidebarSections: []
+  sidebarSections: [],
 };
 export default Sidebar;

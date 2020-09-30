@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Draggable } from "react-beautiful-dnd";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Draggable } from 'react-beautiful-dnd';
 
-import t from "Utils/translation";
+import t from 'Utils/translation';
 
-import Badge from "Components/Badge";
-import Icon from "Components/Icon";
-import Avatar from "Components/Avatar";
-import { ButtonText, SmallBody } from "Components/Text";
+import Badge from '../Badge';
+import Icon from '../Icon';
+import Avatar from '../Avatar';
+import { ButtonText, SmallBody } from '../Text';
 
 import StyledKanbanCard, {
   BadgeContainer,
@@ -15,8 +15,8 @@ import StyledKanbanCard, {
   IconContainer,
   AdminContainer,
   ServiceDetails,
-  Recurrent
-} from "./style";
+  Recurrent,
+} from './style';
 
 const KanbanCard = ({ cardKey, index, cardData, cardType, translate }) => {
   return (
@@ -33,17 +33,17 @@ const KanbanCard = ({ cardKey, index, cardData, cardType, translate }) => {
             </BadgeContainer>
 
             <ButtonText>
-              {cardType === "candidates"
+              {cardType === 'candidates'
                 ? cardData.provider?.attributes.fullName
                 : cardData.service?.attributes.name}
             </ButtonText>
 
-            {cardType === "candidates" ? (
+            {cardType === 'candidates' ? (
               <div>
                 {cardData.provider?.attributes.serviceList && (
                   <Details>
                     <IconContainer>
-                      <Icon name="tool-1" />
+                      <Icon name='tool-1' />
                     </IconContainer>
 
                     <SmallBody>
@@ -55,7 +55,7 @@ const KanbanCard = ({ cardKey, index, cardData, cardType, translate }) => {
                 {cardData.provider?.attributes.district && (
                   <Details>
                     <IconContainer>
-                      <Icon name="map-pin" />
+                      <Icon name='map-pin' />
                     </IconContainer>
 
                     <SmallBody>
@@ -68,13 +68,13 @@ const KanbanCard = ({ cardKey, index, cardData, cardType, translate }) => {
               <div>
                 {cardData.client && (
                   <ServiceDetails>
-                    <span>{t(translate, "client")}: </span>
+                    <span>{t(translate, 'client')}: </span>
                     {cardData.client.attributes.fullName}
                   </ServiceDetails>
                 )}
                 {cardData.provider && (
                   <ServiceDetails>
-                    <span>{t(translate, "specialist")}: </span>
+                    <span>{t(translate, 'specialist')}: </span>
                     {cardData.provider.attributes.fullName}
                   </ServiceDetails>
                 )}
@@ -86,7 +86,7 @@ const KanbanCard = ({ cardKey, index, cardData, cardType, translate }) => {
               <AdminContainer>
                 <Avatar
                   user={cardData.admin?.attributes}
-                  size="small"
+                  size='small'
                   hasText={true}
                 ></Avatar>
               </AdminContainer>
@@ -101,7 +101,7 @@ const KanbanCard = ({ cardKey, index, cardData, cardType, translate }) => {
 KanbanCard.propTypes = {
   cardKey: PropTypes.string,
   index: PropTypes.number,
-  cardType: PropTypes.oneOf(["requests", "candidates"]),
+  cardType: PropTypes.oneOf(['requests', 'candidates']),
   translate: PropTypes.func,
   cardData: PropTypes.shape({
     id: PropTypes.string,
@@ -110,8 +110,8 @@ KanbanCard.propTypes = {
     admin: PropTypes.object,
     client: PropTypes.object,
     provider: PropTypes.object,
-    service: PropTypes.object
-  })
+    service: PropTypes.object,
+  }),
 };
 
 export default KanbanCard;

@@ -1,52 +1,52 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-import Icon from "Components/Icon";
-import Select from "Components/Select";
-import Button from "Components/Button";
+import Icon from '../Icon';
+import Select from '../Select';
+import Button from '../Button';
 
 import StyledFilterButton, {
   CloseContainer,
   FilterLabel,
   FilterTitle,
-  Dropdown
-} from "./style";
+  Dropdown,
+} from './style';
 
-const getIconName = filterLabel => {
+const getIconName = (filterLabel) => {
   switch (filterLabel.label) {
-    case "responsible":
-      return "User";
-    case "date":
-      return "calendar";
-    case "service":
-      return "tool-1";
-    case "status":
-      return "activity";
-    case "region":
-      return "Language";
+    case 'responsible':
+      return 'User';
+    case 'date':
+      return 'calendar';
+    case 'service':
+      return 'tool-1';
+    case 'status':
+      return 'activity';
+    case 'region':
+      return 'Language';
     default:
-      return "User";
+      return 'User';
   }
 };
 
-const getFilterOptions = filter => {
+const getFilterOptions = (filter) => {
   switch (filter.label) {
-    case "responsible":
+    case 'responsible':
       return [
-        { label: "Admin1", value: "admin1" },
-        { label: "Admin2", value: "admin1" },
-        { label: "Admin3", value: "admin1" }
+        { label: 'Admin1', value: 'admin1' },
+        { label: 'Admin2', value: 'admin1' },
+        { label: 'Admin3', value: 'admin1' },
       ];
-    case "date":
-      return "calendar";
-    case "service":
-      return ["Service1", "Service2", "Service3", "Service4"];
-    case "status":
-      return ["Status1", "Status2"];
-    case "region":
-      return "Language";
+    case 'date':
+      return 'calendar';
+    case 'service':
+      return ['Service1', 'Service2', 'Service3', 'Service4'];
+    case 'status':
+      return ['Status1', 'Status2'];
+    case 'region':
+      return 'Language';
     default:
-      return "User";
+      return 'User';
   }
 };
 
@@ -56,13 +56,13 @@ const FilterButton = ({
   translate,
   filterValue,
   onChange,
-  onClose
+  onClose,
 }) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const options = getFilterOptions(filter);
 
-  const handleOpen = e => {
+  const handleOpen = (e) => {
     setShowDropdown(!showDropdown);
   };
 
@@ -73,16 +73,16 @@ const FilterButton = ({
         <FilterLabel>{filterLabel}</FilterLabel>
       </FilterTitle>
 
-      <Button onClick={e => handleOpen(e)} icon="chevron-down" />
+      <Button onClick={(e) => handleOpen(e)} icon='chevron-down' />
 
-      <CloseContainer onClick={e => onClose(filter)}>
-        <Icon name="Close" />
+      <CloseContainer onClick={(e) => onClose(filter)}>
+        <Icon name='Close' />
       </CloseContainer>
 
       {showDropdown && (
         <Dropdown length={options.length}>
           {/* <Search /> */}
-          <Select options={options} onChange={e => onChange(e, filter)} />
+          <Select options={options} onChange={(e) => onChange(e, filter)} />
         </Dropdown>
       )}
     </StyledFilterButton>
@@ -91,24 +91,24 @@ const FilterButton = ({
 
 FilterButton.propTypes = {
   filterType: PropTypes.oneOf([
-    "responsible",
-    "date",
-    "service",
-    "status",
-    "region"
+    'responsible',
+    'date',
+    'service',
+    'status',
+    'region',
   ]),
   filterValue: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
   filterLabel: PropTypes.string,
   translate: PropTypes.func,
   options: PropTypes.array,
   onChange: PropTypes.func,
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
   // leftIcon: PropTypes.string,
   // rightIcon: PropTypes.string
 };
 
 FilterButton.defaultProps = {
-  translate: () => console.log("Changed Filters")
+  translate: () => console.log('Changed Filters'),
   // leftIcon: "kanban",
   // rightIcon: "List"
 };

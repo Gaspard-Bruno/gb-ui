@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-import { ErrorText, Body } from "Components/Text";
-import Icon from "Components/Icon";
-import StyledInput, { InputContainer } from "./style";
+import { ErrorText, Body } from '../Text';
+import Icon from '../Icon';
+import StyledInput, { InputContainer } from './style';
 
 const TextInput = ({
   error,
@@ -12,17 +12,17 @@ const TextInput = ({
   label,
   onChange,
   type,
-  hasIcon
+  hasIcon,
 }) => {
   const defaultIcons = [
-    { name: "eye-off", type: "password" },
-    { name: "eye-on", type: "text" }
+    { name: 'eye-off', type: 'password' },
+    { name: 'eye-on', type: 'text' },
   ];
   const [displayedIcon, setDisplayedIcon] = useState(defaultIcons[0].name);
-  const [inputType, setInputType] = useState(type || "text");
+  const [inputType, setInputType] = useState(type || 'text');
 
   const handleIconChange = () => {
-    const newIcon = defaultIcons.find(e => e.name !== displayedIcon);
+    const newIcon = defaultIcons.find((e) => e.name !== displayedIcon);
     setInputType(newIcon.type);
     setDisplayedIcon(newIcon.name);
   };
@@ -39,7 +39,7 @@ const TextInput = ({
         error={error}
         defaultValue={defaultValue}
         placeholder={placeholder}
-        onChange={e => onChange(e.target.value)}
+        onChange={(e) => onChange(e.target.value)}
       />
       {error && <ErrorText>{error}</ErrorText>}
     </InputContainer>
@@ -53,7 +53,7 @@ TextInput.propTypes = {
   defaultValue: PropTypes.string,
   onChange: PropTypes.func,
   type: PropTypes.string,
-  hasIcon: PropTypes.bool
+  hasIcon: PropTypes.bool,
 };
 
 export default TextInput;

@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { ErrorText, Body } from "Components/Text";
-import StyledTextArea, { TextAreaContainer } from "./style";
+import { ErrorText, Body } from '../Text';
+import StyledTextArea, { TextAreaContainer } from './style';
 
 const TextArea = ({ error, placeholder, defaultValue, label, onChange }) => (
   <TextAreaContainer error={error}>
@@ -21,7 +21,7 @@ TextArea.propTypes = {
   placeholder: PropTypes.string,
   label: PropTypes.string,
   defaultValue: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 export default TextArea;

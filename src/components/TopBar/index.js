@@ -1,12 +1,12 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-import { Link } from "Components/Text";
+import { Link } from '../Text';
 
-import Icon from "Components/Icon";
-import Avatar from "Components/Avatar";
+import Icon from '../Icon';
+import Avatar from '../Avatar';
 
-import StyledTopBar, { LeftSection, RightSection } from "./style";
+import StyledTopBar, { LeftSection, RightSection } from './style';
 
 const TopBar = ({ location, title, back, user }) => {
   const history = useHistory();
@@ -15,7 +15,7 @@ const TopBar = ({ location, title, back, user }) => {
       <LeftSection>
         {back && (
           <Link>
-            <Icon name="chevron-left" />
+            <Icon name='chevron-left' />
           </Link>
         )}
         <div>
@@ -27,8 +27,8 @@ const TopBar = ({ location, title, back, user }) => {
       </LeftSection>
 
       <RightSection>
-        <Icon name="Bell" />
-        <Avatar size="medium" hasCarat={true} hasText={true} user={user} />
+        <Icon name='Bell' />
+        <Avatar size='medium' hasCarat={true} hasText={true} user={user} />
       </RightSection>
     </StyledTopBar>
   );

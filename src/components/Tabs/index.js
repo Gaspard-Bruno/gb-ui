@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-import { ButtonText } from "Components/Text";
-import { TabContainer, TabButton, TabGroup } from "./style";
+import { ButtonText } from '../Text';
+import { TabContainer, TabButton, TabGroup } from './style';
 
 const Tabs = ({ justify, tabs, initialTabIndex }) => {
   const [selectedTab, setSelectedTab] = useState(initialTabIndex);
@@ -19,7 +19,7 @@ const Tabs = ({ justify, tabs, initialTabIndex }) => {
                 <ButtonText>{tab.name}</ButtonText>
               </TabButton>
             ))
-          : ""}
+          : ''}
       </TabGroup>
       {tabs && tabs[selectedTab] && tabs[selectedTab].children()}
     </TabContainer>
@@ -32,13 +32,13 @@ Tabs.propTypes = {
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
-      children: PropTypes.function
+      children: PropTypes.function,
     })
-  )
+  ),
 };
 
 Tabs.defaultProps = {
-  type: "primary"
+  type: 'primary',
 };
 
 export default Tabs;
