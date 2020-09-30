@@ -1,14 +1,14 @@
-import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import THEME, { GlobalStyles } from "Theme";
-import { ThemeProvider } from "styled-components";
+import THEME, { GlobalStyles } from 'Theme';
+import { ThemeProvider } from 'styled-components';
 
-import Components from "Components";
-const {
+import {
   Avatar,
   Badge,
   Button,
+  Code,
   Card,
   FilterBar,
   FilterButton,
@@ -18,9 +18,9 @@ const {
   Kanban,
   KanbanColumn,
   KanbanCard,
+  media,
   Page,
   Row,
-  Code,
   Col,
   BackofficePage,
   BackofficeContainer,
@@ -28,52 +28,61 @@ const {
   Logo,
   Pagination,
   Search,
-  Sidebar,
   Select,
+  Sidebar,
   Table,
   Tabs,
-  Text,
   TextArea,
   TopBar,
-  TrackerBox
-} = Components;
-
-const { Heading, SubHeading, Body, Tag } = Text;
+  TrackerBox,
+  Jumbo,
+  Heading,
+  SubHeading,
+  Body,
+  SmallBody,
+  SmallBodyFAQ,
+  Tiny,
+  Link,
+  ButtonText,
+  AlertText,
+  AlertTitle,
+  ErrorText,
+} from 'Components';
 
 const components = [
   {
-    label: "Avatar",
-    props: { user: { fullName: "Test user" }, hasText: true },
+    label: 'Avatar',
+    props: { user: { fullName: 'Test user' }, hasText: true },
     disabled: false,
-    section: "General",
-    component: props => <Avatar {...props} />
+    section: 'General',
+    component: (props) => <Avatar {...props} />,
   },
   {
-    label: "Badge",
+    label: 'Badge',
     props: [
-      { category: "contact", text: "Text Badge" },
-      { category: "canceled", text: "Cancelled" }
+      { category: 'contact', text: 'Text Badge' },
+      { category: 'canceled', text: 'Cancelled' },
     ],
     disabled: false,
-    section: "General",
-    component: props => <Badge {...props} />
-  }
+    section: 'General',
+    component: (props) => <Badge {...props} />,
+  },
 ];
 
 const SECTIONS = {};
 
-const buildPathFromLabel = label => `/${label.toLowerCase()}`;
-components.forEach(component => {
-  const componentSection = component.section || "Other";
+const buildPathFromLabel = (label) => `/${label.toLowerCase()}`;
+components.forEach((component) => {
+  const componentSection = component.section || 'Other';
   if (!SECTIONS[componentSection]) {
     SECTIONS[componentSection] = {
       title: componentSection,
-      items: []
+      items: [],
     };
   }
   SECTIONS[componentSection].items.push({
     ...component,
-    route: buildPathFromLabel(component.label)
+    route: buildPathFromLabel(component.label),
   });
 });
 
@@ -92,7 +101,7 @@ const Router = () => {
                   {components.map((route, index) => {
                     return (
                       <Route
-                        key={"ui" + index}
+                        key={'ui' + index}
                         path={buildPathFromLabel(route.label)}
                         component={() =>
                           Array.isArray(route.props)
@@ -118,7 +127,7 @@ const Router = () => {
                     );
                   })}
                   <Route
-                    path={"/"}
+                    path={'/'}
                     component={() => (
                       <Row>
                         <Col

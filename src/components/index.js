@@ -20,19 +20,32 @@ import {
   BackofficeContainer,
   BackofficeKanbanContainer,
 } from './Layout';
-import Logo from './';
+import Logo from './Logo';
 import Pagination from './Pagination';
 import Search from './Search';
 import Select from './Select';
 import Sidebar from './Sidebar';
 import Table from './Table';
 import Tabs from './Tabs';
-import Text from './Text';
+import {
+  Jumbo,
+  Heading,
+  SubHeading,
+  Body,
+  SmallBody,
+  SmallBodyFAQ,
+  Tiny,
+  Link,
+  ButtonText,
+  AlertText,
+  AlertTitle,
+  ErrorText,
+} from './Text';
 import TextArea from './TextArea';
 import TopBar from './TopBar';
 import TrackerBox from './TrackerBox';
 
-const components = {
+export {
   Avatar,
   Badge,
   Button,
@@ -60,10 +73,19 @@ const components = {
   Sidebar,
   Table,
   Tabs,
-  Text,
   TextArea,
   TopBar,
   TrackerBox,
+  Jumbo,
+  Heading,
+  SubHeading,
+  Body,
+  SmallBody,
+  SmallBodyFAQ,
+  Tiny,
+  Link,
+  ButtonText,
+  AlertText,
+  AlertTitle,
+  ErrorText,
 };
-
-export default { ...components };
