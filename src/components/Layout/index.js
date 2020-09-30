@@ -49,7 +49,8 @@ const Page = styled.div`
   display: flex;
   flex-flow: column nowrap;
   flex: 1;
-  margin: 0 ${props => props.theme.margin * 2}px;
+  margin-left: ${props => props.theme.margin * 2}px;
+  overflow: auto;
 
   &::-webkit-scrollbar {
     margin-top: 32px;

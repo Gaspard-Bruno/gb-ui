@@ -119,60 +119,58 @@ const Router = () => {
     <ThemeProvider theme={THEME}>
       <GlobalStyles />
       <BrowserRouter>
-        <Row noWrap>
+        <Row noWrap inlineStyle={`overflow: hidden; max-height: 100vh;`}>
           <Sidebar sidebarSections={SECTIONS} isOpenable />
           <Page>
-            <Row>
-              <Col>
-                <Heading>Preview</Heading>
-                <Switch>
-                  {components.map((route, index) => {
-                    return (
-                      <Route
-                        key={'ui' + index}
-                        path={buildPathFromLabel(route.label)}
-                        component={() =>
-                          Array.isArray(route.props)
-                            ? route.props.map((props, i) => (
-                                <Row
-                                  key={route.label + i}
-                                  inlineStyle={`padding-bottom: ${THEME.margin}px;
+            <Col>
+              <Heading>Preview</Heading>
+              <Switch>
+                {components.map((route, index) => {
+                  return (
+                    <Route
+                      key={"ui" + index}
+                      path={buildPathFromLabel(route.label)}
+                      component={() =>
+                        Array.isArray(route.props)
+                          ? route.props.map((props, i) => (
+                              <Row
+                                key={route.label + i}
+                                inlineStyle={`padding-bottom: ${THEME.margin}px;
                                     margin-top: ${THEME.margin}px;
                                     border-bottom: 1px solid ${THEME.colors.grey};`}
-                                >
-                                  <Row>
-                                    <Code>
-                                      <Body>Props</Body>
-                                      <pre>{JSON.stringify(props)}</pre>
-                                    </Code>
-                                  </Row>
-                                  <Row>{route.component(props)}</Row>
+                              >
+                                <Row>
+                                  <Code>
+                                    <Body>Props</Body>
+                                    <pre>{JSON.stringify(props)}</pre>
+                                  </Code>
                                 </Row>
-                              ))
-                            : route.component(route.props)
-                        }
-                      />
-                    );
-                  })}
-                  <Route
-                    path={'/'}
-                    component={() => (
-                      <Row>
-                        <Col
-                          size={2}
-                          inlineStyle={`border-right: 2px solid ${THEME.colors.brand.orange};`}
-                        >
-                          <Col>
-                            <Heading>ChangeTheme</Heading>
-                          </Col>
-                          <Heading>Select a component from the sidebar</Heading>
+                                <Row>{route.component(props)}</Row>
+                              </Row>
+                            ))
+                          : route.component(route.props)
+                      }
+                    />
+                  );
+                })}
+                <Route
+                  path={"/"}
+                  component={() => (
+                    <Row>
+                      <Col
+                        size={2}
+                        inlineStyle={`border-right: 2px solid ${THEME.colors.brand.orange};`}
+                      >
+                        <Col>
+                          <Heading>ChangeTheme</Heading>
                         </Col>
-                      </Row>
-                    )}
-                  />
-                </Switch>
-              </Col>
-            </Row>
+                        <Heading>Select a component from the sidebar</Heading>
+                      </Col>
+                    </Row>
+                  )}
+                />
+              </Switch>
+            </Col>
           </Page>
         </Row>
       </BrowserRouter>
