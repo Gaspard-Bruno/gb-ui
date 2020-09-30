@@ -16,6 +16,11 @@
       "pre-push": "git-branch-is master && (yarn compile && git add . && git commit -m 'hook: compile changes') || true"
     }
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn hooks:pre-commit"
+    }
+  },
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.10.4",
     "axios": "^0.19.2",
@@ -36,7 +41,8 @@
     "compile": "npm run clean && cross-env NODE_ENV=production babel src/components --out-dir dist --copy-files",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "hooks:pre-commit": "yarn build"
   },
   "eslintConfig": {
     "extends": [
