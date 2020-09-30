@@ -1,10 +1,12 @@
 import React, { useRef } from "react";
+import { Field, Formik } from "formik";
 import PropTypes from "prop-types";
 import sc from "lodash.startcase";
 
-import TextInput from '../TextInput';
-import TextArea from '../TextArea';
-import Button from '../Button';
+import TextInput from "Components/TextInput";
+import TextArea from "Components/TextArea";
+import Button from "Components/Button";
+import { Tiny } from "Components/Text";
 
 import { FormContainer, StyledForm } from './styles';
 
@@ -18,41 +20,64 @@ const Form = ({
   backgroundColor,
   fieldsWidgets
 }) => {
-  const formRef = useRef();
-
-  const fieldRenderer = field => {
+  const fieldRenderer = (field, formik) => {
     if (field.key) {
       const fieldProps = {
-        label: sc(field.key)
+        label: sc(field.key),
+        onChange: formik.handleChange,
+        value: formik.values[field.key]
       };
       switch (field?.type) {
         case "text":
         case "password":
-          return <TextInput key={field.label} {...fieldProps} />;
+          return () => <TextInput key={field.label} {...fieldProps} />;
         case "text-area":
-          return <TextArea key={field.label} {...fieldProps} />;
+          return () => <TextArea key={field.label} {...fieldProps} />;
+        case "footnote":
+          return () => <Tiny>{field.question}</Tiny>;
         default:
-          return <TextInput key={field.label} {...fieldProps} />;
+          return () => <TextInput key={field.label} {...fieldProps} />;
       }
+    }
+    switch (field?.type) {
+      case "footnote":
+        return () => <Tiny>{field.question}</Tiny>;
+      default:
+        return () => <></>;
     }
   };
 
-  const renderFields = () => {
-    return questions.map(q => fieldRenderer(q));
+  const renderFields = formik => {
+    return questions.map(
+      q =>
+        !console.log("rendering question", q) && (
+          <Field as={fieldRenderer(q, formik)} name={q.key} key={q.key}></Field>
+        )
+    );
   };
 
+  const initialValues = {};
+
+  questions.forEach(q => {
+    initialValues[q.key] = q.value;
+  });
   return (
     <FormContainer bg={backgroundColor}>
-      <StyledForm ref={formRef} onSubmit={onSubmit}>
-        {renderFields()}
-      </StyledForm>
-      <Button
-        fullWidth
-        onClick={onSubmit}
-        btnType="primary"
-        type="submit"
-        text={submitLabel}
-      />
+      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+        {formik => (
+          <>
+            <StyledForm onSubmit={formik.handleSubmit}>
+              {renderFields(formik)}
+            </StyledForm>
+            <Button
+              fullWidth
+              btnType="primary"
+              type="submit"
+              text={submitLabel}
+            />
+          </>
+        )}
+      </Formik>
     </FormContainer>
   );
 };

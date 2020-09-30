@@ -19,6 +19,7 @@ export const FormContainer = styled.div`
   flex-direction: column;
   margin: 0 auto;
   max-width: 616px;
+  width: 100%;
   text-align: center;
   div {
     padding: ${props => props.theme.margin}px 0;
@@ -30,10 +31,20 @@ export const FormContainer = styled.div`
 `;
 
 export const StyledForm = styled.form`
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-align: left;
+  }
   div {
-    padding: 10px;
     & > textarea {
-      min-height: 161px;
+      min-height: ${props => props.theme.margin * 2}px;
     }
     & > p {
       text-align: left;
