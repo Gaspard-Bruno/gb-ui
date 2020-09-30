@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+<<<<<<< master
 Object.defineProperty(exports, "Avatar", {
   enumerable: true,
   get: function get() {
@@ -305,3 +306,12 @@ var _TopBar = _interopRequireDefault(require("./TopBar"));
 var _TrackerBox = _interopRequireDefault(require("./TrackerBox"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+=======
+exports.default = void 0;
+var configVariables = {
+  environment: process.env.NODE_ENV,
+  apiUrl: process.env.REACT_APP_API_URL
+};
+var _default = configVariables;
+exports.default = _default;
+>>>>>>> moving translation to the components folder
