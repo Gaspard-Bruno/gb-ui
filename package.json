@@ -2,43 +2,29 @@
   "name": "ui-kit-55",
   "version": "0.1.0",
   "private": true,
-  "main": "components",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Gaspard-Bruno/ui-kit-55.git"
-  },
-  "babel": {
-    "plugins": [
-      "@babel/plugin-transform-react-jsx"
-    ]
+    "url": "git+https://github.com/Gaspard-Bruno/-UI.55-"
   },
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.10.4",
-    "@reduxjs/toolkit": "^1.4.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "icomoon-react": "^2.0.16",
-    "js-cookie": "^2.2.1",
-    "json-api-normalizer": "^1.0.0",
     "lodash.get": "^4.4.2",
-    "polyglot-react-redux-sdk": "https://github.com/Gaspard-Bruno/polyglot-react-redux-sdk",
     "react": "^16.13.1",
     "react-beautiful-dnd": "^13.0.0",
     "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.2",
     "react-select": "^3.1.0",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0",
     "styled-components": "^5.1.1"
   },
   "scripts": {
     "start": "PORT=3005 react-app-rewired start",
+    "clean": "rimraf dist",
+    "compile": "npm run clean && cross-env NODE_ENV=production babel src/components --out-dir dist --copy-files",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
@@ -107,12 +93,18 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
     "@welldone-software/why-did-you-render": "^4.2.7",
+    "cross-env": "^7.0.2",
     "customize-cra": "^1.0.0",
     "dotenv": "^8.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-babel": "^5.3.1",
     "eslint-plugin-prettier": "^3.1.4",
-    "react-app-rewired": "^2.1.6"
+    "react-app-rewired": "^2.1.6",
+    "react-scripts": "^3.4.2",
+    "rimraf": "^3.0.2"
   }
 }
