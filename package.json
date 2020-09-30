@@ -41,8 +41,7 @@
     "compile": "npm run clean && cross-env NODE_ENV=production babel src/components --out-dir dist --copy-files",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject",
-    "hooks:pre-commit": "yarn build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
