@@ -21,9 +21,7 @@ export const FormContainer = styled.div`
   max-width: 616px;
   width: 100%;
   text-align: center;
-  div {
-    padding: ${props => props.theme.margin}px 0;
-  }
+
   button {
     align-self: center;
     margin: ${props => props.theme.margin}px 0;

@@ -13,6 +13,7 @@ const TextInput = ({
   onChange,
   type,
   hasIcon,
+  ...otherProps
 }) => {
   const defaultIcons = [
     { name: 'eye-off', type: 'password' },
@@ -38,6 +39,7 @@ const TextInput = ({
         type={inputType}
         error={error}
         defaultValue={defaultValue}
+        value={otherProps.value}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
       />

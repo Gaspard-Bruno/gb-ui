@@ -17,7 +17,6 @@ export const SelectContainer = styled.div`
 export const selectStyles = {
   menu: (provided, state) => ({
     ...provided,
-    width: "100%",
     filter: "drop-shadow(0px 4px 13px rgba(193, 188, 183, 0.3))",
     border: `1px solid ${theme.colors.mediumBeige}`,
     marginTop: 3,

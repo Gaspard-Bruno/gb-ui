@@ -11,19 +11,19 @@ const Select = ({
   label,
   onChange,
   isDisabled,
-  defaultValue,
+  ...otherProps
 }) => {
   // TODO Add different color to placeholder
   return (
     <SelectContainer error={error}>
       {label && <Body>{label}</Body>}
       <StyledSelect
+        {...otherProps}
         onChange={onChange}
         isDisabled={isDisabled}
         styles={selectStyles}
         options={options}
         error={error}
-        defaultValue={defaultValue}
         placeholder={placeholder}
       />
       {error && <ErrorText>{error}</ErrorText>}
@@ -42,8 +42,7 @@ Select.propTypes = {
     })
   ),
   label: PropTypes.string,
-  defaultValue: PropTypes.string,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func
 };
 
 export default Select;

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import sc from "lodash.startcase";
 
 import TextInput from "Components/TextInput";
+import Select from "Components/Select";
 import TextArea from "Components/TextArea";
 import Button from "Components/Button";
 import { Tiny } from "Components/Text";
@@ -24,8 +25,9 @@ const Form = ({
     if (field.key) {
       const fieldProps = {
         label: sc(field.key),
-        onChange: formik.handleChange,
-        value: formik.values[field.key]
+        onChange: v => formik.setFieldValue(field.key, v),
+        value: formik.values[field.key],
+        type: field.type
       };
       switch (field?.type) {
         case "text":
@@ -35,6 +37,14 @@ const Form = ({
           return () => <TextArea key={field.label} {...fieldProps} />;
         case "footnote":
           return () => <Tiny>{field.question}</Tiny>;
+        case "dropdown":
+          return () => (
+            <Select
+              options={field.options}
+              inputValue={fieldProps?.value?.label}
+              {...fieldProps}
+            />
+          );
         default:
           return () => <TextInput key={field.label} {...fieldProps} />;
       }
@@ -47,36 +57,85 @@ const Form = ({
     }
   };
 
-  const renderFields = formik => {
-    return questions.map(
-      q =>
-        !console.log("rendering question", q) && (
-          <Field as={fieldRenderer(q, formik)} name={q.key} key={q.key}></Field>
-        )
-    );
+  const renderFields = (formik, fields) => {
+    const formFields = [];
+    const fieldsRenderer = (fieldQuestions, parent) =>
+      fieldQuestions.forEach((q, i) => {
+        const children = q.children;
+        const { dependencyType, dependencyValue } = q;
+        if (dependencyType) {
+          const parentKey = parent.key;
+          const parentValue = formik.values[parentKey]?.value
+            ? formik.values[parentKey].value
+            : formik.values[parentKey];
+          console.log("formik parent value", parentValue);
+          switch (dependencyType) {
+            case "value":
+              if (parentValue === dependencyValue) {
+                formFields.push(
+                  <Field
+                    as={fieldRenderer(q, formik)}
+                    name={q.key}
+                    key={q.key}
+                  ></Field>
+                );
+              }
+              break;
+            case "value-count":
+              console.log("formik value count", dependencyValue);
+              for (let i = 0; i < Number(parentValue); i++) {
+                console.log("formik pushing");
+                formFields.push(
+                  <Field
+                    as={fieldRenderer(q, formik)}
+                    name={`${q.key}-${i}`}
+                    key={`${q.key}-${i}`}
+                  ></Field>
+                );
+              }
+            default:
+              break;
+          }
+        } else {
+          formFields.push(
+            <Field
+              as={fieldRenderer(q, formik)}
+              name={q.key}
+              key={q.key || `question-${i}`}
+            ></Field>
+          );
+        }
+        if (children) {
+          fieldsRenderer(children, q);
+        }
+      });
+    fieldsRenderer(fields);
+    return formFields;
   };
 
   const initialValues = {};
 
   questions.forEach(q => {
-    initialValues[q.key] = q.value;
+    if (q.key) {
+      initialValues[q.key] = q.value;
+    }
   });
+
   return (
     <FormContainer bg={backgroundColor}>
-      <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        {formik => (
-          <>
-            <StyledForm onSubmit={formik.handleSubmit}>
-              {renderFields(formik)}
-            </StyledForm>
-            <Button
-              fullWidth
-              btnType="primary"
-              type="submit"
-              text={submitLabel}
-            />
-          </>
-        )}
+      <Formik
+        initialValues={initialValues}
+        onSubmit={() => console.log("submitting")}
+      >
+        {formik =>
+          !console.log("rendering formik", formik) && (
+            <>
+              <StyledForm onSubmit={() => console.log(formik)}>
+                {renderFields(formik, questions)}
+              </StyledForm>
+            </>
+          )
+        }
       </Formik>
     </FormContainer>
   );
