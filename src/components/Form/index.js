@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { Field, Formik } from 'formik';
 import PropTypes from 'prop-types';
-import sc from 'lodash.startcase';
 
 import TextInput from 'Components/TextInput';
 import Select from 'Components/Select';
@@ -91,6 +90,8 @@ const Form = ({
               {...fieldProps}
             />
           );
+        case 'check-boxgroup':
+        case 'dropdown':
         default:
           return <TextInput key={field.label} {...fieldProps} />;
       }

@@ -24,6 +24,7 @@
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.10.4",
     "axios": "^0.19.2",
+    "formik": "^2.1.6",
     "icomoon-react": "^2.0.16",
     "lodash.get": "^4.4.2",
     "react": "^16.13.1",

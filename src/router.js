@@ -107,6 +107,33 @@ const components = [
     disabled: false,
     section: 'Form',
     component: props => <ButtonGroup {...props} />
+  },
+
+  {
+    label: 'CheckBoxGroup',
+    props: [
+      {
+        name: 'custom-key-field',
+        label: 'check-box',
+        list: [
+          { question: 'Viola', value: 0, isSelected: false },
+          {
+            question: 'Piano',
+            value: 1,
+            isSelected: false
+          },
+          { question: 'Violino', value: 2, isSelected: false },
+          { question: 'Acordeão', value: 3, isSelected: false },
+          { question: 'Bateria / Percução', value: 4, isSelected: false },
+          { question: 'Flauta', value: 5, isSelected: false },
+          { question: 'Outro', value: 6, isSelected: false }
+        ],
+        action: values => alert(JSON.stringify(values, 0, 2))
+      }
+    ],
+    disabled: false,
+    section: 'Form',
+    component: props => <CheckBoxGroup {...props} />
   }
 ];
 
