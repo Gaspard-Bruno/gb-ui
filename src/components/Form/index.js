@@ -43,7 +43,7 @@ const Form = ({
             <TextInput
               key={field.key}
               {...fieldProps}
-              isMini={Boolean(widget === 'mini-dropdown')}
+              isMini={Boolean(widget === 'mini-text')}
             />
           );
         case 'text-area':

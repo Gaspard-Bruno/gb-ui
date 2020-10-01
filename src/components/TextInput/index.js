@@ -18,18 +18,18 @@ const TextInput = ({
 }) => {
   const defaultIcons = [
     { name: 'eye-off', type: 'password' },
-    { name: 'eye-on', type: 'text' },
+    { name: 'eye-on', type: 'text' }
   ];
   const [displayedIcon, setDisplayedIcon] = useState(defaultIcons[0].name);
   const [inputType, setInputType] = useState(type || 'text');
 
   const handleIconChange = () => {
-    const newIcon = defaultIcons.find((e) => e.name !== displayedIcon);
+    const newIcon = defaultIcons.find(e => e.name !== displayedIcon);
     setInputType(newIcon.type);
     setDisplayedIcon(newIcon.name);
   };
   return (
-    <InputContainer error={error}>
+    <InputContainer error={error} mini={isMini}>
       {hasIcon && (
         <nav onClickCapture={handleIconChange}>
           <Icon name={displayedIcon} />
@@ -42,7 +42,7 @@ const TextInput = ({
         defaultValue={defaultValue}
         value={otherProps.value}
         placeholder={placeholder}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={e => onChange(e.target.value)}
       />
       {error && <ErrorText>{error}</ErrorText>}
     </InputContainer>
