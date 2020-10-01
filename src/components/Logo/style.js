@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Logo = styled.div`
   min-width: ${props => props.size || 120}px;

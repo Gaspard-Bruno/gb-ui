@@ -7,6 +7,10 @@
     "type": "git",
     "url": "git+https://github.com/Gaspard-Bruno/UI.55.git"
   },
+  "prettier": {
+    "singleQuote": true,
+    "jsxSingleQuote": true
+  },
   "husky": {
     "hooks": {
       "pre-push": "yarn compile && git add . && git commit -m 'hook: compile changes'"
