@@ -20,7 +20,11 @@ function _templateObject2() {
 }
 
 function _templateObject() {
+<<<<<<< master
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  & > nav {\n    position: absolute;\n    align-self: flex-end;\n    background-color: white;\n    padding: 8px;\n    margin: 5px;\n  }\n  color: ", ";\n  > p {\n    margin: ", "px 0;\n  }\n"]);
+=======
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  & > nav {\n    position: absolute;\n    align-self: flex-end;\n    background-color: white;\n    padding: 8px;\n    margin: 5px;\n  }\n  color: ", ";\n  > p {\n    margin: ", "px 0;\n  }\n"]);
+>>>>>>> export radio buttons component hook: compile changes
 
   _templateObject = function _templateObject() {
     return data;
@@ -32,6 +36,11 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var InputContainer = _styledComponents.default.div(_templateObject(), function (props) {
+<<<<<<< master
+=======
+  return props.isMini ? "50%" : "100%";
+}, function (props) {
+>>>>>>> export radio buttons component hook: compile changes
   return props.error ? props.theme.colors.feedback.error.default : props.theme.colors.darkBlue;
 }, function (props) {
   return props.theme.margin / 2;

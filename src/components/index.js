@@ -20,14 +20,18 @@ import {
   BackofficePage,
   BackofficeContainer,
   BackofficeKanbanContainer
-} from './Layout';
-import Logo from './Logo';
-import Pagination from './Pagination';
-import Search from './Search';
-import Select from './Select';
-import Sidebar from './Sidebar';
-import Table from './Table';
-import Tabs from './Tabs';
+} from "./Layout";
+import Logo from "Components/Logo";
+import Pagination from "Components/Pagination";
+import Search from "Components/Search";
+import RadioButton from "Components/RadioButton";
+import Select from "Components/Select";
+import Sidebar from "Components/Sidebar";
+import Table from "Components/Table";
+import Tabs from "Components/Tabs";
+import TextArea from "Components/TextArea";
+import TopBar from "Components/TopBar";
+import TrackerBox from "Components/TrackerBox";
 import {
   Jumbo,
   Heading,
@@ -35,16 +39,13 @@ import {
   Body,
   SmallBody,
   SmallBodyFAQ,
-  Tiny,
   Link,
+  Tiny,
   ButtonText,
-  AlertText,
   AlertTitle,
+  AlertText,
   ErrorText
 } from './Text';
-import TextArea from './TextArea';
-import TopBar from './TopBar';
-import TrackerBox from './TrackerBox';
 
 export {
   Avatar,
@@ -52,6 +53,7 @@ export {
   Button,
   ButtonGroup,
   Code,
+  RadioButton,
   Card,
   FilterBar,
   FilterButton,

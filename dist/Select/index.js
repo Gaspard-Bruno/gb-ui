@@ -28,11 +28,22 @@ var Select = function Select(_ref) {
       options = _ref$options === void 0 ? [] : _ref$options,
       label = _ref.label,
       onChange = _ref.onChange,
+<<<<<<< master
       isDisabled = _ref.isDisabled,
       defaultValue = _ref.defaultValue;
   // TODO Add different color to placeholder
   return /*#__PURE__*/_react.default.createElement(_style.SelectContainer, {
     error: error
+=======
+      isMini = _ref.isMini,
+      isDisabled = _ref.isDisabled,
+      defaultValue = _ref.defaultValue;
+  console.log(isMini); // TODO Add different color to placeholder
+
+  return /*#__PURE__*/_react.default.createElement(_style.SelectContainer, {
+    error: error,
+    mini: isMini
+>>>>>>> export radio buttons component hook: compile changes
   }, label && /*#__PURE__*/_react.default.createElement(_Text.Body, null, label), /*#__PURE__*/_react.default.createElement(_style.default, {
     onChange: onChange,
     isDisabled: isDisabled,
@@ -52,6 +63,10 @@ Select.propTypes = {
     label: _propTypes.default.string,
     value: _propTypes.default.string
   })),
+<<<<<<< master
+=======
+  isMini: _propTypes.default.bool,
+>>>>>>> export radio buttons component hook: compile changes
   label: _propTypes.default.string,
   defaultValue: _propTypes.default.string,
   onChange: _propTypes.default.func

@@ -34,7 +34,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _templateObject() {
+<<<<<<< master
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-start;\n  color: ", ";\n  > p {\n    margin: ", "px 0;\n  }\n"]);
+=======
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  width: ", ";\n  justify-content: flex-start;\n  color: ", ";\n  > p {\n    margin: ", "px 0;\n  }\n"]);
+>>>>>>> export radio buttons component hook: compile changes
 
   _templateObject = function _templateObject() {
     return data;
@@ -46,6 +50,11 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var SelectContainer = _styledComponents.default.div(_templateObject(), function (props) {
+<<<<<<< master
+=======
+  return props.mini ? "50%" : "auto";
+}, function (props) {
+>>>>>>> export radio buttons component hook: compile changes
   return props.error ? props.theme.colors.feedback.error.default : props.theme.colors.darkBlue;
 }, function (props) {
   return props.theme.margin / 2;
@@ -55,7 +64,10 @@ exports.SelectContainer = SelectContainer;
 var selectStyles = {
   menu: function menu(provided, state) {
     return _objectSpread(_objectSpread({}, provided), {}, {
+<<<<<<< master
       width: "100%",
+=======
+>>>>>>> export radio buttons component hook: compile changes
       filter: "drop-shadow(0px 4px 13px rgba(193, 188, 183, 0.3))",
       border: "1px solid ".concat(_Theme.default.colors.mediumBeige),
       marginTop: 3,

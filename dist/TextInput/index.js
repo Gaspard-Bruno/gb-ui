@@ -35,6 +35,13 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+<<<<<<< master
+=======
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+>>>>>>> export radio buttons component hook: compile changes
 var TextInput = function TextInput(_ref) {
   var error = _ref.error,
       placeholder = _ref.placeholder,
@@ -42,7 +49,14 @@ var TextInput = function TextInput(_ref) {
       label = _ref.label,
       _onChange = _ref.onChange,
       type = _ref.type,
+<<<<<<< master
       hasIcon = _ref.hasIcon;
+=======
+      hasIcon = _ref.hasIcon,
+      isMini = _ref.isMini,
+      otherProps = _objectWithoutProperties(_ref, ["error", "placeholder", "defaultValue", "label", "onChange", "type", "hasIcon", "isMini"]);
+
+>>>>>>> export radio buttons component hook: compile changes
   var defaultIcons = [{
     name: 'eye-off',
     type: 'password'
@@ -79,6 +93,10 @@ var TextInput = function TextInput(_ref) {
     type: inputType,
     error: error,
     defaultValue: defaultValue,
+<<<<<<< master
+=======
+    value: otherProps.value,
+>>>>>>> export radio buttons component hook: compile changes
     placeholder: placeholder,
     onChange: function onChange(e) {
       return _onChange(e.target.value);
@@ -93,6 +111,10 @@ TextInput.propTypes = {
   defaultValue: _propTypes.default.string,
   onChange: _propTypes.default.func,
   type: _propTypes.default.string,
+<<<<<<< master
+=======
+  isMini: _propTypes.default.bool,
+>>>>>>> export radio buttons component hook: compile changes
   hasIcon: _propTypes.default.bool
 };
 var _default = TextInput;
