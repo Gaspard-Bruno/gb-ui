@@ -25,7 +25,6 @@ const ButtonGroup = ({ action, label, name, list }) => {
     },
     [selectedButtons]
   );
-
   return (
     <StyledContainer>
       {label && <Body>{label}</Body>}

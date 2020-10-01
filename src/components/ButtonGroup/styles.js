@@ -34,16 +34,5 @@ export const StyledButton = styled.button`
     props.isSelected
       ? `1px solid ${props.theme.colors.darkBlue}`
       : `1px solid ${props.theme.colors.mediumBeige}`};
-  > * {
-    color: ${props =>
-      props.isSelected
-        ? props.theme.colors.white
-        : props.theme.colors.darkBlue};
-    &:hover {
-      color: ${props =>
-        props.isSelected
-          ? props.theme.colors.white
-          : props.theme.colors.darkBlue};
-    }
   }
 `;
