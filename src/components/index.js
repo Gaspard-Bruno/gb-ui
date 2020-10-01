@@ -1,6 +1,7 @@
 import Avatar from './Avatar';
 import Badge from './Badge';
 import Button from './Button';
+import ButtonGroup from './ButtonGroup';
 import Card from './Card';
 import FilterBar from './FilterBar';
 import FilterButton from './FilterButton';
@@ -18,7 +19,7 @@ import {
   Col,
   BackofficePage,
   BackofficeContainer,
-  BackofficeKanbanContainer,
+  BackofficeKanbanContainer
 } from './Layout';
 import Logo from './Logo';
 import Pagination from './Pagination';
@@ -39,7 +40,7 @@ import {
   ButtonText,
   AlertText,
   AlertTitle,
-  ErrorText,
+  ErrorText
 } from './Text';
 import TextArea from './TextArea';
 import TopBar from './TopBar';
@@ -49,6 +50,7 @@ export {
   Avatar,
   Badge,
   Button,
+  ButtonGroup,
   Code,
   Card,
   FilterBar,
@@ -87,5 +89,5 @@ export {
   ButtonText,
   AlertText,
   AlertTitle,
-  ErrorText,
+  ErrorText
 };

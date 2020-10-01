@@ -8,6 +8,7 @@ import {
   Avatar,
   Badge,
   Button,
+  ButtonGroup,
   Code,
   Card,
   FilterBar,
@@ -46,7 +47,7 @@ import {
   ButtonText,
   AlertText,
   AlertTitle,
-  ErrorText,
+  ErrorText
 } from 'Components';
 
 const components = [
@@ -55,34 +56,52 @@ const components = [
     props: { user: { fullName: 'Test user' }, hasText: true },
     disabled: false,
     section: 'General',
-    component: (props) => <Avatar {...props} />,
+    component: props => <Avatar {...props} />
   },
   {
     label: 'Badge',
     props: [
       { category: 'contact', text: 'Text Badge' },
-      { category: 'canceled', text: 'Cancelled' },
+      { category: 'canceled', text: 'Cancelled' }
     ],
     disabled: false,
     section: 'General',
-    component: (props) => <Badge {...props} />,
+    component: props => <Badge {...props} />
   },
+  {
+    label: 'ButtonGroup',
+    props: {
+      list: [
+        { value: 0, label: 'S', isSelected: true, disabled: true },
+        { value: 1, label: 'T', isSelected: true },
+        { value: 2, label: 'Q', isSelected: true },
+        { value: 3, label: 'Q', isSelected: true },
+        { value: 4, label: 'S', isSelected: true },
+        { value: 5, label: 'S', isSelected: true },
+        { value: 6, label: 'D', isSelected: false }
+      ],
+      label: 'Button Group'
+    },
+    disabled: false,
+    section: 'General',
+    component: props => <ButtonGroup {...props} />
+  }
 ];
 
 const SECTIONS = {};
 
-const buildPathFromLabel = (label) => `/${label.toLowerCase()}`;
-components.forEach((component) => {
+const buildPathFromLabel = label => `/${label.toLowerCase()}`;
+components.forEach(component => {
   const componentSection = component.section || 'Other';
   if (!SECTIONS[componentSection]) {
     SECTIONS[componentSection] = {
       title: componentSection,
-      items: [],
+      items: []
     };
   }
   SECTIONS[componentSection].items.push({
     ...component,
-    route: buildPathFromLabel(component.label),
+    route: buildPathFromLabel(component.label)
   });
 });
 
