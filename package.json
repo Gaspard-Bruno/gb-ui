@@ -13,7 +13,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "yarn compile && git add . && git commit -m 'hook: compile changes'"
+      "pre-push": "git-branch-is master && (yarn compile && git add . && git commit -m 'hook: compile changes') || true"
     }
   },
   "dependencies": {
@@ -112,6 +112,7 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-babel": "^5.3.1",
     "eslint-plugin-prettier": "^3.1.4",
+    "git-branch-is": "^4.0.0",
     "react-app-rewired": "^2.1.6",
     "react-scripts": "^3.4.2",
     "rimraf": "^3.0.2"
