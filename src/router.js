@@ -1,35 +1,47 @@
-import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
-import FORM from "Utils/form";
-import THEME, { GlobalStyles } from "Theme";
+import FORM from 'Utils/form';
+import THEME, { GlobalStyles } from 'Theme';
 
 import {
+  Accordion,
+  Alerts,
   Avatar,
   Badge,
   Button,
   ButtonGroup,
-  Code,
   Card,
+  CheckBoxGroup,
+  Divider,
+  DropDownMenu,
   FilterBar,
   FilterButton,
   Form,
   Icon,
   IconSwitch,
   Kanban,
-  KanbanColumn,
   KanbanCard,
+  KanbanColumn,
   media,
   Page,
+  Code,
   Row,
   Col,
   BackofficePage,
   BackofficeContainer,
   BackofficeKanbanContainer,
+  GridCol,
+  GridRow,
+  ReversedColumn,
+  FullPage,
+  Hero,
+  List,
+  Loader,
   Logo,
-  RadioButton,
   Pagination,
+  RadioButton,
   Search,
   Select,
   Sidebar,
@@ -44,11 +56,11 @@ import {
   Body,
   SmallBody,
   SmallBodyFAQ,
-  Tiny,
   Link,
+  Tiny,
   ButtonText,
-  AlertText,
   AlertTitle,
+  AlertText,
   ErrorText
 } from 'Components';
 
@@ -71,11 +83,11 @@ const components = [
     component: props => <Badge {...props} />
   },
   {
-    label: "Form",
+    label: 'Form',
     props: {
-      questions: FORM.schema
+      questions: FORM.petsitting.questions
     },
-    section: "Form",
+    section: 'Form',
     component: props => <Form {...props} />
   },
   {
@@ -129,7 +141,7 @@ const Router = () => {
                 {components.map((route, index) => {
                   return (
                     <Route
-                      key={"ui" + index}
+                      key={'ui' + index}
                       path={buildPathFromLabel(route.label)}
                       component={() =>
                         Array.isArray(route.props)
@@ -155,7 +167,7 @@ const Router = () => {
                   );
                 })}
                 <Route
-                  path={"/"}
+                  path={'/'}
                   component={() => (
                     <Row>
                       <Col

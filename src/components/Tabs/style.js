@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const TabContainer = styled.div`
   width: 100%;
@@ -11,7 +11,7 @@ export const TabGroup = styled.div`
   display: flex;
   width: 100%;
   flex-flow: row nowrap;
-  justify-content: ${props => (props.justify ? props.justify : "flex-start")};
+  justify-content: ${props => (props.justify ? props.justify : 'flex-start')};
 `;
 
 export const TabButton = styled.button`
@@ -19,6 +19,7 @@ export const TabButton = styled.button`
   padding: ${props => props.theme.margin / 1.5}px;
   margin: ${props => props.theme.margin}px;
   outline: none;
+  cursor: pointer;
   border: none;
   background-color: ${props =>
     props.isSelected

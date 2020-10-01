@@ -1,15 +1,16 @@
-import React, { useRef } from "react";
-import { Field, Formik } from "formik";
-import PropTypes from "prop-types";
-import sc from "lodash.startcase";
+import React, { useRef } from 'react';
+import { Field, Formik } from 'formik';
+import PropTypes from 'prop-types';
+import sc from 'lodash.startcase';
 
-import TextInput from "Components/TextInput";
-import Select from "Components/Select";
-import TextArea from "Components/TextArea";
-import RadioButton from "Components/RadioButton";
-import Button from "Components/Button";
-import { Tiny } from "Components/Text";
-import { Col, Row } from "Components/Layout";
+import TextInput from 'Components/TextInput';
+import Select from 'Components/Select';
+import TextArea from 'Components/TextArea';
+import RadioButton from 'Components/RadioButton';
+import Tabs from 'Components/Tabs';
+import Button from 'Components/Button';
+import { Tiny } from 'Components/Text';
+import { Col, Row } from 'Components/Layout';
 
 import { FormContainer, StyledForm } from './styles';
 
@@ -27,50 +28,69 @@ const Form = ({
     if (field.key) {
       const widget = field.widget || field.type;
       const fieldProps = {
-        label: sc(field.key),
+        label: field.label,
         name: field.key,
         key: field.key,
         onChange: v => formik.setFieldValue(field.key, v),
         value: formik.values[field.key],
         type: field.type
       };
+      console.log('rendering text', widget);
       switch (widget) {
-        case "text":
-        case "password":
-        case "mini-text":
+        case 'text':
+        case 'password':
+        case 'mini-text':
           return (
             <TextInput
-              key={field.label}
+              key={field.key}
               {...fieldProps}
-              isMini={Boolean(widget === "mini-dropdown")}
+              isMini={Boolean(widget === 'mini-dropdown')}
             />
           );
-        case "text-area":
+        case 'text-area':
           return <TextArea key={field.label} {...fieldProps} />;
 
-        case "radio":
+        case 'tabs':
+          console.log(
+            'tab index',
+            field.options.map(d => d.value).indexOf(formik.values[field.key])
+          );
+          return (
+            <Tabs
+              key={field.key}
+              type={field.type}
+              tabs={field.options.map(opt => ({
+                name: opt.label,
+                value: opt.value
+              }))}
+              action={v =>
+                formik.setFieldValue(field.key, field.options[v].value)
+              }
+              initialTabIndex={field.options
+                .map(d => d.value)
+                .indexOf(formik.values[field.key])}
+              onChange
+            />
+          );
+        case 'radio':
           return (
             <RadioButton
               key={field.key}
               error={field.error}
-              label={field.question}
               name={field.key}
               action={option => formik.setFieldValue(option.name, option.value)}
-              childAction={option =>
-                formik.setFieldValue(option.name, option.value)
-              }
               list={field.options}
             />
           );
-        case "footnote":
-          return <Tiny>{field.question}</Tiny>;
-        case "mini-dropdown":
-        case "dropdown":
+        case 'footnote':
+          return <Tiny>{field.label}</Tiny>;
+        case 'mini-dropdown':
+        case 'dropdown':
           return (
             <Select
-              isMini={Boolean(widget === "mini-dropdown")}
+              isMini={Boolean(widget === 'mini-dropdown')}
               options={field.options}
-              inputValue={fieldProps?.value?.label ?? ""}
+              inputValue={fieldProps?.value?.label ?? ''}
               {...fieldProps}
             />
           );
@@ -79,8 +99,8 @@ const Form = ({
       }
     }
     switch (field?.type) {
-      case "footnote":
-        return <Tiny>{field.question}</Tiny>;
+      case 'footnote':
+        return <Tiny>{field.label}</Tiny>;
       default:
         return <></>;
     }
@@ -99,12 +119,18 @@ const Form = ({
             : formik.values[parentKey];
           const columns = [];
           switch (dependencyType) {
-            case "value":
+            case 'value':
               if (parentValue === dependencyValue) {
+                console.log(
+                  'Value dependency pushed',
+                  q,
+                  parentValue,
+                  dependencyValue
+                );
                 formFields.push(fieldRenderer(q, formik));
               }
               break;
-            case "value-count":
+            case 'value-count':
               for (let i = 0; i < Number(parentValue); i++) {
                 columns.push(
                   <Col size={1} padding={0}>
@@ -123,6 +149,7 @@ const Form = ({
           );
         }
         if (children) {
+          console.log('has children', q, children);
           fieldsRenderer(children, q);
         }
       });
@@ -142,12 +169,13 @@ const Form = ({
     <FormContainer bg={backgroundColor}>
       <Formik
         initialValues={initialValues}
-        onSubmit={() => console.log("submitting")}
+        onSubmit={() => console.log('submitting')}
       >
         {formik => (
           <>
             <StyledForm onSubmit={() => console.log(formik)}>
               {renderFields(formik, questions)}
+              <Button type='submit' btnType={'primary'} text='Submit' />
             </StyledForm>
           </>
         )}
@@ -168,14 +196,14 @@ Form.propTypes = {
     // * Fields
     PropTypes.shape({
       type: PropTypes.oneOf(
-        "dropdown",
-        "form",
-        "text",
-        "date",
-        "radio",
-        "footnote",
-        "text-area",
-        "tabs"
+        'dropdown',
+        'form',
+        'text',
+        'date',
+        'radio',
+        'footnote',
+        'text-area',
+        'tabs'
       ).isRequired,
       key: PropTypes.string.isRequired,
       // ! To be replaced with label/translate on key 👇
@@ -192,7 +220,7 @@ Form.propTypes = {
         PropTypes.shape({
           type: PropTypes.string.isRequired,
           widget: PropTypes.string,
-          dependencyType: PropTypes.oneOf("value", "value-count"),
+          dependencyType: PropTypes.oneOf('value', 'value-count'),
           // * Dependency Logic 👇
           // - value: Watches the value of the parent, only rendering when dependencyValue matches
           // - value-count: will render as many children as the current value count
@@ -211,12 +239,12 @@ Form.propTypes = {
 };
 
 Form.defaultProps = {
-  onSubmit: values => console.log("Submitting form values", values),
-  onChange: values => console.log("Changing form values", values),
-  submitLabel: "Submit",
-  resetLabel: "",
-  cnacelLabel: "",
-  backgroundColor: "primary",
+  onSubmit: values => console.log('Submitting form values', values),
+  onChange: values => console.log('Changing form values', values),
+  submitLabel: 'Submit',
+  resetLabel: '',
+  cnacelLabel: '',
+  backgroundColor: 'primary',
   questions: []
 };
 

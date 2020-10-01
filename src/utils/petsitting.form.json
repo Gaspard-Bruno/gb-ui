@@ -2,22 +2,22 @@
   "id": "7",
   "type": "form",
   "questions": [
-    { "type": "footnote", "question": "Morada para recolha do animal" },
+    { "type": "footnote", "label": "Morada para recolha do animal" },
     {
       "key": "country",
       "type": "dropdown",
       "options": [{ "label": "Portugal", "value": 1 }],
-      "question": "País"
+      "label": "País"
     },
     {
       "key": "district",
       "type": "dropdown",
       "options": [{ "label": "Lisboa", "value": 1 }],
-      "question": "Distrito"
+      "label": "Distrito"
     },
-    { "key": "address", "type": "text", "question": "Morada" },
-    { "key": "postal-code", "type": "text", "question": "Código Postal" },
-    { "key": "location", "type": "text", "question": "Localidade" },
+    { "key": "address", "type": "text", "label": "Morada" },
+    { "key": "postal-code", "type": "text", "label": "Código Postal" },
+    { "key": "location", "type": "text", "label": "Localidade" },
     {
       "key": "special-transportation",
       "type": "radio",
@@ -25,9 +25,9 @@
         { "label": "Não", "value": 0 },
         { "label": "Sim", "value": 1 }
       ],
-      "question": "Precisamos do carro do especialista para transportar seu animal de estimação?"
+      "label": "Precisamos do carro do especialista para transportar seu animal de estimação?"
     },
-    { "type": "footnote", "question": "Tipo de Serviço" },
+    { "type": "footnote", "label": "Tipo de Serviço" },
     {
       "key": "service-type",
       "type": "radio",
@@ -66,7 +66,7 @@
         }
       ]
     },
-    { "type": "footnote", "question": "Tipo de oferta" },
+    { "type": "footnote", "label": "Tipo de oferta" },
     {
       "key": "offer-type",
       "type": "radio",
@@ -77,19 +77,19 @@
           "options": [{ "label": "10", "value": 10 }],
           "dependencyType": "value",
           "dependencyValue": "single",
-          "question": "Número de horas"
+          "label": "Número de horas"
         },
         {
           "key": "start-date",
           "type": "date",
           "dependencyType": "value",
           "dependencyValue": "single",
-          "question": "Data de Início"
+          "label": "Data de Início"
         },
         {
           "key": "start-date",
           "type": "date",
-          "question": "Data de Início",
+          "label": "Data de Início",
           "dependencyType": "value",
           "dependencyValue": "hour-package"
         },
@@ -116,14 +116,14 @@
             { "label": "17:30", "value": "17:30" },
             { "label": "18:00", "value": "18:00" }
           ],
-          "question": "Hora",
+          "label": "Hora",
           "dependencyType": "value",
           "dependencyValue": "hour-package"
         },
         {
           "key": "end-date",
           "type": "date",
-          "question": "Data de Fim",
+          "label": "Data de Fim",
           "dependencyType": "value",
           "dependencyValue": "hour-package"
         },
@@ -152,7 +152,7 @@
             { "label": "17:30", "value": "17:30" },
             { "label": "18:00", "value": "18:00" }
           ],
-          "question": "Hora"
+          "label": "Hora"
         }
       ],
       "options": [
@@ -168,93 +168,125 @@
         }
       ]
     },
-    { "type": "footnote", "question": "Notas" },
+    { "type": "footnote", "label": "Notas" },
     { "key": "notes", "type": "text-area" },
     {
       "key": "login-buttons",
       "type": "tabs",
-      "options": [
+      "value": "guest",
+      "children": [
         {
-          "key": "guest",
-          "name": "Convidado",
-          "children": [
-            {
-              "name": "guest.firstName",
-              "type": "text",
-              "label": "Nome"
-            },
-            {
-              "name": "guest.lastName",
-              "type": "text",
-              "label": "Apelido",
-              "dependent": "login-tabs"
-            },
-            {
-              "name": "guest.email",
-              "type": "email",
-              "label": "Endereço de e-mail"
-            },
-            {
-              "name": "guest.telephone",
-              "type": "number",
-              "label": "Número de Telemóvel"
-            }
-          ]
+          "name": "guest.firstName",
+          "key": "first-name",
+          "type": "text",
+          "label": "Nome",
+          "dependencyType": "value",
+          "dependencyValue": "guest"
         },
         {
-          "key": "login",
-          "name": "Iniciar Sessão",
-          "children": [
-            {
-              "name": "login.email",
-              "type": "email",
-              "label": "Endereço de e-mail"
-            },
-            {
-              "name": "login.telephone",
-              "type": "number",
-              "label": "Número de Telemóvel"
-            },
-            {
-              "name": "login.password",
-              "type": "password",
-              "label": "Senha"
-            }
-          ]
+          "name": "guest.lastName",
+          "key": "last-name",
+          "type": "text",
+          "label": "Apelido",
+          "dependencyType": "value",
+          "dependencyValue": "guest"
         },
         {
-          "key": "signup",
-          "name": "Criar Conta",
-          "children": [
-            {
-              "name": "signup.email",
-              "type": "email",
-              "label": "Endereço de e-mail"
-            },
-            {
-              "name": "signup.telephone",
-              "type": "number",
-              "label": "Número de Telemóvel"
-            },
-            {
-              "name": "signup.password",
-              "type": "password",
-              "label": "Senha"
-            },
-            {
-              "name": "signup.first-name",
-              "type": "text",
-              "label": "Nome"
-            },
-            {
-              "name": "signup.last-name",
-              "type": "text",
-              "label": "Apelido"
-            }
-          ]
+          "name": "guest.email",
+          "type": "email",
+          "key": "email",
+          "label": "Endereço de e-mail",
+          "dependencyType": "value",
+          "dependencyValue": "guest"
+        },
+        {
+          "name": "guest.telephone",
+          "key": "telephone",
+          "type": "number",
+          "label": "Número de Telemóvel",
+          "dependencyType": "value",
+          "dependencyValue": "guest"
+        },
+        {
+          "name": "login.email",
+          "key": "email",
+          "type": "email",
+          "label": "Endereço de e-mail",
+          "dependencyType": "value",
+          "dependencyValue": "login"
+        },
+        {
+          "name": "login.telephone",
+          "key": "telephone",
+          "type": "number",
+          "label": "Número de Telemóvel",
+          "dependencyType": "value",
+          "dependencyValue": "login"
+        },
+        {
+          "name": "login.password",
+          "key": "password",
+          "type": "password",
+          "label": "Senha",
+          "dependencyType": "value",
+          "dependencyValue": "login"
+        },
+        {
+          "name": "signup.email",
+          "type": "email",
+          "key": "email",
+          "label": "Endereço de e-mail",
+          "dependencyType": "value",
+          "dependencyValue": "signup"
+        },
+        {
+          "name": "signup.telephone",
+          "type": "number",
+          "key": "telephone",
+          "label": "Número de Telemóvel",
+          "dependencyType": "value",
+          "dependencyValue": "signup"
+        },
+        {
+          "name": "signup.password",
+          "type": "password",
+          "label": "Senha",
+          "key": "password",
+          "dependencyType": "value",
+          "dependencyValue": "signup"
+        },
+        {
+          "name": "signup.first-name",
+          "key": "first-name",
+          "type": "text",
+          "label": "Nome",
+          "dependencyType": "value",
+          "dependencyValue": "signup"
+        },
+        {
+          "name": "signup.last-name",
+          "key": "last-name",
+          "type": "text",
+          "label": "Apelido",
+          "dependencyType": "value",
+          "dependencyValue": "signup"
         }
       ],
-      "question": "Número de criancas",
+      "options": [
+        {
+          "value": "guest",
+          "label": "Convidado"
+        },
+        {
+          "value": "login",
+          "label": "Iniciar Sessão"
+        },
+        {
+          "value": "signup",
+          "label": "Criar Conta"
+        }
+      ],
+      "label": "Número de criancas",
       "displayText": false
     }
   ]

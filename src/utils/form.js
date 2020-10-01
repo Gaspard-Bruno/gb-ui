@@ -1,5 +1,5 @@
-import schema from "./schema.json";
+import petsitting from './petsitting.form.json';
 
 export default {
-  schema: schema.questions
+  petsitting
 };

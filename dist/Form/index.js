@@ -10,6 +10,7 @@ exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
 
 <<<<<<< master
+<<<<<<< master
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _TextInput = _interopRequireDefault(require("../TextInput"));
@@ -18,6 +19,8 @@ var _TextArea = _interopRequireDefault(require("../TextArea"));
 
 var _Button = _interopRequireDefault(require("../Button"));
 =======
+=======
+>>>>>>> hook: compile changes
 var _formik = require("formik");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
@@ -37,7 +40,10 @@ var _Button = _interopRequireDefault(require("Components/Button"));
 var _Text = require("Components/Text");
 
 var _Layout = require("Components/Layout");
+<<<<<<< master
 >>>>>>> export radio buttons component hook: compile changes
+=======
+>>>>>>> hook: compile changes
 
 var _styles = require("./styles");
 
@@ -48,18 +54,25 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 <<<<<<< master
+<<<<<<< master
 =======
+=======
+>>>>>>> hook: compile changes
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+<<<<<<< master
 >>>>>>> export radio buttons component hook: compile changes
+=======
+>>>>>>> hook: compile changes
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var Form = function Form(_ref) {
   var onSubmit = _ref.onSubmit,
+<<<<<<< master
 <<<<<<< master
       formFields = _ref.formFields,
       top = _ref.top,
@@ -108,6 +121,8 @@ var renderFields = function renderFields(field) {
 Form.propTypes = {
   formFields: _propTypes.default.arrayOf(_propTypes.default.object)
 =======
+=======
+>>>>>>> hook: compile changes
       questions = _ref.questions,
       onChange = _ref.onChange,
       submitLabel = _ref.submitLabel,
@@ -133,6 +148,7 @@ Form.propTypes = {
       };
 
       switch (widget) {
+<<<<<<< master
         case "text":
         case "password":
         case "mini-text":
@@ -143,11 +159,27 @@ Form.propTypes = {
           }));
 
         case "text-area":
+=======
+        case 'text':
+        case 'password':
+        case 'mini-text':
+          return /*#__PURE__*/_react.default.createElement(_TextInput.default, _extends({
+            key: field.label
+          }, fieldProps, {
+            isMini: Boolean(widget === 'mini-dropdown')
+          }));
+
+        case 'text-area':
+>>>>>>> hook: compile changes
           return /*#__PURE__*/_react.default.createElement(_TextArea.default, _extends({
             key: field.label
           }, fieldProps));
 
+<<<<<<< master
         case "radio":
+=======
+        case 'radio':
+>>>>>>> hook: compile changes
           return /*#__PURE__*/_react.default.createElement(_RadioButton.default, {
             key: field.key,
             error: field.error,
@@ -162,6 +194,7 @@ Form.propTypes = {
             list: field.options
           });
 
+<<<<<<< master
         case "footnote":
           return /*#__PURE__*/_react.default.createElement(_Text.Tiny, null, field.question);
 
@@ -171,6 +204,17 @@ Form.propTypes = {
             isMini: Boolean(widget === "mini-dropdown"),
             options: field.options,
             inputValue: (_fieldProps$value$lab = fieldProps === null || fieldProps === void 0 ? void 0 : (_fieldProps$value = fieldProps.value) === null || _fieldProps$value === void 0 ? void 0 : _fieldProps$value.label) !== null && _fieldProps$value$lab !== void 0 ? _fieldProps$value$lab : ""
+=======
+        case 'footnote':
+          return /*#__PURE__*/_react.default.createElement(_Text.Tiny, null, field.question);
+
+        case 'mini-dropdown':
+        case 'dropdown':
+          return /*#__PURE__*/_react.default.createElement(_Select.default, _extends({
+            isMini: Boolean(widget === 'mini-dropdown'),
+            options: field.options,
+            inputValue: (_fieldProps$value$lab = fieldProps === null || fieldProps === void 0 ? void 0 : (_fieldProps$value = fieldProps.value) === null || _fieldProps$value === void 0 ? void 0 : _fieldProps$value.label) !== null && _fieldProps$value$lab !== void 0 ? _fieldProps$value$lab : ''
+>>>>>>> hook: compile changes
           }, fieldProps));
 
         default:
@@ -181,7 +225,11 @@ Form.propTypes = {
     }
 
     switch (field === null || field === void 0 ? void 0 : field.type) {
+<<<<<<< master
       case "footnote":
+=======
+      case 'footnote':
+>>>>>>> hook: compile changes
         return /*#__PURE__*/_react.default.createElement(_Text.Tiny, null, field.question);
 
       default:
@@ -206,14 +254,22 @@ Form.propTypes = {
           var columns = [];
 
           switch (dependencyType) {
+<<<<<<< master
             case "value":
+=======
+            case 'value':
+>>>>>>> hook: compile changes
               if (parentValue === dependencyValue) {
                 formFields.push(fieldRenderer(q, formik));
               }
 
               break;
 
+<<<<<<< master
             case "value-count":
+=======
+            case 'value-count':
+>>>>>>> hook: compile changes
               for (var _i = 0; _i < Number(parentValue); _i++) {
                 columns.push( /*#__PURE__*/_react.default.createElement(_Layout.Col, {
                   size: 1,
@@ -256,7 +312,11 @@ Form.propTypes = {
   }, /*#__PURE__*/_react.default.createElement(_formik.Formik, {
     initialValues: initialValues,
     onSubmit: function onSubmit() {
+<<<<<<< master
       return console.log("submitting");
+=======
+      return console.log('submitting');
+>>>>>>> hook: compile changes
     }
   }, function (formik) {
     return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_styles.StyledForm, {
@@ -277,7 +337,11 @@ Form.propTypes = {
   fieldsWidgets: _propTypes.default.object,
   questions: _propTypes.default.arrayOf( // * Fields
   _propTypes.default.shape({
+<<<<<<< master
     type: _propTypes.default.oneOf("dropdown", "form", "text", "date", "radio", "footnote", "text-area", "tabs").isRequired,
+=======
+    type: _propTypes.default.oneOf('dropdown', 'form', 'text', 'date', 'radio', 'footnote', 'text-area', 'tabs').isRequired,
+>>>>>>> hook: compile changes
     key: _propTypes.default.string.isRequired,
     // ! To be replaced with label/translate on key 👇
     question: _propTypes.default.string,
@@ -290,7 +354,11 @@ Form.propTypes = {
     children: _propTypes.default.arrayOf(_propTypes.default.shape({
       type: _propTypes.default.string.isRequired,
       widget: _propTypes.default.string,
+<<<<<<< master
       dependencyType: _propTypes.default.oneOf("value", "value-count"),
+=======
+      dependencyType: _propTypes.default.oneOf('value', 'value-count'),
+>>>>>>> hook: compile changes
       // * Dependency Logic 👇
       // - value: Watches the value of the parent, only rendering when dependencyValue matches
       // - value-count: will render as many children as the current value count
@@ -305,6 +373,7 @@ Form.propTypes = {
 };
 Form.defaultProps = {
   onSubmit: function onSubmit(values) {
+<<<<<<< master
     return console.log("Submitting form values", values);
   },
   onChange: function onChange(values) {
@@ -316,6 +385,18 @@ Form.defaultProps = {
   backgroundColor: "primary",
   questions: []
 >>>>>>> export radio buttons component hook: compile changes
+=======
+    return console.log('Submitting form values', values);
+  },
+  onChange: function onChange(values) {
+    return console.log('Changing form values', values);
+  },
+  submitLabel: 'Submit',
+  resetLabel: '',
+  cnacelLabel: '',
+  backgroundColor: 'primary',
+  questions: []
+>>>>>>> hook: compile changes
 };
 var _default = Form;
 exports.default = _default;
