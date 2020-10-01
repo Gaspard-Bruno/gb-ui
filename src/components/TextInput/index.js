@@ -13,6 +13,7 @@ const TextInput = ({
   onChange,
   type,
   hasIcon,
+  isMini,
   ...otherProps
 }) => {
   const defaultIcons = [
@@ -55,7 +56,8 @@ TextInput.propTypes = {
   defaultValue: PropTypes.string,
   onChange: PropTypes.func,
   type: PropTypes.string,
-  hasIcon: PropTypes.bool,
+  isMini: PropTypes.bool,
+  hasIcon: PropTypes.bool
 };
 
 export default TextInput;

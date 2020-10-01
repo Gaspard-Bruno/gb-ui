@@ -5,6 +5,7 @@ import theme from "Theme";
 export const SelectContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
+  width: ${props => (props.mini ? "50%" : "auto")};
   justify-content: flex-start;
   color: ${props =>
     props.error

@@ -20,8 +20,6 @@ export const FormContainer = styled.div`
   margin: 0 auto;
   max-width: 616px;
   width: 100%;
-  text-align: center;
-
   button {
     align-self: center;
     margin: ${props => props.theme.margin}px 0;
@@ -32,7 +30,7 @@ export const StyledForm = styled.form`
   flex: 1;
   display: flex;
   flex-flow: column;
-  h1,
+  > h1,
   h2,
   h3,
   h4,
@@ -40,9 +38,9 @@ export const StyledForm = styled.form`
   h6 {
     text-align: left;
   }
-  div {
+  > div {
     & > textarea {
-      min-height: ${props => props.theme.margin * 2}px;
+      min-height: ${props => props.theme.margin * 4}px;
     }
     & > p {
       text-align: left;

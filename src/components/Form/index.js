@@ -6,8 +6,10 @@ import sc from "lodash.startcase";
 import TextInput from "Components/TextInput";
 import Select from "Components/Select";
 import TextArea from "Components/TextArea";
+import RadioButton from "Components/RadioButton";
 import Button from "Components/Button";
 import { Tiny } from "Components/Text";
+import { Col, Row } from "Components/Layout";
 
 import { FormContainer, StyledForm } from './styles';
 
@@ -23,37 +25,64 @@ const Form = ({
 }) => {
   const fieldRenderer = (field, formik) => {
     if (field.key) {
+      const widget = field.widget || field.type;
       const fieldProps = {
         label: sc(field.key),
+        name: field.key,
+        key: field.key,
         onChange: v => formik.setFieldValue(field.key, v),
         value: formik.values[field.key],
         type: field.type
       };
-      switch (field?.type) {
+      switch (widget) {
         case "text":
         case "password":
-          return () => <TextInput key={field.label} {...fieldProps} />;
+        case "mini-text":
+          return (
+            <TextInput
+              key={field.label}
+              {...fieldProps}
+              isMini={Boolean(widget === "mini-dropdown")}
+            />
+          );
         case "text-area":
-          return () => <TextArea key={field.label} {...fieldProps} />;
+          return <TextArea key={field.label} {...fieldProps} />;
+
+        case "radio":
+          return (
+            <RadioButton
+              key={field.key}
+              error={field.error}
+              label={field.question}
+              name={field.key}
+              action={option => formik.setFieldValue(option.name, option.value)}
+              childAction={option =>
+                formik.setFieldValue(option.name, option.value)
+              }
+              list={field.options}
+            />
+          );
         case "footnote":
-          return () => <Tiny>{field.question}</Tiny>;
+          return <Tiny>{field.question}</Tiny>;
+        case "mini-dropdown":
         case "dropdown":
-          return () => (
+          return (
             <Select
+              isMini={Boolean(widget === "mini-dropdown")}
               options={field.options}
-              inputValue={fieldProps?.value?.label}
+              inputValue={fieldProps?.value?.label ?? ""}
               {...fieldProps}
             />
           );
         default:
-          return () => <TextInput key={field.label} {...fieldProps} />;
+          return <TextInput key={field.label} {...fieldProps} />;
       }
     }
     switch (field?.type) {
       case "footnote":
-        return () => <Tiny>{field.question}</Tiny>;
+        return <Tiny>{field.question}</Tiny>;
       default:
-        return () => <></>;
+        return <></>;
     }
   };
 
@@ -68,41 +97,29 @@ const Form = ({
           const parentValue = formik.values[parentKey]?.value
             ? formik.values[parentKey].value
             : formik.values[parentKey];
-          console.log("formik parent value", parentValue);
+          const columns = [];
           switch (dependencyType) {
             case "value":
               if (parentValue === dependencyValue) {
-                formFields.push(
-                  <Field
-                    as={fieldRenderer(q, formik)}
-                    name={q.key}
-                    key={q.key}
-                  ></Field>
-                );
+                formFields.push(fieldRenderer(q, formik));
               }
               break;
             case "value-count":
-              console.log("formik value count", dependencyValue);
               for (let i = 0; i < Number(parentValue); i++) {
-                console.log("formik pushing");
-                formFields.push(
-                  <Field
-                    as={fieldRenderer(q, formik)}
-                    name={`${q.key}-${i}`}
-                    key={`${q.key}-${i}`}
-                  ></Field>
+                columns.push(
+                  <Col size={1} padding={0}>
+                    {fieldRenderer({ ...q, key: `${q.key}-${i + 1}` }, formik)}
+                  </Col>
                 );
               }
+              formFields.push(<Row>{columns}</Row>);
+              break;
             default:
               break;
           }
         } else {
           formFields.push(
-            <Field
-              as={fieldRenderer(q, formik)}
-              name={q.key}
-              key={q.key || `question-${i}`}
-            ></Field>
+            fieldRenderer({ ...q, key: q.key || `question-${i}` }, formik)
           );
         }
         if (children) {
@@ -127,15 +144,13 @@ const Form = ({
         initialValues={initialValues}
         onSubmit={() => console.log("submitting")}
       >
-        {formik =>
-          !console.log("rendering formik", formik) && (
-            <>
-              <StyledForm onSubmit={() => console.log(formik)}>
-                {renderFields(formik, questions)}
-              </StyledForm>
-            </>
-          )
-        }
+        {formik => (
+          <>
+            <StyledForm onSubmit={() => console.log(formik)}>
+              {renderFields(formik, questions)}
+            </StyledForm>
+          </>
+        )}
       </Formik>
     </FormContainer>
   );

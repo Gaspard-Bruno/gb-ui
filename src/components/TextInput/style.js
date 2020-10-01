@@ -4,6 +4,7 @@ export const InputContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
+  width: ${props => (props.isMini ? "50%" : "100%")};
   & > nav {
     position: absolute;
     align-self: flex-end;

@@ -133,9 +133,9 @@ const Col = styled.div`
   flex: ${props => props.size || 1};
   display: flex;
   flex-flow: column nowrap;
-  align-items: ${props => (props.center ? 'center' : 'flex-start')};
-  justify-content: ${props => (props.justify ? props.justify : 'none')};
-  padding: ${props => props.padding || props.theme.margin}px;
+  align-items: ${props => (props.center ? "center" : "flex-start")};
+  justify-content: ${props => (props.justify ? props.justify : "none")};
+  padding: ${props => props.padding ?? props.theme.margin}px;
   ${props =>
     props.collapse &&
     media[props.collapse](`
