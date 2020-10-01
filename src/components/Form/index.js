@@ -35,7 +35,6 @@ const Form = ({
         value: formik.values[field.key],
         type: field.type
       };
-      console.log('rendering text', widget);
       switch (widget) {
         case 'text':
         case 'password':
@@ -50,11 +49,8 @@ const Form = ({
         case 'text-area':
           return <TextArea key={field.label} {...fieldProps} />;
 
+        case 'login':
         case 'tabs':
-          console.log(
-            'tab index',
-            field.options.map(d => d.value).indexOf(formik.values[field.key])
-          );
           return (
             <Tabs
               key={field.key}
@@ -80,6 +76,7 @@ const Form = ({
               name={field.key}
               action={option => formik.setFieldValue(option.name, option.value)}
               list={field.options}
+              {...fieldProps}
             />
           );
         case 'footnote':
@@ -121,12 +118,6 @@ const Form = ({
           switch (dependencyType) {
             case 'value':
               if (parentValue === dependencyValue) {
-                console.log(
-                  'Value dependency pushed',
-                  q,
-                  parentValue,
-                  dependencyValue
-                );
                 formFields.push(fieldRenderer(q, formik));
               }
               break;
@@ -134,7 +125,14 @@ const Form = ({
               for (let i = 0; i < Number(parentValue); i++) {
                 columns.push(
                   <Col size={1} padding={0}>
-                    {fieldRenderer({ ...q, key: `${q.key}-${i + 1}` }, formik)}
+                    {fieldRenderer(
+                      {
+                        ...q,
+                        key: `${q.key}-${i + 1}`,
+                        label: `${q.label}-${i + 1}`
+                      },
+                      formik
+                    )}
                   </Col>
                 );
               }
@@ -169,11 +167,11 @@ const Form = ({
     <FormContainer bg={backgroundColor}>
       <Formik
         initialValues={initialValues}
-        onSubmit={() => console.log('submitting')}
+        onSubmit={f => console.log('submitting', f)}
       >
         {formik => (
           <>
-            <StyledForm onSubmit={() => console.log(formik)}>
+            <StyledForm onSubmit={formik.handleSubmit}>
               {renderFields(formik, questions)}
               <Button type='submit' btnType={'primary'} text='Submit' />
             </StyledForm>

@@ -38,6 +38,7 @@
     },
     {
       "key": "number-of-animals",
+      "label": "Número de Animais",
       "type": "dropdown",
       "options": [
         { "label": "1", "value": 1 },
@@ -46,6 +47,7 @@
       "children": [
         {
           "key": "animal-species",
+          "label": "Tipo do Animal",
           "type": "dropdown",
           "dependencyType": "value-count",
           "options": [
@@ -56,6 +58,7 @@
         },
         {
           "key": "animal-size",
+          "label": "Tamanho do Animal",
           "type": "dropdown",
           "dependencyType": "value-count",
           "options": [
@@ -95,6 +98,7 @@
         },
         {
           "key": "start-hour",
+          "type": "dropdown",
           "options": [
             { "label": "09:00", "value": "09:00" },
             { "label": "09:30", "value": "09:30" },
@@ -116,7 +120,7 @@
             { "label": "17:30", "value": "17:30" },
             { "label": "18:00", "value": "18:00" }
           ],
-          "label": "Hora",
+          "label": "Hora de Início",
           "dependencyType": "value",
           "dependencyValue": "hour-package"
         },
@@ -129,8 +133,10 @@
         },
         {
           "key": "ending-hour",
+          "label": "Hora de Fim",
           "dependencyType": "value",
           "dependencyValue": "hour-package",
+          "type": "dropdown",
           "options": [
             { "label": "09:00", "value": "09:00" },
             { "label": "09:30", "value": "09:30" },
@@ -151,8 +157,7 @@
             { "label": "17:00", "value": "17:00" },
             { "label": "17:30", "value": "17:30" },
             { "label": "18:00", "value": "18:00" }
-          ],
-          "label": "Hora"
+          ]
         }
       ],
       "options": [
@@ -172,6 +177,7 @@
     { "key": "notes", "type": "text-area" },
     {
       "key": "login-buttons",
+      "widget": "login",
       "type": "tabs",
       "value": "guest",
       "children": [
