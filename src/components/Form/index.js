@@ -7,6 +7,8 @@ import sc from 'lodash.startcase';
 import TextInput from 'Components/TextInput';
 import Select from 'Components/Select';
 import TextArea from 'Components/TextArea';
+import CheckBoxGroup from 'Components/CheckBoxGroup';
+import ButtonGroup from 'Components/ButtonGroup';
 import RadioButton from 'Components/RadioButton';
 import Tabs from 'Components/Tabs';
 import Button from 'Components/Button';
@@ -49,7 +51,6 @@ const Form = ({
           );
         case 'text-area':
           return <TextArea key={field.label} {...fieldProps} />;
-
         case 'login':
         case 'tabs':
           return (
@@ -92,8 +93,24 @@ const Form = ({
               {...fieldProps}
             />
           );
-        case 'check-boxgroup':
-        case 'dropdown':
+        case 'checkbox-group':
+          return (
+            <CheckBoxGroup
+              name={fieldProps.key}
+              label={fieldProps?.label}
+              list={field?.options}
+              action={values => formik.setFieldValue(field.key, values)}
+            />
+          );
+        case 'button-group':
+          return (
+            <ButtonGroup
+              name={fieldProps.key}
+              label={fieldProps?.label}
+              list={field?.options}
+              action={values => formik.setFieldValue(field.key, values.value)}
+            />
+          );
         default:
           return <TextInput key={field.label} {...fieldProps} />;
       }
