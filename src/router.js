@@ -75,8 +75,8 @@ const components = [
   {
     label: 'Badge',
     props: [
-      { category: 'contact', text: 'Text Badge' },
-      { category: 'canceled', text: 'Cancelled' }
+      { category: 'contact', text: 'Text Badge', previewComponentOpen: true },
+      { category: 'canceled', text: 'Cancelled', previewComponentOpen: true }
     ],
     disabled: false,
     section: 'General',
@@ -161,6 +161,12 @@ components.forEach(component => {
   });
 });
 
+const extractPreviewProps = ({
+  previewComponentOpen,
+  previewComponentTitle,
+  ...props
+}) => !console.log('extracted dprops, props', props) && props;
+
 const Router = () => {
   return (
     <ThemeProvider theme={THEME}>
@@ -187,20 +193,28 @@ const Router = () => {
                                     border-bottom: 1px solid ${THEME.colors.grey};`}
                               >
                                 <Row>
-                                  <Col size={1}>
+                                  <Col size={2}>
                                     <SubHeading>Props</SubHeading>
                                     <Code>
-                                      <pre>{JSON.stringify(props, 0, 2)}</pre>
+                                      <pre>
+                                        {JSON.stringify(
+                                          extractPreviewProps(props),
+                                          0,
+                                          2
+                                        )}
+                                      </pre>
                                     </Code>
                                   </Col>
-                                  <Col size={3}>
+                                  <Col size={2}>
                                     <SubHeading>
                                       {props.previewComponentTitle}
                                     </SubHeading>
                                     <Accordion
-                                      isOpen={props.previewComponentTitle}
+                                      isOpen={props.previewComponentOpen}
                                       title={`${route.label} Component`}
-                                      content={route.component(props)}
+                                      content={route.component(
+                                        extractPreviewProps(props)
+                                      )}
                                     />
                                   </Col>
                                 </Row>
