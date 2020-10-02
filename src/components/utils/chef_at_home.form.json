@@ -4,7 +4,7 @@
   "questions": [
     {
       "key": "language",
-      "question": "Idioma Preferido",
+      "label": "Idioma Preferido",
       "type": "dropdown",
       "options": [
         { "value": 0, "label": "Português" },
@@ -13,23 +13,22 @@
         { "value": 3, "label": "Spanish" }
       ]
     },
-    { "question": "Morada do Serviço", "type": "footnote" },
+    { "label": "Morada do Serviço", "type": "footnote" },
     {
       "key": "country",
-      "question": "País",
+      "label": "País",
       "type": "dropdown",
       "options": [{ "value": 0, "label": "Portugal" }]
     },
     {
       "key": "district",
-      "question": "Distrito",
+      "label": "Distrito",
       "type": "dropdown",
       "options": [{ "value": 0, "label": "Lisboa" }]
     },
-    { "key": "address", "question": "Morada", "type": "text" },
-    { "key": "postal-code", "question": "Código Postal", "type": "text" },
-    { "key": "location", "question": "Localidade", "type": "text" },
-    { "question": "Serviço", "type": "footnote" },
+    { "key": "address", "label": "Morada", "type": "text" },
+    { "key": "postal-code", "label": "Código Postal", "type": "text" },
+    { "key": "location", "label": "Localidade", "type": "text" },
     { "type": "footnote", "label": "Serviço" },
     {
       "key": "service-type",
