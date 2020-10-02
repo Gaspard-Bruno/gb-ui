@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { Field, Formik } from 'formik';
 import PropTypes from 'prop-types';
+import chunk from 'lodash.chunk';
+import sc from 'lodash.startcase';
 
 import TextInput from 'Components/TextInput';
 import Select from 'Components/Select';
@@ -27,9 +29,9 @@ const Form = ({
     if (field.key) {
       const widget = field.widget || field.type;
       const fieldProps = {
-        label: field.label,
+        label: field.label ?? sc(field.key),
         name: field.key,
-        key: field.key,
+        key: field.key ?? field.label?.toLowerCase(),
         onChange: v => formik.setFieldValue(field.key, v),
         value: formik.values[field.key],
         type: field.type
@@ -98,7 +100,7 @@ const Form = ({
     }
     switch (field?.type) {
       case 'footnote':
-        return <Tiny>{field.label}</Tiny>;
+        return <Tiny key={field.key}>{field.label}</Tiny>;
       default:
         return <></>;
     }
@@ -106,20 +108,25 @@ const Form = ({
 
   const renderFields = (formik, fields) => {
     const formFields = [];
-    const fieldsRenderer = (fieldQuestions, parent) =>
+    const columns = [];
+    const fieldsRenderer = (fieldQuestions, parent, groupBy) =>
       fieldQuestions.forEach((q, i) => {
         const children = q.children;
         const { dependencyType, dependencyValue } = q;
+        const parentKey = parent?.key;
+        // * ie is children
         if (dependencyType) {
-          const parentKey = parent.key;
           const parentValue = formik.values[parentKey]?.value
             ? formik.values[parentKey].value
             : formik.values[parentKey];
-          const columns = [];
           switch (dependencyType) {
             case 'value':
               if (parentValue === dependencyValue) {
-                formFields.push(fieldRenderer(q, formik));
+                columns.push(
+                  <Col size={1} padding={0}>
+                    {fieldRenderer(q, formik)}
+                  </Col>
+                );
               }
               break;
             case 'value-count':
@@ -137,19 +144,41 @@ const Form = ({
                   </Col>
                 );
               }
-              formFields.push(<Row>{columns}</Row>);
               break;
             default:
               break;
           }
         } else {
+          // * if there any children from the previous non dependant field.
+          if (columns.length) {
+            console.log('formik pushing columns', columns, groupBy);
+            // * push children to form and reset array
+            formFields.push(
+              chunk(columns, 2).map(col => (
+                <Row
+                  key={`${parentKey}-children-cols`}
+                  align='flex-start'
+                  inlineStyle={`
+                  ${col.length === 1 &&
+                    `
+                    > div > div {
+                    width: 100%;
+                  `}
+                `}
+                >
+                  {col}
+                </Row>
+              ))
+            );
+            columns.length = 0;
+          }
           formFields.push(
             fieldRenderer({ ...q, key: q.key || `question-${i}` }, formik)
           );
         }
         if (children) {
-          console.log('has children', q, children);
-          fieldsRenderer(children, q);
+          console.log('formik has children', q, children);
+          fieldsRenderer(children, q, 2);
         }
       });
     fieldsRenderer(fields);

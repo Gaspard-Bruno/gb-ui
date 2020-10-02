@@ -24,9 +24,11 @@
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.10.4",
     "axios": "^0.19.2",
-    "formik": "^2.1.6",
+    "formik": "^2.1.7",
     "icomoon-react": "^2.0.16",
+    "lodash.chunk": "^4.2.0",
     "lodash.get": "^4.4.2",
+    "lodash.startcase": "^4.4.0",
     "react": "^16.13.1",
     "react-beautiful-dnd": "^13.0.0",
     "react-dom": "^16.13.1",

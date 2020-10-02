@@ -30,6 +30,7 @@
     { "type": "footnote", "label": "Tipo de Serviço" },
     {
       "key": "service-type",
+      "label": "",
       "type": "radio",
       "options": [
         { "label": "Standard", "value": 0 },
@@ -72,6 +73,7 @@
     { "type": "footnote", "label": "Tipo de oferta" },
     {
       "key": "offer-type",
+      "label": "",
       "type": "radio",
       "children": [
         {
@@ -174,7 +176,7 @@
       ]
     },
     { "type": "footnote", "label": "Notas" },
-    { "key": "notes", "type": "text-area" },
+    { "key": "notes", "label": "", "type": "text-area" },
     {
       "key": "login-buttons",
       "widget": "login",
