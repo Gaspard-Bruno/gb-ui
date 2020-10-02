@@ -7,6 +7,8 @@ import sc from 'lodash.startcase';
 import TextInput from 'Components/TextInput';
 import Select from 'Components/Select';
 import TextArea from 'Components/TextArea';
+import CheckBoxGroup from 'Components/CheckBoxGroup';
+import ButtonGroup from 'Components/ButtonGroup';
 import RadioButton from 'Components/RadioButton';
 import Tabs from 'Components/Tabs';
 import Button from 'Components/Button';
@@ -49,7 +51,6 @@ const Form = ({
           );
         case 'text-area':
           return <TextArea key={field.label} {...fieldProps} />;
-
         case 'login':
         case 'tabs':
           return (
@@ -92,8 +93,24 @@ const Form = ({
               {...fieldProps}
             />
           );
-        case 'check-boxgroup':
-        case 'dropdown':
+        case 'checkbox-group':
+          return (
+            <CheckBoxGroup
+              name={fieldProps.key}
+              label={fieldProps?.label}
+              list={field?.options}
+              action={values => formik.setFieldValue(field.key, values)}
+            />
+          );
+        case 'button-group':
+          return (
+            <ButtonGroup
+              name={fieldProps.key}
+              label={fieldProps?.label}
+              list={field?.options}
+              action={values => formik.setFieldValue(field.key, values.value)}
+            />
+          );
         default:
           return <TextInput key={field.label} {...fieldProps} />;
       }
@@ -109,7 +126,26 @@ const Form = ({
   const renderFields = (formik, fields) => {
     const formFields = [];
     const columns = [];
-    const fieldsRenderer = (fieldQuestions, parent, groupBy) =>
+    const columnsRenderer = (key = 'last-parent', groupBy = 2) => {
+      formFields.push(
+        chunk(columns, groupBy).map(col => (
+          <Row
+            key={`${key}-children-cols`}
+            align='flex-start'
+            inlineStyle={`
+              ${col.length === 1 &&
+                `
+                > div > div {
+                width: 100%;
+              `}
+            `}
+          >
+            {col}
+          </Row>
+        ))
+      );
+    };
+    const fieldsRenderer = (fieldQuestions, parent) =>
       fieldQuestions.forEach((q, i) => {
         const children = q.children;
         const { dependencyType, dependencyValue } = q;
@@ -122,6 +158,7 @@ const Form = ({
           switch (dependencyType) {
             case 'value':
               if (parentValue === dependencyValue) {
+                console.log('Pushing parent value to cols', parentValue);
                 columns.push(
                   <Col size={1} padding={0}>
                     {fieldRenderer(q, formik)}
@@ -151,25 +188,8 @@ const Form = ({
         } else {
           // * if there any children from the previous non dependant field.
           if (columns.length) {
-            console.log('formik pushing columns', columns, groupBy);
             // * push children to form and reset array
-            formFields.push(
-              chunk(columns, 2).map(col => (
-                <Row
-                  key={`${parentKey}-children-cols`}
-                  align='flex-start'
-                  inlineStyle={`
-                  ${col.length === 1 &&
-                    `
-                    > div > div {
-                    width: 100%;
-                  `}
-                `}
-                >
-                  {col}
-                </Row>
-              ))
-            );
+            columnsRenderer(parentKey);
             columns.length = 0;
           }
           formFields.push(
@@ -177,11 +197,16 @@ const Form = ({
           );
         }
         if (children) {
-          console.log('formik has children', q, children);
-          fieldsRenderer(children, q, 2);
+          fieldsRenderer(children, q);
         }
       });
     fieldsRenderer(fields);
+    if (columns.length) {
+      const lastField = fields[fields.length - 1];
+      console.log('columnsRenderer -> lastField', lastField);
+      columnsRenderer(lastField.key, lastField.groupBy);
+      columns.length = 0;
+    }
     return formFields;
   };
 
