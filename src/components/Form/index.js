@@ -109,6 +109,25 @@ const Form = ({
   const renderFields = (formik, fields) => {
     const formFields = [];
     const columns = [];
+    const columnsRenderer = (key = 'last-parent') => {
+      formFields.push(
+        chunk(columns, 2).map(col => (
+          <Row
+            key={`${key}-children-cols`}
+            align='flex-start'
+            inlineStyle={`
+              ${col.length === 1 &&
+                `
+                > div > div {
+                width: 100%;
+              `}
+            `}
+          >
+            {col}
+          </Row>
+        ))
+      );
+    };
     const fieldsRenderer = (fieldQuestions, parent, groupBy) =>
       fieldQuestions.forEach((q, i) => {
         const children = q.children;
@@ -122,6 +141,7 @@ const Form = ({
           switch (dependencyType) {
             case 'value':
               if (parentValue === dependencyValue) {
+                console.log('Pushing parent value to cols', parentValue);
                 columns.push(
                   <Col size={1} padding={0}>
                     {fieldRenderer(q, formik)}
@@ -153,23 +173,7 @@ const Form = ({
           if (columns.length) {
             console.log('formik pushing columns', columns, groupBy);
             // * push children to form and reset array
-            formFields.push(
-              chunk(columns, 2).map(col => (
-                <Row
-                  key={`${parentKey}-children-cols`}
-                  align='flex-start'
-                  inlineStyle={`
-                  ${col.length === 1 &&
-                    `
-                    > div > div {
-                    width: 100%;
-                  `}
-                `}
-                >
-                  {col}
-                </Row>
-              ))
-            );
+            columnsRenderer(parentKey);
             columns.length = 0;
           }
           formFields.push(
@@ -182,6 +186,10 @@ const Form = ({
         }
       });
     fieldsRenderer(fields);
+    if (columns.length) {
+      columnsRenderer();
+      columns.length = 0;
+    }
     return formFields;
   };
 
