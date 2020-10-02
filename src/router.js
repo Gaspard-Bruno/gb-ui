@@ -92,6 +92,14 @@ const components = [
       {
         previewComponentTitle: 'Cleaning',
         questions: FORM.cleaning.questions
+      },
+      {
+        questions: FORM.repairs.questions,
+        previewComponentTitle: 'Repairs'
+      },
+      {
+        previewComponentTitle: 'MusicLessons',
+        questions: FORM.musicLessons.questions
       }
     ],
     section: 'Form',
