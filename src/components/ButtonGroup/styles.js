@@ -4,11 +4,16 @@ export const StyledContainer = styled.div`
   margin-top: ${props => props.theme.margin * 2 + 10}px;
   margin-bottom: ${props => props.theme.margin}px;
   display: flex;
+  flex-flow: column;
   justify-content: space-between;
 `;
 
+export const ListContainer = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+`;
 export const ButtonGroupContainer = styled.div`
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   position: relative;

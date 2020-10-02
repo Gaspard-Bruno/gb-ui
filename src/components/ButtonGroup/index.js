@@ -1,7 +1,14 @@
 import React, { useCallback, useState } from 'react';
-import { ButtonGroupContainer, StyledButton, StyledContainer } from './styles';
 import PropTypes from 'prop-types';
+
 import { Body } from 'Components/Text';
+
+import {
+  ButtonGroupContainer,
+  StyledButton,
+  StyledContainer,
+  ListContainer
+} from './styles';
 
 const ButtonGroup = ({ action, label, name, list }) => {
   const getInitialSelection = () => {
@@ -28,39 +35,41 @@ const ButtonGroup = ({ action, label, name, list }) => {
   return (
     <StyledContainer>
       {label && <Body>{label}</Body>}
-      {list &&
-        list.map((item, index) => {
-          return (
-            <ButtonGroupContainer
-              isSelected={selectedButtons[index]}
-              key={`${item}-${index}`}
-            >
-              {item.label && (
-                <Body
-                  onClick={() => handleSelection(item.value, item.isSelected)}
-                >
-                  {item.label}
-                </Body>
-              )}
-              <StyledButton
-                key={`${item}-${index}`}
-                item
-                type='button'
-                label={item.label}
-                value={item.value}
-                name={name}
-                disabled={item.disabled}
+      <ListContainer>
+        {list &&
+          list.map((item, index) => {
+            return (
+              <ButtonGroupContainer
                 isSelected={selectedButtons[index]}
-                onClick={() => {
-                  handleSelection(item.value, item.isSelected);
-                  if (action) {
-                    action({ name, value: selectedButtons });
-                  }
-                }}
-              ></StyledButton>
-            </ButtonGroupContainer>
-          );
-        })}
+                key={`${item}-${index}`}
+              >
+                {item.label && (
+                  <Body
+                    onClick={() => handleSelection(item.value, item.isSelected)}
+                  >
+                    {item.label}
+                  </Body>
+                )}
+                <StyledButton
+                  key={`${item}-${index}`}
+                  item
+                  type='button'
+                  label={item.label}
+                  value={item.value}
+                  name={name}
+                  disabled={item.disabled}
+                  isSelected={selectedButtons[index]}
+                  onClick={() => {
+                    handleSelection(item.value, item.isSelected);
+                    if (action) {
+                      action({ name, value: selectedButtons });
+                    }
+                  }}
+                ></StyledButton>
+              </ButtonGroupContainer>
+            );
+          })}
+      </ListContainer>
     </StyledContainer>
   );
 };
