@@ -84,9 +84,16 @@ const components = [
   },
   {
     label: 'Form',
-    props: {
-      questions: FORM.petsitting.questions
-    },
+    props: [
+      {
+        previewComponentTitle: 'Gardening',
+        questions: FORM.gardening.questions
+      },
+      {
+        previewComponentTitle: 'Cleaning',
+        questions: FORM.cleaning.questions
+      }
+    ],
     section: 'Form',
     component: props => <Form {...props} />
   },
@@ -180,12 +187,23 @@ const Router = () => {
                                     border-bottom: 1px solid ${THEME.colors.grey};`}
                               >
                                 <Row>
-                                  <Code>
-                                    <Body>Props</Body>
-                                    <pre>{JSON.stringify(props)}</pre>
-                                  </Code>
+                                  <Col size={1}>
+                                    <SubHeading>Props</SubHeading>
+                                    <Code>
+                                      <pre>{JSON.stringify(props, 0, 2)}</pre>
+                                    </Code>
+                                  </Col>
+                                  <Col size={3}>
+                                    <SubHeading>
+                                      {props.previewComponentTitle}
+                                    </SubHeading>
+                                    <Accordion
+                                      isOpen={props.previewComponentTitle}
+                                      title={`${route.label} Component`}
+                                      content={route.component(props)}
+                                    />
+                                  </Col>
                                 </Row>
-                                <Row>{route.component(props)}</Row>
                               </Row>
                             ))
                           : route.component(route.props)
