@@ -182,6 +182,7 @@
       "widget": "login",
       "type": "tabs",
       "value": "guest",
+      "groupBy": 1,
       "children": [
         {
           "name": "guest.firstName",

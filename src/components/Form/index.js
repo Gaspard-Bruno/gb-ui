@@ -109,9 +109,9 @@ const Form = ({
   const renderFields = (formik, fields) => {
     const formFields = [];
     const columns = [];
-    const columnsRenderer = (key = 'last-parent') => {
+    const columnsRenderer = (key = 'last-parent', groupBy = 2) => {
       formFields.push(
-        chunk(columns, 2).map(col => (
+        chunk(columns, groupBy).map(col => (
           <Row
             key={`${key}-children-cols`}
             align='flex-start'
@@ -128,7 +128,7 @@ const Form = ({
         ))
       );
     };
-    const fieldsRenderer = (fieldQuestions, parent, groupBy) =>
+    const fieldsRenderer = (fieldQuestions, parent) =>
       fieldQuestions.forEach((q, i) => {
         const children = q.children;
         const { dependencyType, dependencyValue } = q;
@@ -171,7 +171,6 @@ const Form = ({
         } else {
           // * if there any children from the previous non dependant field.
           if (columns.length) {
-            console.log('formik pushing columns', columns, groupBy);
             // * push children to form and reset array
             columnsRenderer(parentKey);
             columns.length = 0;
@@ -181,13 +180,14 @@ const Form = ({
           );
         }
         if (children) {
-          console.log('formik has children', q, children);
-          fieldsRenderer(children, q, 2);
+          fieldsRenderer(children, q);
         }
       });
     fieldsRenderer(fields);
     if (columns.length) {
-      columnsRenderer();
+      const lastField = fields[fields.length - 1];
+      console.log('columnsRenderer -> lastField', lastField);
+      columnsRenderer(lastField.key, lastField.groupBy);
       columns.length = 0;
     }
     return formFields;
