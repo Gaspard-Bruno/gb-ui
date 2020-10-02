@@ -35,9 +35,10 @@ const getPageBackground = props => {
 
 const Code = styled.div`
   flex-flow: row nowrap;
-  max-width: 60%;
+  display: flex;
   > pre {
-    max-height: 30vh;
+    max-height: 50vh;
+    overflow-y: scroll;
     padding: 16px;
     background-color: ${props => props.theme.colors.mediumBeige}ff;
   }

@@ -1,10 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const AccordionContainer = styled.div`
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
+  border-bottom: 1px solid ${props => props.theme.colors.mediumBeige};
 `;
 
 export const AccordionTitle = styled.div`
@@ -17,17 +18,16 @@ export const AccordionTitle = styled.div`
   }
   svg {
     transition: all 0.25s;
-    transform: rotate(${props => (props.isOpen ? "180deg" : 0)});
+    transform: rotate(${props => (props.isOpen ? '180deg' : 0)});
   }
 `;
 export const ContentContainer = styled.div`
   transition: all 0.5s;
-  border-bottom: 1px solid ${props => props.theme.colors.mediumBeige};
   padding-bottom: 1%;
   position: relative;
   color: ${props => props.theme.colors.grey};
   opacity: ${props => (props.isOpen ? 1 : 0)};
   bottom: ${props => (props.isOpen ? 0 : 100)}px;
-  height: ${props => (props.isOpen ? "auto" : 0)}px;
+  height: ${props => (props.isOpen ? 'auto' : 0)}px;
   transform: scaleY(${props => (props.isOpen ? 1 : 0)});
 `;

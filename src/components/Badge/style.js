@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const getColorFromStatus = (theme, status) =>
   ({
@@ -16,13 +16,14 @@ const getColorFromStatus = (theme, status) =>
     canceled: theme.feedback.error.default,
     rejected: theme.feedback.error.default,
     new_candidate: theme.brand.blue,
-    accepted: theme.brand.green,
+    accepted: theme.brand.green
   }[status]);
 
 const Badge = styled.span`
   height: 24px;
   display: flex;
   flex-flow: row nowrap;
+  width: fit-content;
   background-color: ${props =>
     props.chip
       ? props.theme.colors.lightBeige
