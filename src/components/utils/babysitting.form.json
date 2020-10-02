@@ -248,7 +248,7 @@
     { "type": "footnote", "label": "Notas" },
     { "key": "notes", "label": "", "type": "text-area" },
     {
-      "key": "login-buttons",
+      "key": "login-buttons", "groupBy": 1,
       "widget": "login",
       "type": "tabs",
       "value": "guest",

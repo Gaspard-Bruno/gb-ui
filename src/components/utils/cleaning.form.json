@@ -192,7 +192,7 @@
     { "label": "Notas", "type": "footnote" },
     { "key": "notes", "label": "", "displayText": false, "type": "text-area" },
     {
-      "key": "login-buttons",
+      "key": "login-buttons", "groupBy": 1,
       "widget": "login",
       "type": "tabs",
       "value": "guest",
