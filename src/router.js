@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import FORM from 'Utils/form';
+import FORM from 'Components/utils/form';
 import THEME, { GlobalStyles } from 'Theme';
 
 import {

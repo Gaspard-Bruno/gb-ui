@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';
 
-import t from '../../utils/translation';
+import t from '../utils/translation';
 
 import KanbanCard from '../KanbanCard';
 import Icon from '../Icon';
@@ -11,7 +11,7 @@ import { SubHeading } from '../Text';
 import StyledKanbanColumn, {
   Header,
   IconContainer,
-  ColumnCardsContainer,
+  ColumnCardsContainer
 } from './style';
 
 const KanbanColumn = ({ colName, items, kanbanType, data, translate }) => {
@@ -25,7 +25,7 @@ const KanbanColumn = ({ colName, items, kanbanType, data, translate }) => {
           admin: data.admins[item.relationships?.admin?.data?.id],
           client: data.clients[item.relationships?.client?.data?.id],
           service: data.services[item.relationships?.service?.data?.id],
-          provider: data.providers[item.relationships?.provider?.data?.id],
+          provider: data.providers[item.relationships?.provider?.data?.id]
         };
         return (
           <KanbanCard
@@ -42,7 +42,7 @@ const KanbanColumn = ({ colName, items, kanbanType, data, translate }) => {
 
   return (
     <Droppable droppableId={colName} key={'column' + colName}>
-      {(provided) => (
+      {provided => (
         <StyledKanbanColumn
           ref={provided.innerRef}
           {...provided.droppableProps}
@@ -70,8 +70,8 @@ KanbanColumn.propTypes = {
     admins: PropTypes.object,
     providers: PropTypes.object,
     clients: PropTypes.object,
-    services: PropTypes.object,
-  }),
+    services: PropTypes.object
+  })
 };
 
 export default KanbanColumn;
