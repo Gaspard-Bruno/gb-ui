@@ -7,12 +7,13 @@ import sc from 'lodash.startcase';
 import TextInput from 'Components/TextInput';
 import Select from 'Components/Select';
 import TextArea from 'Components/TextArea';
+import Accordion from 'Components/Accordion';
 import CheckBoxGroup from 'Components/CheckBoxGroup';
 import ButtonGroup from 'Components/ButtonGroup';
 import RadioButton from 'Components/RadioButton';
 import Tabs from 'Components/Tabs';
 import Button from 'Components/Button';
-import { Tiny } from 'Components/Text';
+import { Tiny, Heading } from 'Components/Text';
 import { Col, Row } from 'Components/Layout';
 
 import { FormContainer, StyledForm } from './styles';
@@ -39,6 +40,14 @@ const Form = ({
         type: field.type
       };
       switch (widget) {
+        case 'object':
+          return (
+            <Accordion
+              isOpen={false}
+              title={field.label}
+              content={renderFields(formik, field.questions)}
+            />
+          );
         case 'text':
         case 'password':
         case 'mini-text':
@@ -158,7 +167,6 @@ const Form = ({
           switch (dependencyType) {
             case 'value':
               if (parentValue === dependencyValue) {
-                console.log('Pushing parent value to cols', parentValue);
                 columns.push(
                   <Col size={1} padding={0}>
                     {fieldRenderer(q, formik)}
@@ -255,6 +263,7 @@ Form.propTypes = {
         'date',
         'radio',
         'footnote',
+        'array',
         'text-area',
         'tabs'
       ).isRequired,

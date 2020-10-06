@@ -551,15 +551,18 @@ const stepEight = () => {
         { value: 'Francês', label: 'Francês' },
         { value: 'Espanhol', label: 'Espanhol' }
       ], // Array to mutate
-      children: {
-        type: 'dropdown',
-        key: 'language-level',
-        options: [
-          { label: 'Básico', value: 0 },
-          { label: 'Intermédio', value: 1 },
-          { label: 'Avançado', value: 2 }
-        ]
-      }
+      children: [
+        {
+          type: 'dropdown',
+          key: 'language-level',
+          dependencyType: 'value-length',
+          options: [
+            { label: 'Básico', value: 0 },
+            { label: 'Intermédio', value: 1 },
+            { label: 'Avançado', value: 2 }
+          ]
+        }
+      ]
     }
   ];
 };
@@ -604,7 +607,8 @@ const formSteps = {
   type: 'form',
   questions: steps.map((step, stepIndex) => ({
     type: 'object',
-    children: step
+    label: `Step ${stepIndex}`,
+    questions: step
   }))
 };
 
