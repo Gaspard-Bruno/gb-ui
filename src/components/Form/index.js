@@ -12,8 +12,9 @@ import CheckBoxGroup from 'Components/CheckBoxGroup';
 import ButtonGroup from 'Components/ButtonGroup';
 import RadioButton from 'Components/RadioButton';
 import Tabs from 'Components/Tabs';
+import MiniForm from 'Components/MiniForm';
 import Button from 'Components/Button';
-import { Tiny, Heading } from 'Components/Text';
+import { Tiny } from 'Components/Text';
 import { Col, Row } from 'Components/Layout';
 
 import { FormContainer, StyledForm } from './styles';
@@ -50,10 +51,11 @@ const Form = ({
           );
         case 'mini-form':
           return (
-            <Col>
-              <Heading>{field.label}</Heading>
-              {renderFields(formik, field.questions)}
-            </Col>
+            <MiniForm
+              content={renderFields(formik, field.questions)}
+              title={field.label}
+              onSubmit={formik.handleSubmit}
+            />
           );
         case 'text':
         case 'password':
@@ -129,7 +131,10 @@ const Form = ({
             <CheckBoxGroup
               name={fieldProps.key}
               label={fieldProps?.label}
-              list={field?.options}
+              list={field?.options.map(opt => ({
+                value: opt.value,
+                question: opt.label
+              }))}
               action={values => formik.setFieldValue(field.key, values)}
             />
           );

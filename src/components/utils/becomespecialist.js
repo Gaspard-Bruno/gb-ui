@@ -163,6 +163,7 @@ const stepFive = () => {
         { label: 'Petcare', value: 'Petcare' }
       ],
       children: [
+        // Aulas de Música
         {
           type: 'object',
           key: 'aulas-de-musica',
@@ -524,8 +525,7 @@ const stepFive = () => {
                   isSelected: false
                 },
                 {
-                  label:
-                    'Deslocações (se o serviço requerer a utilização de carro próprio, são pagos os Kms )',
+                  label: 'Deslocações',
                   value: 1,
                   isSelected: false
                 },

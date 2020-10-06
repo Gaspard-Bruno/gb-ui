@@ -4,7 +4,7 @@ export const StyledContainer = styled.div``;
 
 export const CheckboxGroudContainer = styled.div`
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   align-items: center;
   margin-bottom: ${props => props.theme.margin * 2 - 8}px;
   p {
