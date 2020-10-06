@@ -13,7 +13,7 @@ import ButtonGroup from 'Components/ButtonGroup';
 import RadioButton from 'Components/RadioButton';
 import Tabs from 'Components/Tabs';
 import Button from 'Components/Button';
-import { Tiny, Heading } from 'Components/Text';
+import { Tiny } from 'Components/Text';
 import { Col, Row } from 'Components/Layout';
 
 import { FormContainer, StyledForm } from './styles';

@@ -141,8 +141,7 @@ const stepFive = () => {
     },
     {
       key: 'services',
-      type: 'array',
-      widget: 'services',
+      type: 'uniq-array',
       options: [
         {
           label: 'Apoio Familiar a crianças',
@@ -162,317 +161,378 @@ const stepFive = () => {
         { label: 'Petsitting', value: 'Petsitting' },
         { label: 'Petcare', value: 'Petcare' }
       ],
-      optionWidgets: {
-        // Aulas de Música
-        'Aulas de Música': [
-          {
-            key: 'music-lessons',
-            title: 'Aulas de Música',
-            type: 'checkbox-group',
-            label: 'Qual o instrumento (ou instrumentos) que pode ensinar?',
-            options: [
-              { label: 'Viola', value: 0, isSelected: false },
-              {
-                label: 'Piano',
-                value: 1,
-                isSelected: false
-              },
-              { label: 'Violino', value: 2, isSelected: false },
-              { label: 'Acordeão', value: 3, isSelected: false },
-              { label: 'Bateria / Percução', value: 4, isSelected: false },
-              { label: 'Flauta', value: 5, isSelected: false },
-              { label: 'Outro', value: 6, isSelected: false }
-            ]
-          },
-          {
-            key: 'music-lessons-other-instrument',
-            type: 'text'
-          },
-          {
-            key: 'music-lessons-level',
-            type: 'checkbox-group',
-            label:
-              'Qual o nível de ensino do/s instrumento/s que pode realizar?',
-            options: [
-              { label: 'Básico', value: 0, isSelected: false },
-              {
-                label: 'Intermédio',
+      children: [
+        {
+          type: 'object',
+          widget: 'mini-form',
+          dependencyType: 'value-includes',
+          dependencyValue: 'Aulas de Música',
+          label: 'Aulas de Música',
+          questions: [
+            {
+              key: 'music-lessons',
+              title: 'Aulas de Música',
+              type: 'checkbox-group',
+              label: 'Qual o instrumento (ou instrumentos) que pode ensinar?',
+              options: [
+                { label: 'Viola', value: 0, isSelected: false },
+                {
+                  label: 'Piano',
+                  value: 1,
+                  isSelected: false
+                },
+                { label: 'Violino', value: 2, isSelected: false },
+                { label: 'Acordeão', value: 3, isSelected: false },
+                { label: 'Bateria / Percução', value: 4, isSelected: false },
+                { label: 'Flauta', value: 5, isSelected: false },
+                { label: 'Outro', value: 6, isSelected: false }
+              ]
+            },
+            {
+              key: 'music-lessons-other-instrument',
+              type: 'text'
+            },
+            {
+              key: 'music-lessons-level',
+              type: 'checkbox-group',
+              label:
+                'Qual o nível de ensino do/s instrumento/s que pode realizar?',
+              options: [
+                { label: 'Básico', value: 0, isSelected: false },
+                {
+                  label: 'Intermédio',
 
-                value: 1,
-                isSelected: false
-              },
-              { label: 'Avançado', value: 2, isSelected: false }
-            ]
-          },
-          {
-            key: 'music-lessons-place',
-            type: 'checkbox-group',
-            label:
-              'Qual o nível de ensino do/s instrumento/s que pode realizar?',
-            options: [
-              { label: 'Na minha casa', value: 0, isSelected: false },
-              {
-                label:
-                  'Na casa do Cliente (se o serviço requerer a utilização de carro próprio, são pagos os Kms )',
+                  value: 1,
+                  isSelected: false
+                },
+                { label: 'Avançado', value: 2, isSelected: false }
+              ]
+            },
+            {
+              key: 'music-lessons-place',
+              type: 'checkbox-group',
+              label:
+                'Qual o nível de ensino do/s instrumento/s que pode realizar?',
+              options: [
+                { label: 'Na minha casa', value: 0, isSelected: false },
+                {
+                  label:
+                    'Na casa do Cliente (se o serviço requerer a utilização de carro próprio, são pagos os Kms )',
 
-                value: 1,
-                isSelected: false
-              },
-              { label: 'Outro Espaço', value: 2, isSelected: false }
-            ]
-          },
-          {
-            key: 'music-lessons-other-place',
-            type: 'text'
-          }
-        ],
+                  value: 1,
+                  isSelected: false
+                },
+                { label: 'Outro Espaço', value: 2, isSelected: false }
+              ]
+            },
+            {
+              key: 'music-lessons-other-place',
+              type: 'text'
+            }
+          ]
+        },
         //Apoio Familiar a Seniores
-        'Apoio Familiar a Seniores': [
-          {
-            key: 'senior-company',
-            title: 'Apoio Familiar a Seniores',
-            type: 'checkbox-group',
-            label:
-              'Este serviço tem varias tipologias, quais gostaria de fazer?',
-            options: [
-              { label: 'Companhia', value: 0, isSelected: false },
-              {
-                label:
-                  'Deslocações (se o serviço requerer a utilização de carro próprio, são pagos os Kms )',
-                value: 1,
-                isSelected: false
-              },
-              { label: 'Refeição', value: 2, isSelected: false }
-            ]
-          }
-        ],
+        {
+          type: 'object',
+          widget: 'mini-form',
+          dependencyType: 'value-includes',
+          dependencyValue: 'Apoio Familiar a Seniores',
+          label: 'Apoio Familiar a Seniores',
+          children: [
+            {
+              key: 'senior-company',
+              title: 'Apoio Familiar a Seniores',
+              type: 'checkbox-group',
+              label:
+                'Este serviço tem varias tipologias, quais gostaria de fazer?',
+              options: [
+                { label: 'Companhia', value: 0, isSelected: false },
+                {
+                  label:
+                    'Deslocações (se o serviço requerer a utilização de carro próprio, são pagos os Kms )',
+                  value: 1,
+                  isSelected: false
+                },
+                { label: 'Refeição', value: 2, isSelected: false }
+              ]
+            }
+          ]
+        },
         //Experiência Gastronómica
-        'Experiência Gastronómica': [
-          {
-            key: 'gastronomical-experience',
-            title: 'Experiência Gastronómica',
-            type: 'checkbox-group',
-            label: 'Qual é o tipo de comida que quer fazer?',
-            options: [
-              { label: 'Tradicional Portuguesa', value: 0, isSelected: false },
-              {
-                label: 'Caseira',
-                value: 1,
-                isSelected: false
-              },
-              { label: 'Vegetariana', value: 2, isSelected: false },
-              { label: 'Internacional', value: 3, isSelected: false },
-              { label: 'Vegan', value: 4, isSelected: false },
-              { label: 'Outro', value: 5, isSelected: false }
-            ]
-          },
-          {
-            key: 'petCare-animal-type-other',
-            type: 'text'
-          }
-        ],
+        {
+          type: 'object',
+          widget: 'mini-form',
+          dependencyType: 'value-includes',
+          dependencyValue: 'Experiência Gastronómica',
+          label: 'Experiência Gastronómica',
+          children: [
+            {
+              key: 'gastronomical-experience',
+              title: 'Experiência Gastronómica',
+              type: 'checkbox-group',
+              label: 'Qual é o tipo de comida que quer fazer?',
+              options: [
+                {
+                  label: 'Tradicional Portuguesa',
+                  value: 0,
+                  isSelected: false
+                },
+                {
+                  label: 'Caseira',
+                  value: 1,
+                  isSelected: false
+                },
+                { label: 'Vegetariana', value: 2, isSelected: false },
+                { label: 'Internacional', value: 3, isSelected: false },
+                { label: 'Vegan', value: 4, isSelected: false },
+                { label: 'Outro', value: 5, isSelected: false }
+              ]
+            },
+            {
+              key: 'petCare-animal-type-other',
+              type: 'text'
+            }
+          ]
+        },
         //Petcare
-        Petcare: [
-          {
-            key: 'petcare-animal-type',
-            title: 'Petcare (visitas e/ ou passeios)',
-            type: 'checkbox-group',
-            label: 'Qual é o tipo de animal que pode cuidar?',
-            options: [
-              { label: 'Cães', value: 0, isSelected: false },
-              {
-                label: 'Gatos',
-                value: 1,
-                isSelected: false
-              },
-              { label: 'Outro', value: 2, isSelected: false }
-            ]
-          },
-          {
-            key: 'petCare-animal-type-other',
-            type: 'text'
-          },
-          {
-            key: 'petCare-animal-size',
-            label: 'Qual o porte do cão que pode cuidar?',
-            type: 'checkbox-group',
-            options: [
-              { label: 'Pequeno', value: 1, isSelected: false },
-              { label: 'Médio', value: 1, isSelected: false },
-              { label: 'Grande', value: 2, isSelected: false }
-            ]
-          }
-        ],
+        {
+          type: 'object',
+          widget: 'mini-form',
+          dependencyType: 'value-includes',
+          dependencyValue: 'Petcare',
+          label: 'Petcare',
+          children: [
+            {
+              key: 'petcare-animal-type',
+              title: 'Petcare (visitas e/ ou passeios)',
+              type: 'checkbox-group',
+              label: 'Qual é o tipo de animal que pode cuidar?',
+              options: [
+                { label: 'Cães', value: 0, isSelected: false },
+                {
+                  label: 'Gatos',
+                  value: 1,
+                  isSelected: false
+                },
+                { label: 'Outro', value: 2, isSelected: false }
+              ]
+            },
+            {
+              key: 'petCare-animal-type-other',
+              type: 'text'
+            },
+            {
+              key: 'petCare-animal-size',
+              label: 'Qual o porte do cão que pode cuidar?',
+              type: 'checkbox-group',
+              options: [
+                { label: 'Pequeno', value: 1, isSelected: false },
+                { label: 'Médio', value: 1, isSelected: false },
+                { label: 'Grande', value: 2, isSelected: false }
+              ]
+            }
+          ]
+        },
         //Petsitting
-        Petsitting: [
-          {
-            key: 'petsitting-exterior-space',
-            title: 'Petsitting (estadia)',
-            label:
-              'Caso possa ficar na sua casa, tem um espaço exterior para o animal?',
-            type: 'radio',
-            options: [
-              { label: 'Sim', value: 1 },
-              { label: 'Não', value: 0 }
-            ]
-          },
-          {
-            key: 'petsitting-animal-type',
-            type: 'checkbox-group',
-            label: 'Qual é o tipo de animal que pode cuidar?',
-            options: [
-              { label: 'Cães', value: 0, isSelected: false },
-              {
-                label: 'Gatos',
-                value: 1,
-                isSelected: false
-              },
-              { label: 'Outro', value: 2, isSelected: false }
-            ]
-          },
-          {
-            key: 'petsitting-animal-type-other',
-            type: 'text'
-          },
-          {
-            key: 'petsitting-animal-size',
-            label: 'Qual o porte do cão que pode cuidar?',
-            type: 'checkbox-group',
-            options: [
-              { label: 'Pequeno', value: 1, isSelected: false },
-              { label: 'Médio', value: 1, isSelected: false },
-              { label: 'Grande', value: 2, isSelected: false }
-            ]
-          }
-        ],
+        {
+          type: 'object',
+          widget: 'mini-form',
+          dependencyType: 'value-includes',
+          dependencyValue: 'Petsitting',
+          label: 'Petsitting',
+          children: [
+            {
+              key: 'petsitting-exterior-space',
+              title: 'Petsitting (estadia)',
+              label:
+                'Caso possa ficar na sua casa, tem um espaço exterior para o animal?',
+              type: 'radio',
+              options: [
+                { label: 'Sim', value: 1 },
+                { label: 'Não', value: 0 }
+              ]
+            },
+            {
+              key: 'petsitting-animal-type',
+              type: 'checkbox-group',
+              label: 'Qual é o tipo de animal que pode cuidar?',
+              options: [
+                { label: 'Cães', value: 0, isSelected: false },
+                {
+                  label: 'Gatos',
+                  value: 1,
+                  isSelected: false
+                },
+                { label: 'Outro', value: 2, isSelected: false }
+              ]
+            },
+            {
+              key: 'petsitting-animal-type-other',
+              type: 'text'
+            },
+            {
+              key: 'petsitting-animal-size',
+              label: 'Qual o porte do cão que pode cuidar?',
+              type: 'checkbox-group',
+              options: [
+                { label: 'Pequeno', value: 1, isSelected: false },
+                { label: 'Médio', value: 1, isSelected: false },
+                { label: 'Grande', value: 2, isSelected: false }
+              ]
+            }
+          ]
+        },
         // Repairs
-        Reparações: [
-          {
-            key: 'Repairs',
-            title: 'Reparações',
-            type: 'checkbox-group',
-            label: 'Este serviço tem várias tipologias, quais pode fazer?',
-            options: [
-              { label: 'Canalizaçãoda', value: 0, isSelected: false },
-              {
-                label: 'Carpintaria',
-                value: 1,
-                isSelected: false
-              },
-              { label: 'Electricidade', value: 2, isSelected: false },
-              { label: 'Furos', value: 3, isSelected: false },
-              { label: 'Isolamentos', value: 4, isSelected: false },
-              { label: 'Pinturas', value: 5, isSelected: false },
-              { label: 'Outro', value: 6, isSelected: false }
-            ]
-          },
-          {
-            key: 'repairs-other',
-            type: 'text'
-          },
-          {
-            key: 'repairs-tools',
-            label: 'Tem as ferramentas necessários para realizar este serviço?',
-            type: 'radio',
-            options: [
-              { label: 'Sim', value: 1 },
-              { label: 'Não', value: 0 }
-            ]
-          }
-        ],
+        {
+          type: 'object',
+          widget: 'mini-form',
+          dependencyType: 'value-includes',
+          dependencyValue: 'Reparações',
+          label: 'Reparações',
+          children: [
+            {
+              key: 'Repairs',
+              title: 'Reparações',
+              type: 'checkbox-group',
+              label: 'Este serviço tem várias tipologias, quais pode fazer?',
+              options: [
+                { label: 'Canalizaçãoda', value: 0, isSelected: false },
+                {
+                  label: 'Carpintaria',
+                  value: 1,
+                  isSelected: false
+                },
+                { label: 'Electricidade', value: 2, isSelected: false },
+                { label: 'Furos', value: 3, isSelected: false },
+                { label: 'Isolamentos', value: 4, isSelected: false },
+                { label: 'Pinturas', value: 5, isSelected: false },
+                { label: 'Outro', value: 6, isSelected: false }
+              ]
+            },
+            {
+              key: 'repairs-other',
+              type: 'text'
+            },
+            {
+              key: 'repairs-tools',
+              label:
+                'Tem as ferramentas necessários para realizar este serviço?',
+              type: 'radio',
+              options: [
+                { label: 'Sim', value: 1 },
+                { label: 'Não', value: 0 }
+              ]
+            }
+          ]
+        },
         // Gardening
-        Jardinagem: [
-          {
-            key: 'Gardening',
-            title: 'Jardinagem',
-            type: 'checkbox-group',
-            label: 'Este serviço tem varias tipologias, quais pode fazer?',
-            options: [
-              { label: 'Poda', value: 0, isSelected: false },
-              {
-                label: 'Criação de novos jardins',
-                value: 1,
-                isSelected: false
-              },
-              { label: 'Consultoria', value: 2, isSelected: false },
-              { label: 'Outro', value: 3, isSelected: false }
-            ]
-          },
-          {
-            key: 'gardening-other',
-            type: 'text'
-          },
-          {
-            key: 'gardening-tools',
-            label: 'Tem as ferramentas necessários para realizar este serviço?',
-            type: 'radio',
-            options: [
-              { label: 'Sim', value: 1 },
-              { label: 'Não', value: 0 }
-            ]
-          }
-        ],
+        {
+          type: 'object',
+          widget: 'mini-form',
+          dependencyType: 'value-includes',
+          dependencyValue: 'Jardinagem',
+          label: 'Jardinagem',
+          children: [
+            {
+              key: 'Gardening',
+              title: 'Jardinagem',
+              type: 'checkbox-group',
+              label: 'Este serviço tem varias tipologias, quais pode fazer?',
+              options: [
+                { label: 'Poda', value: 0, isSelected: false },
+                {
+                  label: 'Criação de novos jardins',
+                  value: 1,
+                  isSelected: false
+                },
+                { label: 'Consultoria', value: 2, isSelected: false },
+                { label: 'Outro', value: 3, isSelected: false }
+              ]
+            },
+            {
+              key: 'gardening-other',
+              type: 'text'
+            },
+            {
+              key: 'gardening-tools',
+              label:
+                'Tem as ferramentas necessários para realizar este serviço?',
+              type: 'radio',
+              options: [
+                { label: 'Sim', value: 1 },
+                { label: 'Não', value: 0 }
+              ]
+            }
+          ]
+        },
         // BabySitting
-        'Apoio Familiar a crianças': [
-          {
-            key: 'babysitting',
-            title: 'Apoio Familiar a crianças',
-            type: 'checkbox-group',
-            label: 'Quantas Crianças pode acompanhar ao mesmo tempo ?',
-            options: [
-              { label: 'Apenas 1', value: 0, isSelected: false },
-              { label: 'Mais do que 1', value: 1, isSelected: false },
-              { label: 'Outro', value: 2, isSelected: false }
-            ]
-          },
-          { key: 'babysitting-child-number-other', type: 'text' },
-          {
-            key: 'babysitting-child-age',
-            type: 'checkbox-group',
-            label:
-              'Que idades nas crianças prefere para realizar este serviço?',
-            options: [
-              {
-                label: 'De 6 meses até os 2 anos',
-                value: 0,
-                isSelected: false
-              },
-              {
-                label: 'Dos 2 anos até os 10 anos',
-                value: 1,
-                isSelected: false
-              },
-              { label: 'Maiores de 10 anos', value: 2, isSelected: false }
-            ]
-          },
-          {
-            key: 'babysitting-service-to-do',
-            type: 'checkbox-group',
-            label: 'Que tipos de serviço gostaria de fazer',
-            options: [
-              {
-                label: 'Companhia',
-                value: 0,
-                isSelected: false
-              },
-              {
-                label:
-                  'Deslocações (se o serviço requerer a utilização de carro próprio, são pagos os Kms )',
-                value: 1,
-                isSelected: false
-              },
-              { label: 'Acompanhamento TPC', value: 2, isSelected: false },
-              { label: 'Explicações', value: 3, isSelected: false }
-            ]
-          },
-          { key: 'babysitting-service-to-do-other', type: 'text' },
-          {
-            type: 'footnote',
-            label:
-              'Informamos que por lei, todas as pessoas que trabalhem com crianças deveram proceder à entrega do Registo Criminal atualizado.'
-          }
-        ]
-      }
+        {
+          type: 'object',
+          widget: 'mini-form',
+          dependencyType: 'value-includes',
+          dependencyValue: 'Apoio Familiar a crianças',
+          label: 'Apoio Familiar a crianças',
+          children: [
+            {
+              key: 'babysitting',
+              title: 'Apoio Familiar a crianças',
+              type: 'checkbox-group',
+              label: 'Quantas Crianças pode acompanhar ao mesmo tempo ?',
+              options: [
+                { label: 'Apenas 1', value: 0, isSelected: false },
+                { label: 'Mais do que 1', value: 1, isSelected: false },
+                { label: 'Outro', value: 2, isSelected: false }
+              ]
+            },
+            { key: 'babysitting-child-number-other', type: 'text' },
+            {
+              key: 'babysitting-child-age',
+              type: 'checkbox-group',
+              label:
+                'Que idades nas crianças prefere para realizar este serviço?',
+              options: [
+                {
+                  label: 'De 6 meses até os 2 anos',
+                  value: 0,
+                  isSelected: false
+                },
+                {
+                  label: 'Dos 2 anos até os 10 anos',
+                  value: 1,
+                  isSelected: false
+                },
+                { label: 'Maiores de 10 anos', value: 2, isSelected: false }
+              ]
+            },
+            {
+              key: 'babysitting-service-to-do',
+              type: 'checkbox-group',
+              label: 'Que tipos de serviço gostaria de fazer',
+              options: [
+                {
+                  label: 'Companhia',
+                  value: 0,
+                  isSelected: false
+                },
+                {
+                  label:
+                    'Deslocações (se o serviço requerer a utilização de carro próprio, são pagos os Kms )',
+                  value: 1,
+                  isSelected: false
+                },
+                { label: 'Acompanhamento TPC', value: 2, isSelected: false },
+                { label: 'Explicações', value: 3, isSelected: false }
+              ]
+            },
+            { key: 'babysitting-service-to-do-other', type: 'text' },
+            {
+              type: 'footnote',
+              label:
+                'Informamos que por lei, todas as pessoas que trabalhem com crianças deveram proceder à entrega do Registo Criminal atualizado.'
+            }
+          ]
+        }
+      ]
     }
   ];
 };
@@ -489,9 +549,10 @@ const stepSix = () => {
       label: 'Seleccione',
       type: 'text'
     },
-    { key: 'week-hours', type: 'array', widget: 'schedule-picker' }
+    { key: 'week-hours', type: 'uniq-array', widget: 'schedule-picker' }
   ];
 };
+
 const stepSeven = () => {
   return [
     {
@@ -526,6 +587,7 @@ const stepSeven = () => {
     }
   ];
 };
+
 const stepEight = () => {
   return [
     {
@@ -544,18 +606,18 @@ const stepEight = () => {
     },
     {
       key: 'languages',
-      type: 'array',
+      type: 'uniq-array',
       options: [
         { value: 'Português', label: 'Português' },
         { value: 'Inglês', label: 'Inglês' },
         { value: 'Francês', label: 'Francês' },
         { value: 'Espanhol', label: 'Espanhol' }
-      ], // Array to mutate
+      ],
       children: [
         {
           type: 'dropdown',
           key: 'language-level',
-          dependencyType: 'value-length',
+          dependencyType: 'value-index',
           options: [
             { label: 'Básico', value: 0 },
             { label: 'Intermédio', value: 1 },
@@ -566,6 +628,7 @@ const stepEight = () => {
     }
   ];
 };
+
 const stepNine = () => {
   return [
     {
@@ -607,6 +670,7 @@ const formSteps = {
   type: 'form',
   questions: steps.map((step, stepIndex) => ({
     type: 'object',
+    key: `become-form-${stepIndex}`,
     label: `Step ${stepIndex}`,
     questions: step
   }))
