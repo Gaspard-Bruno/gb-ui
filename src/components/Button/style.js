@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const getStyleFromBtnType = (type = "primary", theme) => {
+const getStyleFromBtnType = (type = 'primary', theme) => {
   switch (type) {
-    case "primary":
+    case 'primary':
       return `
 
         background-color: ${theme.colors.brand.yellow};
@@ -11,7 +11,7 @@ const getStyleFromBtnType = (type = "primary", theme) => {
           background-color: ${theme.colors.brand.lighter};
         }
       `;
-    case "secondary":
+    case 'secondary':
       return `
         background-color: transparent;
         border: 1px solid ${theme.colors.brand.yellow};
@@ -20,7 +20,7 @@ const getStyleFromBtnType = (type = "primary", theme) => {
           background-color: ${theme.colors.brand.lighter};
         }
       `;
-    case "terceary":
+    case 'terceary':
       return `
         background-color: ${theme.colors.brand.orange};
         border: transparent;
@@ -29,7 +29,7 @@ const getStyleFromBtnType = (type = "primary", theme) => {
           background-color: ${theme.colors.brand.orangeLight};
         }
       `;
-    case "transparent":
+    case 'transparent':
       return `
         background-color: transparent;
         border: transparent;
@@ -40,7 +40,7 @@ const getStyleFromBtnType = (type = "primary", theme) => {
           }
         }
       `;
-    case "borded":
+    case 'borded':
       return `
         border: 1px solid ${theme.colors.brand.yellow};
         box-sizing: border-box;
@@ -62,9 +62,9 @@ const getStyleFromBtnType = (type = "primary", theme) => {
 const Button = styled.button`
   border-radius: 40px;
   outline: none;
-  width: ${props => (props.fullWidth ? "244px" : "")};
-  margin-top: ${props => (props.fullWidth ? "20px" : "")};
-  margin-bottom: ${props => (props.fullWidth ? "20px" : "")};
+  width: ${props => (props.fullWidth ? '244px' : '')};
+  margin-top: ${props => (props.fullWidth ? '20px' : '')};
+  margin-bottom: ${props => (props.fullWidth ? '20px' : '')};
   padding: ${props =>
     props.small ? props.theme.margin * 0.75 : props.theme.margin}px;
   ${props => getStyleFromBtnType(props.btnType, props.theme)}

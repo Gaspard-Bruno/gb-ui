@@ -1,27 +1,29 @@
-import React, { useRef } from 'react';
-import { Field, Formik } from 'formik';
+import React from 'react';
 import PropTypes from 'prop-types';
-import chunk from 'lodash.chunk';
-import sc from 'lodash.startcase';
 
-import TextInput from 'Components/TextInput';
-import Select from 'Components/Select';
-import TextArea from 'Components/TextArea';
-import Accordion from 'Components/Accordion';
-import CheckBoxGroup from 'Components/CheckBoxGroup';
-import ButtonGroup from 'Components/ButtonGroup';
-import RadioButton from 'Components/RadioButton';
-import Tabs from 'Components/Tabs';
 import Button from 'Components/Button';
-import { Tiny, Heading } from 'Components/Text';
+import { Heading } from 'Components/Text';
 import { Col, Row } from 'Components/Layout';
 
 import { StyledForm } from './styles';
 
-const MiniForm = ({ onSubmit, content, title }) => {
+const MiniForm = ({ onSubmit, content, title, onRemove }) => {
   return (
     <StyledForm onSubmit={onSubmit}>
-      <Heading size={3}>{title}</Heading>
+      <Row>
+        <Col size={1}>
+          <Heading size={3}>{title}</Heading>
+        </Col>
+        <Col size={1}>
+          <Button
+            type='submit'
+            action={onRemove}
+            btnType='terceary'
+            text='Remove'
+            icon='Close'
+          />
+        </Col>
+      </Row>
       {content}
       <Button type='submit' btnType={'primary'} text='Submit' />
     </StyledForm>
@@ -30,6 +32,7 @@ const MiniForm = ({ onSubmit, content, title }) => {
 
 MiniForm.propTypes = {
   onSubmit: PropTypes.func,
+  onRemove: PropTypes.func,
   title: PropTypes.string,
   content: PropTypes.func
 };

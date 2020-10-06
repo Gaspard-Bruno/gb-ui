@@ -18,6 +18,8 @@ export const StyledForm = styled.form`
   flex-flow: column;
   background-color: ${props => getSelectedBackground(props)};
   padding: ${props => props.theme.margin * 2}px;
+  margin: ${props => props.theme.margin * 2}px auto;
+
   > h1,
   h2,
   h3,

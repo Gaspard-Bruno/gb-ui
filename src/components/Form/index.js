@@ -29,7 +29,7 @@ const Form = ({
   backgroundColor,
   fieldsWidgets
 }) => {
-  const fieldRenderer = (field, formik) => {
+  const fieldRenderer = (field, formik, parentKey) => {
     if (field.key) {
       const widget = field.widget || field.type;
       const fieldProps = {
@@ -46,12 +46,22 @@ const Form = ({
             <Accordion
               isOpen={false}
               title={field.label}
-              content={renderFields(formik, field.questions)}
+              content={renderFields(formik, field.questions, field.parentKey)}
             />
           );
         case 'mini-form':
           return (
             <MiniForm
+              onRemove={() =>
+                field.dependencyValue &&
+                parentKey &&
+                formik.setFieldValue(
+                  parentKey,
+                  formik.values[parentKey].filter(
+                    v => v !== field.dependencyValue
+                  )
+                )
+              }
               content={renderFields(formik, field.questions)}
               title={field.label}
               onSubmit={formik.handleSubmit}
@@ -202,14 +212,8 @@ const Form = ({
               }
               break;
             case 'value-includes':
-              console.log(
-                'checking value includes for',
-                parentValue,
-                'children'
-              );
               if (parentValue?.includes(dependencyValue)) {
-                console.log('pushing fied to columns', q);
-                formFields.push(fieldRenderer(q, formik));
+                formFields.push(fieldRenderer(q, formik, parentKey));
               }
               break;
             case 'value-count':
