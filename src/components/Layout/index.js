@@ -35,6 +35,7 @@ const getPageBackground = props => {
 
 const Code = styled.div`
   flex-flow: row nowrap;
+  max-width: 600px;
   display: flex;
   > pre {
     max-height: 50vh;

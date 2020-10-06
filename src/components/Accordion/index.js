@@ -28,9 +28,4 @@ Accordion.propTypes = {
   isOpen: PropTypes.bool
 };
 
-Accordion.whyDidYouRender = {
-  logOnDifferentValues: true,
-  customName: 'Accordion'
-};
-
 export default Accordion;

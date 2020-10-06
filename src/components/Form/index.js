@@ -13,7 +13,7 @@ import ButtonGroup from 'Components/ButtonGroup';
 import RadioButton from 'Components/RadioButton';
 import Tabs from 'Components/Tabs';
 import Button from 'Components/Button';
-import { Tiny } from 'Components/Text';
+import { Tiny, Heading } from 'Components/Text';
 import { Col, Row } from 'Components/Layout';
 
 import { FormContainer, StyledForm } from './styles';
@@ -47,6 +47,13 @@ const Form = ({
               title={field.label}
               content={renderFields(formik, field.questions)}
             />
+          );
+        case 'mini-form':
+          return (
+            <Col>
+              <Heading>{field.label}</Heading>
+              {renderFields(formik, field.questions)}
+            </Col>
           );
         case 'text':
         case 'password':
@@ -100,6 +107,21 @@ const Form = ({
               options={field.options}
               inputValue={fieldProps?.value?.label ?? ''}
               {...fieldProps}
+            />
+          );
+        case 'uniq-array':
+          return (
+            <Select
+              isMini={Boolean(widget === 'mini-dropdown')}
+              options={field.options}
+              inputValue={fieldProps?.value?.label ?? ''}
+              {...fieldProps}
+              onChange={v =>
+                formik.setFieldValue(
+                  field.key,
+                  Array.from(new Set([...fieldProps.value, v.value]))
+                )
+              }
             />
           );
         case 'checkbox-group':
@@ -174,6 +196,17 @@ const Form = ({
                 );
               }
               break;
+            case 'value-includes':
+              console.log(
+                'checking value includes for',
+                parentValue,
+                'children'
+              );
+              if (parentValue?.includes(dependencyValue)) {
+                console.log('pushing fied to columns', q);
+                formFields.push(fieldRenderer(q, formik));
+              }
+              break;
             case 'value-count':
               for (let i = 0; i < Number(parentValue); i++) {
                 columns.push(
@@ -211,7 +244,6 @@ const Form = ({
     fieldsRenderer(fields);
     if (columns.length) {
       const lastField = fields[fields.length - 1];
-      console.log('columnsRenderer -> lastField', lastField);
       columnsRenderer(lastField.key, lastField.groupBy);
       columns.length = 0;
     }
@@ -219,12 +251,22 @@ const Form = ({
   };
 
   const initialValues = {};
-
-  questions.forEach(q => {
-    if (q.key) {
-      initialValues[q.key] = q.value;
-    }
-  });
+  const getInitialValues = valueQuestions =>
+    valueQuestions.forEach(q => {
+      const typeDefault =
+        q.type === 'array' || q.type === 'uniq-array' ? [] : undefined;
+      if (q.key) {
+        if (q.type === 'object') {
+          getInitialValues(q.questions);
+        } else {
+          initialValues[q.key] = q.value || typeDefault;
+        }
+        if (q.children) {
+          getInitialValues(q.children);
+        }
+      }
+    });
+  getInitialValues(questions);
 
   return (
     <FormContainer bg={backgroundColor}>

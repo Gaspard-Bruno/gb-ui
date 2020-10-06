@@ -142,6 +142,7 @@ const stepFive = () => {
     {
       key: 'services',
       type: 'uniq-array',
+      value: [],
       options: [
         {
           label: 'Apoio Familiar a crianças',
@@ -164,6 +165,7 @@ const stepFive = () => {
       children: [
         {
           type: 'object',
+          key: 'aulas-de-musica',
           widget: 'mini-form',
           dependencyType: 'value-includes',
           dependencyValue: 'Aulas de Música',
@@ -235,10 +237,11 @@ const stepFive = () => {
         {
           type: 'object',
           widget: 'mini-form',
+          key: 'apoio-seniores',
           dependencyType: 'value-includes',
           dependencyValue: 'Apoio Familiar a Seniores',
           label: 'Apoio Familiar a Seniores',
-          children: [
+          questions: [
             {
               key: 'senior-company',
               title: 'Apoio Familiar a Seniores',
@@ -262,10 +265,11 @@ const stepFive = () => {
         {
           type: 'object',
           widget: 'mini-form',
+          key: 'gastro-experience',
           dependencyType: 'value-includes',
           dependencyValue: 'Experiência Gastronómica',
           label: 'Experiência Gastronómica',
-          children: [
+          questions: [
             {
               key: 'gastronomical-experience',
               title: 'Experiência Gastronómica',
@@ -297,11 +301,12 @@ const stepFive = () => {
         //Petcare
         {
           type: 'object',
+          key: 'petcare',
           widget: 'mini-form',
           dependencyType: 'value-includes',
           dependencyValue: 'Petcare',
           label: 'Petcare',
-          children: [
+          questions: [
             {
               key: 'petcare-animal-type',
               title: 'Petcare (visitas e/ ou passeios)',
@@ -336,11 +341,12 @@ const stepFive = () => {
         //Petsitting
         {
           type: 'object',
+          key: 'petsitting',
           widget: 'mini-form',
           dependencyType: 'value-includes',
           dependencyValue: 'Petsitting',
           label: 'Petsitting',
-          children: [
+          questions: [
             {
               key: 'petsitting-exterior-space',
               title: 'Petsitting (estadia)',
@@ -389,7 +395,8 @@ const stepFive = () => {
           dependencyType: 'value-includes',
           dependencyValue: 'Reparações',
           label: 'Reparações',
-          children: [
+          key: 'repairs',
+          questions: [
             {
               key: 'Repairs',
               title: 'Reparações',
@@ -432,7 +439,8 @@ const stepFive = () => {
           dependencyType: 'value-includes',
           dependencyValue: 'Jardinagem',
           label: 'Jardinagem',
-          children: [
+          key: 'gardening',
+          questions: [
             {
               key: 'Gardening',
               title: 'Jardinagem',
@@ -470,9 +478,10 @@ const stepFive = () => {
           type: 'object',
           widget: 'mini-form',
           dependencyType: 'value-includes',
+          key: 'babysitting',
           dependencyValue: 'Apoio Familiar a crianças',
           label: 'Apoio Familiar a crianças',
-          children: [
+          questions: [
             {
               key: 'babysitting',
               title: 'Apoio Familiar a crianças',
