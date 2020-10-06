@@ -98,8 +98,12 @@ const components = [
         previewComponentTitle: 'Repairs'
       },
       {
-        previewComponentTitle: 'MusicLessons',
+        previewComponentTitle: 'Music Lessons',
         questions: FORM.musicLessons.questions
+      },
+      {
+        previewComponentTitle: 'Become Specialist',
+        questions: FORM.becomeSpecialist.questions
       }
     ],
     section: 'Form',

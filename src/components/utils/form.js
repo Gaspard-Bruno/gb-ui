@@ -9,6 +9,7 @@ import language_classes from './language_classes.form.json';
 import musicLessons from './music_lessons.form.json';
 import repairs from './repairs.form.json';
 import gardening from './gardening.form.json';
+import becomeSpecialist from './becomespecialist.js';
 
 export default {
   petsitting,
@@ -21,5 +22,6 @@ export default {
   language_classes,
   musicLessons,
   repairs,
+  becomeSpecialist,
   gardening
 };
