@@ -29,6 +29,19 @@ const Form = ({
   backgroundColor,
   fieldsWidgets
 }) => {
+  const renderAddFields = (fields, count, formik) => {
+    const addFields = [];
+    for (let i = 0; i < count; i++) {
+      addFields.push(
+        <Row>
+          {fields.map(f =>
+            fieldRenderer({ ...f, key: f.key + i, label: f.label + i }, formik)
+          )}
+        </Row>
+      );
+    }
+    return addFields;
+  };
   const fieldRenderer = (field, formik, parentKey) => {
     if (field.key) {
       const widget = field.widget || field.type;
@@ -95,7 +108,6 @@ const Form = ({
               initialTabIndex={field.options
                 .map(d => d.value)
                 .indexOf(formik.values[field.key])}
-              onChange
             />
           );
         case 'radio':
@@ -119,26 +131,30 @@ const Form = ({
               options={field.options}
               inputValue={fieldProps?.value?.label ?? ''}
               {...fieldProps}
+              onChange={option => formik.setFieldValue(field.key, option.value)}
             />
           );
         case 'add-field':
           return (
-            <>
-              <nav
-                onClick={() => {
-                  formik.setFieldValue(field.key, field.value + 1);
-                }}
-                role='presentation'
-                style={{
-                  margin: '10px 0px 10px 0px',
-                  color: '#DB1E3B',
-                  cursor: 'pointer'
-                }}
-              >
-                {field.label}
-                <strong> +</strong>
-              </nav>
-            </>
+            <Col>
+              <Row>
+                <nav
+                  onClick={() => {
+                    formik.setFieldValue(field.key, fieldProps.value + 1);
+                  }}
+                  role='presentation'
+                  style={{
+                    margin: '10px 0px 10px 0px',
+                    color: '#DB1E3B',
+                    cursor: 'pointer'
+                  }}
+                >
+                  {field.label}
+                  <strong> +</strong>
+                </nav>
+              </Row>
+              {renderAddFields(field.fields, fieldProps.value, formik)}
+            </Col>
           );
         case 'uniq-array':
           return (

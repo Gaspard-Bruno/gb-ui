@@ -619,12 +619,11 @@ const stepEight = () => {
       value: 1,
       widget: 'add-field',
       label: 'Adicionar língua',
-      children: [
+      fields: [
         {
           type: 'dropdown',
           key: 'language-selected',
-          label: '',
-          dependencyType: 'value-count',
+          label: 'Língua',
           options: [
             { value: 0, label: 'Português' },
             { value: 1, label: 'Inglês' },
@@ -635,8 +634,7 @@ const stepEight = () => {
         {
           type: 'dropdown',
           key: 'language-level',
-          label: '',
-          dependencyType: 'value-count',
+          label: 'Nível',
           options: [
             { label: 'Básico', value: 0 },
             { label: 'Intermédio', value: 1 },
