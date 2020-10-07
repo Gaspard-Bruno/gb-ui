@@ -47,11 +47,25 @@ const getStyleFromBtnType = (type = 'primary', theme) => {
         border-radius: 100px;
         background-color: ${theme.colors.white};
         > span {
-
           color: ${theme.colors.brand.darkBlue};
           &:hover {
             color: ${theme.colors.brand.orangeDarker};
           }
+        }
+      `;
+    case 'iconHolder':
+      return `
+        border: 1px solid ${theme.colors.brand.yellow};
+        box-sizing: border-box;
+        border-radius: 100px;
+        padding: 20px;
+        width: 40px;
+        height: 40px;
+        background-color: ${theme.colors.white};
+        > svg {
+          position: relative;
+          right: 11px;
+          bottom: 12px;
         }
       `;
     default:

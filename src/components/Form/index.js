@@ -16,7 +16,7 @@ import MiniForm from 'Components/MiniForm';
 import Button from 'Components/Button';
 import { Tiny } from 'Components/Text';
 import { Col, Row } from 'Components/Layout';
-
+import MultiFieldRender from 'components/MultiFieldRender';
 import { FormContainer, StyledForm } from './styles';
 
 const Form = ({
@@ -35,13 +35,17 @@ const Form = ({
       addFields.push(
         <Row>
           {fields.map(f =>
-            fieldRenderer({ ...f, key: f.key + i, label: f.label + i }, formik)
+            fieldRenderer(
+              { ...f, key: f.key + i, label: f.label ? f.label + i : '\n' },
+              formik
+            )
           )}
         </Row>
       );
     }
     return addFields;
   };
+
   const fieldRenderer = (field, formik, parentKey) => {
     if (field.key) {
       const widget = field.widget || field.type;
@@ -136,25 +140,16 @@ const Form = ({
           );
         case 'add-field':
           return (
-            <Col>
-              <Row>
-                <nav
-                  onClick={() => {
-                    formik.setFieldValue(field.key, fieldProps.value + 1);
-                  }}
-                  role='presentation'
-                  style={{
-                    margin: '10px 0px 10px 0px',
-                    color: '#DB1E3B',
-                    cursor: 'pointer'
-                  }}
-                >
-                  {field.label}
-                  <strong> +</strong>
-                </nav>
-              </Row>
-              {renderAddFields(field.fields, fieldProps.value, formik)}
-            </Col>
+            <MultiFieldRender
+              label={field.label}
+              addAction={() => {
+                formik.setFieldValue(field.key, fieldProps.value + 1);
+              }}
+              removeAction={() => {
+                formik.setFieldValue(field.key, fieldProps.value - 1);
+              }}
+              content={renderAddFields(field.fields, fieldProps.value, formik)}
+            />
           );
         case 'uniq-array':
           return (
@@ -259,7 +254,7 @@ const Form = ({
                       {
                         ...q,
                         key: `${q.key}-${i + 1}`,
-                        label: q.label ? `${q.label}-${i + 1}` : ''
+                        label: `${q.label}-${i + 1}`
                       },
                       formik
                     )}

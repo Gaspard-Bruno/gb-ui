@@ -600,13 +600,8 @@ const stepSeven = () => {
 const stepEight = () => {
   return [
     {
-      label:
-        'Qual é a sua disponibilidade durante a semana / fim-de-semana para prestar serviços?',
-      type: 'footnote'
-    },
-    {
-      key: 'languageProfessionalActivity',
-      label: 'Tem actividade aberta ?',
+      key: 'foreign-language-knowledge',
+      label: 'Tem conhecimento ou fala fluentemente alguma língua estrangeira?',
       type: 'radio',
       options: [
         { label: 'Sim', value: 1 },
@@ -618,12 +613,12 @@ const stepEight = () => {
       type: 'number',
       value: 1,
       widget: 'add-field',
-      label: 'Adicionar língua',
+      label: 'Adicionar língua +',
       fields: [
         {
           type: 'dropdown',
           key: 'language-selected',
-          label: 'Língua',
+          label: '',
           options: [
             { value: 0, label: 'Português' },
             { value: 1, label: 'Inglês' },
@@ -634,7 +629,7 @@ const stepEight = () => {
         {
           type: 'dropdown',
           key: 'language-level',
-          label: 'Nível',
+          label: '',
           options: [
             { label: 'Básico', value: 0 },
             { label: 'Intermédio', value: 1 },
