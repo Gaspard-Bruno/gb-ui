@@ -615,18 +615,28 @@ const stepEight = () => {
     },
     {
       key: 'languages',
-      type: 'uniq-array',
-      options: [
-        { value: 'Português', label: 'Português' },
-        { value: 'Inglês', label: 'Inglês' },
-        { value: 'Francês', label: 'Francês' },
-        { value: 'Espanhol', label: 'Espanhol' }
-      ],
+      type: 'number',
+      value: 1,
+      widget: 'add-field',
+      label: 'Adicionar língua',
       children: [
         {
           type: 'dropdown',
+          key: 'language-selected',
+          label: '',
+          dependencyType: 'value-count',
+          options: [
+            { value: 0, label: 'Português' },
+            { value: 1, label: 'Inglês' },
+            { value: 2, label: 'Francês' },
+            { value: 3, label: 'Espanhol' }
+          ]
+        },
+        {
+          type: 'dropdown',
           key: 'language-level',
-          dependencyType: 'value-index',
+          label: '',
+          dependencyType: 'value-count',
           options: [
             { label: 'Básico', value: 0 },
             { label: 'Intermédio', value: 1 },

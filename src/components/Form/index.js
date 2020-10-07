@@ -121,6 +121,25 @@ const Form = ({
               {...fieldProps}
             />
           );
+        case 'add-field':
+          return (
+            <>
+              <nav
+                onClick={() => {
+                  formik.setFieldValue(field.key, field.value + 1);
+                }}
+                role='presentation'
+                style={{
+                  margin: '10px 0px 10px 0px',
+                  color: '#DB1E3B',
+                  cursor: 'pointer'
+                }}
+              >
+                {field.label}
+                <strong> +</strong>
+              </nav>
+            </>
+          );
         case 'uniq-array':
           return (
             <Select
@@ -224,7 +243,7 @@ const Form = ({
                       {
                         ...q,
                         key: `${q.key}-${i + 1}`,
-                        label: `${q.label}-${i + 1}`
+                        label: q.label ? `${q.label}-${i + 1}` : ''
                       },
                       formik
                     )}
