@@ -14,7 +14,7 @@ import RadioButton from 'Components/RadioButton';
 import Tabs from 'Components/Tabs';
 import MiniForm from 'Components/MiniForm';
 import Button from 'Components/Button';
-import { Tiny } from 'Components/Text';
+import { Body } from 'Components/Text';
 import { Col, Row } from 'Components/Layout';
 import MultiFieldRender from 'components/MultiFieldRender';
 import { FormContainer, StyledForm } from './styles';
@@ -126,7 +126,7 @@ const Form = ({
             />
           );
         case 'footnote':
-          return <Tiny>{field.label}</Tiny>;
+          return <Body alt='true'>{field.label}</Body>;
         case 'mini-dropdown':
         case 'dropdown':
           return (
@@ -193,7 +193,7 @@ const Form = ({
     }
     switch (field?.type) {
       case 'footnote':
-        return <Tiny key={field.key}>{field.label}</Tiny>;
+        return <Body alt='true'>{field.label}</Body>;
       default:
         return <></>;
     }
