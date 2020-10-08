@@ -16,7 +16,7 @@ import MiniForm from '../MiniForm';
 import Button from '../Button';
 import { Body } from '../Text';
 import { Col, Row } from '../Layout';
-import MultiFieldRender from 'components/MultiFieldRender';
+import MultiFieldRender from '../MultiFieldRender';
 import { FormContainer, StyledForm } from './styles';
 
 const Form = ({
