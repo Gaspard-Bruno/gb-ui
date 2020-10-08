@@ -1,10 +1,11 @@
-import styled from "styled-components";
-import ReactSelect from "react-select";
-import theme from "Theme";
+import styled from 'styled-components';
+import ReactSelect from 'react-select';
+import theme from 'Theme';
 
 export const SelectContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
+  width: ${props => (props.mini ? '33%' : 'auto')};
   justify-content: flex-start;
   color: ${props =>
     props.error
@@ -17,18 +18,17 @@ export const SelectContainer = styled.div`
 export const selectStyles = {
   menu: (provided, state) => ({
     ...provided,
-    width: "100%",
-    filter: "drop-shadow(0px 4px 13px rgba(193, 188, 183, 0.3))",
+    filter: 'drop-shadow(0px 4px 13px rgba(193, 188, 183, 0.3))',
     border: `1px solid ${theme.colors.mediumBeige}`,
     marginTop: 3,
     borderRadius: 2
   }),
   indicatorSeparator: () => ({
-    display: "none"
+    display: 'none'
   }),
   input: (provided, { isFocused }) => ({
     ...provided,
-    minWidth: "150px"
+    minWidth: '150px'
   }),
   control: (provided, { isFocused, isDisabled, ...state }) => ({
     ...provided,
@@ -36,23 +36,23 @@ export const selectStyles = {
     height: 48,
     backgroundColor: isDisabled ? theme.colors.lightBeige : theme.colors.white,
     color: theme.colors.grey,
-    boxShadow: "none",
+    boxShadow: 'none',
     borderColor: isFocused ? theme.colors.darkBlue : theme.colors.mediumBeige,
-    "&:hover": {
+    '&:hover': {
       borderColor: isFocused ? theme.colors.darkBlue : theme.colors.mediumBeige
     }
   }),
   option: (provided, state) => {
     const color = state.isDisabled ? theme.colors.grey : theme.colors.darkBlue;
     const backgroundColor = theme.colors.white;
-    const transition = "opacity 300ms";
+    const transition = 'opacity 300ms';
 
     return {
       ...provided,
       color,
       transition,
       backgroundColor,
-      "&:hover": {
+      '&:hover': {
         backgroundColor: theme.colors.lightBeige
       }
     };

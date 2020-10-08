@@ -1,9 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const InputContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
+  width: ${props => (props.mini ? '33%' : 'auto')};
   & > nav {
     position: absolute;
     align-self: flex-end;

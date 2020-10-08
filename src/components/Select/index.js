@@ -10,12 +10,14 @@ const Select = ({
   options = [],
   label,
   onChange,
+  isMini,
   isDisabled,
-  defaultValue,
+  defaultValue
 }) => {
+  console.log(isMini);
   // TODO Add different color to placeholder
   return (
-    <SelectContainer error={error}>
+    <SelectContainer error={error} mini={isMini}>
       {label && <Body>{label}</Body>}
       <StyledSelect
         onChange={onChange}
@@ -41,9 +43,10 @@ Select.propTypes = {
       value: PropTypes.string,
     })
   ),
+  isMini: PropTypes.bool,
   label: PropTypes.string,
   defaultValue: PropTypes.string,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func
 };
 
 export default Select;

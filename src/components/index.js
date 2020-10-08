@@ -1,15 +1,21 @@
-import Avatar from './Avatar/index';
-import Badge from './Badge/index';
-import Button from './Button/index';
-import Card from './Card/index';
-import FilterBar from './FilterBar/index';
-import FilterButton from './FilterButton/index';
-import Form from './Form/index';
-import Icon from './Icon/index';
-import IconSwitch from './IconSwitch/index';
-import Kanban from './Kanban/index';
-import KanbanColumn from './KanbanColumn/index';
-import KanbanCard from './KanbanCard/index';
+import Accordion from './Accordion';
+import Alerts from './Alerts';
+import Avatar from './Avatar';
+import Badge from './Badge';
+import Button from './Button';
+import ButtonGroup from './ButtonGroup';
+import Card from './Card';
+import CheckBoxGroup from './CheckBoxGroup';
+import Divider from './Divider';
+import DropDownMenu from './DropDownMenu';
+import FilterBar from './FilterBar';
+import FilterButton from './FilterButton';
+import Form from './Form';
+import Icon from './Icon';
+import IconSwitch from './IconSwitch';
+import Kanban from './Kanban';
+import KanbanCard from './KanbanCard';
+import KanbanColumn from './KanbanColumn';
 import {
   media,
   Page,
@@ -18,15 +24,26 @@ import {
   Col,
   BackofficePage,
   BackofficeContainer,
-  BackofficeKanbanContainer
-} from './Layout/index';
-import Logo from './Logo/index';
-import Pagination from './Pagination/index';
-import Search from './Search/index';
-import Select from './Select/index';
-import Sidebar from './Sidebar/index';
-import Table from './Table/index';
-import Tabs from './Tabs/index';
+  BackofficeKanbanContainer,
+  GridCol,
+  GridRow,
+  ReversedColumn,
+  FullPage,
+  Hero
+} from './Layout';
+import List from './List';
+import Loader from './Loader';
+import Logo from './Logo';
+import Pagination from './Pagination';
+import RadioButton from './RadioButton';
+import Search from './Search';
+import Select from './Select';
+import Sidebar from './Sidebar';
+import Table from './Table';
+import Tabs from './Tabs';
+import TextArea from './TextArea';
+import TopBar from './TopBar';
+import TrackerBox from './TrackerBox';
 import {
   Jumbo,
   Heading,
@@ -34,40 +51,51 @@ import {
   Body,
   SmallBody,
   SmallBodyFAQ,
-  Tiny,
   Link,
+  Tiny,
   ButtonText,
-  AlertText,
   AlertTitle,
+  AlertText,
   ErrorText
-} from './Text/index';
-import TextArea from './TextArea/index';
-import TopBar from './TopBar/index';
-import TrackerBox from './TrackerBox/index';
+} from './Text';
 
 export {
+  Accordion,
+  Alerts,
   Avatar,
   Badge,
   Button,
-  Code,
+  ButtonGroup,
   Card,
+  CheckBoxGroup,
+  Divider,
+  DropDownMenu,
   FilterBar,
   FilterButton,
   Form,
   Icon,
   IconSwitch,
   Kanban,
-  KanbanColumn,
   KanbanCard,
+  KanbanColumn,
   media,
   Page,
+  Code,
   Row,
   Col,
   BackofficePage,
   BackofficeContainer,
   BackofficeKanbanContainer,
+  GridCol,
+  GridRow,
+  ReversedColumn,
+  FullPage,
+  Hero,
+  List,
+  Loader,
   Logo,
   Pagination,
+  RadioButton,
   Search,
   Select,
   Sidebar,
@@ -82,10 +110,10 @@ export {
   Body,
   SmallBody,
   SmallBodyFAQ,
-  Tiny,
   Link,
+  Tiny,
   ButtonText,
-  AlertText,
   AlertTitle,
+  AlertText,
   ErrorText
 };

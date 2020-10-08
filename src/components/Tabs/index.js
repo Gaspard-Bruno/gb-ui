@@ -4,8 +4,16 @@ import PropTypes from 'prop-types';
 import { ButtonText } from '../Text';
 import { TabContainer, TabButton, TabGroup } from './style';
 
-const Tabs = ({ justify, tabs, initialTabIndex }) => {
+const Tabs = ({ justify, tabs, initialTabIndex, action }) => {
   const [selectedTab, setSelectedTab] = useState(initialTabIndex);
+
+  const handleTabChange = tabIndex => {
+    if (action) {
+      action(tabIndex);
+    }
+    setSelectedTab(tabIndex);
+  };
+
   return (
     <TabContainer>
       <TabGroup justify={justify}>
@@ -13,7 +21,8 @@ const Tabs = ({ justify, tabs, initialTabIndex }) => {
           ? tabs.map((tab, i) => (
               <TabButton
                 isSelected={i === selectedTab}
-                onClick={() => setSelectedTab(i)}
+                type='button'
+                onClick={() => handleTabChange(i)}
                 key={tabs + tab.name + i}
               >
                 <ButtonText>{tab.name}</ButtonText>
@@ -21,7 +30,7 @@ const Tabs = ({ justify, tabs, initialTabIndex }) => {
             ))
           : ''}
       </TabGroup>
-      {tabs && tabs[selectedTab] && tabs[selectedTab].children()}
+      {tabs && tabs[selectedTab] && tabs[selectedTab]?.children?.()}
     </TabContainer>
   );
 };
@@ -32,13 +41,13 @@ Tabs.propTypes = {
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
-      children: PropTypes.function,
+      children: PropTypes.function
     })
-  ),
+  )
 };
 
 Tabs.defaultProps = {
-  type: 'primary',
+  type: 'primary'
 };
 
 export default Tabs;

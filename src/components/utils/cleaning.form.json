@@ -1,0 +1,313 @@
+{
+  "id": 5,
+  "type": "form",
+  "questions": [
+    { "label": "Morada do Serviço", "type": "footnote" },
+    {
+      "key": "country",
+      "label": "País",
+      "type": "dropdown",
+      "options": [{ "value": 1, "label": "Portugal" }]
+    },
+    {
+      "key": "district",
+      "label": "Distrito",
+      "type": "dropdown",
+      "options": [{ "value": 1, "label": "Lisboa" }]
+    },
+    { "key": "address", "label": "Morada", "type": "text" },
+    { "key": "postal-code", "label": "Código Postal", "type": "text" },
+    { "key": "location", "label": "Localidade", "type": "text" },
+    { "label": "Serviço", "type": "footnote" },
+    {
+      "key": "service-type",
+      "type": "radio",
+      "options": [
+        { "value": 0, "label": "Standard" },
+        { "value": 1, "label": "Premium" }
+      ]
+    },
+    { "type": "footnote", "label": "Tipo de oferta" },
+    {
+      "key": "offer-type",
+      "label": "",
+      "type": "radio",
+      "children": [
+        {
+          "key": "start-date",
+          "type": "date",
+          "dependencyType": "value",
+          "dependencyValue": "single",
+          "label": "Data de Início"
+        },
+        {
+          "key": "daily-repetition",
+          "type": "dropdown",
+          "dependencyType": "value",
+          "dependencyValue": "single",
+          "label": "Repetição",
+          "options": [
+            { "label": "Diariamente", "value": 0 },
+            { "label": "Semanalmente", "value": 1 }
+          ]
+        },
+        {
+          "key": "daily-frequency",
+          "type": "dropdown",
+          "dependencyType": "value",
+          "dependencyValue": "single",
+          "label": "Frequência",
+          "options": [
+            { "label": "1 Dia", "value": 0 },
+            { "label": "2 Dias", "value": 1 },
+            { "label": "3 Dias", "value": 2 },
+            { "label": "4 Dias", "value": 3 },
+            { "label": "5 Dias", "value": 4 },
+            { "label": "6 Dias", "value": 5 },
+            { "label": "7 Dias", "value": 6 }
+          ]
+        },
+        {
+          "key": "start-date",
+          "type": "date",
+          "dependencyType": "value",
+          "dependencyValue": "hour-package",
+          "label": "Data de Início"
+        },
+        {
+          "key": "daily-repetition",
+          "type": "dropdown",
+          "dependencyType": "value",
+          "dependencyValue": "hour-package",
+          "label": "Repetição",
+          "options": [
+            { "label": "Diariamente", "value": 0 },
+            { "label": "Semanalmente", "value": 1 }
+          ]
+        },
+        {
+          "key": "daily-frequency",
+          "type": "dropdown",
+          "dependencyType": "value",
+          "dependencyValue": "hour-package",
+          "label": "Frequência",
+          "options": [
+            { "label": "1 Dia", "value": 0 },
+            { "label": "2 Dias", "value": 1 },
+            { "label": "3 Dias", "value": 2 },
+            { "label": "4 Dias", "value": 3 },
+            { "label": "5 Dias", "value": 4 },
+            { "label": "6 Dias", "value": 5 },
+            { "label": "7 Dias", "value": 6 }
+          ]
+        },
+        {
+          "key": "number-of-hours",
+          "type": "dropdown",
+          "options": [{ "label": "10", "value": 10 }],
+          "dependencyType": "value",
+          "dependencyValue": "hour-package",
+          "label": "Número de horas"
+        },
+        {
+          "key": "start-hour",
+          "type": "dropdown",
+          "options": [
+            { "label": "09:00", "value": "09:00" },
+            { "label": "09:30", "value": "09:30" },
+            { "label": "10:00", "value": "10:00" },
+            { "label": "10:30", "value": "10:30" },
+            { "label": "11:00", "value": "11:00" },
+            { "label": "11:30", "value": "11:30" },
+            { "label": "12:00", "value": "12:00" },
+            { "label": "12:30", "value": "12:30" },
+            { "label": "13:00", "value": "13:00" },
+            { "label": "13:30", "value": "13:30" },
+            { "label": "14:00", "value": "14:00" },
+            { "label": "14:30", "value": "14:30" },
+            { "label": "15:00", "value": "15:00" },
+            { "label": "15:30", "value": "15:30" },
+            { "label": "16:00", "value": "16:00" },
+            { "label": "16:30", "value": "16:30" },
+            { "label": "17:00", "value": "17:00" },
+            { "label": "17:30", "value": "17:30" },
+            { "label": "18:00", "value": "18:00" }
+          ],
+          "label": "Preferência Horaria",
+          "dependencyType": "value",
+          "dependencyValue": "hour-package"
+        },
+        {
+          "key": "ending-hour",
+          "label": "label -> para remover",
+          "dependencyType": "value",
+          "dependencyValue": "hour-package",
+          "type": "dropdown",
+          "options": [
+            { "label": "09:00", "value": "09:00" },
+            { "label": "09:30", "value": "09:30" },
+            { "label": "10:00", "value": "10:00" },
+            { "label": "10:30", "value": "10:30" },
+            { "label": "11:00", "value": "11:00" },
+            { "label": "11:30", "value": "11:30" },
+            { "label": "12:00", "value": "12:00" },
+            { "label": "12:30", "value": "12:30" },
+            { "label": "13:00", "value": "13:00" },
+            { "label": "13:30", "value": "13:30" },
+            { "label": "14:00", "value": "14:00" },
+            { "label": "14:30", "value": "14:30" },
+            { "label": "15:00", "value": "15:00" },
+            { "label": "15:30", "value": "15:30" },
+            { "label": "16:00", "value": "16:00" },
+            { "label": "16:30", "value": "16:30" },
+            { "label": "17:00", "value": "17:00" },
+            { "label": "17:30", "value": "17:30" },
+            { "label": "18:00", "value": "18:00" }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "single",
+          "label": "Simples",
+          "value": "single"
+        },
+        {
+          "key": "hour-package",
+          "label": "Pacote de Horas",
+          "value": "hour-package"
+        }
+      ]
+    },
+    {
+      "key": "place-type",
+      "label": "Tipo de Local",
+      "type": "dropdown",
+      "options": [
+        { "label": "Escritório", "value": 0 },
+        { "label": "Casa", "value": 1 },
+        { "label": "Outro", "value": 2 }
+      ]
+    },
+    { "label": "Notas", "type": "footnote" },
+    { "key": "notes", "label": "", "displayText": false, "type": "text-area" },
+    {
+      "key": "login-buttons", "groupBy": 1,
+      "widget": "login",
+      "type": "tabs",
+      "value": "guest",
+      "children": [
+        {
+          "name": "guest.firstName",
+          "key": "first-name",
+          "type": "text",
+          "label": "Nome",
+          "dependencyType": "value",
+          "dependencyValue": "guest"
+        },
+        {
+          "name": "guest.lastName",
+          "key": "last-name",
+          "type": "text",
+          "label": "Apelido",
+          "dependencyType": "value",
+          "dependencyValue": "guest"
+        },
+        {
+          "name": "guest.email",
+          "type": "email",
+          "key": "email",
+          "label": "Endereço de e-mail",
+          "dependencyType": "value",
+          "dependencyValue": "guest"
+        },
+        {
+          "name": "guest.telephone",
+          "key": "telephone",
+          "type": "number",
+          "label": "Número de Telemóvel",
+          "dependencyType": "value",
+          "dependencyValue": "guest"
+        },
+        {
+          "name": "login.email",
+          "key": "email",
+          "type": "email",
+          "label": "Endereço de e-mail",
+          "dependencyType": "value",
+          "dependencyValue": "login"
+        },
+        {
+          "name": "login.telephone",
+          "key": "telephone",
+          "type": "number",
+          "label": "Número de Telemóvel",
+          "dependencyType": "value",
+          "dependencyValue": "login"
+        },
+        {
+          "name": "login.password",
+          "key": "password",
+          "type": "password",
+          "label": "Senha",
+          "dependencyType": "value",
+          "dependencyValue": "login"
+        },
+        {
+          "name": "signup.email",
+          "type": "email",
+          "key": "email",
+          "label": "Endereço de e-mail",
+          "dependencyType": "value",
+          "dependencyValue": "signup"
+        },
+        {
+          "name": "signup.telephone",
+          "type": "number",
+          "key": "telephone",
+          "label": "Número de Telemóvel",
+          "dependencyType": "value",
+          "dependencyValue": "signup"
+        },
+        {
+          "name": "signup.password",
+          "type": "password",
+          "label": "Senha",
+          "key": "password",
+          "dependencyType": "value",
+          "dependencyValue": "signup"
+        },
+        {
+          "name": "signup.first-name",
+          "key": "first-name",
+          "type": "text",
+          "label": "Nome",
+          "dependencyType": "value",
+          "dependencyValue": "signup"
+        },
+        {
+          "name": "signup.last-name",
+          "key": "last-name",
+          "type": "text",
+          "label": "Apelido",
+          "dependencyType": "value",
+          "dependencyValue": "signup"
+        }
+      ],
+      "options": [
+        {
+          "value": "guest",
+          "label": "Convidado"
+        },
+        {
+          "value": "login",
+          "label": "Iniciar Sessão"
+        },
+        {
+          "value": "signup",
+          "label": "Criar Conta"
+        }
+      ]
+    }
+  ]
+}

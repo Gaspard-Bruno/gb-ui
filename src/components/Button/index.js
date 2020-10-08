@@ -14,7 +14,7 @@ const Button = ({
   action,
   type,
   isFullWidth,
-  children,
+  children
 }) => {
   if (text) {
     return (
@@ -61,12 +61,13 @@ Button.propTypes = {
     'terceary',
     'transparent',
     'borded',
+    'iconHolder'
   ]),
-  icon: PropTypes.string,
+  icon: PropTypes.string
 };
 
 Button.defaultProps = {
-  type: 'primary',
+  type: 'primary'
 };
 
 export default Button;
