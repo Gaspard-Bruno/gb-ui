@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import t from '../../utils/translation';
+import t from '../utils/translation';
 
 import { SmallBody } from '../Text';
 import TrackerBox from '../TrackerBox';
@@ -79,7 +79,7 @@ const Pagination = ({ totalPages, currentPage, action, translate }) => {
 Pagination.propTypes = {
   totalPages: PropTypes.string,
   currentPage: PropTypes.string,
-  action: PropTypes.func,
+  action: PropTypes.func
 };
 
 export default Pagination;

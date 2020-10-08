@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 
-import t from '../../utils/translation';
+import t from '../utils/translation';
 
 import Badge from '../Badge';
 import Icon from '../Icon';
@@ -15,7 +15,7 @@ import StyledKanbanCard, {
   IconContainer,
   AdminContainer,
   ServiceDetails,
-  Recurrent,
+  Recurrent
 } from './style';
 
 const KanbanCard = ({ cardKey, index, cardData, cardType, translate }) => {
@@ -110,8 +110,8 @@ KanbanCard.propTypes = {
     admin: PropTypes.object,
     client: PropTypes.object,
     provider: PropTypes.object,
-    service: PropTypes.object,
-  }),
+    service: PropTypes.object
+  })
 };
 
 export default KanbanCard;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import t from '../../utils/translation';
+import t from '../utils/translation';
 
 import { SmallBody } from '../Text';
 import Icon from '../Icon';
@@ -13,7 +13,7 @@ const Badge = ({
   isChip,
   onClick,
   text,
-  translate,
+  translate
 }) => {
   return (
     <StyledBadge onClick={onClick} status={category || status} chip={isChip}>
@@ -29,7 +29,7 @@ Badge.propTypes = {
   status: PropTypes.string,
   category: PropTypes.string,
   isChip: PropTypes.bool,
-  text: PropTypes.string,
+  text: PropTypes.string
 };
 
 export default Badge;
