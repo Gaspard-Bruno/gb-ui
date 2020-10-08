@@ -1,7 +1,7 @@
 import babel from '@rollup/plugin-babel';
-import external from 'rollup-plugin-peer-deps-external';
 import del from 'rollup-plugin-delete';
 import commonjs from 'rollup-plugin-commonjs';
+import image from '@rollup/plugin-image';
 import externals from 'rollup-plugin-node-externals';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import pkg from './package.json';
@@ -13,7 +13,7 @@ export default {
     { file: pkg.module, format: 'esm' }
   ],
   plugins: [
-    external(),
+    image(),
     babel({
       exclude: ['node_modules/**', 'src/router.js', 'src/App.js'] // Default: undefined
     }),
@@ -24,7 +24,7 @@ export default {
     externals({
       packagePath: './package.json',
       builtins: true,
-      deps: false,
+      deps: true,
       peerDeps: true,
       optDeps: true,
       devDeps: true,
@@ -33,24 +33,41 @@ export default {
     commonjs({
       namedExports: {
         'node_modules/react/index.js': [
+          'Children',
           'cloneElement',
-          'createContext',
           'Component',
-          'useContext',
-          'useState',
-          'useRef',
-          'useEffect',
-          'useMemo',
+          'createContext',
+          'createElement',
+          'forwardRef',
           'useCallback',
-          'createElement'
+          'useContext',
+          'useDebugValue',
+          'useEffect',
+          'useLayoutEffect',
+          'useMemo',
+          'useReducer',
+          'useRef',
+          'useImperativeHandle',
+          'PureComponent',
+          'useState'
         ],
-        'node_modules/react-dom/index.js': ['render', 'hydrate'],
+        'node_modules/react-dom/index.js': [
+          'render',
+          'hydrate',
+          'unstable_batchedUpdates',
+          'findDOMNode',
+          'createPortal'
+        ],
         'node_modules/react-is/index.js': [
           'isElement',
           'isValidElementType',
           'typeOf',
           'isContextConsumer',
           'ForwardRef'
+        ],
+        'node_modules/formik/node_modules/scheduler/index.js': [
+          'unstable_runWithPriority',
+          'unstable_LowPriority'
         ]
       }
     })
