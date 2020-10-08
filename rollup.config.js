@@ -2,6 +2,7 @@ import babel from '@rollup/plugin-babel';
 import external from 'rollup-plugin-peer-deps-external';
 import del from 'rollup-plugin-delete';
 import commonjs from 'rollup-plugin-commonjs';
+import externals from 'rollup-plugin-node-externals';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import pkg from './package.json';
 
@@ -14,11 +15,20 @@ export default {
   plugins: [
     external(),
     babel({
-      exclude: 'node_modules/**' // Default: undefined
+      exclude: ['node_modules/**', 'src/router.js', 'src/App.js'] // Default: undefined
     }),
     del({ targets: ['dist/*'] }),
     nodeResolve({
       browser: true
+    }),
+    externals({
+      packagePath: './package.json',
+      builtins: true,
+      deps: false,
+      peerDeps: true,
+      optDeps: true,
+      devDeps: true,
+      except: []
     }),
     commonjs({
       namedExports: {
@@ -27,6 +37,11 @@ export default {
           'createContext',
           'Component',
           'useContext',
+          'useState',
+          'useRef',
+          'useEffect',
+          'useMemo',
+          'useCallback',
           'createElement'
         ],
         'node_modules/react-dom/index.js': ['render', 'hydrate'],
