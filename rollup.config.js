@@ -21,12 +21,12 @@ export default {
       browser: true
     }),
     commonjs({
-      include: 'node_modules/**', // Default: undefined
       namedExports: {
         'node_modules/react/index.js': [
           'cloneElement',
           'createContext',
           'Component',
+          'useContext',
           'createElement'
         ],
         'node_modules/react-dom/index.js': ['render', 'hydrate'],

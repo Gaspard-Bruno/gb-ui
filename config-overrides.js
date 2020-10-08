@@ -1,6 +1,12 @@
 /* eslint-disable */
 const { override, addWebpackAlias, useEslintRc } = require('customize-cra');
 const path = require('path');
+const multipleEntry = require('react-app-rewire-multiple-entry')([
+  {
+    entry: 'src/App.js',
+    outPath: '/index.html'
+  }
+]);
 
 module.exports = override(
   addWebpackAlias({
@@ -9,5 +15,6 @@ module.exports = override(
     Config: path.resolve(__dirname, './src/config.js'),
     Utils: path.resolve(__dirname, './src/utils'),
     Theme: path.resolve(__dirname, './src/theme.js'),
-  })
+  }),
+  multipleEntry.addMultiEntry
 );
