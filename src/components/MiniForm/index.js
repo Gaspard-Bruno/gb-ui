@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from 'Components/Button';
-import { Heading } from 'Components/Text';
-import { Col, Row } from 'Components/Layout';
+import Button from '../Button';
+import { Heading } from '../Text';
+import { Col, Row } from '../Layout';
 
 import { StyledForm } from './styles';
 

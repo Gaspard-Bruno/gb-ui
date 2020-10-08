@@ -2,7 +2,7 @@ import React from 'react';
 import IcoMoon from 'icomoon-react';
 import PropTypes from 'prop-types';
 
-import { AlertText, AlertTitle } from 'Components/Text';
+import { AlertText, AlertTitle } from '../Text';
 import {
   StyledAlert,
   AlertContainer,

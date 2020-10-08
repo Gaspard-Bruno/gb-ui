@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 
-import Icon from 'Components/Icon';
+import Icon from '../Icon';
 
 import StyledSwitch, { Left, Right } from './style';
 
@@ -34,12 +34,12 @@ IconSwitch.propTypes = {
     leftIcon: PropTypes.string,
     rightIcon: PropTypes.string
   };
-  
+
 IconSwitch.defaultProps = {
     leftIcon: "kanban",
     rightIcon: "List"
 };
-  
+
 
 export default IconSwitch
 

@@ -5,7 +5,7 @@ import {
   CheckboxGroudContainer
 } from './styles';
 import PropTypes from 'prop-types';
-import { Body, ErrorText } from 'Components/Text';
+import { Body, ErrorText } from '../Text';
 
 const CheckBoxGroup = ({ name, label, list, error, action }) => {
   const checkedItems = list;

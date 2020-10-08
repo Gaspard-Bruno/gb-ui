@@ -1,6 +1,6 @@
 import React from 'react';
 import { DropDownContainer, ListContainer } from './style';
-import Button from 'Components/Button';
+import Button from '../Button';
 import PropTypes from 'prop-types';
 
 const DropDownMenu = ({ menuOptions }) => {

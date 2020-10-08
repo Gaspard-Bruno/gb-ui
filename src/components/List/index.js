@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Body } from 'Components/Text';
+import { Body } from '../Text';
 import PropTypes from 'prop-types';
-import { Col } from 'Components/Layout';
+import { Col } from '../Layout';
 import { ListContainer, ListItens, ListWrapper, StyledIcon } from './styles';
 
 const List = ({

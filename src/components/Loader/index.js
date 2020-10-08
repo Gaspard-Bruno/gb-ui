@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page } from 'Components/Layout';
+import { Page } from '../Layout';
 
 import animations from './animations/animation_500.gif';
 import { StyledLoadingContainer, StyledLoader } from './styles';

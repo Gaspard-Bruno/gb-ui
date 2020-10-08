@@ -7,9 +7,9 @@ import {
   FocusedRadio
 } from "./styles";
 import PropTypes from "prop-types";
-import Select from "Components/Select";
-import { Body, ErrorText } from "Components/Text";
-import TextInput from "Components/TextInput";
+import Select from "../Select";
+import { Body, ErrorText } from "../Text";
+import TextInput from "../TextInput";
 
 const RadioButton = ({
   align,

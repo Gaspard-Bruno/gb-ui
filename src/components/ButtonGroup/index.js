@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { Body } from 'Components/Text';
+import { Body } from '../Text';
 
 import {
   ButtonGroupContainer,

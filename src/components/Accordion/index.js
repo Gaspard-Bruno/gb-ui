@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { Heading } from 'Components/Text';
-import Button from 'Components/Button';
+import { Heading } from '../Text';
+import Button from '../Button';
 import { AccordionContainer, AccordionTitle, ContentContainer } from './style';
 
 const Accordion = ({ title, isOpen, content }) => {
