@@ -1,6 +1,7 @@
 import iconSet from 'Assets/fonts/icons/icons.json';
 import theme from 'Theme';
-import MultiFieldRender from 'components/MultiFieldRender';
+import { Col as Col$1, Row as Row$1 } from 'components/Layout';
+import Button$3 from 'components/Button';
 import { ReactComponent as ReactComponent$1 } from 'Assets/svg/logo-black.svg';
 import { ReactComponent as ReactComponent$2 } from 'Assets/svg/logo-white.svg';
 import { ReactComponent } from 'Assets/svg/logo-colorful.svg';
@@ -48538,6 +48539,35 @@ MiniForm.propTypes = {
   content: propTypes.func
 };
 
+function _templateObject$n() {
+  var data = _taggedTemplateLiteral(["\n  margin: '10px 0px 10px 0px';\n  color: ", ";\n  cursor: 'pointer';\n"]);
+
+  _templateObject$n = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var StyledAddItem = He.nav(_templateObject$n(), function (props) {
+  return props.theme.colors.brand.red;
+});
+
+var MultiFieldRender = function MultiFieldRender(_ref) {
+  var label = _ref.label,
+      content = _ref.content,
+      addAction = _ref.addAction,
+      removeAction = _ref.removeAction;
+  return /*#__PURE__*/react.createElement(Col$1, null, /*#__PURE__*/react.createElement(Row$1, null, /*#__PURE__*/react.createElement(StyledAddItem, {
+    onClick: addAction,
+    role: "presentation"
+  }, label)), content, /*#__PURE__*/react.createElement(Button$3, {
+    type: "button",
+    icon: "trash",
+    btnType: "iconHolder",
+    action: removeAction
+  }));
+};
+
 function _templateObject2$i() {
   var data = _taggedTemplateLiteral(["\n  flex: 1;\n  display: flex;\n  flex-flow: column;\n  > h1,\n  h2,\n  h3,\n  h4,\n  h5,\n  h6 {\n    text-align: left;\n  }\n  > div {\n    & > textarea {\n      min-height: ", "px;\n    }\n    & > p {\n      text-align: left;\n    }\n  }\n"]);
 
@@ -48548,10 +48578,10 @@ function _templateObject2$i() {
   return data;
 }
 
-function _templateObject$n() {
+function _templateObject$o() {
   var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border-radius: 10px;\n  display: flex;\n  flex-direction: column;\n  margin: 0 auto;\n  max-width: 616px;\n  width: 100%;\n  button {\n    align-self: center;\n    margin: ", "px 0;\n  }\n"]);
 
-  _templateObject$n = function _templateObject() {
+  _templateObject$o = function _templateObject() {
     return data;
   };
 
@@ -48574,7 +48604,7 @@ var getSelectedBackground$3 = function getSelectedBackground(props) {
   }
 };
 
-var FormContainer = He.div(_templateObject$n(), function (props) {
+var FormContainer = He.div(_templateObject$o(), function (props) {
   return getSelectedBackground$3(props);
 }, function (props) {
   return props.theme.margin;
@@ -59240,16 +59270,16 @@ function _templateObject2$j() {
   return data;
 }
 
-function _templateObject$o() {
+function _templateObject$p() {
   var data = _taggedTemplateLiteral(["\n  width: 260px;\n  border: 1px solid ", ";\n  box-sizing: border-box;\n  border-radius: 4px;\n  padding: 16px 8px 8px;\n  background-color: white;\n  margin-bottom: ", "px;\n"]);
 
-  _templateObject$o = function _templateObject() {
+  _templateObject$p = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var KanbanCard = He.div(_templateObject$o(), function (props) {
+var KanbanCard = He.div(_templateObject$p(), function (props) {
   return props.theme.colors.mediumBeige;
 }, function (props) {
   return props.theme.margin;
@@ -59343,16 +59373,16 @@ function _templateObject2$k() {
   return data;
 }
 
-function _templateObject$p() {
+function _templateObject$q() {
   var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border-radius: 4px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 0px 16px 16px 16px;\n  min-width: 260px;\n\n  .items > * {\n    margin-bottom: 16px;\n  }\n"]);
 
-  _templateObject$p = function _templateObject() {
+  _templateObject$q = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var KanbanColumn = He.div(_templateObject$p(), function (props) {
+var KanbanColumn = He.div(_templateObject$q(), function (props) {
   return props.theme.colors.lightestBeige;
 });
 var ColumnCardsContainer = He.div(_templateObject2$k(), function (props) {
@@ -59521,16 +59551,16 @@ function _templateObject2$l() {
   return data;
 }
 
-function _templateObject$q() {
+function _templateObject$r() {
   var data = _taggedTemplateLiteral(["\n  white-space: pre-line;\n  padding: ", "px;\n  border: ", ";\n  box-sizing: ", ";\n  border-radius: ", ";\n"]);
 
-  _templateObject$q = function _templateObject() {
+  _templateObject$r = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var ListWrapper = He.div(_templateObject$q(), function (props) {
+var ListWrapper = He.div(_templateObject$r(), function (props) {
   return props.padding ? props.padding : 0;
 }, function (props) {
   return props.isBorded ? "1px solid ".concat(props.theme.colors.mediumBeige) : 'none';
@@ -59618,16 +59648,16 @@ function _templateObject2$m() {
   return data;
 }
 
-function _templateObject$r() {
+function _templateObject$s() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: center;\n  min-height: 555px;\n  ", "\n"]);
 
-  _templateObject$r = function _templateObject() {
+  _templateObject$s = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledLoadingContainer = He.div(_templateObject$r(), media.mobile("\n    min-height: 10px;\n  "));
+var StyledLoadingContainer = He.div(_templateObject$s(), media.mobile("\n    min-height: 10px;\n  "));
 var StyledLoader = He.img(_templateObject2$m(), media.mobile("\n    width: 100%;\n  "));
 
 var Loading = function Loading() {
@@ -59637,16 +59667,16 @@ var Loading = function Loading() {
   }));
 };
 
-function _templateObject$s() {
+function _templateObject$t() {
   var data = _taggedTemplateLiteral(["\n  min-width: ", "px;\n  ", "\n  svg {\n    width: ", "px;\n    vertical-align: middle;\n    z-index: 1000;\n  }\n"]);
 
-  _templateObject$s = function _templateObject() {
+  _templateObject$t = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var Logo = He.div(_templateObject$s(), function (props) {
+var Logo = He.div(_templateObject$t(), function (props) {
   return props.size || 120;
 }, function (props) {
   return props.center && "\n      display: flex;\n      flex-flow: row nowrap;\n      justify-content: center;\n  ";
@@ -59686,10 +59716,10 @@ Logo$1.defaultProps = {
   color: 'colorful'
 };
 
-function _templateObject$t() {
+function _templateObject$u() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  margin-right: 8px;\n  height: 24px;\n  min-width: 23px;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  box-sizing: border-box;\n  border-radius: 2px;\n  font-size: 12px;\n  ", ";\n\n  &:hover {\n    cursor: pointer;\n  }\n\n  h3 {\n    margin: 0px;\n  }\n\n  svg {\n    height: 24px;\n    width: 24px;\n  }\n"]);
 
-  _templateObject$t = function _templateObject() {
+  _templateObject$u = function _templateObject() {
     return data;
   };
 
@@ -59704,7 +59734,7 @@ var getActiveStyles = function getActiveStyles(theme, isActive, type) {
   }
 };
 
-var StyledTracker = He.div(_templateObject$t(), function (props) {
+var StyledTracker = He.div(_templateObject$u(), function (props) {
   return getActiveStyles(props.theme, props.isActive, props.type);
 });
 
@@ -59783,16 +59813,16 @@ function _templateObject2$n() {
   return data;
 }
 
-function _templateObject$u() {
+function _templateObject$v() {
   var data = _taggedTemplateLiteral(["\n  margin: 24px 0px 32px;\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n"]);
 
-  _templateObject$u = function _templateObject() {
+  _templateObject$v = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledPagination = He.div(_templateObject$u());
+var StyledPagination = He.div(_templateObject$v());
 var Left$1 = He.div(_templateObject2$n(), function (props) {
   return props.theme.colors.grey;
 });
@@ -59899,16 +59929,16 @@ function _templateObject2$o() {
   return data;
 }
 
-function _templateObject$v() {
+function _templateObject$w() {
   var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  color: white;\n  transition: width 0.5s linear;\n  width: ", ";\n  height: 100vh;\n  svg {\n    margin-top: ", "px;\n  }\n  > div {\n    transition: all 0.5s linear;\n\n    ", "\n  }\n"]);
 
-  _templateObject$v = function _templateObject() {
+  _templateObject$w = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledSidebar = He.div(_templateObject$v(), function (props) {
+var StyledSidebar = He.div(_templateObject$w(), function (props) {
   return props.theme.colors.brand.orange;
 }, function (props) {
   return props.open ? '240px' : '45px';
@@ -60027,16 +60057,16 @@ Sidebar.defaultProps = {
   sidebarSections: []
 };
 
-function _templateObject$w() {
+function _templateObject$x() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  font-weight: normal;\n  border-bottom: 1px solid ", ";\n\n  .service {\n    font-weight: 500;\n    font-size: 16px;\n    line-height: 24px;\n    color: ", ";\n  }\n"]);
 
-  _templateObject$w = function _templateObject() {
+  _templateObject$x = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledTableRow = He.div(_templateObject$w(), function (props) {
+var StyledTableRow = He.div(_templateObject$x(), function (props) {
   return props.theme.colors.mediumBeige;
 }, function (props) {
   return props.theme.colors.brand.orange;
@@ -60147,16 +60177,16 @@ function _templateObject2$p() {
   return data;
 }
 
-function _templateObject$x() {
+function _templateObject$y() {
   var data = _taggedTemplateLiteral(["\n  font-size: 14px;\n  line-height: 16px;\n  color: ", ";\n"]);
 
-  _templateObject$x = function _templateObject() {
+  _templateObject$y = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledTable = He.div(_templateObject$x(), function (props) {
+var StyledTable = He.div(_templateObject$y(), function (props) {
   return props.theme.colors.darkBlue;
 });
 var Header$2 = He.div(_templateObject2$p(), function (props) {
@@ -60284,16 +60314,16 @@ function _templateObject2$q() {
   return data;
 }
 
-function _templateObject$y() {
+function _templateObject$z() {
   var data = _taggedTemplateLiteral(["\n    height: 80px;\n    display: flex;\n    justify-content: space-between;\n    margin-bottom: 24px;\n    padding-bottom: 10px;\n    -webkit-box-shadow: 0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n    -moz-box-shadow:    0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n    box-shadow:         0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n"]);
 
-  _templateObject$y = function _templateObject() {
+  _templateObject$z = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledTopBar = He.div(_templateObject$y());
+var StyledTopBar = He.div(_templateObject$z());
 var LeftSection = He.div(_templateObject2$q(), function (props) {
   return props.theme.colors.grey;
 });
