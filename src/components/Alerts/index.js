@@ -35,14 +35,14 @@ const Alert = ({
   AlertIcon.defaultProps = {
     size: 20,
     color: alertType.includes('default')
-      ? theme.colors.brand.red
-      : theme.colors.white
+      ? theme?.colors.brand.red
+      : theme?.colors.white
   };
 
   AlertTitle.defaultProps = {
     color: alertType.includes('default')
-      ? theme.colors.brand.red
-      : theme.colors.white
+      ? theme?.colors.brand.red
+      : theme?.colors.white
   };
 
   if (closeCross && text && title) {

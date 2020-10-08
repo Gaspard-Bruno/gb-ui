@@ -10,7 +10,7 @@ const StyledPagination = styled.div`
 
 export const Left = styled.div`
   p {
-    color: ${props => props.theme.colors.grey};
+    color: ${props => props.theme?.colors.grey};
   }
 `;
 

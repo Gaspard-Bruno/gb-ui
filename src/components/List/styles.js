@@ -6,7 +6,7 @@ export const ListWrapper = styled.div`
   white-space: pre-line;
   padding: ${props => (props.padding ? props.padding : 0)}px;
   border: ${props =>
-    props.isBorded ? `1px solid ${props.theme.colors.mediumBeige}` : 'none'};
+    props.isBorded ? `1px solid ${props.theme?.colors.mediumBeige}` : 'none'};
   box-sizing: ${props => (props.isBorded ? 'border-box' : 'none')};
   border-radius: ${props => (props.isBorded ? '10px' : 'none')};
 `;
@@ -46,14 +46,14 @@ const getIconStyle = (style, isIndexed) => {
       padding: 2px;
       font-weight: bold;
       font-size: 16px;
-      margin-right: ${theme.margin}px;
+      margin-right: ${theme?.margin}px;
       color: white;
-      background: ${theme.colors.brand.orange};
+      background: ${theme?.colors.brand.orange};
       border-radius: 2px;
       text-align: center;«
     }
     p {
-      color: ${isIndexed && theme.colors.brand.orange};
+      color: ${isIndexed && theme?.colors.brand.orange};
     }
     `,
     completed: `
@@ -63,14 +63,14 @@ const getIconStyle = (style, isIndexed) => {
       padding: 2px;
       font-weight: bold;
       font-size: 16px;
-      margin-right: ${theme.margin}px;
+      margin-right: ${theme?.margin}px;
       color: white;
-      background: ${theme.colors.darkBlue};
+      background: ${theme?.colors.darkBlue};
       border-radius: 2px;
       text-align: center;
     }
     p {
-      color: ${theme.colors.darkBlue}
+      color: ${theme?.colors.darkBlue}
     }
     `,
     grey: `
@@ -80,14 +80,14 @@ const getIconStyle = (style, isIndexed) => {
       padding: 2px;
       font-weight: bold;
       font-size: 16px;
-      margin-right: ${theme.margin}px;
+      margin-right: ${theme?.margin}px;
       color: white;
-      background: ${theme.colors.grey};
+      background: ${theme?.colors.grey};
       border-radius: 2px;
       text-align: center;«
     }
     p {
-      color: ${theme.colors.grey}
+      color: ${theme?.colors.grey}
     }`
   };
   return customStyles[style];
@@ -101,7 +101,7 @@ const regularStyle = `
       font-size: 16px;
       align-items: baseline;
       margin-right: 1.5rem;
-      background: ${theme.colors.brand.orange};
+      background: ${theme?.colors.brand.orange};
       border-radius: 2px;
   }
   `;

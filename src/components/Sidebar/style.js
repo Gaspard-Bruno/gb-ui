@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { Link, Tiny, ButtonText } from '../Text';
 
 const StyledSidebar = styled.div`
-  background-color: ${(props) => props.theme.colors.brand.orange};
+  background-color: ${(props) => props.theme?.colors.brand.orange};
   color: white;
   transition: width 0.5s linear;
   width: ${(props) => (props.open ? '240px' : '45px')};
   height: 100vh;
   svg {
-    margin-top: ${(props) => props.theme.margin}px;
+    margin-top: ${(props) => props.theme?.margin}px;
   }
   > div {
     transition: all 0.5s linear;
@@ -27,19 +27,19 @@ const StyledSidebar = styled.div`
 
 export const NavHeader = styled(Tiny)`
   text-transform: uppercase;
-  margin-top: ${(props) => props.theme.margin * 2};
-  color: ${(props) => props.theme.colors.white};
+  margin-top: ${(props) => props.theme?.margin * 2};
+  color: ${(props) => props.theme?.colors.white};
 `;
 
 export const NavSection = styled.div`
-  margin-bottom: ${(props) => props.theme.margin * 2}px;
+  margin-bottom: ${(props) => props.theme?.margin * 2}px;
   button {
     transition: all 0.5s;
     svg {
       transition: all 0.5s;
       transform: ${(props) => (props.open ? 'rotate(180deg)' : 'rotate(0deg)')};
       > path {
-        fill: ${(props) => props.theme.colors.white};
+        fill: ${(props) => props.theme?.colors.white};
       }
     }
     ${(props) =>
@@ -65,7 +65,7 @@ const getActiveLinkStyle = (theme, active) => {
       `;
   } else {
     return `
-      background-color: ${theme.colors.brand.orangeLight};
+      background-color: ${theme?.colors.brand.orangeLight};
       border-left: solid 2px white;
       `;
   }
@@ -76,9 +76,9 @@ export const NavLink = styled(Link)`
   height: 40px;
   display: flex;
   align-items: center;
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) => props.theme?.colors.white};
   &:visited {
-    color: ${(props) => props.theme.colors.white};
+    color: ${(props) => props.theme?.colors.white};
   }
   ${(props) => getActiveLinkStyle(props.theme, props.disabled)};
 `;
@@ -88,7 +88,7 @@ export const NavText = styled(ButtonText)`
   display: flex;
   align-items: center;
 
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) => props.theme?.colors.white};
   ${(props) => getActiveLinkStyle(props.theme, props.disabled)}
 `;
 

@@ -16,27 +16,27 @@ export const TabGroup = styled.div`
 
 export const TabButton = styled.button`
   border-radius: 4px;
-  padding: ${props => props.theme.margin / 1.5}px;
-  margin: ${props => props.theme.margin}px;
+  padding: ${props => props.theme?.margin / 1.5}px;
+  margin: ${props => props.theme?.margin}px;
   outline: none;
   cursor: pointer;
   border: none;
   background-color: ${props =>
     props.isSelected
-      ? props.theme.colors.brand.orange
-      : props.theme.colors.white};
-  margin-bottom: ${props => props.theme.margin}px;
+      ? props.theme?.colors.brand.orange
+      : props.theme?.colors.white};
+  margin-bottom: ${props => props.theme?.margin}px;
   transition: all 0.25s;
   > * {
     color: ${props =>
       props.isSelected
-        ? props.theme.colors.white
-        : props.theme.colors.darkBlue};
+        ? props.theme?.colors.white
+        : props.theme?.colors.darkBlue};
     &:hover {
       color: ${props =>
         props.isSelected
-          ? props.theme.colors.white
-          : props.theme.colors.darkBlue};
+          ? props.theme?.colors.white
+          : props.theme?.colors.darkBlue};
     }
   }
 `;

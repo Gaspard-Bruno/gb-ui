@@ -5,28 +5,28 @@ const getStyleFromBtnType = (type = 'primary', theme) => {
     case 'primary':
       return `
 
-        background-color: ${theme.colors.brand.yellow};
+        background-color: ${theme?.colors.brand.yellow};
         border: transparent;
         &:hover {
-          background-color: ${theme.colors.brand.lighter};
+          background-color: ${theme?.colors.brand.lighter};
         }
       `;
     case 'secondary':
       return `
         background-color: transparent;
-        border: 1px solid ${theme.colors.brand.yellow};
+        border: 1px solid ${theme?.colors.brand.yellow};
         &:hover {
           border: transparent;
-          background-color: ${theme.colors.brand.lighter};
+          background-color: ${theme?.colors.brand.lighter};
         }
       `;
     case 'terceary':
       return `
-        background-color: ${theme.colors.brand.orange};
+        background-color: ${theme?.colors.brand.orange};
         border: transparent;
         &:hover {
           border: transparent;
-          background-color: ${theme.colors.brand.orangeLight};
+          background-color: ${theme?.colors.brand.orangeLight};
         }
       `;
     case 'transparent':
@@ -34,34 +34,34 @@ const getStyleFromBtnType = (type = 'primary', theme) => {
         background-color: transparent;
         border: transparent;
         > span {
-          color: ${theme.colors.brand.orange};
+          color: ${theme?.colors.brand.orange};
           &:hover {
-            color: ${theme.colors.brand.orangeDarker};
+            color: ${theme?.colors.brand.orangeDarker};
           }
         }
       `;
     case 'borded':
       return `
-        border: 1px solid ${theme.colors.brand.yellow};
+        border: 1px solid ${theme?.colors.brand.yellow};
         box-sizing: border-box;
         border-radius: 100px;
-        background-color: ${theme.colors.white};
+        background-color: ${theme?.colors.white};
         > span {
-          color: ${theme.colors.brand.darkBlue};
+          color: ${theme?.colors.brand.darkBlue};
           &:hover {
-            color: ${theme.colors.brand.orangeDarker};
+            color: ${theme?.colors.brand.orangeDarker};
           }
         }
       `;
     case 'iconHolder':
       return `
-        border: 1px solid ${theme.colors.brand.yellow};
+        border: 1px solid ${theme?.colors.brand.yellow};
         box-sizing: border-box;
         border-radius: 100px;
         padding: 20px;
         width: 40px;
         height: 40px;
-        background-color: ${theme.colors.white};
+        background-color: ${theme?.colors.white};
         > svg {
           position: relative;
           right: 11px;
@@ -80,7 +80,7 @@ const Button = styled.button`
   margin-top: ${props => (props.fullWidth ? '20px' : '')};
   margin-bottom: ${props => (props.fullWidth ? '20px' : '')};
   padding: ${props =>
-    props.small ? props.theme.margin * 0.75 : props.theme.margin}px;
+    props.small ? props.theme?.margin * 0.75 : props.theme?.margin}px;
   ${props => getStyleFromBtnType(props.btnType, props.theme)}
   > * {
     margin: 0 auto;

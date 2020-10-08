@@ -33,7 +33,7 @@ export const LeftSection = styled.div`
         line-height: 10px;
         letter-spacing: 1px;
         text-transform: uppercase;
-        color: ${props => props.theme.colors.grey};
+        color: ${props => props.theme?.colors.grey};
     }
 `;
 

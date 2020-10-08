@@ -9,17 +9,17 @@ export const SelectContainer = styled.div`
   justify-content: flex-start;
   color: ${props =>
     props.error
-      ? props.theme.colors.feedback.error.default
-      : props.theme.colors.darkBlue};
+      ? props.theme?.colors.feedback.error.default
+      : props.theme?.colors.darkBlue};
   > p {
-    margin: ${props => props.theme.margin / 2}px 0;
+    margin: ${props => props.theme?.margin / 2}px 0;
   }
 `;
 export const selectStyles = {
   menu: (provided, state) => ({
     ...provided,
     filter: 'drop-shadow(0px 4px 13px rgba(193, 188, 183, 0.3))',
-    border: `1px solid ${theme.colors.mediumBeige}`,
+    border: `1px solid ${theme?.colors.mediumBeige}`,
     marginTop: 3,
     borderRadius: 2
   }),
@@ -34,17 +34,23 @@ export const selectStyles = {
     ...provided,
     borderRadius: 2,
     height: 48,
-    backgroundColor: isDisabled ? theme.colors.lightBeige : theme.colors.white,
-    color: theme.colors.grey,
+    backgroundColor: isDisabled
+      ? theme?.colors.lightBeige
+      : theme?.colors.white,
+    color: theme?.colors.grey,
     boxShadow: 'none',
-    borderColor: isFocused ? theme.colors.darkBlue : theme.colors.mediumBeige,
+    borderColor: isFocused ? theme?.colors.darkBlue : theme?.colors.mediumBeige,
     '&:hover': {
-      borderColor: isFocused ? theme.colors.darkBlue : theme.colors.mediumBeige
+      borderColor: isFocused
+        ? theme?.colors.darkBlue
+        : theme?.colors.mediumBeige
     }
   }),
   option: (provided, state) => {
-    const color = state.isDisabled ? theme.colors.grey : theme.colors.darkBlue;
-    const backgroundColor = theme.colors.white;
+    const color = state.isDisabled
+      ? theme?.colors.grey
+      : theme?.colors.darkBlue;
+    const backgroundColor = theme?.colors.white;
     const transition = 'opacity 300ms';
 
     return {
@@ -53,7 +59,7 @@ export const selectStyles = {
       transition,
       backgroundColor,
       '&:hover': {
-        backgroundColor: theme.colors.lightBeige
+        backgroundColor: theme?.colors.lightBeige
       }
     };
   }
@@ -62,8 +68,8 @@ export const selectStyles = {
 const Select = styled(ReactSelect)`
   color: ${props =>
     props.error
-      ? props.theme.colors.feedback.error.default
-      : props.theme.colors.mediumBeige};
+      ? props.theme?.colors.feedback.error.default
+      : props.theme?.colors.mediumBeige};
   font-family: Muli;
   font-style: normal;
   font-weight: normal;

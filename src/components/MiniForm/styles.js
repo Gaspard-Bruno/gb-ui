@@ -2,13 +2,13 @@ import styled from 'styled-components';
 const getSelectedBackground = props => {
   switch (props.bg) {
     case 'alt':
-      return props.theme.colors.lightBeige;
+      return props.theme?.colors.lightBeige;
     case 'secondary':
-      return props.theme.colors.brand.yellow;
+      return props.theme?.colors.brand.yellow;
     case 'terceary':
-      return props.theme.colors.brand.lightBlue;
+      return props.theme?.colors.brand.lightBlue;
     default:
-      return props.bg || props.theme.colors.lightBeige;
+      return props.bg || props.theme?.colors.lightBeige;
   }
 };
 
@@ -17,8 +17,8 @@ export const StyledForm = styled.form`
   display: flex;
   flex-flow: column;
   background-color: ${props => getSelectedBackground(props)};
-  padding: ${props => props.theme.margin * 2}px;
-  margin: ${props => props.theme.margin * 2}px auto;
+  padding: ${props => props.theme?.margin * 2}px;
+  margin: ${props => props.theme?.margin * 2}px auto;
 
   > h1,
   h2,
@@ -30,7 +30,7 @@ export const StyledForm = styled.form`
   }
   > div {
     & > textarea {
-      min-height: ${props => props.theme.margin * 4}px;
+      min-height: ${props => props.theme?.margin * 4}px;
     }
     & > p {
       text-align: left;

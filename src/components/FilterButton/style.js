@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledFilterButton = styled.div`
-  background-color: ${props => props.theme.colors.lightestBeige};
+  background-color: ${props => props.theme?.colors.lightestBeige};
   border-radius: 30px;
   display: flex;
   height: 40px;
@@ -21,15 +21,15 @@ export const Dropdown = styled.div`
   top: 40px;
   background-color: white;
   padding: 5px;
-  border: solid 1px ${props => props.theme.colors.mediumBeige};
+  border: solid 1px ${props => props.theme?.colors.mediumBeige};
   width: 280px;
 `;
 
 const getIconColor = (filterLabel, theme) => {
   if (filterLabel === "service") {
-    return `fill: ${theme.colors.darkBlue}`;
+    return `fill: ${theme?.colors.darkBlue}`;
   } else {
-    return `fill: ${theme.colors.grey}`;
+    return `fill: ${theme?.colors.grey}`;
   }
 };
 
@@ -39,7 +39,7 @@ export const FilterLabel = styled.span`
 
 export const FilterTitle = styled.div`
   display: flex;
-  color: ${props => props.theme.colors.grey};
+  color: ${props => props.theme?.colors.grey};
   align-items: center;
   padding: 10px;
   font-style: normal;
@@ -57,7 +57,7 @@ export const FilterTitle = styled.div`
 `;
 
 export const CloseContainer = styled.div`
-  border-left: 1px solid ${props => props.theme.colors.mediumBeige};
+  border-left: 1px solid ${props => props.theme?.colors.mediumBeige};
   height: 100%;
   display: flex;
   align-items: center;
@@ -65,7 +65,7 @@ export const CloseContainer = styled.div`
   margin-left: 10px;
 
   path {
-    fill: ${props => props.theme.colors.feedback.error.default};
+    fill: ${props => props.theme?.colors.feedback.error.default};
   }
 `;
 

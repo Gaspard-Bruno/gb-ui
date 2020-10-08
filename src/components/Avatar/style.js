@@ -25,17 +25,17 @@ const getStyleFromAvatarSize = (size, theme) => {
 const getRandomColor = (avatarDefault, theme) => {
   if (avatarDefault) { return avatarDefault; }
 
-  const keys = Object.keys(theme.colors.muted);
-  return theme.colors.muted[keys[(keys.length * Math.random()) << 0]];
+  const keys = Object.keys(theme?.colors.muted);
+  return theme?.colors.muted[keys[(keys.length * Math.random()) << 0]];
 };
 
 const getTextColor = (size, user, theme) => {
   if (size === "small" && user.avatar) {
-    return `${theme.colors.grey};`;
+    return `${theme?.colors.grey};`;
   } else if (size === "medium") {
-    return `${theme.colors.brand.orange}`;
+    return `${theme?.colors.brand.orange}`;
   } else {
-    return `${theme.colors.darkBlue};`;
+    return `${theme?.colors.darkBlue};`;
   }
 };
 
@@ -68,7 +68,7 @@ export const AvatarInitials = styled.div`
   margin-right: 8px;
   text-transform: uppercase;
   ${props => getStyleFromAvatarSize(props.size)};
-  color: ${props => props.theme.colors.darkBlue};
+  color: ${props => props.theme?.colors.darkBlue};
 `;
 
 export default AvatarContainer;

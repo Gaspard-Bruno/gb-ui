@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const KanbanColumn = styled.div`
-  background-color: ${props => props.theme.colors.lightestBeige};
+  background-color: ${props => props.theme?.colors.lightestBeige};
   border-radius: 4px;
   display: flex;
   flex-direction: column;
@@ -20,12 +20,12 @@ export const ColumnCardsContainer = styled.div`
     margin-top: 32px;
     height: 4px;
     width: 4px;
-    background-color: ${props => props.theme.colors.lightestBeige};
+    background-color: ${props => props.theme?.colors.lightestBeige};
   }
 
   &::-webkit-scrollbar-thumb {
     margin-top: 30px;
-    background: ${props => props.theme.colors.darkBlue};
+    background: ${props => props.theme?.colors.darkBlue};
     border-radius: 30px;
   }
 `;
@@ -34,7 +34,7 @@ export const Header = styled.div`
   display: flex;
   position: sticky;
   top: 0;
-  background-color: ${props => props.theme.colors.lightestBeige};
+  background-color: ${props => props.theme?.colors.lightestBeige};
   align-items: baseline;
   justify-content: space-between;
   width: 85%;
@@ -47,7 +47,7 @@ export const Header = styled.div`
 
 export const IconContainer = styled.div`
   path {
-    fill: ${props => props.theme.colors.grey};
+    fill: ${props => props.theme?.colors.grey};
   }
 `;
 

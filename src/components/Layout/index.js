@@ -25,11 +25,11 @@ const media = {
 const getPageBackground = props => {
   switch (props.bg) {
     case 'white':
-      return props.theme.colors.white;
+      return props.theme?.colors.white;
     case 'orange':
-      return props.theme.colors.brand.orange;
+      return props.theme?.colors.brand.orange;
     default:
-      return props.theme.colors.white;
+      return props.theme?.colors.white;
   }
 };
 
@@ -41,7 +41,7 @@ const Code = styled.div`
     max-height: 50vh;
     overflow-y: scroll;
     padding: 16px;
-    background-color: ${props => props.theme.colors.mediumBeige}ff;
+    background-color: ${props => props.theme?.colors.mediumBeige}ff;
   }
 `;
 
@@ -51,18 +51,18 @@ const Page = styled.div`
   display: flex;
   flex-flow: column nowrap;
   flex: 1;
-  margin-left: ${props => props.theme.margin * 2}px;
+  margin-left: ${props => props.theme?.margin * 2}px;
   overflow: auto;
 
   &::-webkit-scrollbar {
     margin-top: 32px;
     height: 4px;
-    background-color: ${props => props.theme.colors.lightestBeige};
+    background-color: ${props => props.theme?.colors.lightestBeige};
   }
 
   &::-webkit-scrollbar-thumb {
     margin-top: 30px;
-    background: ${props => props.theme.colors.darkBlue};
+    background: ${props => props.theme?.colors.darkBlue};
     border-radius: 30px;
   }
 `;
@@ -92,12 +92,12 @@ const BackofficeKanbanContainer = styled.div`
   &::-webkit-scrollbar {
     margin-top: 32px;
     height: 4px;
-    background-color: ${props => props.theme.colors.lightestBeige};
+    background-color: ${props => props.theme?.colors.lightestBeige};
   }
 
   &::-webkit-scrollbar-thumb {
     margin-top: 30px;
-    background: ${props => props.theme.colors.darkBlue};
+    background: ${props => props.theme?.colors.darkBlue};
     border-radius: 30px;
   }
 `;
@@ -107,10 +107,10 @@ const Row = styled.div`
   flex-flow: row ${props => (props.noWrap ? 'nowrap' : 'wrap')};
   background-color: ${props => getSelectedBackground(props)};
   align-items: ${props => (props.align ? props.align : 'none')};
-  max-width: ${props => props.theme.maxWidth || 100}%;
+  max-width: ${props => props.theme?.maxWidth || 100}%;
   width: 100%;
   justify-content: ${props => (props.justify ? props.justify : 'none')};
-  min-height: ${props => props.theme.margin * (props.size || 0)}px;
+  min-height: ${props => props.theme?.margin * (props.size || 0)}px;
   ${props =>
     (props.margin &&
       `
@@ -137,7 +137,7 @@ const Col = styled.div`
   flex-flow: column nowrap;
   align-items: ${props => (props.center ? 'center' : 'flex-start')};
   justify-content: ${props => (props.justify ? props.justify : 'none')};
-  padding: ${props => props.padding ?? props.theme.margin}px;
+  padding: ${props => props.padding ?? props.theme?.margin}px;
   ${props =>
     props.collapse &&
     media[props.collapse](`
@@ -169,11 +169,11 @@ export {
 export const getSelectedBackground = props => {
   switch (props.bg) {
     case 'alt':
-      return props.theme.colors.lightBeige;
+      return props.theme?.colors.lightBeige;
     case 'secondary':
-      return props.theme.colors.brand.yellow;
+      return props.theme?.colors.brand.yellow;
     case 'terceary':
-      return props.theme.colors.brand.lightBlue;
+      return props.theme?.colors.brand.lightBlue;
     case 'transparent':
       return 'transparent';
     default:
@@ -192,7 +192,7 @@ const GridRow = styled.div`
   background-color: ${props => getSelectedBackground(props)};
   align-items: ${props => (props.align ? props.align : 'none')};
   justify-content: ${props => (props.justify ? props.justify : 'none')};
-  max-width: ${props => props.theme.maxWidth}px;
+  max-width: ${props => props.theme?.maxWidth}px;
 
   ${media.desktop(`
     margin: 0 auto;
@@ -247,7 +247,7 @@ const GridCol = styled.div`
 const Hero = styled.div`
   display: flex;
   align-items: center;
-  height: ${props => props.theme.heroSize}px;
+  height: ${props => props.theme?.heroSize}px;
   background-color: ${props => getSelectedBackground(props)};
   ${props =>
     props.top

@@ -6,19 +6,19 @@ const getActiveStyles = (theme, isActive, type) => {
             border: ${
               type === "ellipsis"
                 ? "none"
-                : "1px solid " + theme.colors.darkBlue
+                : "1px solid " + theme?.colors.darkBlue
             };
-            color: ${theme.colors.darkBlue};
+            color: ${theme?.colors.darkBlue};
         `;
   } else {
     return `
             border: ${
               type === "ellipsis"
                 ? "none"
-                : "1px solid " + theme.colors.mediumBeige
+                : "1px solid " + theme?.colors.mediumBeige
             };
             h3 {
-                color: ${theme.colors.mediumBeige};
+                color: ${theme?.colors.mediumBeige};
             }
         `;
   }
