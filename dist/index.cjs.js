@@ -5178,63 +5178,101 @@ function _templateObject() {
   return data;
 }
 var Jumbo = styled__default['default'].h1(_templateObject(), function (props) {
-  return props.color ? lodash_get(props.theme.colors, props.color, props.theme.colors.darkBlue) : props.theme.colors.darkBlue;
+  var _props$theme, _props$theme2, _props$theme3;
+
+  return props.color ? lodash_get((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors, props.color, (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.darkBlue) : (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.darkBlue;
 });
 var headingSizes = ["\n  font-size: 48px;\n  line-height: 64px;\n  ", "\n  font-size: 32px;\n  line-height: 40px;\n  ", "\n  font-size: 24px;\n  line-height: 32px;\n  ", "\n  font-size: 20px;\n  line-height: 24px;\n  ", "\n  font-size: 18px;\n  line-height: 24px;\n  ", "\n  font-size: 16px;\n  line-height: 24px;\n  "];
 var Heading = styled__default['default'].h2(_templateObject2(), function (props) {
   return props.size ? headingSizes[props.size - 1] : headingSizes[0];
 }, function (props) {
-  return props.color ? lodash_get(props.theme.colors, props.color, props.theme.colors.darkBlue) : props.theme.colors.darkBlue;
+  var _props$theme4, _props$theme5, _props$theme6;
+
+  return props.color ? lodash_get((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors, props.color, (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.darkBlue) : (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.darkBlue;
 }, function (props) {
   return props.center && "text-align: center";
 });
 var SubHeading = styled__default['default'].h3(_templateObject3(), function (props) {
   return props.size ? headingSizes[props.size - 1] : headingSizes[2];
 }, function (props) {
-  return props.color ? lodash_get(props.theme.colors, props.color, props.theme.colors.darkBlue) : props.theme.colors.darkBlue;
+  var _props$theme7, _props$theme8, _props$theme9;
+
+  return props.color ? lodash_get((_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors, props.color, (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.darkBlue) : (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors.darkBlue;
 });
 var Body = styled__default['default'].p(_templateObject4(), function (props) {
-  return props.alt ? props.theme.colors.grey : props.theme.colors.darkBlue;
+  var _props$theme10, _props$theme11;
+
+  return props.alt ? (_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.colors.grey : (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.colors.darkBlue;
 });
 var SmallBody = styled__default['default'].p(_templateObject5(), function (props) {
   return props.bold ? "bold" : "normal";
 }, function (props) {
-  return props.color ? lodash_get(props.theme.colors, props.color, props.theme.colors.darkBlue) : props.theme.colors.darkBlue;
+  var _props$theme12, _props$theme13, _props$theme14;
+
+  return props.color ? lodash_get((_props$theme12 = props.theme) === null || _props$theme12 === void 0 ? void 0 : _props$theme12.colors, props.color, (_props$theme13 = props.theme) === null || _props$theme13 === void 0 ? void 0 : _props$theme13.colors.darkBlue) : (_props$theme14 = props.theme) === null || _props$theme14 === void 0 ? void 0 : _props$theme14.colors.darkBlue;
 });
 var SmallBodyFAQ = styled__default['default'].p(_templateObject6(), function (props) {
-  return props.theme.colors.grey;
+  var _props$theme15;
+
+  return (_props$theme15 = props.theme) === null || _props$theme15 === void 0 ? void 0 : _props$theme15.colors.grey;
 });
 var Tiny = styled__default['default'].h3(_templateObject7(), function (props) {
-  return props.color ? lodash_get(props.theme.colors, props.color, props.theme.colors.darkBlue) : props.theme.colors.darkBlue;
+  var _props$theme16, _props$theme17, _props$theme18;
+
+  return props.color ? lodash_get((_props$theme16 = props.theme) === null || _props$theme16 === void 0 ? void 0 : _props$theme16.colors, props.color, (_props$theme17 = props.theme) === null || _props$theme17 === void 0 ? void 0 : _props$theme17.colors.darkBlue) : (_props$theme18 = props.theme) === null || _props$theme18 === void 0 ? void 0 : _props$theme18.colors.darkBlue;
 });
 var Link$1 = styled__default['default'](Link)(_templateObject8(), function (props) {
-  return props.color ? lodash_get(props.theme.colors, props.color, props.theme.colors.darkBlue) : props.theme.colors.darkBlue;
+  var _props$theme19, _props$theme20, _props$theme21;
+
+  return props.color ? lodash_get((_props$theme19 = props.theme) === null || _props$theme19 === void 0 ? void 0 : _props$theme19.colors, props.color, (_props$theme20 = props.theme) === null || _props$theme20 === void 0 ? void 0 : _props$theme20.colors.darkBlue) : (_props$theme21 = props.theme) === null || _props$theme21 === void 0 ? void 0 : _props$theme21.colors.darkBlue;
 }, function (props) {
-  return props.theme.colors.grey;
+  var _props$theme22;
+
+  return (_props$theme22 = props.theme) === null || _props$theme22 === void 0 ? void 0 : _props$theme22.colors.grey;
 }, function (props) {
-  return props.color ? lodash_get(props.theme.colors, props.color, props.theme.colors.darkBlue) : props.theme.colors.darkBlue;
+  var _props$theme23, _props$theme24, _props$theme25;
+
+  return props.color ? lodash_get((_props$theme23 = props.theme) === null || _props$theme23 === void 0 ? void 0 : _props$theme23.colors, props.color, (_props$theme24 = props.theme) === null || _props$theme24 === void 0 ? void 0 : _props$theme24.colors.darkBlue) : (_props$theme25 = props.theme) === null || _props$theme25 === void 0 ? void 0 : _props$theme25.colors.darkBlue;
 }, function (props) {
-  return props.color ? lodash_get(props.theme.colors, props.color, props.theme.colors.darkBlue) : props.theme.colors.darkBlue;
+  var _props$theme26, _props$theme27, _props$theme28;
+
+  return props.color ? lodash_get((_props$theme26 = props.theme) === null || _props$theme26 === void 0 ? void 0 : _props$theme26.colors, props.color, (_props$theme27 = props.theme) === null || _props$theme27 === void 0 ? void 0 : _props$theme27.colors.darkBlue) : (_props$theme28 = props.theme) === null || _props$theme28 === void 0 ? void 0 : _props$theme28.colors.darkBlue;
 }, function (props) {
-  return props.theme.colors.brand.red;
+  var _props$theme29;
+
+  return (_props$theme29 = props.theme) === null || _props$theme29 === void 0 ? void 0 : _props$theme29.colors.brand.red;
 });
 var ButtonText = styled__default['default'].span(_templateObject9(), function (props) {
-  return props.color ? lodash_get(props.theme.colors, props.color, props.theme.colors.darkBlue) : props.theme.colors.darkBlue;
+  var _props$theme30, _props$theme31, _props$theme32;
+
+  return props.color ? lodash_get((_props$theme30 = props.theme) === null || _props$theme30 === void 0 ? void 0 : _props$theme30.colors, props.color, (_props$theme31 = props.theme) === null || _props$theme31 === void 0 ? void 0 : _props$theme31.colors.darkBlue) : (_props$theme32 = props.theme) === null || _props$theme32 === void 0 ? void 0 : _props$theme32.colors.darkBlue;
 }, function (props) {
-  return props.color ? lodash_get(props.theme.colors, props.color, props.theme.colors.darkBlue) : props.theme.colors.darkBlue;
+  var _props$theme33, _props$theme34, _props$theme35;
+
+  return props.color ? lodash_get((_props$theme33 = props.theme) === null || _props$theme33 === void 0 ? void 0 : _props$theme33.colors, props.color, (_props$theme34 = props.theme) === null || _props$theme34 === void 0 ? void 0 : _props$theme34.colors.darkBlue) : (_props$theme35 = props.theme) === null || _props$theme35 === void 0 ? void 0 : _props$theme35.colors.darkBlue;
 }, function (props) {
-  return props.color ? lodash_get(props.theme.colors, props.color, props.theme.colors.darkBlue) : props.theme.colors.darkBlue;
+  var _props$theme36, _props$theme37, _props$theme38;
+
+  return props.color ? lodash_get((_props$theme36 = props.theme) === null || _props$theme36 === void 0 ? void 0 : _props$theme36.colors, props.color, (_props$theme37 = props.theme) === null || _props$theme37 === void 0 ? void 0 : _props$theme37.colors.darkBlue) : (_props$theme38 = props.theme) === null || _props$theme38 === void 0 ? void 0 : _props$theme38.colors.darkBlue;
 }, function (props) {
-  return props.color ? lodash_get(props.theme.colors, props.color, props.theme.colors.darkBlue) : props.theme.colors.darkBlue;
+  var _props$theme39, _props$theme40, _props$theme41;
+
+  return props.color ? lodash_get((_props$theme39 = props.theme) === null || _props$theme39 === void 0 ? void 0 : _props$theme39.colors, props.color, (_props$theme40 = props.theme) === null || _props$theme40 === void 0 ? void 0 : _props$theme40.colors.darkBlue) : (_props$theme41 = props.theme) === null || _props$theme41 === void 0 ? void 0 : _props$theme41.colors.darkBlue;
 });
 var AlertText = styled__default['default'].p(_templateObject10(), function (props) {
-  return props.theme.colors.red;
+  var _props$theme42;
+
+  return (_props$theme42 = props.theme) === null || _props$theme42 === void 0 ? void 0 : _props$theme42.colors.red;
 });
 var AlertTitle = styled__default['default'].h3(_templateObject11(), function (props) {
-  return props.theme.colors.red;
+  var _props$theme43;
+
+  return (_props$theme43 = props.theme) === null || _props$theme43 === void 0 ? void 0 : _props$theme43.colors.red;
 });
 var ErrorText = styled__default['default'](SmallBody)(_templateObject12(), function (props) {
-  return props.theme.colors.feedback.error.default;
+  var _props$theme44;
+
+  return (_props$theme44 = props.theme) === null || _props$theme44 === void 0 ? void 0 : _props$theme44.colors.feedback.error.default;
 });
 
 var IcomoonReact = createCommonjsModule(function (module, exports) {
@@ -5349,22 +5387,22 @@ var getStyleFromBtnType = function getStyleFromBtnType() {
 
   switch (type) {
     case 'primary':
-      return "\n\n        background-color: ".concat(theme.colors.brand.yellow, ";\n        border: transparent;\n        &:hover {\n          background-color: ").concat(theme.colors.brand.lighter, ";\n        }\n      ");
+      return "\n\n        background-color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.yellow, ";\n        border: transparent;\n        &:hover {\n          background-color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.lighter, ";\n        }\n      ");
 
     case 'secondary':
-      return "\n        background-color: transparent;\n        border: 1px solid ".concat(theme.colors.brand.yellow, ";\n        &:hover {\n          border: transparent;\n          background-color: ").concat(theme.colors.brand.lighter, ";\n        }\n      ");
+      return "\n        background-color: transparent;\n        border: 1px solid ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.yellow, ";\n        &:hover {\n          border: transparent;\n          background-color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.lighter, ";\n        }\n      ");
 
     case 'terceary':
-      return "\n        background-color: ".concat(theme.colors.brand.orange, ";\n        border: transparent;\n        &:hover {\n          border: transparent;\n          background-color: ").concat(theme.colors.brand.orangeLight, ";\n        }\n      ");
+      return "\n        background-color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orange, ";\n        border: transparent;\n        &:hover {\n          border: transparent;\n          background-color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orangeLight, ";\n        }\n      ");
 
     case 'transparent':
-      return "\n        background-color: transparent;\n        border: transparent;\n        > span {\n          color: ".concat(theme.colors.brand.orange, ";\n          &:hover {\n            color: ").concat(theme.colors.brand.orangeDarker, ";\n          }\n        }\n      ");
+      return "\n        background-color: transparent;\n        border: transparent;\n        > span {\n          color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orange, ";\n          &:hover {\n            color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orangeDarker, ";\n          }\n        }\n      ");
 
     case 'borded':
-      return "\n        border: 1px solid ".concat(theme.colors.brand.yellow, ";\n        box-sizing: border-box;\n        border-radius: 100px;\n        background-color: ").concat(theme.colors.white, ";\n        > span {\n          color: ").concat(theme.colors.brand.darkBlue, ";\n          &:hover {\n            color: ").concat(theme.colors.brand.orangeDarker, ";\n          }\n        }\n      ");
+      return "\n        border: 1px solid ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.yellow, ";\n        box-sizing: border-box;\n        border-radius: 100px;\n        background-color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.white, ";\n        > span {\n          color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.darkBlue, ";\n          &:hover {\n            color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orangeDarker, ";\n          }\n        }\n      ");
 
     case 'iconHolder':
-      return "\n        border: 1px solid ".concat(theme.colors.brand.yellow, ";\n        box-sizing: border-box;\n        border-radius: 100px;\n        padding: 20px;\n        width: 40px;\n        height: 40px;\n        background-color: ").concat(theme.colors.white, ";\n        > svg {\n          position: relative;\n          right: 11px;\n          bottom: 12px;\n        }\n      ");
+      return "\n        border: 1px solid ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.yellow, ";\n        box-sizing: border-box;\n        border-radius: 100px;\n        padding: 20px;\n        width: 40px;\n        height: 40px;\n        background-color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.white, ";\n        > svg {\n          position: relative;\n          right: 11px;\n          bottom: 12px;\n        }\n      ");
   }
 };
 
@@ -5375,7 +5413,9 @@ var Button = styled__default['default'].button(_templateObject$1(), function (pr
 }, function (props) {
   return props.fullWidth ? '20px' : '';
 }, function (props) {
-  return props.small ? props.theme.margin * 0.75 : props.theme.margin;
+  var _props$theme, _props$theme2;
+
+  return props.small ? ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) * 0.75 : (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin;
 }, function (props) {
   return getStyleFromBtnType(props.btnType, props.theme);
 });
@@ -5466,15 +5506,21 @@ function _templateObject$2() {
   return data;
 }
 var AccordionContainer = styled__default['default'].div(_templateObject$2(), function (props) {
-  return props.theme.colors.mediumBeige;
+  var _props$theme;
+
+  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.mediumBeige;
 });
 var AccordionTitle = styled__default['default'].div(_templateObject2$2(), function (props) {
-  return props.theme.colors.brand.orange;
+  var _props$theme2;
+
+  return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.brand.orange;
 }, function (props) {
   return props.isOpen ? '180deg' : 0;
 });
 var ContentContainer = styled__default['default'].div(_templateObject3$1(), function (props) {
-  return props.theme.colors.grey;
+  var _props$theme3;
+
+  return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.grey;
 }, function (props) {
   return props.isOpen ? 1 : 0;
 }, function (props) {
@@ -5569,22 +5615,22 @@ function _templateObject$3() {
 var getAlertType = function getAlertType(type, theme) {
   switch (type) {
     case 'defaultSimple':
-      return "\n        background-color: ".concat(theme.colors.feedback.error.background, ";\n        border: transparent;\n        div > div > span {\n          color: ").concat(theme.colors.darkBlue, ";\n        }\n        div > p {\n          color: ").concat(theme.colors.brand.red, ";\n          margin: 0;\n        }\n      ");
+      return "\n        background-color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.feedback.error.background, ";\n        border: transparent;\n        div > div > span {\n          color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue, ";\n        }\n        div > p {\n          color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.red, ";\n          margin: 0;\n        }\n      ");
 
     case 'defaultWithCloseX':
-      return "\n        background-color: ".concat(theme.colors.feedback.error.background, ";\n        border: transparent;\n        div > div > span {\n          color: ").concat(theme.colors.darkBlue, ";\n        }\n        div > p {\n          color: ").concat(theme.colors.brand.red, ";\n          margin: 0;\n        }\n      ");
+      return "\n        background-color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.feedback.error.background, ";\n        border: transparent;\n        div > div > span {\n          color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue, ";\n        }\n        div > p {\n          color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.red, ";\n          margin: 0;\n        }\n      ");
 
     case 'defaultWithCloseXAndTitle':
-      return "\n        background-color: ".concat(theme.colors.feedback.error.background, ";\n        border: transparent;\n        div > p {\n          color: ").concat(theme.colors.brand.red, ";\n          margin: 0;\n        }\n        div > h3 {\n          color: ").concat(theme.colors.brand.red, ";\n          margin: 0;\n        }\n      ");
+      return "\n        background-color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.feedback.error.background, ";\n        border: transparent;\n        div > p {\n          color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.red, ";\n          margin: 0;\n        }\n        div > h3 {\n          color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.red, ";\n          margin: 0;\n        }\n      ");
 
     case 'simpleFilled':
-      return "\n        background-color: ".concat(theme.colors.brand.red, ";\n        border: transparent;\n        div > div > span {\n          color: ").concat(theme.colors.white, ";\n        }\n        div > p {\n          color: ").concat(theme.colors.white, ";\n          margin: 0;\n        }\n      ");
+      return "\n        background-color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.red, ";\n        border: transparent;\n        div > div > span {\n          color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.white, ";\n        }\n        div > p {\n          color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.white, ";\n          margin: 0;\n        }\n      ");
 
     case 'filledWithCloseX':
-      return "\n        background-color: ".concat(theme.colors.brand.red, ";\n        border: transparent;\n        div > div > span {\n          color: ").concat(theme.colors.white, ";\n        }\n        div > p {\n          color: ").concat(theme.colors.white, ";\n          margin: 0;\n        }\n      ");
+      return "\n        background-color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.red, ";\n        border: transparent;\n        div > div > span {\n          color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.white, ";\n        }\n        div > p {\n          color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.white, ";\n          margin: 0;\n        }\n      ");
 
     case 'filledWithCloseXAndTitle':
-      return "\n        background-color: ".concat(theme.colors.brand.red, ";\n        border: transparent;\n        div > div > span {\n          color: ").concat(theme.colors.white, ";\n        }\n        div > p {\n          color: ").concat(theme.colors.white, ";\n          margin: 0;\n        }\n        div > h3 {\n          color: ").concat(theme.colors.white, ";\n          margin: 0;\n        }\n      ");
+      return "\n        background-color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.red, ";\n        border: transparent;\n        div > div > span {\n          color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.white, ";\n        }\n        div > p {\n          color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.white, ";\n          margin: 0;\n        }\n        div > h3 {\n          color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.white, ";\n          margin: 0;\n        }\n      ");
   }
 };
 
@@ -5594,7 +5640,9 @@ var TitleAndTextContainer = styled__default['default'].div(_templateObject3$2())
 var StyledAlert = styled__default['default'].button(_templateObject4$1(), function (props) {
   return props.type === 'simpleFilled' ? 3 : 40;
 }, function (props) {
-  return props.small ? props.theme.margin * 0.75 : props.theme.margin * 1.5;
+  var _props$theme, _props$theme2;
+
+  return props.small ? ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) * 0.75 : ((_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin) * 1.5;
 }, function (props) {
   return getAlertType(props.type, props.theme);
 });
@@ -5626,10 +5674,10 @@ var Alert = function Alert(_ref) {
   };
   AlertIcon.defaultProps = {
     size: 20,
-    color: alertType.includes('default') ? theme__default['default'].colors.brand.red : theme__default['default'].colors.white
+    color: alertType.includes('default') ? theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.brand.red : theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.white
   };
   AlertTitle.defaultProps = {
-    color: alertType.includes('default') ? theme__default['default'].colors.brand.red : theme__default['default'].colors.white
+    color: alertType.includes('default') ? theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.brand.red : theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.white
   };
 
   if (closeCross && text && title) {
@@ -5733,17 +5781,17 @@ var getRandomColor = function getRandomColor(avatarDefault, theme) {
     return avatarDefault;
   }
 
-  var keys = Object.keys(theme.colors.muted);
-  return theme.colors.muted[keys[keys.length * Math.random() << 0]];
+  var keys = Object.keys(theme === null || theme === void 0 ? void 0 : theme.colors.muted);
+  return theme === null || theme === void 0 ? void 0 : theme.colors.muted[keys[keys.length * Math.random() << 0]];
 };
 
 var getTextColor = function getTextColor(size, user, theme) {
   if (size === "small" && user.avatar) {
-    return "".concat(theme.colors.grey, ";");
+    return "".concat(theme === null || theme === void 0 ? void 0 : theme.colors.grey, ";");
   } else if (size === "medium") {
-    return "".concat(theme.colors.brand.orange);
+    return "".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orange);
   } else {
-    return "".concat(theme.colors.darkBlue, ";");
+    return "".concat(theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue, ";");
   }
 };
 
@@ -5760,7 +5808,9 @@ var AvatarInitials = styled__default['default'].div(_templateObject3$3(), functi
 }, function (props) {
   return getStyleFromAvatarSize(props.size);
 }, function (props) {
-  return props.theme.colors.darkBlue;
+  var _props$theme;
+
+  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.darkBlue;
 });
 
 var Avatar = function Avatar(_ref) {
@@ -5811,34 +5861,44 @@ function _templateObject$5() {
 
 var getColorFromStatus = function getColorFromStatus(theme, status) {
   return {
-    contact: theme.brand.blue,
-    received: theme.brand.blue,
-    complete: theme.brand.blue,
-    closed: theme.brand.blue,
-    analysis: theme.brand.yellow,
-    awaiting_specialist: theme.brand.yellow,
-    awaiting_visit_payment: theme.brand.yellow,
-    awaiting_interview: theme.brand.yellow,
-    awaiting_payment: theme.brand.yellow,
-    awaiting_visit: theme.brand.yellow,
-    awaiting_conclusion: theme.feedback.success.default,
-    canceled: theme.feedback.error.default,
-    rejected: theme.feedback.error.default,
-    new_candidate: theme.brand.blue,
-    accepted: theme.brand.green
+    contact: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
+    received: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
+    complete: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
+    closed: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
+    analysis: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
+    awaiting_specialist: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
+    awaiting_visit_payment: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
+    awaiting_interview: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
+    awaiting_payment: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
+    awaiting_visit: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
+    awaiting_conclusion: theme === null || theme === void 0 ? void 0 : theme.feedback.success.default,
+    canceled: theme === null || theme === void 0 ? void 0 : theme.feedback.error.default,
+    rejected: theme === null || theme === void 0 ? void 0 : theme.feedback.error.default,
+    new_candidate: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
+    accepted: theme === null || theme === void 0 ? void 0 : theme.brand.green
   }[status];
 };
 
 var Badge = styled__default['default'].span(_templateObject$5(), function (props) {
-  return props.chip ? props.theme.colors.lightBeige : getColorFromStatus(props.theme.colors, props.status);
+  var _props$theme, _props$theme2;
+
+  return props.chip ? (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.lightBeige : getColorFromStatus((_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors, props.status);
 }, function (props) {
-  return props.chip ? props.theme.colors.darkBlue : props.theme.colors.black;
+  var _props$theme3, _props$theme4;
+
+  return props.chip ? (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.darkBlue : (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.black;
 }, function (props) {
-  return props.theme.margin / 4;
+  var _props$theme5;
+
+  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) / 4;
 }, function (props) {
-  return props.theme.margin * 0.75;
+  var _props$theme6;
+
+  return ((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.margin) * 0.75;
 }, function (props) {
-  return props.theme.margin * 0.75;
+  var _props$theme7;
+
+  return ((_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.margin) * 0.75;
 });
 
 var Badge$1 = function Badge$1(_ref) {
@@ -5908,22 +5968,36 @@ function _templateObject$6() {
   return data;
 }
 var StyledContainer = styled__default['default'].div(_templateObject$6(), function (props) {
-  return props.theme.margin * 2 + 10;
+  var _props$theme;
+
+  return ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) * 2 + 10;
 }, function (props) {
-  return props.theme.margin;
+  var _props$theme2;
+
+  return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin;
 });
 var ListContainer = styled__default['default'].div(_templateObject2$5());
 var ButtonGroupContainer = styled__default['default'].div(_templateObject3$4(), function (props) {
-  return !console.log(props.isSelected) && props.isSelected ? props.theme.colors.darkBlue : props.theme.colors.grey;
+  var _props$theme3, _props$theme4;
+
+  return !console.log(props.isSelected) && props.isSelected ? (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.darkBlue : (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.grey;
 });
 var StyledButton = styled__default['default'].button(_templateObject4$2(), function (props) {
-  return props.theme.margin * 4;
+  var _props$theme5;
+
+  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 4;
 }, function (props) {
-  return props.theme.margin * 3;
+  var _props$theme6;
+
+  return ((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.margin) * 3;
 }, function (props) {
-  return "".concat(props.theme.colors.white);
+  var _props$theme7;
+
+  return "".concat((_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.white);
 }, function (props) {
-  return props.isSelected ? "1px solid ".concat(props.theme.colors.darkBlue) : "1px solid ".concat(props.theme.colors.mediumBeige);
+  var _props$theme8, _props$theme9;
+
+  return props.isSelected ? "1px solid ".concat((_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.darkBlue) : "1px solid ".concat((_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors.mediumBeige);
 });
 
 var ButtonGroup = function ButtonGroup(_ref) {
@@ -6000,32 +6074,40 @@ function _templateObject$7() {
 }
 
 var getSelectedBackground = function getSelectedBackground(props) {
+  var _props$theme, _props$theme2, _props$theme3, _props$theme4;
+
   switch (props.bg) {
     case "alt":
-      return props.theme.colors.lightBeige;
+      return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.lightBeige;
 
     case "secondary":
-      return props.theme.colors.brand.yellow;
+      return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.brand.yellow;
 
     case "terceary":
-      return props.theme.colors.brand.lightBlue;
+      return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.brand.lightBlue;
 
     case "transparent":
       return "transparent";
 
     default:
-      return props.theme.colors.white;
+      return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.white;
   }
 };
 
 var Card = styled__default['default'].div(_templateObject$7(), function (props) {
-  return props.theme.margin * (props.padding || 1);
+  var _props$theme5;
+
+  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * (props.padding || 1);
 }, function (props) {
-  return props.shadow ? props.theme.boxShadow : 0;
+  var _props$theme6;
+
+  return props.shadow ? (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.boxShadow : 0;
 }, function (props) {
   return getSelectedBackground(props);
 }, function (props) {
-  return props.theme.colors.darkBlue;
+  var _props$theme7;
+
+  return (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.darkBlue;
 }, function (props) {
   return props.align ? "".concat(props.align) : "";
 }, function (props) {
@@ -6098,16 +6180,26 @@ function _templateObject$8() {
 }
 var StyledContainer$1 = styled__default['default'].div(_templateObject$8());
 var CheckboxGroudContainer = styled__default['default'].div(_templateObject2$6(), function (props) {
-  return props.theme.margin * 2 - 8;
+  var _props$theme;
+
+  return ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) * 2 - 8;
 }, function (props) {
-  return props.theme.margin / 2;
+  var _props$theme2;
+
+  return ((_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin) / 2;
 });
 var StyledCheckbox = styled__default['default'].input(_templateObject3$5(), function (props) {
-  return props.theme.margin * 1.5;
+  var _props$theme3;
+
+  return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) * 1.5;
 }, function (props) {
-  return props.theme.margin * 1.5;
+  var _props$theme4;
+
+  return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) * 1.5;
 }, function (props) {
-  return "1px solid ".concat(props.theme.colors.mediumBeige);
+  var _props$theme5;
+
+  return "1px solid ".concat((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.mediumBeige);
 });
 
 var CheckBoxGroup = function CheckBoxGroup(_ref) {
@@ -6249,7 +6341,7 @@ function _templateObject3$6() {
 }
 
 function _templateObject2$8() {
-  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  margin: 12px 0px 0px 8px;\n  \n  svg {\n    height: 20px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  margin: 12px 0px 0px 8px;\n\n  svg {\n    height: 20px;\n  }\n"]);
 
   _templateObject2$8 = function _templateObject2() {
     return data;
@@ -6259,7 +6351,7 @@ function _templateObject2$8() {
 }
 
 function _templateObject$b() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row nowrap;\n  justify-content: flex-start;\n  padding: 0;\n  input {\n    border: 1px solid ", ";\n  }\n  position: relative;  \n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row nowrap;\n  justify-content: flex-start;\n  padding: 0;\n  input {\n    border: 1px solid ", ";\n  }\n  position: relative;\n"]);
 
   _templateObject$b = function _templateObject() {
     return data;
@@ -6268,31 +6360,45 @@ function _templateObject$b() {
   return data;
 }
 var Container = styled__default['default'].div(_templateObject$b(), function (props) {
-  return props.theme.mediumBeige;
+  var _props$theme;
+
+  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.mediumBeige;
 });
 
 var getStylesFromType = function getStylesFromType(theme, type) {
-  if (type === "service") {
-    return "\n    border-radius: 2px;\n    padding-left: 40px;\n    color: ".concat(theme.colors.mediumBeige, ";\n    position: relative;\n    &:focus {\n      outline: ").concat(theme.colors.darkBlue, ";\n    } \n  ");
+  if (type === 'service') {
+    return "\n    border-radius: 2px;\n    padding-left: 40px;\n    color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.mediumBeige, ";\n    position: relative;\n    &:focus {\n      outline: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue, ";\n    }\n  ");
   }
 };
 
 var SearchIconContainer = styled__default['default'].div(_templateObject2$8());
 var Input = styled__default['default'].input(_templateObject3$6(), function (props) {
-  return props.theme.colors.grey;
+  var _props$theme2;
+
+  return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.grey;
 }, function (props) {
-  return props.theme.margin * 1.5;
+  var _props$theme3;
+
+  return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) * 1.5;
 }, function (props) {
-  return props.theme.grey;
+  var _props$theme4;
+
+  return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.grey;
 }, function (props) {
   return getStylesFromType(props.theme, props.type);
 });
 var Button$2 = styled__default['default'].button(_templateObject4$3(), function (props) {
-  return props.theme.colors.brand.yellow;
+  var _props$theme5;
+
+  return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.brand.yellow;
 }, function (props) {
-  return props.theme.margin * 1;
+  var _props$theme6;
+
+  return ((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.margin) * 1;
 }, function (props) {
-  return props.theme.margin;
+  var _props$theme7;
+
+  return (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.margin;
 });
 
 var SearchInput = function SearchInput(_ref) {
@@ -12651,15 +12757,19 @@ function _templateObject$d() {
 var SelectContainer$1 = styled__default['default'].div(_templateObject$d(), function (props) {
   return props.mini ? '33%' : 'auto';
 }, function (props) {
-  return props.error ? props.theme.colors.feedback.error.default : props.theme.colors.darkBlue;
+  var _props$theme, _props$theme2;
+
+  return props.error ? (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.feedback.error.default : (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.darkBlue;
 }, function (props) {
-  return props.theme.margin / 2;
+  var _props$theme3;
+
+  return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) / 2;
 });
 var selectStyles = {
   menu: function menu(provided, state) {
     return _objectSpread2(_objectSpread2({}, provided), {}, {
       filter: 'drop-shadow(0px 4px 13px rgba(193, 188, 183, 0.3))',
-      border: "1px solid ".concat(theme__default['default'].colors.mediumBeige),
+      border: "1px solid ".concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.mediumBeige),
       marginTop: 3,
       borderRadius: 2
     });
@@ -12683,31 +12793,33 @@ var selectStyles = {
     return _objectSpread2(_objectSpread2({}, provided), {}, {
       borderRadius: 2,
       height: 48,
-      backgroundColor: isDisabled ? theme__default['default'].colors.lightBeige : theme__default['default'].colors.white,
-      color: theme__default['default'].colors.grey,
+      backgroundColor: isDisabled ? theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.lightBeige : theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.white,
+      color: theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.grey,
       boxShadow: 'none',
-      borderColor: isFocused ? theme__default['default'].colors.darkBlue : theme__default['default'].colors.mediumBeige,
+      borderColor: isFocused ? theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.darkBlue : theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.mediumBeige,
       '&:hover': {
-        borderColor: isFocused ? theme__default['default'].colors.darkBlue : theme__default['default'].colors.mediumBeige
+        borderColor: isFocused ? theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.darkBlue : theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.mediumBeige
       }
     });
   },
   option: function option(provided, state) {
-    var color = state.isDisabled ? theme__default['default'].colors.grey : theme__default['default'].colors.darkBlue;
-    var backgroundColor = theme__default['default'].colors.white;
+    var color = state.isDisabled ? theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.grey : theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.darkBlue;
+    var backgroundColor = theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.white;
     var transition = 'opacity 300ms';
     return _objectSpread2(_objectSpread2({}, provided), {}, {
       color: color,
       transition: transition,
       backgroundColor: backgroundColor,
       '&:hover': {
-        backgroundColor: theme__default['default'].colors.lightBeige
+        backgroundColor: theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.lightBeige
       }
     });
   }
 };
 var Select$1 = styled__default['default'](index$1)(_templateObject2$9(), function (props) {
-  return props.error ? props.theme.colors.feedback.error.default : props.theme.colors.mediumBeige;
+  var _props$theme4, _props$theme5;
+
+  return props.error ? (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.feedback.error.default : (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.mediumBeige;
 });
 
 var Select$2 = function Select(_ref) {
@@ -12800,30 +12912,40 @@ function _templateObject$e() {
   return data;
 }
 var StyledFilterButton = styled__default['default'].div(_templateObject$e(), function (props) {
-  return props.theme.colors.lightestBeige;
+  var _props$theme;
+
+  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.lightestBeige;
 });
 var Dropdown = styled__default['default'].div(_templateObject2$a(), function (props) {
-  return props.theme.colors.mediumBeige;
+  var _props$theme2;
+
+  return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.mediumBeige;
 });
 
 var getIconColor = function getIconColor(filterLabel, theme) {
   if (filterLabel === "service") {
-    return "fill: ".concat(theme.colors.darkBlue);
+    return "fill: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue);
   } else {
-    return "fill: ".concat(theme.colors.grey);
+    return "fill: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.grey);
   }
 };
 
 var FilterLabel = styled__default['default'].span(_templateObject3$7());
 var FilterTitle = styled__default['default'].div(_templateObject4$4(), function (props) {
-  return props.theme.colors.grey;
+  var _props$theme3;
+
+  return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.grey;
 }, function (props) {
   return getIconColor(props.filterLabel, props.theme);
 });
 var CloseContainer = styled__default['default'].div(_templateObject5$2(), function (props) {
-  return props.theme.colors.mediumBeige;
+  var _props$theme4;
+
+  return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.mediumBeige;
 }, function (props) {
-  return props.theme.colors.feedback.error.default;
+  var _props$theme5;
+
+  return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.feedback.error.default;
 });
 
 var getIconName = function getIconName(filterLabel) {
@@ -12943,7 +13065,7 @@ FilterButton.defaultProps = {
 };
 
 function _templateObject3$8() {
-  var data = _taggedTemplateLiteral(["\n    padding: 10px;\n    ", ";\n\n    path {\n        ", ";\n    }    \n"]);
+  var data = _taggedTemplateLiteral(["\n    padding: 10px;\n    ", ";\n\n    path {\n        ", ";\n    }\n"]);
 
   _templateObject3$8 = function _templateObject3() {
     return data;
@@ -12972,16 +13094,20 @@ function _templateObject$f() {
   return data;
 }
 var StyledSwitch = styled__default['default'].div(_templateObject$f(), function (props) {
-  return props.theme.colors.lightestBeige;
+  var _props$theme;
+
+  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.lightestBeige;
 });
 
 var getActive = function getActive(active, theme) {
-  var textColor = active ? theme.colors.darkBlue : theme.colors.grey;
+  var textColor = active ? theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue : theme === null || theme === void 0 ? void 0 : theme.colors.grey;
   return "fill: ".concat(textColor, ";");
 };
 
 var Left = styled__default['default'].div(_templateObject2$b(), function (props) {
-  return props.theme.colors.mediumBeige;
+  var _props$theme2;
+
+  return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.mediumBeige;
 }, function (props) {
   return getActive(props.active, props.theme);
 });
@@ -19185,24 +19311,42 @@ function _templateObject$h() {
 var InputContainer = styled__default['default'].div(_templateObject$h(), function (props) {
   return props.mini ? '33%' : 'auto';
 }, function (props) {
-  return props.error ? props.theme.colors.feedback.error.default : props.theme.colors.darkBlue;
+  var _props$theme, _props$theme2;
+
+  return props.error ? (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.feedback.error.default : (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.darkBlue;
 }, function (props) {
-  return props.theme.margin / 2;
+  var _props$theme3;
+
+  return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) / 2;
 });
 var Input$2 = styled__default['default'].input(_templateObject2$d(), function (props) {
-  return props.theme.margin;
+  var _props$theme4;
+
+  return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin;
 }, function (props) {
-  return props.theme.margin / 2;
+  var _props$theme5;
+
+  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) / 2;
 }, function (props) {
-  return props.error ? props.theme.colors.feedback.error.default : props.theme.colors.mediumBeige;
+  var _props$theme6, _props$theme7;
+
+  return props.error ? (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.feedback.error.default : (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.mediumBeige;
 }, function (props) {
-  return props.theme.colors.darkBlue;
+  var _props$theme8;
+
+  return (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.darkBlue;
 }, function (props) {
-  return props.error ? props.theme.colors.feedback.error.default : props.theme.colors.darkBlue;
+  var _props$theme9, _props$theme10;
+
+  return props.error ? (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors.feedback.error.default : (_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.colors.darkBlue;
 }, function (props) {
-  return props.theme.colors.lightBeige;
+  var _props$theme11;
+
+  return (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.colors.lightBeige;
 }, function (props) {
-  return props.theme.colors.grey;
+  var _props$theme12;
+
+  return (_props$theme12 = props.theme) === null || _props$theme12 === void 0 ? void 0 : _props$theme12.colors.grey;
 });
 
 var TextInput = function TextInput(_ref) {
@@ -19292,24 +19436,42 @@ function _templateObject$i() {
   return data;
 }
 var TextAreaContainer = styled__default['default'].div(_templateObject$i(), function (props) {
-  return props.error ? props.theme.colors.feedback.error.default : props.theme.colors.darkBlue;
+  var _props$theme, _props$theme2;
+
+  return props.error ? (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.feedback.error.default : (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.darkBlue;
 }, function (props) {
-  return props.theme.margin / 2;
+  var _props$theme3;
+
+  return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) / 2;
 });
 var TextArea = styled__default['default'].textarea(_templateObject2$e(), function (props) {
-  return props.theme.margin;
+  var _props$theme4;
+
+  return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin;
 }, function (props) {
-  return props.theme.margin / 2;
+  var _props$theme5;
+
+  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) / 2;
 }, function (props) {
-  return props.error ? props.theme.colors.feedback.error.default : props.theme.colors.mediumBeige;
+  var _props$theme6, _props$theme7;
+
+  return props.error ? (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.feedback.error.default : (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.mediumBeige;
 }, function (props) {
-  return props.theme.colors.darkBlue;
+  var _props$theme8;
+
+  return (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.darkBlue;
 }, function (props) {
-  return props.error ? props.theme.colors.feedback.error.default : props.theme.colors.darkBlue;
+  var _props$theme9, _props$theme10;
+
+  return props.error ? (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors.feedback.error.default : (_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.colors.darkBlue;
 }, function (props) {
-  return props.theme.colors.lightBeige;
+  var _props$theme11;
+
+  return (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.colors.lightBeige;
 }, function (props) {
-  return props.theme.colors.grey;
+  var _props$theme12;
+
+  return (_props$theme12 = props.theme) === null || _props$theme12 === void 0 ? void 0 : _props$theme12.colors.grey;
 });
 
 var TextArea$1 = function TextArea$1(_ref) {
@@ -19390,24 +19552,42 @@ var RadioGroudContainer = styled__default['default'].div(_templateObject2$f(), f
 }, function (props) {
   return props.align ? props.align : 'baseline';
 }, function (props) {
-  return props.theme.margin;
+  var _props$theme;
+
+  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin;
 }, function (props) {
-  return props.theme.margin * 2 - 8;
+  var _props$theme2;
+
+  return ((_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin) * 2 - 8;
 }, function (props) {
-  return props.theme.margin / 2;
+  var _props$theme3;
+
+  return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) / 2;
 });
 var StyledRadio = styled__default['default'].button(_templateObject3$a(), function (props) {
-  return props.theme.margin * 1.5;
+  var _props$theme4;
+
+  return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) * 1.5;
 }, function (props) {
-  return props.theme.margin * 1.5;
+  var _props$theme5;
+
+  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 1.5;
 }, function (props) {
-  return "1px solid ".concat(props.theme.colors.mediumBeige);
+  var _props$theme6;
+
+  return "1px solid ".concat((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.mediumBeige);
 }, function (props) {
-  return props.isSelected ? props.theme.colors.brand.yellow : 'white';
+  var _props$theme7;
+
+  return props.isSelected ? (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.brand.yellow : 'white';
 }, function (props) {
-  return props.isSelected ? props.theme.colors.white : props.theme.colors.darkBlue;
+  var _props$theme8, _props$theme9;
+
+  return props.isSelected ? (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.white : (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors.darkBlue;
 }, function (props) {
-  return props.isSelected ? props.theme.colors.white : props.theme.colors.darkBlue;
+  var _props$theme10, _props$theme11;
+
+  return props.isSelected ? (_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.colors.white : (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.colors.darkBlue;
 });
 var FocusedRadio = styled__default['default'].div(_templateObject4$6(), function (props) {
   return props.isSelected ? '' : 'none';
@@ -19501,17 +19681,29 @@ var TabGroup = styled__default['default'].div(_templateObject2$g(), function (pr
   return props.justify ? props.justify : 'flex-start';
 });
 var TabButton = styled__default['default'].button(_templateObject3$b(), function (props) {
-  return props.theme.margin / 1.5;
+  var _props$theme;
+
+  return ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) / 1.5;
 }, function (props) {
-  return props.theme.margin;
+  var _props$theme2;
+
+  return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin;
 }, function (props) {
-  return props.isSelected ? props.theme.colors.brand.orange : props.theme.colors.white;
+  var _props$theme3, _props$theme4;
+
+  return props.isSelected ? (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.brand.orange : (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.white;
 }, function (props) {
-  return props.theme.margin;
+  var _props$theme5;
+
+  return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin;
 }, function (props) {
-  return props.isSelected ? props.theme.colors.white : props.theme.colors.darkBlue;
+  var _props$theme6, _props$theme7;
+
+  return props.isSelected ? (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.white : (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.darkBlue;
 }, function (props) {
-  return props.isSelected ? props.theme.colors.white : props.theme.colors.darkBlue;
+  var _props$theme8, _props$theme9;
+
+  return props.isSelected ? (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.white : (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors.darkBlue;
 });
 
 var Tabs = function Tabs(_ref) {
@@ -19696,38 +19888,52 @@ var media = {
 };
 
 var getPageBackground = function getPageBackground(props) {
+  var _props$theme, _props$theme2, _props$theme3;
+
   switch (props.bg) {
     case 'white':
-      return props.theme.colors.white;
+      return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.white;
 
     case 'orange':
-      return props.theme.colors.brand.orange;
+      return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.brand.orange;
 
     default:
-      return props.theme.colors.white;
+      return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.white;
   }
 };
 
 var Code = styled__default['default'].div(_templateObject$l(), function (props) {
-  return props.theme.colors.mediumBeige;
+  var _props$theme4;
+
+  return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.mediumBeige;
 });
 var Page = styled__default['default'].div(_templateObject2$h(), function (props) {
   return getPageBackground(props);
 }, function (props) {
-  return props.theme.margin * 2;
+  var _props$theme5;
+
+  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 2;
 }, function (props) {
-  return props.theme.colors.lightestBeige;
+  var _props$theme6;
+
+  return (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.lightestBeige;
 }, function (props) {
-  return props.theme.colors.darkBlue;
+  var _props$theme7;
+
+  return (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.darkBlue;
 });
 var BackofficePage = styled__default['default'].div(_templateObject3$c(), function (props) {
   return getPageBackground(props);
 });
 var BackofficeContainer = styled__default['default'].div(_templateObject4$7());
 var BackofficeKanbanContainer = styled__default['default'].div(_templateObject5$4(), function (props) {
-  return props.theme.colors.lightestBeige;
+  var _props$theme8;
+
+  return (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.lightestBeige;
 }, function (props) {
-  return props.theme.colors.darkBlue;
+  var _props$theme9;
+
+  return (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors.darkBlue;
 });
 var Row = styled__default['default'].div(_templateObject6$1(), function (props) {
   return props.noWrap ? 'nowrap' : 'wrap';
@@ -19736,11 +19942,15 @@ var Row = styled__default['default'].div(_templateObject6$1(), function (props) 
 }, function (props) {
   return props.align ? props.align : 'none';
 }, function (props) {
-  return props.theme.maxWidth || 100;
+  var _props$theme10;
+
+  return ((_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.maxWidth) || 100;
 }, function (props) {
   return props.justify ? props.justify : 'none';
 }, function (props) {
-  return props.theme.margin * (props.size || 0);
+  var _props$theme11;
+
+  return ((_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.margin) * (props.size || 0);
 }, function (props) {
   return props.margin && "\n    ".concat(media.desktop("\n    margin: 0 auto;\n  "), "\n  ").concat(media.smallDesktop("\n    margin: 0 120px;\n  "), "\n  ").concat(media.tablet("\n    margin: 0 48px;\n  "), "\n  ").concat(media.mobile("\n    margin: 0 32px;\n  "), "\n  ") || 'margin: 0 auto;';
 }, function (props) {
@@ -19753,9 +19963,9 @@ var Col = styled__default['default'].div(_templateObject7$1(), function (props) 
 }, function (props) {
   return props.justify ? props.justify : 'none';
 }, function (props) {
-  var _props$padding;
+  var _props$padding, _props$theme12;
 
-  return (_props$padding = props.padding) !== null && _props$padding !== void 0 ? _props$padding : props.theme.margin;
+  return (_props$padding = props.padding) !== null && _props$padding !== void 0 ? _props$padding : (_props$theme12 = props.theme) === null || _props$theme12 === void 0 ? void 0 : _props$theme12.margin;
 }, function (props) {
   return props.collapse && media[props.collapse]("\n  display: none;\n  ");
 }, function (props) {
@@ -19766,15 +19976,17 @@ var Col = styled__default['default'].div(_templateObject7$1(), function (props) 
   return props.src ? "\n          background-image: url(".concat(props.src, ");\n          background-size: cover;\n          background-position: center;\n        ") : '';
 });
 var getSelectedBackground$1 = function getSelectedBackground(props) {
+  var _props$theme13, _props$theme14, _props$theme15;
+
   switch (props.bg) {
     case 'alt':
-      return props.theme.colors.lightBeige;
+      return (_props$theme13 = props.theme) === null || _props$theme13 === void 0 ? void 0 : _props$theme13.colors.lightBeige;
 
     case 'secondary':
-      return props.theme.colors.brand.yellow;
+      return (_props$theme14 = props.theme) === null || _props$theme14 === void 0 ? void 0 : _props$theme14.colors.brand.yellow;
 
     case 'terceary':
-      return props.theme.colors.brand.lightBlue;
+      return (_props$theme15 = props.theme) === null || _props$theme15 === void 0 ? void 0 : _props$theme15.colors.brand.lightBlue;
 
     case 'transparent':
       return 'transparent';
@@ -19793,7 +20005,9 @@ var GridRow = styled__default['default'].div(_templateObject9$1(), function (pro
 }, function (props) {
   return props.justify ? props.justify : 'none';
 }, function (props) {
-  return props.theme.maxWidth;
+  var _props$theme16;
+
+  return (_props$theme16 = props.theme) === null || _props$theme16 === void 0 ? void 0 : _props$theme16.maxWidth;
 }, media.desktop("\n    margin: 0 auto;\n  "), media.smallDesktop("\n    margin: 0 120px;\n  "), media.tablet("\n    margin: 0 48px;\n  "), media.mobile("\n    margin: 0 32px;\n  "), function (props) {
   return props.collapse && media[props.collapse]("\n  display: none;\n  ");
 }, function (props) {
@@ -19815,7 +20029,9 @@ var GridCol = styled__default['default'].div(_templateObject10$1(), function (pr
   return props.src ? "\n          background-image: url(".concat(props.src, ");\n          background-size: ").concat(props.contain ? 'contain' : 'cover', ";\n          background-position: center;\n          background-repeat: no-repeat;\n        ") : '';
 });
 var Hero = styled__default['default'].div(_templateObject11$1(), function (props) {
-  return props.theme.heroSize;
+  var _props$theme17;
+
+  return (_props$theme17 = props.theme) === null || _props$theme17 === void 0 ? void 0 : _props$theme17.heroSize;
 }, function (props) {
   return getSelectedBackground$1(props);
 }, function (props) {
@@ -19834,29 +20050,37 @@ function _templateObject$m() {
 }
 
 var getSelectedBackground$2 = function getSelectedBackground(props) {
+  var _props$theme, _props$theme2, _props$theme3, _props$theme4;
+
   switch (props.bg) {
     case 'alt':
-      return props.theme.colors.lightBeige;
+      return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.lightBeige;
 
     case 'secondary':
-      return props.theme.colors.brand.yellow;
+      return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.brand.yellow;
 
     case 'terceary':
-      return props.theme.colors.brand.lightBlue;
+      return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.brand.lightBlue;
 
     default:
-      return props.bg || props.theme.colors.lightBeige;
+      return props.bg || ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.lightBeige);
   }
 };
 
 var StyledForm = styled__default['default'].form(_templateObject$m(), function (props) {
   return getSelectedBackground$2(props);
 }, function (props) {
-  return props.theme.margin * 2;
+  var _props$theme5;
+
+  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 2;
 }, function (props) {
-  return props.theme.margin * 2;
+  var _props$theme6;
+
+  return ((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.margin) * 2;
 }, function (props) {
-  return props.theme.margin * 4;
+  var _props$theme7;
+
+  return ((_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.margin) * 4;
 });
 
 var MiniForm = function MiniForm(_ref) {
@@ -19902,7 +20126,9 @@ function _templateObject$n() {
   return data;
 }
 var StyledAddItem = styled__default['default'].nav(_templateObject$n(), function (props) {
-  return props.theme.colors.brand.red;
+  var _props$theme;
+
+  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.brand.red;
 });
 
 var MultiFieldRender = function MultiFieldRender(_ref) {
@@ -19942,15 +20168,17 @@ function _templateObject$o() {
 }
 
 var getSelectedBackground$3 = function getSelectedBackground(props) {
+  var _props$theme, _props$theme2, _props$theme3;
+
   switch (props.bg) {
     case "alt":
-      return props.theme.colors.lightBeige;
+      return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.lightBeige;
 
     case "secondary":
-      return props.theme.colors.brand.yellow;
+      return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.brand.yellow;
 
     case "terceary":
-      return props.theme.colors.brand.lightBlue;
+      return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.brand.lightBlue;
 
     default:
       return props.bg;
@@ -19960,10 +20188,14 @@ var getSelectedBackground$3 = function getSelectedBackground(props) {
 var FormContainer = styled__default['default'].div(_templateObject$o(), function (props) {
   return getSelectedBackground$3(props);
 }, function (props) {
-  return props.theme.margin;
+  var _props$theme4;
+
+  return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin;
 });
 var StyledForm$1 = styled__default['default'].form(_templateObject2$i(), function (props) {
-  return props.theme.margin * 4;
+  var _props$theme5;
+
+  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 4;
 });
 
 var Form$1 = function Form(_ref) {
@@ -30633,20 +30865,30 @@ function _templateObject$p() {
   return data;
 }
 var KanbanCard = styled__default['default'].div(_templateObject$p(), function (props) {
-  return props.theme.colors.mediumBeige;
+  var _props$theme;
+
+  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.mediumBeige;
 }, function (props) {
-  return props.theme.margin;
+  var _props$theme2;
+
+  return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin;
 });
 var BadgeContainer = styled__default['default'].div(_templateObject2$j());
 var IconContainer$1 = styled__default['default'].div(_templateObject3$d(), function (props) {
-  return props.theme.colors.lightBeige;
+  var _props$theme3;
+
+  return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.lightBeige;
 });
 var AdminContainer = styled__default['default'].div(_templateObject4$8(), function (props) {
-  return props.theme.colors.mediumBeige;
+  var _props$theme4;
+
+  return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.mediumBeige;
 });
 var Details = styled__default['default'].div(_templateObject5$5());
 var ServiceDetails = styled__default['default'](SmallBody)(_templateObject6$2(), function (props) {
-  return props.theme.colors.grey;
+  var _props$theme5;
+
+  return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.grey;
 });
 var Recurrent = styled__default['default'].div(_templateObject7$2());
 
@@ -30736,18 +30978,28 @@ function _templateObject$q() {
   return data;
 }
 var KanbanColumn = styled__default['default'].div(_templateObject$q(), function (props) {
-  return props.theme.colors.lightestBeige;
+  var _props$theme;
+
+  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.lightestBeige;
 });
 var ColumnCardsContainer = styled__default['default'].div(_templateObject2$k(), function (props) {
-  return props.theme.colors.lightestBeige;
+  var _props$theme2;
+
+  return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.lightestBeige;
 }, function (props) {
-  return props.theme.colors.darkBlue;
+  var _props$theme3;
+
+  return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.darkBlue;
 });
 var Header$1 = styled__default['default'].div(_templateObject3$e(), function (props) {
-  return props.theme.colors.lightestBeige;
+  var _props$theme4;
+
+  return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.lightestBeige;
 });
 var IconContainer$2 = styled__default['default'].div(_templateObject4$9(), function (props) {
-  return props.theme.colors.grey;
+  var _props$theme5;
+
+  return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.grey;
 });
 
 var KanbanColumn$1 = function KanbanColumn$1(_ref) {
@@ -30916,7 +31168,9 @@ function _templateObject$r() {
 var ListWrapper = styled__default['default'].div(_templateObject$r(), function (props) {
   return props.padding ? props.padding : 0;
 }, function (props) {
-  return props.isBorded ? "1px solid ".concat(props.theme.colors.mediumBeige) : 'none';
+  var _props$theme;
+
+  return props.isBorded ? "1px solid ".concat((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.mediumBeige) : 'none';
 }, function (props) {
   return props.isBorded ? 'border-box' : 'none';
 }, function (props) {
@@ -30935,14 +31189,14 @@ var ListItens = styled__default['default'].li(_templateObject3$f(), function (pr
 
 var getIconStyle = function getIconStyle(style, isIndexed) {
   var customStyles = {
-    main: "\n    nav {\n      width: 20px;\n      height: 20px;\n      padding: 2px;\n      font-weight: bold;\n      font-size: 16px;\n      margin-right: ".concat(theme__default['default'].margin, "px;\n      color: white;\n      background: ").concat(theme__default['default'].colors.brand.orange, ";\n      border-radius: 2px;\n      text-align: center;\xAB\n    }\n    p {\n      color: ").concat(isIndexed && theme__default['default'].colors.brand.orange, ";\n    }\n    "),
-    completed: "\n    nav {\n      width: 20px;\n      height: 20px;\n      padding: 2px;\n      font-weight: bold;\n      font-size: 16px;\n      margin-right: ".concat(theme__default['default'].margin, "px;\n      color: white;\n      background: ").concat(theme__default['default'].colors.darkBlue, ";\n      border-radius: 2px;\n      text-align: center;\n    }\n    p {\n      color: ").concat(theme__default['default'].colors.darkBlue, "\n    }\n    "),
-    grey: "\n    nav {\n      width: 20px;\n      height: 20px;\n      padding: 2px;\n      font-weight: bold;\n      font-size: 16px;\n      margin-right: ".concat(theme__default['default'].margin, "px;\n      color: white;\n      background: ").concat(theme__default['default'].colors.grey, ";\n      border-radius: 2px;\n      text-align: center;\xAB\n    }\n    p {\n      color: ").concat(theme__default['default'].colors.grey, "\n    }")
+    main: "\n    nav {\n      width: 20px;\n      height: 20px;\n      padding: 2px;\n      font-weight: bold;\n      font-size: 16px;\n      margin-right: ".concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].margin, "px;\n      color: white;\n      background: ").concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.brand.orange, ";\n      border-radius: 2px;\n      text-align: center;\xAB\n    }\n    p {\n      color: ").concat(isIndexed && (theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.brand.orange), ";\n    }\n    "),
+    completed: "\n    nav {\n      width: 20px;\n      height: 20px;\n      padding: 2px;\n      font-weight: bold;\n      font-size: 16px;\n      margin-right: ".concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].margin, "px;\n      color: white;\n      background: ").concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.darkBlue, ";\n      border-radius: 2px;\n      text-align: center;\n    }\n    p {\n      color: ").concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.darkBlue, "\n    }\n    "),
+    grey: "\n    nav {\n      width: 20px;\n      height: 20px;\n      padding: 2px;\n      font-weight: bold;\n      font-size: 16px;\n      margin-right: ".concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].margin, "px;\n      color: white;\n      background: ").concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.grey, ";\n      border-radius: 2px;\n      text-align: center;\xAB\n    }\n    p {\n      color: ").concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.grey, "\n    }")
   };
   return customStyles[style];
 };
 
-var regularStyle = "\n  &::before {\n      content: \"\";\n      padding: 5px;\n      font-weight: bold;\n      font-size: 16px;\n      align-items: baseline;\n      margin-right: 1.5rem;\n      background: ".concat(theme__default['default'].colors.brand.orange, ";\n      border-radius: 2px;\n  }\n  ");
+var regularStyle = "\n  &::before {\n      content: \"\";\n      padding: 5px;\n      font-weight: bold;\n      font-size: 16px;\n      align-items: baseline;\n      margin-right: 1.5rem;\n      background: ".concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.brand.orange, ";\n      border-radius: 2px;\n  }\n  ");
 var StyledIcon = styled__default['default'].nav(_templateObject4$a());
 
 var List = function List(_ref) {
@@ -31081,9 +31335,9 @@ function _templateObject$u() {
 
 var getActiveStyles = function getActiveStyles(theme, isActive, type) {
   if (isActive) {
-    return "\n            border: ".concat(type === "ellipsis" ? "none" : "1px solid " + theme.colors.darkBlue, ";\n            color: ").concat(theme.colors.darkBlue, ";\n        ");
+    return "\n            border: ".concat(type === "ellipsis" ? "none" : "1px solid " + (theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue), ";\n            color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue, ";\n        ");
   } else {
-    return "\n            border: ".concat(type === "ellipsis" ? "none" : "1px solid " + theme.colors.mediumBeige, ";\n            h3 {\n                color: ").concat(theme.colors.mediumBeige, ";\n            }\n        ");
+    return "\n            border: ".concat(type === "ellipsis" ? "none" : "1px solid " + (theme === null || theme === void 0 ? void 0 : theme.colors.mediumBeige), ";\n            h3 {\n                color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.mediumBeige, ";\n            }\n        ");
   }
 };
 
@@ -31177,7 +31431,9 @@ function _templateObject$v() {
 }
 var StyledPagination = styled__default['default'].div(_templateObject$v());
 var Left$1 = styled__default['default'].div(_templateObject2$n(), function (props) {
-  return props.theme.colors.grey;
+  var _props$theme;
+
+  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.grey;
 });
 var Right$1 = styled__default['default'].div(_templateObject3$g());
 
@@ -31292,25 +31548,37 @@ function _templateObject$w() {
   return data;
 }
 var StyledSidebar = styled__default['default'].div(_templateObject$w(), function (props) {
-  return props.theme.colors.brand.orange;
+  var _props$theme;
+
+  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.brand.orange;
 }, function (props) {
   return props.open ? '240px' : '45px';
 }, function (props) {
-  return props.theme.margin;
+  var _props$theme2;
+
+  return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin;
 }, function (props) {
   return !props.open ? "\n    position: fixed;\n    left: -240px;\n  " : "\n    position: fixed;\n    left: 0px;";
 });
 var NavHeader = styled__default['default'](Tiny)(_templateObject2$o(), function (props) {
-  return props.theme.margin * 2;
+  var _props$theme3;
+
+  return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) * 2;
 }, function (props) {
-  return props.theme.colors.white;
+  var _props$theme4;
+
+  return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.white;
 });
 var NavSection = styled__default['default'].div(_templateObject3$h(), function (props) {
-  return props.theme.margin * 2;
+  var _props$theme5;
+
+  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 2;
 }, function (props) {
   return props.open ? 'rotate(180deg)' : 'rotate(0deg)';
 }, function (props) {
-  return props.theme.colors.white;
+  var _props$theme6;
+
+  return (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.white;
 }, function (props) {
   return !props.open ? "\n    position: fixed;\n    top: 64px;\n    left: 8px;\n  " : "\n    position: fixed;\n    top: 64px;\n    left: ".concat(240 - 16, "px;\n    ");
 });
@@ -31319,19 +31587,25 @@ var getActiveLinkStyle = function getActiveLinkStyle(theme, active) {
   if (!active) {
     return "\n      background-color: none;\n      border-left: solid 2px transparent;\n      ";
   } else {
-    return "\n      background-color: ".concat(theme.colors.brand.orangeLight, ";\n      border-left: solid 2px white;\n      ");
+    return "\n      background-color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orangeLight, ";\n      border-left: solid 2px white;\n      ");
   }
 };
 
 var NavLink$1 = styled__default['default'](Link$1)(_templateObject4$b(), function (props) {
-  return props.theme.colors.white;
+  var _props$theme7;
+
+  return (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.white;
 }, function (props) {
-  return props.theme.colors.white;
+  var _props$theme8;
+
+  return (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.white;
 }, function (props) {
   return getActiveLinkStyle(props.theme, props.disabled);
 });
 var NavText = styled__default['default'](ButtonText)(_templateObject5$6(), function (props) {
-  return props.theme.colors.white;
+  var _props$theme9;
+
+  return (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors.white;
 }, function (props) {
   return getActiveLinkStyle(props.theme, props.disabled);
 });
@@ -31420,9 +31694,13 @@ function _templateObject$x() {
   return data;
 }
 var StyledTableRow = styled__default['default'].div(_templateObject$x(), function (props) {
-  return props.theme.colors.mediumBeige;
+  var _props$theme;
+
+  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.mediumBeige;
 }, function (props) {
-  return props.theme.colors.brand.orange;
+  var _props$theme2;
+
+  return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.brand.orange;
 });
 
 var getRowDetails = function getRowDetails(tableType) {
@@ -31540,10 +31818,14 @@ function _templateObject$y() {
   return data;
 }
 var StyledTable = styled__default['default'].div(_templateObject$y(), function (props) {
-  return props.theme.colors.darkBlue;
+  var _props$theme;
+
+  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.darkBlue;
 });
 var Header$2 = styled__default['default'].div(_templateObject2$p(), function (props) {
-  return props.theme.colors.lightestBeige;
+  var _props$theme2;
+
+  return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.lightestBeige;
 });
 
 var getRowDetails$1 = function getRowDetails(tableType) {
@@ -31678,7 +31960,9 @@ function _templateObject$z() {
 }
 var StyledTopBar = styled__default['default'].div(_templateObject$z());
 var LeftSection = styled__default['default'].div(_templateObject2$q(), function (props) {
-  return props.theme.colors.grey;
+  var _props$theme;
+
+  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.grey;
 });
 var RightSection = styled__default['default'].div(_templateObject3$i());
 
