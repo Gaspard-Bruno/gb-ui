@@ -30,7 +30,7 @@
     { "key": "location", "label": "Localidade", "type": "text" },
     {
       "key": "offer-type",
-      "label": "",
+      "label": "   ",
       "type": "radio",
       "children": [
         {
@@ -94,7 +94,7 @@
 
         {
           "key": "week-select",
-          "label": "-> button-group",
+          "label": "   ",
           "type": "button-group",
           "dependencyType": "value",
           "dependencyValue": "hour-package",
@@ -134,11 +134,12 @@
           ],
           "label": "Preferência Horaria",
           "dependencyType": "value",
-          "dependencyValue": "hour-package"
+          "dependencyValue": "hour-package",
+          "groupBy": 2
         },
         {
           "key": "ending-hour",
-          "label": "label -> para remover",
+          "label": "   ",
           "dependencyType": "value",
           "dependencyValue": "hour-package",
           "type": "dropdown",
@@ -181,7 +182,7 @@
     { "label": "Tipo de oferta", "type": "footnote" },
     {
       "key": "service-type",
-      "label": "",
+      "label": "   ",
       "type": "radio",
       "options": [
         { "value": 0, "label": "Standard" },
@@ -219,9 +220,10 @@
       ]
     },
     { "label": "Notas", "type": "footnote" },
-    { "key": "notes", "label": "", "type": "text-area" },
+    { "key": "notes", "label": "   ", "type": "text-area" },
     {
-      "key": "login-buttons", "groupBy": 1,
+      "key": "login-buttons",
+      "groupBy": 1,
       "widget": "login",
       "type": "tabs",
       "value": "guest",

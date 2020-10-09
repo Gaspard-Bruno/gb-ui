@@ -32,7 +32,7 @@
     { "type": "footnote", "label": "Tipo de oferta" },
     {
       "key": "offer-type",
-      "label": "",
+      "label": "   ",
       "type": "radio",
       "children": [
         {
@@ -142,7 +142,7 @@
         },
         {
           "key": "ending-hour",
-          "label": "label -> para remover",
+          "label": "   ",
           "dependencyType": "value",
           "dependencyValue": "hour-package",
           "type": "dropdown",
@@ -170,7 +170,7 @@
         },
         {
           "key": "week-select",
-          "label": "",
+          "label": "   ",
           "type": "button-group",
           "dependencyType": "value",
           "dependencyValue": "hour-package",
@@ -209,11 +209,11 @@
       ]
     },
     { "type": "footnote", "label": "Notas" },
-    { "key": "notes", "label": "", "type": "text-area" },
+    { "key": "notes", "label": "   ", "type": "text-area" },
     { "type": "footnote", "label": "Serviço" },
     {
       "key": "service-type",
-      "label": "",
+      "label": "   ",
       "type": "radio",
       "options": [
         { "value": 0, "label": "Standard" },
@@ -230,7 +230,8 @@
       ]
     },
     {
-      "key": "login-buttons", "groupBy": 1,
+      "key": "login-buttons",
+      "groupBy": 1,
       "widget": "login",
       "type": "tabs",
       "value": "guest",

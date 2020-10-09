@@ -30,7 +30,7 @@
     { "type": "footnote", "label": "Tipo de oferta" },
     {
       "key": "offer-type",
-      "label": "",
+      "label": "   ",
       "type": "radio",
       "children": [
         {
@@ -139,7 +139,7 @@
         },
         {
           "key": "ending-hour",
-          "label": "label -> para remover",
+          "label": "   ",
           "dependencyType": "value",
           "dependencyValue": "hour-package",
           "type": "dropdown",
@@ -190,9 +190,15 @@
       ]
     },
     { "label": "Notas", "type": "footnote" },
-    { "key": "notes", "label": "", "displayText": false, "type": "text-area" },
     {
-      "key": "login-buttons", "groupBy": 1,
+      "key": "notes",
+      "label": "   ",
+      "displayText": false,
+      "type": "text-area"
+    },
+    {
+      "key": "login-buttons",
+      "groupBy": 1,
       "widget": "login",
       "type": "tabs",
       "value": "guest",

@@ -93,7 +93,7 @@
     { "label": "Serviço", "type": "footnote" },
     {
       "key": "service-type",
-      "label": "",
+      "label": "   ",
       "type": "radio",
       "options": [
         { "value": 0, "label": "Standard" },
@@ -103,7 +103,7 @@
     { "label": "Prato principal", "type": "footnote" },
     {
       "key": "main-dish",
-      "label": "",
+      "label": "   ",
       "type": "radio",
       "options": [
         { "label": "Peixe", "value": 0, "key": "fish-dish" },

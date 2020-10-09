@@ -15,7 +15,7 @@
     { "label": "Serviço", "type": "footnote" },
     {
       "key": "service-type",
-      "label": "",
+      "label": "   ",
       "type": "radio",
       "options": [
         { "value": 0, "label": "Standard" },
@@ -56,7 +56,7 @@
     { "type": "footnote", "label": "Tipo de oferta" },
     {
       "key": "offer-type",
-      "label": "",
+      "label": "   ",
       "type": "radio",
       "children": [
         {
@@ -120,7 +120,7 @@
 
         {
           "key": "week-select",
-          "label": "",
+          "label": "   ",
           "type": "button-group",
           "dependencyType": "value",
           "dependencyValue": "hour-package",
@@ -164,7 +164,7 @@
         },
         {
           "key": "ending-hour",
-          "label": "label -> para remover",
+          "label": "   ",
           "dependencyType": "value",
           "dependencyValue": "hour-package",
           "type": "dropdown",

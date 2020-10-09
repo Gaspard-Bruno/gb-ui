@@ -22,7 +22,7 @@
     { "label": "Serviço", "type": "footnote" },
     {
       "key": "service-type",
-      "label": "",
+      "label": "   ",
       "type": "radio",
       "options": [
         { "value": 0, "label": "Standard" },
@@ -33,7 +33,7 @@
     { "label": "Tipo de oferta", "type": "footnote" },
     {
       "key": "offer-type",
-      "label": "",
+      "label": "   ",
       "type": "radio",
 
       "children": [
@@ -98,7 +98,7 @@
 
         {
           "key": "week-select",
-          "label": "",
+          "label": "   ",
           "type": "button-group",
           "dependencyType": "value",
           "dependencyValue": "hour-package",
@@ -114,7 +114,7 @@
         },
         {
           "key": "start-hour",
-          "type": "dropdown",
+          "type": "mini-dropdown",
           "options": [
             { "label": "09:00", "value": "09:00" },
             { "label": "09:30", "value": "09:30" },
@@ -142,10 +142,10 @@
         },
         {
           "key": "ending-hour",
-          "label": "label -> para remover",
+          "label": "   ",
           "dependencyType": "value",
           "dependencyValue": "hour-package",
-          "type": "dropdown",
+          "type": "mini-dropdown",
           "options": [
             { "label": "09:00", "value": "09:00" },
             { "label": "09:30", "value": "09:30" },
@@ -183,7 +183,7 @@
       ]
     },
     { "label": "Notas", "type": "footnote" },
-    { "key": "notes", "label": "", "type": "text-area" },
+    { "key": "notes", "label": "   ", "type": "text-area" },
     {
       "key": "login-buttons",
       "widget": "login",
