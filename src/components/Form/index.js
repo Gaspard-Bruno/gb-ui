@@ -209,9 +209,9 @@ const Form = ({
     const columns = [];
     const columnsRenderer = (key = 'last-parent', groupBy = 2) => {
       formFields.push(
-        chunk(columns, groupBy).map(col => (
+        chunk(columns, groupBy).map((col, i) => (
           <Row
-            key={`${key}-children-cols-${col}`}
+            key={`${key}-children-cols-${i}`}
             align='flex-start'
             inlineStyle={`
               ${col.length === 1 &&
@@ -313,7 +313,7 @@ const Form = ({
   getInitialValues(questions);
 
   const formRef = useRef();
-  
+
   const scrollToRef = ref =>
     window.scrollTo({
       behavior: 'smooth',

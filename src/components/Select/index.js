@@ -15,8 +15,6 @@ const Select = ({
   defaultValue,
   isMulti
 }) => {
-  console.log(isMini);
-  // TODO Add different color to placeholder
   return (
     <SelectContainer error={error} mini={isMini}>
       <Body>{label || ' '}</Body>
