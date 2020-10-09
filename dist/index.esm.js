@@ -12818,13 +12818,15 @@ var Select$2 = function Select(_ref) {
       onChange = _ref.onChange,
       isMini = _ref.isMini,
       isDisabled = _ref.isDisabled,
-      defaultValue = _ref.defaultValue;
+      defaultValue = _ref.defaultValue,
+      isMulti = _ref.isMulti;
   console.log(isMini); // TODO Add different color to placeholder
 
   return /*#__PURE__*/React.createElement(SelectContainer$1, {
     error: error,
     mini: isMini
   }, label && /*#__PURE__*/React.createElement(Body, null, label), /*#__PURE__*/React.createElement(Select$1, {
+    isMulti: isMulti,
     onChange: onChange,
     isDisabled: isDisabled,
     styles: selectStyles,
@@ -12837,6 +12839,7 @@ var Select$2 = function Select(_ref) {
 
 Select$2.propTypes = {
   isDisabled: propTypes.bool,
+  isMulti: propTypes.bool,
   error: propTypes.string,
   placeholder: propTypes.string,
   options: propTypes.arrayOf(propTypes.shape({
@@ -20194,7 +20197,8 @@ var Form$1 = function Form(_ref) {
       fieldsWidgets = _ref.fieldsWidgets,
       onChange = _ref.onChange,
       resetLabel = _ref.resetLabel,
-      cancelLabel = _ref.cancelLabel;
+      cancelLabel = _ref.cancelLabel,
+      errors = _ref.errors;
 
   var renderAddFields = function renderAddFields(fields, count, formik) {
     var addFields = [];
@@ -20231,7 +20235,8 @@ var Form$1 = function Form(_ref) {
         },
         value: formik.values[field.key],
         translate: translate,
-        type: field.type
+        type: field.type,
+        errors: errors === null || errors === void 0 ? void 0 : errors[field.key]
       };
 
       switch (widget) {
@@ -20306,6 +20311,7 @@ var Form$1 = function Form(_ref) {
         case 'mini-dropdown':
         case 'dropdown':
           return /*#__PURE__*/React.createElement(Select$2, _extends({
+            isMulti: field.isMulti,
             isMini: Boolean(widget === 'mini-dropdown'),
             options: field.options,
             inputValue: (_fieldProps$value$lab = fieldProps === null || fieldProps === void 0 ? void 0 : (_fieldProps$value = fieldProps.value) === null || _fieldProps$value === void 0 ? void 0 : _fieldProps$value.label) !== null && _fieldProps$value$lab !== void 0 ? _fieldProps$value$lab : ''
@@ -20390,7 +20396,7 @@ var Form$1 = function Form(_ref) {
       var groupBy = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
       formFields.push(lodash_chunk(columns, groupBy).map(function (col) {
         return /*#__PURE__*/React.createElement(Row, {
-          key: "".concat(key, "-children-cols"),
+          key: "".concat(key, "-children-cols-").concat(col),
           align: "flex-start",
           inlineStyle: "\n              ".concat(col.length === 1 && "\n                > div > div {\n                width: 100%;\n              ", "\n            ")
         }, col);
@@ -20491,7 +20497,22 @@ var Form$1 = function Form(_ref) {
   };
 
   getInitialValues(questions);
+  var formRef = useRef();
+
+  var scrollToRef = function scrollToRef(ref) {
+    return window.scrollTo({
+      behavior: 'smooth',
+      top: ref.current.offsetTop - 100
+    });
+  };
+
+  useEffect(function () {
+    if (errors) {
+      scrollToRef(formRef);
+    }
+  }, [errors]);
   return /*#__PURE__*/React.createElement(FormContainer, {
+    ref: formRef,
     bg: backgroundColor
   }, /*#__PURE__*/React.createElement(Formik, {
     initialValues: initialValues,
@@ -20512,6 +20533,7 @@ var Form$1 = function Form(_ref) {
 
 Form$1.propTypes = {
   onSubmit: propTypes.func,
+  errors: propTypes.object,
   onChange: propTypes.func,
   translate: propTypes.func,
   submitLabel: propTypes.string,
