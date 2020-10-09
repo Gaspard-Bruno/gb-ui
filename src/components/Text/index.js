@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import get from "lodash.get";
-import { Link as RouterLink } from "react-router-dom";
+import styled from 'styled-components';
+import get from 'lodash.get';
+import { Link as RouterLink } from 'react-router-dom';
 
 export const Jumbo = styled.h1`
   font-family: Space Grotesk;
@@ -76,7 +76,7 @@ export const Body = styled.p`
 export const SmallBody = styled.p`
   font-family: Muli;
   font-style: normal;
-  font-weight: ${props => (props.bold ? "bold" : "normal")};
+  font-weight: ${props => (props.bold ? 'bold' : 'normal')};
   font-size: 14px;
   line-height: 16px;
   color: ${props =>

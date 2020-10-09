@@ -12,6 +12,7 @@ export const SelectContainer = styled.div`
       ? props.theme?.colors.feedback.error.default
       : props.theme?.colors.darkBlue};
   > p {
+    min-height: 24px;
     margin: ${props => props.theme?.margin / 2}px 0;
   }
 `;

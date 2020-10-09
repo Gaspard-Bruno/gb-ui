@@ -19,7 +19,7 @@ const Select = ({
   // TODO Add different color to placeholder
   return (
     <SelectContainer error={error} mini={isMini}>
-      {label && <Body>{label}</Body>}
+      <Body>{label || ' '}</Body>
       <StyledSelect
         isMulti={isMulti}
         onChange={onChange}
@@ -43,7 +43,7 @@ Select.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
-      value: PropTypes.string,
+      value: PropTypes.string
     })
   ),
   isMini: PropTypes.bool,
