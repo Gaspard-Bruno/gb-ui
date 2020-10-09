@@ -20188,13 +20188,13 @@ var StyledForm$1 = styled.form(_templateObject2$i(), function (props) {
 var Form$1 = function Form(_ref) {
   var _onSubmit = _ref.onSubmit,
       questions = _ref.questions,
-      onChange = _ref.onChange,
       submitLabel = _ref.submitLabel,
-      resetLabel = _ref.resetLabel,
-      cancelLabel = _ref.cancelLabel,
       backgroundColor = _ref.backgroundColor,
       translate = _ref.translate,
-      fieldsWidgets = _ref.fieldsWidgets;
+      fieldsWidgets = _ref.fieldsWidgets,
+      onChange = _ref.onChange,
+      resetLabel = _ref.resetLabel,
+      cancelLabel = _ref.cancelLabel;
 
   var renderAddFields = function renderAddFields(fields, count, formik) {
     var addFields = [];
@@ -20504,6 +20504,7 @@ var Form$1 = function Form(_ref) {
     }, renderFields(formik, questions), /*#__PURE__*/React.createElement(Button$1, {
       type: "submit",
       btnType: 'primary',
+      isFullWidth: true,
       text: submitLabel
     })));
   }));

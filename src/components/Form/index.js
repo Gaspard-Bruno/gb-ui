@@ -22,13 +22,13 @@ import { FormContainer, StyledForm } from './styles';
 const Form = ({
   onSubmit,
   questions,
-  onChange,
   submitLabel,
-  resetLabel,
-  cancelLabel,
   backgroundColor,
   translate,
-  fieldsWidgets
+  fieldsWidgets,
+  onChange,
+  resetLabel,
+  cancelLabel
 }) => {
   const renderAddFields = (fields, count, formik) => {
     const addFields = [];
