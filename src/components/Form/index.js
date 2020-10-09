@@ -27,6 +27,7 @@ const Form = ({
   resetLabel,
   cancelLabel,
   backgroundColor,
+  translate,
   fieldsWidgets
 }) => {
   const renderAddFields = (fields, count, formik) => {
@@ -55,6 +56,7 @@ const Form = ({
         key: field.key ?? field.label?.toLowerCase(),
         onChange: v => formik.setFieldValue(field.key, v),
         value: formik.values[field.key],
+        translate,
         type: field.type
       };
       switch (widget) {
@@ -309,15 +311,12 @@ const Form = ({
 
   return (
     <FormContainer bg={backgroundColor}>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={f => console.log('submitting', f)}
-      >
+      <Formik initialValues={initialValues} onSubmit={f => onSubmit(f)}>
         {formik => (
           <>
             <StyledForm onSubmit={formik.handleSubmit}>
               {renderFields(formik, questions)}
-              <Button type='submit' btnType={'primary'} text='Submit' />
+              <Button type='submit' btnType={'primary'} text={submitLabel} />
             </StyledForm>
           </>
         )}
@@ -329,6 +328,7 @@ const Form = ({
 Form.propTypes = {
   onSubmit: PropTypes.func,
   onChange: PropTypes.func,
+  translate: PropTypes.func,
   submitLabel: PropTypes.string,
   resetLabel: PropTypes.string,
   cancelLabel: PropTypes.string,
