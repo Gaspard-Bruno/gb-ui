@@ -316,7 +316,12 @@ const Form = ({
           <>
             <StyledForm onSubmit={formik.handleSubmit}>
               {renderFields(formik, questions)}
-              <Button type='submit' btnType={'primary'} text={submitLabel} />
+              <Button
+                type='submit'
+                btnType={'primary'}
+                isFullWidth
+                text={submitLabel}
+              />
             </StyledForm>
           </>
         )}
