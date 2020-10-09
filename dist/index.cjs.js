@@ -5205,7 +5205,7 @@ var Body = styled__default['default'].p(_templateObject4(), function (props) {
   return props.alt ? (_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.colors.grey : (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.colors.darkBlue;
 });
 var SmallBody = styled__default['default'].p(_templateObject5(), function (props) {
-  return props.bold ? "bold" : "normal";
+  return props.bold ? 'bold' : 'normal';
 }, function (props) {
   var _props$theme12, _props$theme13, _props$theme14;
 
@@ -12746,7 +12746,7 @@ function _templateObject2$9() {
 }
 
 function _templateObject$d() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  width: ", ";\n  justify-content: flex-start;\n  color: ", ";\n  > p {\n    margin: ", "px 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  width: ", ";\n  justify-content: flex-start;\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n"]);
 
   _templateObject$d = function _templateObject() {
     return data;
@@ -12838,7 +12838,7 @@ var Select$2 = function Select(_ref) {
   return /*#__PURE__*/React__default['default'].createElement(SelectContainer$1, {
     error: error,
     mini: isMini
-  }, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), /*#__PURE__*/React__default['default'].createElement(Select$1, {
+  }, /*#__PURE__*/React__default['default'].createElement(Body, null, label || ' '), /*#__PURE__*/React__default['default'].createElement(Select$1, {
     isMulti: isMulti,
     onChange: onChange,
     isDisabled: isDisabled,
@@ -19303,7 +19303,7 @@ function _templateObject2$d() {
 }
 
 function _templateObject$h() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  & > nav {\n    position: absolute;\n    align-self: flex-end;\n    background-color: white;\n    padding: 8px;\n    margin: 5px;\n  }\n  color: ", ";\n  > p {\n    margin: ", "px 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  & > nav {\n    position: absolute;\n    align-self: flex-end;\n    background-color: white;\n    padding: 8px;\n    margin: 5px;\n  }\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n"]);
 
   _templateObject$h = function _templateObject() {
     return data;
@@ -19396,7 +19396,7 @@ var TextInput = function TextInput(_ref) {
     onClickCapture: handleIconChange
   }, /*#__PURE__*/React__default['default'].createElement(Icon, {
     name: displayedIcon
-  })), label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), /*#__PURE__*/React__default['default'].createElement(Input$2, {
+  })), /*#__PURE__*/React__default['default'].createElement(Body, null, label || ' '), /*#__PURE__*/React__default['default'].createElement(Input$2, {
     type: inputType,
     error: error,
     defaultValue: defaultValue,
