@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { Field, Formik } from 'formik';
+import React, { useRef, useEffect } from 'react';
+import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import chunk from 'lodash.chunk';
 import sc from 'lodash.startcase';
@@ -28,7 +28,8 @@ const Form = ({
   fieldsWidgets,
   onChange,
   resetLabel,
-  cancelLabel
+  cancelLabel,
+  errors
 }) => {
   const renderAddFields = (fields, count, formik) => {
     const addFields = [];
@@ -57,7 +58,8 @@ const Form = ({
         onChange: v => formik.setFieldValue(field.key, v),
         value: formik.values[field.key],
         translate,
-        type: field.type
+        type: field.type,
+        errors: errors?.[field.key]
       };
       switch (widget) {
         case 'object':
@@ -133,6 +135,7 @@ const Form = ({
         case 'dropdown':
           return (
             <Select
+              isMulti={field.isMulti}
               isMini={Boolean(widget === 'mini-dropdown')}
               options={field.options}
               inputValue={fieldProps?.value?.label ?? ''}
@@ -208,7 +211,7 @@ const Form = ({
       formFields.push(
         chunk(columns, groupBy).map(col => (
           <Row
-            key={`${key}-children-cols`}
+            key={`${key}-children-cols-${col}`}
             align='flex-start'
             inlineStyle={`
               ${col.length === 1 &&
@@ -309,8 +312,22 @@ const Form = ({
     });
   getInitialValues(questions);
 
+  const formRef = useRef();
+  
+  const scrollToRef = ref =>
+    window.scrollTo({
+      behavior: 'smooth',
+      top: ref.current.offsetTop - 100
+    });
+
+  useEffect(() => {
+    if (errors) {
+      scrollToRef(formRef);
+    }
+  }, [errors]);
+
   return (
-    <FormContainer bg={backgroundColor}>
+    <FormContainer ref={formRef} bg={backgroundColor}>
       <Formik initialValues={initialValues} onSubmit={f => onSubmit(f)}>
         {formik => (
           <>
@@ -332,6 +349,7 @@ const Form = ({
 
 Form.propTypes = {
   onSubmit: PropTypes.func,
+  errors: PropTypes.object,
   onChange: PropTypes.func,
   translate: PropTypes.func,
   submitLabel: PropTypes.string,
