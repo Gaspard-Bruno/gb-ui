@@ -62,7 +62,7 @@
     { "label": "Tipo de oferta", "type": "footnote" },
     {
       "key": "offer-type",
-      "label": "   ",
+      "label": " ",
       "type": "radio",
       "children": [
         {
@@ -126,7 +126,7 @@
 
         {
           "key": "week-select",
-          "label": "   ",
+          "label": " ",
           "type": "button-group",
           "dependencyType": "value",
           "dependencyValue": "hour-package",
@@ -170,7 +170,7 @@
         },
         {
           "key": "ending-hour",
-          "label": "   ",
+          "label": "Hora de Fim",
           "dependencyType": "value",
           "dependencyValue": "hour-package",
           "type": "dropdown",
@@ -211,7 +211,7 @@
       ]
     },
     { "label": "Notas", "type": "footnote" },
-    { "key": "notes", "label": "   ", "type": "text-area" },
+    { "key": "notes", "label": " ", "type": "text-area" },
     {
       "key": "login-buttons",
       "widget": "login",

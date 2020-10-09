@@ -32,7 +32,7 @@
     { "type": "footnote", "label": "Tipo de oferta" },
     {
       "key": "offer-type",
-      "label": "   ",
+      "label": " ",
       "type": "radio",
       "children": [
         {
@@ -136,13 +136,13 @@
             { "label": "17:30", "value": "17:30" },
             { "label": "18:00", "value": "18:00" }
           ],
-          "label": "Preferência Horaria",
+          "label": "Preferência Horária",
           "dependencyType": "value",
           "dependencyValue": "hour-package"
         },
         {
           "key": "ending-hour",
-          "label": "   ",
+          "label": "Hora de Fim",
           "dependencyType": "value",
           "dependencyValue": "hour-package",
           "type": "dropdown",
@@ -170,7 +170,7 @@
         },
         {
           "key": "week-select",
-          "label": "   ",
+          "label": " ",
           "type": "button-group",
           "dependencyType": "value",
           "dependencyValue": "hour-package",
@@ -209,11 +209,11 @@
       ]
     },
     { "type": "footnote", "label": "Notas" },
-    { "key": "notes", "label": "   ", "type": "text-area" },
+    { "key": "notes", "label": " ", "type": "text-area" },
     { "type": "footnote", "label": "Serviço" },
     {
       "key": "service-type",
-      "label": "   ",
+      "label": " ",
       "type": "radio",
       "options": [
         { "value": 0, "label": "Standard" },

@@ -21,7 +21,7 @@
     { "label": "Tipo de Serviço", "type": "footnote" },
     {
       "key": "service-type",
-      "label": "   ",
+      "label": " ",
       "type": "radio",
       "options": [
         { "value": 0, "label": "Standard" },
@@ -31,7 +31,7 @@
     { "type": "footnote", "label": "Tipo de oferta" },
     {
       "key": "offer-type",
-      "label": "   ",
+      "label": " ",
       "type": "radio",
       "children": [
         {
@@ -95,7 +95,7 @@
 
         {
           "key": "week-select",
-          "label": "   ",
+          "label": " ",
           "type": "button-group",
           "dependencyType": "value",
           "dependencyValue": "hour-package",
@@ -133,13 +133,13 @@
             { "label": "17:30", "value": "17:30" },
             { "label": "18:00", "value": "18:00" }
           ],
-          "label": "Preferência Horaria",
+          "label": "Preferência Horária",
           "dependencyType": "value",
           "dependencyValue": "hour-package"
         },
         {
           "key": "ending-hour",
-          "label": "   ",
+          "label": "Hora de Fim",
           "dependencyType": "value",
           "dependencyValue": "hour-package",
           "type": "dropdown",
@@ -187,7 +187,7 @@
     { "label": "Notas", "type": "footnote" },
     {
       "key": "notes",
-      "label": "   ",
+      "label": " ",
       "placeholder": "Por favor, especifique que tipo de roupa você deseja que seja passado (roupas do dia a dia, uniformes, camisas, roupas de bebê, lençóis, toalhas)",
       "type": "text-area"
     },
