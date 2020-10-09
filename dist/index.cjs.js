@@ -20199,13 +20199,14 @@ var StyledForm$1 = styled__default['default'].form(_templateObject2$i(), functio
 });
 
 var Form$1 = function Form(_ref) {
-  var onSubmit = _ref.onSubmit,
+  var _onSubmit = _ref.onSubmit,
       questions = _ref.questions,
       onChange = _ref.onChange,
       submitLabel = _ref.submitLabel,
       resetLabel = _ref.resetLabel,
       cancelLabel = _ref.cancelLabel,
       backgroundColor = _ref.backgroundColor,
+      translate = _ref.translate,
       fieldsWidgets = _ref.fieldsWidgets;
 
   var renderAddFields = function renderAddFields(fields, count, formik) {
@@ -20242,6 +20243,7 @@ var Form$1 = function Form(_ref) {
           return formik.setFieldValue(field.key, v);
         },
         value: formik.values[field.key],
+        translate: translate,
         type: field.type
       };
 
@@ -20507,7 +20509,7 @@ var Form$1 = function Form(_ref) {
   }, /*#__PURE__*/React__default['default'].createElement(Formik, {
     initialValues: initialValues,
     onSubmit: function onSubmit(f) {
-      return console.log('submitting', f);
+      return _onSubmit(f);
     }
   }, function (formik) {
     return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(StyledForm$1, {
@@ -20515,7 +20517,7 @@ var Form$1 = function Form(_ref) {
     }, renderFields(formik, questions), /*#__PURE__*/React__default['default'].createElement(Button$1, {
       type: "submit",
       btnType: 'primary',
-      text: "Submit"
+      text: submitLabel
     })));
   }));
 };
@@ -20523,6 +20525,7 @@ var Form$1 = function Form(_ref) {
 Form$1.propTypes = {
   onSubmit: propTypes.func,
   onChange: propTypes.func,
+  translate: propTypes.func,
   submitLabel: propTypes.string,
   resetLabel: propTypes.string,
   cancelLabel: propTypes.string,
