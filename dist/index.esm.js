@@ -20227,7 +20227,7 @@ var Form$1 = function Form(_ref) {
   var fieldRenderer = function fieldRenderer(field, formik, parentKey) {
     var _field$options, _fieldProps$value$lab, _fieldProps$value;
 
-    if (field.key && hiddenFields.indexOf(field.key) !== -1) {
+    if (field.key && hiddenFields.indexOf(field.key) === -1) {
       var _field$label, _field$key, _field$label2;
 
       var widget = field.widget || field.type;
