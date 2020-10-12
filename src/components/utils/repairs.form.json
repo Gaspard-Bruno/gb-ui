@@ -173,12 +173,12 @@
         {
           "key": "single",
           "label": "Simples",
-          "value": "single"
+          "value": 0
         },
         {
           "key": "hour-package",
           "label": "Pacote de Horas",
-          "value": "hour-package"
+          "value": 1
         }
       ]
     },

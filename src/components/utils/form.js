@@ -28,11 +28,12 @@ const gardeningAnswers = {
   'last-name': 'Morais',
   materials: 1,
   telephone: '123',
+  notes: 'Cool stuff',
   'first-name': 'David',
-  'offer-type': 'single',
+  'offer-type': 0,
   'start-date': '2020-10-14',
   'postal-code': '2800*282',
-  'service-type': 'standard',
+  'service-type': 1,
   'login-buttons': 'guest',
   'chosen-language': 1
 };
