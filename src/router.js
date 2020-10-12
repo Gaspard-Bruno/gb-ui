@@ -108,7 +108,11 @@ const components = [
       }
     ],
     section: 'Form',
-    component: props => <Form {...props}><Heading size={2}>Child</Heading> </Form>
+    component: props => (
+      <Form {...props}>
+        <Heading size={2}>Child</Heading>{' '}
+      </Form>
+    )
   },
   {
     label: 'ButtonGroup',

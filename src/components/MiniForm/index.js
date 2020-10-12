@@ -1,31 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../Button';
-import { Heading } from '../Text';
-import { Col, Row } from '../Layout';
+import { Col } from '../Layout';
 
-import { StyledForm } from './styles';
+import {
+  StyledForm,
+  StyledHeaderInfo,
+  StyledServiceHeader,
+  StyledRemoveSpan
+} from './styles';
 
 const MiniForm = ({ onSubmit, content, title, onRemove }) => {
   return (
     <StyledForm onSubmit={onSubmit}>
-      <Row>
-        <Col size={1}>
-          <Heading size={3}>{title}</Heading>
-        </Col>
-        <Col size={1}>
-          <Button
-            type='submit'
-            action={onRemove}
-            btnType='terceary'
-            text='Remove'
-            icon='Close'
-          />
-        </Col>
-      </Row>
-      {content}
-      <Button type='submit' btnType={'primary'} text='Submit' />
+      <StyledServiceHeader>
+        <StyledHeaderInfo size={6}>{title}</StyledHeaderInfo>
+        <StyledRemoveSpan
+          key={title}
+          role='presentation'
+          onClick={onRemove}
+          style={{}}
+        >
+          X Remover Serviço
+        </StyledRemoveSpan>
+      </StyledServiceHeader>
+      <Col padding={20}>{content}</Col>
+      {/*  <Button type='submit' btnType={'primary'} text='Submit' /> */}
     </StyledForm>
   );
 };
