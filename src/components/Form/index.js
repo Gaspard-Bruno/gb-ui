@@ -52,7 +52,7 @@ const Form = ({
   };
 
   const fieldRenderer = (field, formik, parentKey) => {
-    if (field.key && hiddenFields.indexOf(field.key) !== -1) {
+    if (field.key && hiddenFields.indexOf(field.key) === -1) {
       const widget = field.widget || field.type;
       const fieldProps = {
         label: field.label ?? sc(field.key),
