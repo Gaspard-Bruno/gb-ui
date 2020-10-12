@@ -29,7 +29,8 @@ const Form = ({
   onChange,
   resetLabel,
   cancelLabel,
-  errors
+  errors,
+  children
 }) => {
   const renderAddFields = (fields, count, formik) => {
     const addFields = [];
@@ -328,6 +329,7 @@ const Form = ({
 
   return (
     <FormContainer ref={formRef} bg={backgroundColor}>
+      {children}
       <Formik initialValues={initialValues} onSubmit={f => onSubmit(f)}>
         {formik => (
           <>
@@ -349,6 +351,7 @@ const Form = ({
 
 Form.propTypes = {
   onSubmit: PropTypes.func,
+  children: PropTypes.node,
   errors: PropTypes.object,
   onChange: PropTypes.func,
   translate: PropTypes.func,
