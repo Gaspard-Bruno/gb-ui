@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   StyledContainer,
   StyledRadio,
   RadioGroudContainer,
   SplitSelectContainer,
   FocusedRadio
-} from "./styles";
-import PropTypes from "prop-types";
-import Select from "../Select";
-import { Body, ErrorText } from "../Text";
-import TextInput from "../TextInput";
+} from './styles';
+import PropTypes from 'prop-types';
+import Select from '../Select';
+import { Body, ErrorText } from '../Text';
+import TextInput from '../TextInput';
 
 const RadioButton = ({
   align,
@@ -18,9 +18,13 @@ const RadioButton = ({
   label,
   name,
   list,
+  value,
   error
 }) => {
-  const [selectedButton, setSelectedTab] = useState(null);
+  console.log(list, value);
+  const [selectedButton, setSelectedTab] = useState(
+    list.map(li => li.value || li.label.toLowerCase()).indexOf(value)
+  );
 
   return (
     <StyledContainer>
@@ -34,7 +38,7 @@ const RadioButton = ({
               key={`${item}-${index}`}
             >
               <StyledRadio
-                type="button"
+                type='button'
                 name={name}
                 isSelected={index === selectedButton}
                 onClick={event => {
@@ -42,7 +46,7 @@ const RadioButton = ({
                   if (action) {
                     action({
                       name,
-                      value: item.key || item.label.toLowerCase()
+                      value: item.value || item.label.toLowerCase()
                     });
                   }
                 }}

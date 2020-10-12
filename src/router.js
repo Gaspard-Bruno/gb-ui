@@ -86,8 +86,9 @@ const components = [
     label: 'Form',
     props: [
       {
-        previewComponentTitle: 'Gardening',
-        questions: FORM.gardening.questions
+        previewComponentTitle: 'Gardening (Pre-filled)',
+        questions: FORM.gardening.questions,
+        answers: FORM.gardeningAnswers
       },
       {
         previewComponentTitle: 'Cleaning',

@@ -11,6 +11,32 @@ import repairs from './repairs.form.json';
 import gardening from './gardening.form.json';
 import becomeSpecialist from './becomespecialist.js';
 
+const gardeningAnswers = {
+  email: 'david@test.com',
+  guest: {
+    email: 'david@test.com',
+    lastName: 'Morais',
+    firstName: 'David',
+    telephone: '123'
+  },
+  address: 'Rua Cenas',
+  country: 1,
+  service: 1,
+  district: 1,
+  location: 'St Tirso 231',
+  'area-size': '233 kilos',
+  'last-name': 'Morais',
+  materials: 1,
+  telephone: '123',
+  'first-name': 'David',
+  'offer-type': 'single',
+  'start-date': '2020-10-14',
+  'postal-code': '2800*282',
+  'service-type': 'standard',
+  'login-buttons': 'guest',
+  'chosen-language': 1
+};
+
 export default {
   petsitting,
   babysitting,
@@ -23,5 +49,6 @@ export default {
   musicLessons,
   repairs,
   becomeSpecialist,
-  gardening
+  gardening,
+  gardeningAnswers
 };

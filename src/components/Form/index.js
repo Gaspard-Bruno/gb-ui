@@ -30,6 +30,8 @@ const Form = ({
   resetLabel,
   cancelLabel,
   errors,
+  answers,
+  hiddenFields,
   children
 }) => {
   const renderAddFields = (fields, count, formik) => {
@@ -50,7 +52,7 @@ const Form = ({
   };
 
   const fieldRenderer = (field, formik, parentKey) => {
-    if (field.key) {
+    if (field.key && hiddenFields.indexOf(field.key) !== -1) {
       const widget = field.widget || field.type;
       const fieldProps = {
         label: field.label ?? sc(field.key),
@@ -139,8 +141,10 @@ const Form = ({
               isMulti={field.isMulti}
               isMini={Boolean(widget === 'mini-dropdown')}
               options={field.options}
-              inputValue={fieldProps?.value?.label ?? ''}
               {...fieldProps}
+              defaultValue={field.options?.find(
+                opt => opt.value === fieldProps.value
+              )}
               onChange={option => formik.setFieldValue(field.key, option.value)}
             />
           );
@@ -173,6 +177,7 @@ const Form = ({
             />
           );
         case 'checkbox-group':
+          console.log('buming checkbox-group', field);
           return (
             <CheckBoxGroup
               name={fieldProps.key}
@@ -304,7 +309,7 @@ const Form = ({
         if (q.type === 'object') {
           getInitialValues(q.questions);
         } else {
-          initialValues[q.key] = q.value || typeDefault;
+          initialValues[q.key] = answers?.[q.key] || q.value || typeDefault;
         }
         if (q.children) {
           getInitialValues(q.children);
@@ -314,6 +319,7 @@ const Form = ({
   getInitialValues(questions);
 
   const formRef = useRef();
+  console.log('init values', initialValues, answers);
 
   const scrollToRef = ref =>
     window.scrollTo({
@@ -360,6 +366,8 @@ Form.propTypes = {
   cancelLabel: PropTypes.string,
   backgroundColor: PropTypes.string,
   fieldsWidgets: PropTypes.object,
+  answers: PropTypes.object,
+  hiddenFields: PropTypes.arrayOf(PropTypes.string),
   questions: PropTypes.arrayOf(
     // * Fields
     PropTypes.shape({
@@ -374,7 +382,7 @@ Form.propTypes = {
         'text-area',
         'tabs'
       ).isRequired,
-      key: PropTypes.string.isRequired,
+      key: PropTypes.string,
       // ! To be replaced with label/translate on key 👇
       question: PropTypes.string,
       widget: PropTypes.string,
@@ -387,14 +395,14 @@ Form.propTypes = {
       // * Dependent Fields 👇
       children: PropTypes.arrayOf(
         PropTypes.shape({
-          type: PropTypes.string.isRequired,
+          type: PropTypes.string,
           widget: PropTypes.string,
           dependencyType: PropTypes.oneOf('value', 'value-count'),
           // * Dependency Logic 👇
           // - value: Watches the value of the parent, only rendering when dependencyValue matches
           // - value-count: will render as many children as the current value count
           dependencyValue: PropTypes.string,
-          key: PropTypes.string.isRequired,
+          key: PropTypes.string,
           options: PropTypes.arrayOf(
             PropTypes.shape({
               label: PropTypes.string,
@@ -414,6 +422,8 @@ Form.defaultProps = {
   resetLabel: '',
   cnacelLabel: '',
   backgroundColor: 'primary',
+  hiddenFields: [],
+  answers: {},
   questions: []
 };
 
