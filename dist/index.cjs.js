@@ -5980,7 +5980,7 @@ var ListContainer = styled__default['default'].div(_templateObject2$5());
 var ButtonGroupContainer = styled__default['default'].div(_templateObject3$4(), function (props) {
   var _props$theme3, _props$theme4;
 
-  return !console.log(props.isSelected) && props.isSelected ? (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.darkBlue : (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.grey;
+  return props.isSelected ? (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.darkBlue : (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.grey;
 });
 var StyledButton = styled__default['default'].button(_templateObject4$2(), function (props) {
   var _props$theme5;
@@ -19478,7 +19478,7 @@ var TextArea = styled__default['default'].textarea(_templateObject2$e(), functio
 var TextArea$1 = function TextArea$1(_ref) {
   var error = _ref.error,
       placeholder = _ref.placeholder,
-      defaultValue = _ref.defaultValue,
+      value = _ref.value,
       label = _ref.label,
       onChange = _ref.onChange;
   return /*#__PURE__*/React__default['default'].createElement(TextAreaContainer, {
@@ -19486,7 +19486,8 @@ var TextArea$1 = function TextArea$1(_ref) {
   }, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), /*#__PURE__*/React__default['default'].createElement(TextArea, {
     resize: false,
     error: error,
-    placeholder: placeholder
+    placeholder: placeholder,
+    value: value
   }), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error));
 };
 
@@ -19494,7 +19495,7 @@ TextArea$1.propTypes = {
   error: propTypes.string,
   placeholder: propTypes.string,
   label: propTypes.string,
-  defaultValue: propTypes.string,
+  value: propTypes.string,
   onChange: propTypes.func
 };
 
@@ -19604,11 +19605,8 @@ var RadioButton = function RadioButton(_ref) {
       list = _ref.list,
       value = _ref.value,
       error = _ref.error;
-  console.log(list, value);
 
-  var _useState = React.useState(list.map(function (li) {
-    return li.value || li.label.toLowerCase();
-  }).indexOf(value)),
+  var _useState = React.useState(value),
       _useState2 = _slicedToArray(_useState, 2),
       selectedButton = _useState2[0],
       setSelectedTab = _useState2[1];
@@ -19628,7 +19626,7 @@ var RadioButton = function RadioButton(_ref) {
         if (action) {
           action({
             name: name,
-            value: item.value || item.label.toLowerCase()
+            value: item.value
           });
         }
       },
@@ -20402,7 +20400,6 @@ var Form$1 = function Form(_ref) {
           }));
 
         case 'checkbox-group':
-          console.log('buming checkbox-group', field);
           return /*#__PURE__*/React__default['default'].createElement(CheckBoxGroup, {
             name: fieldProps.key,
             label: fieldProps === null || fieldProps === void 0 ? void 0 : fieldProps.label,
@@ -20544,7 +20541,9 @@ var Form$1 = function Form(_ref) {
         if (q.type === 'object') {
           getInitialValues(q.questions);
         } else {
-          initialValues[q.key] = (answers === null || answers === void 0 ? void 0 : answers[q.key]) || q.value || typeDefault;
+          var _answers$q$key;
+
+          initialValues[q.key] = (_answers$q$key = answers === null || answers === void 0 ? void 0 : answers[q.key]) !== null && _answers$q$key !== void 0 ? _answers$q$key : q.value || typeDefault;
         }
 
         if (q.children) {
@@ -20556,7 +20555,6 @@ var Form$1 = function Form(_ref) {
 
   getInitialValues(questions);
   var formRef = React.useRef();
-  console.log('init values', initialValues, answers);
 
   var scrollToRef = function scrollToRef(ref) {
     return window.scrollTo({
