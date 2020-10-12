@@ -16,7 +16,7 @@ export default {
     lightestBeige: '#F8F7F7',
     white: '#FFF',
     brand: {
-      yellow: '#FEC35A',
+      yellow: '#dadcff',
       hover: '#FECE7B',
       lighter: '#FED58B',
       darker: '#FDAA15',
