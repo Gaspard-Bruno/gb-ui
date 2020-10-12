@@ -19589,9 +19589,13 @@ var RadioButton = function RadioButton(_ref) {
       label = _ref.label,
       name = _ref.name,
       list = _ref.list,
+      value = _ref.value,
       error = _ref.error;
+  console.log(list, value);
 
-  var _useState = useState(null),
+  var _useState = useState(list.map(function (li) {
+    return li.value || li.label.toLowerCase();
+  }).indexOf(value)),
       _useState2 = _slicedToArray(_useState, 2),
       selectedButton = _useState2[0],
       setSelectedTab = _useState2[1];
@@ -19611,7 +19615,7 @@ var RadioButton = function RadioButton(_ref) {
         if (action) {
           action({
             name: name,
-            value: item.key || item.label.toLowerCase()
+            value: item.value || item.label.toLowerCase()
           });
         }
       },
@@ -20197,6 +20201,8 @@ var Form$1 = function Form(_ref) {
       resetLabel = _ref.resetLabel,
       cancelLabel = _ref.cancelLabel,
       errors = _ref.errors,
+      answers = _ref.answers,
+      hiddenFields = _ref.hiddenFields,
       children = _ref.children;
 
   var renderAddFields = function renderAddFields(fields, count, formik) {
@@ -20219,9 +20225,9 @@ var Form$1 = function Form(_ref) {
   };
 
   var fieldRenderer = function fieldRenderer(field, formik, parentKey) {
-    var _fieldProps$value$lab, _fieldProps$value, _fieldProps$value$lab2, _fieldProps$value2;
+    var _field$options, _fieldProps$value$lab, _fieldProps$value;
 
-    if (field.key) {
+    if (field.key && hiddenFields.indexOf(field.key) !== -1) {
       var _field$label, _field$key, _field$label2;
 
       var widget = field.widget || field.type;
@@ -20312,9 +20318,11 @@ var Form$1 = function Form(_ref) {
           return /*#__PURE__*/React.createElement(Select$2, _extends({
             isMulti: field.isMulti,
             isMini: Boolean(widget === 'mini-dropdown'),
-            options: field.options,
-            inputValue: (_fieldProps$value$lab = fieldProps === null || fieldProps === void 0 ? void 0 : (_fieldProps$value = fieldProps.value) === null || _fieldProps$value === void 0 ? void 0 : _fieldProps$value.label) !== null && _fieldProps$value$lab !== void 0 ? _fieldProps$value$lab : ''
+            options: field.options
           }, fieldProps, {
+            defaultValue: (_field$options = field.options) === null || _field$options === void 0 ? void 0 : _field$options.find(function (opt) {
+              return opt.value === fieldProps.value;
+            }),
             onChange: function onChange(option) {
               return formik.setFieldValue(field.key, option.value);
             }
@@ -20336,7 +20344,7 @@ var Form$1 = function Form(_ref) {
           return /*#__PURE__*/React.createElement(Select$2, _extends({
             isMini: Boolean(widget === 'mini-dropdown'),
             options: field.options,
-            inputValue: (_fieldProps$value$lab2 = fieldProps === null || fieldProps === void 0 ? void 0 : (_fieldProps$value2 = fieldProps.value) === null || _fieldProps$value2 === void 0 ? void 0 : _fieldProps$value2.label) !== null && _fieldProps$value$lab2 !== void 0 ? _fieldProps$value$lab2 : ''
+            inputValue: (_fieldProps$value$lab = fieldProps === null || fieldProps === void 0 ? void 0 : (_fieldProps$value = fieldProps.value) === null || _fieldProps$value === void 0 ? void 0 : _fieldProps$value.label) !== null && _fieldProps$value$lab !== void 0 ? _fieldProps$value$lab : ''
           }, fieldProps, {
             onChange: function onChange(v) {
               return formik.setFieldValue(field.key, Array.from(new Set([].concat(_toConsumableArray(fieldProps.value), [v.value]))));
@@ -20344,6 +20352,7 @@ var Form$1 = function Form(_ref) {
           }));
 
         case 'checkbox-group':
+          console.log('buming checkbox-group', field);
           return /*#__PURE__*/React.createElement(CheckBoxGroup, {
             name: fieldProps.key,
             label: fieldProps === null || fieldProps === void 0 ? void 0 : fieldProps.label,
@@ -20485,7 +20494,7 @@ var Form$1 = function Form(_ref) {
         if (q.type === 'object') {
           getInitialValues(q.questions);
         } else {
-          initialValues[q.key] = q.value || typeDefault;
+          initialValues[q.key] = (answers === null || answers === void 0 ? void 0 : answers[q.key]) || q.value || typeDefault;
         }
 
         if (q.children) {
@@ -20497,6 +20506,7 @@ var Form$1 = function Form(_ref) {
 
   getInitialValues(questions);
   var formRef = useRef();
+  console.log('init values', initialValues, answers);
 
   var scrollToRef = function scrollToRef(ref) {
     return window.scrollTo({
@@ -20541,10 +20551,12 @@ Form$1.propTypes = {
   cancelLabel: propTypes.string,
   backgroundColor: propTypes.string,
   fieldsWidgets: propTypes.object,
+  answers: propTypes.object,
+  hiddenFields: propTypes.arrayOf(propTypes.string),
   questions: propTypes.arrayOf( // * Fields
   propTypes.shape({
     type: propTypes.oneOf('dropdown', 'form', 'text', 'date', 'radio', 'footnote', 'array', 'text-area', 'tabs').isRequired,
-    key: propTypes.string.isRequired,
+    key: propTypes.string,
     // ! To be replaced with label/translate on key 👇
     question: propTypes.string,
     widget: propTypes.string,
@@ -20554,14 +20566,14 @@ Form$1.propTypes = {
     })),
     // * Dependent Fields 👇
     children: propTypes.arrayOf(propTypes.shape({
-      type: propTypes.string.isRequired,
+      type: propTypes.string,
       widget: propTypes.string,
       dependencyType: propTypes.oneOf('value', 'value-count'),
       // * Dependency Logic 👇
       // - value: Watches the value of the parent, only rendering when dependencyValue matches
       // - value-count: will render as many children as the current value count
       dependencyValue: propTypes.string,
-      key: propTypes.string.isRequired,
+      key: propTypes.string,
       options: propTypes.arrayOf(propTypes.shape({
         label: propTypes.string,
         value: propTypes.oneOfType(propTypes.string, propTypes.number)
@@ -20580,6 +20592,8 @@ Form$1.defaultProps = {
   resetLabel: '',
   cnacelLabel: '',
   backgroundColor: 'primary',
+  hiddenFields: [],
+  answers: {},
   questions: []
 };
 
