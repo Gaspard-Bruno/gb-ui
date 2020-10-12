@@ -177,7 +177,6 @@ const Form = ({
             />
           );
         case 'checkbox-group':
-          console.log('buming checkbox-group', field);
           return (
             <CheckBoxGroup
               name={fieldProps.key}
@@ -309,7 +308,7 @@ const Form = ({
         if (q.type === 'object') {
           getInitialValues(q.questions);
         } else {
-          initialValues[q.key] = answers?.[q.key] || q.value || typeDefault;
+          initialValues[q.key] = answers?.[q.key] ?? (q.value || typeDefault);
         }
         if (q.children) {
           getInitialValues(q.children);
@@ -319,7 +318,6 @@ const Form = ({
   getInitialValues(questions);
 
   const formRef = useRef();
-  console.log('init values', initialValues, answers);
 
   const scrollToRef = ref =>
     window.scrollTo({

@@ -21,10 +21,7 @@ const RadioButton = ({
   value,
   error
 }) => {
-  console.log(list, value);
-  const [selectedButton, setSelectedTab] = useState(
-    list.map(li => li.value || li.label.toLowerCase()).indexOf(value)
-  );
+  const [selectedButton, setSelectedTab] = useState(value);
 
   return (
     <StyledContainer>
@@ -46,7 +43,7 @@ const RadioButton = ({
                   if (action) {
                     action({
                       name,
-                      value: item.value || item.label.toLowerCase()
+                      value: item.value
                     });
                   }
                 }}

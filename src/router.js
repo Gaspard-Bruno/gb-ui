@@ -182,7 +182,7 @@ const extractPreviewProps = ({
   previewComponentOpen,
   previewComponentTitle,
   ...props
-}) => !console.log('extracted dprops, props', props) && props;
+}) => props;
 
 const Router = () => {
   return (

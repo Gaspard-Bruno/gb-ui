@@ -21,7 +21,7 @@ export const ButtonGroupContainer = styled.div`
     cursor: pointer;
     position: absolute;
     color: ${props =>
-      !console.log(props.isSelected) && props.isSelected
+      props.isSelected
         ? props.theme?.colors.darkBlue
         : props.theme?.colors.grey};
     margin: 0;
