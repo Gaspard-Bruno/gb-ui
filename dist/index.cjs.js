@@ -19463,11 +19463,14 @@ var TextArea$1 = function TextArea$1(_ref) {
       placeholder = _ref.placeholder,
       value = _ref.value,
       label = _ref.label,
-      onChange = _ref.onChange;
+      _onChange = _ref.onChange;
   return /*#__PURE__*/React__default['default'].createElement(TextAreaContainer, {
     error: error
   }, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), /*#__PURE__*/React__default['default'].createElement(TextArea, {
     resize: false,
+    onChange: function onChange(e) {
+      return _onChange(e.target.value);
+    },
     error: error,
     placeholder: placeholder,
     value: value
