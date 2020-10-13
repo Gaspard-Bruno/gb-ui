@@ -9,6 +9,7 @@ const TextArea = ({ error, placeholder, value, label, onChange }) => (
     {label && <Body>{label}</Body>}
     <StyledTextArea
       resize={false}
+      onChange={e => onChange(e.target.value)}
       error={error}
       placeholder={placeholder}
       value={value}
