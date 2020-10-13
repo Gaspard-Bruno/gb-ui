@@ -82,14 +82,14 @@
           "type": "dropdown",
           "options": [{ "label": "10", "value": 10 }],
           "dependencyType": "value",
-          "dependencyValue": "single",
+          "dependencyValue": 0,
           "label": "Número de horas"
         },
         {
           "key": "start-date",
           "type": "date",
           "dependencyType": "value",
-          "dependencyValue": "single",
+          "dependencyValue": 0,
           "label": "Data de Início"
         },
         {
@@ -97,7 +97,7 @@
           "type": "date",
           "label": "Data de Início",
           "dependencyType": "value",
-          "dependencyValue": "hour-package"
+          "dependencyValue": 1
         },
         {
           "key": "start-hour",
@@ -125,20 +125,20 @@
           ],
           "label": "Hora de Início",
           "dependencyType": "value",
-          "dependencyValue": "hour-package"
+          "dependencyValue": 1
         },
         {
           "key": "end-date",
           "type": "date",
           "label": "Data de Fim",
           "dependencyType": "value",
-          "dependencyValue": "hour-package"
+          "dependencyValue": 1
         },
         {
           "key": "ending-hour",
           "label": "Hora de Fim",
           "dependencyType": "value",
-          "dependencyValue": "hour-package",
+          "dependencyValue": 1,
           "type": "dropdown",
           "options": [
             { "label": "09:00", "value": "09:00" },

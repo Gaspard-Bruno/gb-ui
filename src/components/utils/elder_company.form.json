@@ -39,14 +39,14 @@
           "key": "start-date",
           "type": "date",
           "dependencyType": "value",
-          "dependencyValue": "single",
+          "dependencyValue": 0,
           "label": "Data de Início"
         },
         {
           "key": "daily-repetition",
           "type": "dropdown",
           "dependencyType": "value",
-          "dependencyValue": "single",
+          "dependencyValue": 0,
           "label": "Repetição",
           "options": [
             { "label": "Diariamente", "value": 0 },
@@ -57,7 +57,7 @@
           "key": "daily-frequency",
           "type": "dropdown",
           "dependencyType": "value",
-          "dependencyValue": "single",
+          "dependencyValue": 0,
           "label": "Frequência",
           "options": [
             { "label": "1 Dia", "value": 0 },
@@ -73,7 +73,7 @@
           "key": "start-date",
           "type": "date",
           "dependencyType": "value",
-          "dependencyValue": "hour-package",
+          "dependencyValue": 1,
           "label": "Data de Início"
         },
 
@@ -81,7 +81,7 @@
           "key": "daily-repetition",
           "type": "dropdown",
           "dependencyType": "value",
-          "dependencyValue": "hour-package",
+          "dependencyValue": 1,
           "label": "Repetição",
           "options": [
             { "label": "Diariamente", "value": 0 },
@@ -92,7 +92,7 @@
           "key": "daily-frequency",
           "type": "dropdown",
           "dependencyType": "value",
-          "dependencyValue": "hour-package",
+          "dependencyValue": 1,
           "label": "Frequência",
           "options": [
             { "label": "1 Dia", "value": 0 },
@@ -109,7 +109,7 @@
           "type": "dropdown",
           "options": [{ "label": "10", "value": 10 }],
           "dependencyType": "value",
-          "dependencyValue": "hour-package",
+          "dependencyValue": 1,
           "label": "Número de horas"
         },
         {
@@ -138,13 +138,13 @@
           ],
           "label": "Preferência Horária",
           "dependencyType": "value",
-          "dependencyValue": "hour-package"
+          "dependencyValue": 1
         },
         {
           "key": "ending-hour",
           "label": "Hora de Fim",
           "dependencyType": "value",
-          "dependencyValue": "hour-package",
+          "dependencyValue": 1,
           "type": "dropdown",
           "options": [
             { "label": "09:00", "value": "09:00" },
@@ -173,7 +173,7 @@
           "label": " ",
           "type": "button-group",
           "dependencyType": "value",
-          "dependencyValue": "hour-package",
+          "dependencyValue": 1,
           "options": [
             { "value": 0, "label": "S", "isSelected": true, "disabled": true },
             { "value": 1, "label": "T", "isSelected": true },
