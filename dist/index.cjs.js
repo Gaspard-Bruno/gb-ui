@@ -6004,46 +6004,33 @@ var ButtonGroup = function ButtonGroup(_ref) {
   var action = _ref.action,
       label = _ref.label,
       name = _ref.name,
-      list = _ref.list;
+      list = _ref.list,
+      value = _ref.value;
 
-  var getInitialSelection = function getInitialSelection() {
-    var selectedItems = {};
-
-    for (var i in list) {
-      selectedItems[list[i].value] = list[i].isSelected;
-    }
-
-    return selectedItems;
-  };
-
-  var _useState = React.useState(getInitialSelection()),
+  var _useState = React.useState(value || list.map(function (li) {
+    return _defineProperty({}, li.value, li.isSelected);
+  })),
       _useState2 = _slicedToArray(_useState, 2),
       selectedButtons = _useState2[0],
       setSelectedTab = _useState2[1];
 
-  var handleSelection = React.useCallback(function (value, isSelected) {
-    var newSelection = Object.assign({}, selectedButtons, selectedButtons[value] = !selectedButtons[value]);
-    setSelectedTab(newSelection);
+  var handleSelection = React.useCallback(function (key, isSelected) {
+    setSelectedTab(_objectSpread2(_objectSpread2({}, selectedButtons), {}, _defineProperty({}, key, isSelected)));
   }, [selectedButtons]);
   return /*#__PURE__*/React__default['default'].createElement(StyledContainer, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), /*#__PURE__*/React__default['default'].createElement(ListContainer, null, list && list.map(function (item, index) {
     return /*#__PURE__*/React__default['default'].createElement(ButtonGroupContainer, {
       isSelected: selectedButtons[index],
       key: "".concat(item, "-").concat(index)
-    }, item.label && /*#__PURE__*/React__default['default'].createElement(Body, {
-      onClick: function onClick() {
-        return handleSelection(item.value, item.isSelected);
-      }
-    }, item.label), /*#__PURE__*/React__default['default'].createElement(StyledButton, {
+    }, item.label && /*#__PURE__*/React__default['default'].createElement(Body, null, item.label), /*#__PURE__*/React__default['default'].createElement(StyledButton, {
       key: "".concat(item, "-").concat(index),
       item: true,
       type: "button",
       label: item.label,
-      value: item.value,
       name: name,
       disabled: item.disabled,
       isSelected: selectedButtons[index],
       onClick: function onClick() {
-        handleSelection(item.value, item.isSelected);
+        handleSelection(item.value, !selectedButtons[item.value]);
 
         if (action) {
           action({
@@ -20415,14 +20402,14 @@ var Form$1 = function Form(_ref) {
           });
 
         case 'button-group':
-          return /*#__PURE__*/React__default['default'].createElement(ButtonGroup, {
+          return /*#__PURE__*/React__default['default'].createElement(ButtonGroup, _extends({
             name: fieldProps.key,
             label: fieldProps === null || fieldProps === void 0 ? void 0 : fieldProps.label,
             list: field === null || field === void 0 ? void 0 : field.options,
             action: function action(values) {
               return formik.setFieldValue(field.key, values.value);
             }
-          });
+          }, fieldProps));
 
         default:
           return /*#__PURE__*/React__default['default'].createElement(TextInput, _extends({
@@ -20495,7 +20482,7 @@ var Form$1 = function Form(_ref) {
                   padding: 0
                 }, fieldRenderer(_objectSpread2(_objectSpread2({}, q), {}, {
                   key: "".concat(q.key, "-").concat(_i + 1),
-                  label: "".concat(q.label, "-").concat(_i + 1)
+                  label: "".concat(q.label, " ").concat(_i + 1)
                 }), formik)));
               }
 
