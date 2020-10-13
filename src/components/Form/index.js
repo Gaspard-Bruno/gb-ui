@@ -195,6 +195,7 @@ const Form = ({
               label={fieldProps?.label}
               list={field?.options}
               action={values => formik.setFieldValue(field.key, values.value)}
+              {...fieldProps}
             />
           );
         default:
@@ -264,7 +265,7 @@ const Form = ({
                       {
                         ...q,
                         key: `${q.key}-${i + 1}`,
-                        label: `${q.label}-${i + 1}`
+                        label: `${q.label} ${i + 1}`
                       },
                       formik
                     )}

@@ -27,13 +27,23 @@ const gardeningAnswers = {
   'area-size': '233 kilos',
   'last-name': 'Morais',
   materials: 1,
+  'week-select': {
+    0: true,
+    1: true,
+    2: false,
+    3: false,
+    4: false,
+    5: true,
+    6: false
+  },
   telephone: '123',
   notes: 'Cool stuff',
   'first-name': 'David',
-  'offer-type': 0,
+  'offer-type': 1,
   'start-date': '2020-10-14',
   'postal-code': '2800*282',
   'service-type': 1,
+  'number-of-hours': 0,
   'login-buttons': 'guest',
   'chosen-language': 1
 };
