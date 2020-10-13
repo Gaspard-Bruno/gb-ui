@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
-  margin-top: ${props => props.theme?.margin * 2 + 10}px;
-  margin-bottom: ${props => props.theme?.margin}px;
+  margin-right: ${props => props.theme?.margin * 2}px;
+  flex: 1;
+  min-width: 75%;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
+  > p {
+    min-height: 24px;
+    margin: 8px 0px;
+  }
 `;
 
 export const ListContainer = styled.div`

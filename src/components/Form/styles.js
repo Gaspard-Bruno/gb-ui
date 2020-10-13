@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 const getSelectedBackground = props => {
   switch (props.bg) {
-    case "alt":
+    case 'alt':
       return props.theme?.colors.lightBeige;
-    case "secondary":
+    case 'secondary':
       return props.theme?.colors.brand.yellow;
-    case "terceary":
+    case 'terceary':
       return props.theme?.colors.brand.lightBlue;
     default:
       return props.bg;
@@ -18,7 +18,7 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  max-width: 616px;
+  max-width: 744px;
   width: 100%;
   button {
     align-self: center;

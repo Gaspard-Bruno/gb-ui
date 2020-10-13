@@ -26,7 +26,7 @@ const ButtonGroup = ({ action, label, name, list, value }) => {
   );
   return (
     <StyledContainer>
-      {label && <Body>{label}</Body>}
+      {<Body>{label || ''}</Body>}
       <ListContainer>
         {list &&
           list.map((item, index) => {

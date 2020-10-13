@@ -218,7 +218,7 @@ const Form = ({
         chunk(columns, groupBy).map((col, i) => (
           <Row
             key={`${key}-children-cols-${i}`}
-            align='flex-start'
+            align='center'
             inlineStyle={`
               ${col.length === 1 &&
                 `
