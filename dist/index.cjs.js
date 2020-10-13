@@ -5959,7 +5959,7 @@ function _templateObject2$5() {
 }
 
 function _templateObject$6() {
-  var data = _taggedTemplateLiteral(["\n  margin-top: ", "px;\n  margin-bottom: ", "px;\n  display: flex;\n  flex-flow: column;\n  justify-content: space-between;\n"]);
+  var data = _taggedTemplateLiteral(["\n  margin-right: ", "px;\n  flex: 1;\n  min-width: 75%;\n  display: flex;\n  flex-flow: column;\n  justify-content: space-between;\n  > p {\n    min-height: 24px;\n    margin: 8px 0px;\n  }\n"]);
 
   _templateObject$6 = function _templateObject() {
     return data;
@@ -5970,34 +5970,30 @@ function _templateObject$6() {
 var StyledContainer = styled__default['default'].div(_templateObject$6(), function (props) {
   var _props$theme;
 
-  return ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) * 2 + 10;
-}, function (props) {
-  var _props$theme2;
-
-  return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin;
+  return ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) * 2;
 });
 var ListContainer = styled__default['default'].div(_templateObject2$5());
 var ButtonGroupContainer = styled__default['default'].div(_templateObject3$4(), function (props) {
-  var _props$theme3, _props$theme4;
+  var _props$theme2, _props$theme3;
 
-  return props.isSelected ? (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.darkBlue : (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.grey;
+  return props.isSelected ? (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.darkBlue : (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.grey;
 });
 var StyledButton = styled__default['default'].button(_templateObject4$2(), function (props) {
+  var _props$theme4;
+
+  return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) * 4;
+}, function (props) {
   var _props$theme5;
 
-  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 4;
+  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 3;
 }, function (props) {
   var _props$theme6;
 
-  return ((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.margin) * 3;
+  return "".concat((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.white);
 }, function (props) {
-  var _props$theme7;
+  var _props$theme7, _props$theme8;
 
-  return "".concat((_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.white);
-}, function (props) {
-  var _props$theme8, _props$theme9;
-
-  return props.isSelected ? "1px solid ".concat((_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.darkBlue) : "1px solid ".concat((_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors.mediumBeige);
+  return props.isSelected ? "1px solid ".concat((_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.darkBlue) : "1px solid ".concat((_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.mediumBeige);
 });
 
 var ButtonGroup = function ButtonGroup(_ref) {
@@ -6017,7 +6013,7 @@ var ButtonGroup = function ButtonGroup(_ref) {
   var handleSelection = React.useCallback(function (key, isSelected) {
     setSelectedTab(_objectSpread2(_objectSpread2({}, selectedButtons), {}, _defineProperty({}, key, isSelected)));
   }, [selectedButtons]);
-  return /*#__PURE__*/React__default['default'].createElement(StyledContainer, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), /*#__PURE__*/React__default['default'].createElement(ListContainer, null, list && list.map(function (item, index) {
+  return /*#__PURE__*/React__default['default'].createElement(StyledContainer, null, /*#__PURE__*/React__default['default'].createElement(Body, null, label || ''), /*#__PURE__*/React__default['default'].createElement(ListContainer, null, list && list.map(function (item, index) {
     return /*#__PURE__*/React__default['default'].createElement(ButtonGroupContainer, {
       isSelected: selectedButtons[index],
       key: "".concat(item, "-").concat(index)
@@ -19804,7 +19800,7 @@ function _templateObject7$1() {
 }
 
 function _templateObject6$1() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row ", ";\n  background-color: ", ";\n  align-items: ", ";\n  max-width: ", "%;\n  width: 100%;\n  justify-content: ", ";\n  min-height: ", "px;\n  ", "\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row ", ";\n  background-color: ", ";\n  align-items: ", ";\n  width: 100%;\n  justify-content: ", ";\n  min-height: ", "px;\n  ", "\n  ", "\n"]);
 
   _templateObject6$1 = function _templateObject6() {
     return data;
@@ -19932,15 +19928,11 @@ var Row = styled__default['default'].div(_templateObject6$1(), function (props) 
 }, function (props) {
   return props.align ? props.align : 'none';
 }, function (props) {
-  var _props$theme10;
-
-  return ((_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.maxWidth) || 100;
-}, function (props) {
   return props.justify ? props.justify : 'none';
 }, function (props) {
-  var _props$theme11;
+  var _props$theme10;
 
-  return ((_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.margin) * (props.size || 0);
+  return ((_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.margin) * (props.size || 0);
 }, function (props) {
   return props.margin && "\n    ".concat(media.desktop("\n    margin: 0 auto;\n  "), "\n  ").concat(media.smallDesktop("\n    margin: 0 120px;\n  "), "\n  ").concat(media.tablet("\n    margin: 0 48px;\n  "), "\n  ").concat(media.mobile("\n    margin: 0 32px;\n  "), "\n  ") || 'margin: 0 auto;';
 }, function (props) {
@@ -19953,9 +19945,9 @@ var Col = styled__default['default'].div(_templateObject7$1(), function (props) 
 }, function (props) {
   return props.justify ? props.justify : 'none';
 }, function (props) {
-  var _props$padding, _props$theme12;
+  var _props$padding, _props$theme11;
 
-  return (_props$padding = props.padding) !== null && _props$padding !== void 0 ? _props$padding : (_props$theme12 = props.theme) === null || _props$theme12 === void 0 ? void 0 : _props$theme12.margin;
+  return (_props$padding = props.padding) !== null && _props$padding !== void 0 ? _props$padding : (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.margin;
 }, function (props) {
   return props.collapse && media[props.collapse]("\n  display: none;\n  ");
 }, function (props) {
@@ -19966,17 +19958,17 @@ var Col = styled__default['default'].div(_templateObject7$1(), function (props) 
   return props.src ? "\n          background-image: url(".concat(props.src, ");\n          background-size: cover;\n          background-position: center;\n        ") : '';
 });
 var getSelectedBackground$1 = function getSelectedBackground(props) {
-  var _props$theme13, _props$theme14, _props$theme15;
+  var _props$theme12, _props$theme13, _props$theme14;
 
   switch (props.bg) {
     case 'alt':
-      return (_props$theme13 = props.theme) === null || _props$theme13 === void 0 ? void 0 : _props$theme13.colors.lightBeige;
+      return (_props$theme12 = props.theme) === null || _props$theme12 === void 0 ? void 0 : _props$theme12.colors.lightBeige;
 
     case 'secondary':
-      return (_props$theme14 = props.theme) === null || _props$theme14 === void 0 ? void 0 : _props$theme14.colors.brand.yellow;
+      return (_props$theme13 = props.theme) === null || _props$theme13 === void 0 ? void 0 : _props$theme13.colors.brand.yellow;
 
     case 'terceary':
-      return (_props$theme15 = props.theme) === null || _props$theme15 === void 0 ? void 0 : _props$theme15.colors.brand.lightBlue;
+      return (_props$theme14 = props.theme) === null || _props$theme14 === void 0 ? void 0 : _props$theme14.colors.brand.lightBlue;
 
     case 'transparent':
       return 'transparent';
@@ -19995,9 +19987,9 @@ var GridRow = styled__default['default'].div(_templateObject9$1(), function (pro
 }, function (props) {
   return props.justify ? props.justify : 'none';
 }, function (props) {
-  var _props$theme16;
+  var _props$theme15;
 
-  return (_props$theme16 = props.theme) === null || _props$theme16 === void 0 ? void 0 : _props$theme16.maxWidth;
+  return (_props$theme15 = props.theme) === null || _props$theme15 === void 0 ? void 0 : _props$theme15.maxWidth;
 }, media.desktop("\n    margin: 0 auto;\n  "), media.smallDesktop("\n    margin: 0 120px;\n  "), media.tablet("\n    margin: 0 48px;\n  "), media.mobile("\n    margin: 0 32px;\n  "), function (props) {
   return props.collapse && media[props.collapse]("\n  display: none;\n  ");
 }, function (props) {
@@ -20019,9 +20011,9 @@ var GridCol = styled__default['default'].div(_templateObject10$1(), function (pr
   return props.src ? "\n          background-image: url(".concat(props.src, ");\n          background-size: ").concat(props.contain ? 'contain' : 'cover', ";\n          background-position: center;\n          background-repeat: no-repeat;\n        ") : '';
 });
 var Hero = styled__default['default'].div(_templateObject11$1(), function (props) {
-  var _props$theme17;
+  var _props$theme16;
 
-  return (_props$theme17 = props.theme) === null || _props$theme17 === void 0 ? void 0 : _props$theme17.heroSize;
+  return (_props$theme16 = props.theme) === null || _props$theme16 === void 0 ? void 0 : _props$theme16.heroSize;
 }, function (props) {
   return getSelectedBackground$1(props);
 }, function (props) {
@@ -20185,7 +20177,7 @@ function _templateObject2$j() {
 }
 
 function _templateObject$o() {
-  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border-radius: 10px;\n  display: flex;\n  flex-direction: column;\n  margin: 0 auto;\n  max-width: 616px;\n  width: 100%;\n  button {\n    align-self: center;\n    margin: ", "px 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border-radius: 10px;\n  display: flex;\n  flex-direction: column;\n  margin: 0 auto;\n  max-width: 744px;\n  width: 100%;\n  button {\n    align-self: center;\n    margin: ", "px 0;\n  }\n"]);
 
   _templateObject$o = function _templateObject() {
     return data;
@@ -20198,13 +20190,13 @@ var getSelectedBackground$3 = function getSelectedBackground(props) {
   var _props$theme, _props$theme2, _props$theme3;
 
   switch (props.bg) {
-    case "alt":
+    case 'alt':
       return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.lightBeige;
 
-    case "secondary":
+    case 'secondary':
       return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.brand.yellow;
 
-    case "terceary":
+    case 'terceary':
       return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.brand.lightBlue;
 
     default:
@@ -20439,7 +20431,7 @@ var Form$1 = function Form(_ref) {
       formFields.push(lodash_chunk(columns, groupBy).map(function (col, i) {
         return /*#__PURE__*/React__default['default'].createElement(Row, {
           key: "".concat(key, "-children-cols-").concat(i),
-          align: "flex-start",
+          align: "center",
           inlineStyle: "\n              ".concat(col.length === 1 && "\n                > div > div {\n                width: 100%;\n              ", "\n            ")
         }, col);
       }));
