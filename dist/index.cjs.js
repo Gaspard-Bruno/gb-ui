@@ -9,7 +9,6 @@ var theme = require('Theme');
 var ReactDOM = require('react-dom');
 var Layout = require('components/Layout');
 var Button$3 = require('components/Button');
-var styled$1 = require('styled-components/macro');
 var logoBlack_svg = require('Assets/svg/logo-black.svg');
 var logoWhite_svg = require('Assets/svg/logo-white.svg');
 var logoColorful_svg = require('Assets/svg/logo-colorful.svg');
@@ -25,7 +24,6 @@ var iconSet__default = /*#__PURE__*/_interopDefaultLegacy(iconSet);
 var theme__default = /*#__PURE__*/_interopDefaultLegacy(theme);
 var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
 var Button__default = /*#__PURE__*/_interopDefaultLegacy(Button$3);
-var styled__default$1 = /*#__PURE__*/_interopDefaultLegacy(styled$1);
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -20209,14 +20207,14 @@ var getSelectedBackground$3 = function getSelectedBackground(props) {
   }
 };
 
-var FormContainer = styled__default$1['default'].div(_templateObject$o(), function (props) {
+var FormContainer = styled__default['default'].div(_templateObject$o(), function (props) {
   return getSelectedBackground$3(props);
 }, function (props) {
   var _props$theme4;
 
   return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) * 2.5;
 });
-var StyledForm$1 = styled__default$1['default'].form(_templateObject2$j(), function (props) {
+var StyledForm$1 = styled__default['default'].form(_templateObject2$j(), function (props) {
   var _props$theme5;
 
   return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 4;

@@ -5,7 +5,6 @@ import theme from 'Theme';
 import ReactDOM, { createPortal, findDOMNode, unstable_batchedUpdates } from 'react-dom';
 import { Col as Col$1, Row as Row$1 } from 'components/Layout';
 import Button$3 from 'components/Button';
-import styled$1 from 'styled-components/macro';
 import { ReactComponent as ReactComponent$1 } from 'Assets/svg/logo-black.svg';
 import { ReactComponent as ReactComponent$2 } from 'Assets/svg/logo-white.svg';
 import { ReactComponent } from 'Assets/svg/logo-colorful.svg';
@@ -20195,14 +20194,14 @@ var getSelectedBackground$3 = function getSelectedBackground(props) {
   }
 };
 
-var FormContainer = styled$1.div(_templateObject$o(), function (props) {
+var FormContainer = styled.div(_templateObject$o(), function (props) {
   return getSelectedBackground$3(props);
 }, function (props) {
   var _props$theme4;
 
   return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) * 2.5;
 });
-var StyledForm$1 = styled$1.form(_templateObject2$j(), function (props) {
+var StyledForm$1 = styled.form(_templateObject2$j(), function (props) {
   var _props$theme5;
 
   return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 4;
