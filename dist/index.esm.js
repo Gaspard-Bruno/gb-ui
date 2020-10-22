@@ -5,6 +5,7 @@ import theme from 'Theme';
 import ReactDOM, { createPortal, findDOMNode, unstable_batchedUpdates } from 'react-dom';
 import { Col as Col$1, Row as Row$1 } from 'components/Layout';
 import Button$3 from 'components/Button';
+import styled$1 from 'styled-components/macro';
 import { ReactComponent as ReactComponent$1 } from 'Assets/svg/logo-black.svg';
 import { ReactComponent as ReactComponent$2 } from 'Assets/svg/logo-white.svg';
 import { ReactComponent } from 'Assets/svg/logo-colorful.svg';
@@ -5359,7 +5360,7 @@ function _templateObject2$1() {
 }
 
 function _templateObject$1() {
-  var data = _taggedTemplateLiteral(["\n  border-radius: 40px;\n  outline: none;\n  width: ", ";\n  margin-top: ", ";\n  margin-bottom: ", ";\n  padding: ", "px;\n  ", "\n  > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  border-radius: 40px;\n  outline: none;\n  width: ", ";\n  height: 48px;\n  margin-top: ", ";\n  margin-bottom: ", ";\n  padding: 0 ", "px;\n  ", "\n  > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n"]);
 
   _templateObject$1 = function _templateObject() {
     return data;
@@ -19665,21 +19666,21 @@ var TabButton = styled.button(_templateObject3$b(), function (props) {
 
   return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin;
 }, function (props) {
-  var _props$theme3, _props$theme4;
+  var _props$theme3;
 
-  return props.isSelected ? (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.brand.orange : (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.white;
+  return props.isSelected ? (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.brand.orange : 'transparent';
 }, function (props) {
-  var _props$theme5;
+  var _props$theme4;
 
-  return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin;
+  return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin;
 }, function (props) {
-  var _props$theme6, _props$theme7;
+  var _props$theme5, _props$theme6;
 
-  return props.isSelected ? (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.white : (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.darkBlue;
+  return props.isSelected ? (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.white : (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.darkBlue;
 }, function (props) {
-  var _props$theme8, _props$theme9;
+  var _props$theme7, _props$theme8;
 
-  return props.isSelected ? (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.white : (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors.darkBlue;
+  return props.isSelected ? (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.white : (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.darkBlue;
 });
 
 var Tabs = function Tabs(_ref) {
@@ -20194,14 +20195,14 @@ var getSelectedBackground$3 = function getSelectedBackground(props) {
   }
 };
 
-var FormContainer = styled.div(_templateObject$o(), function (props) {
+var FormContainer = styled$1.div(_templateObject$o(), function (props) {
   return getSelectedBackground$3(props);
 }, function (props) {
   var _props$theme4;
 
-  return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin;
+  return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) * 2.5;
 });
-var StyledForm$1 = styled.form(_templateObject2$j(), function (props) {
+var StyledForm$1 = styled$1.form(_templateObject2$j(), function (props) {
   var _props$theme5;
 
   return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 4;
