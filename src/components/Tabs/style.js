@@ -24,7 +24,7 @@ export const TabButton = styled.button`
   background-color: ${props =>
     props.isSelected
       ? props.theme?.colors.brand.orange
-      : props.theme?.colors.white};
+      : 'transparent'};
   margin-bottom: ${props => props.theme?.margin}px;
   transition: all 0.25s;
   > * {

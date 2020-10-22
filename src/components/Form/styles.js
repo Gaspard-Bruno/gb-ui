@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
+
 const getSelectedBackground = props => {
   switch (props.bg) {
     case 'alt':
@@ -22,7 +23,7 @@ export const FormContainer = styled.div`
   width: 100%;
   button {
     align-self: center;
-    margin: ${props => props.theme?.margin}px 0;
+    margin: ${props => props.theme?.margin * 2.5}px 0;
   }
 `;
 
