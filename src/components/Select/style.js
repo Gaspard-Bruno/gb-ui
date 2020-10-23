@@ -34,7 +34,7 @@ export const selectStyles = {
   control: (provided, { isFocused, isDisabled, ...state }) => ({
     ...provided,
     borderRadius: 2,
-    height: 48,
+    minHeight: 48,
     backgroundColor: isDisabled
       ? theme?.colors.lightBeige
       : theme?.colors.white,
