@@ -12775,7 +12775,7 @@ var selectStyles = {
 
     return _objectSpread2(_objectSpread2({}, provided), {}, {
       borderRadius: 2,
-      height: 48,
+      minHeight: 48,
       backgroundColor: isDisabled ? theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.lightBeige : theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.white,
       color: theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.grey,
       boxShadow: 'none',
