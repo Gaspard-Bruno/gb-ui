@@ -20230,14 +20230,10 @@ var Form$1 = function Form(_ref) {
       onChange = _ref.onChange,
       resetLabel = _ref.resetLabel,
       cancelLabel = _ref.cancelLabel,
-      _ref$errors = _ref.errors,
-      errors = _ref$errors === void 0 ? {
-    first_name: ['cant be blank']
-  } : _ref$errors,
+      errors = _ref.errors,
       answers = _ref.answers,
       hiddenFields = _ref.hiddenFields,
-      children = _ref.children,
-      t = _ref.t;
+      children = _ref.children;
 
   var renderAddFields = function renderAddFields(fields, count, formik) {
     var addFields = [];
@@ -20275,7 +20271,7 @@ var Form$1 = function Form(_ref) {
         value: formik.values[field.key],
         translate: translate,
         type: field.type,
-        error: errors && (errors === null || errors === void 0 ? void 0 : errors[field.key]) && t(errors === null || errors === void 0 ? void 0 : errors[field.key][0])
+        error: errors && (errors === null || errors === void 0 ? void 0 : errors[field.key]) && (errors === null || errors === void 0 ? void 0 : errors[field.key][0])
       };
 
       switch (widget) {
@@ -20575,6 +20571,7 @@ var Form$1 = function Form(_ref) {
 };
 
 Form$1.propTypes = {
+  t: propTypes.func,
   onSubmit: propTypes.func,
   children: propTypes.node,
   errors: propTypes.object,
@@ -20624,7 +20621,7 @@ Form$1.defaultProps = {
   },
   submitLabel: 'Submit',
   resetLabel: '',
-  cnacelLabel: '',
+  cancelLabel: '',
   backgroundColor: 'primary',
   hiddenFields: [],
   answers: {},
