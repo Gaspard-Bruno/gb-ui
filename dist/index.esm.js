@@ -20223,7 +20223,8 @@ var Form$1 = function Form(_ref) {
   } : _ref$errors,
       answers = _ref.answers,
       hiddenFields = _ref.hiddenFields,
-      children = _ref.children;
+      children = _ref.children,
+      t = _ref.t;
 
   var renderAddFields = function renderAddFields(fields, count, formik) {
     var addFields = [];
@@ -20261,7 +20262,7 @@ var Form$1 = function Form(_ref) {
         value: formik.values[field.key],
         translate: translate,
         type: field.type,
-        error: errors && (errors === null || errors === void 0 ? void 0 : errors[field.key]) && (errors === null || errors === void 0 ? void 0 : errors[field.key][0])
+        error: errors && (errors === null || errors === void 0 ? void 0 : errors[field.key]) && t(errors === null || errors === void 0 ? void 0 : errors[field.key][0])
       };
 
       switch (widget) {
