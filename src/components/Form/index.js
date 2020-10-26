@@ -61,7 +61,7 @@ const Form = ({
         value: formik.values[field.key],
         translate,
         type: field.type,
-        error: errors && errors?.[field.key] && errors?.[field.key][0]
+        error: errors && errors?.[field.key] && errors?.[field.key] // required, hasBeenTaken
       };
       switch (widget) {
         case 'object':
