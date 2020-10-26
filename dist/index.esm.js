@@ -20258,7 +20258,8 @@ var Form$1 = function Form(_ref) {
         value: formik.values[field.key],
         translate: translate,
         type: field.type,
-        error: errors && (errors === null || errors === void 0 ? void 0 : errors[field.key]) && (errors === null || errors === void 0 ? void 0 : errors[field.key][0])
+        error: errors && (errors === null || errors === void 0 ? void 0 : errors[field.key]) && (errors === null || errors === void 0 ? void 0 : errors[field.key]) // required, hasBeenTaken
+
       };
 
       switch (widget) {
