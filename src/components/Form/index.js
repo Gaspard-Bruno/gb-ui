@@ -29,7 +29,7 @@ const Form = ({
   onChange,
   resetLabel,
   cancelLabel,
-  errors,
+  errors = { first_name: ['cant be blank'] },
   answers,
   hiddenFields,
   children
@@ -50,7 +50,6 @@ const Form = ({
     }
     return addFields;
   };
-
   const fieldRenderer = (field, formik, parentKey) => {
     if (field.key && hiddenFields.indexOf(field.key) === -1) {
       const widget = field.widget || field.type;
@@ -62,7 +61,7 @@ const Form = ({
         value: formik.values[field.key],
         translate,
         type: field.type,
-        errors: errors?.[field.key]
+        error: errors && errors?.[field.key] && errors?.[field.key][0]
       };
       switch (widget) {
         case 'object':
