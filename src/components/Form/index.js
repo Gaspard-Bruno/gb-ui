@@ -29,11 +29,10 @@ const Form = ({
   onChange,
   resetLabel,
   cancelLabel,
-  errors = { first_name: ['cant be blank'] },
+  errors,
   answers,
   hiddenFields,
-  children,
-  t
+  children
 }) => {
   const renderAddFields = (fields, count, formik) => {
     const addFields = [];
@@ -62,7 +61,7 @@ const Form = ({
         value: formik.values[field.key],
         translate,
         type: field.type,
-        error: errors && errors?.[field.key] && t(errors?.[field.key][0])
+        error: errors && errors?.[field.key] && errors?.[field.key][0]
       };
       switch (widget) {
         case 'object':
@@ -355,6 +354,7 @@ const Form = ({
 };
 
 Form.propTypes = {
+  t: PropTypes.func,
   onSubmit: PropTypes.func,
   children: PropTypes.node,
   errors: PropTypes.object,
@@ -419,7 +419,7 @@ Form.defaultProps = {
   onChange: values => console.log('Changing form values', values),
   submitLabel: 'Submit',
   resetLabel: '',
-  cnacelLabel: '',
+  cancelLabel: '',
   backgroundColor: 'primary',
   hiddenFields: [],
   answers: {},
