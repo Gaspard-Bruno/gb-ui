@@ -32,7 +32,8 @@ const Form = ({
   errors = { first_name: ['cant be blank'] },
   answers,
   hiddenFields,
-  children
+  children,
+  t
 }) => {
   const renderAddFields = (fields, count, formik) => {
     const addFields = [];
@@ -61,7 +62,7 @@ const Form = ({
         value: formik.values[field.key],
         translate,
         type: field.type,
-        error: errors && errors?.[field.key] && errors?.[field.key][0]
+        error: errors && errors?.[field.key] && t(errors?.[field.key][0])
       };
       switch (widget) {
         case 'object':
