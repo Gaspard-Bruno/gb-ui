@@ -20217,7 +20217,10 @@ var Form$1 = function Form(_ref) {
       onChange = _ref.onChange,
       resetLabel = _ref.resetLabel,
       cancelLabel = _ref.cancelLabel,
-      errors = _ref.errors,
+      _ref$errors = _ref.errors,
+      errors = _ref$errors === void 0 ? {
+    first_name: ['cant be blank']
+  } : _ref$errors,
       answers = _ref.answers,
       hiddenFields = _ref.hiddenFields,
       children = _ref.children;
@@ -20258,7 +20261,7 @@ var Form$1 = function Form(_ref) {
         value: formik.values[field.key],
         translate: translate,
         type: field.type,
-        errors: errors === null || errors === void 0 ? void 0 : errors[field.key]
+        error: errors && (errors === null || errors === void 0 ? void 0 : errors[field.key]) && (errors === null || errors === void 0 ? void 0 : errors[field.key][0])
       };
 
       switch (widget) {
