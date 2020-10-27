@@ -19306,7 +19306,7 @@ var InputContainer = styled__default['default'].div(_templateObject$h(), functio
 var Input$2 = styled__default['default'].input(_templateObject2$d(), function (props) {
   var _props$theme4;
 
-  return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin;
+  return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) - 5;
 }, function (props) {
   var _props$theme5;
 
@@ -20222,6 +20222,7 @@ var StyledForm$1 = styled__default['default'].form(_templateObject2$j(), functio
 
 var Form$1 = function Form(_ref) {
   var _onSubmit = _ref.onSubmit,
+      isDisabled = _ref.isDisabled,
       questions = _ref.questions,
       submitLabel = _ref.submitLabel,
       backgroundColor = _ref.backgroundColor,
@@ -20355,7 +20356,9 @@ var Form$1 = function Form(_ref) {
               return opt.value === fieldProps.value;
             }),
             onChange: function onChange(option) {
-              return formik.setFieldValue(field.key, option.value);
+              return !(field === null || field === void 0 ? void 0 : field.isMulti) ? formik.setFieldValue(field.key, option.value) : formik.setFieldValue(field.key, option.map(function (e) {
+                return e.value;
+              }));
             }
           }));
 
@@ -20563,6 +20566,7 @@ var Form$1 = function Form(_ref) {
     return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(StyledForm$1, {
       onSubmit: formik.handleSubmit
     }, renderFields(formik, questions), /*#__PURE__*/React__default['default'].createElement(Button$1, {
+      isDisabled: isDisabled,
       type: "submit",
       btnType: 'primary',
       isFullWidth: true,
@@ -20572,7 +20576,7 @@ var Form$1 = function Form(_ref) {
 };
 
 Form$1.propTypes = {
-  t: propTypes.func,
+  isDisabled: propTypes.bool,
   onSubmit: propTypes.func,
   children: propTypes.node,
   errors: propTypes.object,
