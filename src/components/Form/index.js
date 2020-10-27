@@ -21,6 +21,7 @@ import { FormContainer, StyledForm } from './styles';
 
 const Form = ({
   onSubmit,
+  isDisabled,
   questions,
   submitLabel,
   backgroundColor,
@@ -144,7 +145,14 @@ const Form = ({
               defaultValue={field.options?.find(
                 opt => opt.value === fieldProps.value
               )}
-              onChange={option => formik.setFieldValue(field.key, option.value)}
+              onChange={option =>
+                !field?.isMulti
+                  ? formik.setFieldValue(field.key, option.value)
+                  : formik.setFieldValue(
+                      field.key,
+                      option.map(e => e.value)
+                    )
+              }
             />
           );
         case 'add-field':
@@ -340,6 +348,7 @@ const Form = ({
             <StyledForm onSubmit={formik.handleSubmit}>
               {renderFields(formik, questions)}
               <Button
+                isDisabled={isDisabled}
                 type='submit'
                 btnType={'primary'}
                 isFullWidth
@@ -354,7 +363,7 @@ const Form = ({
 };
 
 Form.propTypes = {
-  t: PropTypes.func,
+  isDisabled: PropTypes.bool,
   onSubmit: PropTypes.func,
   children: PropTypes.node,
   errors: PropTypes.object,

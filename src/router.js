@@ -73,6 +73,19 @@ const components = [
     component: props => <Avatar {...props} />
   },
   {
+    label: 'Select multi',
+    props: {
+      options: [
+        { label: 'option1', value: 0 },
+        { label: 'option2', value: 1 }
+      ],
+      isMulti: true,
+      onChange: vals => alert(JSON.stringify(vals, 0, 2))
+    },
+    section: 'General',
+    component: props => <Select {...props} />
+  },
+  {
     label: 'Badge',
     props: [
       { category: 'contact', text: 'Text Badge', previewComponentOpen: true },
@@ -86,9 +99,13 @@ const components = [
     label: 'Form',
     props: [
       {
-        previewComponentTitle: 'Gardening (Pre-filled)',
+        previewComponentTitle: 'Gardening (Pre-filled) with errors',
         questions: FORM.gardening.questions,
-        answers: FORM.gardeningAnswers
+        answers: FORM.gardeningAnswers,
+        errors: {
+          first_name: 'required',
+          last_name: 'required'
+        }
       },
       {
         previewComponentTitle: 'Cleaning',

@@ -24,7 +24,7 @@ export const InputContainer = styled.div`
 
 const Input = styled.input`
   border-radius: 2px;
-  padding: ${props => props.theme?.margin}px ${props =>
+  padding: ${props => props.theme?.margin - 5}px ${props =>
   props.theme?.margin / 2}px;
   border: 1px solid
     ${props =>
