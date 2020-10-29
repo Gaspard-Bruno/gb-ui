@@ -20219,6 +20219,7 @@ var Form$1 = function Form(_ref) {
       resetLabel = _ref.resetLabel,
       cancelLabel = _ref.cancelLabel,
       errors = _ref.errors,
+      btnType = _ref.btnType,
       answers = _ref.answers,
       hiddenFields = _ref.hiddenFields,
       children = _ref.children;
@@ -20554,7 +20555,7 @@ var Form$1 = function Form(_ref) {
       onSubmit: formik.handleSubmit
     }, renderFields(formik, questions), /*#__PURE__*/React.createElement(Button$1, {
       isDisabled: isDisabled,
-      type: "submit",
+      type: btnType,
       btnType: 'primary',
       isFullWidth: true,
       text: submitLabel
@@ -20574,6 +20575,7 @@ Form$1.propTypes = {
   cancelLabel: propTypes.string,
   backgroundColor: propTypes.string,
   fieldsWidgets: propTypes.object,
+  btnType: propTypes.string,
   answers: propTypes.object,
   hiddenFields: propTypes.arrayOf(propTypes.string),
   questions: propTypes.arrayOf( // * Fields
@@ -20613,6 +20615,7 @@ Form$1.defaultProps = {
   },
   submitLabel: 'Submit',
   resetLabel: '',
+  btnType: 'submit',
   cancelLabel: '',
   backgroundColor: 'primary',
   hiddenFields: [],
