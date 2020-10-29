@@ -31,6 +31,7 @@ const Form = ({
   resetLabel,
   cancelLabel,
   errors,
+  btnType,
   answers,
   hiddenFields,
   children
@@ -349,7 +350,7 @@ const Form = ({
               {renderFields(formik, questions)}
               <Button
                 isDisabled={isDisabled}
-                type='submit'
+                type={btnType}
                 btnType={'primary'}
                 isFullWidth
                 text={submitLabel}
@@ -374,6 +375,7 @@ Form.propTypes = {
   cancelLabel: PropTypes.string,
   backgroundColor: PropTypes.string,
   fieldsWidgets: PropTypes.object,
+  btnType: PropTypes.string,
   answers: PropTypes.object,
   hiddenFields: PropTypes.arrayOf(PropTypes.string),
   questions: PropTypes.arrayOf(
@@ -428,6 +430,7 @@ Form.defaultProps = {
   onChange: values => console.log('Changing form values', values),
   submitLabel: 'Submit',
   resetLabel: '',
+  btnType: 'submit',
   cancelLabel: '',
   backgroundColor: 'primary',
   hiddenFields: [],
