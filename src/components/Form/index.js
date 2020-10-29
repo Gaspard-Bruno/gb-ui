@@ -32,6 +32,7 @@ const Form = ({
   cancelLabel,
   errors,
   btnType,
+  btnAction,
   answers,
   hiddenFields,
   children
@@ -351,6 +352,7 @@ const Form = ({
               <Button
                 isDisabled={isDisabled}
                 type={btnType}
+                action={() => btnType !== 'submit' && btnAction(formik.values)}
                 btnType={'primary'}
                 isFullWidth
                 text={submitLabel}
@@ -376,6 +378,7 @@ Form.propTypes = {
   backgroundColor: PropTypes.string,
   fieldsWidgets: PropTypes.object,
   btnType: PropTypes.string,
+  btnAction: PropTypes.func,
   answers: PropTypes.object,
   hiddenFields: PropTypes.arrayOf(PropTypes.string),
   questions: PropTypes.arrayOf(
