@@ -23372,7 +23372,7 @@ var Form$1 = function Form(_ref) {
     var _field$options, _fieldProps$value$lab, _fieldProps$value;
 
     if (field.key && hiddenFields.indexOf(field.key) === -1) {
-      var _field$label, _field$key, _field$label2;
+      var _field$label, _field$key, _field$label2, _formik$values$field$;
 
       var widget = field.widget || field.type;
       var fieldProps = {
@@ -23382,7 +23382,7 @@ var Form$1 = function Form(_ref) {
         onChange: function onChange(v) {
           return formik.setFieldValue(field.key, v);
         },
-        value: formik.values[field.key],
+        value: (_formik$values$field$ = formik.values[field.key]) !== null && _formik$values$field$ !== void 0 ? _formik$values$field$ : initialValues[field.key],
         translate: translate,
         type: field.type,
         error: errors && (errors === null || errors === void 0 ? void 0 : errors[field.key]) && (errors === null || errors === void 0 ? void 0 : errors[field.key]) // required, hasBeenTaken
@@ -23390,13 +23390,14 @@ var Form$1 = function Form(_ref) {
       };
 
       switch (widget) {
-        case 'object':
-          return /*#__PURE__*/React.createElement(Accordion, {
-            isOpen: false,
-            title: field.label,
-            content: renderFields(formik, field.questions, field.parentKey)
-          });
-
+        /*  case 'object':
+          return (
+            <Accordion
+              isOpen={false}
+              title={field.label}
+              content={renderFields(formik, field.questions, field.parentKey)}
+            />
+          ); */
         case 'schedule-picker':
           return /*#__PURE__*/React.createElement(SchedulePicker, {
             name: field.key,
