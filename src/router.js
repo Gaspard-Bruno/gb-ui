@@ -61,7 +61,8 @@ import {
   ButtonText,
   AlertTitle,
   AlertText,
-  ErrorText
+  ErrorText,
+  SchedulePicker
 } from 'Components';
 
 const components = [
@@ -71,6 +72,15 @@ const components = [
     disabled: false,
     section: 'General',
     component: props => <Avatar {...props} />
+  },
+  {
+    label: 'SchedulePicker',
+    props: {
+      action: values => console.log(values),
+      name: 'Applied-key'
+    },
+    section: 'General',
+    component: props => <SchedulePicker {...props} />
   },
   {
     label: 'Select multi',

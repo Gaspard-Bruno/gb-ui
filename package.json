@@ -95,6 +95,7 @@
     "lodash.get": "^4.4.2",
     "lodash.startcase": "^4.4.0",
     "react-beautiful-dnd": "^13.0.0",
+    "react-schedule-selector": "^3.0.0",
     "react-select": "^3.1.0"
   },
   "peerDependencies": {

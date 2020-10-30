@@ -15,12 +15,7 @@ const MiniForm = ({ onSubmit, content, title, onRemove }) => {
     <StyledForm onSubmit={onSubmit}>
       <StyledServiceHeader>
         <StyledHeaderInfo size={6}>{title}</StyledHeaderInfo>
-        <StyledRemoveSpan
-          key={title}
-          role='presentation'
-          onClick={onRemove}
-          style={{}}
-        >
+        <StyledRemoveSpan key={title} role='presentation' onClick={onRemove}>
           X Remover Serviço
         </StyledRemoveSpan>
       </StyledServiceHeader>

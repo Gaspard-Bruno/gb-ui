@@ -16,6 +16,7 @@ import IconSwitch from './IconSwitch';
 import Kanban from './Kanban';
 import KanbanCard from './KanbanCard';
 import KanbanColumn from './KanbanColumn';
+import SchedulePicker from './SchedulePicker';
 import {
   media,
   Page,
@@ -115,5 +116,6 @@ export {
   ButtonText,
   AlertTitle,
   AlertText,
-  ErrorText
+  ErrorText,
+  SchedulePicker
 };
