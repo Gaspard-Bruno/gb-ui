@@ -23413,6 +23413,7 @@ var Form$1 = function Form(_ref) {
         case 'schedule-picker':
           return /*#__PURE__*/React__default['default'].createElement(SchedulePicker, {
             name: field.key,
+            t: translate,
             action: function action(values) {
               return formik.setFieldValue(field.key, values);
             }
