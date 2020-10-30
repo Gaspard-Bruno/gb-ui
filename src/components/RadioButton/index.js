@@ -26,6 +26,7 @@ const RadioButton = ({
   return (
     <StyledContainer>
       {label && <Body>{label}</Body>}
+      {error && <ErrorText>{error}</ErrorText>}
       {list &&
         list.map((item, index) => {
           return (
@@ -52,7 +53,6 @@ const RadioButton = ({
                 <FocusedRadio isSelected={index === selectedButton} />
               </StyledRadio>
               <Body name={item.key}>{item.label}</Body>
-              {error && <ErrorText>{error}</ErrorText>}
             </RadioGroudContainer>
           );
         })}

@@ -137,6 +137,7 @@ const Form = ({
               key={field.key}
               error={field.error}
               name={field.key}
+              isVerticalAligned={field.isVerticalAligned}
               action={option => formik.setFieldValue(option.name, option.value)}
               list={field.options}
               {...fieldProps}
