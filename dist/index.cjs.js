@@ -19598,7 +19598,7 @@ var RadioButton = function RadioButton(_ref) {
       selectedButton = _useState2[0],
       setSelectedTab = _useState2[1];
 
-  return /*#__PURE__*/React__default['default'].createElement(StyledContainer$2, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), list && list.map(function (item, index) {
+  return /*#__PURE__*/React__default['default'].createElement(StyledContainer$2, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error), list && list.map(function (item, index) {
     return /*#__PURE__*/React__default['default'].createElement(RadioGroudContainer, {
       align: align,
       isVerticalAligned: isVerticalAligned,
@@ -19622,7 +19622,7 @@ var RadioButton = function RadioButton(_ref) {
       isSelected: index === selectedButton
     })), /*#__PURE__*/React__default['default'].createElement(Body, {
       name: item.key
-    }, item.label), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error));
+    }, item.label));
   }));
 };
 
@@ -23468,6 +23468,7 @@ var Form$1 = function Form(_ref) {
             key: field.key,
             error: field.error,
             name: field.key,
+            isVerticalAligned: field.isVerticalAligned,
             action: function action(option) {
               return formik.setFieldValue(option.name, option.value);
             },
