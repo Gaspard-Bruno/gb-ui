@@ -18,6 +18,7 @@ import { Body } from '../Text';
 import { Col, Row } from '../Layout';
 import MultiFieldRender from '../MultiFieldRender';
 import { FormContainer, StyledForm } from './styles';
+import SchedulePicker from '../SchedulePicker';
 
 const Form = ({
   onSubmit,
@@ -73,6 +74,13 @@ const Form = ({
               isOpen={false}
               title={field.label}
               content={renderFields(formik, field.questions, field.parentKey)}
+            />
+          );
+        case 'schedule-picker':
+          return (
+            <SchedulePicker
+              name={field.key}
+              action={values => formik.setFieldValue(field.key, values)}
             />
           );
         case 'mini-form':
