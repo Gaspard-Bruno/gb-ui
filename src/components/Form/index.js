@@ -80,6 +80,7 @@ const Form = ({
           return (
             <SchedulePicker
               name={field.key}
+              t={translate}
               action={values => formik.setFieldValue(field.key, values)}
             />
           );
