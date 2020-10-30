@@ -23277,7 +23277,7 @@ var SchedulePicker = function SchedulePicker(_ref) {
 
   var renderCustomDateLabel = function renderCustomDateLabel() {
     var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Date();
-    var dayHeader = t ? t("".concat(Object.keys(weekDays)[date.getDay()])) : Object.keys(weekDays)[date.getDay()];
+    var dayHeader = t ? t(".scheduler.".concat(Object.keys(weekDays)[date.getDay()])) : Object.keys(weekDays)[date.getDay()];
     return /*#__PURE__*/React__default['default'].createElement(StyledDateLabel, null, /*#__PURE__*/React__default['default'].createElement(Text.Tiny, null, dayHeader.charAt(0).toUpperCase()));
   };
 
