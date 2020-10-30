@@ -62,20 +62,20 @@ const Form = ({
         name: field.key,
         key: field.key ?? field.label?.toLowerCase(),
         onChange: v => formik.setFieldValue(field.key, v),
-        value: formik.values[field.key],
+        value: formik.values[field.key] ?? initialValues[field.key],
         translate,
         type: field.type,
         error: errors && errors?.[field.key] && errors?.[field.key] // required, hasBeenTaken
       };
       switch (widget) {
-        case 'object':
+        /*  case 'object':
           return (
             <Accordion
               isOpen={false}
               title={field.label}
               content={renderFields(formik, field.questions, field.parentKey)}
             />
-          );
+          ); */
         case 'schedule-picker':
           return (
             <SchedulePicker
