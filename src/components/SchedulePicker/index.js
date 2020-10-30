@@ -1,18 +1,31 @@
 import React, { useState } from 'react';
-import { StyledScheduleSelector } from './styles';
+import { StyledScheduleSelector, StyledDateLabel } from './styles';
 import PropTypes from 'prop-types';
 import theme from 'Theme';
-const SchedulePicker = ({ name, action }) => {
+import { Tiny } from 'Components/Text';
+
+const SchedulePicker = ({ name, action, t }) => {
   const weekDays = {
+    sunday: [],
     monday: [],
     tuesday: [],
     wednesday: [],
     thursday: [],
     friday: [],
-    saturday: [],
-    sunday: []
+    saturday: []
   };
   const [pickedDays, setPickedDays] = useState([]);
+
+  const renderCustomDateLabel = (date = new Date()) => {
+    const dayHeader = t
+      ? t(`${Object.keys(weekDays)[date.getDay()]}`)
+      : Object.keys(weekDays)[date.getDay()];
+    return (
+      <StyledDateLabel>
+        <Tiny>{dayHeader.charAt(0).toUpperCase()}</Tiny>
+      </StyledDateLabel>
+    );
+  };
 
   const handleChange = newSchedule => {
     if (!newSchedule || newSchedule.length < 0) return;
@@ -64,9 +77,12 @@ const SchedulePicker = ({ name, action }) => {
       maxTime={24}
       startDate={new Date('2019-06-10T00:00:00')} // inital date is set for a Monday somewhere in time
       dateFormat={'dd'}
-      selectedColor={theme.colors.brand.yellow}
-      hoveredColor={theme.colors.brand.orangeLight}
+      selectedColor={theme.colors.brand.hover}
+      hoveredColor={theme.colors.brand.yellow}
       hourlyChunks={1}
+      rowGap={'1px'}
+      columnGap={'1px'}
+      renderDateLabel={renderCustomDateLabel}
       onChange={handleChange}
     />
   );
@@ -74,6 +90,7 @@ const SchedulePicker = ({ name, action }) => {
 
 SchedulePicker.propTypes = {
   isVerticalAligned: PropTypes.bool,
+  t: PropTypes.func,
   action: PropTypes.func,
   childAction: PropTypes.func,
   label: PropTypes.string,
