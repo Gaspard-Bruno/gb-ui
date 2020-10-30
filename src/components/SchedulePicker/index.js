@@ -18,7 +18,7 @@ const SchedulePicker = ({ name, action, t }) => {
 
   const renderCustomDateLabel = (date = new Date()) => {
     const dayHeader = t
-      ? t(`${Object.keys(weekDays)[date.getDay()]}`)
+      ? t(`.scheduler.${Object.keys(weekDays)[date.getDay()]}`)
       : Object.keys(weekDays)[date.getDay()];
     return (
       <StyledDateLabel>
