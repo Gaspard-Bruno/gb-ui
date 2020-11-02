@@ -1,5 +1,3 @@
-import React from 'react';
-
 const stepOne = () => {
   return [
     {
@@ -10,6 +8,7 @@ const stepOne = () => {
       key: 'sex-type',
       label: 'Sexo',
       type: 'radio',
+      isVerticalAligned: true,
       options: [
         { value: 0, label: 'Feminino' },
         { value: 1, label: 'Masculino' }
@@ -19,10 +18,10 @@ const stepOne = () => {
     { key: 'lastName', type: 'text', label: 'Apelido' },
     { key: 'birthDate', type: 'date', label: 'Data de Nascimento' },
     { key: 'nif', type: 'number', label: 'NIF' },
-    { label: 'Complete os seus dados pessoais', type: 'footnote' },
     {
       key: 'maritalStatus',
       type: 'radio',
+      isVerticalAligned: true,
       label: 'Estado Civil',
       options: [
         { label: 'Casado', value: 0 },
@@ -53,6 +52,7 @@ const stepTwo = () => {
     {
       key: 'preferredContact',
       type: 'radio',
+      isVerticalAligned: true,
       label: 'Método de contacto preferencial',
       options: [
         { label: 'Telefone', value: 0 },
@@ -109,6 +109,7 @@ const stepFour = () => {
       key: 'professionalStatus',
       label: 'Situação Profissional',
       type: 'radio',
+      isVerticalAligned: true,
       options: [
         { label: 'Pré Reforma', value: 0 },
         { label: 'Desempregado', value: 1 },
@@ -134,6 +135,7 @@ const stepFive = () => {
     {
       label: 'Tem carro disponível caso seja necessário em algum serviço ?',
       type: 'radio',
+      isVerticalAligned: true,
       options: [
         { label: 'Sim', value: 1 },
         { label: 'Não', value: 0 }
@@ -189,11 +191,16 @@ const stepFive = () => {
                 { label: 'Bateria / Percução', value: 4, isSelected: false },
                 { label: 'Flauta', value: 5, isSelected: false },
                 { label: 'Outro', value: 6, isSelected: false }
+              ],
+              children: [
+                {
+                  key: 'music-lessons-other-instrument',
+                  label: 'Outros',
+                  dependencyType: 'value',
+                  dependencyValue: 6,
+                  type: 'text'
+                }
               ]
-            },
-            {
-              key: 'music-lessons-other-instrument',
-              type: 'text'
             },
             {
               key: 'music-lessons-level',
@@ -226,11 +233,16 @@ const stepFive = () => {
                   isSelected: false
                 },
                 { label: 'Outro Espaço', value: 2, isSelected: false }
+              ],
+              children: [
+                {
+                  key: 'music-lessons-other-place',
+                  label: 'Outro Espaço',
+                  dependencyType: 'value',
+                  dependencyValue: 2,
+                  type: 'text'
+                }
               ]
-            },
-            {
-              key: 'music-lessons-other-place',
-              type: 'text'
             }
           ]
         },
@@ -291,11 +303,16 @@ const stepFive = () => {
                 { label: 'Internacional', value: 3, isSelected: false },
                 { label: 'Vegan', value: 4, isSelected: false },
                 { label: 'Outro', value: 5, isSelected: false }
+              ],
+              children: [
+                {
+                  key: 'gastronomic-experience-type-other',
+                  label: 'Outro',
+                  dependencyType: 'value',
+                  dependencyValue: 6,
+                  type: 'text'
+                }
               ]
-            },
-            {
-              key: 'petCare-animal-type-other',
-              type: 'text'
             }
           ]
         },
@@ -321,11 +338,16 @@ const stepFive = () => {
                   isSelected: false
                 },
                 { label: 'Outro', value: 2, isSelected: false }
+              ],
+              children: [
+                {
+                  key: 'petCare-animal-type-other',
+                  label: 'Outro',
+                  dependencyType: 'value',
+                  dependencyValue: 2,
+                  type: 'text'
+                }
               ]
-            },
-            {
-              key: 'petCare-animal-type-other',
-              type: 'text'
             },
             {
               key: 'petCare-animal-size',
@@ -354,6 +376,7 @@ const stepFive = () => {
               label:
                 'Caso possa ficar na sua casa, tem um espaço exterior para o animal?',
               type: 'radio',
+              isVerticalAligned: true,
               options: [
                 { label: 'Sim', value: 1 },
                 { label: 'Não', value: 0 }
@@ -371,11 +394,16 @@ const stepFive = () => {
                   isSelected: false
                 },
                 { label: 'Outro', value: 2, isSelected: false }
+              ],
+              children: [
+                {
+                  key: 'petsitting-animal-type-other',
+                  label: 'Outros',
+                  dependencyType: 'value',
+                  dependencyValue: 2,
+                  type: 'text'
+                }
               ]
-            },
-            {
-              key: 'petsitting-animal-type-other',
-              type: 'text'
             },
             {
               key: 'petsitting-animal-size',
@@ -399,7 +427,7 @@ const stepFive = () => {
           key: 'repairs',
           questions: [
             {
-              key: 'Repairs',
+              key: 'repairs',
               title: 'Reparações',
               type: 'checkbox-group',
               label: 'Este serviço tem várias tipologias, quais pode fazer?',
@@ -415,17 +443,23 @@ const stepFive = () => {
                 { label: 'Isolamentos', value: 4, isSelected: false },
                 { label: 'Pinturas', value: 5, isSelected: false },
                 { label: 'Outro', value: 6, isSelected: false }
+              ],
+              children: [
+                {
+                  key: 'repairs-type-other',
+                  label: 'Outro',
+                  dependencyType: 'value',
+                  dependencyValue: 6,
+                  type: 'text'
+                }
               ]
-            },
-            {
-              key: 'repairs-other',
-              type: 'text'
             },
             {
               key: 'repairs-tools',
               label:
                 'Tem as ferramentas necessários para realizar este serviço?',
               type: 'radio',
+              isVerticalAligned: true,
               options: [
                 { label: 'Sim', value: 1 },
                 { label: 'Não', value: 0 }
@@ -443,7 +477,7 @@ const stepFive = () => {
           key: 'gardening',
           questions: [
             {
-              key: 'Gardening',
+              key: 'gardening-type',
               title: 'Jardinagem',
               type: 'checkbox-group',
               label: 'Este serviço tem varias tipologias, quais pode fazer?',
@@ -456,17 +490,23 @@ const stepFive = () => {
                 },
                 { label: 'Consultoria', value: 2, isSelected: false },
                 { label: 'Outro', value: 3, isSelected: false }
+              ],
+              children: [
+                {
+                  key: 'gardening-type-other',
+                  label: 'Outros',
+                  dependencyType: 'value',
+                  dependencyValue: 3,
+                  type: 'text'
+                }
               ]
-            },
-            {
-              key: 'gardening-other',
-              type: 'text'
             },
             {
               key: 'gardening-tools',
               label:
                 'Tem as ferramentas necessários para realizar este serviço?',
               type: 'radio',
+              isVerticalAligned: true,
               options: [
                 { label: 'Sim', value: 1 },
                 { label: 'Não', value: 0 }
@@ -484,7 +524,7 @@ const stepFive = () => {
           label: 'Apoio Familiar a crianças',
           questions: [
             {
-              key: 'babysitting',
+              key: 'babysitting-children-number',
               title: 'Apoio Familiar a crianças',
               type: 'checkbox-group',
               label: 'Quantas Crianças pode acompanhar ao mesmo tempo ?',
@@ -492,9 +532,17 @@ const stepFive = () => {
                 { label: 'Apenas 1', value: 0, isSelected: false },
                 { label: 'Mais do que 1', value: 1, isSelected: false },
                 { label: 'Outro', value: 2, isSelected: false }
+              ],
+              children: [
+                {
+                  key: 'babysitting-children-number-other',
+                  label: 'Outro',
+                  dependencyType: 'value',
+                  dependencyValue: 2,
+                  type: 'text'
+                }
               ]
             },
-            { key: 'babysitting-child-number-other', type: 'text' },
             {
               key: 'babysitting-child-age',
               type: 'checkbox-group',
@@ -533,7 +581,11 @@ const stepFive = () => {
                 { label: 'Explicações', value: 3, isSelected: false }
               ]
             },
-            { key: 'babysitting-service-to-do-other', type: 'text' },
+            {
+              key: 'babysitting-service-to-do-other',
+              label: 'Outros',
+              type: 'text'
+            },
             {
               type: 'footnote',
               label:
@@ -554,9 +606,8 @@ const stepSix = () => {
       type: 'footnote'
     },
     {
-      key: 'hour-preference',
       label: 'Seleccione',
-      type: 'text'
+      type: 'footnote'
     },
     { key: 'week-hours', type: 'uniq-array', widget: 'schedule-picker' }
   ];
@@ -569,10 +620,12 @@ const stepSeven = () => {
         'Qual é a sua disponibilidade durante a semana / fim-de-semana para prestar serviços?',
       type: 'footnote'
     },
+
     {
       key: 'professionalActivity',
       label: 'Tem actividade aberta ?',
       type: 'radio',
+      isVerticalAligned: true,
       options: [
         { label: 'Sim', value: 1 },
         { label: 'Não', value: 0 }
@@ -582,6 +635,7 @@ const stepSeven = () => {
       key: 'paymentMethod',
       label: 'Método de Pagamento Preferencial',
       type: 'radio',
+      isVerticalAligned: true,
       options: [
         { label: 'Recibos Mensais', value: 0 },
         {
@@ -603,37 +657,42 @@ const stepEight = () => {
       key: 'foreign-language-knowledge',
       label: 'Tem conhecimento ou fala fluentemente alguma língua estrangeira?',
       type: 'radio',
+      isVerticalAligned: true,
       options: [
         { label: 'Sim', value: 1 },
         { label: 'Não', value: 0 }
-      ]
-    },
-    {
-      key: 'languages',
-      type: 'number',
-      value: 1,
-      widget: 'add-field',
-      label: 'Adicionar língua +',
-      fields: [
+      ],
+      children: [
         {
-          type: 'dropdown',
-          key: 'language-selected',
-          label: '',
-          options: [
-            { value: 0, label: 'Português' },
-            { value: 1, label: 'Inglês' },
-            { value: 2, label: 'Francês' },
-            { value: 3, label: 'Espanhol' }
-          ]
-        },
-        {
-          type: 'dropdown',
-          key: 'language-level',
-          label: '',
-          options: [
-            { label: 'Básico', value: 0 },
-            { label: 'Intermédio', value: 1 },
-            { label: 'Avançado', value: 2 }
+          key: 'languages',
+          type: 'number',
+          dependencyType: 'value',
+          dependencyValue: 1,
+          value: 1,
+          widget: 'add-field',
+          label: 'Adicionar língua +',
+          fields: [
+            {
+              type: 'dropdown',
+              key: 'language-selected',
+              label: '',
+              options: [
+                { value: 0, label: 'Português' },
+                { value: 1, label: 'Inglês' },
+                { value: 2, label: 'Francês' },
+                { value: 3, label: 'Espanhol' }
+              ]
+            },
+            {
+              type: 'dropdown',
+              key: 'language-level',
+              label: '',
+              options: [
+                { label: 'Básico', value: 0 },
+                { label: 'Intermédio', value: 1 },
+                { label: 'Avançado', value: 2 }
+              ]
+            }
           ]
         }
       ]
@@ -678,6 +737,7 @@ const steps = [
   stepEight(),
   stepNine()
 ];
+
 const formSteps = {
   type: 'form',
   questions: steps.map((step, stepIndex) => ({

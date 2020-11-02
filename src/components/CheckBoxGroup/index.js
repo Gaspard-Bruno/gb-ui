@@ -9,14 +9,13 @@ import { Body, ErrorText } from '../Text';
 
 const CheckBoxGroup = ({ name, label, list, error, action }) => {
   const checkedItems = list;
-  const [selectedItems, setSelectedItems] = useState([]);
-
   const handleItems = (name, event) => {
     const itemIndex = checkedItems.indexOf(
       checkedItems.find(e => e.question === event)
     );
     checkedItems[itemIndex].isSelected = !list[itemIndex].isSelected;
-    if (action) action({ [name]: checkedItems });
+    console.log(checkedItems);
+    if (action) action(checkedItems);
   };
 
   return (
@@ -28,7 +27,7 @@ const CheckBoxGroup = ({ name, label, list, error, action }) => {
             <CheckboxGroudContainer key={`${item}-${index}`}>
               <StyledCheckbox
                 type='checkbox'
-                checked={selectedItems.isSelected}
+                checked={list.isSelected}
                 name={name}
                 onChange={() => handleItems(name, item?.question)}
                 key={index}

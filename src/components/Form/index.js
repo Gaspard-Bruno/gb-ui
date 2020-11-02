@@ -68,14 +68,14 @@ const Form = ({
         error: errors && errors?.[field.key] && errors?.[field.key] // required, hasBeenTaken
       };
       switch (widget) {
-        /*  case 'object':
+        case 'object':
           return (
             <Accordion
               isOpen={false}
               title={field.label}
               content={renderFields(formik, field.questions, field.parentKey)}
             />
-          ); */
+          );
         case 'schedule-picker':
           return (
             <SchedulePicker
@@ -263,7 +263,12 @@ const Form = ({
             : formik.values[parentKey];
           switch (dependencyType) {
             case 'value':
-              if (parentValue === dependencyValue) {
+              if (
+                parentValue === dependencyValue ||
+                (Array.isArray(parentValue) &&
+                  parentValue?.find(val => val.value === dependencyValue)
+                    ?.isSelected)
+              ) {
                 columns.push(
                   <Col size={1} padding={0}>
                     {fieldRenderer(q, formik)}
