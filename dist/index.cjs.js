@@ -5431,7 +5431,8 @@ var Button$1 = function Button$1(_ref) {
       isSmall = _ref.isSmall,
       icon = _ref.icon,
       action = _ref.action,
-      type = _ref.type,
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'button' : _ref$type,
       isFullWidth = _ref.isFullWidth,
       children = _ref.children;
 
@@ -5451,6 +5452,7 @@ var Button$1 = function Button$1(_ref) {
   if (icon) {
     return /*#__PURE__*/React__default['default'].createElement(IconButton, {
       btnType: btnType,
+      type: type,
       disabled: isDisabled,
       small: isSmall,
       onClick: action
@@ -5553,6 +5555,7 @@ var Accordion = function Accordion(_ref) {
   }, /*#__PURE__*/React__default['default'].createElement(Heading, {
     size: 6
   }, title), /*#__PURE__*/React__default['default'].createElement(Button$1, {
+    type: "button",
     btnType: "transparent",
     icon: "chevron-down",
     action: function action() {
