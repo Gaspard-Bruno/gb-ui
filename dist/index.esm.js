@@ -5465,7 +5465,7 @@ Button$1.defaultProps = {
 };
 
 function _templateObject3$1() {
-  var data = _taggedTemplateLiteral(["\n  transition: all 0.5s;\n  padding-bottom: 1%;\n  position: relative;\n  color: ", ";\n  opacity: ", ";\n  bottom: ", "px;\n  height: ", "px;\n  transform: scaleY(", ");\n"]);
+  var data = _taggedTemplateLiteral(["\n  padding-bottom: ", "px;\n  position: relative;\n  color: ", ";\n  opacity: ", ";\n  bottom: ", "px;\n  height: ", "px;\n  transform: scaleY(", ");\n"]);
 
   _templateObject3$1 = function _templateObject3() {
     return data;
@@ -5475,7 +5475,7 @@ function _templateObject3$1() {
 }
 
 function _templateObject2$2() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  width: 100%;\n  flex-flow: row nowrap;\n  justify-content: space-between;\n  > h2 {\n    color: ", ";\n  }\n  svg {\n    transition: all 0.25s;\n    transform: rotate(", ");\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  width: 100%;\n  flex-flow: row nowrap;\n  justify-content: space-between;\n  align-items: center;\n  > h2 {\n    color: ", ";\n  }\n  > button {\n    margin: 0 ", "px !important;\n  }\n  svg {\n    transition: all 0.25s;\n    transform: rotate(", ");\n  }\n"]);
 
   _templateObject2$2 = function _templateObject2() {
     return data;
@@ -5485,7 +5485,7 @@ function _templateObject2$2() {
 }
 
 function _templateObject$2() {
-  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-start;\n  border-bottom: 1px solid ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  display: flex;\n  margin-bottom: ", "px;\n  flex-flow: column nowrap;\n  justify-content: flex-start;\n  border-bottom: 1px solid ", ";\n"]);
 
   _templateObject$2 = function _templateObject() {
     return data;
@@ -5494,6 +5494,8 @@ function _templateObject$2() {
   return data;
 }
 var AccordionContainer = styled.div(_templateObject$2(), function (props) {
+  return props.theme.margin;
+}, function (props) {
   var _props$theme;
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.mediumBeige;
@@ -5503,9 +5505,13 @@ var AccordionTitle = styled.div(_templateObject2$2(), function (props) {
 
   return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.brand.orange;
 }, function (props) {
+  return props.theme.margin;
+}, function (props) {
   return props.isOpen ? '180deg' : 0;
 });
 var ContentContainer = styled.div(_templateObject3$1(), function (props) {
+  return props.theme.margin;
+}, function (props) {
   var _props$theme3;
 
   return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.grey;
@@ -6131,7 +6137,7 @@ function _templateObject3$5() {
 }
 
 function _templateObject2$6() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row nowrap;\n  align-items: center;\n  margin-bottom: ", "px;\n  p {\n    margin: 0 ", "px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row wrap;\n  align-items: center;\n  margin-bottom: ", "px;\n  p {\n    max-width: calc(100% - ", "PX);\n    margin: 0 ", "px;\n  }\n"]);
 
   _templateObject2$6 = function _templateObject2() {
     return data;
@@ -6157,20 +6163,24 @@ var CheckboxGroudContainer = styled.div(_templateObject2$6(), function (props) {
 }, function (props) {
   var _props$theme2;
 
-  return ((_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin) / 2;
-});
-var StyledCheckbox = styled.input(_templateObject3$5(), function (props) {
+  return ((_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin) * 3;
+}, function (props) {
   var _props$theme3;
 
-  return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) * 1.5;
-}, function (props) {
+  return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) / 2;
+});
+var StyledCheckbox = styled.input(_templateObject3$5(), function (props) {
   var _props$theme4;
 
   return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) * 1.5;
 }, function (props) {
   var _props$theme5;
 
-  return "1px solid ".concat((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.mediumBeige);
+  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 1.5;
+}, function (props) {
+  var _props$theme6;
+
+  return "1px solid ".concat((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.mediumBeige);
 });
 
 var CheckBoxGroup = function CheckBoxGroup(_ref) {
@@ -23239,37 +23249,44 @@ var StyledScheduleSelector = styled(ScheduleSelector)(_templateObject$p());
 var StyledCell = styled.div(_templateObject2$l());
 var StyledDateLabel = styled.div(_templateObject3$e());
 
+var INITIAL_DATE = new Date('2019-06-10T00:00:00');
+
 var SchedulePicker = function SchedulePicker(_ref) {
   var name = _ref.name,
       action = _ref.action,
-      t = _ref.t;
-  var weekDays = {
-    sunday: [],
-    monday: [],
-    tuesday: [],
-    wednesday: [],
-    thursday: [],
-    friday: [],
-    saturday: []
+      t = _ref.t,
+      _ref$columnNames = _ref.columnNames,
+      columnNames = _ref$columnNames === void 0 ? ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'] : _ref$columnNames,
+      value = _ref.value;
+
+  var convertToDates = function convertToDates(schedule) {
+    var dates = [];
+
+    var getDateString = function getDateString(day, hour) {
+      return "2019-06-".concat(10 + day, "T").concat(hour, ":00:00");
+    };
+
+    Object.keys(schedule).forEach(function (key, day) {
+      schedule[key].forEach(function (hour) {
+        dates.push(new Date(getDateString(day, hour)));
+      });
+    });
+    return dates;
   };
 
-  var _useState = useState([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      pickedDays = _useState2[0],
-      setPickedDays = _useState2[1];
+  var convertSchedulePicks = function convertSchedulePicks(picks) {
+    var weekDays = {
+      sunday: [],
+      monday: [],
+      tuesday: [],
+      wednesday: [],
+      thursday: [],
+      friday: [],
+      saturday: []
+    };
 
-  var renderCustomDateLabel = function renderCustomDateLabel() {
-    var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Date();
-    var dayHeader = t ? t(".scheduler.".concat(Object.keys(weekDays)[date.getDay()])) : Object.keys(weekDays)[date.getDay()];
-    return /*#__PURE__*/React.createElement(StyledDateLabel, null, /*#__PURE__*/React.createElement(Tiny$1, null, dayHeader.charAt(0).toUpperCase()));
-  };
-
-  var handleChange = function handleChange(newSchedule) {
-    if (!newSchedule || newSchedule.length < 0) return;
-    setPickedDays(newSchedule);
-
-    if (newSchedule) {
-      newSchedule.forEach(function (value) {
+    if (picks) {
+      picks.forEach(function (value) {
         switch (value.getDay()) {
           case 1:
             return weekDays.monday.indexOf(value.getHours()) === -1 ? weekDays.monday.push(value.getHours()) : null;
@@ -23293,17 +23310,36 @@ var SchedulePicker = function SchedulePicker(_ref) {
             return weekDays.sunday.indexOf(value.getHours()) === -1 ? weekDays.sunday.push(value.getHours()) : null;
         }
       });
-      action && action(weekDays);
     }
+
+    return weekDays;
   };
 
+  var _useState = useState(convertToDates(value)),
+      _useState2 = _slicedToArray(_useState, 2),
+      pickedDays = _useState2[0],
+      setPickedDays = _useState2[1];
+
+  var renderCustomDateLabel = function renderCustomDateLabel() {
+    var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Date();
+    var dayHeader = t ? t(".scheduler.".concat(columnNames[date.getDay()])) : columnNames[date.getDay()];
+    return /*#__PURE__*/React.createElement(StyledDateLabel, null, /*#__PURE__*/React.createElement(Tiny$1, null, dayHeader.charAt(0).toUpperCase()));
+  };
+
+  var handleChange = function handleChange(newSchedule) {
+    if (!newSchedule || newSchedule.length < 0) return;
+    setPickedDays(newSchedule);
+    action && action(convertSchedulePicks(newSchedule));
+  };
+
+  console.log(pickedDays, 'picked');
   return /*#__PURE__*/React.createElement(StyledScheduleSelector, {
     name: name,
     selection: pickedDays,
     timeFormat: 'HH:mm',
     minTime: 8,
     maxTime: 24,
-    startDate: new Date('2019-06-10T00:00:00') // inital date is set for a Monday somewhere in time
+    startDate: INITIAL_DATE // inital date is set for a Monday somewhere in time
     ,
     dateFormat: 'dd',
     selectedColor: theme.colors.brand.hover,
@@ -23322,6 +23358,8 @@ SchedulePicker.propTypes = {
   action: propTypes.func,
   childAction: propTypes.func,
   label: propTypes.string,
+  columnNames: propTypes.array,
+  value: propTypes.object,
   list: propTypes.array,
   name: propTypes.string,
   error: propTypes.string
