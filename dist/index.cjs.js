@@ -5565,7 +5565,7 @@ var Accordion = function Accordion(_ref) {
 
 Accordion.propTypes = {
   title: propTypes.string,
-  content: propTypes.object,
+  content: propTypes.oneOfType([propTypes.object, propTypes.array]),
   isOpen: propTypes.bool
 };
 
@@ -23454,6 +23454,7 @@ var Form$1 = function Form(_ref) {
         case 'schedule-picker':
           return /*#__PURE__*/React__default['default'].createElement(SchedulePicker, {
             name: field.key,
+            key: field.key,
             value: fieldProps.value,
             t: translate,
             action: function action(values) {
@@ -23783,7 +23784,7 @@ Form$1.propTypes = {
   hiddenFields: propTypes.arrayOf(propTypes.string),
   questions: propTypes.arrayOf( // * Fields
   propTypes.shape({
-    type: propTypes.oneOf(['dropdown', 'form', 'text', 'date', 'radio', 'form', 'footnote', 'array', 'text-area', 'tabs']).isRequired,
+    type: propTypes.oneOf(['dropdown', 'form', 'text', 'date', 'radio', 'form', 'object', 'footnote', 'array', 'text-area', 'tabs']).isRequired,
     key: propTypes.string,
     // ! To be replaced with label/translate on key 👇
     question: propTypes.string,
