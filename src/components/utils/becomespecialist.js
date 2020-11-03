@@ -738,12 +738,23 @@ const steps = [
   stepNine()
 ];
 
+const STEP_LABELS = [
+  'Dados Pessoais',
+  'Morada',
+  'Situação Profissional e Experiência',
+  'Contactos',
+  'Serviços',
+  'Preferência Horária',
+  'Pagamentos',
+  'Linguas Estrangeiras',
+  'Outros'
+];
 const formSteps = {
   type: 'form',
   questions: steps.map((step, stepIndex) => ({
     type: 'object',
     key: `become-form-${stepIndex}`,
-    label: `Step ${stepIndex}`,
+    label: STEP_LABELS[stepIndex],
     questions: step
   }))
 };
