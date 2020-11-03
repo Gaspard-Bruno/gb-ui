@@ -4,35 +4,45 @@ import PropTypes from 'prop-types';
 import theme from 'Theme';
 import { Tiny } from 'Components/Text';
 
-const SchedulePicker = ({ name, action, t }) => {
-  const weekDays = {
-    sunday: [],
-    monday: [],
-    tuesday: [],
-    wednesday: [],
-    thursday: [],
-    friday: [],
-    saturday: []
+const INITIAL_DATE = new Date('2019-06-10T00:00:00');
+
+const SchedulePicker = ({
+  name,
+  action,
+  t,
+  columnNames = [
+    'sunday',
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday'
+  ],
+  value
+}) => {
+  const convertToDates = schedule => {
+    const dates = [];
+    const getDateString = (day, hour) => `2019-06-${10 + day}T${hour}:00:00`;
+    Object.keys(schedule).forEach((key, day) => {
+      schedule[key].forEach(hour => {
+        dates.push(new Date(getDateString(day, hour)));
+      });
+    });
+    return dates;
   };
-  const [pickedDays, setPickedDays] = useState([]);
-
-  const renderCustomDateLabel = (date = new Date()) => {
-    const dayHeader = t
-      ? t(`.scheduler.${Object.keys(weekDays)[date.getDay()]}`)
-      : Object.keys(weekDays)[date.getDay()];
-    return (
-      <StyledDateLabel>
-        <Tiny>{dayHeader.charAt(0).toUpperCase()}</Tiny>
-      </StyledDateLabel>
-    );
-  };
-
-  const handleChange = newSchedule => {
-    if (!newSchedule || newSchedule.length < 0) return;
-    setPickedDays(newSchedule);
-
-    if (newSchedule) {
-      newSchedule.forEach(value => {
+  const convertSchedulePicks = picks => {
+    const weekDays = {
+      sunday: [],
+      monday: [],
+      tuesday: [],
+      wednesday: [],
+      thursday: [],
+      friday: [],
+      saturday: []
+    };
+    if (picks) {
+      picks.forEach(value => {
         switch (value.getDay()) {
           case 1:
             return weekDays.monday.indexOf(value.getHours()) === -1
@@ -64,10 +74,29 @@ const SchedulePicker = ({ name, action, t }) => {
               : null;
         }
       });
-      action && action(weekDays);
     }
+    return weekDays;
   };
 
+  const [pickedDays, setPickedDays] = useState(convertToDates(value));
+  const renderCustomDateLabel = (date = new Date()) => {
+    const dayHeader = t
+      ? t(`.scheduler.${columnNames[date.getDay()]}`)
+      : columnNames[date.getDay()];
+    return (
+      <StyledDateLabel>
+        <Tiny>{dayHeader.charAt(0).toUpperCase()}</Tiny>
+      </StyledDateLabel>
+    );
+  };
+
+  const handleChange = newSchedule => {
+    if (!newSchedule || newSchedule.length < 0) return;
+    setPickedDays(newSchedule);
+
+    action && action(convertSchedulePicks(newSchedule));
+  };
+  console.log(pickedDays, 'picked');
   return (
     <StyledScheduleSelector
       name={name}
@@ -75,7 +104,7 @@ const SchedulePicker = ({ name, action, t }) => {
       timeFormat={'HH:mm'}
       minTime={8}
       maxTime={24}
-      startDate={new Date('2019-06-10T00:00:00')} // inital date is set for a Monday somewhere in time
+      startDate={INITIAL_DATE} // inital date is set for a Monday somewhere in time
       dateFormat={'dd'}
       selectedColor={theme.colors.brand.hover}
       hoveredColor={theme.colors.brand.yellow}
@@ -94,6 +123,8 @@ SchedulePicker.propTypes = {
   action: PropTypes.func,
   childAction: PropTypes.func,
   label: PropTypes.string,
+  columnNames: PropTypes.array,
+  value: PropTypes.object,
   list: PropTypes.array,
   name: PropTypes.string,
   error: PropTypes.string

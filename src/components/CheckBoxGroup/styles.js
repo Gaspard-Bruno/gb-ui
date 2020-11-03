@@ -4,10 +4,11 @@ export const StyledContainer = styled.div``;
 
 export const CheckboxGroudContainer = styled.div`
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   align-items: center;
   margin-bottom: ${props => props.theme?.margin * 2 - 8}px;
   p {
+    max-width: calc(100% - ${props => props.theme?.margin * 3}PX);
     margin: 0 ${props => props.theme?.margin / 2}px;
   }
 `;
