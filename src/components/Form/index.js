@@ -67,6 +67,8 @@ const Form = ({
         type: field.type,
         error: errors && errors?.[field.key] && errors?.[field.key] // required, hasBeenTaken
       };
+      const getOptVal = opt =>
+        fieldProps?.value?.find(v => v.value === opt.value);
       switch (widget) {
         case 'object':
           return (
@@ -80,6 +82,7 @@ const Form = ({
           return (
             <SchedulePicker
               name={field.key}
+              value={fieldProps.value}
               t={translate}
               action={values => formik.setFieldValue(field.key, values)}
             />
@@ -202,7 +205,10 @@ const Form = ({
               label={fieldProps?.label}
               list={field?.options.map(opt => ({
                 value: opt.value,
-                question: opt.label
+                question: opt.label,
+                isSelected: getOptVal(opt)
+                  ? getOptVal(opt).isSelected || false
+                  : opt.isSelected
               }))}
               action={values => formik.setFieldValue(field.key, values)}
             />

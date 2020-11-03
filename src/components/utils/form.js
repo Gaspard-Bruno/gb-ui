@@ -48,6 +48,62 @@ const gardeningAnswers = {
   'chosen-language': 1
 };
 
+const specialistFormAnswers = {
+  nif: '2332',
+  name: 'David',
+  email: '3@cenas.com',
+  address: '2',
+  country: 0,
+  known55: '1',
+  district: 0,
+  lastName: 'Morais',
+  location: '4',
+  services: ['Apoio Familiar a crianças'],
+  'sex-type': 1,
+  birthDate: '1111-11-26',
+  otherInfo: '3',
+  telephone: '1',
+  PostalCode: '3',
+  'question-1': 0,
+  'week-hours': {
+    friday: [],
+    monday: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+    sunday: [9, 10, 11, 12, 13, 14, 15, 16],
+    tuesday: [],
+    saturday: [9, 10, 11, 12, 13, 14, 15, 16],
+    thursday: [],
+    wednesday: [9, 10, 11, 12, 13, 14, 15, 16]
+  },
+  maritalStatus: 1,
+  paymentMethod: 0,
+  'main-motivation': '2',
+  preferredContact: 0,
+  professionalStatus: 2,
+  professionalActivity: 0,
+  'babysitting-child-age': [
+    { value: 0, question: 'De 6 meses até os 2 anos' },
+    {
+      value: 1,
+      question: 'Dos 2 anos até os 10 anos',
+      isSelected: true
+    },
+    { value: 2, question: 'Maiores de 10 anos' }
+  ],
+  professionalExperience: 'dd',
+  'babysitting-service-to-do': [
+    { value: 0, question: 'Companhia', isSelected: true },
+    { value: 1, question: 'Deslocações' },
+    { value: 2, question: 'Acompanhamento TPC' },
+    { value: 3, question: 'Explicações' }
+  ],
+  'foreign-language-knowledge': 0,
+  'babysitting-children-number': [
+    { value: 0, question: 'Apenas 1' },
+    { value: 1, question: 'Mais do que 1' },
+    { value: 2, question: 'Outro', isSelected: true }
+  ],
+  'babysitting-children-number-other': 'Puto mais velho'
+};
 export default {
   petsitting,
   babysitting,
@@ -61,5 +117,6 @@ export default {
   repairs,
   becomeSpecialist,
   gardening,
-  gardeningAnswers
+  gardeningAnswers,
+  specialistFormAnswers
 };

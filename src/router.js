@@ -109,6 +109,11 @@ const components = [
     label: 'Form',
     props: [
       {
+        previewComponentTitle: 'Become Specialist',
+        answers: FORM.specialistFormAnswers,
+        questions: FORM.becomeSpecialist.questions
+      },
+      {
         previewComponentTitle: 'Gardening (Pre-filled) with errors',
         questions: FORM.gardening.questions,
         answers: FORM.gardeningAnswers,
@@ -128,10 +133,6 @@ const components = [
       {
         previewComponentTitle: 'Music Lessons',
         questions: FORM.musicLessons.questions
-      },
-      {
-        previewComponentTitle: 'Become Specialist',
-        questions: FORM.becomeSpecialist.questions
       }
     ],
     section: 'Form',

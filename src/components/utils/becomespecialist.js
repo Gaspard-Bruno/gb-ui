@@ -8,7 +8,6 @@ const stepOne = () => {
       key: 'sex-type',
       label: 'Sexo',
       type: 'radio',
-      isVerticalAligned: true,
       options: [
         { value: 0, label: 'Feminino' },
         { value: 1, label: 'Masculino' }

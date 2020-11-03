@@ -38,9 +38,9 @@ const RadioButton = ({
               <StyledRadio
                 type='button'
                 name={name}
-                isSelected={index === selectedButton}
+                isSelected={item.value === selectedButton}
                 onClick={event => {
-                  setSelectedTab(index);
+                  setSelectedTab(item.value);
                   if (action) {
                     action({
                       name,
@@ -50,7 +50,7 @@ const RadioButton = ({
                 }}
                 key={index}
               >
-                <FocusedRadio isSelected={index === selectedButton} />
+                <FocusedRadio isSelected={item.value === selectedButton} />
               </StyledRadio>
               <Body name={item.key}>{item.label}</Body>
             </RadioGroudContainer>
