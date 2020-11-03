@@ -23690,7 +23690,7 @@ var Form$1 = function Form(_ref) {
 
   var getInitialValues = function getInitialValues(valueQuestions) {
     return valueQuestions.forEach(function (q) {
-      var typeDefault = q.type === 'array' || q.type === 'uniq-array' ? [] : undefined;
+      var typeDefault = (q.type === 'array' || q.type === 'uniq-array') && !q.widget === 'schedule-picker' ? [] : undefined;
 
       if (q.key) {
         if (q.type === 'object') {
