@@ -5,7 +5,7 @@ const stepOne = () => {
       type: 'footnote'
     },
     {
-      key: 'sex-type',
+      key: 'sexType',
       label: 'Sexo',
       type: 'radio',
       options: [
@@ -86,7 +86,7 @@ const stepThree = () => {
       type: 'text'
     },
     {
-      key: 'PostalCode',
+      key: 'postalCode',
       label: 'Código Postal',
       type: 'text'
     },
@@ -133,6 +133,7 @@ const stepFive = () => {
     },
     {
       label: 'Tem carro disponível caso seja necessário em algum serviço ?',
+      key: 'hasCar',
       type: 'radio',
       isVerticalAligned: true,
       options: [
@@ -167,14 +168,14 @@ const stepFive = () => {
         // Aulas de Música
         {
           type: 'object',
-          key: 'aulas-de-musica',
+          key: 'musicLessons',
           widget: 'mini-form',
           dependencyType: 'value-includes',
           dependencyValue: 'Aulas de Música',
           label: 'Aulas de Música',
           questions: [
             {
-              key: 'music-lessons',
+              key: 'instruments',
               title: 'Aulas de Música',
               type: 'checkbox-group',
               label: 'Qual o instrumento (ou instrumentos) que pode ensinar?',
@@ -193,7 +194,7 @@ const stepFive = () => {
               ],
               children: [
                 {
-                  key: 'music-lessons-other-instrument',
+                  key: 'musicLessonsOtherInstrument',
                   label: 'Outros',
                   dependencyType: 'value',
                   dependencyValue: 6,
@@ -202,7 +203,7 @@ const stepFive = () => {
               ]
             },
             {
-              key: 'music-lessons-level',
+              key: 'musicLessonsLevel',
               type: 'checkbox-group',
               label:
                 'Qual o nível de ensino do/s instrumento/s que pode realizar?',
@@ -218,7 +219,7 @@ const stepFive = () => {
               ]
             },
             {
-              key: 'music-lessons-place',
+              key: 'musicLessonsPlace',
               type: 'checkbox-group',
               label:
                 'Qual o nível de ensino do/s instrumento/s que pode realizar?',
@@ -235,7 +236,7 @@ const stepFive = () => {
               ],
               children: [
                 {
-                  key: 'music-lessons-other-place',
+                  key: 'musicLessonsOtherPlace',
                   label: 'Outro Espaço',
                   dependencyType: 'value',
                   dependencyValue: 2,
@@ -249,13 +250,13 @@ const stepFive = () => {
         {
           type: 'object',
           widget: 'mini-form',
-          key: 'apoio-seniores',
+          key: 'seniorSupport',
           dependencyType: 'value-includes',
           dependencyValue: 'Apoio Familiar a Seniores',
           label: 'Apoio Familiar a Seniores',
           questions: [
             {
-              key: 'senior-company',
+              key: 'seniorSupportType',
               title: 'Apoio Familiar a Seniores',
               type: 'checkbox-group',
               label:
@@ -277,13 +278,13 @@ const stepFive = () => {
         {
           type: 'object',
           widget: 'mini-form',
-          key: 'gastro-experience',
+          key: 'gastroExperience',
           dependencyType: 'value-includes',
           dependencyValue: 'Experiência Gastronómica',
           label: 'Experiência Gastronómica',
           questions: [
             {
-              key: 'gastronomical-experience',
+              key: 'gastroExperienceFoodType',
               title: 'Experiência Gastronómica',
               type: 'checkbox-group',
               label: 'Qual é o tipo de comida que quer fazer?',
@@ -305,7 +306,7 @@ const stepFive = () => {
               ],
               children: [
                 {
-                  key: 'gastronomic-experience-type-other',
+                  key: 'gastroExperienceOther',
                   label: 'Outro',
                   dependencyType: 'value',
                   dependencyValue: 6,
@@ -325,7 +326,7 @@ const stepFive = () => {
           label: 'Petcare',
           questions: [
             {
-              key: 'petcare-animal-type',
+              key: 'petcareAnimalType',
               title: 'Petcare (visitas e/ ou passeios)',
               type: 'checkbox-group',
               label: 'Qual é o tipo de animal que pode cuidar?',
@@ -340,7 +341,7 @@ const stepFive = () => {
               ],
               children: [
                 {
-                  key: 'petCare-animal-type-other',
+                  key: 'petcareAnimalTypeOther',
                   label: 'Outro',
                   dependencyType: 'value',
                   dependencyValue: 2,
@@ -349,7 +350,7 @@ const stepFive = () => {
               ]
             },
             {
-              key: 'petCare-animal-size',
+              key: 'petcareAnimalSize',
               label: 'Qual o porte do cão que pode cuidar?',
               type: 'checkbox-group',
               options: [
@@ -370,7 +371,7 @@ const stepFive = () => {
           label: 'Petsitting',
           questions: [
             {
-              key: 'petsitting-exterior-space',
+              key: 'petsittingExteriorSpace',
               title: 'Petsitting (estadia)',
               label:
                 'Caso possa ficar na sua casa, tem um espaço exterior para o animal?',
@@ -382,7 +383,7 @@ const stepFive = () => {
               ]
             },
             {
-              key: 'petsitting-animal-type',
+              key: 'petsittingAnimalType',
               type: 'checkbox-group',
               label: 'Qual é o tipo de animal que pode cuidar?',
               options: [
@@ -396,7 +397,7 @@ const stepFive = () => {
               ],
               children: [
                 {
-                  key: 'petsitting-animal-type-other',
+                  key: 'petsittingAnimalTypeOther',
                   label: 'Outros',
                   dependencyType: 'value',
                   dependencyValue: 2,
@@ -405,7 +406,7 @@ const stepFive = () => {
               ]
             },
             {
-              key: 'petsitting-animal-size',
+              key: 'petsittingAnimalSize',
               label: 'Qual o porte do cão que pode cuidar?',
               type: 'checkbox-group',
               options: [
@@ -426,7 +427,7 @@ const stepFive = () => {
           key: 'repairs',
           questions: [
             {
-              key: 'repairs',
+              key: 'repairsType',
               title: 'Reparações',
               type: 'checkbox-group',
               label: 'Este serviço tem várias tipologias, quais pode fazer?',
@@ -445,7 +446,7 @@ const stepFive = () => {
               ],
               children: [
                 {
-                  key: 'repairs-type-other',
+                  key: 'repairsTypeOther',
                   label: 'Outro',
                   dependencyType: 'value',
                   dependencyValue: 6,
@@ -454,7 +455,7 @@ const stepFive = () => {
               ]
             },
             {
-              key: 'repairs-tools',
+              key: 'repairsTools',
               label:
                 'Tem as ferramentas necessários para realizar este serviço?',
               type: 'radio',
@@ -476,7 +477,7 @@ const stepFive = () => {
           key: 'gardening',
           questions: [
             {
-              key: 'gardening-type',
+              key: 'gardeningType',
               title: 'Jardinagem',
               type: 'checkbox-group',
               label: 'Este serviço tem varias tipologias, quais pode fazer?',
@@ -492,7 +493,7 @@ const stepFive = () => {
               ],
               children: [
                 {
-                  key: 'gardening-type-other',
+                  key: 'gardeningTypeOther',
                   label: 'Outros',
                   dependencyType: 'value',
                   dependencyValue: 3,
@@ -501,7 +502,7 @@ const stepFive = () => {
               ]
             },
             {
-              key: 'gardening-tools',
+              key: 'gardeningTools',
               label:
                 'Tem as ferramentas necessários para realizar este serviço?',
               type: 'radio',
@@ -523,7 +524,7 @@ const stepFive = () => {
           label: 'Apoio Familiar a crianças',
           questions: [
             {
-              key: 'babysitting-children-number',
+              key: 'babysittingChildrenNumber',
               title: 'Apoio Familiar a crianças',
               type: 'checkbox-group',
               label: 'Quantas Crianças pode acompanhar ao mesmo tempo ?',
@@ -534,7 +535,7 @@ const stepFive = () => {
               ],
               children: [
                 {
-                  key: 'babysitting-children-number-other',
+                  key: 'babysittingChildrenNumberOther',
                   label: 'Outro',
                   dependencyType: 'value',
                   dependencyValue: 2,
@@ -543,7 +544,7 @@ const stepFive = () => {
               ]
             },
             {
-              key: 'babysitting-child-age',
+              key: 'babysittingChildAge',
               type: 'checkbox-group',
               label:
                 'Que idades nas crianças prefere para realizar este serviço?',
@@ -562,7 +563,7 @@ const stepFive = () => {
               ]
             },
             {
-              key: 'babysitting-service-to-do',
+              key: 'babysittingServiceToDo',
               type: 'checkbox-group',
               label: 'Que tipos de serviço gostaria de fazer',
               options: [
@@ -581,7 +582,7 @@ const stepFive = () => {
               ]
             },
             {
-              key: 'babysitting-service-to-do-other',
+              key: 'babysittingServiceToDoOther',
               label: 'Outros',
               type: 'text'
             },
@@ -608,7 +609,7 @@ const stepSix = () => {
       label: 'Seleccione',
       type: 'footnote'
     },
-    { key: 'week-hours', type: 'uniq-array', widget: 'schedule-picker' }
+    { key: 'weekHours', type: 'uniq-array', widget: 'schedule-picker' }
   ];
 };
 
@@ -653,7 +654,7 @@ const stepSeven = () => {
 const stepEight = () => {
   return [
     {
-      key: 'foreign-language-knowledge',
+      key: 'foreignLanguageKnowledge',
       label: 'Tem conhecimento ou fala fluentemente alguma língua estrangeira?',
       type: 'radio',
       isVerticalAligned: true,
@@ -684,7 +685,7 @@ const stepEight = () => {
             },
             {
               type: 'dropdown',
-              key: 'language-level',
+              key: 'languageLevel',
               label: '',
               options: [
                 { label: 'Básico', value: 0 },
@@ -712,7 +713,7 @@ const stepNine = () => {
       type: 'text-area'
     },
     {
-      key: 'main-motivation',
+      key: 'main-Motivation',
       label:
         'Porque quer fazer parte da 55+? Qual é a sua principal motivação?',
       type: 'text-area'
