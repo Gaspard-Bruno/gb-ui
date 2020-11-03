@@ -334,7 +334,10 @@ const Form = ({
   const getInitialValues = valueQuestions =>
     valueQuestions.forEach(q => {
       const typeDefault =
-        q.type === 'array' || q.type === 'uniq-array' ? [] : undefined;
+        (q.type === 'array' || q.type === 'uniq-array') &&
+        !q.widget === 'schedule-picker'
+          ? []
+          : undefined;
       if (q.key) {
         if (q.type === 'object') {
           getInitialValues(q.questions);
