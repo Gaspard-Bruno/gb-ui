@@ -12,7 +12,7 @@ const Button = ({
   isSmall,
   icon,
   action,
-  type,
+  type = 'button',
   isFullWidth,
   children
 }) => {
@@ -36,6 +36,7 @@ const Button = ({
     return (
       <IconButton
         btnType={btnType}
+        type={type}
         disabled={isDisabled}
         small={isSmall}
         onClick={action}

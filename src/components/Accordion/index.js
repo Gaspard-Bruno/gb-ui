@@ -12,6 +12,7 @@ const Accordion = ({ title, isOpen, content }) => {
       <AccordionTitle isOpen={setOpen}>
         <Heading size={6}>{title}</Heading>
         <Button
+          type='button'
           btnType='transparent'
           icon='chevron-down'
           action={() => setSetOpen(!setOpen)}
