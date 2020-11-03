@@ -6209,7 +6209,6 @@ var CheckBoxGroup = function CheckBoxGroup(_ref) {
       return e.question === event;
     }));
     checkedItems[itemIndex].isSelected = !list[itemIndex].isSelected;
-    console.log(checkedItems);
     if (action) action(checkedItems);
   };
 
@@ -6218,7 +6217,7 @@ var CheckBoxGroup = function CheckBoxGroup(_ref) {
       key: "".concat(item, "-").concat(index)
     }, /*#__PURE__*/React__default['default'].createElement(StyledCheckbox, {
       type: "checkbox",
-      checked: list.isSelected,
+      checked: item.isSelected,
       name: name,
       onChange: function onChange() {
         return handleItems(name, item === null || item === void 0 ? void 0 : item.question);
@@ -19612,9 +19611,9 @@ var RadioButton = function RadioButton(_ref) {
     }, /*#__PURE__*/React__default['default'].createElement(StyledRadio, {
       type: "button",
       name: name,
-      isSelected: index === selectedButton,
+      isSelected: item.value === selectedButton,
       onClick: function onClick(event) {
-        setSelectedTab(index);
+        setSelectedTab(item.value);
 
         if (action) {
           action({
@@ -19625,7 +19624,7 @@ var RadioButton = function RadioButton(_ref) {
       },
       key: index
     }, /*#__PURE__*/React__default['default'].createElement(FocusedRadio, {
-      isSelected: index === selectedButton
+      isSelected: item.value === selectedButton
     })), /*#__PURE__*/React__default['default'].createElement(Body, {
       name: item.key
     }, item.label));
@@ -23415,7 +23414,7 @@ var Form$1 = function Form(_ref) {
   };
 
   var fieldRenderer = function fieldRenderer(field, formik, parentKey) {
-    var _field$options, _fieldProps$value$lab, _fieldProps$value;
+    var _field$options, _fieldProps$value$lab, _fieldProps$value2;
 
     if (field.key && hiddenFields.indexOf(field.key) === -1) {
       var _field$label, _field$key, _field$label2, _formik$values$field$;
@@ -23435,6 +23434,14 @@ var Form$1 = function Form(_ref) {
 
       };
 
+      var getOptVal = function getOptVal(opt) {
+        var _fieldProps$value;
+
+        return fieldProps === null || fieldProps === void 0 ? void 0 : (_fieldProps$value = fieldProps.value) === null || _fieldProps$value === void 0 ? void 0 : _fieldProps$value.find(function (v) {
+          return v.value === opt.value;
+        });
+      };
+
       switch (widget) {
         case 'object':
           return /*#__PURE__*/React__default['default'].createElement(Accordion, {
@@ -23446,6 +23453,7 @@ var Form$1 = function Form(_ref) {
         case 'schedule-picker':
           return /*#__PURE__*/React__default['default'].createElement(SchedulePicker, {
             name: field.key,
+            value: fieldProps.value,
             t: translate,
             action: function action(values) {
               return formik.setFieldValue(field.key, values);
@@ -23547,7 +23555,7 @@ var Form$1 = function Form(_ref) {
           return /*#__PURE__*/React__default['default'].createElement(Select$2, _extends({
             isMini: Boolean(widget === 'mini-dropdown'),
             options: field.options,
-            inputValue: (_fieldProps$value$lab = fieldProps === null || fieldProps === void 0 ? void 0 : (_fieldProps$value = fieldProps.value) === null || _fieldProps$value === void 0 ? void 0 : _fieldProps$value.label) !== null && _fieldProps$value$lab !== void 0 ? _fieldProps$value$lab : ''
+            inputValue: (_fieldProps$value$lab = fieldProps === null || fieldProps === void 0 ? void 0 : (_fieldProps$value2 = fieldProps.value) === null || _fieldProps$value2 === void 0 ? void 0 : _fieldProps$value2.label) !== null && _fieldProps$value$lab !== void 0 ? _fieldProps$value$lab : ''
           }, fieldProps, {
             onChange: function onChange(v) {
               return formik.setFieldValue(field.key, Array.from(new Set([].concat(_toConsumableArray(fieldProps.value), [v.value]))));
@@ -23561,7 +23569,8 @@ var Form$1 = function Form(_ref) {
             list: field === null || field === void 0 ? void 0 : field.options.map(function (opt) {
               return {
                 value: opt.value,
-                question: opt.label
+                question: opt.label,
+                isSelected: getOptVal(opt) ? getOptVal(opt).isSelected || false : opt.isSelected
               };
             }),
             action: function action(values) {
