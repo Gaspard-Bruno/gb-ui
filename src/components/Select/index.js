@@ -41,12 +41,12 @@ Select.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
-      value: PropTypes.string
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     })
   ),
   isMini: PropTypes.bool,
   label: PropTypes.string,
-  defaultValue: PropTypes.string,
+  defaultValue: PropTypes.object,
   onChange: PropTypes.func
 };
 

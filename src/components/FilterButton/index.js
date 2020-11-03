@@ -9,10 +9,10 @@ import StyledFilterButton, {
   CloseContainer,
   FilterLabel,
   FilterTitle,
-  Dropdown,
+  Dropdown
 } from './style';
 
-const getIconName = (filterLabel) => {
+const getIconName = filterLabel => {
   switch (filterLabel.label) {
     case 'responsible':
       return 'User';
@@ -29,13 +29,13 @@ const getIconName = (filterLabel) => {
   }
 };
 
-const getFilterOptions = (filter) => {
+const getFilterOptions = filter => {
   switch (filter.label) {
     case 'responsible':
       return [
         { label: 'Admin1', value: 'admin1' },
         { label: 'Admin2', value: 'admin1' },
-        { label: 'Admin3', value: 'admin1' },
+        { label: 'Admin3', value: 'admin1' }
       ];
     case 'date':
       return 'calendar';
@@ -56,13 +56,13 @@ const FilterButton = ({
   translate,
   filterValue,
   onChange,
-  onClose,
+  onClose
 }) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const options = getFilterOptions(filter);
 
-  const handleOpen = (e) => {
+  const handleOpen = e => {
     setShowDropdown(!showDropdown);
   };
 
@@ -73,16 +73,16 @@ const FilterButton = ({
         <FilterLabel>{filterLabel}</FilterLabel>
       </FilterTitle>
 
-      <Button onClick={(e) => handleOpen(e)} icon='chevron-down' />
+      <Button onClick={e => handleOpen(e)} icon='chevron-down' />
 
-      <CloseContainer onClick={(e) => onClose(filter)}>
+      <CloseContainer onClick={e => onClose(filter)}>
         <Icon name='Close' />
       </CloseContainer>
 
       {showDropdown && (
         <Dropdown length={options.length}>
           {/* <Search /> */}
-          <Select options={options} onChange={(e) => onChange(e, filter)} />
+          <Select options={options} onChange={e => onChange(e, filter)} />
         </Dropdown>
       )}
     </StyledFilterButton>
@@ -95,20 +95,20 @@ FilterButton.propTypes = {
     'date',
     'service',
     'status',
-    'region',
+    'region'
   ]),
-  filterValue: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
+  filterValue: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   filterLabel: PropTypes.string,
   translate: PropTypes.func,
   options: PropTypes.array,
   onChange: PropTypes.func,
-  onClose: PropTypes.func,
+  onClose: PropTypes.func
   // leftIcon: PropTypes.string,
   // rightIcon: PropTypes.string
 };
 
 FilterButton.defaultProps = {
-  translate: () => console.log('Changed Filters'),
+  translate: () => console.log('Changed Filters')
   // leftIcon: "kanban",
   // rightIcon: "List"
 };

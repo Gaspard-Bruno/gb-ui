@@ -19,7 +19,7 @@ const Sidebar = ({ sidebarSections, translate, isOpenable }) => {
   // eslint-disable-next-line react/prop-types
   const SidebarLink = ({ route, text, disabled, disabledIcon }) => {
     return route && !disabled ? (
-      <NavLink to={route} active={disabled}>
+      <NavLink to={route} disabled={disabled}>
         {text}
       </NavLink>
     ) : (
@@ -74,14 +74,7 @@ const Sidebar = ({ sidebarSections, translate, isOpenable }) => {
 Sidebar.propTypes = {
   isOpenable: PropTypes.bool,
   translate: PropTypes.func,
-  sidebarSections: PropTypes.arrayOf({
-    title: PropTypes.string,
-    items: PropTypes.arrayOf({
-      text: PropTypes.string,
-      route: PropTypes.string,
-      disabled: PropTypes.bool
-    })
-  })
+  sidebarSections: PropTypes.object
 };
 
 Sidebar.defaultProps = {

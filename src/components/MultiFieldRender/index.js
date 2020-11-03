@@ -28,7 +28,7 @@ const MultiFieldRender = ({ label, content, addAction, removeAction }) => {
 
 MultiFieldRender.propTypes = {
   label: PropTypes.string,
-  content: PropTypes.oneOf(PropTypes.func, PropTypes.node),
+  content: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   addAction: PropTypes.func,
   removeAction: PropTypes.func
 };

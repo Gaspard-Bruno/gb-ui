@@ -27,9 +27,9 @@ const MiniForm = ({ onSubmit, content, title, onRemove }) => {
 
 MiniForm.propTypes = {
   onSubmit: PropTypes.func,
-  onRemove: PropTypes.func,
   title: PropTypes.string,
-  content: PropTypes.func
+  onRemove: PropTypes.func,
+  content: PropTypes.array
 };
 
 export default MiniForm;

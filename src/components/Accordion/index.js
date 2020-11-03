@@ -24,7 +24,7 @@ const Accordion = ({ title, isOpen, content }) => {
 
 Accordion.propTypes = {
   title: PropTypes.string,
-  content: PropTypes.func,
+  content: PropTypes.object,
   isOpen: PropTypes.bool
 };
 

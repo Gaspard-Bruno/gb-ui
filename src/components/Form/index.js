@@ -73,6 +73,7 @@ const Form = ({
         case 'object':
           return (
             <Accordion
+              key={'accordion-' + field.label}
               isOpen={false}
               title={field.label}
               content={renderFields(formik, field.questions, field.parentKey)}
@@ -90,6 +91,7 @@ const Form = ({
         case 'mini-form':
           return (
             <MiniForm
+              key={'miniform-' + field.label}
               onRemove={() =>
                 field.dependencyValue &&
                 parentKey &&
@@ -148,7 +150,11 @@ const Form = ({
             />
           );
         case 'footnote':
-          return <Body alt='true'>{field.label}</Body>;
+          return (
+            <Body alt='true' key={'footnote' + field.key}>
+              {field.label}
+            </Body>
+          );
         case 'mini-dropdown':
         case 'dropdown':
           return (
@@ -202,6 +208,7 @@ const Form = ({
           return (
             <CheckBoxGroup
               name={fieldProps.key}
+              key={fieldProps.key}
               label={fieldProps?.label}
               list={field?.options.map(opt => ({
                 value: opt.value,
@@ -276,7 +283,7 @@ const Form = ({
                     ?.isSelected)
               ) {
                 columns.push(
-                  <Col size={1} padding={0}>
+                  <Col size={1} key={'columns' + i} padding={0}>
                     {fieldRenderer(q, formik)}
                   </Col>
                 );
@@ -408,17 +415,18 @@ Form.propTypes = {
   questions: PropTypes.arrayOf(
     // * Fields
     PropTypes.shape({
-      type: PropTypes.oneOf(
+      type: PropTypes.oneOf([
         'dropdown',
         'form',
         'text',
         'date',
         'radio',
+        'form',
         'footnote',
         'array',
         'text-area',
         'tabs'
-      ).isRequired,
+      ]).isRequired,
       key: PropTypes.string,
       // ! To be replaced with label/translate on key 👇
       question: PropTypes.string,
@@ -426,7 +434,7 @@ Form.propTypes = {
       options: PropTypes.arrayOf(
         PropTypes.shape({
           label: PropTypes.string,
-          value: PropTypes.oneOfType(PropTypes.string, PropTypes.number)
+          value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
         })
       ),
       // * Dependent Fields 👇
@@ -434,16 +442,23 @@ Form.propTypes = {
         PropTypes.shape({
           type: PropTypes.string,
           widget: PropTypes.string,
-          dependencyType: PropTypes.oneOf('value', 'value-count'),
+          dependencyType: PropTypes.oneOf([
+            'value',
+            'value-count',
+            'value-includes'
+          ]),
           // * Dependency Logic 👇
           // - value: Watches the value of the parent, only rendering when dependencyValue matches
           // - value-count: will render as many children as the current value count
-          dependencyValue: PropTypes.string,
+          dependencyValue: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+          ]),
           key: PropTypes.string,
           options: PropTypes.arrayOf(
             PropTypes.shape({
               label: PropTypes.string,
-              value: PropTypes.oneOfType(PropTypes.string, PropTypes.number)
+              value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
             })
           )
         })
