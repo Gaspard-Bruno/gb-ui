@@ -83,6 +83,7 @@ const Form = ({
           return (
             <SchedulePicker
               name={field.key}
+              key={field.key}
               value={fieldProps.value}
               t={translate}
               action={values => formik.setFieldValue(field.key, values)}
@@ -422,6 +423,7 @@ Form.propTypes = {
         'date',
         'radio',
         'form',
+        'object',
         'footnote',
         'array',
         'text-area',

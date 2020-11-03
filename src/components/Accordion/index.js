@@ -24,7 +24,7 @@ const Accordion = ({ title, isOpen, content }) => {
 
 Accordion.propTypes = {
   title: PropTypes.string,
-  content: PropTypes.object,
+  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   isOpen: PropTypes.bool
 };
 

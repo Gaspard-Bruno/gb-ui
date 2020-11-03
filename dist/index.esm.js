@@ -5552,7 +5552,7 @@ var Accordion = function Accordion(_ref) {
 
 Accordion.propTypes = {
   title: propTypes.string,
-  content: propTypes.func,
+  content: propTypes.object,
   isOpen: propTypes.bool
 };
 
@@ -12831,11 +12831,11 @@ Select$2.propTypes = {
   placeholder: propTypes.string,
   options: propTypes.arrayOf(propTypes.shape({
     label: propTypes.string,
-    value: propTypes.string
+    value: propTypes.oneOfType([propTypes.string, propTypes.number])
   })),
   isMini: propTypes.bool,
   label: propTypes.string,
-  defaultValue: propTypes.string,
+  defaultValue: propTypes.object,
   onChange: propTypes.func
 };
 
@@ -13024,7 +13024,7 @@ var FilterButton = function FilterButton(_ref) {
 
 FilterButton.propTypes = {
   filterType: propTypes.oneOf(['responsible', 'date', 'service', 'status', 'region']),
-  filterValue: propTypes.oneOf([propTypes.string, propTypes.object]),
+  filterValue: propTypes.oneOfType([propTypes.string, propTypes.object]),
   filterLabel: propTypes.string,
   translate: propTypes.func,
   options: propTypes.array,
@@ -20118,9 +20118,9 @@ var MiniForm = function MiniForm(_ref) {
 
 MiniForm.propTypes = {
   onSubmit: propTypes.func,
-  onRemove: propTypes.func,
   title: propTypes.string,
-  content: propTypes.func
+  onRemove: propTypes.func,
+  content: propTypes.array
 };
 
 function _templateObject2$j() {
@@ -20167,7 +20167,7 @@ var MultiFieldRender = function MultiFieldRender(_ref) {
 
 MultiFieldRender.propTypes = {
   label: propTypes.string,
-  content: propTypes.oneOf(propTypes.func, propTypes.node),
+  content: propTypes.oneOfType([propTypes.func, propTypes.node]),
   addAction: propTypes.func,
   removeAction: propTypes.func
 };
@@ -23432,6 +23432,7 @@ var Form$1 = function Form(_ref) {
       switch (widget) {
         case 'object':
           return /*#__PURE__*/React.createElement(Accordion, {
+            key: 'accordion-' + field.label,
             isOpen: false,
             title: field.label,
             content: renderFields(formik, field.questions, field.parentKey)
@@ -23449,6 +23450,7 @@ var Form$1 = function Form(_ref) {
 
         case 'mini-form':
           return /*#__PURE__*/React.createElement(MiniForm, {
+            key: 'miniform-' + field.label,
             onRemove: function onRemove() {
               return field.dependencyValue && parentKey && formik.setFieldValue(parentKey, formik.values[parentKey].filter(function (v) {
                 return v !== field.dependencyValue;
@@ -23506,7 +23508,8 @@ var Form$1 = function Form(_ref) {
 
         case 'footnote':
           return /*#__PURE__*/React.createElement(Body, {
-            alt: "true"
+            alt: "true",
+            key: 'footnote' + field.key
           }, field.label);
 
         case 'mini-dropdown':
@@ -23552,6 +23555,7 @@ var Form$1 = function Form(_ref) {
         case 'checkbox-group':
           return /*#__PURE__*/React.createElement(CheckBoxGroup, {
             name: fieldProps.key,
+            key: fieldProps.key,
             label: fieldProps === null || fieldProps === void 0 ? void 0 : fieldProps.label,
             list: field === null || field === void 0 ? void 0 : field.options.map(function (opt) {
               return {
@@ -23630,6 +23634,7 @@ var Form$1 = function Form(_ref) {
               })) === null || _parentValue$find === void 0 ? void 0 : _parentValue$find.isSelected)) {
                 columns.push( /*#__PURE__*/React.createElement(Col, {
                   size: 1,
+                  key: 'columns' + i,
                   padding: 0
                 }, fieldRenderer(q, formik)));
               }
@@ -23765,28 +23770,28 @@ Form$1.propTypes = {
   hiddenFields: propTypes.arrayOf(propTypes.string),
   questions: propTypes.arrayOf( // * Fields
   propTypes.shape({
-    type: propTypes.oneOf('dropdown', 'form', 'text', 'date', 'radio', 'footnote', 'array', 'text-area', 'tabs').isRequired,
+    type: propTypes.oneOf(['dropdown', 'form', 'text', 'date', 'radio', 'form', 'footnote', 'array', 'text-area', 'tabs']).isRequired,
     key: propTypes.string,
     // ! To be replaced with label/translate on key 👇
     question: propTypes.string,
     widget: propTypes.string,
     options: propTypes.arrayOf(propTypes.shape({
       label: propTypes.string,
-      value: propTypes.oneOfType(propTypes.string, propTypes.number)
+      value: propTypes.oneOfType([propTypes.string, propTypes.number])
     })),
     // * Dependent Fields 👇
     children: propTypes.arrayOf(propTypes.shape({
       type: propTypes.string,
       widget: propTypes.string,
-      dependencyType: propTypes.oneOf('value', 'value-count'),
+      dependencyType: propTypes.oneOf(['value', 'value-count', 'value-includes']),
       // * Dependency Logic 👇
       // - value: Watches the value of the parent, only rendering when dependencyValue matches
       // - value-count: will render as many children as the current value count
-      dependencyValue: propTypes.string,
+      dependencyValue: propTypes.oneOfType([propTypes.string, propTypes.number]),
       key: propTypes.string,
       options: propTypes.arrayOf(propTypes.shape({
         label: propTypes.string,
-        value: propTypes.oneOfType(propTypes.string, propTypes.number)
+        value: propTypes.oneOfType([propTypes.string, propTypes.number])
       }))
     }))
   }))
@@ -34866,7 +34871,7 @@ var Sidebar = function Sidebar(_ref) {
         disabledIcon = _ref2.disabledIcon;
     return route && !disabled ? /*#__PURE__*/React.createElement(NavLink$1, {
       to: route,
-      active: disabled
+      disabled: disabled
     }, text) : /*#__PURE__*/React.createElement(NavText, {
       disabled: disabled
     }, text, " ", disabledIcon || '');
@@ -34909,14 +34914,7 @@ var Sidebar = function Sidebar(_ref) {
 Sidebar.propTypes = {
   isOpenable: propTypes.bool,
   translate: propTypes.func,
-  sidebarSections: propTypes.arrayOf({
-    title: propTypes.string,
-    items: propTypes.arrayOf({
-      text: propTypes.string,
-      route: propTypes.string,
-      disabled: propTypes.bool
-    })
-  })
+  sidebarSections: propTypes.object
 };
 Sidebar.defaultProps = {
   sidebarSections: []
