@@ -23275,7 +23275,7 @@ var SchedulePicker = function SchedulePicker(_ref) {
     var dates = [];
 
     var getDateString = function getDateString(day, hour) {
-      return "2019-06-".concat(10 + day, "T").concat(hour, ":00:00");
+      return "2019-06-".concat(9 + day, "T").concat(hour - 1, ":00:00");
     };
 
     Object.keys(schedule).forEach(function (key, day) {
