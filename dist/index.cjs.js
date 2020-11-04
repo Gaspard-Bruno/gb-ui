@@ -23449,7 +23449,7 @@ var Form$1 = function Form(_ref) {
         case 'object':
           return /*#__PURE__*/React__default['default'].createElement(Accordion, {
             key: 'accordion-' + field.label,
-            isOpen: false,
+            isOpen: field.isOpen,
             title: field.label,
             content: renderFields(formik, field.questions, field.parentKey)
           });
