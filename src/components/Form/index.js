@@ -74,7 +74,7 @@ const Form = ({
           return (
             <Accordion
               key={'accordion-' + field.label}
-              isOpen={false}
+              isOpen={field.isOpen}
               title={field.label}
               content={renderFields(formik, field.questions, field.parentKey)}
             />
