@@ -31,7 +31,7 @@ const SchedulePicker = ({
 }) => {
   const convertToDates = schedule => {
     const dates = [];
-    const getDateString = (day, hour) => `2019-06-${10 + day}T${hour}:00:00`;
+    const getDateString = (day, hour) => `2019-06-${9 + day}T${hour - 1}:00:00`;
     Object.keys(schedule).forEach((key, day) => {
       schedule[key].forEach(hour => {
         dates.push(new Date(getDateString(day, hour)));
