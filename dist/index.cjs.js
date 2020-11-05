@@ -23412,9 +23412,9 @@ var DISTRICT_PARISHES = {
   Outro: ['Outra']
 };
 
-var districtOptions = Object.keys(DISTRICT_PARISHES).map(function (district, i) {
+var districtOptions = Object.keys(DISTRICT_PARISHES).map(function (district) {
   return {
-    value: i + 1,
+    value: district.toLowerCase(),
     label: district
   };
 });
