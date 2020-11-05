@@ -21,8 +21,8 @@ import { FormContainer, StyledForm } from './styles';
 import SchedulePicker from '../SchedulePicker';
 import DISTRICT_PARISHES from './DISTRICT_PARISHES';
 
-const districtOptions = Object.keys(DISTRICT_PARISHES).map((district, i) => ({
-  value: i + 1,
+const districtOptions = Object.keys(DISTRICT_PARISHES).map(district => ({
+  value: district.toLowerCase(),
   label: district
 }));
 
