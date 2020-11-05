@@ -21,6 +21,7 @@
     },
     {
       "key": "district",
+      "widget": "district",
       "label": "Distrito",
       "type": "dropdown",
       "options": [{ "value": 1, "label": "Lisboa" }]

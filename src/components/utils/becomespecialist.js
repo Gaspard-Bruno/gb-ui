@@ -72,10 +72,11 @@ const stepThree = () => {
       key: 'country',
       label: 'País',
       type: 'dropdown',
-      options: [{ label: 'Portugal', value: 0 }]
+      options: [{ label: 'Portugal', value: 1 }]
     },
     {
       key: 'district',
+      widget: 'district',
       label: 'Distrito',
       type: 'dropdown',
       options: [{ label: 'Lisboa', value: 0 }]
@@ -146,29 +147,36 @@ const stepFive = () => {
       type: 'uniq-array',
       value: [],
       options: [
+        { label: 'Aulas de Música', value: 'music_lessons' },
         {
           label: 'Apoio Familiar a crianças',
-          value: 'Apoio Familiar a crianças'
+          value: 'babysitting'
         },
         {
           label: 'Apoio Familiar a Seniores',
-          value: 'Apoio Familiar a Seniores'
+          value: 'elder_company'
         },
-        { label: 'Aulas de Música', value: 'Aulas de Música' },
         {
           label: 'Experiência Gastronómica',
-          value: 'Experiência Gastronómica'
+          value: 'gastro_experience'
         },
-        { label: 'Jardinagem', value: 'Jardinagem' },
-        { label: 'Reparações', value: 'Reparações' },
-        { label: 'Petsitting', value: 'Petsitting' },
-        { label: 'Petcare', value: 'Petcare' }
+        {
+          label: 'Chef Em Casa',
+          value: 'chef_at_home'
+        },
+        { label: 'Jardinagem', value: 'gardening' },
+        { label: 'Reparações', value: 'repairs' },
+        { label: 'Petsitting (Alojamento)', value: 'petsitting' },
+        { label: 'Petsitting (Alojamento)', value: 'petsitting' },
+        { label: 'Petcare (Visitas, passeios)', value: 'petcare' },
+        { label: 'Passar a Ferro', value: 'ironing' },
+        { label: 'Costura', value: 'sewing' }
       ],
       children: [
         // Aulas de Música
         {
           type: 'object',
-          key: 'musicLessons',
+          key: 'music_lessons',
           widget: 'mini-form',
           dependencyType: 'value-includes',
           dependencyValue: 'Aulas de Música',
@@ -250,9 +258,9 @@ const stepFive = () => {
         {
           type: 'object',
           widget: 'mini-form',
-          key: 'seniorSupport',
+          key: 'elder_company',
           dependencyType: 'value-includes',
-          dependencyValue: 'Apoio Familiar a Seniores',
+          dependencyValue: 'elder_company',
           label: 'Apoio Familiar a Seniores',
           questions: [
             {
@@ -280,7 +288,7 @@ const stepFive = () => {
           widget: 'mini-form',
           key: 'gastroExperience',
           dependencyType: 'value-includes',
-          dependencyValue: 'Experiência Gastronómica',
+          dependencyValue: 'chef_at_home',
           label: 'Experiência Gastronómica',
           questions: [
             {
@@ -322,7 +330,7 @@ const stepFive = () => {
           key: 'petcare',
           widget: 'mini-form',
           dependencyType: 'value-includes',
-          dependencyValue: 'Petcare',
+          dependencyValue: 'petcare',
           label: 'Petcare',
           questions: [
             {
@@ -367,7 +375,7 @@ const stepFive = () => {
           key: 'petsitting',
           widget: 'mini-form',
           dependencyType: 'value-includes',
-          dependencyValue: 'Petsitting',
+          dependencyValue: 'petsitting',
           label: 'Petsitting',
           questions: [
             {
@@ -422,7 +430,7 @@ const stepFive = () => {
           type: 'object',
           widget: 'mini-form',
           dependencyType: 'value-includes',
-          dependencyValue: 'Reparações',
+          dependencyValue: 'repairs',
           label: 'Reparações',
           key: 'repairs',
           questions: [
@@ -473,7 +481,7 @@ const stepFive = () => {
           widget: 'mini-form',
           dependencyType: 'value-includes',
           dependencyValue: 'Jardinagem',
-          label: 'Jardinagem',
+          label: 'gardening',
           key: 'gardening',
           questions: [
             {
@@ -520,7 +528,7 @@ const stepFive = () => {
           widget: 'mini-form',
           dependencyType: 'value-includes',
           key: 'babysitting',
-          dependencyValue: 'Apoio Familiar a crianças',
+          dependencyValue: 'babysitting',
           label: 'Apoio Familiar a crianças',
           questions: [
             {
@@ -713,7 +721,7 @@ const stepNine = () => {
       type: 'text-area'
     },
     {
-      key: 'main-Motivation',
+      key: 'mainMotivation',
       label:
         'Porque quer fazer parte da 55+? Qual é a sua principal motivação?',
       type: 'text-area'
@@ -740,9 +748,9 @@ const steps = [
 
 const STEP_LABELS = [
   'Dados Pessoais',
+  'Contactos',
   'Morada',
   'Situação Profissional e Experiência',
-  'Contactos',
   'Serviços',
   'Preferência Horária',
   'Pagamentos',
