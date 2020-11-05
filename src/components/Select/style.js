@@ -15,6 +15,9 @@ export const SelectContainer = styled.div`
     min-height: 24px;
     margin: ${props => props.theme?.margin / 2}px 0;
   }
+  button {
+    margin-right: ${props => props.theme?.margin / 2}px !important;
+  }
 `;
 export const selectStyles = {
   menu: (provided, state) => ({

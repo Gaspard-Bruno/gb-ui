@@ -1,0 +1,93 @@
+export default {
+  Lisboa: [
+    'Ajuda',
+    'Alcântara ',
+    'Alvalade',
+    'Areeiro',
+    'Arroios',
+    'Avenidas Novas',
+    'Beato',
+    'Belém',
+    'Benfica',
+    'Campo de Ourique',
+    'Campolide',
+    'Carnide',
+    'Estrela',
+    'Lumiar',
+    'Marvila ',
+    'Misericórdia',
+    'Olivais',
+    'Parque das Nações',
+    'Penha de França',
+    'Santa Clara',
+    'Santa Maria Maior',
+    'Santo António',
+    'São Domingos de Benfica',
+    'São Vicente'
+  ],
+  Porto: [
+    'Aldoar, foz do Douro e Nevogilde',
+    'Cedofeita, Santo Ildefonso, Sé, Miragaia, São Nicolau e Vitória',
+    'Lordelo do Ouro e Massarelos',
+    'Bonfim',
+    'Campanhã',
+    'Paranhos'
+  ],
+  Valongo: [
+    'Alfena ',
+    'Ermesinde',
+    'Valongo',
+    'Campo e Sobrado - Campo',
+    'Campo e Sobrado - Sobrado'
+  ],
+  Maia: [
+    'Aguas santas',
+    'Castêlo da Maia',
+    'Folgosa',
+    'Milheirós',
+    'Moreira',
+    'Nogueira e Silva Escura',
+    'Pedrouços',
+    'S. Pedro Fins',
+    'Vila Nova da Telha',
+    'Cidade da Maia'
+  ],
+  Paredes: [
+    'Sobreira',
+    'Aguiar de Sousa',
+    'Astromil',
+    'Baltar',
+    'Beire',
+    'Cete',
+    'Cristelo',
+    'Duas igrejas',
+    'Grandra',
+    'Lordelo',
+    'Louredo',
+    'Parada de Todeia',
+    'Paredes',
+    'Rebordosa',
+    'Recarei',
+    'Sobrosa',
+    'Vandoma',
+    'Vilela'
+  ],
+  Matosinhos: [
+    'Custóias, Leça do Balio e Guifões',
+    'Matosinhos e Leça da Palmeira',
+    'Perafita, Lavra e Santa Cruz do Bispo',
+    'São Mamede de Infesta e Senhora da Hora'
+  ],
+  Aveiro: [
+    'Cacia',
+    'Eixo e Eirol',
+    'Esgeira',
+    'Glória e Vera Cruz',
+    'Oliveirinha',
+    'Requeixo, N. Sr.ª de Fátima e Nariz',
+    'St Joana',
+    'São Bernardo',
+    'São Jacinto'
+  ],
+  Outro: ['Outra']
+};

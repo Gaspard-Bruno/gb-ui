@@ -20,6 +20,7 @@ const gardeningAnswers = {
     telephone: '123'
   },
   address: 'Rua Cenas',
+  'chosen-language': 1,
   country: 1,
   service: 1,
   district: 1,
@@ -53,19 +54,18 @@ const specialistFormAnswers = {
   name: 'David',
   email: '3@cenas.com',
   address: '2',
-  country: 0,
+  country: 1,
   known55: '1',
-  district: 0,
+  district: 1,
   lastName: 'Morais',
   location: '4',
-  services: ['Apoio Familiar a crianças'],
-  'sex-type': 1,
+  services: ['music_lessons', 'babysitting'],
+  sexType: 1,
   birthDate: '1111-11-26',
   otherInfo: '3',
   telephone: '1',
-  PostalCode: '3',
-  'question-1': 0,
-  'week-hours': {
+  postalCode: '3',
+  weekHours: {
     friday: [],
     monday: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
     sunday: [9, 10, 11, 12, 13, 14, 15, 16],
@@ -76,11 +76,11 @@ const specialistFormAnswers = {
   },
   maritalStatus: 1,
   paymentMethod: 0,
-  'main-motivation': '2',
+  mainMotivation: '2',
   preferredContact: 0,
   professionalStatus: 2,
   professionalActivity: 0,
-  'babysitting-child-age': [
+  babysittingChildAge: [
     { value: 0, question: 'De 6 meses até os 2 anos' },
     {
       value: 1,
@@ -90,19 +90,19 @@ const specialistFormAnswers = {
     { value: 2, question: 'Maiores de 10 anos' }
   ],
   professionalExperience: 'dd',
-  'babysitting-service-to-do': [
+  babysittingServiceToDo: [
     { value: 0, question: 'Companhia', isSelected: true },
     { value: 1, question: 'Deslocações' },
     { value: 2, question: 'Acompanhamento TPC' },
     { value: 3, question: 'Explicações' }
   ],
-  'foreign-language-knowledge': 0,
-  'babysitting-children-number': [
+  foreignLanguageKnowledge: 0,
+  babysittingChildrenNumber: [
     { value: 0, question: 'Apenas 1' },
     { value: 1, question: 'Mais do que 1' },
     { value: 2, question: 'Outro', isSelected: true }
   ],
-  'babysitting-children-number-other': 'Puto mais velho'
+  babysittingChildrenNumberOther: 'Puto mais velho'
 };
 export default {
   petsitting,

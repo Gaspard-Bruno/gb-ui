@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ErrorText, Body } from '../Text';
+import { ErrorText, Body, Tiny } from '../Text';
 import StyledSelect, { SelectContainer, selectStyles } from './style';
+import { Row } from '../Layout';
+import Button from '../Button';
 
 const Select = ({
   error,
@@ -10,10 +12,12 @@ const Select = ({
   options = [],
   label,
   onChange,
+  onRemove,
   isMini,
   isDisabled,
   defaultValue,
-  isMulti
+  isMulti,
+  isUniq
 }) => {
   return (
     <SelectContainer error={error} mini={isMini}>
@@ -28,6 +32,19 @@ const Select = ({
         defaultValue={defaultValue}
         placeholder={placeholder}
       />
+      {isUniq && (
+        <Row>
+          {defaultValue.map(val => (
+            <Button
+              key={label + val + 'badge'}
+              text={options.find(opt => opt.value === val)?.label}
+              icon='trash'
+              type='button'
+              action={() => onRemove(val)}
+            ></Button>
+          ))}
+        </Row>
+      )}
       {error && <ErrorText>{error}</ErrorText>}
     </SelectContainer>
   );
@@ -36,6 +53,8 @@ const Select = ({
 Select.propTypes = {
   isDisabled: PropTypes.bool,
   isMulti: PropTypes.bool,
+  onRemove: PropTypes.func,
+  isUniq: PropTypes.bool,
   error: PropTypes.string,
   placeholder: PropTypes.string,
   options: PropTypes.arrayOf(
@@ -46,7 +65,7 @@ Select.propTypes = {
   ),
   isMini: PropTypes.bool,
   label: PropTypes.string,
-  defaultValue: PropTypes.object,
+  defaultValue: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   onChange: PropTypes.func
 };
 

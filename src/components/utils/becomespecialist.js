@@ -167,7 +167,6 @@ const stepFive = () => {
         { label: 'Jardinagem', value: 'gardening' },
         { label: 'Reparações', value: 'repairs' },
         { label: 'Petsitting (Alojamento)', value: 'petsitting' },
-        { label: 'Petsitting (Alojamento)', value: 'petsitting' },
         { label: 'Petcare (Visitas, passeios)', value: 'petcare' },
         { label: 'Passar a Ferro', value: 'ironing' },
         { label: 'Costura', value: 'sewing' }
@@ -179,7 +178,7 @@ const stepFive = () => {
           key: 'music_lessons',
           widget: 'mini-form',
           dependencyType: 'value-includes',
-          dependencyValue: 'Aulas de Música',
+          dependencyValue: 'music_lessons',
           label: 'Aulas de Música',
           questions: [
             {
@@ -480,7 +479,7 @@ const stepFive = () => {
           type: 'object',
           widget: 'mini-form',
           dependencyType: 'value-includes',
-          dependencyValue: 'Jardinagem',
+          dependencyValue: 'gardening',
           label: 'gardening',
           key: 'gardening',
           questions: [

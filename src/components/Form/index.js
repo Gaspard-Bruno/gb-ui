@@ -19,6 +19,21 @@ import { Col, Row } from '../Layout';
 import MultiFieldRender from '../MultiFieldRender';
 import { FormContainer, StyledForm } from './styles';
 import SchedulePicker from '../SchedulePicker';
+import DISTRICT_PARISHES from './DISTRICT_PARISHES';
+
+const districtOptions = Object.keys(DISTRICT_PARISHES).map((district, i) => ({
+  value: i + 1,
+  label: district
+}));
+
+const getParishesOptions = parishValue => {
+  return (
+    DISTRICT_PARISHES[sc(parishValue)]?.map(parish => ({
+      label: parish,
+      value: parish
+    })) ?? []
+  );
+};
 
 const Form = ({
   onSubmit,
@@ -73,7 +88,7 @@ const Form = ({
         case 'object':
           return (
             <Accordion
-              key={'accordion-' + field.label}
+              key={'accordion-' + (field.key || parentKey)}
               isOpen={field.isOpen}
               title={field.label}
               content={renderFields(formik, field.questions, field.parentKey)}
@@ -177,6 +192,48 @@ const Form = ({
               }
             />
           );
+        case 'district':
+          return (
+            <>
+              <Select
+                options={districtOptions}
+                label='Concelho'
+                defaultValue={districtOptions?.find(
+                  opt => opt.value === fieldProps.value
+                )}
+                onChange={option => {
+                  formik.setFieldValue(field.key, option.value);
+                }}
+              />
+              {(formik.values[field.key] &&
+                (formik.values[field.key] === 'outro' ? (
+                  <TextInput
+                    key={'district-other'}
+                    label='Outro'
+                    onChange={v =>
+                      formik.setFieldValue(field.key + 'district-other', v)
+                    }
+                    name='district-other'
+                    value={formik.values[field.key + 'district-other']}
+                  />
+                ) : (
+                  <Select
+                    label='Freguesia'
+                    key={`${formik.values['district']}-parishes`}
+                    isMini={Boolean(widget === 'mini-dropdown')}
+                    options={getParishesOptions(formik.values[field.key])}
+                    defaultValue={getParishesOptions(
+                      formik.values[field.key]
+                    )?.find(
+                      opt => opt.value === formik.values[field.key + 'parish']
+                    )}
+                    onChange={option =>
+                      formik.setFieldValue('parish', option.value)
+                    }
+                  />
+                ))) || <></>}
+            </>
+          );
         case 'add-field':
           return (
             <MultiFieldRender
@@ -195,12 +252,20 @@ const Form = ({
             <Select
               isMini={Boolean(widget === 'mini-dropdown')}
               options={field.options}
-              inputValue={fieldProps?.value?.label ?? ''}
+              defaultValue={fieldProps.value}
               {...fieldProps}
+              isUniq
               onChange={v =>
                 formik.setFieldValue(
                   field.key,
                   Array.from(new Set([...fieldProps.value, v.value]))
+                )
+              }
+              onRemove={v =>
+                !console.log('seting value', fieldProps.value, v) &&
+                formik.setFieldValue(
+                  field.key,
+                  fieldProps.value.filter(opt => opt !== v)
                 )
               }
             />
