@@ -82,7 +82,7 @@ In order to  achieve several layout types,  there are other properties that are 
 
 - type: 'object' 👉 will render a form, so it expects its fields to be  passed as questions.
 - widget: 'add-field' 👉 will render a row of fields based on the  of rows based on its value count,  differs from 'value-count' dependencyType because it has a counter to increase and remove its count. It expects its fields to be passed as fields
-
+- widget: 'district' will render two questions based on the object in `DISTRICT_PARISHES.js`. (Ideally, the parishes object would be passed to `<Form>` Component props)
 **Custom widgets should be specified as widget field**
 
 ### Form PropTypes
@@ -139,4 +139,10 @@ Form.propTypes = {
     })
   )
 };
+
+## WIP / TODOs
+- Write documentation for all widgets available
+- Write documentation for Layout components usage
+- Move playground logic from router.js
+- Create playground pages for other components
 ```
