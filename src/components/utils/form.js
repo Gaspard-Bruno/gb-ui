@@ -10,6 +10,7 @@ import musicLessons from './music_lessons.form.json';
 import repairs from './repairs.form.json';
 import gardening from './gardening.form.json';
 import becomeSpecialist from './becomespecialist.js';
+import tailoring from './tailoring.form.json';
 
 const gardeningAnswers = {
   email: 'david@test.com',
@@ -116,6 +117,7 @@ export default {
   musicLessons,
   repairs,
   becomeSpecialist,
+  tailoring,
   gardening,
   gardeningAnswers,
   specialistFormAnswers

@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
-  margin-right: ${props => props.theme?.margin * 2}px;
-  flex: 1;
-  min-width: 75%;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -16,12 +13,14 @@ export const StyledContainer = styled.div`
 export const ListContainer = styled.div`
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-between;
+  width: calc(100% - ${props => props.theme?.margin * 5}px);
 `;
+
 export const ButtonGroupContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   p {
     cursor: pointer;
     position: absolute;

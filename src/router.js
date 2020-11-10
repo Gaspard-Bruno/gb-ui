@@ -133,6 +133,10 @@ const components = [
       {
         previewComponentTitle: 'Music Lessons',
         questions: FORM.musicLessons.questions
+      },
+      {
+        previewComponentTitle: 'Tailoring',
+        questions: FORM.tailoring.questions
       }
     ],
     section: 'Form',

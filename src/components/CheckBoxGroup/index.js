@@ -2,7 +2,7 @@ import React from 'react';
 import {
   StyledContainer,
   StyledCheckbox,
-  CheckboxGroudContainer
+  CheckboxGroupContainer
 } from './styles';
 import PropTypes from 'prop-types';
 import { Body, ErrorText } from '../Text';
@@ -22,7 +22,7 @@ const CheckBoxGroup = ({ name, label, list, error, action }) => {
       {list &&
         list.map((item, index) => {
           return (
-            <CheckboxGroudContainer key={`${item}-${index}`}>
+            <CheckboxGroupContainer key={`${item}-${index}`}>
               <StyledCheckbox
                 type='checkbox'
                 checked={item.isSelected}
@@ -32,7 +32,7 @@ const CheckBoxGroup = ({ name, label, list, error, action }) => {
               ></StyledCheckbox>
               {item.question && <Body>{item.question}</Body>}
               {error && <ErrorText>{error}</ErrorText>}
-            </CheckboxGroudContainer>
+            </CheckboxGroupContainer>
           );
         })}
     </StyledContainer>

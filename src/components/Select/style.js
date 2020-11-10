@@ -5,8 +5,8 @@ import theme from 'Theme';
 export const SelectContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
-  width: ${props => (props.mini ? '33%' : 'auto')};
   justify-content: flex-start;
+  width: ${props => (props.mini ? '48%' : 'auto')};
   color: ${props =>
     props.error
       ? props.theme?.colors.feedback.error.default
