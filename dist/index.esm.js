@@ -5936,7 +5936,7 @@ function _templateObject4$2() {
 }
 
 function _templateObject3$4() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  p {\n    cursor: pointer;\n    position: absolute;\n    color: ", ";\n    margin: 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  p {\n    cursor: pointer;\n    position: absolute;\n    color: ", ";\n    margin: 0;\n  }\n"]);
 
   _templateObject3$4 = function _templateObject3() {
     return data;
@@ -5946,7 +5946,7 @@ function _templateObject3$4() {
 }
 
 function _templateObject2$5() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row nowrap;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row nowrap;\n  justify-content: space-between;\n  width: calc(100% - ", "px);\n"]);
 
   _templateObject2$5 = function _templateObject2() {
     return data;
@@ -5956,7 +5956,7 @@ function _templateObject2$5() {
 }
 
 function _templateObject$6() {
-  var data = _taggedTemplateLiteral(["\n  margin-right: ", "px;\n  flex: 1;\n  min-width: 75%;\n  display: flex;\n  flex-flow: column;\n  justify-content: space-between;\n  > p {\n    min-height: 24px;\n    margin: 8px 0px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column;\n  justify-content: space-between;\n  > p {\n    min-height: 24px;\n    margin: 8px 0px;\n  }\n"]);
 
   _templateObject$6 = function _templateObject() {
     return data;
@@ -5964,12 +5964,12 @@ function _templateObject$6() {
 
   return data;
 }
-var StyledContainer = styled.div(_templateObject$6(), function (props) {
+var StyledContainer = styled.div(_templateObject$6());
+var ListContainer = styled.div(_templateObject2$5(), function (props) {
   var _props$theme;
 
-  return ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) * 2;
+  return ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) * 5;
 });
-var ListContainer = styled.div(_templateObject2$5());
 var ButtonGroupContainer = styled.div(_templateObject3$4(), function (props) {
   var _props$theme2, _props$theme3;
 
@@ -6140,7 +6140,7 @@ function _templateObject3$5() {
 }
 
 function _templateObject2$6() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row wrap;\n  align-items: center;\n  margin-bottom: ", "px;\n  p {\n    max-width: calc(100% - ", "PX);\n    margin: 0 ", "px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row wrap;\n  align-items: center;\n  margin-bottom: ", "px;\n  p {\n    max-width: calc(100% - ", "px);\n    margin: 0 ", "px;\n  }\n"]);
 
   _templateObject2$6 = function _templateObject2() {
     return data;
@@ -6159,7 +6159,7 @@ function _templateObject$8() {
   return data;
 }
 var StyledContainer$1 = styled.div(_templateObject$8());
-var CheckboxGroudContainer = styled.div(_templateObject2$6(), function (props) {
+var CheckboxGroupContainer = styled.div(_templateObject2$6(), function (props) {
   var _props$theme;
 
   return ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) * 2 - 8;
@@ -6203,7 +6203,7 @@ var CheckBoxGroup = function CheckBoxGroup(_ref) {
   };
 
   return /*#__PURE__*/React.createElement(StyledContainer$1, null, label && /*#__PURE__*/React.createElement(Body, null, label), list && list.map(function (item, index) {
-    return /*#__PURE__*/React.createElement(CheckboxGroudContainer, {
+    return /*#__PURE__*/React.createElement(CheckboxGroupContainer, {
       key: "".concat(item, "-").concat(index)
     }, /*#__PURE__*/React.createElement(StyledCheckbox, {
       type: "checkbox",
@@ -12725,7 +12725,7 @@ function _templateObject2$9() {
 }
 
 function _templateObject$d() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  width: ", ";\n  justify-content: flex-start;\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n  button {\n    margin-right: ", "px !important;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-start;\n  width: ", ";\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n  button {\n    margin-right: ", "px !important;\n  }\n"]);
 
   _templateObject$d = function _templateObject() {
     return data;
@@ -12734,7 +12734,7 @@ function _templateObject$d() {
   return data;
 }
 var SelectContainer$1 = styled.div(_templateObject$d(), function (props) {
-  return props.mini ? '33%' : 'auto';
+  return props.mini ? '48%' : 'auto';
 }, function (props) {
   var _props$theme, _props$theme2;
 
