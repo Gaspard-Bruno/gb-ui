@@ -102,7 +102,7 @@
           "type": "dropdown",
           "dependencyType": "value",
           "dependencyValue": 1,
-          "label": "Repetição",
+          "label": "Periodicidade",
           "options": [
             { "label": "Diariamente", "value": 0 },
             { "label": "Semanalmente", "value": 1 }

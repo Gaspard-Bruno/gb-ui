@@ -58,16 +58,14 @@
       "label": "Número de pessoas",
       "type": "dropdown",
       "options": [
-        { "value": 1, "label": "1" },
-        { "value": 2, "label": "2" },
-        { "value": 3, "label": "3" },
         { "value": 4, "label": "4" },
         { "value": 5, "label": "5" },
         { "value": 6, "label": "6" },
         { "value": 7, "label": "7" },
         { "value": 8, "label": "8" },
         { "value": 9, "label": "9" },
-        { "value": 10, "label": "10" }
+        { "value": 10, "label": "10" },
+        { "value": 0, "label": "10+" }
       ]
     },
     {
@@ -117,7 +115,7 @@
           "label": "Prato de peixe",
           "type": "dropdown",
           "dependencyType": "value",
-          "dependencyValue": "fish-dish",
+          "dependencyValue": 0,
           "options": [
             { "value": 0, "label": "Arroz de camarão" },
             { "value": 1, "label": "Bacalhau com natas" }
@@ -128,7 +126,7 @@
           "label": "Prato de carne",
           "type": "dropdown",
           "dependencyType": "value",
-          "dependencyValue": "meat-dish",
+          "dependencyValue": 1,
           "options": [
             { "value": 0, "label": "Arroz de pato" },
             { "value": 1, "label": "Torta de porco" },
@@ -143,7 +141,7 @@
           "label": "Prato vegetariano",
           "type": "dropdown",
           "dependencyType": "value",
-          "dependencyValue": "veggie-dish",
+          "dependencyValue": 2,
           "options": [
             { "value": 0, "label": "Alho-poró à Brás" },
             { "value": 1, "label": "Repolho roxo recheado com vegetais" }
@@ -162,12 +160,12 @@
       ]
     },
     {
-      "key": "bread-wine",
-      "label": "Pão e Vinho",
+      "key": "wine",
+      "label": "Vinho",
       "type": "dropdown",
       "options": [
-        { "value": 0, "label": "Sim" },
-        { "value": 1, "label": "Não" }
+        { "value": 0, "label": "Tinto" },
+        { "value": 1, "label": "Branco" }
       ]
     },
     {

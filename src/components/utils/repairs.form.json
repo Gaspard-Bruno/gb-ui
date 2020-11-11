@@ -3,16 +3,9 @@
   "type": "form",
   "questions": [
     { "label": "Morada para executar o Serviço", "type": "footnote" },
-    { "key": "address-locale", "label": "Morada", "type": "text" },
-    {
-      "key": "country",
-      "label": "País",
-      "type": "dropdown",
-      "options": [{ "value": 1, "label": "Portugal" }]
-    },
+
     {
       "key": "district",
-      "widget": "district",
       "label": "Distrito",
       "type": "dropdown",
       "options": [{ "value": 1, "label": "Lisboa" }]
@@ -74,7 +67,7 @@
           "type": "dropdown",
           "dependencyType": "value",
           "dependencyValue": 1,
-          "label": "Repetição",
+          "label": "Periodicidade",
           "options": [
             { "label": "Diariamente", "value": 0 },
             { "label": "Semanalmente", "value": 1 }
@@ -104,7 +97,7 @@
           "dependencyType": "value",
           "dependencyValue": 1,
           "options": [
-            { "value": 0, "label": "S", "isSelected": true  },
+            { "value": 0, "label": "S", "isSelected": true },
             { "value": 1, "label": "T", "isSelected": true },
             { "value": 2, "label": "Q", "isSelected": true },
             { "value": 3, "label": "Q", "isSelected": true },
@@ -115,7 +108,7 @@
         },
         {
           "key": "start-hour",
-          "type": "mini-dropdown",
+          "type": "dropdown",
           "options": [
             { "label": "09:00", "value": "09:00" },
             { "label": "09:30", "value": "09:30" },
@@ -137,7 +130,7 @@
             { "label": "17:30", "value": "17:30" },
             { "label": "18:00", "value": "18:00" }
           ],
-          "label": "Preferência Horária",
+          "label": "Hora de Início",
           "dependencyType": "value",
           "dependencyValue": 1
         },
@@ -146,7 +139,7 @@
           "label": "Hora de Fim",
           "dependencyType": "value",
           "dependencyValue": 1,
-          "type": "mini-dropdown",
+          "type": "dropdown",
           "options": [
             { "label": "09:00", "value": "09:00" },
             { "label": "09:30", "value": "09:30" },
@@ -219,7 +212,7 @@
         {
           "name": "guest.telephone",
           "key": "telephone",
-          "type": "number",
+          "type": "text",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -235,7 +228,7 @@
         {
           "name": "login.telephone",
           "key": "telephone",
-          "type": "number",
+          "type": "text",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "login"

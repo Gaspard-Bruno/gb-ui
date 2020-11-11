@@ -349,9 +349,15 @@ const Form = ({
                     ?.isSelected)
               ) {
                 columns.push(
-                  <Col size={1} key={'columns' + i} padding={0}>
-                    {fieldRenderer(q, formik)}
-                  </Col>
+                  q.excludeFromGroup ? (
+                    <Row size={1} key={'columns' + i} padding={0}>
+                      {fieldRenderer(q, formik)}
+                    </Row>
+                  ) : (
+                    <Col size={1} key={'columns' + i} padding={0}>
+                      {fieldRenderer(q, formik)}
+                    </Col>
+                  )
                 );
               }
               break;

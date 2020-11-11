@@ -13,8 +13,7 @@ export const StyledContainer = styled.div`
 export const ListContainer = styled.div`
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
-  width: calc(100% - ${props => props.theme?.margin * 5}px);
+  gap: 16px;
 `;
 
 export const ButtonGroupContainer = styled.div`

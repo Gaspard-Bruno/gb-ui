@@ -46,7 +46,7 @@
           "type": "dropdown",
           "dependencyType": "value",
           "dependencyValue": 0,
-          "label": "Repetição",
+          "label": "Periodicidade",
           "options": [
             { "label": "Diariamente", "value": 0 },
             { "label": "Semanalmente", "value": 1 }
@@ -80,7 +80,7 @@
           "type": "dropdown",
           "dependencyType": "value",
           "dependencyValue": 1,
-          "label": "Repetição",
+          "label": "Periodicidade",
           "options": [
             { "label": "Diariamente", "value": 0 },
             { "label": "Semanalmente", "value": 1 }
@@ -134,7 +134,7 @@
             { "label": "17:30", "value": "17:30" },
             { "label": "18:00", "value": "18:00" }
           ],
-          "label": "Preferência Horária",
+          "label": "Hora de Início",
           "dependencyType": "value",
           "dependencyValue": 1
         },

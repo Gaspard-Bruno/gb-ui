@@ -136,7 +136,7 @@ const components = [
       },
       {
         previewComponentTitle: 'Tailoring',
-        questions: FORM.tailoring.questions
+        questions: FORM.sewing.questions
       }
     ],
     section: 'Form',

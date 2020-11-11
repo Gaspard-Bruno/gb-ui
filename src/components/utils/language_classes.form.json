@@ -95,7 +95,7 @@
           "type": "dropdown",
           "dependencyType": "value",
           "dependencyValue": 1,
-          "label": "Repetição",
+          "label": "Periodicidade",
           "options": [
             { "label": "Diariamente", "value": 0 },
             { "label": "Semanalmente", "value": 1 }
@@ -125,7 +125,7 @@
           "dependencyType": "value",
           "dependencyValue": 1,
           "options": [
-            { "value": 0, "label": "S", "isSelected": true },
+            { "value": 0, "label": "S", "isSelected": true  },
             { "value": 1, "label": "T", "isSelected": true },
             { "value": 2, "label": "Q", "isSelected": true },
             { "value": 3, "label": "Q", "isSelected": true },
