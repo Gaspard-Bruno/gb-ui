@@ -14,7 +14,8 @@ export const StyledContentContainer = styled(Row)`
     height: 40px;
     position: relative;
     top: -45px;
-    left: calc(100% - 250px);
+    left: calc(100% - 35px);
+    padding: 0;
     margin: 0 !important;
   }
 `;
