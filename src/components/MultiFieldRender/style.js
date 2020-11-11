@@ -9,11 +9,10 @@ export const StyledAddItem = styled.span`
 export const StyledContentContainer = styled(Row)`
   & > button {
     background-color: ${props => props.theme.colors.white};
-    padding: 5px;
     margin: 0 !important;
     position: relative;
     left: 90%;
     top: -45px;
-    border: 1px solid ${props => props.theme.colors.warning.default};
+    border: 1px solid ${props => props.theme.colors.feedback.warning.default};
   }
 `;

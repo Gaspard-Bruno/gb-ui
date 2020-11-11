@@ -8,7 +8,7 @@ import Button from '../Button';
 
 const Select = ({
   error,
-  placeholder,
+  placeholder = 'Selecionar',
   options = [],
   label,
   onChange,
