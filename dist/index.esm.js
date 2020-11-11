@@ -5946,7 +5946,7 @@ function _templateObject3$4() {
 }
 
 function _templateObject2$5() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row nowrap;\n  justify-content: space-between;\n  width: calc(100% - ", "px);\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row nowrap;\n  gap: 16px;\n"]);
 
   _templateObject2$5 = function _templateObject2() {
     return data;
@@ -5965,32 +5965,28 @@ function _templateObject$6() {
   return data;
 }
 var StyledContainer = styled.div(_templateObject$6());
-var ListContainer = styled.div(_templateObject2$5(), function (props) {
-  var _props$theme;
-
-  return ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) * 5;
-});
+var ListContainer = styled.div(_templateObject2$5());
 var ButtonGroupContainer = styled.div(_templateObject3$4(), function (props) {
-  var _props$theme2, _props$theme3;
+  var _props$theme, _props$theme2;
 
-  return props.isSelected ? (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.darkBlue : (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.grey;
+  return props.isSelected ? (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.darkBlue : (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.grey;
 });
 var StyledButton = styled.button(_templateObject4$2(), function (props) {
+  var _props$theme3;
+
+  return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) * 4;
+}, function (props) {
   var _props$theme4;
 
-  return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) * 4;
+  return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) * 3;
 }, function (props) {
   var _props$theme5;
 
-  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 3;
+  return "".concat((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.white);
 }, function (props) {
-  var _props$theme6;
+  var _props$theme6, _props$theme7;
 
-  return "".concat((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.white);
-}, function (props) {
-  var _props$theme7, _props$theme8;
-
-  return props.isSelected ? "1px solid ".concat((_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.darkBlue) : "1px solid ".concat((_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.mediumBeige);
+  return props.isSelected ? "1px solid ".concat((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.darkBlue) : "1px solid ".concat((_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.mediumBeige);
 });
 
 var ButtonGroup = function ButtonGroup(_ref) {
@@ -20150,7 +20146,7 @@ MiniForm.propTypes = {
 };
 
 function _templateObject2$j() {
-  var data = _taggedTemplateLiteral(["\n  & > button {\n    background-color: ", ";\n    margin: 0 !important;\n    position: relative;\n    left: 90%;\n    top: -45px;\n    border: 1px solid ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  flex-flow: row nowrap;\n  & > button {\n    background-color: ", ";\n    width: 40px;\n    height: 40px;\n    border: 1px solid ", ";\n  }\n"]);
 
   _templateObject2$j = function _templateObject2() {
     return data;
@@ -23729,7 +23725,11 @@ var Form$1 = function Form(_ref) {
               if (parentValue === dependencyValue || Array.isArray(parentValue) && (parentValue === null || parentValue === void 0 ? void 0 : (_parentValue$find = parentValue.find(function (val) {
                 return val.value === dependencyValue;
               })) === null || _parentValue$find === void 0 ? void 0 : _parentValue$find.isSelected)) {
-                columns.push( /*#__PURE__*/React.createElement(Col, {
+                columns.push(q.excludeFromGroup ? /*#__PURE__*/React.createElement(Row, {
+                  size: 1,
+                  key: 'columns' + i,
+                  padding: 0
+                }, fieldRenderer(q, formik)) : /*#__PURE__*/React.createElement(Col, {
                   size: 1,
                   key: 'columns' + i,
                   padding: 0
