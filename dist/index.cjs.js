@@ -13102,7 +13102,8 @@ var ReversedColumn = styled__default['default'](GridRow)(_templateObject12$1(), 
 
 var Select$2 = function Select(_ref) {
   var error = _ref.error,
-      placeholder = _ref.placeholder,
+      _ref$placeholder = _ref.placeholder,
+      placeholder = _ref$placeholder === void 0 ? 'Selecionar' : _ref$placeholder,
       _ref$options = _ref.options,
       options = _ref$options === void 0 ? [] : _ref$options,
       label = _ref.label,
@@ -20162,7 +20163,7 @@ MiniForm.propTypes = {
 };
 
 function _templateObject2$j() {
-  var data = _taggedTemplateLiteral(["\n  & > button {\n    background-color: ", ";\n    padding: 5px;\n    margin: 0 !important;\n    position: relative;\n    left: 90%;\n    top: -45px;\n    border: 1px solid ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  & > button {\n    background-color: ", ";\n    margin: 0 !important;\n    position: relative;\n    left: 90%;\n    top: -45px;\n    border: 1px solid ", ";\n  }\n"]);
 
   _templateObject2$j = function _templateObject2() {
     return data;
@@ -20188,7 +20189,7 @@ var StyledAddItem = styled__default['default'].span(_templateObject$n(), functio
 var StyledContentContainer = styled__default['default'](Row)(_templateObject2$j(), function (props) {
   return props.theme.colors.white;
 }, function (props) {
-  return props.theme.colors.warning.default;
+  return props.theme.colors.feedback.warning.default;
 });
 
 var MultiFieldRender = function MultiFieldRender(_ref) {
