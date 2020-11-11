@@ -5,7 +5,7 @@ import Button from 'components/Button';
 import { StyledAddItem, StyledContentContainer } from './style';
 const MultiFieldRender = ({ label, content, addAction, removeAction }) => {
   return (
-    <Col>
+    <Row>
       <StyledContentContainer>
         {content}
         {content && content.length ? (
@@ -17,12 +17,12 @@ const MultiFieldRender = ({ label, content, addAction, removeAction }) => {
           />
         ) : null}
       </StyledContentContainer>
-      <Col>
+      <Row>
         <StyledAddItem onClick={addAction} role='presentation'>
           {label}
         </StyledAddItem>
-      </Col>
-    </Col>
+      </Row>
+    </Row>
   );
 };
 
