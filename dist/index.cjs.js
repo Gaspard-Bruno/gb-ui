@@ -20162,7 +20162,7 @@ MiniForm.propTypes = {
 };
 
 function _templateObject2$j() {
-  var data = _taggedTemplateLiteral(["\n  & > button {\n    background-color: ", ";\n    margin: 0 !important;\n    position: relative;\n    left: 90%;\n    top: -45px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  & > button {\n    background-color: ", ";\n    padding: 5px;\n    margin: 0 !important;\n    position: relative;\n    left: 90%;\n    top: -45px;\n    border: 1px solid ", ";\n  }\n"]);
 
   _templateObject2$j = function _templateObject2() {
     return data;
@@ -20172,7 +20172,7 @@ function _templateObject2$j() {
 }
 
 function _templateObject$n() {
-  var data = _taggedTemplateLiteral(["\n  margin: 10px 0px 10px 0px;\n  color: ", ";\n  cursor: pointer;\n"]);
+  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  cursor: pointer;\n"]);
 
   _templateObject$n = function _templateObject() {
     return data;
@@ -20186,7 +20186,9 @@ var StyledAddItem = styled__default['default'].span(_templateObject$n(), functio
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.brand.red;
 });
 var StyledContentContainer = styled__default['default'](Row)(_templateObject2$j(), function (props) {
-  return props.theme.colors.brand.yellow;
+  return props.theme.colors.white;
+}, function (props) {
+  return props.theme.colors.warning.default;
 });
 
 var MultiFieldRender = function MultiFieldRender(_ref) {
@@ -20194,7 +20196,7 @@ var MultiFieldRender = function MultiFieldRender(_ref) {
       content = _ref.content,
       addAction = _ref.addAction,
       removeAction = _ref.removeAction;
-  return /*#__PURE__*/React__default['default'].createElement(Layout.Row, null, /*#__PURE__*/React__default['default'].createElement(StyledContentContainer, null, content, content && content.length ? /*#__PURE__*/React__default['default'].createElement(Button__default['default'], {
+  return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(StyledContentContainer, null, content, content && content.length ? /*#__PURE__*/React__default['default'].createElement(Button__default['default'], {
     type: "button",
     icon: "trash",
     btnType: "iconHolder",
