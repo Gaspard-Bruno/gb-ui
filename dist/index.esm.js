@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import iconSet from 'Assets/fonts/icons/icons.json';
 import theme from 'Theme';
 import ReactDOM, { createPortal, findDOMNode, unstable_batchedUpdates } from 'react-dom';
-import { Col as Col$1 } from 'components/Layout';
+import { Row as Row$1 } from 'components/Layout';
 import Button$3 from 'components/Button';
 import { Tiny as Tiny$1 } from 'Components/Text';
 import { ReactComponent as ReactComponent$1 } from 'Assets/svg/logo-black.svg';
@@ -20149,7 +20149,7 @@ MiniForm.propTypes = {
 };
 
 function _templateObject2$j() {
-  var data = _taggedTemplateLiteral(["\n  & > button {\n    margin: 0 !important;\n    position: relative;\n    left: 60%;\n    top: -45px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  & > button {\n    background-color: ", ";\n    margin: 0 !important;\n    position: relative;\n    left: 90%;\n    top: -45px;\n  }\n"]);
 
   _templateObject2$j = function _templateObject2() {
     return data;
@@ -20159,7 +20159,7 @@ function _templateObject2$j() {
 }
 
 function _templateObject$n() {
-  var data = _taggedTemplateLiteral(["\n  margin: '10px 0px 10px 0px';\n  color: ", ";\n  cursor: 'pointer';\n"]);
+  var data = _taggedTemplateLiteral(["\n  margin: 10px 0px 10px 0px;\n  color: ", ";\n  cursor: pointer;\n"]);
 
   _templateObject$n = function _templateObject() {
     return data;
@@ -20172,19 +20172,21 @@ var StyledAddItem = styled.span(_templateObject$n(), function (props) {
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.brand.red;
 });
-var StyledContentContainer = styled(Row)(_templateObject2$j());
+var StyledContentContainer = styled(Row)(_templateObject2$j(), function (props) {
+  return props.theme.colors.brand.yellow;
+});
 
 var MultiFieldRender = function MultiFieldRender(_ref) {
   var label = _ref.label,
       content = _ref.content,
       addAction = _ref.addAction,
       removeAction = _ref.removeAction;
-  return /*#__PURE__*/React.createElement(Col$1, null, /*#__PURE__*/React.createElement(StyledContentContainer, null, content, content && content.length ? /*#__PURE__*/React.createElement(Button$3, {
+  return /*#__PURE__*/React.createElement(Row$1, null, /*#__PURE__*/React.createElement(StyledContentContainer, null, content, content && content.length ? /*#__PURE__*/React.createElement(Button$3, {
     type: "button",
     icon: "trash",
     btnType: "iconHolder",
     action: removeAction
-  }) : null), /*#__PURE__*/React.createElement(Col$1, null, /*#__PURE__*/React.createElement(StyledAddItem, {
+  }) : null), /*#__PURE__*/React.createElement(Row$1, null, /*#__PURE__*/React.createElement(StyledAddItem, {
     onClick: addAction,
     role: "presentation"
   }, label)));
