@@ -20146,7 +20146,7 @@ MiniForm.propTypes = {
 };
 
 function _templateObject2$j() {
-  var data = _taggedTemplateLiteral(["\n  & > button {\n    background-color: ", ";\n    border: 1px solid ", ";\n    width: 40px;\n    height: 40px;\n    position: relative;\n    top: -45px;\n    left: calc(100% - 250px);\n    margin: 0 !important;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  & > button {\n    background-color: ", ";\n    border: 1px solid ", ";\n    width: 40px;\n    height: 40px;\n    position: relative;\n    top: -45px;\n    left: calc(100% - 35px);\n    padding: 0;\n    margin: 0 !important;\n  }\n"]);
 
   _templateObject2$j = function _templateObject2() {
     return data;
@@ -20180,12 +20180,12 @@ var MultiFieldRender = function MultiFieldRender(_ref) {
       content = _ref.content,
       addAction = _ref.addAction,
       removeAction = _ref.removeAction;
-  return /*#__PURE__*/React.createElement(StyledContentContainer, null, content, content && content.length ? /*#__PURE__*/React.createElement(Button$3, {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(StyledContentContainer, null, content, content && content.length ? /*#__PURE__*/React.createElement(Button$3, {
     type: "button",
     icon: "trash",
     btnType: "iconHolder",
     action: removeAction
-  }) : null, /*#__PURE__*/React.createElement(Row$1, null, /*#__PURE__*/React.createElement(StyledAddItem, {
+  }) : null), /*#__PURE__*/React.createElement(Row$1, null, /*#__PURE__*/React.createElement(StyledAddItem, {
     onClick: addAction,
     role: "presentation"
   }, label)));
