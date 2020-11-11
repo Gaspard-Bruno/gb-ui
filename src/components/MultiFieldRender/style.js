@@ -7,11 +7,14 @@ export const StyledAddItem = styled.span`
 `;
 
 export const StyledContentContainer = styled(Row)`
-  flex-flow: row nowrap;
   & > button {
     background-color: ${props => props.theme.colors.white};
+    border: 1px solid ${props => props.theme.colors.feedback.warning.default};
     width: 40px;
     height: 40px;
-    border: 1px solid ${props => props.theme.colors.feedback.warning.default};
+    position: relative;
+    top: -45px;
+    left: calc(100% - 250px);
+    margin: 0 !important;
   }
 `;
