@@ -198,7 +198,7 @@ const Form = ({
               <Select
                 options={districtOptions}
                 label='Concelho'
-                {...fieldProps}
+                error={fieldProps.error}
                 defaultValue={districtOptions?.find(
                   opt => opt.value === fieldProps.value
                 )}
@@ -210,8 +210,8 @@ const Form = ({
                 (formik.values[field.key] === 'outro' ? (
                   <TextInput
                     key={'district-other'}
-                    {...fieldProps}
                     label='Outro'
+                    error={fieldProps.error}
                     onChange={v =>
                       formik.setFieldValue(field.key + 'district-other', v)
                     }
@@ -221,8 +221,8 @@ const Form = ({
                 ) : (
                   <Select
                     label='Freguesia'
-                    {...fieldProps}
                     key={`${formik.values['district']}-parishes`}
+                    error={fieldProps.error}
                     isMini={Boolean(widget === 'mini-dropdown')}
                     options={getParishesOptions(formik.values[field.key])}
                     defaultValue={getParishesOptions(

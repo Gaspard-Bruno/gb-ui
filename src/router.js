@@ -118,8 +118,8 @@ const components = [
         questions: FORM.gardening.questions,
         answers: FORM.gardeningAnswers,
         errors: {
-          first_name: 'required',
-          last_name: 'required'
+          district: 'required',
+          freguesia: 'required'
         }
       },
       {
