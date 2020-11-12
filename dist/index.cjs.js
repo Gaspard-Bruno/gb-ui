@@ -6221,7 +6221,7 @@ var Hero = styled__default['default'].div(_templateObject11$1(), function (props
 var ReversedColumn = styled__default['default'](GridRow)(_templateObject12$1(), media.mobile("\n    flex-flow: column-reverse;\n    text-align: center\n  "));
 
 function _templateObject4$3() {
-  var data = _taggedTemplateLiteral(["\n  margin: 0 !important;\n  outline: none;\n  width: ", "px;\n  height: ", "px;\n  background-color: ", ";\n  cursor: pointer;\n  border: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  margin: 0 !important;\n  outline: none;\n  width: ", "px;\n  height: ", "px;\n  background-color: ", ";\n  cursor: pointer;\n  ", "\n  ", "\n  ", "\n  border: ", ";\n  }\n"]);
 
   _templateObject4$3 = function _templateObject4() {
     return data;
@@ -6241,7 +6241,7 @@ function _templateObject3$5() {
 }
 
 function _templateObject2$6() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row nowrap;\n  gap: 16px;\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row nowrap;\n  gap: 12px;\n  ", "\n  ", "\n  ", "\n"]);
 
   _templateObject2$6 = function _templateObject2() {
     return data;
@@ -6251,7 +6251,7 @@ function _templateObject2$6() {
 }
 
 function _templateObject$7() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column;\n  justify-content: space-between;\n  > p {\n    min-height: 24px;\n    margin: 8px 0px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n  align-items: flex-start;\n  padding: 16px 0px;\n"]);
 
   _templateObject$7 = function _templateObject() {
     return data;
@@ -6260,7 +6260,7 @@ function _templateObject$7() {
   return data;
 }
 var StyledContainer = styled__default['default'].div(_templateObject$7());
-var ListContainer = styled__default['default'].div(_templateObject2$6(), media.mobile("\n    flex-flow: row wrap;\n    justify-content: space-around;\n  "));
+var ListContainer = styled__default['default'].div(_templateObject2$6(), media.smallDesktop("\n    gap: 8px;\n  "), media.tablet("\n    gap: 12px;\n  "), media.mobile("\n    gap: 8px;\n  "));
 var ButtonGroupContainer = styled__default['default'].div(_templateObject3$5(), function (props) {
   var _props$theme, _props$theme2;
 
@@ -6278,7 +6278,7 @@ var StyledButton = styled__default['default'].button(_templateObject4$3(), funct
   var _props$theme5;
 
   return "".concat((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.white);
-}, function (props) {
+}, media.smallDesktop("\n    width: 45px;\n  "), media.tablet("\n    width: 81px;\n  "), media.mobile("\n    width: 37px;\n  "), function (props) {
   var _props$theme6, _props$theme7;
 
   return props.isSelected ? "1px solid ".concat((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.darkBlue) : "1px solid ".concat((_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.mediumBeige);
