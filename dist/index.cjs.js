@@ -23599,28 +23599,28 @@ var Form$1 = function Form(_ref) {
           }));
 
         case 'district':
-          return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
+          return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(Select$2, _extends({
             options: districtOptions,
-            label: "Concelho",
-            error: field.error,
+            label: "Concelho"
+          }, fieldProps, {
             defaultValue: districtOptions === null || districtOptions === void 0 ? void 0 : districtOptions.find(function (opt) {
               return opt.value === fieldProps.value;
             }),
             onChange: function onChange(option) {
               formik.setFieldValue(field.key, option.value);
             }
-          }), formik.values[field.key] && (formik.values[field.key] === 'outro' ? /*#__PURE__*/React__default['default'].createElement(TextInput, {
-            key: 'district-other',
-            error: field.error,
+          })), formik.values[field.key] && (formik.values[field.key] === 'outro' ? /*#__PURE__*/React__default['default'].createElement(TextInput, _extends({
+            key: 'district-other'
+          }, fieldProps, {
             label: "Outro",
             onChange: function onChange(v) {
               return formik.setFieldValue(field.key + 'district-other', v);
             },
             name: "district-other",
             value: formik.values[field.key + 'district-other']
-          }) : /*#__PURE__*/React__default['default'].createElement(Select$2, {
-            label: "Freguesia",
-            error: field.error,
+          })) : /*#__PURE__*/React__default['default'].createElement(Select$2, _extends({
+            label: "Freguesia"
+          }, fieldProps, {
             key: "".concat(formik.values['district'], "-parishes"),
             isMini: Boolean(widget === 'mini-dropdown'),
             options: getParishesOptions(formik.values[field.key]),
@@ -23630,7 +23630,7 @@ var Form$1 = function Form(_ref) {
             onChange: function onChange(option) {
               return formik.setFieldValue('parish', option.value);
             }
-          })) || /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null));
+          }))) || /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null));
 
         case 'add-field':
           return /*#__PURE__*/React__default['default'].createElement(MultiFieldRender, {
