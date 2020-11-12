@@ -23589,6 +23589,7 @@ var Form$1 = function Form(_ref) {
           return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Select$2, {
             options: districtOptions,
             label: "Concelho",
+            error: field.error,
             defaultValue: districtOptions === null || districtOptions === void 0 ? void 0 : districtOptions.find(function (opt) {
               return opt.value === fieldProps.value;
             }),
@@ -23597,6 +23598,7 @@ var Form$1 = function Form(_ref) {
             }
           }), formik.values[field.key] && (formik.values[field.key] === 'outro' ? /*#__PURE__*/React.createElement(TextInput, {
             key: 'district-other',
+            error: field.error,
             label: "Outro",
             onChange: function onChange(v) {
               return formik.setFieldValue(field.key + 'district-other', v);
@@ -23605,6 +23607,7 @@ var Form$1 = function Form(_ref) {
             value: formik.values[field.key + 'district-other']
           }) : /*#__PURE__*/React.createElement(Select$2, {
             label: "Freguesia",
+            error: field.error,
             key: "".concat(formik.values['district'], "-parishes"),
             isMini: Boolean(widget === 'mini-dropdown'),
             options: getParishesOptions(formik.values[field.key]),
