@@ -113,6 +113,7 @@
         },
         {
           "key": "week-select",
+          "excludeFromGroup": true,
           "label": " ",
           "type": "button-group",
           "dependencyType": "value",

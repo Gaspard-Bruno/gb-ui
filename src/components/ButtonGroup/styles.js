@@ -2,21 +2,23 @@ import styled from 'styled-components';
 import { media } from '../Layout';
 export const StyledContainer = styled.div`
   display: flex;
-  flex-flow: column;
-  justify-content: space-between;
-  > p {
-    min-height: 24px;
-    margin: 8px 0px;
-  }
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 16px 0px;
 `;
 
 export const ListContainer = styled.div`
   display: flex;
   flex-flow: row nowrap;
-  gap: 16px;
+  gap: 12px;
+  ${media.smallDesktop(`
+    gap: 8px;
+  `)}
+  ${media.tablet(`
+    gap: 12px;
+  `)}
   ${media.mobile(`
-    flex-flow: row wrap;
-    justify-content: space-around;
+    gap: 8px;
   `)}
 `;
 
@@ -42,6 +44,15 @@ export const StyledButton = styled.button`
   height: ${props => props.theme?.margin * 3}px;
   background-color: ${props => `${props.theme?.colors.white}`};
   cursor: pointer;
+  ${media.smallDesktop(`
+    width: 45px;
+  `)}
+  ${media.tablet(`
+    width: 81px;
+  `)}
+  ${media.mobile(`
+    width: 37px;
+  `)}
   border: ${props =>
     props.isSelected
       ? `1px solid ${props.theme?.colors.darkBlue}`

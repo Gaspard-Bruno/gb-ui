@@ -106,33 +106,41 @@
           "options": [
             { "label": "Diariamente", "value": 0 },
             { "label": "Semanalmente", "value": 1 }
+          ],
+          "children": [
+            {
+              "key": "daily-frequency",
+              "type": "dropdown",
+              "dependencyType": "value",
+              "dependencyValue": 1,
+              "label": "Frequência",
+              "options": [
+                { "label": "1 Dia", "value": 0 },
+                { "label": "2 Dias", "value": 1 },
+                { "label": "3 Dias", "value": 2 },
+                { "label": "4 Dias", "value": 3 },
+                { "label": "5 Dias", "value": 4 },
+                { "label": "6 Dias", "value": 5 },
+                { "label": "7 Dias", "value": 6 }
+              ]
+            },
+            {
+              "type": "footnote",
+              "label": " ",
+              "dependencyType": "value",
+              "dependencyValue": 1
+            }
           ]
         },
-        {
-          "key": "daily-frequency",
-          "type": "dropdown",
-          "dependencyType": "value",
-          "dependencyValue": 1,
-          "label": "Frequência",
-          "options": [
-            { "label": "1 Dia", "value": 0 },
-            { "label": "2 Dias", "value": 1 },
-            { "label": "3 Dias", "value": 2 },
-            { "label": "4 Dias", "value": 3 },
-            { "label": "5 Dias", "value": 4 },
-            { "label": "6 Dias", "value": 5 },
-            { "label": "7 Dias", "value": 6 }
-          ]
-        },
-
         {
           "key": "week-select",
+          "excludeFromGroup": true,
           "label": " ",
           "type": "button-group",
           "dependencyType": "value",
           "dependencyValue": 1,
           "options": [
-            { "value": 0, "label": "S", "isSelected": true  },
+            { "value": 0, "label": "S", "isSelected": true },
             { "value": 1, "label": "T", "isSelected": true },
             { "value": 2, "label": "Q", "isSelected": true },
             { "value": 3, "label": "Q", "isSelected": true },

@@ -129,6 +129,7 @@
         },
         {
           "key": "week-select",
+          "excludeFromGroup": true,
           "label": "Recolha semanal",
           "type": "button-group",
           "dependencyType": "value",
