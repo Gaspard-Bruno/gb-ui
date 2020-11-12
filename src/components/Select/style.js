@@ -70,6 +70,8 @@ export const selectStyles = {
 };
 
 const Select = styled(ReactSelect)`
+  border: ${props =>
+    props.error && `1px solid ${props.theme.colors.feedback.error.default}`};
   color: ${props =>
     props.error
       ? props.theme?.colors.feedback.error.default
