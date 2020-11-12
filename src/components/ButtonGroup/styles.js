@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { media } from '../Layout';
 export const StyledContainer = styled.div`
   display: flex;
   flex-flow: column;
@@ -14,6 +14,10 @@ export const ListContainer = styled.div`
   display: flex;
   flex-flow: row nowrap;
   gap: 16px;
+  ${media.mobile(`
+    flex-flow: row wrap;
+    justify-content: space-around;
+  `)}
 `;
 
 export const ButtonGroupContainer = styled.div`

@@ -623,12 +623,6 @@ const stepSix = () => {
 const stepSeven = () => {
   return [
     {
-      label:
-        'Qual é a sua disponibilidade durante a semana / fim-de-semana para prestar serviços?',
-      type: 'footnote'
-    },
-
-    {
       key: 'professionalActivity',
       label: 'Tem actividade aberta ?',
       type: 'radio',
@@ -709,11 +703,6 @@ const stepEight = () => {
 
 const stepNine = () => {
   return [
-    {
-      label:
-        'Qual é a sua disponibilidade durante a semana / fim-de-semana para prestar serviços?',
-      type: 'footnote'
-    },
     {
       key: 'known55',
       label: 'Como soube da 55+',
