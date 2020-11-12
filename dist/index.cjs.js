@@ -13006,7 +13006,7 @@ var manageState = function manageState(SelectComponent) {
 var index$1 = manageState(Select);
 
 function _templateObject2$a() {
-  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  font-family: Muli;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  input {\n    font-family: Muli;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 16px;\n    line-height: 24px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  border: ", ";\n  color: ", ";\n  font-family: Muli;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  input {\n    font-family: Muli;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 16px;\n    line-height: 24px;\n  }\n"]);
 
   _templateObject2$a = function _templateObject2() {
     return data;
@@ -13091,6 +13091,8 @@ var selectStyles = {
   }
 };
 var Select$1 = styled__default['default'](index$1)(_templateObject2$a(), function (props) {
+  return props.error && "1px solid ".concat(props.theme.colors.feedback.error.default);
+}, function (props) {
   var _props$theme5, _props$theme6;
 
   return props.error ? (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.feedback.error.default : (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.mediumBeige;
