@@ -123,8 +123,8 @@ const components = [
         }
       },
       {
-        previewComponentTitle: 'Cleaning',
-        questions: FORM.cleaning.questions
+        previewComponentTitle: 'Chef',
+        questions: FORM.chefAtHome.questions
       },
       {
         questions: FORM.repairs.questions,

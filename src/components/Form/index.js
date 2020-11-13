@@ -11,10 +11,12 @@ import Accordion from '../Accordion';
 import CheckBoxGroup from '../CheckBoxGroup';
 import ButtonGroup from '../ButtonGroup';
 import RadioButton from '../RadioButton';
+
+import ServiceTypeWidget from '../ServiceTypeWidget';
 import Tabs from '../Tabs';
 import MiniForm from '../MiniForm';
 import Button from '../Button';
-import { Body } from '../Text';
+import { Body, Heading } from '../Text';
 import { Col, Row } from '../Layout';
 import MultiFieldRender from '../MultiFieldRender';
 import { FormContainer, StyledForm } from './styles';
@@ -192,6 +194,17 @@ const Form = ({
               }
             />
           );
+        case 'service-type-detail':
+          return (
+            <>
+              <ServiceTypeWidget
+                heading={field?.heading}
+                headerText={field?.headerText}
+                body={field.body}
+                extras={field.extras}
+              />
+            </>
+          );
         case 'district':
           return (
             <>
@@ -265,7 +278,6 @@ const Form = ({
                 )
               }
               onRemove={v =>
-                !console.log('seting value', fieldProps.value, v) &&
                 formik.setFieldValue(
                   field.key,
                   fieldProps.value.filter(opt => opt !== v)

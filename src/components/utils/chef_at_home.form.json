@@ -1,5 +1,4 @@
 {
-  "id": "1",
   "type": "form",
   "questions": [
     {
@@ -9,11 +8,11 @@
       "options": [
         { "value": 0, "label": "Português" },
         { "value": 1, "label": "English" },
-        { "value": 2, "label": "French" },
-        { "value": 3, "label": "Spanish" }
+        { "value": 2, "label": "Español" },
+        { "value": 3, "label": "Français" }
       ]
     },
-    { "label": "Morada do Serviço", "type": "footnote" },
+    { "label": "Morada para execução do serviço", "type": "footnote" },
     {
       "key": "country",
       "label": "País",
@@ -37,7 +36,30 @@
       "type": "radio",
       "options": [
         { "value": 0, "label": "Standard" },
-        { "value": 1, "label": "Premium" }
+        { "value": 1, "label": "Premium" },
+        { "value": 2, "label": "Urgente" }
+      ],
+      "children": [
+        {
+          "key": "premium-service",
+          "widget": "service-type-detail",
+          "heading": "+2,50€",
+          "headerText": "/ hora",
+          "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+          "extras": "Serviço executado por um Especialista com avaliação superior a 4.9.",
+          "dependencyType": "value",
+          "dependencyValue": 1
+        },
+        {
+          "key": "urgent-service",
+          "widget": "service-type-detail",
+          "heading": "+2,44€",
+          "headerText": "/ hora",
+          "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+          "extras": "Serviço executado por um Especialista com avaliação superior a 4.9.\nServiço realizado em menos de 24H à data do primeiro contacto",
+          "dependencyType": "value",
+          "dependencyValue": 2
+        }
       ]
     },
     {
@@ -58,6 +80,15 @@
       ]
     },
     {
+      "key": "menu-choice",
+      "label": "Escolha do Menu",
+      "type": "dropdown",
+      "options": [
+        { "value": 0, "label": "Definido por si" },
+        { "value": 2, "label": "Proposta do Especialista 55+" }
+      ]
+    },
+    {
       "key": "supplied-ingredients",
       "label": "Os ingredientes serão fornecidos por si?",
       "type": "radio",
@@ -71,9 +102,28 @@
       "key": "offer-type",
       "label": " ",
       "type": "radio",
+      "options": [
+        {
+          "key": "unique",
+          "label": "Única",
+          "value": 0
+        },
+        {
+          "key": "hour-package",
+          "label": "Pacote de Horas",
+          "value": 1
+        }
+      ],
       "children": [
         {
-          "key": "start-date",
+          "key": "service-date",
+          "type": "date",
+          "dependencyType": "value",
+          "dependencyValue": 0,
+          "label": "Data de Serviço"
+        },
+        {
+          "key": "hour-preference",
           "type": "date",
           "dependencyType": "value",
           "dependencyValue": 0,
@@ -83,7 +133,7 @@
           "key": "start-date",
           "type": "date",
           "dependencyType": "value",
-          "dependencyValue": 1,
+          "dependencyValue": 0,
           "label": "Data de Início"
         },
         {
@@ -116,7 +166,20 @@
         {
           "key": "number-of-hours",
           "type": "dropdown",
-          "options": [{ "label": "10", "value": 10 }],
+          "options": [
+            { "label": "1", "value": 1 },
+            { "label": "2", "value": 2 },
+            { "label": "3", "value": 3 },
+            { "label": "4", "value": 4 },
+            { "label": "5", "value": 5 },
+            { "label": "6", "value": 6 },
+            { "label": "7", "value": 7 },
+            { "label": "8", "value": 8 },
+            { "label": "9", "value": 9 },
+            { "label": "10", "value": 10 },
+            { "label": "11", "value": 11 },
+            { "label": "12", "value": 12 }
+          ],
           "dependencyType": "value",
           "dependencyValue": 1,
           "label": "Número de horas"
@@ -176,18 +239,6 @@
             { "label": "17:30", "value": "17:30" },
             { "label": "18:00", "value": "18:00" }
           ]
-        }
-      ],
-      "options": [
-        {
-          "key": "single",
-          "label": "Simples",
-          "value": 0
-        },
-        {
-          "key": "hour-package",
-          "label": "Pacote de Horas",
-          "value": 1
         }
       ]
     },
