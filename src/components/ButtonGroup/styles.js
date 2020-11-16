@@ -42,7 +42,13 @@ export const StyledButton = styled.button`
   outline: none;
   width: ${props => props.theme?.margin * 4}px;
   height: ${props => props.theme?.margin * 3}px;
-  background-color: ${props => `${props.theme?.colors.white}`};
+  background-color: ${props =>
+    props.isSelected
+      ? `${props.theme?.colors.feedback.warning.default}`
+      : `${props.theme?.colors.white}`};
+  };
+
+  
   cursor: pointer;
   ${media.smallDesktop(`
     width: 45px;
@@ -54,8 +60,6 @@ export const StyledButton = styled.button`
     width: 37px;
   `)}
   border: ${props =>
-    props.isSelected
-      ? `1px solid ${props.theme?.colors.darkBlue}`
-      : `1px solid ${props.theme?.colors.mediumBeige}`};
+    props.isSelected ? `none` : `1px solid ${props.theme?.colors.mediumBeige}`};
   }
 `;

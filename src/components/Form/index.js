@@ -12,7 +12,9 @@ import CheckBoxGroup from '../CheckBoxGroup';
 import ButtonGroup from '../ButtonGroup';
 import RadioButton from '../RadioButton';
 
+import OfferTypeWidget from '../OfferTypeWidget';
 import ServiceTypeWidget from '../ServiceTypeWidget';
+
 import Tabs from '../Tabs';
 import MiniForm from '../MiniForm';
 import Button from '../Button';
@@ -22,6 +24,7 @@ import MultiFieldRender from '../MultiFieldRender';
 import { FormContainer, StyledForm } from './styles';
 import SchedulePicker from '../SchedulePicker';
 import DISTRICT_PARISHES from './DISTRICT_PARISHES';
+import FLOW_TO_OFFER_TYPE from './FLOW_TO_OFFER_TYPE';
 
 const districtOptions = Object.keys(DISTRICT_PARISHES).map(district => ({
   value: district.toLowerCase(),
@@ -94,6 +97,18 @@ const Form = ({
               isOpen={field.isOpen}
               title={field.label}
               content={renderFields(formik, field.questions, field.parentKey)}
+            />
+          );
+        case 'offer-type':
+          return (
+            <OfferTypeWidget
+              key={'otw-' + (field.key || parentKey)}
+              offerType={field.formOfferType}
+              values={formik?.values}
+              action={values => {
+                console.log('values', values);
+                formik.setFieldValue(values.name, values.value);
+              }}
             />
           );
         case 'schedule-picker':
@@ -365,7 +380,7 @@ const Form = ({
               ) {
                 columns.push(
                   q.excludeFromGroup ? (
-                    <Row size={1} key={'columns' + i} padding={0}>
+                    <Row key={'columns' + i} padding={0}>
                       {fieldRenderer(q, formik)}
                     </Row>
                   ) : (
