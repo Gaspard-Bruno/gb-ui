@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import chunk from 'lodash.chunk';
 import sc from 'lodash.startcase';
+import snakecase from 'lodash.snakecase';
 
 import TextInput from '../TextInput';
 import Select from '../Select';
@@ -26,7 +27,7 @@ import SchedulePicker from '../SchedulePicker';
 import DISTRICT_PARISHES from './DISTRICT_PARISHES';
 
 const districtOptions = Object.keys(DISTRICT_PARISHES).map(district => ({
-  value: district.toLowerCase(),
+  value: snakecase(district),
   label: district
 }));
 
