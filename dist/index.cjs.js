@@ -20508,7 +20508,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
 
   var renderOneTimeSpecific = function renderOneTimeSpecific(serviceOptions) {
     return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(RadioButton, {
-      error: errors['offer-type'],
+      error: errors === null || errors === void 0 ? void 0 : errors['offer-type'],
       name: "offer-type",
       action: _action,
       list: serviceOptions
@@ -20516,7 +20516,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       size: 6
     }, "Data e Hora do Servi\xE7o")), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(TextInput, {
       label: "Data",
-      error: errors['service-date'],
+      error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
       name: "service-date",
       type: "date",
       onChange: function onChange(values) {
@@ -20528,7 +20528,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     }), /*#__PURE__*/React__default['default'].createElement(Body, null, " - "), /*#__PURE__*/React__default['default'].createElement(Select$2, {
       label: "Hora",
       name: "preferred-hours",
-      error: errors['prefered-hours'],
+      error: errors === null || errors === void 0 ? void 0 : errors['prefered-hours'],
       options: [{
         label: '09:00',
         value: '09:00'
@@ -20605,7 +20605,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       size: 6
     }, "Data e Hora Preferencial"), /*#__PURE__*/React__default['default'].createElement(TextInput, {
       label: "Data",
-      error: errors['service-date'],
+      error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
       name: "service-date",
       type: "date",
       onChange: function onChange(values) {
@@ -20615,7 +20615,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         });
       }
     }), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
-      error: errors['preferred-hours-start'],
+      error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
       label: "Prefer\xEAncia Hor\xE1ria",
       name: "preferred-hours-start",
       options: [{
@@ -20684,7 +20684,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       }
     }), /*#__PURE__*/React__default['default'].createElement(Body, null, " - "), /*#__PURE__*/React__default['default'].createElement(Select$2, {
       label: "",
-      error: errors['preferred-hours-end'],
+      error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-end'],
       name: "preferred-hours-end",
       options: [{
         label: '09:00',
@@ -20751,7 +20751,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         });
       }
     }))), values['offer-type'] === 1 && /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
-      error: errors['number-of-hours'],
+      error: errors === null || errors === void 0 ? void 0 : errors['number-of-hours'],
       label: "N\xFAmero de Horas",
       name: "number-of-hours",
       options: [{
@@ -20792,7 +20792,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         });
       }
     }), /*#__PURE__*/React__default['default'].createElement(Body, null, "Poder\xE1 alterar a recorr\xEAncia e reagendar para mais tarde atrav\xE9s da Equipa da 55+."), /*#__PURE__*/React__default['default'].createElement(Select$2, {
-      error: errors['recurrence'],
+      error: errors === null || errors === void 0 ? void 0 : errors['recurrence'],
       label: "Recorr\xEAncia",
       name: "recurrence",
       onChange: function onChange(values) {
@@ -20812,7 +20812,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         value: 2
       }]
     }), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
-      error: errors['repetition'],
+      error: errors === null || errors === void 0 ? void 0 : errors['repetition'],
       label: "Repeti\xE7\xE3o a cada",
       options: [{
         label: '1',
@@ -20843,7 +20843,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         });
       }
     }), /*#__PURE__*/React__default['default'].createElement(Body, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency), /*#__PURE__*/React__default['default'].createElement(Row, null, values['recurrence'] === 1 && /*#__PURE__*/React__default['default'].createElement(ButtonGroup, {
-      error: errors['week-select'],
+      error: errors === null || errors === void 0 ? void 0 : errors['week-select'],
       name: "week-select",
       list: [{
         value: 0,
@@ -20878,7 +20878,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         return _action(values);
       }
     }), values['recurrence'] === 2 && /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
-      error: errors['montly-recurrence-daily-recurrency'],
+      error: errors === null || errors === void 0 ? void 0 : errors['montly-recurrence-daily-recurrency'],
       label: "Ocorre em",
       options: [{
         value: 0,
@@ -20903,7 +20903,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         });
       }
     }), /*#__PURE__*/React__default['default'].createElement(Body, null, "-"), /*#__PURE__*/React__default['default'].createElement(Select$2, {
-      error: errors['montly-recurrence-weekday'],
+      error: errors === null || errors === void 0 ? void 0 : errors['montly-recurrence-weekday'],
       options: [{
         value: 1,
         label: 'Segunda-Feira'
@@ -20933,7 +20933,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         });
       }
     }), /*#__PURE__*/React__default['default'].createElement(Body, null, "do M\xEAs")))), /*#__PURE__*/React__default['default'].createElement(TextInput, {
-      error: errors['service-start-date'],
+      error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
       label: "Data de In\xEDcio",
       name: "service-start-date",
       type: "date",
@@ -20944,7 +20944,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         });
       }
     }), /*#__PURE__*/React__default['default'].createElement(TextInput, {
-      error: errors['service-end-date'],
+      error: errors === null || errors === void 0 ? void 0 : errors['service-end-date'],
       label: "Data de Fim",
       name: "service-end-date",
       type: "date",
@@ -20955,7 +20955,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         });
       }
     }), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
-      error: errors['preferred-hours-start'],
+      error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
       label: "Prefer\xEAncia Hor\xE1ria",
       name: "preferred-hours-start",
       options: [{
@@ -21023,7 +21023,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         });
       }
     }), /*#__PURE__*/React__default['default'].createElement(Body, null, " - "), /*#__PURE__*/React__default['default'].createElement(Select$2, {
-      error: errors['preferred-hours-end'],
+      error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-end'],
       label: "",
       name: "preferred-hours-end",
       options: [{
@@ -21093,7 +21093,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     }))), values['offer-type'] === 2 && /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
       label: "Escolha o Pack",
       name: "pack-selection",
-      error: errors['pack-selection'],
+      error: errors === null || errors === void 0 ? void 0 : errors['pack-selection'],
       options: serviceTypeOpt ? serviceTypeOpt : [{
         label: '8 Aulas - 70€',
         value: 0
@@ -21116,7 +21116,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     }), /*#__PURE__*/React__default['default'].createElement(SmallBody, null, "*n\xE3o inclui a taxa de IVA em vigor"), values['pack-selection'] === 0 || values['pack-selection'] === 1 ? /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(Body, null, "Poder\xE1 alterar a recorr\xEAncia e reagendar para mais tarde atrav\xE9s da Equipa da 55+."), /*#__PURE__*/React__default['default'].createElement(Select$2, {
       label: "Recorr\xEAncia",
       name: "recurrence",
-      error: errors['recurrence'],
+      error: errors === null || errors === void 0 ? void 0 : errors['recurrence'],
       onChange: function onChange(values) {
         return _action({
           name: 'recurrence',
@@ -21134,7 +21134,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         value: 2
       }]
     }), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
-      error: errors['repetition'],
+      error: errors === null || errors === void 0 ? void 0 : errors['repetition'],
       label: "Repeti\xE7\xE3o a cada",
       options: [{
         label: '1',
@@ -21165,7 +21165,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         });
       }
     }), /*#__PURE__*/React__default['default'].createElement(Body, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency), values['recurrence'] === 1 && /*#__PURE__*/React__default['default'].createElement(ButtonGroup, {
-      error: errors['week-select'],
+      error: errors === null || errors === void 0 ? void 0 : errors['week-select'],
       name: "week-select",
       list: [{
         value: 0,
@@ -21203,7 +21203,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data de In\xEDcio",
       name: "service-start-date",
       type: "date",
-      error: errors['service-start-date'],
+      error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
       onChange: function onChange(values) {
         return _action({
           name: 'service-start-date',
@@ -21211,7 +21211,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         });
       }
     }), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
-      error: errors['preferred-hours-start'],
+      error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
       label: "Prefer\xEAncia Hor\xE1ria",
       name: "preferred-hours-start",
       options: [{
@@ -21279,7 +21279,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         });
       }
     }), /*#__PURE__*/React__default['default'].createElement(Body, null, " - "), /*#__PURE__*/React__default['default'].createElement(Select$2, {
-      error: errors['preferred-hours-end'],
+      error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-end'],
       label: "",
       name: "preferred-hours-end",
       options: [{
@@ -21350,7 +21350,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data do In\xEDcio",
       name: "service-date",
       type: "date",
-      error: errors['service-date'],
+      error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
       onChange: function onChange(values) {
         return _action({
           name: 'service-date',
