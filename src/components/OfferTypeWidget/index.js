@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Heading, SmallBody, Body } from '../Text';
 import { Row } from '../Layout';
@@ -8,7 +8,7 @@ import TextInput from '../TextInput';
 import Select from '../Select';
 import ButtonGroup from '../ButtonGroup';
 
-const OfferTypeWidget = ({ action, offerType, values }) => {
+const OfferTypeWidget = ({ action, offerType, values, errors }) => {
   const renderContent = () => {
     const serviceOptions = {
       // ready-pack && hour-pack
@@ -23,6 +23,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
       readyPackSpecific: {
         parentOptions: [
           { label: 'Única', value: 0 },
+          { label: 'Recorrente', value: 1 },
           { label: 'Pacote de Horas', value: 2 }
         ],
         hourPackageOptions: [
@@ -39,7 +40,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
         return renderReadyPack(serviceOptions.unique);
       case 'one-time-service-specific':
         return renderOneTimeSpecific(serviceOptions.unique);
-      case 'hour-pack-specific': //WeekEnds
+      case 'ready-pack-specific': //WeekEnds
         return renderReadyPack(
           serviceOptions.readyPackSpecific.parentOptions,
           serviceOptions.readyPackSpecific.hourPackageOptions
@@ -70,13 +71,19 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
   const renderOneTimeSpecific = serviceOptions => {
     return (
       <>
-        <RadioButton name='offer-type' action={action} list={serviceOptions} />
+        <RadioButton
+          error={errors['offer-type']}
+          name='offer-type'
+          action={action}
+          list={serviceOptions}
+        />
         <>
           <Heading size={6}>Data e Hora do Serviço</Heading>
         </>
         <Row>
           <TextInput
             label='Data'
+            error={errors['service-date']}
             name='service-date'
             type='date'
             onChange={values => action({ name: 'service-date', value: values })}
@@ -85,6 +92,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
           <Select
             label='Hora'
             name='preferred-hours'
+            error={errors['prefered-hours']}
             options={[
               { label: '09:00', value: '09:00' },
               { label: '09:30', value: '09:30' },
@@ -125,6 +133,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
             <Heading size={6}>Data e Hora Preferencial</Heading>
             <TextInput
               label='Data'
+              error={errors['service-date']}
               name='service-date'
               type='date'
               onChange={values =>
@@ -134,6 +143,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
             {
               <Row>
                 <Select
+                  error={errors['preferred-hours-start']}
                   label='Preferência Horária'
                   name='preferred-hours-start'
                   options={[
@@ -167,6 +177,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
                 <Body> - </Body>
                 <Select
                   label=''
+                  error={errors['preferred-hours-end']}
                   name='preferred-hours-end'
                   options={[
                     { label: '09:00', value: '09:00' },
@@ -201,6 +212,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
         {values['offer-type'] === 1 && (
           <>
             <Select
+              error={errors['number-of-hours']}
               label='Número de Horas'
               name='number-of-hours'
               options={[
@@ -224,6 +236,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
               da Equipa da 55+.
             </Body>
             <Select
+              error={errors['recurrence']}
               label='Recorrência'
               name='recurrence'
               onChange={values =>
@@ -237,6 +250,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
             />
             <Row>
               <Select
+                error={errors['repetition']}
                 label='Repetição a cada'
                 options={[
                   { label: '1', value: 1 },
@@ -256,23 +270,25 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
               <Row>
                 {values['recurrence'] === 1 && (
                   <ButtonGroup
+                    error={errors['week-select']}
                     name='week-select'
                     list={[
-                      { value: 0, label: 'S' },
-                      { value: 1, label: 'T' },
-                      { value: 2, label: 'Q' },
-                      { value: 3, label: 'Q' },
-                      { value: 4, label: 'S' },
-                      { value: 5, label: 'S' },
-                      { value: 6, label: 'D' }
+                      { value: 0, label: 'S', isSelected: false },
+                      { value: 1, label: 'T', isSelected: false },
+                      { value: 2, label: 'Q', isSelected: false },
+                      { value: 3, label: 'Q', isSelected: false },
+                      { value: 4, label: 'S', isSelected: false },
+                      { value: 5, label: 'S', isSelected: false },
+                      { value: 6, label: 'D', isSelected: false }
                     ]}
-                    action={values => action('week-select', values.value)}
+                    action={values => action(values)}
                   />
                 )}
                 {/* Montly option - week-selection */}
                 {values['recurrence'] === 2 && (
                   <>
                     <Select
+                      error={errors['montly-recurrence-daily-recurrency']}
                       label='Ocorre em'
                       options={[
                         { value: 0, label: 'Primeira' },
@@ -290,6 +306,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
                     />
                     <Body>-</Body>
                     <Select
+                      error={errors['montly-recurrence-weekday']}
                       options={[
                         { value: 1, label: 'Segunda-Feira' },
                         { value: 2, label: 'Terça-Feira' },
@@ -313,6 +330,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
             </Row>
             {/*Montly type */}
             <TextInput
+              error={errors['service-start-date']}
               label='Data de Início'
               name='service-start-date'
               type='date'
@@ -321,6 +339,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
               }
             />
             <TextInput
+              error={errors['service-end-date']}
               label='Data de Fim'
               name='service-end-date'
               type='date'
@@ -330,6 +349,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
             />
             <Row>
               <Select
+                error={errors['preferred-hours-start']}
                 label='Preferência Horária'
                 name='preferred-hours-start'
                 options={[
@@ -359,6 +379,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
               />
               <Body> - </Body>
               <Select
+                error={errors['preferred-hours-end']}
                 label=''
                 name='preferred-hours-end'
                 options={[
@@ -395,6 +416,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
             <Select
               label='Escolha o Pack'
               name='pack-selection'
+              error={errors['pack-selection']}
               options={
                 serviceTypeOpt
                   ? serviceTypeOpt
@@ -424,6 +446,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
                 <Select
                   label='Recorrência'
                   name='recurrence'
+                  error={errors['recurrence']}
                   onChange={values =>
                     action({ name: 'recurrence', value: values.value })
                   }
@@ -435,6 +458,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
                 />
                 <Row>
                   <Select
+                    error={errors['repetition']}
                     label='Repetição a cada'
                     options={[
                       { label: '1', value: 1 },
@@ -452,26 +476,28 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
                   <Body>{selectedRecurrency?.pickedRecurrency}</Body>
                   {values['recurrence'] === 1 && (
                     <ButtonGroup
+                      error={errors['week-select']}
                       name='week-select'
                       list={[
-                        { value: 0, label: 'S' },
-                        { value: 1, label: 'T' },
-                        { value: 2, label: 'Q' },
-                        { value: 3, label: 'Q' },
-                        { value: 4, label: 'S' },
-                        { value: 5, label: 'S' },
-                        { value: 6, label: 'D' }
+                        { value: 0, label: 'S', isSelected: false },
+                        { value: 1, label: 'T', isSelected: false },
+                        { value: 2, label: 'Q', isSelected: false },
+                        { value: 3, label: 'Q', isSelected: false },
+                        { value: 4, label: 'S', isSelected: false },
+                        { value: 5, label: 'S', isSelected: false },
+                        { value: 6, label: 'D', isSelected: false }
                       ]}
-                      action={values => action('week-select', values.value)}
+                      action={values => action(values)}
                     />
                   )}
                 </Row>
                 {/* Hour Package daily, weekly, montly dates and hour preference */}
 
-                {values['recurrence'] === 2 && (
+                {/* {values['recurrence'] === 2 && (
                   <Row>
                     <Select
                       label='Ocorre em'
+                      error={errors['recurrence']}
                       options={[
                         { value: 0, label: 'Primeira' },
                         { value: 1, label: 'Segunda' },
@@ -488,6 +514,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
                     />
                     <Body>-</Body>
                     <Select
+                      error={errors['montly-recurrence-weekday']}
                       options={[
                         { value: 1, label: 'Segunda-Feira' },
                         { value: 2, label: 'Terça-Feira' },
@@ -506,17 +533,19 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
                     />
                     <Body>do Mês</Body>
                   </Row>
-                )}
+                )} */}
                 <TextInput
                   label='Data de Início'
                   name='service-start-date'
                   type='date'
+                  error={errors['service-start-date']}
                   onChange={values =>
                     action({ name: 'service-start-date', value: values })
                   }
                 />
                 <Row>
                   <Select
+                    error={errors['preferred-hours-start']}
                     label='Preferência Horária'
                     name='preferred-hours-start'
                     options={[
@@ -549,6 +578,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
                   />
                   <Body> - </Body>
                   <Select
+                    error={errors['preferred-hours-end']}
                     label=''
                     name='preferred-hours-end'
                     options={[
@@ -586,6 +616,7 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
                 label='Data do Início'
                 name='service-date'
                 type='date'
+                error={errors['service-date']}
                 onChange={values =>
                   action({ name: 'service-date', value: values })
                 }
@@ -615,7 +646,8 @@ const OfferTypeWidget = ({ action, offerType, values }) => {
 OfferTypeWidget.propTypes = {
   action: PropTypes.func,
   offerType: PropTypes.string,
-  values: PropTypes.object
+  values: PropTypes.object,
+  errors: PropTypes.object
 };
 
 export default OfferTypeWidget;

@@ -2,51 +2,81 @@
   "id": 8,
   "type": "form",
   "questions": [
-    { "label": "Morada para executar o Serviço", "type": "footnote" },
     {
-      "key": "class-locale",
-      "label": "Local para realização das aulas",
+      "key": "language",
+      "label": "Idioma Preferido",
       "type": "dropdown",
       "options": [
-        { "value": 1, "label": "A Minha Casa" },
-        { "value": 2, "label": "Casa do Especialista 55+" }
+        { "value": 0, "label": "Português" },
+        { "value": 1, "label": "English" },
+        { "value": 2, "label": "Español" },
+        { "value": 3, "label": "Français" }
       ]
     },
+    { "label": "Morada para execução do serviço", "type": "footnote" },
     {
-      "key": "country",
-      "label": "País",
+      "label": "Local para realização das aulas",
+      "key": "lessons-location",
       "type": "dropdown",
-      "options": [{ "value": 1, "label": "Portugal" }]
+      "options": [
+        { "label": "Em minha casa", "value": 0 },
+        { "label": "Casa do Professor", "value": 1 },
+        { "label": "Outro", "value": 2 }
+      ],
+      "children": [
+        {
+          "key": "lessons-location-another",
+          "label": "Outro",
+          "type": "text",
+          "dependencyType": "value",
+          "dependencyValue": 2
+        }
+      ]
     },
     {
       "key": "district",
       "widget": "district",
       "label": "Distrito",
       "type": "dropdown",
-      "options": [{ "value": 1, "label": "Lisboa" }]
+      "options": [{ "value": 0, "label": "Lisboa" }]
     },
     { "key": "address", "label": "Morada", "type": "text" },
     { "key": "postal-code", "label": "Código Postal", "type": "text" },
-    { "key": "location", "label": "Localidade", "type": "text" },
+
     { "label": "Serviço", "type": "footnote" },
     {
       "key": "service-type",
+      "label": " ",
       "type": "radio",
       "options": [
         { "value": 0, "label": "Standard" },
-        { "value": 1, "label": "Premium" }
+        { "value": 1, "label": "Premium" },
+        { "value": 2, "label": "Urgente" }
+      ],
+      "children": [
+        {
+          "key": "premium-service",
+          "widget": "service-type-detail",
+          "heading": "+2,50€",
+          "headerText": "/ hora",
+          "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+          "extras": "Serviço executado por um Especialista com avaliação superior a 4.9.",
+          "dependencyType": "value",
+          "dependencyValue": 1
+        },
+        {
+          "key": "urgent-service",
+          "widget": "service-type-detail",
+          "heading": "+2,44€",
+          "headerText": "/ hora",
+          "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+          "extras": "Serviço executado por um Especialista com avaliação superior a 4.9.\nServiço realizado em menos de 24H à data do primeiro contacto",
+          "dependencyType": "value",
+          "dependencyValue": 2
+        }
       ]
     },
-    {
-      "key": "actual-level",
-      "label": "Nível Actual",
-      "type": "dropdown",
-      "options": [
-        { "value": "beginner", "label": "Principiante" },
-        { "value": "intermediate", "label": "Intermédio" },
-        { "value": "advanced", "label": "Avançado" }
-      ]
-    },
+
     {
       "key": "intrument",
       "label": "Instrumento",
@@ -60,174 +90,44 @@
         { "value": 4, "label": "Flauta" }
       ]
     },
-    { "label": "Tipo de oferta", "type": "footnote" },
     {
-      "key": "offer-type",
-      "label": " ",
-      "type": "radio",
-      "children": [
-        {
-          "key": "number-of-hours",
-          "type": "dropdown",
-          "dependencyType": "value",
-          "dependencyValue": 0,
-          "label": "Número de horas",
-          "options": [{ "label": "10", "value": 0 }]
-        },
-        {
-          "key": "start-date",
-          "type": "date",
-          "dependencyType": "value",
-          "dependencyValue": 0,
-          "label": "Data de Início"
-        },
-        {
-          "key": "number-of-hours",
-          "type": "dropdown",
-          "dependencyType": "value",
-          "dependencyValue": 1,
-          "label": "Número de horas",
-          "options": [{ "label": "10", "value": 0 }]
-        },
-        {
-          "key": "start-date",
-          "type": "date",
-          "dependencyType": "value",
-          "dependencyValue": 1,
-          "label": "Data de Início"
-        },
-
-        {
-          "key": "daily-repetition",
-          "type": "dropdown",
-          "dependencyType": "value",
-          "dependencyValue": 1,
-          "label": "Periodicidade",
-          "options": [
-            { "label": "Diariamente", "value": 0 },
-            { "label": "Semanalmente", "value": 1 }
-          ],
-          "children": [
-            {
-              "key": "daily-frequency",
-              "type": "dropdown",
-              "dependencyType": "value",
-              "dependencyValue": 1,
-              "label": "Frequência",
-              "options": [
-                { "label": "1 Dia", "value": 0 },
-                { "label": "2 Dias", "value": 1 },
-                { "label": "3 Dias", "value": 2 },
-                { "label": "4 Dias", "value": 3 },
-                { "label": "5 Dias", "value": 4 },
-                { "label": "6 Dias", "value": 5 },
-                { "label": "7 Dias", "value": 6 }
-              ]
-            },
-            {
-              "type": "footnote",
-              "label": " ",
-              "dependencyType": "value",
-              "dependencyValue": 1
-            }
-          ]
-        },
-        {
-          "key": "week-select",
-          "excludeFromGroup": true,
-          "label": " ",
-          "type": "button-group",
-          "dependencyType": "value",
-          "dependencyValue": 1,
-          "options": [
-            { "value": 0, "label": "S", "isSelected": true },
-            { "value": 1, "label": "T", "isSelected": true },
-            { "value": 2, "label": "Q", "isSelected": true },
-            { "value": 3, "label": "Q", "isSelected": true },
-            { "value": 4, "label": "S", "isSelected": true },
-            { "value": 5, "label": "S", "isSelected": true },
-            { "value": 6, "label": "D", "isSelected": false }
-          ]
-        },
-        {
-          "key": "start-hour",
-          "type": "dropdown",
-          "options": [
-            { "label": "09:00", "value": "09:00" },
-            { "label": "09:30", "value": "09:30" },
-            { "label": "10:00", "value": "10:00" },
-            { "label": "10:30", "value": "10:30" },
-            { "label": "11:00", "value": "11:00" },
-            { "label": "11:30", "value": "11:30" },
-            { "label": "12:00", "value": "12:00" },
-            { "label": "12:30", "value": "12:30" },
-            { "label": "13:00", "value": "13:00" },
-            { "label": "13:30", "value": "13:30" },
-            { "label": "14:00", "value": "14:00" },
-            { "label": "14:30", "value": "14:30" },
-            { "label": "15:00", "value": "15:00" },
-            { "label": "15:30", "value": "15:30" },
-            { "label": "16:00", "value": "16:00" },
-            { "label": "16:30", "value": "16:30" },
-            { "label": "17:00", "value": "17:00" },
-            { "label": "17:30", "value": "17:30" },
-            { "label": "18:00", "value": "18:00" }
-          ],
-          "label": "Hora",
-          "dependencyType": "value",
-          "dependencyValue": 1
-        },
-        {
-          "key": "ending-hour",
-          "label": "Hora de Fim",
-          "dependencyType": "value",
-          "dependencyValue": 1,
-          "type": "dropdown",
-          "options": [
-            { "label": "09:00", "value": "09:00" },
-            { "label": "09:30", "value": "09:30" },
-            { "label": "10:00", "value": "10:00" },
-            { "label": "10:30", "value": "10:30" },
-            { "label": "11:00", "value": "11:00" },
-            { "label": "11:30", "value": "11:30" },
-            { "label": "12:00", "value": "12:00" },
-            { "label": "12:30", "value": "12:30" },
-            { "label": "13:00", "value": "13:00" },
-            { "label": "13:30", "value": "13:30" },
-            { "label": "14:00", "value": "14:00" },
-            { "label": "14:30", "value": "14:30" },
-            { "label": "15:00", "value": "15:00" },
-            { "label": "15:30", "value": "15:30" },
-            { "label": "16:00", "value": "16:00" },
-            { "label": "16:30", "value": "16:30" },
-            { "label": "17:00", "value": "17:00" },
-            { "label": "17:30", "value": "17:30" },
-            { "label": "18:00", "value": "18:00" }
-          ]
-        }
-      ],
+      "key": "actual-level",
+      "label": "Nível Actual",
+      "type": "dropdown",
       "options": [
-        {
-          "key": "single",
-          "label": "Simples",
-          "value": 0
-        },
-        {
-          "key": "hour-package",
-          "label": "Pacote de Horas",
-          "value": 1
-        }
+        { "value": 0, "label": "Principiante" },
+        { "value": 1, "label": "Intermédio" },
+        { "value": 2, "label": "Avançado" }
       ]
     },
+
+    {
+      "key": "offer-type",
+      "widget": "offer-type",
+      "formOfferType": "hour-pack"
+    },
+
     { "label": "Notas", "type": "footnote" },
     { "key": "notes", "label": " ", "type": "text-area" },
     {
       "key": "login-buttons",
-      "widget": "login",
       "groupBy": 1,
+      "widget": "login",
       "type": "tabs",
       "value": "guest",
       "children": [
+        {
+          "type": "radio",
+          "key": "company-status",
+          "label": "Continuar como convidado",
+          "name": "guest.company-status",
+          "dependencyType": "value",
+          "dependencyValue": "guest",
+          "options": [
+            { "label": "Particular", "value": 0, "isSelected": false },
+            { "label": "Empresa", "value": 1, "isSelected": false }
+          ]
+        },
         {
           "name": "guest.firstName",
           "key": "first-name",
@@ -269,10 +169,9 @@
           "dependencyValue": "login"
         },
         {
-          "name": "login.telephone",
-          "key": "telephone",
-          "type": "number",
-          "label": "Número de Telemóvel",
+          "key": "login.note",
+          "type": "footnote",
+          "label": "Iniciar sessão na sua conta",
           "dependencyType": "value",
           "dependencyValue": "login"
         },
@@ -283,6 +182,18 @@
           "label": "Senha",
           "dependencyType": "value",
           "dependencyValue": "login"
+        },
+        {
+          "type": "radio",
+          "key": "company-status",
+          "label": "Crie uma conta e acompanhe o estado do seu pedido.",
+          "name": "signup.company-status",
+          "dependencyType": "value",
+          "dependencyValue": "signup",
+          "options": [
+            { "label": "Particular", "value": 0, "isSelected": false },
+            { "label": "Empresa", "value": 1, "isSelected": false }
+          ]
         },
         {
           "name": "signup.email",

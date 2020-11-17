@@ -1,4 +1,5 @@
 {
+  "id": "7",
   "type": "form",
   "questions": [
     {
@@ -23,56 +24,91 @@
     { "key": "address", "label": "Morada", "type": "text" },
     { "key": "postal-code", "label": "Código Postal", "type": "text" },
 
+    { "type": "footnote", "label": "Tipo de Serviço" },
     {
-      "type": "dropdown",
-      "key": "service-offer",
-      "label": "Tipo de Serviço",
+      "key": "service-type",
+      "label": " ",
+      "type": "radio",
       "options": [
-        { "label": "Arranjo de estendais", "value": 0 },
-        { "label": "Colocar varões", "value": 1 },
-        { "label": "Pendurar candeeiros", "value": 2 },
-        { "label": "Abrir fechaduras", "value": 3 },
-        { "label": "Colocar maçanetas em portas", "value": 4 },
-        { "label": "Reparação de electromésticos", "value": 5 },
-        { "label": "Gás", "value": 6 },
-        { "label": "Infiltrações", "value": 7 },
-        { "label": "Revestimentos de cimento", "value": 8 },
-        { "label": "Revisões e reparações de quadros eléctricos", "value": 9 },
-        { "label": "Partir paredes", "value": 10 },
-        { "label": "Desentupir lava-loiças", "value": 11 },
-        { "label": "Reparações hidráulicas", "value": 12 },
-        { "label": "Reparar soalhos", "value": 13 },
-        { "label": "Arranjar fugas de água", "value": 14 },
-        { "label": "Arrancar e pôr pladur", "value": 15 },
+        { "value": 0, "label": "Standard" },
+        { "value": 1, "label": "Premium" },
+        { "value": 2, "label": "Urgente" }
+      ],
+      "children": [
         {
-          "label": "Avarias de estores (afinação de estores e substituição de réguas)",
-          "value": 16
+          "key": "premium-service",
+          "widget": "service-type-detail",
+          "heading": "+2,50€",
+          "headerText": "/ hora",
+          "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+          "extras": "Serviço executado por um Especialista com avaliação superior a 4.9.",
+          "dependencyType": "value",
+          "dependencyValue": 1
+        },
+        {
+          "key": "urgent-service",
+          "widget": "service-type-detail",
+          "heading": "+2,44€",
+          "headerText": "/ hora",
+          "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+          "extras": "Serviço executado por um Especialista com avaliação superior a 4.9.\nServiço realizado em menos de 24H à data do primeiro contacto",
+          "dependencyType": "value",
+          "dependencyValue": 2
+        }
+      ]
+    },
+
+    {
+      "key": "number-of-animals",
+      "label": "Número de Animais",
+      "type": "dropdown",
+      "options": [
+        { "label": "1", "value": 1 },
+        { "label": "2", "value": 2 }
+      ],
+      "children": [
+        {
+          "key": "animal-species",
+          "label": "Tipo do Animal",
+          "type": "dropdown",
+          "dependencyType": "value-count",
+          "options": [
+            { "label": "Cão", "value": 0 },
+            { "label": "Gato", "value": 1 },
+            { "label": "Outro", "value": 2 }
+          ]
+        },
+        {
+          "key": "animal-size",
+          "label": "Tamanho do Animal",
+          "type": "dropdown",
+          "dependencyType": "value-count",
+          "options": [
+            { "label": "Grande", "value": 0 },
+            { "label": "Médio", "value": 1 },
+            { "label": "Pequeno", "value": 2 }
+          ]
         }
       ]
     },
     {
-      "key": "service-materials",
+      "key": "special-transportation",
       "type": "radio",
-      "label": "Tem os materiais necessários para realizar este serviço?",
       "options": [
         { "label": "Não", "value": 0 },
         { "label": "Sim", "value": 1 }
-      ]
-    },
-    {
-      "key": "files",
-      "widget": "file-uploader"
+      ],
+      "label": "É necessário a utilização do carro do Especialista 55+ para transportar o seu animal de estimação?"
     },
 
     {
       "key": "offer-type",
       "widget": "offer-type",
-      "formOfferType": "one-time-service"
+      "formOfferType": "hour-pack"
     },
 
     { "type": "footnote", "label": "Notas" },
-    { "key": "notes", "label": "", "type": "textarea" },
-
+    { "key": "notes", "label": " ", "type": "text-area" },
     {
       "key": "login-buttons",
       "groupBy": 1,

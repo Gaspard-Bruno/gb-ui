@@ -24,7 +24,6 @@ import MultiFieldRender from '../MultiFieldRender';
 import { FormContainer, StyledForm } from './styles';
 import SchedulePicker from '../SchedulePicker';
 import DISTRICT_PARISHES from './DISTRICT_PARISHES';
-import FLOW_TO_OFFER_TYPE from './FLOW_TO_OFFER_TYPE';
 
 const districtOptions = Object.keys(DISTRICT_PARISHES).map(district => ({
   value: district.toLowerCase(),
@@ -105,6 +104,7 @@ const Form = ({
               key={'otw-' + (field.key || parentKey)}
               offerType={field.formOfferType}
               values={formik?.values}
+              errors={errors}
               action={values => {
                 console.log('values', values);
                 formik.setFieldValue(values.name, values.value);
@@ -184,9 +184,9 @@ const Form = ({
           );
         case 'footnote':
           return (
-            <Body alt='true' key={'footnote' + field.key}>
+            <Heading size={6} alt='true' key={'footnote' + field.key}>
               {field.label}
-            </Body>
+            </Heading>
           );
         case 'mini-dropdown':
         case 'dropdown':

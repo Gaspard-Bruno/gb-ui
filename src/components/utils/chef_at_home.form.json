@@ -14,12 +14,6 @@
     },
     { "label": "Morada para execução do serviço", "type": "footnote" },
     {
-      "key": "country",
-      "label": "País",
-      "type": "dropdown",
-      "options": [{ "value": 0, "label": "Portugal" }]
-    },
-    {
       "key": "district",
       "widget": "district",
       "label": "Distrito",
@@ -28,7 +22,7 @@
     },
     { "key": "address", "label": "Morada", "type": "text" },
     { "key": "postal-code", "label": "Código Postal", "type": "text" },
-    { "key": "location", "label": "Localidade", "type": "text" },
+
     { "type": "footnote", "label": "Serviço" },
     {
       "key": "service-type",
@@ -62,6 +56,7 @@
         }
       ]
     },
+
     {
       "key": "number-of-persons",
       "label": "Número de Pessoas",
@@ -97,13 +92,16 @@
         { "value": 1, "label": "Sim" }
       ]
     },
+
     {
       "key": "offer-type",
       "widget": "offer-type",
       "formOfferType": "hour-pack"
     },
+
     { "type": "footnote", "label": "Notas" },
     { "key": "notes", "label": " ", "type": "text-area" },
+
     {
       "key": "login-buttons",
       "groupBy": 1,

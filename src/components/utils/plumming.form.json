@@ -28,26 +28,18 @@
       "key": "service-offer",
       "label": "Tipo de Serviço",
       "options": [
-        { "label": "Arranjo de estendais", "value": 0 },
-        { "label": "Colocar varões", "value": 1 },
-        { "label": "Pendurar candeeiros", "value": 2 },
-        { "label": "Abrir fechaduras", "value": 3 },
-        { "label": "Colocar maçanetas em portas", "value": 4 },
-        { "label": "Reparação de electromésticos", "value": 5 },
-        { "label": "Gás", "value": 6 },
-        { "label": "Infiltrações", "value": 7 },
-        { "label": "Revestimentos de cimento", "value": 8 },
-        { "label": "Revisões e reparações de quadros eléctricos", "value": 9 },
-        { "label": "Partir paredes", "value": 10 },
-        { "label": "Desentupir lava-loiças", "value": 11 },
-        { "label": "Reparações hidráulicas", "value": 12 },
-        { "label": "Reparar soalhos", "value": 13 },
-        { "label": "Arranjar fugas de água", "value": 14 },
-        { "label": "Arrancar e pôr pladur", "value": 15 },
         {
-          "label": "Avarias de estores (afinação de estores e substituição de réguas)",
-          "value": 16
-        }
+          "label": "Desentupimento das canalizações de habitação residencial",
+          "value": 0
+        },
+        { "label": "Descalcificação de tubagens", "value": 1 },
+        { "label": "Limpeza de cifões", "value": 2 },
+        {
+          "label": "Reparação/Substituição das torneiras e louças sanitárias",
+          "value": 3
+        },
+        { "label": "Reparação e substituição de autoclismos", "value": 4 },
+        { "label": "Colocação de chuveiros", "value": 5 }
       ]
     },
     {
@@ -69,7 +61,6 @@
       "widget": "offer-type",
       "formOfferType": "one-time-service"
     },
-
     { "type": "footnote", "label": "Notas" },
     { "key": "notes", "label": "", "type": "textarea" },
 

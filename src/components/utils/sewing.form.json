@@ -2,23 +2,28 @@
   "id": 13,
   "type": "form",
   "questions": [
-    { "label": "Morada para executar o Serviço", "type": "footnote" },
     {
-      "key": "country",
-      "label": "País",
+      "key": "language",
+      "label": "Idioma Preferido",
       "type": "dropdown",
-      "options": [{ "value": 1, "label": "Portugal" }]
+      "options": [
+        { "value": 0, "label": "Português" },
+        { "value": 1, "label": "English" },
+        { "value": 2, "label": "Español" },
+        { "value": 3, "label": "Français" }
+      ]
     },
+    { "label": "Morada para execução do serviço", "type": "footnote" },
     {
       "key": "district",
       "widget": "district",
       "label": "Distrito",
       "type": "dropdown",
-      "options": [{ "value": 1, "label": "Lisboa" }]
+      "options": [{ "value": 0, "label": "Lisboa" }]
     },
     { "key": "address", "label": "Morada", "type": "text" },
     { "key": "postal-code", "label": "Código Postal", "type": "text" },
-    { "key": "location", "label": "Localidade", "type": "text" },
+
     { "label": "Serviço", "type": "footnote" },
     {
       "key": "service-type",
@@ -26,147 +31,90 @@
       "type": "radio",
       "options": [
         { "value": 0, "label": "Standard" },
-        { "value": 1, "label": "Premium" }
-      ]
-    },
-    { "key": "service", "label": "Qual o material da peça(s)", "type": "text" },
-    { "label": "Tipo de oferta", "type": "footnote" },
-    {
-      "key": "offer-type",
-      "label": " ",
-      "type": "radio",
+        { "value": 1, "label": "Premium" },
+        { "value": 2, "label": "Urgente" }
+      ],
       "children": [
         {
-          "key": "preferred-date",
-          "type": "date",
+          "key": "premium-service",
+          "widget": "service-type-detail",
+          "heading": "+2,50€",
+          "headerText": "/ hora",
+          "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+          "extras": "Serviço executado por um Especialista com avaliação superior a 4.9.",
           "dependencyType": "value",
-          "dependencyValue": 0,
-          "label": "Data preferencial"
+          "dependencyValue": 1
         },
         {
-          "key": "pickup-hour",
-          "label": "Hora de recolha",
+          "key": "urgent-service",
+          "widget": "service-type-detail",
+          "heading": "+2,44€",
+          "headerText": "/ hora",
+          "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+          "extras": "Serviço executado por um Especialista com avaliação superior a 4.9.\nServiço realizado em menos de 24H à data do primeiro contacto",
           "dependencyType": "value",
-          "dependencyValue": 0,
-          "type": "mini-dropdown",
-          "options": [
-            { "label": "09:00", "value": "09:00" },
-            { "label": "09:30", "value": "09:30" },
-            { "label": "10:00", "value": "10:00" },
-            { "label": "10:30", "value": "10:30" },
-            { "label": "11:00", "value": "11:00" },
-            { "label": "11:30", "value": "11:30" },
-            { "label": "12:00", "value": "12:00" },
-            { "label": "12:30", "value": "12:30" },
-            { "label": "13:00", "value": "13:00" },
-            { "label": "13:30", "value": "13:30" },
-            { "label": "14:00", "value": "14:00" },
-            { "label": "14:30", "value": "14:30" },
-            { "label": "15:00", "value": "15:00" },
-            { "label": "15:30", "value": "15:30" },
-            { "label": "16:00", "value": "16:00" },
-            { "label": "16:30", "value": "16:30" },
-            { "label": "17:00", "value": "17:00" },
-            { "label": "17:30", "value": "17:30" },
-            { "label": "18:00", "value": "18:00" }
-          ]
-        },
-        {
-          "key": "start-pickup-hour",
-          "label": "Hora inicial",
-          "dependencyType": "value",
-          "dependencyValue": 1,
-          "type": "mini-dropdown",
-          "options": [
-            { "label": "09:00", "value": "09:00" },
-            { "label": "09:30", "value": "09:30" },
-            { "label": "10:00", "value": "10:00" },
-            { "label": "10:30", "value": "10:30" },
-            { "label": "11:00", "value": "11:00" },
-            { "label": "11:30", "value": "11:30" },
-            { "label": "12:00", "value": "12:00" },
-            { "label": "12:30", "value": "12:30" },
-            { "label": "13:00", "value": "13:00" },
-            { "label": "13:30", "value": "13:30" },
-            { "label": "14:00", "value": "14:00" },
-            { "label": "14:30", "value": "14:30" },
-            { "label": "15:00", "value": "15:00" },
-            { "label": "15:30", "value": "15:30" },
-            { "label": "16:00", "value": "16:00" },
-            { "label": "16:30", "value": "16:30" },
-            { "label": "17:00", "value": "17:00" },
-            { "label": "17:30", "value": "17:30" },
-            { "label": "18:00", "value": "18:00" }
-          ]
-        },
-        {
-          "key": "end-pickup-hour",
-          "label": "Hora de fim",
-          "dependencyType": "value",
-          "dependencyValue": 1,
-          "type": "mini-dropdown",
-          "options": [
-            { "label": "09:00", "value": "09:00" },
-            { "label": "09:30", "value": "09:30" },
-            { "label": "10:00", "value": "10:00" },
-            { "label": "10:30", "value": "10:30" },
-            { "label": "11:00", "value": "11:00" },
-            { "label": "11:30", "value": "11:30" },
-            { "label": "12:00", "value": "12:00" },
-            { "label": "12:30", "value": "12:30" },
-            { "label": "13:00", "value": "13:00" },
-            { "label": "13:30", "value": "13:30" },
-            { "label": "14:00", "value": "14:00" },
-            { "label": "14:30", "value": "14:30" },
-            { "label": "15:00", "value": "15:00" },
-            { "label": "15:30", "value": "15:30" },
-            { "label": "16:00", "value": "16:00" },
-            { "label": "16:30", "value": "16:30" },
-            { "label": "17:00", "value": "17:00" },
-            { "label": "17:30", "value": "17:30" },
-            { "label": "18:00", "value": "18:00" }
-          ]
-        },
-        {
-          "key": "week-select",
-          "excludeFromGroup": true,
-          "label": "Recolha semanal",
-          "type": "button-group",
-          "dependencyType": "value",
-          "dependencyValue": 1,
-          "options": [
-            { "value": 0, "label": "S", "isSelected": true },
-            { "value": 1, "label": "T", "isSelected": true },
-            { "value": 2, "label": "Q", "isSelected": true },
-            { "value": 3, "label": "Q", "isSelected": true },
-            { "value": 4, "label": "S", "isSelected": true },
-            { "value": 5, "label": "S", "isSelected": true },
-            { "value": 6, "label": "D", "isSelected": false }
-          ]
-        }
-      ],
-      "options": [
-        {
-          "key": "single",
-          "label": "Simples",
-          "value": 0
-        },
-        {
-          "key": "hour-package",
-          "label": "Pacote de Horas",
-          "value": 1
+          "dependencyValue": 2
         }
       ]
     },
+    {
+      "key": "service",
+      "label": "Tipo de Serviço",
+      "type": "dropdown",
+      "isMulti": true,
+      "options": [
+        { "label": "Bainhas à mão", "value": 0 },
+        { "label": "Bainhas à máquina", "value": 1 },
+        { "label": "Peças feitas de raiz", "value": 2 },
+        { "label": "Diminuir o tamanho de uma peça.", "value": 3 },
+        { "label": "Ajuste de uma peça ao corpo.", "value": 4 },
+        { "label": "Remendos", "value": 5 },
+        { "label": "Pregar botões", "value": 6 },
+        { "label": "Bainhas de cortinados", "value": 7 },
+        { "label": "Aplicações (emblemas e bordados simples)", "value": 8 }
+      ]
+    },
+    {
+      "key": "cloth-type",
+      "label": "Qual é o material do peça?",
+      "type": "text",
+      "options": [
+        { "label": "Escritório", "value": 0 },
+        { "label": "Moradia familiar", "value": 1 }
+      ]
+    },
+    {
+      "key": "files",
+      "widget": "file-uploader"
+    },
+
+    {
+      "key": "offer-type",
+      "widget": "offer-type",
+      "formOfferType": "hour-pack"
+    },
+
     { "label": "Notas", "type": "footnote" },
     { "key": "notes", "label": " ", "type": "text-area" },
     {
       "key": "login-buttons",
-      "widget": "login",
       "groupBy": 1,
+      "widget": "login",
       "type": "tabs",
       "value": "guest",
       "children": [
+        {
+          "type": "radio",
+          "key": "company-status",
+          "label": "Continuar como convidado",
+          "name": "guest.company-status",
+          "dependencyType": "value",
+          "dependencyValue": "guest",
+          "options": [
+            { "label": "Particular", "value": 0, "isSelected": false },
+            { "label": "Empresa", "value": 1, "isSelected": false }
+          ]
+        },
         {
           "name": "guest.firstName",
           "key": "first-name",
@@ -208,10 +156,9 @@
           "dependencyValue": "login"
         },
         {
-          "name": "login.telephone",
-          "key": "telephone",
-          "type": "number",
-          "label": "Número de Telemóvel",
+          "key": "login.note",
+          "type": "footnote",
+          "label": "Iniciar sessão na sua conta",
           "dependencyType": "value",
           "dependencyValue": "login"
         },
@@ -222,6 +169,18 @@
           "label": "Senha",
           "dependencyType": "value",
           "dependencyValue": "login"
+        },
+        {
+          "type": "radio",
+          "key": "company-status",
+          "label": "Crie uma conta e acompanhe o estado do seu pedido.",
+          "name": "signup.company-status",
+          "dependencyType": "value",
+          "dependencyValue": "signup",
+          "options": [
+            { "label": "Particular", "value": 0, "isSelected": false },
+            { "label": "Empresa", "value": 1, "isSelected": false }
+          ]
         },
         {
           "name": "signup.email",

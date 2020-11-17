@@ -2,60 +2,31 @@
   "id": 2,
   "type": "form",
   "questions": [
-    { "label": "Morada para entregar o Serviço", "type": "footnote" },
     {
-      "key": "country",
-      "label": "País",
+      "key": "language",
+      "label": "Idioma Preferido",
       "type": "dropdown",
-      "options": [{ "value": 1, "label": "Portugal" }]
+      "options": [
+        { "value": 0, "label": "Português" },
+        { "value": 1, "label": "English" },
+        { "value": 2, "label": "Español" },
+        { "value": 3, "label": "Français" }
+      ]
     },
+    { "label": "Morada para execução do serviço", "type": "footnote" },
     {
       "key": "district",
       "widget": "district",
       "label": "Distrito",
       "type": "dropdown",
-      "options": [{ "value": 1, "label": "Lisboa" }]
+      "options": [{ "value": 0, "label": "Lisboa" }]
     },
     { "key": "address", "label": "Morada", "type": "text" },
     { "key": "postal-code", "label": "Código Postal", "type": "text" },
-    { "key": "location", "label": "Localidade", "type": "text" },
-    {
-      "key": "hour",
-      "label": "Hora da entrega",
-      "type": "dropdown",
-      "options": [
-        { "value": "09:00", "label": "09:00" },
-        { "value": "09:30", "label": "09:30" },
-        { "value": "10:00", "label": "10:00" },
-        { "value": "10:30", "label": "10:30" },
-        { "value": "11:00", "label": "11:00" },
-        { "value": "11:30", "label": "11:30" },
-        { "value": "12:00", "label": "12:00" },
-        { "value": "12:30", "label": "12:30" },
-        { "value": "13:00", "label": "13:00" },
-        { "value": "13:30", "label": "13:30" },
-        { "value": "14:00", "label": "14:00" },
-        { "value": "14:30", "label": "14:30" },
-        { "value": "15:00", "label": "15:00" },
-        { "value": "15:30", "label": "15:30" },
-        { "value": "16:00", "label": "16:00" },
-        { "value": "16:30", "label": "16:30" },
-        { "value": "17:00", "label": "17:00" },
-        { "value": "17:30", "label": "17:30" },
-        { "value": "18:00", "label": "18:00" },
-        { "value": "18:30", "label": "18:30" },
-        { "value": "19:00", "label": "19:00" },
-        { "value": "19:30", "label": "19:30" },
-        { "value": "20:00", "label": "20:00" },
-        { "value": "20:30", "label": "20:30" },
-        { "value": "21:00", "label": "21:00" },
-        { "value": "21:30", "label": "21:30" },
-        { "value": "22:00", "label": "22:00" }
-      ]
-    },
+
     {
       "key": "number-of-persons",
-      "label": "Número de pessoas",
+      "label": "Número de Pessoas",
       "type": "dropdown",
       "options": [
         { "value": 4, "label": "4" },
@@ -68,37 +39,19 @@
         { "value": 0, "label": "10+" }
       ]
     },
-    {
-      "key": "prefered-language",
-      "label": "Lingua preferida",
-      "type": "dropdown",
-      "options": [
-        { "value": 0, "label": "Português" },
-        { "value": 1, "label": "Inglês" },
-        { "value": 2, "label": "Espanhol" }
-      ]
-    },
-    { "key": "event_type", "label": "Tipo de evento", "type": "text" },
+
+    { "label": "Selecione o Menu", "type": "footnote" },
     {
       "key": "starter-option",
-      "label": "Entradas",
+      "label": "Entrada",
       "type": "dropdown",
       "options": [
-        { "value": 0, "label": "Soupa de vegetais" },
-        { "value": 1, "label": "Sopa de tomate" },
+        { "value": 0, "label": "Caldo Verde" },
+        { "value": 1, "label": "Gaspacho" },
         { "value": 2, "label": "Mesa de queijos portugueses" }
       ]
     },
     { "label": "Serviço", "type": "footnote" },
-    {
-      "key": "service-type",
-      "label": " ",
-      "type": "radio",
-      "options": [
-        { "value": 0, "label": "Standard" },
-        { "value": 1, "label": "Premium" }
-      ]
-    },
     { "label": "Prato principal", "type": "footnote" },
     {
       "key": "main-dish",
@@ -168,6 +121,13 @@
         { "value": 1, "label": "Branco" }
       ]
     },
+
+    {
+      "key": "offer-type",
+      "widget": "offer-type",
+      "formOfferType": "one-time-service-specific"
+    },
+
     {
       "key": "notes",
       "label": "Notas",
@@ -181,6 +141,18 @@
       "type": "tabs",
       "value": "guest",
       "children": [
+        {
+          "type": "radio",
+          "key": "company-status",
+          "label": "Continuar como convidado",
+          "name": "guest.company-status",
+          "dependencyType": "value",
+          "dependencyValue": "guest",
+          "options": [
+            { "label": "Particular", "value": 0, "isSelected": false },
+            { "label": "Empresa", "value": 1, "isSelected": false }
+          ]
+        },
         {
           "name": "guest.firstName",
           "key": "first-name",
@@ -222,10 +194,9 @@
           "dependencyValue": "login"
         },
         {
-          "name": "login.telephone",
-          "key": "telephone",
-          "type": "number",
-          "label": "Número de Telemóvel",
+          "key": "login.note",
+          "type": "footnote",
+          "label": "Iniciar sessão na sua conta",
           "dependencyType": "value",
           "dependencyValue": "login"
         },
@@ -236,6 +207,18 @@
           "label": "Senha",
           "dependencyType": "value",
           "dependencyValue": "login"
+        },
+        {
+          "type": "radio",
+          "key": "company-status",
+          "label": "Crie uma conta e acompanhe o estado do seu pedido.",
+          "name": "signup.company-status",
+          "dependencyType": "value",
+          "dependencyValue": "signup",
+          "options": [
+            { "label": "Particular", "value": 0, "isSelected": false },
+            { "label": "Empresa", "value": 1, "isSelected": false }
+          ]
         },
         {
           "name": "signup.email",

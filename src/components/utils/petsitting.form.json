@@ -2,42 +2,63 @@
   "id": "7",
   "type": "form",
   "questions": [
-    { "type": "footnote", "label": "Morada para recolha do animal" },
     {
-      "key": "country",
+      "key": "language",
+      "label": "Idioma Preferido",
       "type": "dropdown",
-      "options": [{ "label": "Portugal", "value": 1 }],
-      "label": "País"
+      "options": [
+        { "value": 0, "label": "Português" },
+        { "value": 1, "label": "English" },
+        { "value": 2, "label": "Español" },
+        { "value": 3, "label": "Français" }
+      ]
     },
+    { "label": "Morada para execução do serviço", "type": "footnote" },
     {
       "key": "district",
       "widget": "district",
+      "label": "Distrito",
       "type": "dropdown",
-      "options": [{ "label": "Lisboa", "value": 1 }],
-      "label": "Distrito"
+      "options": [{ "value": 0, "label": "Lisboa" }]
     },
-    { "key": "address", "type": "text", "label": "Morada" },
-    { "key": "postal-code", "type": "text", "label": "Código Postal" },
-    { "key": "location", "type": "text", "label": "Localidade" },
-    {
-      "key": "special-transportation",
-      "type": "radio",
-      "options": [
-        { "label": "Não", "value": 0 },
-        { "label": "Sim", "value": 1 }
-      ],
-      "label": "Precisamos do carro do especialista para transportar seu animal de estimação?"
-    },
+
+    { "key": "address", "label": "Morada", "type": "text" },
+    { "key": "postal-code", "label": "Código Postal", "type": "text" },
+
     { "type": "footnote", "label": "Tipo de Serviço" },
     {
       "key": "service-type",
       "label": " ",
       "type": "radio",
       "options": [
-        { "label": "Standard", "value": 0 },
-        { "label": "Premium", "value": 1 }
+        { "value": 0, "label": "Standard" },
+        { "value": 1, "label": "Premium" },
+        { "value": 2, "label": "Urgente" }
+      ],
+      "children": [
+        {
+          "key": "premium-service",
+          "widget": "service-type-detail",
+          "heading": "+2,50€",
+          "headerText": "/ hora",
+          "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+          "extras": "Serviço executado por um Especialista com avaliação superior a 4.9.",
+          "dependencyType": "value",
+          "dependencyValue": 1
+        },
+        {
+          "key": "urgent-service",
+          "widget": "service-type-detail",
+          "heading": "+2,44€",
+          "headerText": "/ hora",
+          "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+          "extras": "Serviço executado por um Especialista com avaliação superior a 4.9.\nServiço realizado em menos de 24H à data do primeiro contacto",
+          "dependencyType": "value",
+          "dependencyValue": 2
+        }
       ]
     },
+
     {
       "key": "number-of-animals",
       "label": "Número de Animais",
@@ -71,120 +92,44 @@
         }
       ]
     },
-    { "type": "footnote", "label": "Tipo de oferta" },
+
+    {
+      "key": "special-transportation",
+      "type": "radio",
+      "options": [
+        { "label": "Não", "value": 0 },
+        { "label": "Sim", "value": 1 }
+      ],
+      "label": "Precisamos do carro do especialista para transportar seu animal de estimação?"
+    },
+
     {
       "key": "offer-type",
-      "label": " ",
-      "type": "radio",
-      "children": [
-        {
-          "key": "number-of-hours",
-          "type": "dropdown",
-          "options": [{ "label": "10", "value": 10 }],
-          "dependencyType": "value",
-          "dependencyValue": 0,
-          "label": "Número de horas"
-        },
-        {
-          "key": "start-date",
-          "type": "date",
-          "dependencyType": "value",
-          "dependencyValue": 0,
-          "label": "Data de Início"
-        },
-        {
-          "key": "start-date",
-          "type": "date",
-          "label": "Data de Início",
-          "dependencyType": "value",
-          "dependencyValue": 1
-        },
-        {
-          "key": "start-hour",
-          "type": "dropdown",
-          "options": [
-            { "label": "09:00", "value": "09:00" },
-            { "label": "09:30", "value": "09:30" },
-            { "label": "10:00", "value": "10:00" },
-            { "label": "10:30", "value": "10:30" },
-            { "label": "11:00", "value": "11:00" },
-            { "label": "11:30", "value": "11:30" },
-            { "label": "12:00", "value": "12:00" },
-            { "label": "12:30", "value": "12:30" },
-            { "label": "13:00", "value": "13:00" },
-            { "label": "13:30", "value": "13:30" },
-            { "label": "14:00", "value": "14:00" },
-            { "label": "14:30", "value": "14:30" },
-            { "label": "15:00", "value": "15:00" },
-            { "label": "15:30", "value": "15:30" },
-            { "label": "16:00", "value": "16:00" },
-            { "label": "16:30", "value": "16:30" },
-            { "label": "17:00", "value": "17:00" },
-            { "label": "17:30", "value": "17:30" },
-            { "label": "18:00", "value": "18:00" }
-          ],
-          "label": "Hora de Início",
-          "dependencyType": "value",
-          "dependencyValue": 1
-        },
-        {
-          "key": "end-date",
-          "type": "date",
-          "label": "Data de Fim",
-          "dependencyType": "value",
-          "dependencyValue": 1
-        },
-        {
-          "key": "ending-hour",
-          "label": "Hora de Fim",
-          "dependencyType": "value",
-          "dependencyValue": 1,
-          "type": "dropdown",
-          "options": [
-            { "label": "09:00", "value": "09:00" },
-            { "label": "09:30", "value": "09:30" },
-            { "label": "10:00", "value": "10:00" },
-            { "label": "10:30", "value": "10:30" },
-            { "label": "11:00", "value": "11:00" },
-            { "label": "11:30", "value": "11:30" },
-            { "label": "12:00", "value": "12:00" },
-            { "label": "12:30", "value": "12:30" },
-            { "label": "13:00", "value": "13:00" },
-            { "label": "13:30", "value": "13:30" },
-            { "label": "14:00", "value": "14:00" },
-            { "label": "14:30", "value": "14:30" },
-            { "label": "15:00", "value": "15:00" },
-            { "label": "15:30", "value": "15:30" },
-            { "label": "16:00", "value": "16:00" },
-            { "label": "16:30", "value": "16:30" },
-            { "label": "17:00", "value": "17:00" },
-            { "label": "17:30", "value": "17:30" },
-            { "label": "18:00", "value": "18:00" }
-          ]
-        }
-      ],
-      "options": [
-        {
-          "key": "single",
-          "label": "Simples",
-          "value": 0
-        },
-        {
-          "key": "hour-package",
-          "label": "Pacote de Horas",
-          "value": 1
-        }
-      ]
+      "widget": "offer-type",
+      "formOfferType": "ready-pack-specific"
     },
+
     { "type": "footnote", "label": "Notas" },
     { "key": "notes", "label": " ", "type": "text-area" },
     {
       "key": "login-buttons",
+      "groupBy": 1,
       "widget": "login",
       "type": "tabs",
       "value": "guest",
-      "groupBy": 1,
       "children": [
+        {
+          "type": "radio",
+          "key": "company-status",
+          "label": "Continuar como convidado",
+          "name": "guest.company-status",
+          "dependencyType": "value",
+          "dependencyValue": "guest",
+          "options": [
+            { "label": "Particular", "value": 0, "isSelected": false },
+            { "label": "Empresa", "value": 1, "isSelected": false }
+          ]
+        },
         {
           "name": "guest.firstName",
           "key": "first-name",
@@ -226,10 +171,9 @@
           "dependencyValue": "login"
         },
         {
-          "name": "login.telephone",
-          "key": "telephone",
-          "type": "number",
-          "label": "Número de Telemóvel",
+          "key": "login.note",
+          "type": "footnote",
+          "label": "Iniciar sessão na sua conta",
           "dependencyType": "value",
           "dependencyValue": "login"
         },
@@ -240,6 +184,18 @@
           "label": "Senha",
           "dependencyType": "value",
           "dependencyValue": "login"
+        },
+        {
+          "type": "radio",
+          "key": "company-status",
+          "label": "Crie uma conta e acompanhe o estado do seu pedido.",
+          "name": "signup.company-status",
+          "dependencyType": "value",
+          "dependencyValue": "signup",
+          "options": [
+            { "label": "Particular", "value": 0, "isSelected": false },
+            { "label": "Empresa", "value": 1, "isSelected": false }
+          ]
         },
         {
           "name": "signup.email",
@@ -295,9 +251,7 @@
           "value": "signup",
           "label": "Criar Conta"
         }
-      ],
-      "label": "Número de criancas",
-      "displayText": false
+      ]
     }
   ]
 }

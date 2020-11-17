@@ -124,7 +124,12 @@ const components = [
       },
       {
         previewComponentTitle: 'Chef',
-        questions: FORM.chefAtHome.questions
+        questions: FORM.chefAtHome.questions,
+        errors: {
+          district: 'required',
+          freguesia: 'required',
+          'preferred-hours-start': 'required'
+        }
       },
       {
         questions: FORM.repairs.questions,
