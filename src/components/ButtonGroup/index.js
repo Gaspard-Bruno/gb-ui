@@ -1,39 +1,32 @@
 import React, { useCallback, useState } from 'react';
+import PropTypes from 'prop-types';
+
+import { Body } from '../Text';
+
 import {
   ButtonGroupContainer,
   StyledButton,
   StyledContainer,
   ListContainer
 } from './styles';
-import PropTypes from 'prop-types';
-import { Body } from '../Text';
 
-const ButtonGroup = ({ action, label, name, list }) => {
-  const getInitialSelection = () => {
-    const selectedItems = {};
-    for (let i in list) {
-      selectedItems[list[i].value] = list[i].isSelected;
-    }
-    return selectedItems;
-  };
-
-  const [selectedButtons, setSelectedTab] = useState(getInitialSelection(list));
+const ButtonGroup = ({ action, label, name, list, value }) => {
+  const [selectedButtons, setSelectedTab] = useState(
+    value || list.map(li => ({ [li.value]: li.isSelected }))
+  );
 
   const handleSelection = useCallback(
-    (value, isSelected) => {
-      const newSelection = Object.assign(
-        {},
-        selectedButtons,
-        (selectedButtons[value] = !selectedButtons[value])
-      );
-      setSelectedTab(newSelection);
+    (key, isSelected) => {
+      setSelectedTab({
+        ...selectedButtons,
+        [key]: isSelected
+      });
     },
     [selectedButtons]
   );
-
   return (
     <StyledContainer>
-      {label && <Body>{label}</Body>}
+      {<Body>{label || ''}</Body>}
       <ListContainer>
         {list &&
           list.map((item, index) => {
@@ -42,24 +35,17 @@ const ButtonGroup = ({ action, label, name, list }) => {
                 isSelected={selectedButtons[index]}
                 key={`${item}-${index}`}
               >
-                {item.label && (
-                  <Body
-                    onClick={() => handleSelection(item.value, item.isSelected)}
-                  >
-                    {item.label}
-                  </Body>
-                )}
+                {item.label && <Body>{item.label}</Body>}
                 <StyledButton
                   key={`${item}-${index}`}
                   item
                   type='button'
                   label={item.label}
-                  value={item.value}
                   name={name}
                   disabled={item.disabled}
                   isSelected={selectedButtons[index]}
                   onClick={() => {
-                    handleSelection(item.value, item.isSelected);
+                    handleSelection(item.value, !selectedButtons[item.value]);
                     if (action) {
                       action({ name, value: selectedButtons });
                     }

@@ -104,6 +104,7 @@ const Form = ({
             <OfferTypeWidget
               key={'otw-' + (field.key || parentKey)}
               offerType={field.formOfferType}
+              answers={answers}
               values={formik?.values}
               errors={errors}
               action={values => {
@@ -480,19 +481,17 @@ const Form = ({
       {children}
       <Formik initialValues={initialValues} onSubmit={f => onSubmit(f)}>
         {formik => (
-          <>
-            <StyledForm onSubmit={formik.handleSubmit}>
-              {renderFields(formik, questions)}
-              <Button
-                isDisabled={isDisabled}
-                type={btnType}
-                action={() => btnType !== 'submit' && btnAction(formik.values)}
-                btnType={'primary'}
-                isFullWidth
-                text={submitLabel}
-              />
-            </StyledForm>
-          </>
+          <StyledForm key={'cenas'} onSubmit={formik.handleSubmit}>
+            {renderFields(formik, questions)}
+            <Button
+              isDisabled={isDisabled}
+              type={btnType}
+              action={() => btnType !== 'submit' && btnAction(formik.values)}
+              btnType={'primary'}
+              isFullWidth
+              text={submitLabel}
+            />
+          </StyledForm>
         )}
       </Formik>
     </FormContainer>
@@ -530,7 +529,7 @@ Form.propTypes = {
         'array',
         'text-area',
         'tabs'
-      ]).isRequired,
+      ]),
       key: PropTypes.string,
       // ! To be replaced with label/translate on key 👇
       question: PropTypes.string,

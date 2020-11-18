@@ -24,6 +24,7 @@ const gardeningAnswers = {
   'chosen-language': 1,
   country: 1,
   service: 1,
+  'service-date': '2020-10-10',
   district: 1,
   location: 'St Tirso 231',
   'area-size': '233 kilos',
@@ -45,7 +46,8 @@ const gardeningAnswers = {
   'start-date': '2020-10-14',
   'postal-code': '2800*282',
   'service-type': 1,
-  'number-of-hours': 0,
+  'number-of-hours': 1,
+  recurrence: 2,
   'login-buttons': 'guest',
   'chosen-language': 1
 };

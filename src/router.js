@@ -119,7 +119,9 @@ const components = [
         answers: FORM.gardeningAnswers,
         errors: {
           district: 'required',
-          freguesia: 'required'
+          freguesia: 'required',
+          'number-of-hours': 'required',
+          'preferred-hours-start': 'required'
         }
       },
       {

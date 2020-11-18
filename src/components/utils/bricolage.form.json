@@ -70,7 +70,7 @@
       "formOfferType": "one-time-service"
     },
     { "type": "footnote", "label": "Notas" },
-    { "key": "notes", "label": "", "type": "textarea" },
+    { "key": "notes", "label": "", "type": "text-area" },
 
     {
       "key": "login-buttons",

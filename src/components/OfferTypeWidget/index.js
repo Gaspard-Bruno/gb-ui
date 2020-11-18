@@ -8,7 +8,18 @@ import TextInput from '../TextInput';
 import Select from '../Select';
 import ButtonGroup from '../ButtonGroup';
 
-const OfferTypeWidget = ({ action, offerType, values, errors }) => {
+import {
+  numberOfHoursOptions,
+  preferredHoursOptions,
+  recurrenceOptions,
+  repetitionOptions,
+  montlyRecurrenceOptions,
+  montlyRecurrenceWeekDaysOptions,
+  weekSelectOptions
+} from './selectableOptions';
+import { TextContainer } from './styles';
+
+const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
   const renderContent = () => {
     const serviceOptions = {
       // ready-pack && hour-pack
@@ -53,20 +64,23 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
   const selectedRecurrency = useMemo(() => {
     const status = {
       pickedRecurrency: '',
-      total: 'xxx total xxx'
+      total: ''
     };
 
-    if (values['recurrence'] === 0) {
+    if (answers['recurrence'] === 0 || values?.['recurrence'] === 0) {
       status.pickedRecurrency = 'Dia';
     }
-    if (values['recurrence'] === 1) {
+    if (values?.['recurrence'] === 1 || answers['recurrence'] === 1) {
       status.pickedRecurrency = 'Semana';
     }
-    if (values['recurrence'] === 2) {
+    if (values?.['recurrence'] === 2 || answers['recurrence'] === 2) {
       status.pickedRecurrency = 'Mês';
     }
     return status;
-  }, [values]);
+  }, [answers, values]);
+
+  const getDefaultValues = (options, answerValue) =>
+    options?.find(e => e.value === answerValue);
 
   const renderOneTimeSpecific = serviceOptions => {
     return (
@@ -76,6 +90,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
           name='offer-type'
           action={action}
           list={serviceOptions}
+          value={answers?.['offer-type']}
         />
         <>
           <Heading size={6}>Data e Hora do Serviço</Heading>
@@ -86,34 +101,19 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
             error={errors?.['service-date']}
             name='service-date'
             type='date'
+            defaultValue={answers?.['service-date']}
             onChange={values => action({ name: 'service-date', value: values })}
           />
-          <Body> - </Body>
+          <TextContainer> - </TextContainer>
           <Select
             label='Hora'
             name='preferred-hours'
             error={errors?.['prefered-hours']}
-            options={[
-              { label: '09:00', value: '09:00' },
-              { label: '09:30', value: '09:30' },
-              { label: '10:00', value: '10:00' },
-              { label: '10:30', value: '10:30' },
-              { label: '11:00', value: '11:00' },
-              { label: '11:30', value: '11:30' },
-              { label: '12:00', value: '12:00' },
-              { label: '12:30', value: '12:30' },
-              { label: '13:00', value: '13:00' },
-              { label: '13:30', value: '13:30' },
-              { label: '14:00', value: '14:00' },
-              { label: '14:30', value: '14:30' },
-              { label: '15:00', value: '15:00' },
-              { label: '15:30', value: '15:30' },
-              { label: '16:00', value: '16:00' },
-              { label: '16:30', value: '16:30' },
-              { label: '17:00', value: '17:00' },
-              { label: '17:30', value: '17:30' },
-              { label: '18:00', value: '18:00' }
-            ]}
+            defaultValue={getDefaultValues(
+              preferredHoursOptions,
+              answers['prefered-hours']
+            )}
+            options={preferredHoursOptions}
             onChange={values =>
               action({ name: 'preferred-hours-end', value: values.value })
             }
@@ -126,7 +126,12 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
   const renderReadyPack = (serviceOptions, serviceTypeOpt) => {
     return (
       <>
-        <RadioButton name='offer-type' action={action} list={serviceOptions} />
+        <RadioButton
+          name='offer-type'
+          action={action}
+          list={serviceOptions}
+          value={answers?.['offer-type']}
+        />
         {/*Unique type */}
         {values['offer-type'] === 0 && (
           <>
@@ -136,6 +141,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
               error={errors?.['service-date']}
               name='service-date'
               type='date'
+              defaultValue={answers?.['service-date']}
               onChange={values =>
                 action({ name: 'service-date', value: values })
               }
@@ -146,27 +152,11 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
                   error={errors?.['preferred-hours-start']}
                   label='Preferência Horária'
                   name='preferred-hours-start'
-                  options={[
-                    { label: '09:00', value: '09:00' },
-                    { label: '09:30', value: '09:30' },
-                    { label: '10:00', value: '10:00' },
-                    { label: '10:30', value: '10:30' },
-                    { label: '11:00', value: '11:00' },
-                    { label: '11:30', value: '11:30' },
-                    { label: '12:00', value: '12:00' },
-                    { label: '12:30', value: '12:30' },
-                    { label: '13:00', value: '13:00' },
-                    { label: '13:30', value: '13:30' },
-                    { label: '14:00', value: '14:00' },
-                    { label: '14:30', value: '14:30' },
-                    { label: '15:00', value: '15:00' },
-                    { label: '15:30', value: '15:30' },
-                    { label: '16:00', value: '16:00' },
-                    { label: '16:30', value: '16:30' },
-                    { label: '17:00', value: '17:00' },
-                    { label: '17:30', value: '17:30' },
-                    { label: '18:00', value: '18:00' }
-                  ]}
+                  defaultValue={getDefaultValues(
+                    preferredHoursOptions,
+                    answers['preferred-hours-start']
+                  )}
+                  options={preferredHoursOptions}
                   onChange={values =>
                     action({
                       name: 'preferred-hours-start',
@@ -174,32 +164,16 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
                     })
                   }
                 />
-                <Body> - </Body>
+                <TextContainer> - </TextContainer>
                 <Select
                   label=''
                   error={errors?.['preferred-hours-end']}
                   name='preferred-hours-end'
-                  options={[
-                    { label: '09:00', value: '09:00' },
-                    { label: '09:30', value: '09:30' },
-                    { label: '10:00', value: '10:00' },
-                    { label: '10:30', value: '10:30' },
-                    { label: '11:00', value: '11:00' },
-                    { label: '11:30', value: '11:30' },
-                    { label: '12:00', value: '12:00' },
-                    { label: '12:30', value: '12:30' },
-                    { label: '13:00', value: '13:00' },
-                    { label: '13:30', value: '13:30' },
-                    { label: '14:00', value: '14:00' },
-                    { label: '14:30', value: '14:30' },
-                    { label: '15:00', value: '15:00' },
-                    { label: '15:30', value: '15:30' },
-                    { label: '16:00', value: '16:00' },
-                    { label: '16:30', value: '16:30' },
-                    { label: '17:00', value: '17:00' },
-                    { label: '17:30', value: '17:30' },
-                    { label: '18:00', value: '18:00' }
-                  ]}
+                  defaultValue={getDefaultValues(
+                    preferredHoursOptions,
+                    answers?.['preferred-hours-end']
+                  )}
+                  options={preferredHoursOptions}
                   onChange={values =>
                     action({ name: 'preferred-hours-end', value: values.value })
                   }
@@ -209,24 +183,18 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
           </>
         )}
         {/*Recurring type */}
+
         {values['offer-type'] === 1 && (
           <>
             <Select
               error={errors?.['number-of-hours']}
               label='Número de Horas'
               name='number-of-hours'
-              options={[
-                { label: '1', value: 1 },
-                { label: '2', value: 2 },
-                { label: '3', value: 3 },
-                { label: '4', value: 4 },
-                { label: '5', value: 5 },
-                { label: '6', value: 6 },
-                { label: '7', value: 7 },
-                { label: '8', value: 8 },
-                { label: '9', value: 9 },
-                { label: '10', value: 10 }
-              ]}
+              defaultValue={getDefaultValues(
+                numberOfHoursOptions,
+                answers?.['number-of-hours']
+              )}
+              options={numberOfHoursOptions}
               onChange={values =>
                 action({ name: 'number-of-hours', value: values.value })
               }
@@ -239,83 +207,72 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
               error={errors?.['recurrence']}
               label='Recorrência'
               name='recurrence'
+              defaultValue={getDefaultValues(
+                recurrenceOptions,
+                answers?.['recurrence']
+              )}
               onChange={values =>
                 action({ name: 'recurrence', value: values.value })
               }
-              options={[
-                { label: 'Diaria', value: 0 },
-                { label: 'Semanal', value: 1 },
-                { label: 'Mensal', value: 2 }
-              ]}
+              options={recurrenceOptions}
             />
             <Row>
               <Select
                 error={errors?.['repetition']}
                 label='Repetição a cada'
-                options={[
-                  { label: '1', value: 1 },
-                  { label: '2', value: 2 },
-                  { label: '3', value: 3 },
-                  { label: '4', value: 4 },
-                  { label: '5', value: 5 },
-                  { label: '6', value: 6 },
-                  { label: '7', value: 7 }
-                ]}
+                defaultValue={getDefaultValues(
+                  repetitionOptions,
+                  answers?.['repetition']
+                )}
+                options={repetitionOptions}
                 onChange={values =>
                   action({ name: 'repetition', value: values.value })
                 }
               />
-              <Body>{selectedRecurrency?.pickedRecurrency}</Body>
+              <>
+                <TextContainer>
+                  {selectedRecurrency?.pickedRecurrency}
+                </TextContainer>
+              </>
               {/* Weekly option - day-selection */}
               <Row>
                 {values['recurrence'] === 1 && (
                   <ButtonGroup
                     error={errors?.['week-select']}
                     name='week-select'
-                    list={[
-                      { value: 0, label: 'S', isSelected: false },
-                      { value: 1, label: 'T', isSelected: false },
-                      { value: 2, label: 'Q', isSelected: false },
-                      { value: 3, label: 'Q', isSelected: false },
-                      { value: 4, label: 'S', isSelected: false },
-                      { value: 5, label: 'S', isSelected: false },
-                      { value: 6, label: 'D', isSelected: false }
-                    ]}
-                    action={values => action(values)}
+                    list={weekSelectOptions}
+                    value={answers['week-select']}
+                    action={values =>
+                      action({ name: values?.name, value: values?.value })
+                    }
                   />
                 )}
                 {/* Montly option - week-selection */}
                 {values['recurrence'] === 2 && (
                   <>
                     <Select
-                      error={errors?.['montly-recurrence-daily-recurrency']}
+                      error={errors?.['montly-recurrence']}
                       label='Ocorre em'
-                      options={[
-                        { value: 0, label: 'Primeira' },
-                        { value: 1, label: 'Segunda' },
-                        { value: 1, label: 'Terceira' },
-                        { value: 1, label: 'Quarta' },
-                        { value: 1, label: 'Última' }
-                      ]}
+                      defaultValue={getDefaultValues(
+                        montlyRecurrenceOptions,
+                        answers?.['montly-recurrence']
+                      )}
+                      options={montlyRecurrenceOptions}
                       onChange={values =>
                         action({
-                          name: 'montly-recurrence-daily-recurrency',
+                          name: 'montly-recurrence',
                           value: values.value
                         })
                       }
                     />
-                    <Body>-</Body>
+                    <TextContainer> - </TextContainer>
                     <Select
                       error={errors?.['montly-recurrence-weekday']}
-                      options={[
-                        { value: 1, label: 'Segunda-Feira' },
-                        { value: 2, label: 'Terça-Feira' },
-                        { value: 3, label: 'Quarta-Feira' },
-                        { value: 4, label: 'Quinta-Feira' },
-                        { value: 5, label: 'Sexta-Feira' },
-                        { value: 6, label: 'Sabádo' },
-                        { value: 0, label: 'Domingo' }
-                      ]}
+                      defaultValue={getDefaultValues(
+                        montlyRecurrenceWeekDaysOptions,
+                        answers?.['montly-recurrence-weekday']
+                      )}
+                      options={montlyRecurrenceWeekDaysOptions}
                       onChange={values =>
                         action({
                           name: 'montly-recurrence-weekday',
@@ -323,7 +280,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
                         })
                       }
                     />
-                    <Body>do Mês</Body>
+                    <TextContainer>do Mês</TextContainer>
                   </>
                 )}
               </Row>
@@ -331,6 +288,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
             {/*Montly type */}
             <TextInput
               error={errors?.['service-start-date']}
+              defaultValue={answers?.['service-start-date']}
               label='Data de Início'
               name='service-start-date'
               type='date'
@@ -340,6 +298,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
             />
             <TextInput
               error={errors?.['service-end-date']}
+              defaultValue={answers?.['service-end-date']}
               label='Data de Fim'
               name='service-end-date'
               type='date'
@@ -352,57 +311,19 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
                 error={errors?.['preferred-hours-start']}
                 label='Preferência Horária'
                 name='preferred-hours-start'
-                options={[
-                  { label: '09:00', value: '09:00' },
-                  { label: '09:30', value: '09:30' },
-                  { label: '10:00', value: '10:00' },
-                  { label: '10:30', value: '10:30' },
-                  { label: '11:00', value: '11:00' },
-                  { label: '11:30', value: '11:30' },
-                  { label: '12:00', value: '12:00' },
-                  { label: '12:30', value: '12:30' },
-                  { label: '13:00', value: '13:00' },
-                  { label: '13:30', value: '13:30' },
-                  { label: '14:00', value: '14:00' },
-                  { label: '14:30', value: '14:30' },
-                  { label: '15:00', value: '15:00' },
-                  { label: '15:30', value: '15:30' },
-                  { label: '16:00', value: '16:00' },
-                  { label: '16:30', value: '16:30' },
-                  { label: '17:00', value: '17:00' },
-                  { label: '17:30', value: '17:30' },
-                  { label: '18:00', value: '18:00' }
-                ]}
+                defaultValue={answers['preferred-hours-start']}
+                options={preferredHoursOptions}
                 onChange={values =>
                   action({ name: 'preferred-hours-start', value: values.value })
                 }
               />
-              <Body> - </Body>
+              <TextContainer> - </TextContainer>
               <Select
                 error={errors?.['preferred-hours-end']}
                 label=''
                 name='preferred-hours-end'
-                options={[
-                  { label: '09:00', value: '09:00' },
-                  { label: '09:30', value: '09:30' },
-                  { label: '10:00', value: '10:00' },
-                  { label: '10:30', value: '10:30' },
-                  { label: '11:00', value: '11:00' },
-                  { label: '11:30', value: '11:30' },
-                  { label: '12:00', value: '12:00' },
-                  { label: '12:30', value: '12:30' },
-                  { label: '13:00', value: '13:00' },
-                  { label: '13:30', value: '13:30' },
-                  { label: '14:00', value: '14:00' },
-                  { label: '14:30', value: '14:30' },
-                  { label: '15:00', value: '15:00' },
-                  { label: '15:30', value: '15:30' },
-                  { label: '16:00', value: '16:00' },
-                  { label: '16:30', value: '16:30' },
-                  { label: '17:00', value: '17:00' },
-                  { label: '17:30', value: '17:30' },
-                  { label: '18:00', value: '18:00' }
-                ]}
+                defaultValue={answers['preferred-hours-end']}
+                options={preferredHoursOptions}
                 onChange={values =>
                   action({ name: 'preferred-hours-end', value: values.value })
                 }
@@ -417,6 +338,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
               label='Escolha o Pack'
               name='pack-selection'
               error={errors?.['pack-selection']}
+              defaultValue={answers['pack-selection']}
               options={
                 serviceTypeOpt
                   ? serviceTypeOpt
@@ -446,47 +368,38 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
                 <Select
                   label='Recorrência'
                   name='recurrence'
+                  defaultValue={getDefaultValues(
+                    recurrenceOptions,
+                    answers['recurrence']
+                  )}
                   error={errors?.['recurrence']}
                   onChange={values =>
                     action({ name: 'recurrence', value: values.value })
                   }
-                  options={[
-                    { label: 'Diariamente', value: 0 },
-                    { label: 'Semanalmente', value: 1 },
-                    { label: 'Mensalmente', value: 2 }
-                  ]}
+                  options={recurrenceOptions}
                 />
                 <Row>
                   <Select
                     error={errors?.['repetition']}
                     label='Repetição a cada'
-                    options={[
-                      { label: '1', value: 1 },
-                      { label: '2', value: 2 },
-                      { label: '3', value: 3 },
-                      { label: '4', value: 4 },
-                      { label: '5', value: 5 },
-                      { label: '6', value: 6 },
-                      { label: '7', value: 7 }
-                    ]}
+                    defaultValue={getDefaultValues(
+                      repetitionOptions,
+
+                      answers['repetition']
+                    )}
+                    options={repetitionOptions}
                     onChange={values =>
                       action({ name: 'repetition', value: values.value })
                     }
                   />
-                  <Body>{selectedRecurrency?.pickedRecurrency}</Body>
+                  <TextContainer>
+                    {selectedRecurrency?.pickedRecurrency}
+                  </TextContainer>
                   {values['recurrence'] === 1 && (
                     <ButtonGroup
                       error={errors?.['week-select']}
                       name='week-select'
-                      list={[
-                        { value: 0, label: 'S', isSelected: false },
-                        { value: 1, label: 'T', isSelected: false },
-                        { value: 2, label: 'Q', isSelected: false },
-                        { value: 3, label: 'Q', isSelected: false },
-                        { value: 4, label: 'S', isSelected: false },
-                        { value: 5, label: 'S', isSelected: false },
-                        { value: 6, label: 'D', isSelected: false }
-                      ]}
+                      list={weekSelectOptions}
                       action={values => action(values)}
                     />
                   )}
@@ -538,6 +451,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
                   label='Data de Início'
                   name='service-start-date'
                   type='date'
+                  defaultValue={answers['service-start-date']}
                   error={errors?.['service-start-date']}
                   onChange={values =>
                     action({ name: 'service-start-date', value: values })
@@ -547,28 +461,12 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
                   <Select
                     error={errors?.['preferred-hours-start']}
                     label='Preferência Horária'
+                    defaultValue={getDefaultValues(
+                      preferredHoursOptions,
+                      answers['preferred-hours-start']
+                    )}
                     name='preferred-hours-start'
-                    options={[
-                      { label: '09:00', value: '09:00' },
-                      { label: '09:30', value: '09:30' },
-                      { label: '10:00', value: '10:00' },
-                      { label: '10:30', value: '10:30' },
-                      { label: '11:00', value: '11:00' },
-                      { label: '11:30', value: '11:30' },
-                      { label: '12:00', value: '12:00' },
-                      { label: '12:30', value: '12:30' },
-                      { label: '13:00', value: '13:00' },
-                      { label: '13:30', value: '13:30' },
-                      { label: '14:00', value: '14:00' },
-                      { label: '14:30', value: '14:30' },
-                      { label: '15:00', value: '15:00' },
-                      { label: '15:30', value: '15:30' },
-                      { label: '16:00', value: '16:00' },
-                      { label: '16:30', value: '16:30' },
-                      { label: '17:00', value: '17:00' },
-                      { label: '17:30', value: '17:30' },
-                      { label: '18:00', value: '18:00' }
-                    ]}
+                    options={preferredHoursOptions}
                     onChange={values =>
                       action({
                         name: 'preferred-hours-start',
@@ -576,32 +474,16 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
                       })
                     }
                   />
-                  <Body> - </Body>
+                  <TextContainer> - </TextContainer>
                   <Select
                     error={errors?.['preferred-hours-end']}
                     label=''
                     name='preferred-hours-end'
-                    options={[
-                      { label: '09:00', value: '09:00' },
-                      { label: '09:30', value: '09:30' },
-                      { label: '10:00', value: '10:00' },
-                      { label: '10:30', value: '10:30' },
-                      { label: '11:00', value: '11:00' },
-                      { label: '11:30', value: '11:30' },
-                      { label: '12:00', value: '12:00' },
-                      { label: '12:30', value: '12:30' },
-                      { label: '13:00', value: '13:00' },
-                      { label: '13:30', value: '13:30' },
-                      { label: '14:00', value: '14:00' },
-                      { label: '14:30', value: '14:30' },
-                      { label: '15:00', value: '15:00' },
-                      { label: '15:30', value: '15:30' },
-                      { label: '16:00', value: '16:00' },
-                      { label: '16:30', value: '16:30' },
-                      { label: '17:00', value: '17:00' },
-                      { label: '17:30', value: '17:30' },
-                      { label: '18:00', value: '18:00' }
-                    ]}
+                    defaultValue={getDefaultValues(
+                      preferredHoursOptions,
+                      answers['preferred-hours-end']
+                    )}
+                    options={preferredHoursOptions}
                     onChange={values =>
                       action({
                         name: 'preferred-hours-end',
@@ -616,6 +498,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors }) => {
                 label='Data do Início'
                 name='service-date'
                 type='date'
+                defaultValue={answers?.['service-date']}
                 error={errors?.['service-date']}
                 onChange={values =>
                   action({ name: 'service-date', value: values })
@@ -647,7 +530,8 @@ OfferTypeWidget.propTypes = {
   action: PropTypes.func,
   offerType: PropTypes.string,
   values: PropTypes.object,
-  errors: PropTypes.object
+  errors: PropTypes.object,
+  answers: PropTypes.object
 };
 
 export default OfferTypeWidget;

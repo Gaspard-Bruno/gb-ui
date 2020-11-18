@@ -50,7 +50,7 @@ export const StyledForm = styled.div`
   > div {
     padding: 20px;
     & > textarea {
-      min-height: ${props => props.theme?.margin * 4}px;
+      min-height: ${props => props.theme?.margin * 6}px;
     }
     & > p {
       text-align: left;
