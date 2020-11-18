@@ -6275,46 +6275,33 @@ var ButtonGroup = function ButtonGroup(_ref) {
   var action = _ref.action,
       label = _ref.label,
       name = _ref.name,
-      list = _ref.list;
+      list = _ref.list,
+      value = _ref.value;
 
-  var getInitialSelection = function getInitialSelection() {
-    var selectedItems = {};
-
-    for (var i in list) {
-      selectedItems[list[i].value] = list[i].isSelected;
-    }
-
-    return selectedItems;
-  };
-
-  var _useState = useState(getInitialSelection()),
+  var _useState = useState(value || list.map(function (li) {
+    return _defineProperty({}, li.value, li.isSelected);
+  })),
       _useState2 = _slicedToArray(_useState, 2),
       selectedButtons = _useState2[0],
       setSelectedTab = _useState2[1];
 
-  var handleSelection = useCallback$1(function (value, isSelected) {
-    var newSelection = Object.assign({}, selectedButtons, selectedButtons[value] = !selectedButtons[value]);
-    setSelectedTab(newSelection);
+  var handleSelection = useCallback$1(function (key, isSelected) {
+    setSelectedTab(_objectSpread2(_objectSpread2({}, selectedButtons), {}, _defineProperty({}, key, isSelected)));
   }, [selectedButtons]);
-  return /*#__PURE__*/React.createElement(StyledContainer, null, label && /*#__PURE__*/React.createElement(Body, null, label), /*#__PURE__*/React.createElement(ListContainer, null, list && list.map(function (item, index) {
+  return /*#__PURE__*/React.createElement(StyledContainer, null, /*#__PURE__*/React.createElement(Body, null, label || ''), /*#__PURE__*/React.createElement(ListContainer, null, list && list.map(function (item, index) {
     return /*#__PURE__*/React.createElement(ButtonGroupContainer, {
       isSelected: selectedButtons[index],
       key: "".concat(item, "-").concat(index)
-    }, item.label && /*#__PURE__*/React.createElement(Body, {
-      onClick: function onClick() {
-        return handleSelection(item.value, item.isSelected);
-      }
-    }, item.label), /*#__PURE__*/React.createElement(StyledButton, {
+    }, item.label && /*#__PURE__*/React.createElement(Body, null, item.label), /*#__PURE__*/React.createElement(StyledButton, {
       key: "".concat(item, "-").concat(index),
       item: true,
       type: "button",
       label: item.label,
-      value: item.value,
       name: name,
       disabled: item.disabled,
       isSelected: selectedButtons[index],
       onClick: function onClick() {
-        handleSelection(item.value, item.isSelected);
+        handleSelection(item.value, !selectedButtons[item.value]);
 
         if (action) {
           action({
@@ -20384,8 +20371,18 @@ RadioButton.propTypes = {
   error: propTypes.string
 };
 
+function _templateObject3$c() {
+  var data = _taggedTemplateLiteral(["\n  align-self: flex-end;\n"]);
+
+  _templateObject3$c = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject2$h() {
-  var data = _taggedTemplateLiteral(["\n  color: red;\n"]);
+  var data = _taggedTemplateLiteral(["\n  align-self: center;\n  margin-right: ", "px;\n  margin-left: ", "px;\n"]);
 
   _templateObject2$h = function _templateObject2() {
     return data;
@@ -20404,13 +20401,208 @@ function _templateObject$l() {
   return data;
 }
 var WidgetContainer = styled.div(_templateObject$l());
-var TextContainer = styled.div(_templateObject2$h());
+var TextContainer = styled(Body)(_templateObject2$h(), function (props) {
+  return props.theme.margin;
+}, function (props) {
+  return props.theme.margin;
+});
+var RecurrencyTextHolder = styled(Body)(_templateObject3$c());
+
+var numberOfHoursOptions = [{
+  label: '1',
+  value: 1
+}, {
+  label: '2',
+  value: 2
+}, {
+  label: '3',
+  value: 3
+}, {
+  label: '4',
+  value: 4
+}, {
+  label: '5',
+  value: 5
+}, {
+  label: '6',
+  value: 6
+}, {
+  label: '7',
+  value: 7
+}, {
+  label: '8',
+  value: 8
+}, {
+  label: '9',
+  value: 9
+}, {
+  label: '10',
+  value: 10
+}];
+var repetitionOptions = [{
+  label: '1',
+  value: 1
+}, {
+  label: '2',
+  value: 2
+}, {
+  label: '3',
+  value: 3
+}, {
+  label: '4',
+  value: 4
+}, {
+  label: '5',
+  value: 5
+}, {
+  label: '6',
+  value: 6
+}, {
+  label: '7',
+  value: 7
+}];
+var recurrenceOptions = [{
+  label: 'Diaria',
+  value: 0
+}, {
+  label: 'Semanal',
+  value: 1
+}, {
+  label: 'Mensal',
+  value: 2
+}];
+var montlyRecurrenceOptions = [{
+  value: 0,
+  label: 'Primeira'
+}, {
+  value: 1,
+  label: 'Segunda'
+}, {
+  value: 1,
+  label: 'Terceira'
+}, {
+  value: 1,
+  label: 'Quarta'
+}, {
+  value: 1,
+  label: 'Última'
+}];
+var montlyRecurrenceWeekDaysOptions = [{
+  value: 1,
+  label: 'Segunda-Feira'
+}, {
+  value: 2,
+  label: 'Terça-Feira'
+}, {
+  value: 3,
+  label: 'Quarta-Feira'
+}, {
+  value: 4,
+  label: 'Quinta-Feira'
+}, {
+  value: 5,
+  label: 'Sexta-Feira'
+}, {
+  value: 6,
+  label: 'Sabádo'
+}, {
+  value: 0,
+  label: 'Domingo'
+}];
+var preferredHoursOptions = [{
+  label: '09:00',
+  value: '09:00'
+}, {
+  label: '09:30',
+  value: '09:30'
+}, {
+  label: '10:00',
+  value: '10:00'
+}, {
+  label: '10:30',
+  value: '10:30'
+}, {
+  label: '11:00',
+  value: '11:00'
+}, {
+  label: '11:30',
+  value: '11:30'
+}, {
+  label: '12:00',
+  value: '12:00'
+}, {
+  label: '12:30',
+  value: '12:30'
+}, {
+  label: '13:00',
+  value: '13:00'
+}, {
+  label: '13:30',
+  value: '13:30'
+}, {
+  label: '14:00',
+  value: '14:00'
+}, {
+  label: '14:30',
+  value: '14:30'
+}, {
+  label: '15:00',
+  value: '15:00'
+}, {
+  label: '15:30',
+  value: '15:30'
+}, {
+  label: '16:00',
+  value: '16:00'
+}, {
+  label: '16:30',
+  value: '16:30'
+}, {
+  label: '17:00',
+  value: '17:00'
+}, {
+  label: '17:30',
+  value: '17:30'
+}, {
+  label: '18:00',
+  value: '18:00'
+}];
+var weekSelectOptions = [{
+  value: 0,
+  label: 'S',
+  isSelected: false
+}, {
+  value: 1,
+  label: 'T',
+  isSelected: false
+}, {
+  value: 2,
+  label: 'Q',
+  isSelected: false
+}, {
+  value: 3,
+  label: 'Q',
+  isSelected: false
+}, {
+  value: 4,
+  label: 'S',
+  isSelected: false
+}, {
+  value: 5,
+  label: 'S',
+  isSelected: false
+}, {
+  value: 6,
+  label: 'D',
+  isSelected: false
+}];
 
 var OfferTypeWidget = function OfferTypeWidget(_ref) {
   var _action = _ref.action,
       offerType = _ref.offerType,
       values = _ref.values,
-      errors = _ref.errors;
+      errors = _ref.errors,
+      answers = _ref.answers;
 
   var renderContent = function renderContent() {
     var serviceOptions = {
@@ -20475,30 +20667,37 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
   var selectedRecurrency = useMemo$1(function () {
     var status = {
       pickedRecurrency: '',
-      total: 'xxx total xxx'
+      total: ''
     };
 
-    if (values['recurrence'] === 0) {
+    if (answers['recurrence'] === 0 || (values === null || values === void 0 ? void 0 : values['recurrence']) === 0) {
       status.pickedRecurrency = 'Dia';
     }
 
-    if (values['recurrence'] === 1) {
+    if ((values === null || values === void 0 ? void 0 : values['recurrence']) === 1 || answers['recurrence'] === 1) {
       status.pickedRecurrency = 'Semana';
     }
 
-    if (values['recurrence'] === 2) {
+    if ((values === null || values === void 0 ? void 0 : values['recurrence']) === 2 || answers['recurrence'] === 2) {
       status.pickedRecurrency = 'Mês';
     }
 
     return status;
-  }, [values]);
+  }, [answers, values]);
+
+  var getDefaultValues = function getDefaultValues(options, answerValue) {
+    return options === null || options === void 0 ? void 0 : options.find(function (e) {
+      return e.value === answerValue;
+    });
+  };
 
   var renderOneTimeSpecific = function renderOneTimeSpecific(serviceOptions) {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(RadioButton, {
       error: errors === null || errors === void 0 ? void 0 : errors['offer-type'],
       name: "offer-type",
       action: _action,
-      list: serviceOptions
+      list: serviceOptions,
+      value: answers === null || answers === void 0 ? void 0 : answers['offer-type']
     }), /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Heading, {
       size: 6
     }, "Data e Hora do Servi\xE7o")), /*#__PURE__*/React.createElement(Row, null, /*#__PURE__*/React.createElement(TextInput, {
@@ -20506,74 +20705,19 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
       name: "service-date",
       type: "date",
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-date'],
       onChange: function onChange(values) {
         return _action({
           name: 'service-date',
           value: values
         });
       }
-    }), /*#__PURE__*/React.createElement(Body, null, " - "), /*#__PURE__*/React.createElement(Select$2, {
+    }), /*#__PURE__*/React.createElement(TextContainer, null, " - "), /*#__PURE__*/React.createElement(Select$2, {
       label: "Hora",
       name: "preferred-hours",
       error: errors === null || errors === void 0 ? void 0 : errors['prefered-hours'],
-      options: [{
-        label: '09:00',
-        value: '09:00'
-      }, {
-        label: '09:30',
-        value: '09:30'
-      }, {
-        label: '10:00',
-        value: '10:00'
-      }, {
-        label: '10:30',
-        value: '10:30'
-      }, {
-        label: '11:00',
-        value: '11:00'
-      }, {
-        label: '11:30',
-        value: '11:30'
-      }, {
-        label: '12:00',
-        value: '12:00'
-      }, {
-        label: '12:30',
-        value: '12:30'
-      }, {
-        label: '13:00',
-        value: '13:00'
-      }, {
-        label: '13:30',
-        value: '13:30'
-      }, {
-        label: '14:00',
-        value: '14:00'
-      }, {
-        label: '14:30',
-        value: '14:30'
-      }, {
-        label: '15:00',
-        value: '15:00'
-      }, {
-        label: '15:30',
-        value: '15:30'
-      }, {
-        label: '16:00',
-        value: '16:00'
-      }, {
-        label: '16:30',
-        value: '16:30'
-      }, {
-        label: '17:00',
-        value: '17:00'
-      }, {
-        label: '17:30',
-        value: '17:30'
-      }, {
-        label: '18:00',
-        value: '18:00'
-      }],
+      defaultValue: getDefaultValues(preferredHoursOptions, answers['prefered-hours']),
+      options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
           name: 'preferred-hours-end',
@@ -20587,7 +20731,8 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(RadioButton, {
       name: "offer-type",
       action: _action,
-      list: serviceOptions
+      list: serviceOptions,
+      value: answers === null || answers === void 0 ? void 0 : answers['offer-type']
     }), values['offer-type'] === 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Heading, {
       size: 6
     }, "Data e Hora Preferencial"), /*#__PURE__*/React.createElement(TextInput, {
@@ -20595,6 +20740,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
       name: "service-date",
       type: "date",
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-date'],
       onChange: function onChange(values) {
         return _action({
           name: 'service-date',
@@ -20605,132 +20751,20 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
       label: "Prefer\xEAncia Hor\xE1ria",
       name: "preferred-hours-start",
-      options: [{
-        label: '09:00',
-        value: '09:00'
-      }, {
-        label: '09:30',
-        value: '09:30'
-      }, {
-        label: '10:00',
-        value: '10:00'
-      }, {
-        label: '10:30',
-        value: '10:30'
-      }, {
-        label: '11:00',
-        value: '11:00'
-      }, {
-        label: '11:30',
-        value: '11:30'
-      }, {
-        label: '12:00',
-        value: '12:00'
-      }, {
-        label: '12:30',
-        value: '12:30'
-      }, {
-        label: '13:00',
-        value: '13:00'
-      }, {
-        label: '13:30',
-        value: '13:30'
-      }, {
-        label: '14:00',
-        value: '14:00'
-      }, {
-        label: '14:30',
-        value: '14:30'
-      }, {
-        label: '15:00',
-        value: '15:00'
-      }, {
-        label: '15:30',
-        value: '15:30'
-      }, {
-        label: '16:00',
-        value: '16:00'
-      }, {
-        label: '16:30',
-        value: '16:30'
-      }, {
-        label: '17:00',
-        value: '17:00'
-      }, {
-        label: '17:30',
-        value: '17:30'
-      }, {
-        label: '18:00',
-        value: '18:00'
-      }],
+      defaultValue: getDefaultValues(preferredHoursOptions, answers['preferred-hours-start']),
+      options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
           name: 'preferred-hours-start',
           value: values.value
         });
       }
-    }), /*#__PURE__*/React.createElement(Body, null, " - "), /*#__PURE__*/React.createElement(Select$2, {
+    }), /*#__PURE__*/React.createElement(TextContainer, null, " - "), /*#__PURE__*/React.createElement(Select$2, {
       label: "",
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-end'],
       name: "preferred-hours-end",
-      options: [{
-        label: '09:00',
-        value: '09:00'
-      }, {
-        label: '09:30',
-        value: '09:30'
-      }, {
-        label: '10:00',
-        value: '10:00'
-      }, {
-        label: '10:30',
-        value: '10:30'
-      }, {
-        label: '11:00',
-        value: '11:00'
-      }, {
-        label: '11:30',
-        value: '11:30'
-      }, {
-        label: '12:00',
-        value: '12:00'
-      }, {
-        label: '12:30',
-        value: '12:30'
-      }, {
-        label: '13:00',
-        value: '13:00'
-      }, {
-        label: '13:30',
-        value: '13:30'
-      }, {
-        label: '14:00',
-        value: '14:00'
-      }, {
-        label: '14:30',
-        value: '14:30'
-      }, {
-        label: '15:00',
-        value: '15:00'
-      }, {
-        label: '15:30',
-        value: '15:30'
-      }, {
-        label: '16:00',
-        value: '16:00'
-      }, {
-        label: '16:30',
-        value: '16:30'
-      }, {
-        label: '17:00',
-        value: '17:00'
-      }, {
-        label: '17:30',
-        value: '17:30'
-      }, {
-        label: '18:00',
-        value: '18:00'
-      }],
+      defaultValue: getDefaultValues(preferredHoursOptions, answers === null || answers === void 0 ? void 0 : answers['preferred-hours-end']),
+      options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
           name: 'preferred-hours-end',
@@ -20741,37 +20775,8 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['number-of-hours'],
       label: "N\xFAmero de Horas",
       name: "number-of-hours",
-      options: [{
-        label: '1',
-        value: 1
-      }, {
-        label: '2',
-        value: 2
-      }, {
-        label: '3',
-        value: 3
-      }, {
-        label: '4',
-        value: 4
-      }, {
-        label: '5',
-        value: 5
-      }, {
-        label: '6',
-        value: 6
-      }, {
-        label: '7',
-        value: 7
-      }, {
-        label: '8',
-        value: 8
-      }, {
-        label: '9',
-        value: 9
-      }, {
-        label: '10',
-        value: 10
-      }],
+      defaultValue: getDefaultValues(numberOfHoursOptions, answers === null || answers === void 0 ? void 0 : answers['number-of-hours']),
+      options: numberOfHoursOptions,
       onChange: function onChange(values) {
         return _action({
           name: 'number-of-hours',
@@ -20782,145 +20787,60 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['recurrence'],
       label: "Recorr\xEAncia",
       name: "recurrence",
+      defaultValue: getDefaultValues(recurrenceOptions, answers === null || answers === void 0 ? void 0 : answers['recurrence']),
       onChange: function onChange(values) {
         return _action({
           name: 'recurrence',
           value: values.value
         });
       },
-      options: [{
-        label: 'Diaria',
-        value: 0
-      }, {
-        label: 'Semanal',
-        value: 1
-      }, {
-        label: 'Mensal',
-        value: 2
-      }]
+      options: recurrenceOptions
     }), /*#__PURE__*/React.createElement(Row, null, /*#__PURE__*/React.createElement(Select$2, {
       error: errors === null || errors === void 0 ? void 0 : errors['repetition'],
       label: "Repeti\xE7\xE3o a cada",
-      options: [{
-        label: '1',
-        value: 1
-      }, {
-        label: '2',
-        value: 2
-      }, {
-        label: '3',
-        value: 3
-      }, {
-        label: '4',
-        value: 4
-      }, {
-        label: '5',
-        value: 5
-      }, {
-        label: '6',
-        value: 6
-      }, {
-        label: '7',
-        value: 7
-      }],
+      defaultValue: getDefaultValues(repetitionOptions, answers === null || answers === void 0 ? void 0 : answers['repetition']),
+      options: repetitionOptions,
       onChange: function onChange(values) {
         return _action({
           name: 'repetition',
           value: values.value
         });
       }
-    }), /*#__PURE__*/React.createElement(Body, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency), /*#__PURE__*/React.createElement(Row, null, values['recurrence'] === 1 && /*#__PURE__*/React.createElement(ButtonGroup, {
+    }), /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(TextContainer, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency)), /*#__PURE__*/React.createElement(Row, null, values['recurrence'] === 1 && /*#__PURE__*/React.createElement(ButtonGroup, {
       error: errors === null || errors === void 0 ? void 0 : errors['week-select'],
       name: "week-select",
-      list: [{
-        value: 0,
-        label: 'S',
-        isSelected: false
-      }, {
-        value: 1,
-        label: 'T',
-        isSelected: false
-      }, {
-        value: 2,
-        label: 'Q',
-        isSelected: false
-      }, {
-        value: 3,
-        label: 'Q',
-        isSelected: false
-      }, {
-        value: 4,
-        label: 'S',
-        isSelected: false
-      }, {
-        value: 5,
-        label: 'S',
-        isSelected: false
-      }, {
-        value: 6,
-        label: 'D',
-        isSelected: false
-      }],
+      list: weekSelectOptions,
+      value: answers['week-select'],
       action: function action(values) {
-        return _action(values);
+        return _action({
+          name: values === null || values === void 0 ? void 0 : values.name,
+          value: values === null || values === void 0 ? void 0 : values.value
+        });
       }
     }), values['recurrence'] === 2 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Select$2, {
-      error: errors === null || errors === void 0 ? void 0 : errors['montly-recurrence-daily-recurrency'],
+      error: errors === null || errors === void 0 ? void 0 : errors['montly-recurrence'],
       label: "Ocorre em",
-      options: [{
-        value: 0,
-        label: 'Primeira'
-      }, {
-        value: 1,
-        label: 'Segunda'
-      }, {
-        value: 1,
-        label: 'Terceira'
-      }, {
-        value: 1,
-        label: 'Quarta'
-      }, {
-        value: 1,
-        label: 'Última'
-      }],
+      defaultValue: getDefaultValues(montlyRecurrenceOptions, answers === null || answers === void 0 ? void 0 : answers['montly-recurrence']),
+      options: montlyRecurrenceOptions,
       onChange: function onChange(values) {
         return _action({
-          name: 'montly-recurrence-daily-recurrency',
+          name: 'montly-recurrence',
           value: values.value
         });
       }
-    }), /*#__PURE__*/React.createElement(Body, null, "-"), /*#__PURE__*/React.createElement(Select$2, {
+    }), /*#__PURE__*/React.createElement(TextContainer, null, " - "), /*#__PURE__*/React.createElement(Select$2, {
       error: errors === null || errors === void 0 ? void 0 : errors['montly-recurrence-weekday'],
-      options: [{
-        value: 1,
-        label: 'Segunda-Feira'
-      }, {
-        value: 2,
-        label: 'Terça-Feira'
-      }, {
-        value: 3,
-        label: 'Quarta-Feira'
-      }, {
-        value: 4,
-        label: 'Quinta-Feira'
-      }, {
-        value: 5,
-        label: 'Sexta-Feira'
-      }, {
-        value: 6,
-        label: 'Sabádo'
-      }, {
-        value: 0,
-        label: 'Domingo'
-      }],
+      defaultValue: getDefaultValues(montlyRecurrenceWeekDaysOptions, answers === null || answers === void 0 ? void 0 : answers['montly-recurrence-weekday']),
+      options: montlyRecurrenceWeekDaysOptions,
       onChange: function onChange(values) {
         return _action({
           name: 'montly-recurrence-weekday',
           value: values.value
         });
       }
-    }), /*#__PURE__*/React.createElement(Body, null, "do M\xEAs")))), /*#__PURE__*/React.createElement(TextInput, {
+    }), /*#__PURE__*/React.createElement(TextContainer, null, "do M\xEAs")))), /*#__PURE__*/React.createElement(TextInput, {
       error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start-date'],
       label: "Data de In\xEDcio",
       name: "service-start-date",
       type: "date",
@@ -20932,6 +20852,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       }
     }), /*#__PURE__*/React.createElement(TextInput, {
       error: errors === null || errors === void 0 ? void 0 : errors['service-end-date'],
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-end-date'],
       label: "Data de Fim",
       name: "service-end-date",
       type: "date",
@@ -20945,132 +20866,20 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
       label: "Prefer\xEAncia Hor\xE1ria",
       name: "preferred-hours-start",
-      options: [{
-        label: '09:00',
-        value: '09:00'
-      }, {
-        label: '09:30',
-        value: '09:30'
-      }, {
-        label: '10:00',
-        value: '10:00'
-      }, {
-        label: '10:30',
-        value: '10:30'
-      }, {
-        label: '11:00',
-        value: '11:00'
-      }, {
-        label: '11:30',
-        value: '11:30'
-      }, {
-        label: '12:00',
-        value: '12:00'
-      }, {
-        label: '12:30',
-        value: '12:30'
-      }, {
-        label: '13:00',
-        value: '13:00'
-      }, {
-        label: '13:30',
-        value: '13:30'
-      }, {
-        label: '14:00',
-        value: '14:00'
-      }, {
-        label: '14:30',
-        value: '14:30'
-      }, {
-        label: '15:00',
-        value: '15:00'
-      }, {
-        label: '15:30',
-        value: '15:30'
-      }, {
-        label: '16:00',
-        value: '16:00'
-      }, {
-        label: '16:30',
-        value: '16:30'
-      }, {
-        label: '17:00',
-        value: '17:00'
-      }, {
-        label: '17:30',
-        value: '17:30'
-      }, {
-        label: '18:00',
-        value: '18:00'
-      }],
+      defaultValue: answers['preferred-hours-start'],
+      options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
           name: 'preferred-hours-start',
           value: values.value
         });
       }
-    }), /*#__PURE__*/React.createElement(Body, null, " - "), /*#__PURE__*/React.createElement(Select$2, {
+    }), /*#__PURE__*/React.createElement(TextContainer, null, " - "), /*#__PURE__*/React.createElement(Select$2, {
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-end'],
       label: "",
       name: "preferred-hours-end",
-      options: [{
-        label: '09:00',
-        value: '09:00'
-      }, {
-        label: '09:30',
-        value: '09:30'
-      }, {
-        label: '10:00',
-        value: '10:00'
-      }, {
-        label: '10:30',
-        value: '10:30'
-      }, {
-        label: '11:00',
-        value: '11:00'
-      }, {
-        label: '11:30',
-        value: '11:30'
-      }, {
-        label: '12:00',
-        value: '12:00'
-      }, {
-        label: '12:30',
-        value: '12:30'
-      }, {
-        label: '13:00',
-        value: '13:00'
-      }, {
-        label: '13:30',
-        value: '13:30'
-      }, {
-        label: '14:00',
-        value: '14:00'
-      }, {
-        label: '14:30',
-        value: '14:30'
-      }, {
-        label: '15:00',
-        value: '15:00'
-      }, {
-        label: '15:30',
-        value: '15:30'
-      }, {
-        label: '16:00',
-        value: '16:00'
-      }, {
-        label: '16:30',
-        value: '16:30'
-      }, {
-        label: '17:00',
-        value: '17:00'
-      }, {
-        label: '17:30',
-        value: '17:30'
-      }, {
-        label: '18:00',
-        value: '18:00'
-      }],
+      defaultValue: answers['preferred-hours-end'],
+      options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
           name: 'preferred-hours-end',
@@ -21081,6 +20890,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Escolha o Pack",
       name: "pack-selection",
       error: errors === null || errors === void 0 ? void 0 : errors['pack-selection'],
+      defaultValue: answers['pack-selection'],
       options: serviceTypeOpt ? serviceTypeOpt : [{
         label: '8 Aulas - 70€',
         value: 0
@@ -21103,6 +20913,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     }), /*#__PURE__*/React.createElement(SmallBody, null, "*n\xE3o inclui a taxa de IVA em vigor"), values['pack-selection'] === 0 || values['pack-selection'] === 1 ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Body, null, "Poder\xE1 alterar a recorr\xEAncia e reagendar para mais tarde atrav\xE9s da Equipa da 55+."), /*#__PURE__*/React.createElement(Select$2, {
       label: "Recorr\xEAncia",
       name: "recurrence",
+      defaultValue: getDefaultValues(recurrenceOptions, answers['recurrence']),
       error: errors === null || errors === void 0 ? void 0 : errors['recurrence'],
       onChange: function onChange(values) {
         return _action({
@@ -21110,79 +20921,22 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
           value: values.value
         });
       },
-      options: [{
-        label: 'Diariamente',
-        value: 0
-      }, {
-        label: 'Semanalmente',
-        value: 1
-      }, {
-        label: 'Mensalmente',
-        value: 2
-      }]
+      options: recurrenceOptions
     }), /*#__PURE__*/React.createElement(Row, null, /*#__PURE__*/React.createElement(Select$2, {
       error: errors === null || errors === void 0 ? void 0 : errors['repetition'],
       label: "Repeti\xE7\xE3o a cada",
-      options: [{
-        label: '1',
-        value: 1
-      }, {
-        label: '2',
-        value: 2
-      }, {
-        label: '3',
-        value: 3
-      }, {
-        label: '4',
-        value: 4
-      }, {
-        label: '5',
-        value: 5
-      }, {
-        label: '6',
-        value: 6
-      }, {
-        label: '7',
-        value: 7
-      }],
+      defaultValue: getDefaultValues(repetitionOptions, answers['repetition']),
+      options: repetitionOptions,
       onChange: function onChange(values) {
         return _action({
           name: 'repetition',
           value: values.value
         });
       }
-    }), /*#__PURE__*/React.createElement(Body, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency), values['recurrence'] === 1 && /*#__PURE__*/React.createElement(ButtonGroup, {
+    }), /*#__PURE__*/React.createElement(TextContainer, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency), values['recurrence'] === 1 && /*#__PURE__*/React.createElement(ButtonGroup, {
       error: errors === null || errors === void 0 ? void 0 : errors['week-select'],
       name: "week-select",
-      list: [{
-        value: 0,
-        label: 'S',
-        isSelected: false
-      }, {
-        value: 1,
-        label: 'T',
-        isSelected: false
-      }, {
-        value: 2,
-        label: 'Q',
-        isSelected: false
-      }, {
-        value: 3,
-        label: 'Q',
-        isSelected: false
-      }, {
-        value: 4,
-        label: 'S',
-        isSelected: false
-      }, {
-        value: 5,
-        label: 'S',
-        isSelected: false
-      }, {
-        value: 6,
-        label: 'D',
-        isSelected: false
-      }],
+      list: weekSelectOptions,
       action: function action(values) {
         return _action(values);
       }
@@ -21190,6 +20944,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data de In\xEDcio",
       name: "service-start-date",
       type: "date",
+      defaultValue: answers['service-start-date'],
       error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
       onChange: function onChange(values) {
         return _action({
@@ -21200,133 +20955,21 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     }), /*#__PURE__*/React.createElement(Row, null, /*#__PURE__*/React.createElement(Select$2, {
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
       label: "Prefer\xEAncia Hor\xE1ria",
+      defaultValue: getDefaultValues(preferredHoursOptions, answers['preferred-hours-start']),
       name: "preferred-hours-start",
-      options: [{
-        label: '09:00',
-        value: '09:00'
-      }, {
-        label: '09:30',
-        value: '09:30'
-      }, {
-        label: '10:00',
-        value: '10:00'
-      }, {
-        label: '10:30',
-        value: '10:30'
-      }, {
-        label: '11:00',
-        value: '11:00'
-      }, {
-        label: '11:30',
-        value: '11:30'
-      }, {
-        label: '12:00',
-        value: '12:00'
-      }, {
-        label: '12:30',
-        value: '12:30'
-      }, {
-        label: '13:00',
-        value: '13:00'
-      }, {
-        label: '13:30',
-        value: '13:30'
-      }, {
-        label: '14:00',
-        value: '14:00'
-      }, {
-        label: '14:30',
-        value: '14:30'
-      }, {
-        label: '15:00',
-        value: '15:00'
-      }, {
-        label: '15:30',
-        value: '15:30'
-      }, {
-        label: '16:00',
-        value: '16:00'
-      }, {
-        label: '16:30',
-        value: '16:30'
-      }, {
-        label: '17:00',
-        value: '17:00'
-      }, {
-        label: '17:30',
-        value: '17:30'
-      }, {
-        label: '18:00',
-        value: '18:00'
-      }],
+      options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
           name: 'preferred-hours-start',
           value: values.value
         });
       }
-    }), /*#__PURE__*/React.createElement(Body, null, " - "), /*#__PURE__*/React.createElement(Select$2, {
+    }), /*#__PURE__*/React.createElement(TextContainer, null, " - "), /*#__PURE__*/React.createElement(Select$2, {
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-end'],
       label: "",
       name: "preferred-hours-end",
-      options: [{
-        label: '09:00',
-        value: '09:00'
-      }, {
-        label: '09:30',
-        value: '09:30'
-      }, {
-        label: '10:00',
-        value: '10:00'
-      }, {
-        label: '10:30',
-        value: '10:30'
-      }, {
-        label: '11:00',
-        value: '11:00'
-      }, {
-        label: '11:30',
-        value: '11:30'
-      }, {
-        label: '12:00',
-        value: '12:00'
-      }, {
-        label: '12:30',
-        value: '12:30'
-      }, {
-        label: '13:00',
-        value: '13:00'
-      }, {
-        label: '13:30',
-        value: '13:30'
-      }, {
-        label: '14:00',
-        value: '14:00'
-      }, {
-        label: '14:30',
-        value: '14:30'
-      }, {
-        label: '15:00',
-        value: '15:00'
-      }, {
-        label: '15:30',
-        value: '15:30'
-      }, {
-        label: '16:00',
-        value: '16:00'
-      }, {
-        label: '16:30',
-        value: '16:30'
-      }, {
-        label: '17:00',
-        value: '17:00'
-      }, {
-        label: '17:30',
-        value: '17:30'
-      }, {
-        label: '18:00',
-        value: '18:00'
-      }],
+      defaultValue: getDefaultValues(preferredHoursOptions, answers['preferred-hours-end']),
+      options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
           name: 'preferred-hours-end',
@@ -21337,6 +20980,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data do In\xEDcio",
       name: "service-date",
       type: "date",
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-date'],
       error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
       onChange: function onChange(values) {
         return _action({
@@ -21358,7 +21002,8 @@ OfferTypeWidget.propTypes = {
   action: propTypes.func,
   offerType: propTypes.string,
   values: propTypes.object,
-  errors: propTypes.object
+  errors: propTypes.object,
+  answers: propTypes.object
 };
 
 function _templateObject4$8() {
@@ -21371,10 +21016,10 @@ function _templateObject4$8() {
   return data;
 }
 
-function _templateObject3$c() {
+function _templateObject3$d() {
   var data = _taggedTemplateLiteral(["\n  p {\n    margin: 0px;\n  }\n"]);
 
-  _templateObject3$c = function _templateObject3() {
+  _templateObject3$d = function _templateObject3() {
     return data;
   };
 
@@ -21402,7 +21047,7 @@ function _templateObject$m() {
 }
 var WidgetContainer$1 = styled(Col)(_templateObject$m());
 var HeadingContainer = styled(Row)(_templateObject2$i());
-var BodyContainer = styled(Row)(_templateObject3$c());
+var BodyContainer = styled(Row)(_templateObject3$d());
 var ExtrasContainer = styled(Row)(_templateObject4$8(), function (props) {
   return props.theme.colors.lightestBeige;
 }, function (props) {
@@ -21430,10 +21075,10 @@ ServiceTypeWidget.propTypes = {
   extras: propTypes.string
 };
 
-function _templateObject3$d() {
+function _templateObject3$e() {
   var data = _taggedTemplateLiteral(["\n  border-radius: 4px;\n  padding: ", "px;\n  margin: ", "px;\n  outline: none;\n  cursor: pointer;\n  border: none;\n  background-color: ", ";\n  margin-bottom: ", "px;\n  transition: all 0.25s;\n  > * {\n    color: ", ";\n    &:hover {\n      color: ", ";\n    }\n  }\n"]);
 
-  _templateObject3$d = function _templateObject3() {
+  _templateObject3$e = function _templateObject3() {
     return data;
   };
 
@@ -21463,7 +21108,7 @@ var TabContainer = styled.div(_templateObject$n());
 var TabGroup = styled.div(_templateObject2$j(), function (props) {
   return props.justify ? props.justify : 'flex-start';
 });
-var TabButton = styled.button(_templateObject3$d(), function (props) {
+var TabButton = styled.button(_templateObject3$e(), function (props) {
   var _props$theme;
 
   return ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) / 1.5;
@@ -21546,10 +21191,10 @@ function _templateObject4$9() {
   return data;
 }
 
-function _templateObject3$e() {
+function _templateObject3$f() {
   var data = _taggedTemplateLiteral(["\n  margin: 0;\n"]);
 
-  _templateObject3$e = function _templateObject3() {
+  _templateObject3$f = function _templateObject3() {
     return data;
   };
 
@@ -21602,7 +21247,7 @@ var StyledServiceHeader = styled.div(_templateObject2$k(), function (props) {
 }, function (props) {
   return "1px solid ".concat(props.theme.colors.mediumBeige);
 });
-var StyledHeaderInfo = styled(Heading)(_templateObject3$e());
+var StyledHeaderInfo = styled(Heading)(_templateObject3$f());
 var StyledForm = styled.div(_templateObject4$9(), function (props) {
   return getSelectedBackground$2(props);
 }, function (props) {
@@ -21614,7 +21259,7 @@ var StyledForm = styled.div(_templateObject4$9(), function (props) {
 }, function (props) {
   var _props$theme6;
 
-  return ((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.margin) * 4;
+  return ((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.margin) * 6;
 });
 
 var MiniForm = function MiniForm(_ref) {
@@ -21743,7 +21388,7 @@ var FormContainer = styled.div(_templateObject$q(), function (props) {
 var StyledForm$1 = styled.form(_templateObject2$m(), function (props) {
   var _props$theme5;
 
-  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 4;
+  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 6;
 });
 
 var check = function (it) {
@@ -24738,10 +24383,10 @@ exports.default = _default;
 
 var ScheduleSelector = unwrapExports(lib);
 
-function _templateObject3$f() {
+function _templateObject3$g() {
   var data = _taggedTemplateLiteral(["\n  justify-content: center;\n  display: flex;\n  background: #ffffff;\n  box-shadow: 0px 4px 13px rgba(193, 188, 183, 0.3);\n"]);
 
-  _templateObject3$f = function _templateObject3() {
+  _templateObject3$g = function _templateObject3() {
     return data;
   };
 
@@ -24769,7 +24414,7 @@ function _templateObject$r() {
 }
 var StyledScheduleSelector = styled(ScheduleSelector)(_templateObject$r());
 var StyledCell = styled.div(_templateObject2$n());
-var StyledDateLabel = styled.div(_templateObject3$f());
+var StyledDateLabel = styled.div(_templateObject3$g());
 
 var INITIAL_DATE = new Date('2019-06-10T00:00:00');
 var DAYS_OF_THE_WEEK = {
@@ -24994,6 +24639,7 @@ var Form$1 = function Form(_ref) {
           return /*#__PURE__*/React.createElement(OfferTypeWidget, {
             key: 'otw-' + (field.key || parentKey),
             offerType: field.formOfferType,
+            answers: answers,
             values: formik === null || formik === void 0 ? void 0 : formik.values,
             errors: errors,
             action: function action(values) {
@@ -25354,7 +25000,8 @@ var Form$1 = function Form(_ref) {
       return _onSubmit(f);
     }
   }, function (formik) {
-    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(StyledForm$1, {
+    return /*#__PURE__*/React.createElement(StyledForm$1, {
+      key: 'cenas',
       onSubmit: formik.handleSubmit
     }, renderFields(formik, questions), /*#__PURE__*/React.createElement(Button$1, {
       isDisabled: isDisabled,
@@ -25365,7 +25012,7 @@ var Form$1 = function Form(_ref) {
       btnType: 'primary',
       isFullWidth: true,
       text: submitLabel
-    })));
+    }));
   }));
 };
 
@@ -25387,7 +25034,7 @@ Form$1.propTypes = {
   hiddenFields: propTypes.arrayOf(propTypes.string),
   questions: propTypes.arrayOf( // * Fields
   propTypes.shape({
-    type: propTypes.oneOf(['dropdown', 'form', 'text', 'date', 'radio', 'form', 'object', 'footnote', 'array', 'text-area', 'tabs']).isRequired,
+    type: propTypes.oneOf(['dropdown', 'form', 'text', 'date', 'radio', 'form', 'object', 'footnote', 'array', 'text-area', 'tabs']),
     key: propTypes.string,
     // ! To be replaced with label/translate on key 👇
     question: propTypes.string,
@@ -35695,10 +35342,10 @@ function _templateObject4$a() {
   return data;
 }
 
-function _templateObject3$g() {
+function _templateObject3$h() {
   var data = _taggedTemplateLiteral(["\n  min-height: 32px;\n  min-width: 32px;\n  border-radius: 50%;\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-right: 8px;\n\n  svg {\n    width: 14px;\n  }\n"]);
 
-  _templateObject3$g = function _templateObject3() {
+  _templateObject3$h = function _templateObject3() {
     return data;
   };
 
@@ -35734,7 +35381,7 @@ var KanbanCard = styled.div(_templateObject$s(), function (props) {
   return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin;
 });
 var BadgeContainer = styled.div(_templateObject2$o());
-var IconContainer$1 = styled.div(_templateObject3$g(), function (props) {
+var IconContainer$1 = styled.div(_templateObject3$h(), function (props) {
   var _props$theme3;
 
   return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.lightBeige;
@@ -35808,10 +35455,10 @@ function _templateObject4$b() {
   return data;
 }
 
-function _templateObject3$h() {
+function _templateObject3$i() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  position: sticky;\n  top: 0;\n  background-color: ", ";\n  align-items: baseline;\n  justify-content: space-between;\n  width: 85%;\n  padding: 0px 30px;\n\n  h3 {\n    font-size: 16px;\n  }\n"]);
 
-  _templateObject3$h = function _templateObject3() {
+  _templateObject3$i = function _templateObject3() {
     return data;
   };
 
@@ -35851,7 +35498,7 @@ var ColumnCardsContainer = styled.div(_templateObject2$p(), function (props) {
 
   return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.darkBlue;
 });
-var Header$1 = styled.div(_templateObject3$h(), function (props) {
+var Header$1 = styled.div(_templateObject3$i(), function (props) {
   var _props$theme4;
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.lightestBeige;
@@ -35996,10 +35643,10 @@ function _templateObject4$c() {
   return data;
 }
 
-function _templateObject3$i() {
+function _templateObject3$j() {
   var data = _taggedTemplateLiteral(["\n  & > div {\n    flex: ", ";\n  }\n  div {\n    ", "\n  }\n  display: flex;\n  margin-bottom: 0.5rem;\n  font-family: Space Grotesk;\n  font-style: normal;\n  font-weight: bold;\n  align-items: ", ";\n  justify: ", ";\n  ", "\n"]);
 
-  _templateObject3$i = function _templateObject3() {
+  _templateObject3$j = function _templateObject3() {
     return data;
   };
 
@@ -36037,7 +35684,7 @@ var ListWrapper = styled.div(_templateObject$u(), function (props) {
   return props.isBorded ? '10px' : 'none';
 });
 var ListContainer$2 = styled.ul(_templateObject2$q());
-var ListItens = styled.li(_templateObject3$i(), function (props) {
+var ListItens = styled.li(_templateObject3$j(), function (props) {
   return props.hasFullWidthLi ? 1 : '';
 }, media.tablet("flex: 1; padding: 0px;"), function (props) {
   return props.hasIcon ? 'center' : 'baseline';
@@ -36260,10 +35907,10 @@ TrackerBox.propTypes = {
   action: propTypes.func
 };
 
-function _templateObject3$j() {
+function _templateObject3$k() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n"]);
 
-  _templateObject3$j = function _templateObject3() {
+  _templateObject3$k = function _templateObject3() {
     return data;
   };
 
@@ -36295,7 +35942,7 @@ var Left$1 = styled.div(_templateObject2$s(), function (props) {
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.grey;
 });
-var Right$1 = styled.div(_templateObject3$j());
+var Right$1 = styled.div(_templateObject3$k());
 
 var Pagination = function Pagination(_ref) {
   var totalPages = _ref.totalPages,
@@ -36378,10 +36025,10 @@ function _templateObject4$d() {
   return data;
 }
 
-function _templateObject3$k() {
+function _templateObject3$l() {
   var data = _taggedTemplateLiteral(["\n  margin-bottom: ", "px;\n  button {\n    transition: all 0.5s;\n    svg {\n      transition: all 0.5s;\n      transform: ", ";\n      > path {\n        fill: ", ";\n      }\n    }\n    ", "\n  }\n"]);
 
-  _templateObject3$k = function _templateObject3() {
+  _templateObject3$l = function _templateObject3() {
     return data;
   };
 
@@ -36429,7 +36076,7 @@ var NavHeader = styled(Tiny)(_templateObject2$t(), function (props) {
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.white;
 });
-var NavSection = styled.div(_templateObject3$k(), function (props) {
+var NavSection = styled.div(_templateObject3$l(), function (props) {
   var _props$theme5;
 
   return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 2;
@@ -36782,10 +36429,10 @@ var Table = function Table(_ref) {
   }));
 };
 
-function _templateObject3$l() {
+function _templateObject3$m() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    align-items: center;\n\n    svg {\n        margin-right: 26px;\n    }\n"]);
 
-  _templateObject3$l = function _templateObject3() {
+  _templateObject3$m = function _templateObject3() {
     return data;
   };
 
@@ -36817,7 +36464,7 @@ var LeftSection = styled.div(_templateObject2$v(), function (props) {
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.grey;
 });
-var RightSection = styled.div(_templateObject3$l());
+var RightSection = styled.div(_templateObject3$m());
 
 var TopBar = function TopBar(_ref) {
   var location = _ref.location,
