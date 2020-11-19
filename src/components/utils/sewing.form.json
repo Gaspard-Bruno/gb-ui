@@ -83,11 +83,6 @@
         { "label": "Moradia familiar", "value": 1 }
       ]
     },
-    {
-      "key": "files",
-      "label": "Por favor, partilhe connosco se possível algumas fotos",
-      "widget": "file-uploader"
-    },
 
     {
       "key": "offer-type",

@@ -685,12 +685,6 @@ const stepFive = () => {
                 { label: 'Outro', value: 3, isSelected: false }
               ],
               children: [
-                /* {
-                  label: '',
-                  dependencyType: 'value',
-                  dependencyValue: 3,
-                  type: 'footnote'
-                }, */
                 {
                   key: 'repairsTypeOther',
                   label: 'Outro',
@@ -793,12 +787,6 @@ const stepFive = () => {
                     { label: 'Outro', value: 16, isSelected: false }
                   ],
                   children: [
-                    /* {
-                      label: '',
-                      dependencyType: 'value',
-                      dependencyValue: 16,
-                      type: 'footnote'
-                    }, */
                     {
                       key: 'repairsSubTypeBricolageOther',
                       label: 'Outro',
@@ -860,12 +848,6 @@ const stepFive = () => {
                     { label: 'Outro', value: 8, isSelected: false }
                   ],
                   children: [
-                    /* {
-                      label: '',
-                      dependencyType: 'value',
-                      dependencyValue: 8,
-                      type: 'footnote'
-                    }, */
                     {
                       key: 'repairsSubTypeElectricityOther',
                       label: 'Outro',
@@ -902,39 +884,33 @@ const stepFive = () => {
                     {
                       label:
                         'Instalação de Calhas para a passagem de Cabos Elétricos',
-                      value: 0,
+                      value: 3,
                       isSelected: false
                     },
                     {
                       label: 'Colocação de Lâmpadas',
-                      value: 3,
+                      value: 4,
                       isSelected: false
                     },
                     {
                       label:
                         'Montagem e Reparação de Termoacumulador e Esquentador',
-                      value: 0,
+                      value: 5,
                       isSelected: false
                     },
                     {
                       label: 'Revisões e Reparações de Quadros Elétricos',
-                      value: 4,
+                      value: 6,
                       isSelected: false
                     },
-                    { label: 'Outro', value: 5, isSelected: false }
+                    { label: 'Outro', value: 7, isSelected: false }
                   ],
                   children: [
-                    /* {
-                      label: '',
-                      dependencyType: 'value',
-                      dependencyValue: 5,
-                      type: 'footnote'
-                    }, */
                     {
                       key: 'repairsSubTypeElectricityOther',
                       label: 'Outro',
                       dependencyType: 'value',
-                      dependencyValue: 5,
+                      dependencyValue: 7,
                       type: 'text'
                     }
                   ]

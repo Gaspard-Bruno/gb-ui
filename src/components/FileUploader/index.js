@@ -84,7 +84,7 @@ const FileUploader = ({ title, name, action, answers }) => {
   const filesPreview = files?.map(file => (
     <>
       {file?.type === 'application/pdf' ? (
-        <Body alt>Ficheiros: {file.name}</Body>
+        <Body alt='true'>Ficheiros: {file.name}</Body>
       ) : (
         <UploaderPreviewContainer key={file.name}>
           <UploaderPreviewInner key={file.name}>
@@ -100,9 +100,9 @@ const FileUploader = ({ title, name, action, answers }) => {
       <FileUploaderContainer {...getRootProps()}>
         <UploaderRowWrapper>
           <Icon name='upload' />
-          <Body alt>Arraste e solte a sua imagem aqui </Body>
+          <Body alt='true'>Arraste e solte a sua imagem aqui </Body>
           <UploaderRowWrapper>
-            <Body alt>ou</Body>
+            <Body alt='true'>ou</Body>
           </UploaderRowWrapper>
         </UploaderRowWrapper>
         <>
