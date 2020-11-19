@@ -100,7 +100,7 @@ const Form = ({
               content={renderFields(formik, field.questions, field.parentKey)}
             />
           );
-        case 'file-uploader':
+        /* case 'file-uploader':
           return (
             <FileUploader
               name={field.key}
@@ -108,7 +108,7 @@ const Form = ({
               file={answers['file']}
               action={values => console.log('sadasdasd', values)}
             />
-          );
+          ); */
         case 'offer-type':
           return (
             <OfferTypeWidget
