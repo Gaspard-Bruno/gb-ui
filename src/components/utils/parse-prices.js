@@ -43,8 +43,12 @@ rows.forEach(function(d) {
   var row = d.split('\t');
   var rowKey = KEYS_TO_FRONT_END_MAP[row[0]];
   for (var i = 1; i < keys.length; i++) {
-    tmp[keys[i].toLowerCase().replace('\r', '')] =
-      row[i] && row[i].replace('\r', '').trim();
+    tmp[
+      keys[i]
+        .toLowerCase()
+        .replace('\r', '')
+        .trim()
+    ] = row[i] && row[i].replace('\r', '').trim();
   }
   json[rowKey] = tmp;
 });
