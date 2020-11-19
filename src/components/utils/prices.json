@@ -1,0 +1,94 @@
+{
+  "senior": {
+    "unidades": "Hora",
+    "standard ": "8.50 €",
+    "premium": "10.50 €",
+    "taxa urgência": "2.44 €",
+    "km": "0,36€/km"
+  },
+  "child-care": {
+    "unidades": "Hora",
+    "standard ": "8.50 €",
+    "premium": "10.50 €",
+    "taxa urgência": "2.44 €",
+    "km": "0,36€/km"
+  },
+  "pet-sitting": {
+    "unidades": "Dia",
+    "standard ": "14.50 €",
+    "premium": "17.00 €",
+    "taxa urgência": "2.44 €",
+    "km": "0,36€/km"
+  },
+  "pet-care": {
+    "unidades": "Hora",
+    "standard ": "7.50 €",
+    "premium": "10.00 €",
+    "taxa urgência": "2.44 €",
+    "km": "não"
+  },
+  "language-lessons": {
+    "unidades": "Hora",
+    "standard ": "16.00 €",
+    "premium": "19.00 €",
+    "taxa urgência": "2.44 €",
+    "km": "não"
+  },
+  "music-lessons": {
+    "unidades": "Hora",
+    "standard ": "20.00 €",
+    "premium": "22.00 €",
+    "taxa urgência": "2.44 €",
+    "km": "não"
+  },
+  "chef": {
+    "unidades": "Hora",
+    "standard ": "10.00 €",
+    "premium": "12.50 €",
+    "taxa urgência": "2.44 €",
+    "km": "não"
+  },
+  "tailoring": {
+    "unidades": "Hora",
+    "standard ": "8.13 €",
+    "premium": "10.13 €",
+    "taxa urgência": "2.44 €",
+    "km": "0,36€/km"
+  },
+  "gardening": {
+    "unidades": "Hora",
+    "standard ": "10.00 €",
+    "premium": "12.00 €",
+    "taxa urgência": "2.44 €",
+    "km": "não"
+  },
+  "ironing": {
+    "unidades": "Hora",
+    "standard ": "8.13 €",
+    "premium": "9.13 €",
+    "taxa urgência": "2.44 €",
+    "km": "não"
+  },
+  "cleaning": {
+    "unidades": "Hora",
+    "standard ": "8.13 €",
+    "premium": "9.13 €",
+    "taxa urgência": "2.44 €",
+    "km": "não"
+  },
+  "undefined": {},
+  "repairs": {
+    "unidades": "Hora",
+    "standard ": "15.00 €",
+    "premium": "18.50 €",
+    "taxa urgência": "2.44 €",
+    "km": "0,36€/km"
+  },
+  "special-repairs": {
+    "unidades": "Hora",
+    "standard ": "19.00 €",
+    "premium": "22.50 €",
+    "taxa urgência": "2.44 €",
+    "km": "0,36€/km"
+  }
+}
