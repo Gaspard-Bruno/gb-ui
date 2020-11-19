@@ -652,10 +652,11 @@ const stepFive = () => {
                 'Informamos que por lei, todas as pessoas que trabalhem com crianças deverão proceder à entrega do Registo Criminal atualizado.'
             },
             {
-              key: "files",
-              label: "Por favor, partilhe connosco se possível os seus documentos",
-              widget: "file-uploader"
-            },
+              key: 'files',
+              label:
+                'Por favor, partilhe connosco se possível os seus documentos',
+              widget: 'file-uploader'
+            }
           ]
         },
         //! Repairs
@@ -1178,6 +1179,7 @@ const stepFive = () => {
               type: 'checkbox-group',
               label:
                 'Qual o nível de ensino da(s) língua(s) que pode realizar?',
+              options: [
                 { label: 'Básico', value: 0, isSelected: false },
                 {
                   label: 'Intermédio',
