@@ -43,12 +43,13 @@ rows.forEach(function(d) {
   var row = d.split('\t');
   var rowKey = KEYS_TO_FRONT_END_MAP[row[0]];
   for (var i = 1; i < keys.length; i++) {
+    var val = row[i] && row[i].replace('\r', '').trim();
     tmp[
       keys[i]
         .toLowerCase()
         .replace('\r', '')
         .trim()
-    ] = row[i] && row[i].replace('\r', '').trim();
+    ] = val === 'não' ? false : val;
   }
   json[rowKey] = tmp;
 });

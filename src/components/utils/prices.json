@@ -25,28 +25,28 @@
     "standard": "7.50 €",
     "premium": "10.00 €",
     "taxa urgência": "2.44 €",
-    "km": "não"
+    "km": false
   },
   "language-lessons": {
     "unidades": "Hora",
     "standard": "16.00 €",
     "premium": "19.00 €",
     "taxa urgência": "2.44 €",
-    "km": "não"
+    "km": false
   },
   "music-lessons": {
     "unidades": "Hora",
     "standard": "20.00 €",
     "premium": "22.00 €",
     "taxa urgência": "2.44 €",
-    "km": "não"
+    "km": false
   },
   "chef": {
     "unidades": "Hora",
     "standard": "10.00 €",
     "premium": "12.50 €",
     "taxa urgência": "2.44 €",
-    "km": "não"
+    "km": false
   },
   "tailoring": {
     "unidades": "Hora",
@@ -60,21 +60,21 @@
     "standard": "10.00 €",
     "premium": "12.00 €",
     "taxa urgência": "2.44 €",
-    "km": "não"
+    "km": false
   },
   "ironing": {
     "unidades": "Hora",
     "standard": "8.13 €",
     "premium": "9.13 €",
     "taxa urgência": "2.44 €",
-    "km": "não"
+    "km": false
   },
   "cleaning": {
     "unidades": "Hora",
     "standard": "8.13 €",
     "premium": "9.13 €",
     "taxa urgência": "2.44 €",
-    "km": "não"
+    "km": false
   },
   "undefined": {},
   "repairs": {
