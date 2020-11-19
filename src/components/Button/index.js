@@ -12,7 +12,7 @@ const Button = ({
   isSmall,
   icon,
   action,
-  type = 'button',
+  type,
   isFullWidth,
   children
 }) => {
@@ -68,7 +68,8 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  type: 'primary'
+  btnType: 'primary',
+  type: 'button'
 };
 
 export default Button;

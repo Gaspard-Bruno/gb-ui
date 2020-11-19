@@ -13,6 +13,7 @@ import CheckBoxGroup from '../CheckBoxGroup';
 import ButtonGroup from '../ButtonGroup';
 import RadioButton from '../RadioButton';
 
+import FileUploader from '../FileUploader';
 import OfferTypeWidget from '../OfferTypeWidget';
 import ServiceTypeWidget from '../ServiceTypeWidget';
 
@@ -97,6 +98,15 @@ const Form = ({
               isOpen={field.isOpen}
               title={field.label}
               content={renderFields(formik, field.questions, field.parentKey)}
+            />
+          );
+        case 'file-uploader':
+          return (
+            <FileUploader
+              name={field.key}
+              title={field.label}
+              file={answers['file']}
+              action={values => console.log('sadasdasd', values)}
             />
           );
         case 'offer-type':
