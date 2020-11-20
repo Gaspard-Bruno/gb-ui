@@ -16,7 +16,7 @@ const stepOne = () => {
     { key: 'name', type: 'text', label: 'Nome' },
     { key: 'lastName', type: 'text', label: 'Apelido' },
     { key: 'birthDate', type: 'date', label: 'Data de Nascimento' },
-    { key: 'nif', type: 'number', label: 'NIF' },
+    { key: 'nif', type: 'text', label: 'NIF' },
     {
       key: 'maritalStatus',
       type: 'radio',
