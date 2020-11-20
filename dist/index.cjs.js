@@ -22073,15 +22073,15 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       total: ''
     };
 
-    if (answers['recurrence'] === 0 || (values === null || values === void 0 ? void 0 : values['recurrence']) === 0) {
+    if ((values === null || values === void 0 ? void 0 : values['recurrence']) === 0 || (answers === null || answers === void 0 ? void 0 : answers['recurrence']) === 0) {
       status.pickedRecurrency = 'Dia';
     }
 
-    if ((values === null || values === void 0 ? void 0 : values['recurrence']) === 1 || answers['recurrence'] === 1) {
+    if ((values === null || values === void 0 ? void 0 : values['recurrence']) === 1 || (answers === null || answers === void 0 ? void 0 : answers['recurrence']) === 1) {
       status.pickedRecurrency = 'Semana';
     }
 
-    if ((values === null || values === void 0 ? void 0 : values['recurrence']) === 2 || answers['recurrence'] === 2) {
+    if ((values === null || values === void 0 ? void 0 : values['recurrence']) === 2 || (answers === null || answers === void 0 ? void 0 : answers['recurrence']) === 2) {
       status.pickedRecurrency = 'Mês';
     }
 
@@ -22209,7 +22209,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
           value: values.value
         });
       }
-    }), /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(TextContainer, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency)), /*#__PURE__*/React__default['default'].createElement(Row, null, values['recurrence'] === 1 && /*#__PURE__*/React__default['default'].createElement(ButtonGroup, {
+    }), /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(TextContainer, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency)), /*#__PURE__*/React__default['default'].createElement(Row, null, (values === null || values === void 0 ? void 0 : values['recurrence']) === 1 && /*#__PURE__*/React__default['default'].createElement(ButtonGroup, {
       error: errors === null || errors === void 0 ? void 0 : errors['week-select'],
       name: "week-select",
       list: weekSelectOptions,
@@ -22220,7 +22220,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
           value: values === null || values === void 0 ? void 0 : values.value
         });
       }
-    }), values['recurrence'] === 2 && /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
+    }), (values === null || values === void 0 ? void 0 : values['recurrence']) === 2 && /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
       error: errors === null || errors === void 0 ? void 0 : errors['montly-recurrence'],
       label: "Ocorre em",
       defaultValue: getDefaultValues(montlyRecurrenceOptions, answers === null || answers === void 0 ? void 0 : answers['montly-recurrence']),
@@ -22316,7 +22316,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     }), /*#__PURE__*/React__default['default'].createElement(SmallBody, null, "*n\xE3o inclui a taxa de IVA em vigor"), values['pack-selection'] === 0 || values['pack-selection'] === 1 ? /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(Body, null, "Poder\xE1 alterar a recorr\xEAncia e reagendar para mais tarde atrav\xE9s da Equipa da 55+."), /*#__PURE__*/React__default['default'].createElement(Select$2, {
       label: "Recorr\xEAncia",
       name: "recurrence",
-      defaultValue: getDefaultValues(recurrenceOptions, answers['recurrence']),
+      defaultValue: getDefaultValues(recurrenceOptions, answers === null || answers === void 0 ? void 0 : answers['recurrence']),
       error: errors === null || errors === void 0 ? void 0 : errors['recurrence'],
       onChange: function onChange(values) {
         return _action({
@@ -22336,7 +22336,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
           value: values.value
         });
       }
-    }), /*#__PURE__*/React__default['default'].createElement(TextContainer, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency), values['recurrence'] === 1 && /*#__PURE__*/React__default['default'].createElement(ButtonGroup, {
+    }), /*#__PURE__*/React__default['default'].createElement(TextContainer, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency), (values === null || values === void 0 ? void 0 : values['recurrence']) === 1 && /*#__PURE__*/React__default['default'].createElement(ButtonGroup, {
       error: errors === null || errors === void 0 ? void 0 : errors['week-select'],
       name: "week-select",
       list: weekSelectOptions,
