@@ -67,13 +67,13 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
       total: ''
     };
 
-    if (answers['recurrence'] === 0 || values?.['recurrence'] === 0) {
+    if (values?.['recurrence'] === 0 || answers?.['recurrence'] === 0) {
       status.pickedRecurrency = 'Dia';
     }
-    if (values?.['recurrence'] === 1 || answers['recurrence'] === 1) {
+    if (values?.['recurrence'] === 1 || answers?.['recurrence'] === 1) {
       status.pickedRecurrency = 'Semana';
     }
-    if (values?.['recurrence'] === 2 || answers['recurrence'] === 2) {
+    if (values?.['recurrence'] === 2 || answers?.['recurrence'] === 2) {
       status.pickedRecurrency = 'Mês';
     }
     return status;
@@ -236,7 +236,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
               </>
               {/* Weekly option - day-selection */}
               <Row>
-                {values['recurrence'] === 1 && (
+                {values?.['recurrence'] === 1 && (
                   <ButtonGroup
                     error={errors?.['week-select']}
                     name='week-select'
@@ -248,7 +248,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
                   />
                 )}
                 {/* Montly option - week-selection */}
-                {values['recurrence'] === 2 && (
+                {values?.['recurrence'] === 2 && (
                   <>
                     <Select
                       error={errors?.['montly-recurrence']}
@@ -370,7 +370,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
                   name='recurrence'
                   defaultValue={getDefaultValues(
                     recurrenceOptions,
-                    answers['recurrence']
+                    answers?.['recurrence']
                   )}
                   error={errors?.['recurrence']}
                   onChange={values =>
@@ -395,7 +395,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
                   <TextContainer>
                     {selectedRecurrency?.pickedRecurrency}
                   </TextContainer>
-                  {values['recurrence'] === 1 && (
+                  {values?.['recurrence'] === 1 && (
                     <ButtonGroup
                       error={errors?.['week-select']}
                       name='week-select'

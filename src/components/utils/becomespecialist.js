@@ -927,6 +927,16 @@ const stepFive = () => {
                 { label: 'Sim', value: 1 },
                 { label: 'Não', value: 0 }
               ]
+            },
+            {
+              key: 'repairsExperience',
+              label: 'Tem experiência para realizar reparações especializadas?',
+              type: 'radio',
+              isVerticalAligned: true,
+              options: [
+                { label: 'Sim', value: 1 },
+                { label: 'Não', value: 0 }
+              ]
             }
           ]
         },
@@ -1269,10 +1279,18 @@ const stepEight = () => {
               key: 'language-selected',
               label: '',
               options: [
-                { value: 0, label: 'Português' },
-                { value: 1, label: 'Inglês' },
-                { value: 2, label: 'Francês' },
-                { value: 3, label: 'Espanhol' }
+                { value: 0, label: 'Inglês' },
+                { value: 1, label: 'Francês' },
+                { value: 2, label: 'Espanhol' },
+                { value: 3, label: 'Outra' }
+              ],
+              children: [
+                {
+                  label: 'Outra',
+                  type: 'text',
+                  dependencyType: 'value',
+                  dependencyValue: 3
+                }
               ]
             },
             {
