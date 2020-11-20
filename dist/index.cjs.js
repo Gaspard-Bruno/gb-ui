@@ -6493,7 +6493,7 @@ var CheckBoxGroup = function CheckBoxGroup(_ref) {
     if (action) action(checkedItems);
   };
 
-  return /*#__PURE__*/React__default['default'].createElement(StyledContainer$1, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), list && list.map(function (item, index) {
+  return /*#__PURE__*/React__default['default'].createElement(StyledContainer$1, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error), list && list.map(function (item, index) {
     return /*#__PURE__*/React__default['default'].createElement(CheckboxGroupContainer, {
       key: "".concat(item, "-").concat(index)
     }, /*#__PURE__*/React__default['default'].createElement(StyledCheckbox, {
@@ -6504,7 +6504,7 @@ var CheckBoxGroup = function CheckBoxGroup(_ref) {
         return handleItems(name, item === null || item === void 0 ? void 0 : item.question);
       },
       key: index
-    }), item.question && /*#__PURE__*/React__default['default'].createElement(Body, null, item.question), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error));
+    }), item.question && /*#__PURE__*/React__default['default'].createElement(Body, null, item.question));
   }));
 };
 
@@ -20090,7 +20090,8 @@ var TextInput = function TextInput(_ref) {
       type = _ref.type,
       hasIcon = _ref.hasIcon,
       isMini = _ref.isMini,
-      otherProps = _objectWithoutProperties(_ref, ["error", "placeholder", "defaultValue", "label", "onChange", "type", "hasIcon", "isMini"]);
+      minDate = _ref.minDate,
+      otherProps = _objectWithoutProperties(_ref, ["error", "placeholder", "defaultValue", "label", "onChange", "type", "hasIcon", "isMini", "minDate"]);
 
   var defaultIcons = [{
     name: 'eye-off',
@@ -20128,6 +20129,7 @@ var TextInput = function TextInput(_ref) {
   })), /*#__PURE__*/React__default['default'].createElement(Body, null, label || ' '), /*#__PURE__*/React__default['default'].createElement(Input$2, {
     type: inputType,
     error: error,
+    min: minDate,
     defaultValue: defaultValue,
     value: otherProps.value,
     placeholder: placeholder,
@@ -20145,7 +20147,8 @@ TextInput.propTypes = {
   onChange: propTypes.func,
   type: propTypes.string,
   isMini: propTypes.bool,
-  hasIcon: propTypes.bool
+  hasIcon: propTypes.bool,
+  minDate: propTypes.string
 };
 
 function _templateObject2$f() {
@@ -22108,6 +22111,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
       name: "service-date",
       type: "date",
+      minDate: new Date().toISOString().split('T')[0],
       defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-date'],
       onChange: function onChange(values) {
         return _action({
@@ -22143,6 +22147,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
       name: "service-date",
       type: "date",
+      minDate: new Date().toISOString().split('T')[0],
       defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-date'],
       onChange: function onChange(values) {
         return _action({
@@ -22247,6 +22252,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data de In\xEDcio",
       name: "service-start-date",
       type: "date",
+      minDate: new Date().toISOString().split('T')[0],
       onChange: function onChange(values) {
         return _action({
           name: 'service-start-date',
@@ -22259,6 +22265,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data de Fim",
       name: "service-end-date",
       type: "date",
+      minDate: new Date().toISOString().split('T')[0],
       onChange: function onChange(values) {
         return _action({
           name: 'service-end-date',
@@ -22347,6 +22354,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data de In\xEDcio",
       name: "service-start-date",
       type: "date",
+      min: new Date().toISOString().split('T')[0],
       defaultValue: answers['service-start-date'],
       error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
       onChange: function onChange(values) {
@@ -22383,6 +22391,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data do In\xEDcio",
       name: "service-date",
       type: "date",
+      min: new Date().toISOString().split('T')[0],
       defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-date'],
       error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
       onChange: function onChange(values) {
@@ -25906,7 +25915,7 @@ var SchedulePicker = function SchedulePicker(_ref) {
     name: name,
     selection: pickedDays,
     timeFormat: 'HH:mm',
-    minTime: 8,
+    minTime: 0,
     maxTime: 24,
     startDate: INITIAL_DATE // inital date is set for a Monday somewhere in time
     ,
@@ -26226,7 +26235,7 @@ var Form$1 = function Form(_ref) {
           }));
 
         case 'checkbox-group':
-          return /*#__PURE__*/React__default['default'].createElement(CheckBoxGroup, {
+          return /*#__PURE__*/React__default['default'].createElement(CheckBoxGroup, _extends({}, fieldProps, {
             name: fieldProps.key,
             key: fieldProps.key,
             label: fieldProps === null || fieldProps === void 0 ? void 0 : fieldProps.label,
@@ -26240,7 +26249,7 @@ var Form$1 = function Form(_ref) {
             action: function action(values) {
               return formik.setFieldValue(field.key, values);
             }
-          });
+          }));
 
         case 'button-group':
           return /*#__PURE__*/React__default['default'].createElement(ButtonGroup, _extends({
