@@ -21,7 +21,7 @@ var KEYS_TO_FRONT_END_MAP = {
   'Pet Care (Visitas, passeios)': 'pet-care',
   'Pet Sitting (Estadia)': 'pet-sitting',
   'Aulas de Música': 'music-lessons',
-  'Pequenas Reparações': 'repairs',
+  'Pequenas Reparações': 'small-repairs',
   'Reparações Especiliazadas': 'special-repairs',
   Limpezas: 'cleaning',
   'Aulas de Línguas': 'language-lessons',
