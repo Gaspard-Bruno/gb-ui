@@ -315,6 +315,7 @@ const Form = ({
         case 'checkbox-group':
           return (
             <CheckBoxGroup
+              {...fieldProps}
               name={fieldProps.key}
               key={fieldProps.key}
               label={fieldProps?.label}

@@ -19,6 +19,7 @@ const CheckBoxGroup = ({ name, label, list, error, action }) => {
   return (
     <StyledContainer>
       {label && <Body>{label}</Body>}
+      {error && <ErrorText>{error}</ErrorText>}
       {list &&
         list.map((item, index) => {
           return (
@@ -31,7 +32,6 @@ const CheckBoxGroup = ({ name, label, list, error, action }) => {
                 key={index}
               ></StyledCheckbox>
               {item.question && <Body>{item.question}</Body>}
-              {error && <ErrorText>{error}</ErrorText>}
             </CheckboxGroupContainer>
           );
         })}

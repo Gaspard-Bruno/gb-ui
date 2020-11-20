@@ -14,6 +14,7 @@ const TextInput = ({
   type,
   hasIcon,
   isMini,
+  minDate,
   ...otherProps
 }) => {
   const defaultIcons = [
@@ -39,6 +40,7 @@ const TextInput = ({
       <StyledInput
         type={inputType}
         error={error}
+        min={minDate}
         defaultValue={defaultValue}
         value={otherProps.value}
         placeholder={placeholder}
@@ -57,7 +59,8 @@ TextInput.propTypes = {
   onChange: PropTypes.func,
   type: PropTypes.string,
   isMini: PropTypes.bool,
-  hasIcon: PropTypes.bool
+  hasIcon: PropTypes.bool,
+  minDate: PropTypes.string
 };
 
 export default TextInput;

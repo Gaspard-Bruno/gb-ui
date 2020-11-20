@@ -101,6 +101,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
             error={errors?.['service-date']}
             name='service-date'
             type='date'
+            minDate={new Date().toISOString().split('T')[0]}
             defaultValue={answers?.['service-date']}
             onChange={values => action({ name: 'service-date', value: values })}
           />
@@ -141,6 +142,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
               error={errors?.['service-date']}
               name='service-date'
               type='date'
+              minDate={new Date().toISOString().split('T')[0]}
               defaultValue={answers?.['service-date']}
               onChange={values =>
                 action({ name: 'service-date', value: values })
@@ -292,6 +294,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
               label='Data de Início'
               name='service-start-date'
               type='date'
+              minDate={new Date().toISOString().split('T')[0]}
               onChange={values =>
                 action({ name: 'service-start-date', value: values })
               }
@@ -302,6 +305,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
               label='Data de Fim'
               name='service-end-date'
               type='date'
+              minDate={new Date().toISOString().split('T')[0]}
               onChange={values =>
                 action({ name: 'service-end-date', value: values })
               }
@@ -451,6 +455,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
                   label='Data de Início'
                   name='service-start-date'
                   type='date'
+                  min={new Date().toISOString().split('T')[0]}
                   defaultValue={answers['service-start-date']}
                   error={errors?.['service-start-date']}
                   onChange={values =>
@@ -498,6 +503,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
                 label='Data do Início'
                 name='service-date'
                 type='date'
+                min={new Date().toISOString().split('T')[0]}
                 defaultValue={answers?.['service-date']}
                 error={errors?.['service-date']}
                 onChange={values =>

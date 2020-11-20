@@ -111,7 +111,10 @@ const components = [
       {
         previewComponentTitle: 'Become Specialist',
         answers: FORM.specialistFormAnswers,
-        questions: FORM.becomeSpecialist.questions
+        questions: FORM.becomeSpecialist.questions,
+        errors: {
+          instruments: 'required'
+        }
       },
       {
         previewComponentTitle: 'Gardening (Pre-filled) with errors',
