@@ -503,7 +503,7 @@ const stepFive = () => {
           widget: 'mini-form',
           dependencyType: 'value-includes',
           dependencyValue: 'gardening',
-          label: 'gardening',
+          label: 'Jardinagem',
           key: 'gardening',
           questions: [
             {
