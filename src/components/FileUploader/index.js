@@ -1,7 +1,6 @@
-import React, { createRef, useEffect, useState } from 'react';
-import DropZone from 'react-dropzone';
-import { Row, Col } from '../Layout';
-import { Body, Heading } from '../Text';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { Body } from '../Text';
 import Icon from '../Icon';
 import Button from '../Button';
 import {
@@ -18,18 +17,6 @@ import { useDropzone } from 'react-dropzone';
 const FileUploader = ({ title, name, action, answers }) => {
   const [files, setFiles] = useState(answers || []);
 
-  const handleDropAccept = async files => {
-    const reader = new FileReader();
-    const base64 = [];
-    files.map(file => {
-      reader.readAsDataURL(file);
-      reader.onload = function() {
-        base64.push(reader.result);
-      };
-    });
-    action && action(base64);
-  };
-
   const { getRootProps, getInputProps, open } = useDropzone({
     // Disable click and keydown behavior
     noClick: true,
@@ -43,46 +30,42 @@ const FileUploader = ({ title, name, action, answers }) => {
         })
       );
     }
-    /* onDropAccepted: handleDropAccept(files) */
   });
 
-  /*return (
-     <DropZone
-      ref={dropzoneRef}
-      maxFiles={5}
-      accept={'image/*, application/pdf'}
-      onDropAccepted={action(files)}
-      onDrop={files => handleDrop}
-    >
-      {({ getRootProps, getInputProps, acceptedFiles, open }) => { */
-  /* const handleDrop = acceptedFiles => {
-    setFiles(
-      acceptedFiles.map(file =>
-        Object.assign(file, {
-          preview: URL.createObjectURL(file)
-        })
-      )
-    );
-  }; */
-  const filesToBase64 = files;
-  useEffect(() => {
-    // Make sure to revoke the data uris to avoid memory leaks
-    files.forEach(file => URL.revokeObjectURL(file.preview));
-
-    //
-    const reader = new FileReader();
-    const base64 = [];
-    files.map(file => {
-      reader.readAsDataURL(file);
-      reader.onload = function() {
-        base64.push(reader.result);
+  // Convert file to base64 string
+  const fileToBase64 = (filename, filepath) => {
+    return new Promise(resolve => {
+      const file = new File([filename], filepath);
+      const reader = new FileReader();
+      // Read file content on file loaded event
+      reader.onload = function(event) {
+        resolve(event.target.result);
       };
+
+      // Convert data to base64
+      reader.readAsDataURL(file);
     });
-    action && action(base64);
-  }, [action, files]);
+  };
+
+  const uploadBase64Files = urlFiles => {
+    const newFiles = [];
+    urlFiles.forEach(file => {
+      fileToBase64(file?.name, file?.path)
+        .then(response => newFiles.push(response))
+        .catch(e => e);
+    });
+    return newFiles;
+  };
+
+  useEffect(() => {
+    if (action) {
+      action(uploadBase64Files(files));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [files]);
 
   const filesPreview = files?.map(file => (
-    <>
+    <React.Fragment key={file?.name}>
       {file?.type === 'application/pdf' ? (
         <Body alt='true'>Ficheiros: {file.name}</Body>
       ) : (
@@ -92,10 +75,10 @@ const FileUploader = ({ title, name, action, answers }) => {
           </UploaderPreviewInner>
         </UploaderPreviewContainer>
       )}
-    </>
+    </React.Fragment>
   ));
   return (
-    <>
+    <React.Fragment key={'file-uploader'}>
       {title && <Body>{title}</Body>}
       <FileUploaderContainer {...getRootProps()}>
         <UploaderRowWrapper>
@@ -117,11 +100,15 @@ const FileUploader = ({ title, name, action, answers }) => {
         </>
         <ThumbsContainer>{filesPreview}</ThumbsContainer>
       </FileUploaderContainer>
-    </>
+    </React.Fragment>
   );
-  /*       }}
-    </DropZone>
-  ); */
+};
+
+FileUploader.propTypes = {
+  title: PropTypes.string,
+  name: PropTypes.string,
+  action: PropTypes.func,
+  answers: PropTypes.object
 };
 
 export default FileUploader;

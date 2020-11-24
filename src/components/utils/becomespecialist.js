@@ -1,9 +1,9 @@
 const stepOne = () => {
   return [
-    {
+    /* {
       label: 'Complete os seus dados pessoais',
       type: 'footnote'
-    },
+    }, */
     {
       key: 'sexType',
       label: 'Sexo',
@@ -34,10 +34,10 @@ const stepOne = () => {
 
 const stepTwo = () => {
   return [
-    {
+    /* {
       label: 'Diga-nos como prefere ser contactado',
       type: 'footnote'
-    },
+    }, */
     {
       key: 'telephone',
       label: 'Número de Telemóvel',
@@ -64,10 +64,10 @@ const stepTwo = () => {
 
 const stepThree = () => {
   return [
-    {
+    /* {
       label: 'Diga-nos como prefere ser contactado',
       type: 'footnote'
-    },
+    }, */
     {
       key: 'country',
       label: 'País',
@@ -101,10 +101,10 @@ const stepThree = () => {
 
 const stepFour = () => {
   return [
-    {
+    /* {
       label: 'Diga-nos como prefere ser contactado',
       type: 'footnote'
-    },
+    }, */
     {
       key: 'professionalStatus',
       label: 'Situação Profissional',
@@ -128,10 +128,10 @@ const stepFour = () => {
 
 const stepFive = () => {
   return [
-    {
+    /* {
       label: 'Diga-nos como prefere ser contactado',
       type: 'footnote'
-    },
+    }, */
     {
       label: 'Tem carro disponível caso seja necessário em algum serviço ?',
       key: 'hasCar',
@@ -148,27 +148,18 @@ const stepFive = () => {
       type: 'uniq-array',
       value: [],
       options: [
+        { label: 'Apoio Familiar a Crianças', value: 'babysitting' },
+        { label: 'Apoio Familiar a Seniores', value: 'elder_company' },
+        { label: 'Aulas De Línguas', value: 'language_lessons' },
         { label: 'Aulas de Música', value: 'music_lessons' },
-        {
-          label: 'Apoio Familiar a crianças',
-          value: 'babysitting'
-        },
-        {
-          label: 'Apoio Familiar a Seniores',
-          value: 'elder_company'
-        },
-        {
-          label: 'Chef Em Casa',
-          value: 'chef_at_home'
-        },
-        { label: 'Jardinagem', value: 'gardening' },
-        { label: 'Reparações', value: 'repairs' },
-        { label: 'Petsitting (Estadia)', value: 'petsitting' },
-        { label: 'Petcare (Visitas e passeios)', value: 'petcare' },
-        { label: 'Passar a Ferro', value: 'ironing' },
+        { label: 'Chef Em Casa', value: 'chef_at_home' },
         { label: 'Costura', value: 'sewing' },
+        { label: 'Jardinagem', value: 'gardening' },
         { label: 'Limpezas', value: 'cleaning' },
-        { label: 'Aulas de Línguas', value: 'language_lessons' }
+        { label: 'Passar a Ferro', value: 'ironing' },
+        { label: 'Petcare (Visitas e passeios)', value: 'petcare' },
+        { label: 'Petsitting (Estadia)', value: 'petsitting' },
+        { label: 'Reparações', value: 'repairs' }
       ],
       children: [
         //! Aulas de Música
@@ -183,7 +174,7 @@ const stepFive = () => {
             {
               key: 'instruments',
               title: 'Aulas de Música',
-              type: 'checkbox-group',
+              type: 'checkbox-widget',
               label: 'Qual o instrumento (ou instrumentos) que pode ensinar?',
               options: [
                 { label: 'Viola', value: 0, isSelected: false },
@@ -194,39 +185,34 @@ const stepFive = () => {
                 },
                 { label: 'Violino', value: 2, isSelected: false },
                 { label: 'Acordeão', value: 3, isSelected: false },
-                { label: 'Bateria / Percução', value: 4, isSelected: false },
+                { label: 'Bateria / Percussão', value: 4, isSelected: false },
                 { label: 'Flauta', value: 5, isSelected: false },
-                { label: 'Outro', value: 6, isSelected: false }
-              ],
-              children: [
                 {
-                  key: 'musicLessonsOtherInstrument',
-                  label: 'Outros',
-                  dependencyType: 'value',
-                  dependencyValue: 6,
-                  type: 'text'
+                  label: 'Outro',
+                  value: 6,
+                  isSelected: false,
+                  isSelectable: true
                 }
-              ]
-            },
-            {
-              key: 'musicLessonsLevel',
-              type: 'checkbox-group',
-              label:
-                'Qual o nível de ensino do(s) instrumento(s) que pode realizar?',
-              options: [
-                { label: 'Básico', value: 0, isSelected: false },
-                {
-                  label: 'Intermédio',
+              ],
+              optionalContent: {
+                key: 'lessonLevel',
+                label:
+                  'Qual o nível de ensino do(s) instrumento(s) que pode realizar?',
+                options: [
+                  { label: 'Básico', value: 0 },
+                  {
+                    label: 'Intermédio',
 
-                  value: 1,
-                  isSelected: false
-                },
-                { label: 'Avançado', value: 2, isSelected: false }
-              ]
+                    value: 1
+                  },
+                  { label: 'Avançado', value: 2 }
+                ]
+              }
             },
+
             {
               key: 'musicLessonsPlace',
-              type: 'checkbox-group',
+              type: 'checkbox-widget',
               label: 'Qual o local onde poderá realizar-se a aula?',
               options: [
                 { label: 'Na minha casa', value: 0, isSelected: false },
@@ -236,15 +222,11 @@ const stepFive = () => {
                   value: 1,
                   isSelected: false
                 },
-                { label: 'Outro Espaço', value: 2, isSelected: false }
-              ],
-              children: [
                 {
-                  key: 'musicLessonsOtherPlace',
                   label: 'Outro Espaço',
-                  dependencyType: 'value',
-                  dependencyValue: 2,
-                  type: 'text'
+                  value: 2,
+                  isSelected: false,
+                  isSelectable: true
                 }
               ]
             }
@@ -257,12 +239,12 @@ const stepFive = () => {
           key: 'elder_company',
           dependencyType: 'value-includes',
           dependencyValue: 'elder_company',
-          label: 'Apoio Familiar a Seniores',
+          label: 'Apoio a Seniores',
           questions: [
             {
               key: 'seniorSupportType',
-              title: 'Apoio Familiar a Seniores',
-              type: 'checkbox-group',
+              title: 'Apoio a Seniores',
+              type: 'checkbox-widget',
               label:
                 'Este serviço tem varias tipologias, quais gostaria de fazer?',
               options: [
@@ -291,16 +273,8 @@ const stepFive = () => {
                 {
                   label: 'Outro',
                   value: 4,
-                  isSelected: false
-                }
-              ],
-              children: [
-                {
-                  key: 'seniorSupportTypeOther',
-                  type: 'text',
-                  label: 'Outro',
-                  dependencyType: 'value',
-                  dependencyValue: 4
+                  isSelected: false,
+                  isSelectable: true
                 }
               ]
             }
@@ -313,12 +287,12 @@ const stepFive = () => {
           key: 'chefAtHome',
           dependencyType: 'value-includes',
           dependencyValue: 'chef_at_home',
-          label: 'Chef em Casa',
+          label: 'Chef Em Casa',
           questions: [
             {
               key: 'chefAtHomeFoodType',
               title: 'Experiência Gastronómica',
-              type: 'checkbox-group',
+              type: 'checkbox-widget',
               label: 'Qual é o tipo de comida que quer fazer?',
               options: [
                 {
@@ -339,15 +313,11 @@ const stepFive = () => {
                   value: 5,
                   isSelected: false
                 },
-                { label: 'Outro', value: 6, isSelected: false }
-              ],
-              children: [
                 {
-                  key: 'chefAtHomeFoodTypeOther',
                   label: 'Outro',
-                  dependencyType: 'value',
-                  dependencyValue: 6,
-                  type: 'text'
+                  value: 6,
+                  isSelected: false,
+                  isSelectable: true
                 }
               ]
             },
@@ -384,7 +354,7 @@ const stepFive = () => {
             {
               key: 'petcareAnimalType',
               title: 'Pet Care (Visitas e Passeios)',
-              type: 'checkbox-group',
+              type: 'checkbox-widget',
               label: 'Qual é o tipo de animal que pode cuidar?',
               options: [
                 { label: 'Cão', value: 0, isSelected: false },
@@ -395,23 +365,11 @@ const stepFive = () => {
                 {
                   label: 'Outro',
                   value: 5,
-                  isSelected: false
+                  isSelected: false,
+                  isSelectable: true
                 }
               ],
               children: [
-                {
-                  key: 'petcareAnimalTypeOther',
-                  label: 'Outro',
-                  dependencyType: 'value',
-                  dependencyValue: 5,
-                  type: 'text'
-                },
-                {
-                  type: 'footnote',
-                  label: '',
-                  dependencyType: 'value',
-                  dependencyValue: 5
-                },
                 {
                   key: 'petcareAnimalSize',
                   label: 'Qual o porte do cão que pode cuidar?',
@@ -451,7 +409,7 @@ const stepFive = () => {
             },
             {
               key: 'petsittingAnimalType',
-              type: 'checkbox-group',
+              type: 'checkbox-widget',
               label: 'Qual é o tipo de animal que pode cuidar?',
               options: [
                 { label: 'Cão', value: 0, isSelected: false },
@@ -462,24 +420,11 @@ const stepFive = () => {
                 {
                   label: 'Outro',
                   value: 5,
-                  isSelected: false
+                  isSelected: false,
+                  isSelectable: true
                 }
               ],
               children: [
-                {
-                  key: 'petsittingAnimalAnimalTypeOther',
-                  label: 'Outro',
-                  dependencyType: 'value',
-                  dependencyValue: 5,
-                  type: 'text',
-                  excludeFromGroup: true
-                },
-                {
-                  type: 'footnote',
-                  label: '',
-                  dependencyType: 'value',
-                  dependencyValue: 5
-                },
                 {
                   key: 'petsittingAnimalAnimalSize',
                   label: 'Qual o porte do cão que pode cuidar?',
@@ -509,7 +454,7 @@ const stepFive = () => {
             {
               key: 'gardeningType',
               title: 'Jardinagem',
-              type: 'checkbox-group',
+              type: 'checkbox-widget',
               label: 'Este serviço tem várias tipologias, quais pode fazer?',
               options: [
                 {
@@ -535,15 +480,11 @@ const stepFive = () => {
                   isSelected: false
                 },
                 { label: 'Consultoria', value: 4, isSelected: false },
-                { label: 'Outro', value: 5, isSelected: false }
-              ],
-              children: [
                 {
-                  key: 'gardeningTypeOther',
-                  label: 'Outros',
-                  dependencyType: 'value',
-                  dependencyValue: 5,
-                  type: 'text'
+                  label: 'Outro',
+                  value: 5,
+                  isSelected: false,
+                  isSelectable: true
                 }
               ]
             },
@@ -567,11 +508,11 @@ const stepFive = () => {
           dependencyType: 'value-includes',
           key: 'babysitting',
           dependencyValue: 'babysitting',
-          label: 'Apoio Familiar a crianças',
+          label: 'Apoio Familiar a Crianças',
           questions: [
             {
               key: 'babysittingChildrenNumber',
-              title: 'Apoio Familiar a crianças',
+              title: 'Apoio Familiar a Crianças',
               type: 'checkbox-group',
               label: 'Quantas crianças pode acompanhar ao mesmo tempo?',
               options: [
@@ -601,7 +542,7 @@ const stepFive = () => {
             },
             {
               key: 'babysittingServiceToDo',
-              type: 'checkbox-group',
+              type: 'checkbox-widget',
               label: 'Que tipos de serviço gostaria de fazer?',
               options: [
                 {
@@ -628,23 +569,15 @@ const stepFive = () => {
                 {
                   label: 'Outro',
                   value: 4,
-                  isSelected: false
-                }
-              ],
-              children: [
-                {
-                  key: 'babysittingServiceToDoOther',
-                  label: 'Outro',
-                  type: 'text',
-                  dependencyType: 'value',
-                  dependencyValue: 4
+                  isSelected: false,
+                  isSelectable: true
                 }
               ]
             },
             {
               type: 'footnote',
               label:
-                'Se o serviço requerer a utilização da viatura própria, serão pagos os km.'
+                'Se o serviço requerer a utilização da viatura própria, serão pagos os km, ao preço de 0,36€/km'
             },
             {
               type: 'footnote',
@@ -671,7 +604,7 @@ const stepFive = () => {
             {
               key: 'repairsType',
               title: 'Reparações',
-              type: 'checkbox-group',
+              type: 'checkbox-widget',
               label: 'Este serviço tem várias tipologias, quais pode fazer?',
               options: [
                 {
@@ -682,12 +615,17 @@ const stepFive = () => {
                 },
                 { label: 'Canalizações', value: 1, isSelected: false },
                 { label: 'Eletricidade', value: 2, isSelected: false },
-                { label: 'Outro', value: 3, isSelected: false }
+                {
+                  label: 'Outro',
+                  value: 3,
+                  isSelected: false,
+                  isSelectable: true
+                }
               ],
               children: [
                 {
                   key: 'repairsTypeOther',
-                  label: 'Outro',
+                  label: '',
                   dependencyType: 'value',
                   dependencyValue: 3,
                   type: 'text'
@@ -695,7 +633,7 @@ const stepFive = () => {
                 {
                   key: 'repairsSubTypeBricolage',
                   label: 'Que subtipo de reparações de Bricolage quer fazer?',
-                  type: 'checkbox-group',
+                  type: 'checkbox-widget',
                   excludeFromGroup: true,
                   dependencyType: 'value',
                   dependencyValue: 0,
@@ -784,22 +722,18 @@ const stepFive = () => {
                       value: 15,
                       isSelected: false
                     },
-                    { label: 'Outro', value: 16, isSelected: false }
-                  ],
-                  children: [
                     {
-                      key: 'repairsSubTypeBricolageOther',
                       label: 'Outro',
-                      dependencyType: 'value',
-                      dependencyValue: 16,
-                      type: 'text'
+                      value: 16,
+                      isSelected: false,
+                      isSelectable: true
                     }
                   ]
                 },
                 {
                   key: 'repairsSubTypePluming',
                   label: 'Que subtipo de reparações de Canalização quer fazer?',
-                  type: 'checkbox-group',
+                  type: 'checkbox-widget',
                   excludeFromGroup: true,
                   dependencyType: 'value',
                   dependencyValue: 1,
@@ -845,15 +779,11 @@ const stepFive = () => {
                       value: 7,
                       isSelected: false
                     },
-                    { label: 'Outro', value: 8, isSelected: false }
-                  ],
-                  children: [
                     {
-                      key: 'repairsSubTypeElectricityOther',
                       label: 'Outro',
-                      dependencyType: 'value',
-                      dependencyValue: 8,
-                      type: 'text'
+                      value: 8,
+                      isSelected: false,
+                      isSelectable: true
                     }
                   ]
                 },
@@ -861,7 +791,7 @@ const stepFive = () => {
                   key: 'repairsSubTypeElectricity',
                   label:
                     'Que subtipo de reparações de Eletricidade quer fazer?',
-                  type: 'checkbox-group',
+                  type: 'checkbox-widget',
                   excludeFromGroup: true,
                   dependencyType: 'value',
                   dependencyValue: 2,
@@ -903,15 +833,11 @@ const stepFive = () => {
                       value: 6,
                       isSelected: false
                     },
-                    { label: 'Outro', value: 7, isSelected: false }
-                  ],
-                  children: [
                     {
-                      key: 'repairsSubTypeElectricityOther',
                       label: 'Outro',
-                      dependencyType: 'value',
-                      dependencyValue: 7,
-                      type: 'text'
+                      value: 7,
+                      isSelected: false,
+                      isSelectable: true
                     }
                   ]
                 }
@@ -946,12 +872,12 @@ const stepFive = () => {
           widget: 'mini-form',
           dependencyType: 'value-includes',
           dependencyValue: 'ironing',
-          label: 'Reparações',
+          label: 'Passar a Ferro',
           key: 'repairs',
           questions: [
             {
               key: 'ironingClothType',
-              type: 'radio',
+              type: 'checkbox-widget',
               label:
                 'Qual é o tipo (ou tipos) de roupa que sabe passar a ferro?',
               options: [
@@ -968,15 +894,11 @@ const stepFive = () => {
                 },
                 { label: 'Tecidos delicados', value: 4, isSelected: false },
                 { label: 'Restantes', value: 5, isSelected: false },
-                { label: 'Outro', value: 6, isSelected: false }
-              ],
-              children: [
                 {
-                  key: 'ironingClothTypeOther',
-                  type: 'text',
                   label: 'Outro',
-                  dependencyType: 'value',
-                  dependencyValue: 6
+                  value: 6,
+                  isSelected: false,
+                  isSelectable: true
                 }
               ]
             },
@@ -992,7 +914,7 @@ const stepFive = () => {
             {
               type: 'footnote',
               label:
-                'Se o serviço requerer a utilização da viatura própria, serão pagos os km,'
+                'Se o serviço requerer a utilização da viatura própria, serão pagos os km, ao preço de 0,36€/km'
             }
           ]
         },
@@ -1007,19 +929,19 @@ const stepFive = () => {
           questions: [
             {
               key: 'sewingType',
-              type: 'radio',
-              label: 'Qual é o tipo de costura que pode fazer?',
+              type: 'checkbox-widget',
+              label: 'Que tipo(s) de costura quer  fazer?',
               options: [
                 { label: 'Bainhas à mão', value: 0, isSelected: false },
                 { label: 'Bainhas à máquina', value: 1, isSelected: false },
                 { label: 'Peças feitas de raiz', value: 2, isSelected: false },
                 {
-                  label: 'Diminuir o tamanho de uma peça.',
+                  label: 'Diminuir o tamanho de uma peça',
                   value: 3,
                   isSelected: false
                 },
                 {
-                  label: 'Ajuste de uma peça ao corpo.',
+                  label: 'Ajuste de uma peça ao corpo',
                   value: 4,
                   isSelected: false
                 },
@@ -1031,15 +953,11 @@ const stepFive = () => {
                   value: 8,
                   isSelected: false
                 },
-                { label: 'Outro', value: 9, isSelected: false }
-              ],
-              children: [
                 {
-                  key: 'sewingTypeOther',
-                  type: 'text',
                   label: 'Outro',
-                  dependencyType: 'value',
-                  dependencyValue: 9
+                  value: 9,
+                  isSelected: false,
+                  isSelectable: true
                 }
               ]
             },
@@ -1048,7 +966,16 @@ const stepFive = () => {
               type: 'radio',
               label: 'Dispõe de material básico de costura (agulhas e linhas)?',
               options: [
-                { label: 'Sim', value: 0 },
+                { label: 'Sim', value: 1 },
+                { label: 'Não', value: 0 }
+              ]
+            },
+            {
+              key: 'sewingMachine',
+              type: 'radio',
+              label: 'Dispõe de uma máquina de costura?',
+              options: [
+                { label: 'Sim', value: 1 },
                 { label: 'Não', value: 0 }
               ]
             },
@@ -1057,14 +984,14 @@ const stepFive = () => {
               type: 'radio',
               label: 'Tem disponibilidade para recolher e entregar a roupa?',
               options: [
-                { label: 'Sim', value: 0 },
+                { label: 'Sim', value: 1 },
                 { label: 'Não', value: 0 }
               ]
             },
             {
               type: 'footnote',
               label:
-                'Se o serviço requerer a utilização da viatura própria, serão pagos os km,'
+                'Se o serviço requerer a utilização da viatura própria, serão pagos os km, ao preço de 0,36€/km'
             }
           ]
         },
@@ -1079,8 +1006,8 @@ const stepFive = () => {
           questions: [
             {
               key: 'cleaningType',
-              type: 'radio',
-              label: 'Qual é o tipo (ou tipos) de limpeza que quer fazer?',
+              type: 'checkbox-widget',
+              label: 'Que tipo(s) de limpeza quer fazer?',
               options: [
                 {
                   label: 'Limpeza profunda casa privada',
@@ -1109,18 +1036,10 @@ const stepFive = () => {
                   isSelected: false
                 },
                 {
-                  label: 'Outro (deve de aparecer um campo de texto livre)',
-                  value: 6,
-                  isSelected: false
-                }
-              ],
-              children: [
-                {
-                  key: 'cleaningTypeOther',
-                  type: 'text',
                   label: 'Outro',
-                  dependencyType: 'value',
-                  dependencyValue: 6
+                  value: 6,
+                  isSelected: false,
+                  isSelectable: true
                 }
               ]
             }
@@ -1133,12 +1052,12 @@ const stepFive = () => {
           widget: 'mini-form',
           dependencyType: 'value-includes',
           dependencyValue: 'language_lessons',
-          label: 'Aulas de Música',
+          label: 'Aulas De Línguas',
           questions: [
             {
-              key: 'instruments',
-              title: 'Aulas de Música',
-              type: 'checkbox-group',
+              key: 'language_lessons',
+              title: 'Aulas De Línguas',
+              type: 'checkbox-widget',
               label: 'Qual a língua (ou línguas) que pode ensinar?',
               options: [
                 { label: 'Inglês', value: 0, isSelected: false },
@@ -1148,36 +1067,31 @@ const stepFive = () => {
                   isSelected: false
                 },
                 { label: 'Espanhol', value: 2, isSelected: false },
-                { label: 'Outro', value: 3, isSelected: false }
-              ],
-              children: [
                 {
-                  key: 'languageLessonsOtherLanguage',
-                  label: 'Outros',
-                  dependencyType: 'value',
-                  dependencyValue: 3,
-                  type: 'text'
+                  label: 'Outro',
+                  value: 3,
+                  isSelected: false,
+                  isSelectable: true
                 }
-              ]
-            },
-            {
-              key: 'languageLessonsLevel',
-              type: 'checkbox-group',
-              label:
-                'Qual o nível de ensino da(s) língua(s) que pode realizar?',
-              options: [
-                { label: 'Básico', value: 0, isSelected: false },
-                {
-                  label: 'Intermédio',
-                  value: 1,
-                  isSelected: false
-                },
-                { label: 'Avançado', value: 2, isSelected: false }
-              ]
+              ],
+              optionalContent: {
+                key: 'lessonLevel',
+                label:
+                  'Qual o nível de ensino da(s) língua(s) que pode realizar?',
+                options: [
+                  { label: 'Básico', value: 0 },
+                  {
+                    label: 'Intermédio',
+
+                    value: 1
+                  },
+                  { label: 'Avançado', value: 2 }
+                ]
+              }
             },
             {
               key: 'languageLessonsPlace',
-              type: 'checkbox-group',
+              type: 'checkbox-widget',
               label: 'Qual o local onde poderá realizar-se a aula?',
               options: [
                 { label: 'Na minha casa', value: 0, isSelected: false },
@@ -1187,15 +1101,11 @@ const stepFive = () => {
                   value: 1,
                   isSelected: false
                 },
-                { label: 'Outro Espaço', value: 2, isSelected: false }
-              ],
-              children: [
                 {
-                  key: 'languageLessonsOtherPlace',
                   label: 'Outro Espaço',
-                  dependencyType: 'value',
-                  dependencyValue: 2,
-                  type: 'text'
+                  value: 2,
+                  isSelected: false,
+                  isSelectable: true
                 }
               ]
             }
@@ -1208,11 +1118,11 @@ const stepFive = () => {
 
 const stepSix = () => {
   return [
-    {
+    /* {
       label:
         'Qual é a sua preferência durante a semana? fim-se-semana para prestar os serviços?',
       type: 'footnote'
-    },
+    }, */
     {
       label: 'Seleccione',
       type: 'footnote'

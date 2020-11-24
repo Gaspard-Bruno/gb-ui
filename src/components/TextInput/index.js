@@ -36,7 +36,7 @@ const TextInput = ({
           <Icon name={displayedIcon} />
         </nav>
       )}
-      <Body>{label || ' '}</Body>
+      {label && <Body>{label || ' '}</Body>}
       <StyledInput
         type={inputType}
         error={error}

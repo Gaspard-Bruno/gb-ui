@@ -6,7 +6,6 @@ export const FileUploaderContainer = styled.div`
   border: 1px dashed ${props => props.theme.colors.mediumBeige};
   box-sizing: border-box;
   border-radius: 4px;
-  flex: 1;
   display: flex;
   flex-direction: column;
   padding: 20px;

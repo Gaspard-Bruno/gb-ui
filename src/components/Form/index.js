@@ -16,6 +16,7 @@ import RadioButton from '../RadioButton';
 import FileUploader from '../FileUploader';
 import OfferTypeWidget from '../OfferTypeWidget';
 import ServiceTypeWidget from '../ServiceTypeWidget';
+import CheckBoxWidget from '../CheckBoxWidget';
 
 import Tabs from '../Tabs';
 import MiniForm from '../MiniForm';
@@ -100,15 +101,16 @@ const Form = ({
               content={renderFields(formik, field.questions, field.parentKey)}
             />
           );
-        /* case 'file-uploader':
+        case 'file-uploader':
           return (
             <FileUploader
+              key={'file-' + (field.key || parentKey)}
               name={field.key}
               title={field.label}
               file={answers['file']}
-              action={values => console.log('sadasdasd', values)}
+              action={values => formik.setFieldValue(field.key, values)}
             />
-          ); */
+          );
         case 'offer-type':
           return (
             <OfferTypeWidget
@@ -117,10 +119,7 @@ const Form = ({
               answers={answers}
               values={formik?.values}
               errors={errors}
-              action={values => {
-                console.log('values', values);
-                formik.setFieldValue(values.name, values.value);
-              }}
+              action={values => formik.setFieldValue(values.name, values.value)}
             />
           );
         case 'schedule-picker':
@@ -223,18 +222,18 @@ const Form = ({
           );
         case 'service-type-detail':
           return (
-            <>
+            <React.Fragment key={'service-widget'}>
               <ServiceTypeWidget
                 heading={field?.heading}
                 headerText={field?.headerText}
                 body={field.body}
                 extras={field.extras}
               />
-            </>
+            </React.Fragment>
           );
         case 'district':
           return (
-            <>
+            <React.Fragment key={'district'}>
               <Select
                 options={districtOptions}
                 label='Concelho'
@@ -275,7 +274,7 @@ const Form = ({
                     }
                   />
                 ))) || <></>}
-            </>
+            </React.Fragment>
           );
         case 'add-field':
           return (
@@ -310,6 +309,26 @@ const Form = ({
                   fieldProps.value.filter(opt => opt !== v)
                 )
               }
+            />
+          );
+        case 'checkbox-widget':
+          return (
+            <CheckBoxWidget
+              {...fieldProps}
+              name={fieldProps.key}
+              key={fieldProps.key}
+              label={fieldProps?.label}
+              list={field?.options.map(opt => ({
+                value: opt.value,
+                question: opt.label,
+                isSelectable: opt.isSelectable,
+                isSelected: getOptVal(opt)
+                  ? getOptVal(opt).isSelected || false
+                  : opt.isSelected
+              }))}
+              defaultValues={formik?.values[fieldProps.key]}
+              action={values => formik.setFieldValue(field.key, values)}
+              content={field.optionalContent}
             />
           );
         case 'checkbox-group':
@@ -492,7 +511,7 @@ const Form = ({
       {children}
       <Formik initialValues={initialValues} onSubmit={f => onSubmit(f)}>
         {formik => (
-          <StyledForm key={'cenas'} onSubmit={formik.handleSubmit}>
+          <StyledForm onSubmit={formik.handleSubmit}>
             {renderFields(formik, questions)}
             <Button
               isDisabled={isDisabled}
