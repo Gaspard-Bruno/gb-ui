@@ -26453,7 +26453,7 @@ var Form$1 = function Form(_ref) {
             key: 'district'
           }, /*#__PURE__*/React__default['default'].createElement(Select$2, {
             options: districtOptions,
-            label: "Concelho",
+            label: (formik === null || formik === void 0 ? void 0 : formik.values[field === null || field === void 0 ? void 0 : field.label]) || 'Concelho',
             error: fieldProps.error,
             defaultValue: districtOptions === null || districtOptions === void 0 ? void 0 : districtOptions.find(function (opt) {
               return opt.value === fieldProps.value;
