@@ -237,7 +237,7 @@ const Form = ({
             <React.Fragment key={'district'}>
               <Select
                 options={districtOptions}
-                label={formik?.values[field?.label] || 'Concelho'}
+                label={field?.label || 'Concelho'}
                 error={fieldProps.error}
                 defaultValue={districtOptions?.find(
                   opt => opt.value === fieldProps.value
