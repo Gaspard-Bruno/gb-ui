@@ -26448,7 +26448,9 @@ var Form$1 = function Form(_ref) {
             onChange: function onChange(option) {
               formik.setFieldValue(field.key, option.value);
             }
-          }), formik.values[field.key] && (formik.values[field.key] === 'outro' ? /*#__PURE__*/React.createElement(TextInput, {
+          }), formik.values[field.key] && (formik.values[field.key] === 'outro' ? /*#__PURE__*/React.createElement(React.Fragment, {
+            key: 'district-other'
+          }, /*#__PURE__*/React.createElement(TextInput, {
             key: 'district-other',
             label: "Outro",
             error: fieldProps.error,
@@ -26457,7 +26459,16 @@ var Form$1 = function Form(_ref) {
             },
             name: "district-other",
             value: formik.values[field.key + 'district-other']
-          }) : /*#__PURE__*/React.createElement(Select$2, {
+          }), /*#__PURE__*/React.createElement(TextInput, {
+            key: 'district-other-parishes',
+            label: "Freguesia",
+            error: fieldProps.error,
+            onChange: function onChange(v) {
+              return formik.setFieldValue(field.key + 'district-other-parishes', v);
+            },
+            name: "district-other-parishes",
+            value: formik.values[field.key + 'district-other-parishes']
+          })) : /*#__PURE__*/React.createElement(Select$2, {
             label: "Freguesia",
             key: "".concat(formik.values['district'], "-parishes"),
             error: fieldProps.error,
