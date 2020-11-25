@@ -248,16 +248,33 @@ const Form = ({
               />
               {(formik.values[field.key] &&
                 (formik.values[field.key] === 'outro' ? (
-                  <TextInput
-                    key={'district-other'}
-                    label='Outro'
-                    error={fieldProps.error}
-                    onChange={v =>
-                      formik.setFieldValue(field.key + 'district-other', v)
-                    }
-                    name='district-other'
-                    value={formik.values[field.key + 'district-other']}
-                  />
+                  <React.Fragment key={'district-other'}>
+                    <TextInput
+                      key={'district-other'}
+                      label='Outro'
+                      error={fieldProps.error}
+                      onChange={v =>
+                        formik.setFieldValue(field.key + 'district-other', v)
+                      }
+                      name='district-other'
+                      value={formik.values[field.key + 'district-other']}
+                    />
+                    <TextInput
+                      key={'district-other-parishes'}
+                      label='Freguesia'
+                      error={fieldProps.error}
+                      onChange={v =>
+                        formik.setFieldValue(
+                          field.key + 'district-other-parishes',
+                          v
+                        )
+                      }
+                      name='district-other-parishes'
+                      value={
+                        formik.values[field.key + 'district-other-parishes']
+                      }
+                    />
+                  </React.Fragment>
                 ) : (
                   <Select
                     label='Freguesia'
