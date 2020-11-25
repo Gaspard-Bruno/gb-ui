@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Body } from '../Text';
+import { Body, ErrorText } from '../Text';
 import Icon from '../Icon';
 import Button from '../Button';
 import {
@@ -14,7 +14,7 @@ import {
 } from './styles';
 import { useDropzone } from 'react-dropzone';
 
-const FileUploader = ({ title, name, action, answers }) => {
+const FileUploader = ({ title, name, action, answers, error }) => {
   const [files, setFiles] = useState(answers || []);
 
   const { getRootProps, getInputProps, open } = useDropzone({
@@ -80,6 +80,7 @@ const FileUploader = ({ title, name, action, answers }) => {
   return (
     <React.Fragment key={'file-uploader'}>
       {title && <Body>{title}</Body>}
+      {error && <ErrorText>{error}</ErrorText>}
       <FileUploaderContainer {...getRootProps()}>
         <UploaderRowWrapper>
           <Icon name='upload' />
@@ -108,7 +109,8 @@ FileUploader.propTypes = {
   title: PropTypes.string,
   name: PropTypes.string,
   action: PropTypes.func,
-  answers: PropTypes.object
+  answers: PropTypes.object,
+  error: PropTypes.string
 };
 
 export default FileUploader;

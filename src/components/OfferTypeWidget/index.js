@@ -35,7 +35,10 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
         parentOptions: [
           { label: 'Única', value: 0 },
           { label: 'Recorrente', value: 1 },
-          { label: 'Pacote de Horas', value: 2 }
+          {
+            label: 'Pacote de Horas (Válido apenas para particulares)',
+            value: 2
+          }
         ],
         hourPackageOptions: [
           { label: 'Fim-de-Semana - 25€', value: 2 },
@@ -410,47 +413,6 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
                 </Row>
                 {/* Hour Package daily, weekly, montly dates and hour preference */}
 
-                {/* {values['recurrence'] === 2 && (
-                  <Row>
-                    <Select
-                      label='Ocorre em'
-                      error={errors?.['recurrence']}
-                      options={[
-                        { value: 0, label: 'Primeira' },
-                        { value: 1, label: 'Segunda' },
-                        { value: 1, label: 'Terceira' },
-                        { value: 1, label: 'Quarta' },
-                        { value: 1, label: 'Última' }
-                      ]}
-                      onChange={values =>
-                        action({
-                          name: 'montly-recurrence-daily-recurrency',
-                          value: values.value
-                        })
-                      }
-                    />
-                    <Body>-</Body>
-                    <Select
-                      error={errors?.['montly-recurrence-weekday']}
-                      options={[
-                        { value: 1, label: 'Segunda-Feira' },
-                        { value: 2, label: 'Terça-Feira' },
-                        { value: 3, label: 'Quarta-Feira' },
-                        { value: 4, label: 'Quinta-Feira' },
-                        { value: 5, label: 'Sexta-Feira' },
-                        { value: 6, label: 'Sabádo' },
-                        { value: 0, label: 'Domingo' }
-                      ]}
-                      onChange={values =>
-                        action({
-                          name: 'montly-recurrence-weekday',
-                          value: values.value
-                        })
-                      }
-                    />
-                    <Body>do Mês</Body>
-                  </Row>
-                )} */}
                 <TextInput
                   label='Data de Início'
                   name='service-start-date'

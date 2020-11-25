@@ -109,6 +109,7 @@ const Form = ({
               title={field.label}
               file={answers['file']}
               action={values => formik.setFieldValue(field.key, values)}
+              error={fieldProps.error}
             />
           );
         case 'offer-type':
