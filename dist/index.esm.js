@@ -5047,7 +5047,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 function _templateObject12() {
-  var data = _taggedTemplateLiteral(["\n  color: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  margin: 0px !important;\n"]);
 
   _templateObject12 = function _templateObject12() {
     return data;
@@ -20280,11 +20280,11 @@ var RadioGroudContainer = styled.div(_templateObject2$g(), function (props) {
 }, function (props) {
   var _props$theme;
 
-  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin;
+  return props.isVerticalAligned ? (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin : 0;
 }, function (props) {
   var _props$theme2;
 
-  return ((_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin) * 2 - 8;
+  return props.isVerticalAligned ? (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin : 0;
 }, function (props) {
   var _props$theme3;
 
@@ -21886,7 +21886,7 @@ function _templateObject2$i() {
 }
 
 function _templateObject$m() {
-  var data = _taggedTemplateLiteral([""]);
+  var data = _taggedTemplateLiteral(["\n  > div {\n    margin-bottom: ", "px;\n  }\n"]);
 
   _templateObject$m = function _templateObject() {
     return data;
@@ -21894,7 +21894,11 @@ function _templateObject$m() {
 
   return data;
 }
-var WidgetContainer = styled.div(_templateObject$m());
+var WidgetContainer = styled.div(_templateObject$m(), function (props) {
+  var _props$theme;
+
+  return ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) * 1.5;
+});
 var TextContainer = styled(Body)(_templateObject2$i(), function (props) {
   return props.theme.margin;
 }, function (props) {
@@ -22144,7 +22148,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         label: 'Recorrente',
         value: 1
       }, {
-        label: 'Pacote de Horas',
+        label: 'Pack de Horas',
         value: 2
       }],
       // one-time-service
@@ -22161,7 +22165,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
           label: 'Recorrente',
           value: 1
         }, {
-          label: 'Pacote de Horas (Válido apenas para particulares)',
+          label: 'Pack de Horas (Válido apenas para particulares)',
           value: 2
         }],
         hourPackageOptions: [{
@@ -23014,7 +23018,7 @@ MultiFieldRender.propTypes = {
 };
 
 function _templateObject2$o() {
-  var data = _taggedTemplateLiteral(["\n  flex: 1;\n  display: flex;\n  flex-flow: column;\n  > h1,\n  h2,\n  h3,\n  h4,\n  h5,\n  h6 {\n    text-align: left;\n  }\n  > div {\n    & > textarea {\n      min-height: ", "px;\n    }\n    & > p {\n      text-align: left;\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  flex: 1;\n  display: flex;\n  flex-flow: column;\n  > h1,\n  h2,\n  h3,\n  h4,\n  h5,\n  h6 {\n    text-align: left;\n  }\n  > div {\n    margin-bottom: ", "px;\n    & > textarea {\n      min-height: ", "px;\n    }\n    & > p {\n      text-align: left;\n    }\n  }\n"]);
 
   _templateObject2$o = function _templateObject2() {
     return data;
@@ -23061,7 +23065,11 @@ var FormContainer = styled.div(_templateObject$s(), function (props) {
 var StyledForm$1 = styled.form(_templateObject2$o(), function (props) {
   var _props$theme5;
 
-  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 6;
+  return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin;
+}, function (props) {
+  var _props$theme6;
+
+  return ((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.margin) * 6;
 });
 
 var check = function (it) {
@@ -26403,8 +26411,11 @@ var Form$1 = function Form(_ref) {
 
         case 'footnote':
           return /*#__PURE__*/React.createElement(Heading, {
+            style: {
+              marginTop: '35px',
+              marginBottom: 0
+            },
             size: 6,
-            alt: "true",
             key: 'footnote' + field.key
           }, field.label);
 
@@ -26567,8 +26578,12 @@ var Form$1 = function Form(_ref) {
 
     switch (field === null || field === void 0 ? void 0 : field.type) {
       case 'footnote':
-        return /*#__PURE__*/React.createElement(Body, {
-          alt: "true"
+        return /*#__PURE__*/React.createElement(Heading, {
+          size: 6,
+          style: {
+            marginTop: '35px',
+            marginBottom: 0
+          }
         }, field.label);
 
       default:
