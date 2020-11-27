@@ -587,7 +587,7 @@ const stepFive = () => {
             {
               key: 'files',
               label:
-                'Por favor, partilhe connosco se possível os seus documentos',
+                'Caso já disponha do mesmo, anexe o seu certificado de registo criminal.',
               widget: 'file-uploader'
             }
           ]

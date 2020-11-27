@@ -12,7 +12,7 @@ export default {
         },
         {
           key: 'hour-package',
-          label: 'Pacote de Horas',
+          label: 'Pack de Horas',
           value: 1
         }
       ],

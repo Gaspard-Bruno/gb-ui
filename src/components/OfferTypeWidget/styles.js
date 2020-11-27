@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { Body } from '../Text';
-export const WidgetContainer = styled.div``;
+export const WidgetContainer = styled.div`
+  > div {
+    margin-bottom: ${props => props.theme?.margin * 1.5}px;
+  }
+`;
 
 export const TextContainer = styled(Body)`
   align-self: center;

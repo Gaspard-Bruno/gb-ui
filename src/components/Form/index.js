@@ -196,7 +196,11 @@ const Form = ({
           );
         case 'footnote':
           return (
-            <Heading size={6} alt='true' key={'footnote' + field.key}>
+            <Heading
+              style={{ marginTop: '35px', marginBottom: 0 }}
+              size={6}
+              key={'footnote' + field.key}
+            >
               {field.label}
             </Heading>
           );
@@ -382,7 +386,11 @@ const Form = ({
     }
     switch (field?.type) {
       case 'footnote':
-        return <Body alt='true'>{field.label}</Body>;
+        return (
+          <Heading size={6} style={{ marginTop: '35px', marginBottom: 0 }}>
+            {field.label}
+          </Heading>
+        );
       default:
         return <></>;
     }

@@ -26,7 +26,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
       default: [
         { label: 'Única', value: 0 },
         { label: 'Recorrente', value: 1 },
-        { label: 'Pacote de Horas', value: 2 }
+        { label: 'Pack de Horas', value: 2 }
       ],
       // one-time-service
       unique: [{ label: 'Única', value: 0 }],
@@ -36,7 +36,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
           { label: 'Única', value: 0 },
           { label: 'Recorrente', value: 1 },
           {
-            label: 'Pacote de Horas (Válido apenas para particulares)',
+            label: 'Pack de Horas (Válido apenas para particulares)',
             value: 2
           }
         ],
