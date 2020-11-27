@@ -1,16 +1,15 @@
-	Unidades	STANDARD 	PREMIUM	Taxa Urgência	KM
-Apoio a Seniores	Hora	  5.00 € 	 	6.50 € 	  2.44 € 	0,36€/km
-Apoio Familiar a Crianças	Hora	  5.00 € 	 	6.50 € 	  2.44 € 	0,36€/km
-Pet Sitting (Estadia)	Dia	  	9.00 € 	 	10.80 € 	  2.44 € 	0,36€/km
-Pet Care (Visitas, passeios)	Hora	  4.00 € 	 	6.00 € 	  2.44 € 	não
-Aulas de Línguas	Hora	  10.00 € 	 	12.50 € 	  2.44 € 	não
-Aulas de Música	Hora	  14.00 € 	 	16.00 € 	  2.44 € 	não
-Chef em Casa	Hora	  6.00 € 	 	8.00 € 	  2.44 € 	não
-Costura	Hora	  5.00 € 	 	6.50 € 	  2.44 € 	0,36€/km
-Jardinagem	Hora	  6.00 € 	 	8.00 € 	  2.44 € 	não
-Passar a Ferro	Hora	  6.00 € 	 	6.50 € 	  2.44 € 	não
-Limpezas	Hora	  6.00 € 	 	6.50 € 	  2.44 € 	não
-Reparações (2 tipos de preços)
-Pequenas Reparações	Hora	  8.00 € 	 	11.50 € 	  2.44 € 	0,36€/km
-Reparações Especializadas	Hora	  11.50 € 	 	13.50 € 	  2.44 € 	0,36€/km
-
+	Unidades	STANDARD 	PREMIUM	KM
+Apoio a Seniores	Hora	  5.00 € 	  6.50 € 	0,36€/km
+Apoio Familiar a Crianças	Hora	  5.00 € 	  6.50 € 	0,36€/km
+Pet Sitting (Estadia)	Dia	  9.00 € 	  10.80 € 	0,36€/km
+Pet Care (Visitas, passeios)	Hora	  4.00 € 	  6.00 € 	não
+Aulas de Línguas	Hora	  10.00 € 	  12.50 € 	não
+Aulas de Música	Hora	  13.50 € 	  15.50 € 	não
+Chef em Casa	Hora	  6.00 € 	  8.00 € 	não
+Costura	Hora	  5.00 € 	  6.50 € 	0,36€/km
+Jardinagem	Hora	  6.00 € 	  8.00 € 	não
+Passar a Ferro	Hora	  6.00 € 	  6.50 € 	não
+Limpezas	Hora	  6.00 € 	  6.50 € 	não
+Reparações (2 tipos de preços)				
+Pequenas Reparações	Hora	  8.00 € 	  10.50 € 	0,36€/km
+Reparações Especializadas	Hora	  11.50 € 	  13.50 € 	0,36€/km
