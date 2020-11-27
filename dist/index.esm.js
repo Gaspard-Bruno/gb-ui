@@ -20335,7 +20335,7 @@ var RadioButton = function RadioButton(_ref) {
       selectedButton = _useState2[0],
       setSelectedTab = _useState2[1];
 
-  return /*#__PURE__*/React.createElement(StyledContainer$2, null, label && /*#__PURE__*/React.createElement(Body, null, label), error && /*#__PURE__*/React.createElement(ErrorText, null, error), list && list.map(function (item, index) {
+  return /*#__PURE__*/React.createElement(StyledContainer$2, null, label && /*#__PURE__*/React.createElement(Body, null, label), list && list.map(function (item, index) {
     return /*#__PURE__*/React.createElement(RadioGroudContainer, {
       align: align,
       isVerticalAligned: isVerticalAligned,
@@ -20360,7 +20360,7 @@ var RadioButton = function RadioButton(_ref) {
     })), /*#__PURE__*/React.createElement(Body, {
       name: item.key
     }, item.label));
-  }));
+  }), error && /*#__PURE__*/React.createElement(ErrorText, null, error));
 };
 
 RadioButton.propTypes = {
@@ -21842,7 +21842,7 @@ var FileUploader = function FileUploader(_ref) {
   });
   return /*#__PURE__*/React.createElement(React.Fragment, {
     key: 'file-uploader'
-  }, title && /*#__PURE__*/React.createElement(Body, null, title), error && /*#__PURE__*/React.createElement(ErrorText, null, error), /*#__PURE__*/React.createElement(FileUploaderContainer, getRootProps(), /*#__PURE__*/React.createElement(UploaderRowWrapper, null, /*#__PURE__*/React.createElement(Icon, {
+  }, title && /*#__PURE__*/React.createElement(Body, null, title), /*#__PURE__*/React.createElement(FileUploaderContainer, getRootProps(), /*#__PURE__*/React.createElement(UploaderRowWrapper, null, /*#__PURE__*/React.createElement(Icon, {
     name: "upload"
   }), /*#__PURE__*/React.createElement(Body, {
     alt: "true"
@@ -21854,7 +21854,7 @@ var FileUploader = function FileUploader(_ref) {
     type: "button",
     text: "Carregue aqui",
     btnType: "primary"
-  })), /*#__PURE__*/React.createElement(ThumbsContainer, null, filesPreview)));
+  })), /*#__PURE__*/React.createElement(ThumbsContainer, null, filesPreview)), error && /*#__PURE__*/React.createElement(ErrorText, null, error));
 };
 
 FileUploader.propTypes = {
