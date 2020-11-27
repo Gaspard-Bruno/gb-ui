@@ -80,7 +80,6 @@ const FileUploader = ({ title, name, action, answers, error }) => {
   return (
     <React.Fragment key={'file-uploader'}>
       {title && <Body>{title}</Body>}
-      {error && <ErrorText>{error}</ErrorText>}
       <FileUploaderContainer {...getRootProps()}>
         <UploaderRowWrapper>
           <Icon name='upload' />
@@ -101,6 +100,7 @@ const FileUploader = ({ title, name, action, answers, error }) => {
         </>
         <ThumbsContainer>{filesPreview}</ThumbsContainer>
       </FileUploaderContainer>
+      {error && <ErrorText>{error}</ErrorText>}
     </React.Fragment>
   );
 };

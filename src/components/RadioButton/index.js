@@ -26,7 +26,6 @@ const RadioButton = ({
   return (
     <StyledContainer>
       {label && <Body>{label}</Body>}
-      {error && <ErrorText>{error}</ErrorText>}
       {list &&
         list.map((item, index) => {
           return (
@@ -56,6 +55,7 @@ const RadioButton = ({
             </RadioGroudContainer>
           );
         })}
+      {error && <ErrorText>{error}</ErrorText>}
     </StyledContainer>
   );
 };
