@@ -95,12 +95,13 @@
       "label": "Nível Actual",
       "type": "dropdown",
       "options": [
-        { "value": 0, "label": "Principiante" },
+        { "value": 0, "label": "Básico" },
         { "value": 1, "label": "Intermédio" },
         { "value": 2, "label": "Avançado" }
       ]
     },
 
+    { "type": "footnote", "label": "Tipo de Oferta" },
     {
       "key": "offer-type",
       "widget": "offer-type",
@@ -155,7 +156,7 @@
         {
           "name": "guest.telephone",
           "key": "telephone",
-          "type": "number",
+          "type": "text",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -205,7 +206,7 @@
         },
         {
           "name": "signup.telephone",
-          "type": "number",
+          "type": "text",
           "key": "telephone",
           "label": "Número de Telemóvel",
           "dependencyType": "value",

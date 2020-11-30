@@ -21899,7 +21899,7 @@ function _templateObject2$i() {
 }
 
 function _templateObject$m() {
-  var data = _taggedTemplateLiteral(["\n  > div {\n    margin-bottom: ", "px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  > div {\n    margin-top: ", "px;\n    margin-bottom: ", "px;\n  }\n"]);
 
   _templateObject$m = function _templateObject() {
     return data;
@@ -21910,7 +21910,11 @@ function _templateObject$m() {
 var WidgetContainer = styled__default['default'].div(_templateObject$m(), function (props) {
   var _props$theme;
 
-  return ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) * 1.5;
+  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin;
+}, function (props) {
+  var _props$theme2;
+
+  return ((_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin) * 1.5;
 });
 var TextContainer = styled__default['default'](Body)(_templateObject2$i(), function (props) {
   return props.theme.margin;
@@ -22149,7 +22153,8 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       offerType = _ref.offerType,
       values = _ref.values,
       errors = _ref.errors,
-      answers = _ref.answers;
+      answers = _ref.answers,
+      packOptions = _ref.packOptions;
 
   var renderContent = function renderContent() {
     var serviceOptions = {
@@ -22170,25 +22175,16 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         value: 0
       }],
       // ready-pack-specific
-      readyPackSpecific: {
-        parentOptions: [{
-          label: 'Única',
-          value: 0
-        }, {
-          label: 'Recorrente',
-          value: 1
-        }, {
-          label: 'Pack de Horas (Válido apenas para particulares)',
-          value: 2
-        }],
-        hourPackageOptions: [{
-          label: 'Fim-de-Semana - 25€',
-          value: 2
-        }, {
-          label: '7 Dias - 84€',
-          value: 3
-        }]
-      }
+      readyPackSpecific: [{
+        label: 'Única',
+        value: 0
+      }, {
+        label: 'Recorrente',
+        value: 1
+      }, {
+        label: 'Pack de Horas (Válido apenas para particulares)',
+        value: 2
+      }]
     };
 
     switch (offerType) {
@@ -22204,7 +22200,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
 
       case 'ready-pack-specific':
         //WeekEnds
-        return renderReadyPack(serviceOptions.readyPackSpecific.parentOptions, serviceOptions.readyPackSpecific.hourPackageOptions);
+        return renderReadyPack(serviceOptions.readyPackSpecific);
 
       default:
         return null;
@@ -22275,7 +22271,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     })));
   };
 
-  var renderReadyPack = function renderReadyPack(serviceOptions, serviceTypeOpt) {
+  var renderReadyPack = function renderReadyPack(serviceOptions) {
     return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(RadioButton, {
       name: "offer-type",
       action: _action,
@@ -22442,19 +22438,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       name: "pack-selection",
       error: errors === null || errors === void 0 ? void 0 : errors['pack-selection'],
       defaultValue: answers['pack-selection'],
-      options: serviceTypeOpt ? serviceTypeOpt : [{
-        label: '8 Aulas - 70€',
-        value: 0
-      }, {
-        label: '10 horas - 75€',
-        value: 1
-      }, {
-        label: 'Fim-de-Semana - 25€',
-        value: 2
-      }, {
-        label: '7 Dias - 84€',
-        value: 3
-      }],
+      options: packOptions,
       onChange: function onChange(values) {
         return _action({
           name: 'pack-selection',
@@ -22546,9 +22530,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     }, values['offer-type'] && values['offer-type'] !== 0 ? selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.total : null));
   };
 
-  return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(WidgetContainer, null, /*#__PURE__*/React__default['default'].createElement(Heading, {
-    size: 6
-  }, "Tipo de Oferta"), renderContent()));
+  return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(WidgetContainer, null, renderContent()));
 };
 
 OfferTypeWidget.propTypes = {
@@ -22556,7 +22538,8 @@ OfferTypeWidget.propTypes = {
   offerType: propTypes.string,
   values: propTypes.object,
   errors: propTypes.object,
-  answers: propTypes.object
+  answers: propTypes.object,
+  packOptions: propTypes.array
 };
 
 function _templateObject4$9() {
@@ -26345,6 +26328,7 @@ var Form$1 = function Form(_ref) {
           return /*#__PURE__*/React__default['default'].createElement(OfferTypeWidget, {
             key: 'otw-' + (field.key || parentKey),
             offerType: field.formOfferType,
+            packOptions: field.options,
             answers: answers,
             values: formik === null || formik === void 0 ? void 0 : formik.values,
             errors: errors,

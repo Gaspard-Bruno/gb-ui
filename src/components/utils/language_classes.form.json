@@ -101,9 +101,10 @@
     {
       "key": "lessons-objectivity",
       "label": "Qual é o objectivo das aulas?",
-      "type": "textarea"
+      "type": "text-area"
     },
 
+    { "type": "footnote", "label": "Tipo de Oferta" },
     {
       "key": "offer-type",
       "widget": "offer-type",
@@ -159,7 +160,7 @@
         {
           "name": "guest.telephone",
           "key": "telephone",
-          "type": "number",
+          "type": "text",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -209,7 +210,7 @@
         },
         {
           "name": "signup.telephone",
-          "type": "number",
+          "type": "text",
           "key": "telephone",
           "label": "Número de Telemóvel",
           "dependencyType": "value",

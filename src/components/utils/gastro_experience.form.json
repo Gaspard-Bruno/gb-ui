@@ -48,7 +48,7 @@
       "options": [
         { "value": 0, "label": "Caldo Verde" },
         { "value": 1, "label": "Gaspacho" },
-        { "value": 2, "label": "Mesa de queijos portugueses" }
+        { "value": 2, "label": "Tábua de queijos portugueses" }
       ]
     },
     { "label": "Serviço", "type": "footnote" },
@@ -60,7 +60,7 @@
       "options": [
         { "label": "Peixe", "value": 0, "key": "fish-dish" },
         { "label": "Carne", "value": 1, "key": "meat-dish" },
-        { "label": "Vegetais", "value": 2, "key": "veggie-dish" }
+        { "label": "Vegetariano", "value": 2, "key": "veggie-dish" }
       ],
       "children": [
         {
@@ -70,7 +70,7 @@
           "dependencyType": "value",
           "dependencyValue": 0,
           "options": [
-            { "value": 0, "label": "Arroz de camarão" },
+            { "value": 0, "label": "Arroz de gambas" },
             { "value": 1, "label": "Bacalhau com natas" }
           ]
         },
@@ -82,7 +82,7 @@
           "dependencyValue": 1,
           "options": [
             { "value": 0, "label": "Arroz de pato" },
-            { "value": 1, "label": "Torta de porco" },
+            { "value": 1, "label": "Empadão de carne de Porco" },
             {
               "value": 2,
               "label": "Pernil de peru recheado com farinheira e batata assada"
@@ -96,8 +96,8 @@
           "dependencyType": "value",
           "dependencyValue": 2,
           "options": [
-            { "value": 0, "label": "Alho-poró à Brás" },
-            { "value": 1, "label": "Repolho roxo recheado com vegetais" }
+            { "value": 0, "label": "Alho-francês à Brás" },
+            { "value": 1, "label": "Couve-lombarda recheada de legumes" }
           ]
         }
       ]
@@ -108,7 +108,7 @@
       "type": "dropdown",
       "options": [
         { "value": 0, "label": "Arroz doce" },
-        { "value": 1, "label": "Tarte de Maçã" },
+        { "value": 1, "label": "Tarte de maçã" },
         { "value": 2, "label": "Baba de camelo" }
       ]
     },
@@ -122,6 +122,7 @@
       ]
     },
 
+    { "type": "footnote", "label": "Tipo de Oferta" },
     {
       "key": "offer-type",
       "widget": "offer-type",
@@ -180,7 +181,7 @@
         {
           "name": "guest.telephone",
           "key": "telephone",
-          "type": "number",
+          "type": "text",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -230,7 +231,7 @@
         },
         {
           "name": "signup.telephone",
-          "type": "number",
+          "type": "text",
           "key": "telephone",
           "label": "Número de Telemóvel",
           "dependencyType": "value",

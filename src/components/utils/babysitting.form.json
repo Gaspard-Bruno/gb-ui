@@ -59,7 +59,7 @@
     },
 
     {
-      "key": "service-job",
+      "key": "service-offer",
       "label": "Tipo de Apoio",
       "type": "dropdown",
       "options": [
@@ -112,9 +112,19 @@
       "options": [
         { "value": 0, "label": "Não" },
         { "value": 1, "label": "Sim" }
+      ],
+      "children": [
+        {
+          "key": "special-treatment-notes",
+          "type": "text-area",
+          "label": "Tipo de tratamento",
+          "dependencyType": "value",
+          "dependencyValue": 1
+        }
       ]
     },
 
+    { "type": "footnote", "label": "Tipo de Oferta" },
     {
       "key": "offer-type",
       "widget": "offer-type",
@@ -169,7 +179,7 @@
         {
           "name": "guest.telephone",
           "key": "telephone",
-          "type": "number",
+          "type": "text",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -219,7 +229,7 @@
         },
         {
           "name": "signup.telephone",
-          "type": "number",
+          "type": "text",
           "key": "telephone",
           "label": "Número de Telemóvel",
           "dependencyType": "value",

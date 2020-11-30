@@ -64,10 +64,9 @@
       "type": "dropdown",
       "options": [
         { "label": "Limpeza Profunda", "value": 0 },
-        { "label": "Limpeza geral casa privada", "value": 1 },
-        { "label": "Limpeza geral escritório", "value": 2 },
-        { "label": "Vidros", "value": 3 },
-        { "label": "Limepza superfícies altas", "value": 4 }
+        { "label": "Limpeza de manutenção", "value": 1 },
+        { "label": "Vidros", "value": 2 },
+        { "label": "Limpeza superfícies altas", "value": 3 }
       ]
     },
     {
@@ -76,7 +75,7 @@
       "type": "radio",
       "options": [
         { "label": "Escritório", "value": 0 },
-        { "label": "Moradia familiar", "value": 1 }
+        { "label": "Casa particular", "value": 1 }
       ]
     },
     {
@@ -89,7 +88,7 @@
         { "label": "3 pessoas", "value": 2 },
         { "label": "4 pessoas", "value": 3 },
         { "label": "5 pessoas", "value": 4 },
-        { "label": "5 ou mais pessoas", "value": 5 }
+        { "label": "6 ou mais pessoas", "value": 5 }
       ]
     },
     {
@@ -97,7 +96,13 @@
       "label": "Área a limpar (aproximadamente)",
       "type": "text"
     },
+    {
+      "key": "files",
+      "label": "Por favor, partilhe connosco se possível algumas fotos",
+      "widget": "file-uploader"
+    },
 
+    { "type": "footnote", "label": "Tipo de Oferta" },
     {
       "key": "offer-type",
       "widget": "offer-type",
@@ -153,7 +158,7 @@
         {
           "name": "guest.telephone",
           "key": "telephone",
-          "type": "number",
+          "type": "text",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -203,7 +208,7 @@
         },
         {
           "name": "signup.telephone",
-          "type": "number",
+          "type": "text",
           "key": "telephone",
           "label": "Número de Telemóvel",
           "dependencyType": "value",

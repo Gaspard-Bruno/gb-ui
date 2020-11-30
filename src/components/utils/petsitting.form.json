@@ -40,7 +40,7 @@
           "key": "premium-service",
           "widget": "service-type-detail",
           "heading": "+2,50€",
-          "headerText": "/ hora",
+          "headerText": "/ dia",
           "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
           "extras": "Serviço executado por um Especialista com avaliação superior a 4.9.",
           "dependencyType": "value",
@@ -50,7 +50,7 @@
           "key": "urgent-service",
           "widget": "service-type-detail",
           "heading": "+2,44€",
-          "headerText": "/ hora",
+          "headerText": "/ dia",
           "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
           "extras": "Serviço executado por um Especialista com avaliação superior a 4.9.\nServiço realizado em menos de 24H à data do primeiro contacto",
           "dependencyType": "value",
@@ -103,6 +103,7 @@
       "label": "Precisamos do carro do especialista para transportar seu animal de estimação?"
     },
 
+    { "type": "footnote", "label": "Tipo de Oferta" },
     {
       "key": "offer-type",
       "widget": "offer-type",
@@ -157,7 +158,7 @@
         {
           "name": "guest.telephone",
           "key": "telephone",
-          "type": "number",
+          "type": "text",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -207,7 +208,7 @@
         },
         {
           "name": "signup.telephone",
-          "type": "number",
+          "type": "text",
           "key": "telephone",
           "label": "Número de Telemóvel",
           "dependencyType": "value",

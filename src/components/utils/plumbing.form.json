@@ -29,23 +29,17 @@
       "label": "Tipo de Serviço",
       "options": [
         {
-          "label": "Montagem de interruptores e tomadas eléctricas",
+          "label": "Desentupimento das canalizações de habitação residencial",
           "value": 0
         },
-        { "label": "Montagem de candeeiros", "value": 1 },
+        { "label": "Descalcificação de tubagens", "value": 1 },
+        { "label": "Limpeza de cifões", "value": 2 },
         {
-          "label": "Avarias de estores , afinação de estores e substituição de réguas",
-          "value": 2
-        },
-        {
-          "label": "Instalação de calhas para a passagem de cabos eléctricos",
+          "label": "Reparação/Substituição das torneiras e louças sanitárias",
           "value": 3
         },
-        { "label": "Colocar lâmpadas", "value": 4 },
-        {
-          "label": "Montagem e Reparação de termoacumulador e esquentador",
-          "values": 5
-        }
+        { "label": "Reparação e substituição de autoclismos", "value": 4 },
+        { "label": "Colocação de chuveiros", "value": 5 }
       ]
     },
     {
@@ -57,7 +51,13 @@
         { "label": "Sim", "value": 1 }
       ]
     },
+    {
+      "key": "files",
+      "label": "Por favor, partilhe connosco se possível algumas fotos",
+      "widget": "file-uploader"
+    },
 
+    { "type": "footnote", "label": "Tipo de Oferta" },
     {
       "key": "offer-type",
       "widget": "offer-type",
@@ -112,7 +112,7 @@
         {
           "name": "guest.telephone",
           "key": "telephone",
-          "type": "number",
+          "type": "text",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -162,7 +162,7 @@
         },
         {
           "name": "signup.telephone",
-          "type": "number",
+          "type": "text",
           "key": "telephone",
           "label": "Número de Telemóvel",
           "dependencyType": "value",

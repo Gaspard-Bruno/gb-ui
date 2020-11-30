@@ -60,13 +60,24 @@
     },
 
     {
-      "key": "support-type",
+      "key": "service-offer",
       "type": "dropdown",
       "label": "Tipo de apoio",
       "options": [
         { "label": "Companhia / Passeios a pé", "value": 0 },
         { "label": "Deslocações", "value": 1 },
-        { "label": "Refeição", "value": 2 }
+        { "label": "Refeição", "value": 2 },
+        { "label": "Apoio em tarefas domésticas", "value": 3 },
+        { "label": "Outro", "value": 4 }
+      ],
+      "children": [
+        {
+          "key": "service-offer-other",
+          "label": "",
+          "type": "text",
+          "dependencyType": "value",
+          "dependencyValue": 4
+        }
       ]
     },
 
@@ -80,6 +91,7 @@
       ]
     },
 
+    { "type": "footnote", "label": "Tipo de Oferta" },
     {
       "key": "offer-type",
       "widget": "offer-type",
@@ -134,7 +146,7 @@
         {
           "name": "guest.telephone",
           "key": "telephone",
-          "type": "number",
+          "type": "text",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -184,7 +196,7 @@
         },
         {
           "name": "signup.telephone",
-          "type": "number",
+          "type": "text",
           "key": "telephone",
           "label": "Número de Telemóvel",
           "dependencyType": "value",

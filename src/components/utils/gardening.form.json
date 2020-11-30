@@ -58,7 +58,7 @@
       ]
     },
     {
-      "key": "service",
+      "key": "service-offer",
       "type": "dropdown",
       "label": "Tipo de serviço",
       "options": [
@@ -68,7 +68,11 @@
         { "label": "Consultoria", "value": 4 }
       ]
     },
-    { "key": "area-size", "label": "Àrea (Aproximadamente)", "type": "text" },
+    {
+      "key": "area-size",
+      "label": "Área m2 (Aproximadamente)",
+      "type": "text"
+    },
     {
       "key": "materials",
       "type": "dropdown",
@@ -80,9 +84,17 @@
     },
 
     {
+      "key": "files",
+      "label": "Por favor, partilhe connosco se possível algumas fotos",
+      "widget": "file-uploader"
+    },
+
+    { "type": "footnote", "label": "Tipo de Oferta" },
+    {
       "key": "offer-type",
       "widget": "offer-type",
-      "formOfferType": "hour-pack"
+      "formOfferType": "hour-pack",
+      "options": [{ "label": "cenas 10 paus", "value": 0 }]
     },
 
     { "label": "Notas", "type": "footnote" },
@@ -133,7 +145,7 @@
         {
           "name": "guest.telephone",
           "key": "telephone",
-          "type": "number",
+          "type": "text",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -183,7 +195,7 @@
         },
         {
           "name": "signup.telephone",
-          "type": "number",
+          "type": "text",
           "key": "telephone",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
