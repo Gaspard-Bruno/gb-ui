@@ -22417,7 +22417,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
           value: values.value
         });
       }
-    }))), values['offer-type'] === 2 && offerType !== 'ready-pack' && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Select$2, {
+    }))), values['offer-type'] === 2 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Select$2, {
       label: "Escolha o Pack",
       name: "pack-selection",
       error: errors === null || errors === void 0 ? void 0 : errors['pack-selection'],
@@ -22429,7 +22429,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
           value: values.value
         });
       }
-    }), /*#__PURE__*/React.createElement(SmallBody, null, "*n\xE3o inclui a taxa de IVA em vigor"), values['pack-selection'] === 0 || values['pack-selection'] === 1 ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Body, null, "Poder\xE1 alterar a recorr\xEAncia e reagendar para mais tarde atrav\xE9s da Equipa da 55+."), /*#__PURE__*/React.createElement(Select$2, {
+    }), /*#__PURE__*/React.createElement(SmallBody, null, "*n\xE3o inclui a taxa de IVA em vigor"), values['pack-selection'] === 0 && offerType !== 'ready-pack' || values['pack-selection'] === 1 && offerType !== 'ready-pack' ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Body, null, "Poder\xE1 alterar a recorr\xEAncia e reagendar para mais tarde atrav\xE9s da Equipa da 55+."), /*#__PURE__*/React.createElement(Select$2, {
       label: "Recorr\xEAncia",
       name: "recurrence",
       defaultValue: getDefaultValues(recurrenceOptions, answers === null || answers === void 0 ? void 0 : answers['recurrence']),
