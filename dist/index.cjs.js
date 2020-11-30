@@ -22192,9 +22192,6 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       case 'one-time-service':
         return renderReadyPack(serviceOptions.unique);
 
-      case 'one-time-service-specific':
-        return renderOneTimeSpecific(serviceOptions.unique);
-
       case 'ready-pack-specific':
         //WeekEnds
         return renderReadyPack(serviceOptions.readyPackSpecific);
@@ -22229,43 +22226,6 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     return options === null || options === void 0 ? void 0 : options.find(function (e) {
       return e.value === answerValue;
     });
-  };
-
-  var renderOneTimeSpecific = function renderOneTimeSpecific(serviceOptions) {
-    return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(RadioButton, {
-      error: errors === null || errors === void 0 ? void 0 : errors['offer-type'],
-      name: "offer-type",
-      action: _action,
-      list: serviceOptions,
-      value: answers === null || answers === void 0 ? void 0 : answers['offer-type']
-    }), /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(Heading, {
-      size: 6
-    }, "Data e Hora do Servi\xE7o")), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(TextInput, {
-      label: "Data",
-      error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
-      name: "service-date",
-      type: "date",
-      minDate: new Date().toISOString().split('T')[0],
-      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-date'],
-      onChange: function onChange(values) {
-        return _action({
-          name: 'service-date',
-          value: values
-        });
-      }
-    }), /*#__PURE__*/React__default['default'].createElement(TextContainer, null, " - "), /*#__PURE__*/React__default['default'].createElement(Select$2, {
-      label: "Hora",
-      name: "preferred-hours",
-      error: errors === null || errors === void 0 ? void 0 : errors['prefered-hours'],
-      defaultValue: getDefaultValues(preferredHoursOptions, answers['prefered-hours']),
-      options: preferredHoursOptions,
-      onChange: function onChange(values) {
-        return _action({
-          name: 'preferred-hours-end',
-          value: values.value
-        });
-      }
-    })));
   };
 
   var renderReadyPack = function renderReadyPack(serviceOptions) {
