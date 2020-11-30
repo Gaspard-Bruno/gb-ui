@@ -333,7 +333,7 @@ const OfferTypeWidget = ({
           </>
         )}
         {/* Hour Package */}
-        {values['offer-type'] === 2 && (
+        {values['offer-type'] === 2 && offerType !== 'ready-pack' && (
           <>
             <Select
               label='Escolha o Pack'
