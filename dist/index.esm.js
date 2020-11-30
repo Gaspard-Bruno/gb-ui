@@ -22417,7 +22417,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
           value: values.value
         });
       }
-    }))), values['offer-type'] === 2 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Select$2, {
+    }))), values['offer-type'] === 2 && offerType !== 'ready-pack' && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Select$2, {
       label: "Escolha o Pack",
       name: "pack-selection",
       error: errors === null || errors === void 0 ? void 0 : errors['pack-selection'],
