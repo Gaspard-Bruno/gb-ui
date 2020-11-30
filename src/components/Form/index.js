@@ -117,6 +117,7 @@ const Form = ({
             <OfferTypeWidget
               key={'otw-' + (field.key || parentKey)}
               offerType={field.formOfferType}
+              packOptions={field.options}
               answers={answers}
               values={formik?.values}
               errors={errors}

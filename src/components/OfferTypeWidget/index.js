@@ -19,7 +19,14 @@ import {
 } from './selectableOptions';
 import { TextContainer } from './styles';
 
-const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
+const OfferTypeWidget = ({
+  action,
+  offerType,
+  values,
+  errors,
+  answers,
+  packOptions
+}) => {
   const renderContent = () => {
     const serviceOptions = {
       // ready-pack && hour-pack
@@ -31,20 +38,14 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
       // one-time-service
       unique: [{ label: 'Única', value: 0 }],
       // ready-pack-specific
-      readyPackSpecific: {
-        parentOptions: [
-          { label: 'Única', value: 0 },
-          { label: 'Recorrente', value: 1 },
-          {
-            label: 'Pack de Horas (Válido apenas para particulares)',
-            value: 2
-          }
-        ],
-        hourPackageOptions: [
-          { label: 'Fim-de-Semana - 25€', value: 2 },
-          { label: '7 Dias - 84€', value: 3 }
-        ]
-      }
+      readyPackSpecific: [
+        { label: 'Única', value: 0 },
+        { label: 'Recorrente', value: 1 },
+        {
+          label: 'Pack de Horas (Válido apenas para particulares)',
+          value: 2
+        }
+      ]
     };
     switch (offerType) {
       case 'ready-pack':
@@ -55,10 +56,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
       case 'one-time-service-specific':
         return renderOneTimeSpecific(serviceOptions.unique);
       case 'ready-pack-specific': //WeekEnds
-        return renderReadyPack(
-          serviceOptions.readyPackSpecific.parentOptions,
-          serviceOptions.readyPackSpecific.hourPackageOptions
-        );
+        return renderReadyPack(serviceOptions.readyPackSpecific);
       default:
         return null;
     }
@@ -127,7 +125,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
     );
   };
 
-  const renderReadyPack = (serviceOptions, serviceTypeOpt) => {
+  const renderReadyPack = serviceOptions => {
     return (
       <>
         <RadioButton
@@ -346,16 +344,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
               name='pack-selection'
               error={errors?.['pack-selection']}
               defaultValue={answers['pack-selection']}
-              options={
-                serviceTypeOpt
-                  ? serviceTypeOpt
-                  : [
-                      { label: '8 Aulas - 70€', value: 0 },
-                      { label: '10 horas - 75€', value: 1 },
-                      { label: 'Fim-de-Semana - 25€', value: 2 },
-                      { label: '7 Dias - 84€', value: 3 }
-                    ]
-              }
+              options={packOptions}
               onChange={values =>
                 action({
                   name: 'pack-selection',
@@ -486,10 +475,7 @@ const OfferTypeWidget = ({ action, offerType, values, errors, answers }) => {
 
   return (
     <>
-      <WidgetContainer>
-        <Heading size={6}>Tipo de Oferta</Heading>
-        {renderContent()}
-      </WidgetContainer>
+      <WidgetContainer>{renderContent()}</WidgetContainer>
     </>
   );
 };
@@ -499,7 +485,8 @@ OfferTypeWidget.propTypes = {
   offerType: PropTypes.string,
   values: PropTypes.object,
   errors: PropTypes.object,
-  answers: PropTypes.object
+  answers: PropTypes.object,
+  packOptions: PropTypes.array
 };
 
 export default OfferTypeWidget;

@@ -149,7 +149,7 @@ const stepFive = () => {
       value: [],
       options: [
         { label: 'Apoio Familiar a Crianças', value: 'babysitting' },
-        { label: 'Apoio Familiar a Seniores', value: 'elder_company' },
+        { label: 'Apoio a Seniores', value: 'elder_company' },
         { label: 'Aulas De Línguas', value: 'language_lessons' },
         { label: 'Aulas de Música', value: 'music_lessons' },
         { label: 'Chef Em Casa', value: 'chef_at_home' },
