@@ -22168,9 +22168,6 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       }, {
         label: 'Recorrente',
         value: 1
-      }, {
-        label: 'Pack de Horas (Válido apenas para particulares)',
-        value: 2
       }]
     };
 
