@@ -49,6 +49,8 @@ const OfferTypeWidget = ({
         return renderReadyPack(serviceOptions.default);
       case 'one-time-service':
         return renderReadyPack(serviceOptions.unique);
+      case 'one-time-service-specific':
+        return renderOneTimeSpecific(serviceOptions.unique);
       case 'ready-pack-specific': //WeekEnds
         return renderReadyPack(serviceOptions.readyPackSpecific);
       default:
