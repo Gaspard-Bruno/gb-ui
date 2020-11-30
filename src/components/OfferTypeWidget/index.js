@@ -40,11 +40,7 @@ const OfferTypeWidget = ({
       // ready-pack-specific
       readyPackSpecific: [
         { label: 'Única', value: 0 },
-        { label: 'Recorrente', value: 1 },
-        {
-          label: 'Pack de Horas (Válido apenas para particulares)',
-          value: 2
-        }
+        { label: 'Recorrente', value: 1 }
       ]
     };
     switch (offerType) {
