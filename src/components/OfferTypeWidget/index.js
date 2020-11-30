@@ -333,7 +333,7 @@ const OfferTypeWidget = ({
           </>
         )}
         {/* Hour Package */}
-        {values['offer-type'] === 2 && offerType !== 'ready-pack' && (
+        {values['offer-type'] === 2 && (
           <>
             <Select
               label='Escolha o Pack'
@@ -350,8 +350,8 @@ const OfferTypeWidget = ({
             />
             <SmallBody>*não inclui a taxa de IVA em vigor</SmallBody>
             {/* exclusive !weekends and !sevenDays */}
-            {values['pack-selection'] === 0 ||
-            values['pack-selection'] === 1 ? (
+            {(values['pack-selection'] === 0 && offerType !== 'ready-pack') ||
+            (values['pack-selection'] === 1 && offerType !== 'ready-pack') ? (
               <>
                 <Body>
                   Poderá alterar a recorrência e reagendar para mais tarde
