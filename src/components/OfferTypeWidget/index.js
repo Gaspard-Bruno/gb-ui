@@ -335,6 +335,7 @@ const OfferTypeWidget = ({
         {/* Hour Package */}
         {values['offer-type'] === 2 && (
           <>
+            <SmallBody>*Válido apenas para particulares</SmallBody>
             <Select
               label='Escolha o Pack'
               name='pack-selection'

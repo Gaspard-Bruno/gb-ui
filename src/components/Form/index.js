@@ -232,7 +232,7 @@ const Form = ({
         case 'text':
         case 'password':
         case 'mini-text':
-          fieldValidation(field);
+          // fieldValidation(field);
           return (
             <TextInput
               key={field.key}

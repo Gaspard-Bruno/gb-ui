@@ -1266,7 +1266,7 @@ const STEP_LABELS = [
   'Serviços',
   'Preferência Horária',
   'Pagamentos',
-  'Linguas Estrangeiras',
+  'Línguas Estrangeiras',
   'Outros'
 ];
 const formSteps = {
