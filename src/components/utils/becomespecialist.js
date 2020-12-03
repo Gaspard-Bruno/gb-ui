@@ -157,8 +157,8 @@ const stepFive = () => {
         { label: 'Jardinagem', value: 'gardening' },
         { label: 'Limpezas', value: 'cleaning' },
         { label: 'Passar a Ferro', value: 'ironing' },
-        { label: 'Petcare (Visitas e passeios)', value: 'petcare' },
-        { label: 'Petsitting (Estadia)', value: 'petsitting' },
+        { label: 'Pet care (Visitas e passeios)', value: 'petcare' },
+        { label: 'Pet sitting (Estadia)', value: 'petsitting' },
         { label: 'Reparações', value: 'repairs' }
       ],
       children: [
@@ -277,6 +277,11 @@ const stepFive = () => {
                   isSelectable: true
                 }
               ]
+            },
+            {
+              type: 'footnote',
+              label:
+                'Se o serviço requerer a utilização da viatura própria, serão pagos os km, ao preço de 0,36€/km'
             }
           ]
         },
@@ -349,7 +354,7 @@ const stepFive = () => {
           widget: 'mini-form',
           dependencyType: 'value-includes',
           dependencyValue: 'petcare',
-          label: 'Petcare',
+          label: 'Pet care',
           questions: [
             {
               key: 'petcareAnimalType',
