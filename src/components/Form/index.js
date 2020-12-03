@@ -60,6 +60,7 @@ const Form = ({
   hiddenFields,
   children
 }) => {
+  const validationErrors = errors || {};
   const renderAddFields = (fields, count, formik) => {
     const addFields = [];
     for (let i = 0; i < count; i++) {
@@ -115,30 +116,32 @@ const Form = ({
       if (values) {
         if (field.key === 'email') {
           if (!validator.isEmail(values)) {
-            errors[field.key] = 'O email introduzido não é válido';
+            validationErrors[field.key] = 'O email introduzido não é válido';
           } else {
-            delete errors[field.key];
+            delete validationErrors[field.key];
           }
         }
         if (field.key === 'nif') {
           if (!nifValidation(values)) {
-            errors[field.key] = 'O NIF introduzido não é válido';
+            console.log('errrrosss', errors);
+            validationErrors[field.key] = 'O NIF introduzido não é válido';
           } else {
-            delete errors[field.key];
+            delete validationErrors[field.key];
           }
         }
         if (field.key === 'telephone') {
           if (!validator.isMobilePhone(values, 'any')) {
-            errors[field.key] = 'O telefone introduzido não é válido';
+            validationErrors[field.key] = 'O telefone introduzido não é válido';
           } else {
-            delete errors[field.key];
+            delete validationErrors[field.key];
           }
         }
         if (field.key === 'postal-code' || field.key === 'postalCode') {
           if (!validator.isPostalCode(values, 'PT')) {
-            errors[field.key] = 'O código postal introduzido não é válido';
+            validationErrors[field.key] =
+              'O código postal introduzido não é válido';
           } else {
-            delete errors[field.key];
+            delete validationErrors[field.key];
           }
         }
       }
@@ -155,7 +158,12 @@ const Form = ({
         value: formik.values[field.key] ?? initialValues[field.key],
         translate,
         type: field.type,
-        error: errors && errors?.[field.key] && errors?.[field.key] // required, hasBeenTaken,
+        error:
+          errors && errors?.[field.key]
+            ? errors?.[field.key]
+            : validationErrors &&
+              validationErrors[field.key] &&
+              validationErrors[field.key] // required, hasBeenTaken,
       };
       const getOptVal = opt =>
         fieldProps?.value?.find(v => v.value === opt.value);

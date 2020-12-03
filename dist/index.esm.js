@@ -32821,6 +32821,7 @@ var Form$1 = function Form(_ref) {
       answers = _ref.answers,
       hiddenFields = _ref.hiddenFields,
       children = _ref.children;
+  var validationErrors = errors || {};
 
   var renderAddFields = function renderAddFields(fields, count, formik) {
     var addFields = [];
@@ -32883,33 +32884,34 @@ var Form$1 = function Form(_ref) {
       if (values) {
         if (field.key === 'email') {
           if (!validator.isEmail(values)) {
-            errors[field.key] = 'O email introduzido não é válido';
+            validationErrors[field.key] = 'O email introduzido não é válido';
           } else {
-            delete errors[field.key];
+            delete validationErrors[field.key];
           }
         }
 
         if (field.key === 'nif') {
           if (!nifValidation(values)) {
-            errors[field.key] = 'O NIF introduzido não é válido';
+            console.log('errrrosss', errors);
+            validationErrors[field.key] = 'O NIF introduzido não é válido';
           } else {
-            delete errors[field.key];
+            delete validationErrors[field.key];
           }
         }
 
         if (field.key === 'telephone') {
           if (!validator.isMobilePhone(values, 'any')) {
-            errors[field.key] = 'O telefone introduzido não é válido';
+            validationErrors[field.key] = 'O telefone introduzido não é válido';
           } else {
-            delete errors[field.key];
+            delete validationErrors[field.key];
           }
         }
 
         if (field.key === 'postal-code' || field.key === 'postalCode') {
           if (!validator.isPostalCode(values, 'PT')) {
-            errors[field.key] = 'O código postal introduzido não é válido';
+            validationErrors[field.key] = 'O código postal introduzido não é válido';
           } else {
-            delete errors[field.key];
+            delete validationErrors[field.key];
           }
         }
       }
@@ -32930,7 +32932,7 @@ var Form$1 = function Form(_ref) {
         value: (_formik$values$field$2 = formik.values[field.key]) !== null && _formik$values$field$2 !== void 0 ? _formik$values$field$2 : initialValues[field.key],
         translate: translate,
         type: field.type,
-        error: errors && (errors === null || errors === void 0 ? void 0 : errors[field.key]) && (errors === null || errors === void 0 ? void 0 : errors[field.key]) // required, hasBeenTaken,
+        error: errors && (errors === null || errors === void 0 ? void 0 : errors[field.key]) ? errors === null || errors === void 0 ? void 0 : errors[field.key] : validationErrors && validationErrors[field.key] && validationErrors[field.key] // required, hasBeenTaken,
 
       };
 
