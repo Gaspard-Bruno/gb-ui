@@ -19,13 +19,13 @@ const SchedulePicker = ({
   action,
   t,
   columnNames = [
-    'sunday',
-    'monday',
-    'tuesday',
-    'wednesday',
-    'thursday',
-    'friday',
-    'saturday'
+    'domingo',
+    'segunda',
+    'terca',
+    'quarta',
+    'quinta',
+    'sexta',
+    'sabado'
   ],
   value = DAYS_OF_THE_WEEK
 }) => {
@@ -43,6 +43,10 @@ const SchedulePicker = ({
     if (picks) {
       picks.forEach(value => {
         switch (value.getDay()) {
+          case 0:
+            return DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours()) === -1
+              ? DAYS_OF_THE_WEEK.sunday.push(value.getHours())
+              : null;
           case 1:
             return DAYS_OF_THE_WEEK.monday.indexOf(value.getHours()) === -1
               ? DAYS_OF_THE_WEEK.monday.push(value.getHours())
@@ -68,9 +72,7 @@ const SchedulePicker = ({
               ? DAYS_OF_THE_WEEK.saturday.push(value.getHours())
               : null;
           default:
-            return DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours()) === -1
-              ? DAYS_OF_THE_WEEK.sunday.push(value.getHours())
-              : null;
+            return;
         }
       });
     }

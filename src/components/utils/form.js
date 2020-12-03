@@ -48,8 +48,7 @@ const gardeningAnswers = {
   'service-type': 1,
   'number-of-hours': 1,
   recurrence: 2,
-  'login-buttons': 'guest',
-  'chosen-language': 1
+  'login-buttons': 'guest'
 };
 
 const specialistFormAnswers = {

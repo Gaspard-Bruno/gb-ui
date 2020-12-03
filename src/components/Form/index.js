@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import chunk from 'lodash.chunk';
 import sc from 'lodash.startcase';
 import snakecase from 'lodash.snakecase';
+import validator from 'validator';
 
 import TextInput from '../TextInput';
 import Select from '../Select';
@@ -21,13 +22,12 @@ import CheckBoxWidget from '../CheckBoxWidget';
 import Tabs from '../Tabs';
 import MiniForm from '../MiniForm';
 import Button from '../Button';
-import { Body, Heading } from '../Text';
+import { Heading } from '../Text';
 import { Col, Row } from '../Layout';
 import MultiFieldRender from '../MultiFieldRender';
 import { FormContainer, StyledForm } from './styles';
 import SchedulePicker from '../SchedulePicker';
 import DISTRICT_PARISHES from './DISTRICT_PARISHES';
-
 const districtOptions = Object.keys(DISTRICT_PARISHES).map(district => ({
   value: snakecase(district),
   label: district
@@ -76,7 +76,75 @@ const Form = ({
     }
     return addFields;
   };
+
+  //! NIF Validation function
+  const nifValidation = nif => {
+    /* eslint-disable eqeqeq */
+
+    let checkDigit = 0;
+    if (nif != null && nif.length == 9) {
+      const c = nif.charAt(0);
+      if (
+        c == '1' ||
+        c == '2' ||
+        c == '5' ||
+        c == '6' ||
+        c == '8' ||
+        c == '9'
+      ) {
+        checkDigit = c * 9;
+        for (let i = 2; i <= 8; i++) {
+          checkDigit += nif.charAt(i - 1) * (10 - i);
+        }
+        checkDigit = 11 - (checkDigit % 11);
+        if (checkDigit >= 10) {
+          checkDigit = 0;
+        }
+        if (checkDigit == nif.charAt(8)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
   const fieldRenderer = (field, formik, parentKey) => {
+    //! field Validation function
+    const fieldValidation = field => {
+      const values = formik.values[field.key] ?? initialValues[field.key];
+      if (values) {
+        if (field.key === 'email') {
+          if (!validator.isEmail(values)) {
+            errors[field.key] = 'O email introduzido não é válido';
+          } else {
+            delete errors[field.key];
+          }
+        }
+        if (field.key === 'nif') {
+          if (!nifValidation(values)) {
+            errors[field.key] = 'O NIF introduzido não é válido';
+          } else {
+            delete errors[field.key];
+          }
+        }
+        if (field.key === 'telephone') {
+          if (!validator.isMobilePhone(values, 'any')) {
+            errors[field.key] = 'O telefone introduzido não é válido';
+          } else {
+            delete errors[field.key];
+          }
+        }
+        if (field.key === 'postal-code' || field.key === 'postalCode') {
+          if (!validator.isPostalCode(values, 'PT')) {
+            errors[field.key] = 'O código postal introduzido não é válido';
+          } else {
+            delete errors[field.key];
+          }
+        }
+      }
+    };
+
+    //! Formik inputs logic
     if (field.key && hiddenFields.indexOf(field.key) === -1) {
       const widget = field.widget || field.type;
       const fieldProps = {
@@ -87,7 +155,7 @@ const Form = ({
         value: formik.values[field.key] ?? initialValues[field.key],
         translate,
         type: field.type,
-        error: errors && errors?.[field.key] && errors?.[field.key] // required, hasBeenTaken
+        error: errors && errors?.[field.key] && errors?.[field.key] // required, hasBeenTaken,
       };
       const getOptVal = opt =>
         fieldProps?.value?.find(v => v.value === opt.value);
@@ -156,6 +224,7 @@ const Form = ({
         case 'text':
         case 'password':
         case 'mini-text':
+          fieldValidation(field);
           return (
             <TextInput
               key={field.key}
