@@ -6286,41 +6286,52 @@ var StyledButton = styled__default['default'].button(_templateObject4$3(), funct
 
 var ButtonGroup = function ButtonGroup(_ref) {
   var action = _ref.action,
-      label = _ref.label,
+      title = _ref.title,
       name = _ref.name,
-      list = _ref.list;
+      list = _ref.list,
+      value = _ref.value;
 
-  var _useState = React.useState(list.map(function (li) {
-    return _defineProperty({}, li.value, li.isSelected);
-  })),
+  var filteredList = function filteredList(listToFilter) {
+    var newList = {};
+
+    for (var i = 0; i < listToFilter.length; i++) {
+      newList[i] = listToFilter[i].isSelected;
+    }
+
+    return newList;
+  };
+
+  var _useState = React.useState(value || filteredList(list)),
       _useState2 = _slicedToArray(_useState, 2),
       selectedButtons = _useState2[0],
       setSelectedTab = _useState2[1];
 
   var handleSelection = React.useCallback(function (key, isSelected) {
-    setSelectedTab(_objectSpread2(_objectSpread2({}, selectedButtons), {}, _defineProperty({}, key, isSelected)));
-  }, [selectedButtons]);
-  return /*#__PURE__*/React__default['default'].createElement(StyledContainer, null, /*#__PURE__*/React__default['default'].createElement(Body, null, label || ''), /*#__PURE__*/React__default['default'].createElement(ListContainer, null, list && list.map(function (item, index) {
+    var newVals = _objectSpread2(_objectSpread2({}, selectedButtons), {}, _defineProperty({}, key, isSelected));
+
+    setSelectedTab(newVals);
+
+    if (action) {
+      action({
+        name: name,
+        value: newVals
+      });
+    }
+  }, [action, name, selectedButtons]);
+  var labels = ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'];
+  return /*#__PURE__*/React__default['default'].createElement(StyledContainer, null, title && /*#__PURE__*/React__default['default'].createElement(Body, null, title), /*#__PURE__*/React__default['default'].createElement(ListContainer, null, list && list.map(function (item, index) {
     return /*#__PURE__*/React__default['default'].createElement(ButtonGroupContainer, {
       isSelected: selectedButtons[index],
       key: "".concat(item, "-").concat(index)
-    }, item.label && /*#__PURE__*/React__default['default'].createElement(Body, null, item.label), /*#__PURE__*/React__default['default'].createElement(StyledButton, {
+    }, /*#__PURE__*/React__default['default'].createElement(Body, null, labels[index]), /*#__PURE__*/React__default['default'].createElement(StyledButton, {
       key: "".concat(item, "-").concat(index),
       item: true,
       type: "button",
-      label: item.label,
       name: name,
       disabled: item.disabled,
       isSelected: selectedButtons[index],
       onClick: function onClick() {
         handleSelection(item.value, !selectedButtons[item.value]);
-
-        if (action) {
-          action({
-            name: name,
-            value: selectedButtons
-          });
-        }
       }
     }));
   })));
@@ -6328,9 +6339,10 @@ var ButtonGroup = function ButtonGroup(_ref) {
 
 ButtonGroup.propTypes = {
   action: propTypes.func,
-  label: propTypes.string,
+  title: propTypes.string,
   list: propTypes.array,
-  name: propTypes.string
+  name: propTypes.string,
+  value: propTypes.object
 };
 
 function _templateObject$8() {
