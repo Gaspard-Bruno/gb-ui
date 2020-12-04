@@ -33,9 +33,8 @@ const FileUploader = ({ title, name, action, answers, error }) => {
   });
 
   // Convert file to base64 string
-  const fileToBase64 = (filename, filepath) => {
+  const fileToBase64 = file => {
     return new Promise(resolve => {
-      const file = new File([filename], filepath);
       const reader = new FileReader();
       // Read file content on file loaded event
       reader.onload = function(event) {
@@ -50,7 +49,7 @@ const FileUploader = ({ title, name, action, answers, error }) => {
   const uploadBase64Files = urlFiles => {
     const newFiles = [];
     urlFiles.forEach(file => {
-      fileToBase64(file?.name, file?.path)
+      fileToBase64(file)
         .then(response => newFiles.push(response))
         .catch(e => e);
     });
