@@ -6288,10 +6288,9 @@ var ButtonGroup = function ButtonGroup(_ref) {
   var action = _ref.action,
       label = _ref.label,
       name = _ref.name,
-      list = _ref.list,
-      value = _ref.value;
+      list = _ref.list;
 
-  var _useState = React.useState(value || list.map(function (li) {
+  var _useState = React.useState(list.map(function (li) {
     return _defineProperty({}, li.value, li.isSelected);
   })),
       _useState2 = _slicedToArray(_useState, 2),
@@ -21806,9 +21805,8 @@ var FileUploader = function FileUploader(_ref) {
       open = _useDropzone.open; // Convert file to base64 string
 
 
-  var fileToBase64 = function fileToBase64(filename, filepath) {
+  var fileToBase64 = function fileToBase64(file) {
     return new Promise(function (resolve) {
-      var file = new File([filename], filepath);
       var reader = new FileReader(); // Read file content on file loaded event
 
       reader.onload = function (event) {
@@ -21823,7 +21821,7 @@ var FileUploader = function FileUploader(_ref) {
   var uploadBase64Files = function uploadBase64Files(urlFiles) {
     var newFiles = [];
     urlFiles.forEach(function (file) {
-      fileToBase64(file === null || file === void 0 ? void 0 : file.name, file === null || file === void 0 ? void 0 : file.path).then(function (response) {
+      fileToBase64(file).then(function (response) {
         return newFiles.push(response);
       }).catch(function (e) {
         return e;
@@ -26564,6 +26562,7 @@ var Form$1 = function Form(_ref) {
             name: fieldProps.key,
             label: fieldProps === null || fieldProps === void 0 ? void 0 : fieldProps.label,
             list: field === null || field === void 0 ? void 0 : field.options,
+            value: formik === null || formik === void 0 ? void 0 : formik.values[field.key],
             action: function action(values) {
               return formik.setFieldValue(field.key, values.value);
             }

@@ -10,9 +10,9 @@ import {
   ListContainer
 } from './styles';
 
-const ButtonGroup = ({ action, label, name, list, value }) => {
+const ButtonGroup = ({ action, label, name, list }) => {
   const [selectedButtons, setSelectedTab] = useState(
-    value || list.map(li => ({ [li.value]: li.isSelected }))
+    list.map(li => ({ [li.value]: li.isSelected }))
   );
 
   const handleSelection = useCallback(
