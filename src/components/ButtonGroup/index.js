@@ -9,24 +9,37 @@ import {
   StyledContainer,
   ListContainer
 } from './styles';
+const ButtonGroup = ({ action, title, name, list, value }) => {
+  const filteredList = listToFilter => {
+    const newList = {};
+    for (let i = 0; i < listToFilter.length; i++) {
+      newList[i] = listToFilter[i].isSelected;
+    }
+    return newList;
+  };
 
-const ButtonGroup = ({ action, label, name, list }) => {
   const [selectedButtons, setSelectedTab] = useState(
-    list.map(li => ({ [li.value]: li.isSelected }))
+    value || filteredList(list)
   );
 
   const handleSelection = useCallback(
     (key, isSelected) => {
-      setSelectedTab({
+      const newVals = {
         ...selectedButtons,
         [key]: isSelected
-      });
+      };
+      setSelectedTab(newVals);
+      if (action) {
+        action({ name, value: newVals });
+      }
     },
-    [selectedButtons]
+    [action, name, selectedButtons]
   );
+
+  const labels = ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'];
   return (
     <StyledContainer>
-      {<Body>{label || ''}</Body>}
+      {title && <Body>{title}</Body>}
       <ListContainer>
         {list &&
           list.map((item, index) => {
@@ -35,20 +48,16 @@ const ButtonGroup = ({ action, label, name, list }) => {
                 isSelected={selectedButtons[index]}
                 key={`${item}-${index}`}
               >
-                {item.label && <Body>{item.label}</Body>}
+                <Body>{labels[index]}</Body>
                 <StyledButton
                   key={`${item}-${index}`}
                   item
                   type='button'
-                  label={item.label}
                   name={name}
                   disabled={item.disabled}
                   isSelected={selectedButtons[index]}
                   onClick={() => {
                     handleSelection(item.value, !selectedButtons[item.value]);
-                    if (action) {
-                      action({ name, value: selectedButtons });
-                    }
                   }}
                 ></StyledButton>
               </ButtonGroupContainer>
@@ -61,9 +70,10 @@ const ButtonGroup = ({ action, label, name, list }) => {
 
 ButtonGroup.propTypes = {
   action: PropTypes.func,
-  label: PropTypes.string,
+  title: PropTypes.string,
   list: PropTypes.array,
-  name: PropTypes.string
+  name: PropTypes.string,
+  value: PropTypes.object
 };
 
 export default ButtonGroup;
