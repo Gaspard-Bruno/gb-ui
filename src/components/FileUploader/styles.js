@@ -86,10 +86,11 @@ export const AnswersFilesContainer = styled.div`
 
 export const AnswersTextHolder = styled.div`
   margin-left: ${props => props.theme.margin * 2.5}px;
+  flex: 1;
 `;
+
 export const AnswersIconHolder = styled.div`
-  position: relative;
-  right: -85%;
+  flex: 0;
   svg {
     path {
       fill: ${props => props.theme.colors.grey};

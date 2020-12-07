@@ -20,6 +20,8 @@ const gardeningAnswers = {
     firstName: 'David',
     telephone: '123'
   },
+  'preferred-hours-start': '10:00',
+  parish: 'Arroios',
   address: 'Rua Cenas',
   'chosen-language': 1,
   country: 1,
@@ -81,6 +83,13 @@ const specialistFormAnswers = {
   mainMotivation: '2',
   preferredContact: 0,
   professionalStatus: 2,
+  files: [
+    {
+      id: 21,
+      filename: 'image_1.png',
+      url: 'https://d3ugqbne3wd6hp.cloudfront.net/1rw9qgle2svbaecdir8clau6om6h'
+    }
+  ],
   professionalActivity: 0,
   babysittingChildAge: [
     { value: 0, question: 'De 6 meses até os 2 anos' },

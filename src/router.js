@@ -101,7 +101,7 @@ const components = [
           },
           {
             id: 16,
-            filename: 'image_1.PDF',
+            filename: 'image_1.jpg',
             url:
               'https://d3ugqbne3wd6hp.cloudfront.net/0a0oss295xf5ibg83fw1q0pljpzw'
           }
@@ -165,7 +165,19 @@ const components = [
       },
       {
         questions: FORM.repairs.questions,
-        previewComponentTitle: 'Repairs'
+        previewComponentTitle: 'Repairs',
+        answers: {
+          district: 'Lisboa',
+          freguesia: 'Arroios',
+          files: [
+            {
+              id: 21,
+              filename: 'image_1.png',
+              url:
+                'https://d3ugqbne3wd6hp.cloudfront.net/1rw9qgle2svbaecdir8clau6om6h'
+            }
+          ]
+        }
       },
       {
         previewComponentTitle: 'Music Lessons',
