@@ -22338,6 +22338,8 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     });
   };
 
+  var minDate = new Date().toISOString().split('T')[0];
+
   var renderOneTimeSpecific = function renderOneTimeSpecific(serviceOptions) {
     return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(RadioButton, {
       error: errors === null || errors === void 0 ? void 0 : errors['offer-type'],
@@ -22352,7 +22354,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
       name: "service-date",
       type: "date",
-      minDate: new Date().toISOString().split('T')[0],
+      minDate: minDate,
       defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-date'],
       onChange: function onChange(values) {
         return _action({
@@ -22363,12 +22365,12 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     }), /*#__PURE__*/React__default['default'].createElement(TextContainer, null, " - "), /*#__PURE__*/React__default['default'].createElement(Select$2, {
       label: "Hora",
       name: "preferred-hours",
-      error: errors === null || errors === void 0 ? void 0 : errors['prefered-hours'],
-      defaultValue: getDefaultValues(preferredHoursOptions, answers['prefered-hours']),
+      error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours'],
+      defaultValue: getDefaultValues(preferredHoursOptions, answers['preferred-hours']),
       options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
-          name: 'prefered-hours',
+          name: 'preferred-hours',
           value: values.value
         });
       }
@@ -22388,7 +22390,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
       name: "service-date",
       type: "date",
-      minDate: new Date().toISOString().split('T')[0],
+      minDate: minDate,
       defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-date'],
       onChange: function onChange(values) {
         return _action({
@@ -22493,7 +22495,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data de In\xEDcio",
       name: "service-start-date",
       type: "date",
-      minDate: new Date().toISOString().split('T')[0],
+      minDate: minDate,
       onChange: function onChange(values) {
         return _action({
           name: 'service-start-date',
@@ -22506,7 +22508,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data de Fim",
       name: "service-end-date",
       type: "date",
-      minDate: new Date().toISOString().split('T')[0],
+      minDate: minDate,
       onChange: function onChange(values) {
         return _action({
           name: 'service-end-date',
@@ -22583,7 +22585,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data de In\xEDcio",
       name: "service-start-date",
       type: "date",
-      min: new Date().toISOString().split('T')[0],
+      min: minDate,
       defaultValue: answers['service-start-date'],
       error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
       onChange: function onChange(values) {
@@ -22620,7 +22622,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data do In\xEDcio",
       name: "service-date",
       type: "date",
-      min: new Date().toISOString().split('T')[0],
+      min: minDate,
       defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-date'],
       error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
       onChange: function onChange(values) {
