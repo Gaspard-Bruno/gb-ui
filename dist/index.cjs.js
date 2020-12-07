@@ -20399,7 +20399,7 @@ RadioButton.propTypes = {
 };
 
 function _templateObject12$2() {
-  var data = _taggedTemplateLiteral(["\n  position: relative;\n  right: -85%;\n  svg {\n    path {\n      fill: ", ";\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  flex: 0;\n  svg {\n    path {\n      fill: ", ";\n    }\n  }\n"]);
 
   _templateObject12$2 = function _templateObject12() {
     return data;
@@ -20409,7 +20409,7 @@ function _templateObject12$2() {
 }
 
 function _templateObject11$2() {
-  var data = _taggedTemplateLiteral(["\n  margin-left: ", "px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  margin-left: ", "px;\n  flex: 1;\n"]);
 
   _templateObject11$2 = function _templateObject11() {
     return data;
@@ -26428,7 +26428,7 @@ var Form$1 = function Form(_ref) {
             key: 'file-' + (field.key || parentKey),
             name: field.key,
             title: field.label,
-            answers: answers['file'],
+            answers: answers['files'],
             action: function action(values) {
               return formik.setFieldValue(field.key, values);
             },
