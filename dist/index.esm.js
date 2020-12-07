@@ -20385,6 +20385,56 @@ RadioButton.propTypes = {
   error: propTypes.string
 };
 
+function _templateObject12$2() {
+  var data = _taggedTemplateLiteral(["\n  position: relative;\n  right: -85%;\n  svg {\n    path {\n      fill: ", ";\n    }\n  }\n"]);
+
+  _templateObject12$2 = function _templateObject12() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject11$2() {
+  var data = _taggedTemplateLiteral(["\n  margin-left: ", "px;\n"]);
+
+  _templateObject11$2 = function _templateObject11() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject10$2() {
+  var data = _taggedTemplateLiteral(["\n  border-bottom: 1px solid #d2ccc6;\n  margin-top: ", "px;\n  padding: 0px ", "px;\n  display: flex;\n  align-items: center;\n  span {\n    cursor: pointer;\n  }\n"]);
+
+  _templateObject10$2 = function _templateObject10() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject9$2() {
+  var data = _taggedTemplateLiteral(["\n  border-radius: 2px;\n  min-height: 48px;\n  align-items: center;\n  display: flex;\n  background-color: ", ";\n  p {\n    margin: ", "px;\n  }\n"]);
+
+  _templateObject9$2 = function _templateObject9() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject8$2() {
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n"]);
+
+  _templateObject8$2 = function _templateObject8() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject7$2() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  overflow: hidden;\n"]);
 
@@ -20465,6 +20515,23 @@ var UploadedImages = styled.img(_templateObject4$8());
 var UploaderInput = styled.input(_templateObject5$5());
 var ThumbsContainer = styled.div(_templateObject6$2());
 var UploaderPreviewInner = styled.div(_templateObject7$2());
+var AnswersContainer = styled.div(_templateObject8$2());
+var AnswersTitleHolder = styled.div(_templateObject9$2(), function (props) {
+  return props.theme.colors.lightestBeige;
+}, function (props) {
+  return props.theme.margin;
+});
+var AnswersFilesContainer = styled.div(_templateObject10$2(), function (props) {
+  return props.theme.margin;
+}, function (props) {
+  return props.theme.margin;
+});
+var AnswersTextHolder = styled.div(_templateObject11$2(), function (props) {
+  return props.theme.margin * 2.5;
+});
+var AnswersIconHolder = styled.div(_templateObject12$2(), function (props) {
+  return props.theme.colors.grey;
+});
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -21782,7 +21849,7 @@ var FileUploader = function FileUploader(_ref) {
       answers = _ref.answers,
       error = _ref.error;
 
-  var _useState = useState(answers || []),
+  var _useState = useState([]),
       _useState2 = _slicedToArray(_useState, 2),
       files = _useState2[0],
       setFiles = _useState2[1];
@@ -21801,7 +21868,37 @@ var FileUploader = function FileUploader(_ref) {
   }),
       getRootProps = _useDropzone.getRootProps,
       getInputProps = _useDropzone.getInputProps,
-      open = _useDropzone.open; // Convert file to base64 string
+      open = _useDropzone.open;
+
+  var handleFileDownload = function handleFileDownload(url, name) {
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = url;
+    a.target = '_blank';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
+  var displayAnswers = function displayAnswers(answers) {
+    var files = answers.map(function (elem, i) {
+      var fileName = elem.filename.split('.')[0];
+      var fileExtension = elem.filename.split('.').pop().toUpperCase();
+      return /*#__PURE__*/React.createElement(AnswersFilesContainer, {
+        key: elem.filename
+      }, /*#__PURE__*/React.createElement(Icon, {
+        name: fileExtension !== 'PDF' ? 'Arquive' : 'PDF'
+      }), /*#__PURE__*/React.createElement(AnswersTextHolder, null, fileName, /*#__PURE__*/React.createElement(SmallBody, null, "Ficheiro ", fileExtension)), /*#__PURE__*/React.createElement(AnswersIconHolder, null, /*#__PURE__*/React.createElement("span", {
+        role: "presentation",
+        onClick: function onClick() {
+          return handleFileDownload(elem.url, elem.filename);
+        }
+      }, /*#__PURE__*/React.createElement(Icon, {
+        name: "download"
+      }))));
+    });
+    return /*#__PURE__*/React.createElement(AnswersContainer, null, /*#__PURE__*/React.createElement(AnswersTitleHolder, null, /*#__PURE__*/React.createElement(SmallBody, null, "Ficheiros:")), /*#__PURE__*/React.createElement("div", null, files));
+  }; // Convert file to base64 string
 
 
   var fileToBase64 = function fileToBase64(file) {
@@ -21852,7 +21949,7 @@ var FileUploader = function FileUploader(_ref) {
   });
   return /*#__PURE__*/React.createElement(React.Fragment, {
     key: 'file-uploader'
-  }, title && /*#__PURE__*/React.createElement(Body, null, title), /*#__PURE__*/React.createElement(FileUploaderContainer, getRootProps(), /*#__PURE__*/React.createElement(UploaderRowWrapper, null, /*#__PURE__*/React.createElement(Icon, {
+  }, title && /*#__PURE__*/React.createElement(Body, null, title), answers && answers.length > 0 ? displayAnswers(answers) : /*#__PURE__*/React.createElement(FileUploaderContainer, getRootProps(), /*#__PURE__*/React.createElement(UploaderRowWrapper, null, /*#__PURE__*/React.createElement(Icon, {
     name: "upload"
   }), /*#__PURE__*/React.createElement(Body, {
     alt: "true"
@@ -22258,7 +22355,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
-          name: 'preferred-hours-end',
+          name: 'prefered-hours',
           value: values.value
         });
       }
@@ -22431,7 +22528,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Escolha o Pack",
       name: "pack-selection",
       error: errors === null || errors === void 0 ? void 0 : errors['pack-selection'],
-      defaultValue: answers['pack-selection'],
+      defaultValue: getDefaultValues(packOptions, answers === null || answers === void 0 ? void 0 : answers['pack-selection']),
       options: packOptions,
       onChange: function onChange(values) {
         return _action({
@@ -26206,7 +26303,7 @@ SchedulePicker.propTypes = {
 };
 
 var DISTRICT_PARISHES = {
-  Lisboa: ['Ajuda', 'Alcântara ', 'Alvalade', 'Areeiro', 'Arroios', 'Avenidas Novas', 'Beato', 'Belém', 'Benfica', 'Campo de Ourique', 'Campolide', 'Carnide', 'Estrela', 'Lumiar', 'Marvila ', 'Misericórdia', 'Olivais', 'Parque das Nações', 'Penha de França', 'Santa Clara', 'Santa Maria Maior', 'Santo António', 'São Domingos de Benfica', 'São Vicente'],
+  Lisboa: ['Ajuda', 'Alcântara', 'Alvalade', 'Areeiro', 'Arroios', 'Avenidas Novas', 'Beato', 'Belém', 'Benfica', 'Campo de Ourique', 'Campolide', 'Carnide', 'Estrela', 'Lumiar', 'Marvila', 'Misericórdia', 'Olivais', 'Parque das Nações', 'Penha de França', 'Santa Clara', 'Santa Maria Maior', 'Santo António', 'São Domingos de Benfica', 'São Vicente'],
   Porto: ['Aldoar, foz do Douro e Nevogilde', 'Cedofeita, Santo Ildefonso, Sé, Miragaia, São Nicolau e Vitória', 'Lordelo do Ouro e Massarelos', 'Bonfim', 'Campanhã', 'Paranhos'],
   Valongo: ['Alfena ', 'Ermesinde', 'Valongo', 'Campo e Sobrado - Campo', 'Campo e Sobrado - Sobrado'],
   Maia: ['Aguas santas', 'Castêlo da Maia', 'Folgosa', 'Milheirós', 'Moreira', 'Nogueira e Silva Escura', 'Pedrouços', 'S. Pedro Fins', 'Vila Nova da Telha', 'Cidade da Maia'],
@@ -26316,7 +26413,7 @@ var Form$1 = function Form(_ref) {
             key: 'file-' + (field.key || parentKey),
             name: field.key,
             title: field.label,
-            file: answers['file'],
+            answers: answers['file'],
             action: function action(values) {
               return formik.setFieldValue(field.key, values);
             },
@@ -38215,4 +38312,4 @@ var TopBar = function TopBar(_ref) {
   })));
 };
 
-export { Accordion, AlertText, AlertTitle, Alert as Alerts, Avatar, BackofficeContainer, BackofficeKanbanContainer, BackofficePage, Badge$1 as Badge, Body, Button$1 as Button, ButtonGroup, ButtonText, Card$1 as Card, CheckBoxGroup, Code, Col, Divider, DropDownMenu, ErrorText, FilterBar, FilterButton, Form$1 as Form, FullPage, GridCol, GridRow, Heading, Hero, Icon, IconSwitch, Jumbo, Kanban, KanbanCard$1 as KanbanCard, KanbanColumn$1 as KanbanColumn, Link$1 as Link, List, Loading as Loader, Logo$1 as Logo, Page, Pagination, RadioButton, ReversedColumn, Row, SchedulePicker, SearchInput as Search, Select$2 as Select, Sidebar, SmallBody, SmallBodyFAQ, SubHeading, Table, Tabs, TextArea$1 as TextArea, Tiny, TopBar, TrackerBox, media };
+export { Accordion, AlertText, AlertTitle, Alert as Alerts, Avatar, BackofficeContainer, BackofficeKanbanContainer, BackofficePage, Badge$1 as Badge, Body, Button$1 as Button, ButtonGroup, ButtonText, Card$1 as Card, CheckBoxGroup, Code, Col, Divider, DropDownMenu, ErrorText, FileUploader, FilterBar, FilterButton, Form$1 as Form, FullPage, GridCol, GridRow, Heading, Hero, Icon, IconSwitch, Jumbo, Kanban, KanbanCard$1 as KanbanCard, KanbanColumn$1 as KanbanColumn, Link$1 as Link, List, Loading as Loader, Logo$1 as Logo, Page, Pagination, RadioButton, ReversedColumn, Row, SchedulePicker, SearchInput as Search, Select$2 as Select, Sidebar, SmallBody, SmallBodyFAQ, SubHeading, Table, Tabs, TextArea$1 as TextArea, Tiny, TopBar, TrackerBox, media };
