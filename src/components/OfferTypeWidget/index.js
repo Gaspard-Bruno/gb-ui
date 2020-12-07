@@ -113,7 +113,7 @@ const OfferTypeWidget = ({
             )}
             options={preferredHoursOptions}
             onChange={values =>
-              action({ name: 'preferred-hours-end', value: values.value })
+              action({ name: 'prefered-hours', value: values.value })
             }
           />
         </Row>
@@ -340,7 +340,10 @@ const OfferTypeWidget = ({
               label='Escolha o Pack'
               name='pack-selection'
               error={errors?.['pack-selection']}
-              defaultValue={answers['pack-selection']}
+              defaultValue={getDefaultValues(
+                packOptions,
+                answers?.['pack-selection']
+              )}
               options={packOptions}
               onChange={values =>
                 action({

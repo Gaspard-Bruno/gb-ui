@@ -45,6 +45,7 @@ import Tabs from './Tabs';
 import TextArea from './TextArea';
 import TopBar from './TopBar';
 import TrackerBox from './TrackerBox';
+import FileUploader from './FileUploader';
 import {
   Jumbo,
   Heading,
@@ -117,5 +118,6 @@ export {
   AlertTitle,
   AlertText,
   ErrorText,
-  SchedulePicker
+  SchedulePicker,
+  FileUploader
 };

@@ -62,7 +62,8 @@ import {
   AlertTitle,
   AlertText,
   ErrorText,
-  SchedulePicker
+  SchedulePicker,
+  FileUploader
 } from 'Components';
 
 const components = [
@@ -81,6 +82,32 @@ const components = [
     },
     section: 'General',
     component: props => <SchedulePicker {...props} />
+  },
+  {
+    label: 'FileUploader',
+    props: {
+      action: values => console.log(values),
+      name: 'file'
+    },
+    section: 'General',
+    component: props => (
+      <FileUploader
+        answers={[
+          {
+            id: 17,
+            filename: 'image_0.jpg',
+            url:
+              'https://d3ugqbne3wd6hp.cloudfront.net/0a0oss295xf5ibg83fw1q0pljpzw'
+          },
+          {
+            id: 16,
+            filename: 'image_1.PDF',
+            url:
+              'https://d3ugqbne3wd6hp.cloudfront.net/0a0oss295xf5ibg83fw1q0pljpzw'
+          }
+        ]}
+      />
+    )
   },
   {
     label: 'Select multi',

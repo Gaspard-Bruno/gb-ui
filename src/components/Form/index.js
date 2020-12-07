@@ -184,7 +184,7 @@ const Form = ({
               key={'file-' + (field.key || parentKey)}
               name={field.key}
               title={field.label}
-              file={answers['file']}
+              answers={answers['file']}
               action={values => formik.setFieldValue(field.key, values)}
               error={fieldProps.error}
             />

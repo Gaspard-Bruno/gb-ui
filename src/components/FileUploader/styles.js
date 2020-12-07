@@ -57,3 +57,42 @@ export const UploaderPreviewInner = styled.div`
   display: flex;
   overflow: hidden;
 `;
+
+export const AnswersContainer = styled.div`
+  width: 100%;
+`;
+
+export const AnswersTitleHolder = styled.div`
+  border-radius: 2px;
+  min-height: 48px;
+  align-items: center;
+  display: flex;
+  background-color: ${props => props.theme.colors.lightestBeige};
+  p {
+    margin: ${props => props.theme.margin}px;
+  }
+`;
+
+export const AnswersFilesContainer = styled.div`
+  border-bottom: 1px solid #d2ccc6;
+  margin-top: ${props => props.theme.margin}px;
+  padding: 0px ${props => props.theme.margin}px;
+  display: flex;
+  align-items: center;
+  span {
+    cursor: pointer;
+  }
+`;
+
+export const AnswersTextHolder = styled.div`
+  margin-left: ${props => props.theme.margin * 2.5}px;
+`;
+export const AnswersIconHolder = styled.div`
+  position: relative;
+  right: -85%;
+  svg {
+    path {
+      fill: ${props => props.theme.colors.grey};
+    }
+  }
+`;

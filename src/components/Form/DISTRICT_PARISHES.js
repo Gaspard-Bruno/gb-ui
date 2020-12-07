@@ -1,7 +1,7 @@
 export default {
   Lisboa: [
     'Ajuda',
-    'Alcântara ',
+    'Alcântara',
     'Alvalade',
     'Areeiro',
     'Arroios',
@@ -14,7 +14,7 @@ export default {
     'Carnide',
     'Estrela',
     'Lumiar',
-    'Marvila ',
+    'Marvila',
     'Misericórdia',
     'Olivais',
     'Parque das Nações',

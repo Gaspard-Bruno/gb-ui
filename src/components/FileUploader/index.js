@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Body, ErrorText } from '../Text';
+
+import { Body, ErrorText, SmallBody } from '../Text';
 import Icon from '../Icon';
 import Button from '../Button';
 import {
@@ -10,12 +11,17 @@ import {
   UploadedImages,
   UploaderPreviewContainer,
   ThumbsContainer,
-  UploaderPreviewInner
+  UploaderPreviewInner,
+  AnswersContainer,
+  AnswersTitleHolder,
+  AnswersFilesContainer,
+  AnswersTextHolder,
+  AnswersIconHolder
 } from './styles';
 import { useDropzone } from 'react-dropzone';
 
 const FileUploader = ({ title, name, action, answers, error }) => {
-  const [files, setFiles] = useState(answers || []);
+  const [files, setFiles] = useState([]);
 
   const { getRootProps, getInputProps, open } = useDropzone({
     // Disable click and keydown behavior
@@ -31,6 +37,53 @@ const FileUploader = ({ title, name, action, answers, error }) => {
       );
     }
   });
+  const handleFileDownload = (url, name) => {
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = url;
+    a.target = '_blank';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
+  const displayAnswers = answers => {
+    const files = answers.map((elem, i) => {
+      const fileName = elem.filename.split('.')[0];
+      const fileExtension = elem.filename
+        .split('.')
+        .pop()
+        .toUpperCase();
+      return (
+        <AnswersFilesContainer key={elem.filename}>
+          <Icon name={fileExtension !== 'PDF' ? 'Arquive' : 'PDF'} />
+          <AnswersTextHolder>
+            {fileName}
+            <SmallBody>Ficheiro {fileExtension}</SmallBody>
+          </AnswersTextHolder>
+          <AnswersIconHolder>
+            <span
+              role='presentation'
+              onClick={() => handleFileDownload(elem.url, elem.filename)}
+            >
+              <Icon name='download' />
+            </span>
+            {/* <span>
+              <Icon name='trash' />
+            </span> */}
+          </AnswersIconHolder>
+        </AnswersFilesContainer>
+      );
+    });
+    return (
+      <AnswersContainer>
+        <AnswersTitleHolder>
+          <SmallBody>Ficheiros:</SmallBody>
+        </AnswersTitleHolder>
+        <div>{files}</div>
+      </AnswersContainer>
+    );
+  };
 
   // Convert file to base64 string
   const fileToBase64 = file => {
@@ -79,26 +132,30 @@ const FileUploader = ({ title, name, action, answers, error }) => {
   return (
     <React.Fragment key={'file-uploader'}>
       {title && <Body>{title}</Body>}
-      <FileUploaderContainer {...getRootProps()}>
-        <UploaderRowWrapper>
-          <Icon name='upload' />
-          <Body alt='true'>Arraste e solte a sua imagem aqui </Body>
+      {answers && answers.length > 0 ? (
+        displayAnswers(answers)
+      ) : (
+        <FileUploaderContainer {...getRootProps()}>
           <UploaderRowWrapper>
-            <Body alt='true'>ou</Body>
+            <Icon name='upload' />
+            <Body alt='true'>Arraste e solte a sua imagem aqui </Body>
+            <UploaderRowWrapper>
+              <Body alt='true'>ou</Body>
+            </UploaderRowWrapper>
           </UploaderRowWrapper>
-        </UploaderRowWrapper>
-        <>
-          <UploaderInput {...getInputProps()} />
-          <Button
-            isFullWidth
-            action={open}
-            type='button'
-            text='Carregue aqui'
-            btnType='primary'
-          />
-        </>
-        <ThumbsContainer>{filesPreview}</ThumbsContainer>
-      </FileUploaderContainer>
+          <>
+            <UploaderInput {...getInputProps()} />
+            <Button
+              isFullWidth
+              action={open}
+              type='button'
+              text='Carregue aqui'
+              btnType='primary'
+            />
+          </>
+          <ThumbsContainer>{filesPreview}</ThumbsContainer>
+        </FileUploaderContainer>
+      )}
       {error && <ErrorText>{error}</ErrorText>}
     </React.Fragment>
   );
