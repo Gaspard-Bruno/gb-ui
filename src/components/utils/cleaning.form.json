@@ -2,17 +2,6 @@
   "id": 5,
   "type": "form",
   "questions": [
-    {
-      "key": "language",
-      "label": "Idioma Preferido",
-      "type": "dropdown",
-      "options": [
-        { "value": 0, "label": "Português" },
-        { "value": 1, "label": "English" },
-        { "value": 2, "label": "Español" },
-        { "value": 3, "label": "Français" }
-      ]
-    },
     { "label": "Morada para execução do serviço", "type": "footnote" },
     {
       "key": "district",
@@ -51,7 +40,7 @@
           "heading": "+2,44€",
           "headerText": "/ hora",
           "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
-          "extras": "Serviço executado por um Especialista com avaliação superior a 4.9.\nServiço realizado em menos de 24H à data do primeiro contacto",
+          "extras": "Serviço realizado em menos de 24H à data do primeiro contacto",
           "dependencyType": "value",
           "dependencyValue": 2
         }
@@ -106,7 +95,7 @@
     {
       "key": "offer-type",
       "widget": "offer-type",
-      "formOfferType": "hour-pack"
+      "formOfferType": "ready-pack-specific"
     },
 
     { "type": "footnote", "label": "Notas" },

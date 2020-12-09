@@ -51,7 +51,7 @@
           "heading": "+2,44€",
           "headerText": "/ hora",
           "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
-          "extras": "Serviço executado por um Especialista com avaliação superior a 4.9.\nServiço realizado em menos de 24H à data do primeiro contacto",
+          "extras": "Serviço realizado em menos de 24H à data do primeiro contacto",
           "dependencyType": "value",
           "dependencyValue": 2
         }
@@ -93,8 +93,7 @@
     {
       "key": "offer-type",
       "widget": "offer-type",
-      "formOfferType": "hour-pack",
-      "options": [{ "label": "cenas 10 paus", "value": 0 }]
+      "formOfferType": "hour-pack"
     },
 
     { "label": "Notas", "type": "footnote" },

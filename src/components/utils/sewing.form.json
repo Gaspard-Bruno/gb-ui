@@ -2,17 +2,6 @@
   "id": 13,
   "type": "form",
   "questions": [
-    {
-      "key": "language",
-      "label": "Idioma Preferido",
-      "type": "dropdown",
-      "options": [
-        { "value": 0, "label": "Português" },
-        { "value": 1, "label": "English" },
-        { "value": 2, "label": "Español" },
-        { "value": 3, "label": "Français" }
-      ]
-    },
     { "label": "Morada para execução do serviço", "type": "footnote" },
     {
       "key": "district",
@@ -76,7 +65,7 @@
     },
     {
       "key": "cloth-type",
-      "label": "Qual é o material do peça?",
+      "label": "Qual é o material da peça?",
       "type": "text",
       "options": [
         { "label": "Escritório", "value": 0 },
@@ -93,7 +82,7 @@
     {
       "key": "offer-type",
       "widget": "offer-type",
-      "formOfferType": "hour-pack"
+      "formOfferType": "ready-pack-specific"
     },
 
     { "label": "Notas", "type": "footnote" },

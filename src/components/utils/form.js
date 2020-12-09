@@ -12,6 +12,44 @@ import gardening from './gardening.form.json';
 import becomeSpecialist from './becomespecialist.js';
 import sewing from './sewing.form.json';
 
+const petSittingAnswers = {
+  'animal-size-1': 0,
+  'animal-size-2': 1,
+  'animal-species-1': 1,
+  'animal-species-2': 1,
+  'number-of-animals': 2
+};
+const repairsAnswers = {
+  email: 'sandro.martins@netcabo.pt',
+  files: [
+    {
+      id: 22,
+      filename: 'image_1.png',
+      url: 'https://d3ugqbne3wd6hp.cloudfront.net/pdjla7qxnejida55ac6sjqiles51'
+    }
+  ],
+  guest: {
+    email: 'sandro.martins@netcabo.pt',
+    lastName: 'wwew',
+    firstName: 'asdsadad asdsad',
+    telephone: '23232'
+  },
+  notes: 'wewe',
+  parish: 'Areeiro',
+  address: 'asdsadasd',
+  district: 'lisboa',
+  'last-name': 'wwew',
+  telephone: '23232',
+  'first-name': 'asdsadad asdsad',
+  'offer-type': 0,
+  'postal-code': '2323',
+  'service-date': '2020-12-08',
+  'login-buttons': 'guest',
+  'service-offer': 'Reparar Cenas com cuidado',
+  'company-status': 0,
+  'preferred-hours': '10:00',
+  'service-materials': 1
+};
 const gardeningAnswers = {
   email: 'david@test.com',
   guest: {
@@ -129,6 +167,8 @@ export default {
   becomeSpecialist,
   sewing,
   gardening,
+  petSittingAnswers,
+  repairsAnswers,
   gardeningAnswers,
   specialistFormAnswers
 };

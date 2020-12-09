@@ -111,7 +111,7 @@ const OfferTypeWidget = ({
             error={errors?.['preferred-hours']}
             defaultValue={getDefaultValues(
               preferredHoursOptions,
-              answers['preferred-hours']
+              answers?.['preferred-hours']
             )}
             options={preferredHoursOptions}
             onChange={values =>
@@ -155,7 +155,7 @@ const OfferTypeWidget = ({
                   name='preferred-hours-start'
                   defaultValue={getDefaultValues(
                     preferredHoursOptions,
-                    answers['preferred-hours-start']
+                    answers?.['preferred-hours-start']
                   )}
                   options={preferredHoursOptions}
                   onChange={values =>
@@ -242,7 +242,7 @@ const OfferTypeWidget = ({
                     error={errors?.['week-select']}
                     name='week-select'
                     list={weekSelectOptions}
-                    value={answers['week-select']}
+                    value={answers?.['week-select']}
                     action={values =>
                       action({ name: values?.name, value: values?.value })
                     }
@@ -314,7 +314,7 @@ const OfferTypeWidget = ({
                 error={errors?.['preferred-hours-start']}
                 label='Preferência Horária'
                 name='preferred-hours-start'
-                defaultValue={answers['preferred-hours-start']}
+                defaultValue={answers?.['preferred-hours-start']}
                 options={preferredHoursOptions}
                 onChange={values =>
                   action({ name: 'preferred-hours-start', value: values.value })
@@ -325,7 +325,7 @@ const OfferTypeWidget = ({
                 error={errors?.['preferred-hours-end']}
                 label=''
                 name='preferred-hours-end'
-                defaultValue={answers['preferred-hours-end']}
+                defaultValue={answers?.['preferred-hours-end']}
                 options={preferredHoursOptions}
                 onChange={values =>
                   action({ name: 'preferred-hours-end', value: values.value })
@@ -383,7 +383,7 @@ const OfferTypeWidget = ({
                     defaultValue={getDefaultValues(
                       repetitionOptions,
 
-                      answers['repetition']
+                      answers?.['repetition']
                     )}
                     options={repetitionOptions}
                     onChange={values =>
@@ -408,8 +408,8 @@ const OfferTypeWidget = ({
                   label='Data de Início'
                   name='service-start-date'
                   type='date'
-                  min={minDate}
-                  defaultValue={answers['service-start-date']}
+                  minDate={minDate}
+                  defaultValue={answers?.['service-start-date']}
                   error={errors?.['service-start-date']}
                   onChange={values =>
                     action({ name: 'service-start-date', value: values })
@@ -421,7 +421,7 @@ const OfferTypeWidget = ({
                     label='Preferência Horária'
                     defaultValue={getDefaultValues(
                       preferredHoursOptions,
-                      answers['preferred-hours-start']
+                      answers?.['preferred-hours-start']
                     )}
                     name='preferred-hours-start'
                     options={preferredHoursOptions}
@@ -439,7 +439,7 @@ const OfferTypeWidget = ({
                     name='preferred-hours-end'
                     defaultValue={getDefaultValues(
                       preferredHoursOptions,
-                      answers['preferred-hours-end']
+                      answers?.['preferred-hours-end']
                     )}
                     options={preferredHoursOptions}
                     onChange={values =>
@@ -456,7 +456,7 @@ const OfferTypeWidget = ({
                 label='Data do Início'
                 name='service-date'
                 type='date'
-                min={minDate}
+                minDate={minDate}
                 defaultValue={answers?.['service-date']}
                 error={errors?.['service-date']}
                 onChange={values =>

@@ -2,17 +2,6 @@
   "id": 2,
   "type": "form",
   "questions": [
-    {
-      "key": "language",
-      "label": "Idioma Preferido",
-      "type": "dropdown",
-      "options": [
-        { "value": 0, "label": "Português" },
-        { "value": 1, "label": "English" },
-        { "value": 2, "label": "Español" },
-        { "value": 3, "label": "Français" }
-      ]
-    },
     { "label": "Morada para execução do serviço", "type": "footnote" },
     {
       "key": "district",
@@ -51,7 +40,6 @@
         { "value": 2, "label": "Tábua de queijos portugueses" }
       ]
     },
-    { "label": "Serviço", "type": "footnote" },
     { "label": "Prato principal", "type": "footnote" },
     {
       "key": "main-dish",
@@ -85,7 +73,7 @@
             { "value": 1, "label": "Empadão de carne de Porco" },
             {
               "value": 2,
-              "label": "Pernil de peru recheado com farinheira e batata assada"
+              "label": "Perna de peru recheado com farinheira e batata assada"
             }
           ]
         },

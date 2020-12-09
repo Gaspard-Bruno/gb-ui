@@ -166,18 +166,7 @@ const components = [
       {
         questions: FORM.repairs.questions,
         previewComponentTitle: 'Repairs',
-        answers: {
-          district: 'Lisboa',
-          freguesia: 'Arroios',
-          files: [
-            {
-              id: 21,
-              filename: 'image_1.png',
-              url:
-                'https://d3ugqbne3wd6hp.cloudfront.net/1rw9qgle2svbaecdir8clau6om6h'
-            }
-          ]
-        }
+        answers: FORM.repairsAnswers
       },
       {
         previewComponentTitle: 'Music Lessons',
@@ -186,6 +175,11 @@ const components = [
       {
         previewComponentTitle: 'Tailoring',
         questions: FORM.sewing.questions
+      },
+      {
+        previewComponentTitle: 'Pet Sitting',
+        questions: FORM.petsitting.questions,
+        answers: FORM.petSittingAnswers
       }
     ],
     section: 'Form',

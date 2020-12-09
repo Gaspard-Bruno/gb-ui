@@ -292,7 +292,7 @@ const Form = ({
               options={field.options}
               {...fieldProps}
               defaultValue={field.options?.find(
-                opt => opt.value === fieldProps.value
+                opt => opt.value === answers?.[field.key]
               )}
               onChange={option =>
                 !field?.isMulti
@@ -352,6 +352,7 @@ const Form = ({
                           v
                         )
                       }
+                      defaultValue={answers?.['district-other-parishes']}
                       name='district-other-parishes'
                       value={
                         formik.values[field.key + 'district-other-parishes']
@@ -367,9 +368,7 @@ const Form = ({
                     options={getParishesOptions(formik.values[field.key])}
                     defaultValue={getParishesOptions(
                       formik.values[field.key]
-                    )?.find(
-                      opt => opt.value === formik.values[field.key + 'parish']
-                    )}
+                    )?.find(opt => opt.value === answers?.['parish'])}
                     onChange={option =>
                       formik.setFieldValue('parish', option.value)
                     }

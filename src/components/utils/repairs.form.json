@@ -1,17 +1,6 @@
 {
   "type": "form",
   "questions": [
-    {
-      "key": "language",
-      "label": "Idioma Preferido",
-      "type": "dropdown",
-      "options": [
-        { "value": 0, "label": "Português" },
-        { "value": 1, "label": "English" },
-        { "value": 2, "label": "Español" },
-        { "value": 3, "label": "Français" }
-      ]
-    },
     { "label": "Morada para execução do serviço", "type": "footnote" },
     {
       "key": "district",
@@ -24,7 +13,7 @@
     { "key": "postal-code", "label": "Código Postal", "type": "text" },
 
     {
-      "type": "dropdown",
+      "type": "text",
       "key": "service-offer",
       "label": "Tipo de Serviço",
       "options": [
@@ -69,7 +58,7 @@
     {
       "key": "offer-type",
       "widget": "offer-type",
-      "formOfferType": "one-time-service"
+      "formOfferType": "one-time-service-specific"
     },
 
     { "type": "footnote", "label": "Notas" },
