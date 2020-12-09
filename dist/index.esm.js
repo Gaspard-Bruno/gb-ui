@@ -22353,7 +22353,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Hora",
       name: "preferred-hours",
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours'],
-      defaultValue: getDefaultValues(preferredHoursOptions, answers['preferred-hours']),
+      defaultValue: getDefaultValues(preferredHoursOptions, answers === null || answers === void 0 ? void 0 : answers['preferred-hours']),
       options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
@@ -22389,7 +22389,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
       label: "Prefer\xEAncia Hor\xE1ria",
       name: "preferred-hours-start",
-      defaultValue: getDefaultValues(preferredHoursOptions, answers['preferred-hours-start']),
+      defaultValue: getDefaultValues(preferredHoursOptions, answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start']),
       options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
@@ -22448,7 +22448,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['week-select'],
       name: "week-select",
       list: weekSelectOptions,
-      value: answers['week-select'],
+      value: answers === null || answers === void 0 ? void 0 : answers['week-select'],
       action: function action(values) {
         return _action({
           name: values === null || values === void 0 ? void 0 : values.name,
@@ -22506,7 +22506,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
       label: "Prefer\xEAncia Hor\xE1ria",
       name: "preferred-hours-start",
-      defaultValue: answers['preferred-hours-start'],
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start'],
       options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
@@ -22518,7 +22518,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-end'],
       label: "",
       name: "preferred-hours-end",
-      defaultValue: answers['preferred-hours-end'],
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['preferred-hours-end'],
       options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
@@ -22553,7 +22553,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     }), /*#__PURE__*/React.createElement(Row, null, /*#__PURE__*/React.createElement(Select$2, {
       error: errors === null || errors === void 0 ? void 0 : errors['repetition'],
       label: "Repeti\xE7\xE3o a cada",
-      defaultValue: getDefaultValues(repetitionOptions, answers['repetition']),
+      defaultValue: getDefaultValues(repetitionOptions, answers === null || answers === void 0 ? void 0 : answers['repetition']),
       options: repetitionOptions,
       onChange: function onChange(values) {
         return _action({
@@ -22572,8 +22572,8 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data de In\xEDcio",
       name: "service-start-date",
       type: "date",
-      min: minDate,
-      defaultValue: answers['service-start-date'],
+      minDate: minDate,
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start-date'],
       error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
       onChange: function onChange(values) {
         return _action({
@@ -22584,7 +22584,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     }), /*#__PURE__*/React.createElement(Row, null, /*#__PURE__*/React.createElement(Select$2, {
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
       label: "Prefer\xEAncia Hor\xE1ria",
-      defaultValue: getDefaultValues(preferredHoursOptions, answers['preferred-hours-start']),
+      defaultValue: getDefaultValues(preferredHoursOptions, answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start']),
       name: "preferred-hours-start",
       options: preferredHoursOptions,
       onChange: function onChange(values) {
@@ -22597,7 +22597,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-end'],
       label: "",
       name: "preferred-hours-end",
-      defaultValue: getDefaultValues(preferredHoursOptions, answers['preferred-hours-end']),
+      defaultValue: getDefaultValues(preferredHoursOptions, answers === null || answers === void 0 ? void 0 : answers['preferred-hours-end']),
       options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
@@ -22609,7 +22609,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data do In\xEDcio",
       name: "service-date",
       type: "date",
-      min: minDate,
+      minDate: minDate,
       defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-date'],
       error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
       onChange: function onChange(values) {
@@ -26523,7 +26523,7 @@ var Form$1 = function Form(_ref) {
             options: field.options
           }, fieldProps, {
             defaultValue: (_field$options = field.options) === null || _field$options === void 0 ? void 0 : _field$options.find(function (opt) {
-              return opt.value === fieldProps.value;
+              return opt.value === (answers === null || answers === void 0 ? void 0 : answers[field.key]);
             }),
             onChange: function onChange(option) {
               return !(field === null || field === void 0 ? void 0 : field.isMulti) ? formik.setFieldValue(field.key, option.value) : formik.setFieldValue(field.key, option.map(function (e) {
@@ -26573,6 +26573,7 @@ var Form$1 = function Form(_ref) {
             onChange: function onChange(v) {
               return formik.setFieldValue(field.key + 'district-other-parishes', v);
             },
+            defaultValue: answers === null || answers === void 0 ? void 0 : answers['district-other-parishes'],
             name: "district-other-parishes",
             value: formik.values[field.key + 'district-other-parishes']
           })) : /*#__PURE__*/React.createElement(Select$2, {
@@ -26582,7 +26583,7 @@ var Form$1 = function Form(_ref) {
             isMini: Boolean(widget === 'mini-dropdown'),
             options: getParishesOptions(formik.values[field.key]),
             defaultValue: (_getParishesOptions = getParishesOptions(formik.values[field.key])) === null || _getParishesOptions === void 0 ? void 0 : _getParishesOptions.find(function (opt) {
-              return opt.value === formik.values[field.key + 'parish'];
+              return opt.value === (answers === null || answers === void 0 ? void 0 : answers['parish']);
             }),
             onChange: function onChange(option) {
               return formik.setFieldValue('parish', option.value);
