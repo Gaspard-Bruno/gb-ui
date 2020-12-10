@@ -602,7 +602,7 @@ const Form = ({
   const scrollToRef = ref =>
     window.scrollTo({
       behavior: 'smooth',
-      top: ref.current.offsetTop - 100
+      top: ref.current.scrollIntoView()
     });
 
   useEffect(() => {
