@@ -599,15 +599,13 @@ const Form = ({
 
   const formRef = useRef();
 
-  const scrollToRef = ref =>
-    window.scrollTo({
-      behavior: 'smooth',
-      top: ref.current.scrollIntoView()
-    });
-
   useEffect(() => {
     if (errors) {
-      scrollToRef(formRef);
+      formRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+      });
     }
   }, [errors]);
 
