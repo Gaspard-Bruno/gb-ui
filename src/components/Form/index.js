@@ -291,15 +291,24 @@ const Form = ({
               isMini={Boolean(widget === 'mini-dropdown')}
               options={field.options}
               {...fieldProps}
-              defaultValue={field.options?.find(
-                opt => opt.value === answers?.[field.key]
-              )}
+              defaultValue={
+                !field?.isMulti
+                  ? field.options?.find(
+                      opt => opt.value === answers?.[field.key]
+                    )
+                  : answers?.[field.key]?.map(opt => {
+                      const defaults = field.options?.find(el => {
+                        return el.value === opt;
+                      });
+                      return defaults;
+                    })
+              }
               onChange={option =>
                 !field?.isMulti
-                  ? formik.setFieldValue(field.key, option.value)
+                  ? option && formik.setFieldValue(field.key, option.value)
                   : formik.setFieldValue(
                       field.key,
-                      option.map(e => e.value)
+                      option?.map(e => e.value) ?? []
                     )
               }
             />
