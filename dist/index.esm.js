@@ -26814,7 +26814,7 @@ var Form$1 = function Form(_ref) {
   var scrollToRef = function scrollToRef(ref) {
     return window.scrollTo({
       behavior: 'smooth',
-      top: ref.current.offsetTop - 100
+      top: ref.current.scrollIntoView()
     });
   };
 
