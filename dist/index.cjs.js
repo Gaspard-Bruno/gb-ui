@@ -26385,7 +26385,7 @@ var Form$1 = function Form(_ref) {
   }; //! NIF Validation function
 
   var fieldRenderer = function fieldRenderer(field, formik, parentKey) {
-    var _field$options, _getParishesOptions;
+    var _field$options, _answers$field$key, _getParishesOptions;
 
 
     if (field.key && hiddenFields.indexOf(field.key) === -1) {
@@ -26535,13 +26535,22 @@ var Form$1 = function Form(_ref) {
             isMini: Boolean(widget === 'mini-dropdown'),
             options: field.options
           }, fieldProps, {
-            defaultValue: (_field$options = field.options) === null || _field$options === void 0 ? void 0 : _field$options.find(function (opt) {
+            defaultValue: !(field === null || field === void 0 ? void 0 : field.isMulti) ? (_field$options = field.options) === null || _field$options === void 0 ? void 0 : _field$options.find(function (opt) {
               return opt.value === (answers === null || answers === void 0 ? void 0 : answers[field.key]);
+            }) : answers === null || answers === void 0 ? void 0 : (_answers$field$key = answers[field.key]) === null || _answers$field$key === void 0 ? void 0 : _answers$field$key.map(function (opt) {
+              var _field$options2;
+
+              var defaults = (_field$options2 = field.options) === null || _field$options2 === void 0 ? void 0 : _field$options2.find(function (el) {
+                return el.value === opt;
+              });
+              return defaults;
             }),
             onChange: function onChange(option) {
-              return !(field === null || field === void 0 ? void 0 : field.isMulti) ? formik.setFieldValue(field.key, option.value) : formik.setFieldValue(field.key, option.map(function (e) {
+              var _option$map;
+
+              return !(field === null || field === void 0 ? void 0 : field.isMulti) ? option && formik.setFieldValue(field.key, option.value) : formik.setFieldValue(field.key, (_option$map = option === null || option === void 0 ? void 0 : option.map(function (e) {
                 return e.value;
-              }));
+              })) !== null && _option$map !== void 0 ? _option$map : []);
             }
           }));
 
