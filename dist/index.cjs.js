@@ -26823,17 +26823,13 @@ var Form$1 = function Form(_ref) {
 
   getInitialValues(questions);
   var formRef = React.useRef();
-
-  var scrollToRef = function scrollToRef(ref) {
-    return window.scrollTo({
-      behavior: 'smooth',
-      top: ref.current.scrollIntoView()
-    });
-  };
-
   React.useEffect(function () {
     if (errors) {
-      scrollToRef(formRef);
+      formRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+      });
     }
   }, [errors]);
   return /*#__PURE__*/React__default['default'].createElement(FormContainer, {
