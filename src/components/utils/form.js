@@ -17,7 +17,10 @@ const petSittingAnswers = {
   'animal-size-2': 1,
   'animal-species-1': 1,
   'animal-species-2': 1,
-  'number-of-animals': 2
+  'number-of-animals': 2,
+  'offer-type': 2,
+  'pack-selection': 1,
+  'service-date': '2020-12-12'
 };
 const repairsAnswers = {
   email: 'sandro.martins@netcabo.pt',
@@ -58,12 +61,12 @@ const gardeningAnswers = {
     firstName: 'David',
     telephone: '123'
   },
-  'preferred-hours-start': '10:00',
+
   parish: 'Arroios',
   address: 'Rua Cenas',
   'chosen-language': 1,
   country: 1,
-  service: 1,
+  'service-offer': 1,
   'service-date': '2020-10-10',
   district: 1,
   location: 'St Tirso 231',
@@ -79,13 +82,17 @@ const gardeningAnswers = {
     5: true,
     6: false
   },
+  files: [{ filename: 'cenas.jpg' }],
   telephone: '123',
   notes: 'Cool stuff',
   'first-name': 'David',
-  'offer-type': 1,
-  'start-date': '2020-10-14',
+  'offer-type': 2,
+  'pack-selection': 1,
+  repetition: 2,
+  'service-start-date': '2020-12-18',
+  'preferred-hours-start': '10:00',
+  'preferred-hours-end': '10:00',
   'postal-code': '2800*282',
-  'service-type': 1,
   'number-of-hours': 1,
   recurrence: 2,
   'login-buttons': 'guest'

@@ -97,12 +97,14 @@ const OfferTypeWidget = ({
         <Row>
           <TextInput
             label='Data'
-            error={errors?.['service-date']}
-            name='service-date'
+            error={errors?.['service-start-date']}
+            name='service-start-date'
             type='date'
             minDate={minDate}
-            defaultValue={answers?.['service-date']}
-            onChange={values => action({ name: 'service-date', value: values })}
+            defaultValue={answers?.['service-start-date']}
+            onChange={values =>
+              action({ name: 'service-start-date', value: values })
+            }
           />
           <TextContainer> - </TextContainer>
           <Select
@@ -138,13 +140,13 @@ const OfferTypeWidget = ({
             <Heading size={6}>Data e Hora Preferencial</Heading>
             <TextInput
               label='Data'
-              error={errors?.['service-date']}
-              name='service-date'
+              error={errors?.['service-start-date']}
+              name='service-start-date'
               type='date'
               minDate={minDate}
-              defaultValue={answers?.['service-date']}
+              defaultValue={answers?.['service-start-date']}
               onChange={values =>
-                action({ name: 'service-date', value: values })
+                action({ name: 'service-start-date', value: values })
               }
             />
             {
@@ -454,13 +456,13 @@ const OfferTypeWidget = ({
             ) : (
               <TextInput
                 label='Data do Início'
-                name='service-date'
+                name='service-start-date'
                 type='date'
                 minDate={minDate}
-                defaultValue={answers?.['service-date']}
-                error={errors?.['service-date']}
+                defaultValue={answers?.['service-start-date']}
+                error={errors?.['service-start-date']}
                 onChange={values =>
-                  action({ name: 'service-date', value: values })
+                  action({ name: 'service-start-date', value: values })
                 }
               />
             )}

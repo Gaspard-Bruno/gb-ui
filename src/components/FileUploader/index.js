@@ -22,7 +22,7 @@ import { useDropzone } from 'react-dropzone';
 
 const FileUploader = ({ title, name, action, answers, error }) => {
   const [files, setFiles] = useState([]);
-
+  console.log(answers);
   const { getRootProps, getInputProps, open } = useDropzone({
     // Disable click and keydown behavior
     noClick: true,
@@ -48,9 +48,9 @@ const FileUploader = ({ title, name, action, answers, error }) => {
   };
 
   const displayAnswers = answers => {
-    const files = answers.map((elem, i) => {
-      const fileName = elem.filename.split('.')[0];
-      const fileExtension = elem.filename
+    const files = answers?.map((elem, i) => {
+      const fileName = elem?.filename?.split('.')[0];
+      const fileExtension = elem?.filename
         .split('.')
         .pop()
         .toUpperCase();
@@ -165,7 +165,7 @@ FileUploader.propTypes = {
   title: PropTypes.string,
   name: PropTypes.string,
   action: PropTypes.func,
-  answers: PropTypes.object,
+  answers: PropTypes.array,
   error: PropTypes.string
 };
 
