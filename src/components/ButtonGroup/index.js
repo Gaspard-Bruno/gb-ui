@@ -47,6 +47,9 @@ const ButtonGroup = ({ action, title, name, list, value }) => {
               <ButtonGroupContainer
                 isSelected={selectedButtons[index]}
                 key={`${item}-${index}`}
+                onClick={() => {
+                  handleSelection(item.value, !selectedButtons[item.value]);
+                }}
               >
                 <Body>{labels[index]}</Body>
                 <StyledButton

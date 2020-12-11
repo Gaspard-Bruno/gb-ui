@@ -28,7 +28,9 @@ export const ButtonGroupContainer = styled.div`
   justify-content: center;
   p {
     cursor: pointer;
-    position: absolute;
+    position: relative;
+    margin: 0px;
+    left: 37px;
     color: ${props =>
       props.isSelected
         ? props.theme?.colors.darkBlue
