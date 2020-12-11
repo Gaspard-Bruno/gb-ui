@@ -6231,7 +6231,7 @@ function _templateObject4$3() {
 }
 
 function _templateObject3$5() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  p {\n    cursor: pointer;\n    position: absolute;\n    color: ", ";\n    margin: 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  p {\n    cursor: pointer;\n    position: relative;\n    margin: 0px;\n    left: 37px;\n    color: ", ";\n    margin: 0;\n  }\n"]);
 
   _templateObject3$5 = function _templateObject3() {
     return data;
@@ -6322,7 +6322,10 @@ var ButtonGroup = function ButtonGroup(_ref) {
   return /*#__PURE__*/React__default['default'].createElement(StyledContainer, null, title && /*#__PURE__*/React__default['default'].createElement(Body, null, title), /*#__PURE__*/React__default['default'].createElement(ListContainer, null, list && list.map(function (item, index) {
     return /*#__PURE__*/React__default['default'].createElement(ButtonGroupContainer, {
       isSelected: selectedButtons[index],
-      key: "".concat(item, "-").concat(index)
+      key: "".concat(item, "-").concat(index),
+      onClick: function onClick() {
+        handleSelection(item.value, !selectedButtons[item.value]);
+      }
     }, /*#__PURE__*/React__default['default'].createElement(Body, null, labels[index]), /*#__PURE__*/React__default['default'].createElement(StyledButton, {
       key: "".concat(item, "-").concat(index),
       item: true,
