@@ -21867,6 +21867,8 @@ var FileUploader = function FileUploader(_ref) {
       files = _useState2[0],
       setFiles = _useState2[1];
 
+  console.log(answers);
+
   var _useDropzone = useDropzone({
     // Disable click and keydown behavior
     noClick: true,
@@ -21894,9 +21896,11 @@ var FileUploader = function FileUploader(_ref) {
   };
 
   var displayAnswers = function displayAnswers(answers) {
-    var files = answers.map(function (elem, i) {
-      var fileName = elem.filename.split('.')[0];
-      var fileExtension = elem.filename.split('.').pop().toUpperCase();
+    var files = answers === null || answers === void 0 ? void 0 : answers.map(function (elem, i) {
+      var _elem$filename;
+
+      var fileName = elem === null || elem === void 0 ? void 0 : (_elem$filename = elem.filename) === null || _elem$filename === void 0 ? void 0 : _elem$filename.split('.')[0];
+      var fileExtension = elem === null || elem === void 0 ? void 0 : elem.filename.split('.').pop().toUpperCase();
       return /*#__PURE__*/React__default['default'].createElement(AnswersFilesContainer, {
         key: elem.filename
       }, /*#__PURE__*/React__default['default'].createElement(Icon, {
@@ -21981,7 +21985,7 @@ FileUploader.propTypes = {
   title: propTypes.string,
   name: propTypes.string,
   action: propTypes.func,
-  answers: propTypes.object,
+  answers: propTypes.array,
   error: propTypes.string
 };
 
@@ -22351,14 +22355,14 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       size: 6
     }, "Data e Hora do Servi\xE7o")), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(TextInput, {
       label: "Data",
-      error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
-      name: "service-date",
+      error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
+      name: "service-start-date",
       type: "date",
       minDate: minDate,
-      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-date'],
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start-date'],
       onChange: function onChange(values) {
         return _action({
-          name: 'service-date',
+          name: 'service-start-date',
           value: values
         });
       }
@@ -22387,14 +22391,14 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       size: 6
     }, "Data e Hora Preferencial"), /*#__PURE__*/React__default['default'].createElement(TextInput, {
       label: "Data",
-      error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
-      name: "service-date",
+      error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
+      name: "service-start-date",
       type: "date",
       minDate: minDate,
-      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-date'],
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start-date'],
       onChange: function onChange(values) {
         return _action({
-          name: 'service-date',
+          name: 'service-start-date',
           value: values
         });
       }
@@ -22620,14 +22624,14 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       }
     }))) : /*#__PURE__*/React__default['default'].createElement(TextInput, {
       label: "Data do In\xEDcio",
-      name: "service-date",
+      name: "service-start-date",
       type: "date",
       minDate: minDate,
-      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-date'],
-      error: errors === null || errors === void 0 ? void 0 : errors['service-date'],
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start-date'],
+      error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
       onChange: function onChange(values) {
         return _action({
-          name: 'service-date',
+          name: 'service-start-date',
           value: values
         });
       }
