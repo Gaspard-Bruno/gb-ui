@@ -22332,7 +22332,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     });
   };
 
-  var minDate = new Date().toISOString().split('T')[0];
+  var minDate = (answers === null || answers === void 0 ? void 0 : answers['service-start-date']) ? new Date(answers === null || answers === void 0 ? void 0 : answers['service-start-date']).toISOString().split('T')[0] : (answers === null || answers === void 0 ? void 0 : answers['service-end-date']) ? new Date(answers === null || answers === void 0 ? void 0 : answers['service-end-date']).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
 
   var renderOneTimeSpecific = function renderOneTimeSpecific(serviceOptions) {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(RadioButton, {
