@@ -148,6 +148,8 @@ const components = [
         questions: FORM.gardening.questions,
         answers: FORM.gardeningAnswers,
         errors: {
+          'pack-selection': 'required',
+          'offer-type': 'required',
           district: 'required',
           freguesia: 'required',
           'number-of-hours': 'required',

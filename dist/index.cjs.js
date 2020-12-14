@@ -21870,8 +21870,6 @@ var FileUploader = function FileUploader(_ref) {
       files = _useState2[0],
       setFiles = _useState2[1];
 
-  console.log(answers);
-
   var _useDropzone = useDropzone({
     // Disable click and keydown behavior
     noClick: true,
@@ -22349,7 +22347,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
 
   var renderOneTimeSpecific = function renderOneTimeSpecific(serviceOptions) {
     return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(RadioButton, {
-      error: errors === null || errors === void 0 ? void 0 : errors['offer-type'],
+      error: errors,
       name: "offer-type",
       action: _action,
       list: serviceOptions,
@@ -22386,6 +22384,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
 
   var renderReadyPack = function renderReadyPack(serviceOptions) {
     return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(RadioButton, {
+      error: errors,
       name: "offer-type",
       action: _action,
       list: serviceOptions,
@@ -26449,7 +26448,7 @@ var Form$1 = function Form(_ref) {
             packOptions: field.options,
             answers: answers,
             values: formik === null || formik === void 0 ? void 0 : formik.values,
-            errors: errors,
+            errors: fieldProps.error,
             action: function action(values) {
               return formik.setFieldValue(values.name, values.value);
             }

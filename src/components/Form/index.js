@@ -197,7 +197,7 @@ const Form = ({
               packOptions={field.options}
               answers={answers}
               values={formik?.values}
-              errors={fieldProps.error}
+              errors={errors}
               action={values => formik.setFieldValue(values.name, values.value)}
             />
           );

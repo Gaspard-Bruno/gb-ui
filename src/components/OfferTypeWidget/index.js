@@ -85,7 +85,7 @@ const OfferTypeWidget = ({
     return (
       <>
         <RadioButton
-          error={errors}
+          error={errors?.['offer-type']}
           name='offer-type'
           action={action}
           list={serviceOptions}
@@ -126,10 +126,11 @@ const OfferTypeWidget = ({
   };
 
   const renderReadyPack = serviceOptions => {
+    console.log('err', errors);
     return (
       <>
         <RadioButton
-          error={errors}
+          error={errors?.['offer-type']}
           name='offer-type'
           action={action}
           list={serviceOptions}
