@@ -6241,7 +6241,7 @@ function _templateObject3$5() {
 }
 
 function _templateObject2$6() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row nowrap;\n  gap: 12px;\n  ", "\n  ", "\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row nowrap;\n"]);
 
   _templateObject2$6 = function _templateObject2() {
     return data;
@@ -6251,7 +6251,7 @@ function _templateObject2$6() {
 }
 
 function _templateObject$7() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n  align-items: flex-start;\n  padding: 16px 0px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  padding: 16px 0px;\n"]);
 
   _templateObject$7 = function _templateObject() {
     return data;
@@ -6260,7 +6260,7 @@ function _templateObject$7() {
   return data;
 }
 var StyledContainer = styled__default['default'].div(_templateObject$7());
-var ListContainer = styled__default['default'].div(_templateObject2$6(), media.smallDesktop("\n    gap: 8px;\n  "), media.tablet("\n    gap: 12px;\n  "), media.mobile("\n    gap: 8px;\n  "));
+var ListContainer = styled__default['default'].div(_templateObject2$6());
 var ButtonGroupContainer = styled__default['default'].div(_templateObject3$5(), function (props) {
   var _props$theme, _props$theme2;
 
@@ -6289,7 +6289,8 @@ var ButtonGroup = function ButtonGroup(_ref) {
       title = _ref.title,
       name = _ref.name,
       list = _ref.list,
-      value = _ref.value;
+      value = _ref.value,
+      error = _ref.error;
 
   var filteredList = function filteredList(listToFilter) {
     var newList = {};
@@ -6337,7 +6338,7 @@ var ButtonGroup = function ButtonGroup(_ref) {
         handleSelection(item.value, !selectedButtons[item.value]);
       }
     }));
-  })));
+  })), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error));
 };
 
 ButtonGroup.propTypes = {
@@ -6345,7 +6346,8 @@ ButtonGroup.propTypes = {
   title: propTypes.string,
   list: propTypes.array,
   name: propTypes.string,
-  value: propTypes.object
+  value: propTypes.object,
+  error: propTypes.string
 };
 
 function _templateObject$8() {
@@ -22383,7 +22385,6 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
   };
 
   var renderReadyPack = function renderReadyPack(serviceOptions) {
-    console.log('err', errors);
     return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(RadioButton, {
       error: errors === null || errors === void 0 ? void 0 : errors['offer-type'],
       name: "offer-type",
@@ -22464,7 +22465,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
           value: values.value
         });
       }
-    }), /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(TextContainer, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency)), /*#__PURE__*/React__default['default'].createElement(Row, null, (values === null || values === void 0 ? void 0 : values['recurrence']) === 1 && /*#__PURE__*/React__default['default'].createElement(ButtonGroup, {
+    }), /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(TextContainer, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency)), /*#__PURE__*/React__default['default'].createElement(Row, null, (values === null || values === void 0 ? void 0 : values['recurrence']) === 1 || (answers === null || answers === void 0 ? void 0 : answers['recurrence']) === 1 && /*#__PURE__*/React__default['default'].createElement(ButtonGroup, {
       error: errors === null || errors === void 0 ? void 0 : errors['week-select'],
       name: "week-select",
       list: weekSelectOptions,
@@ -22581,7 +22582,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
           value: values.value
         });
       }
-    }), /*#__PURE__*/React__default['default'].createElement(TextContainer, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency), (values === null || values === void 0 ? void 0 : values['recurrence']) === 1 && /*#__PURE__*/React__default['default'].createElement(ButtonGroup, {
+    }), /*#__PURE__*/React__default['default'].createElement(TextContainer, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency), (values === null || values === void 0 ? void 0 : values['recurrence']) === 1 || (answers === null || answers === void 0 ? void 0 : answers['recurrence']) === 1 && /*#__PURE__*/React__default['default'].createElement(ButtonGroup, {
       error: errors === null || errors === void 0 ? void 0 : errors['week-select'],
       name: "week-select",
       list: weekSelectOptions,
