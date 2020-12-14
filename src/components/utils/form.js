@@ -86,7 +86,7 @@ const gardeningAnswers = {
   telephone: '123',
   notes: 'Cool stuff',
   'first-name': 'David',
-  'offer-type': 2,
+  'offer-type': 1,
   'pack-selection': 1,
   repetition: 2,
   'service-start-date': '2020-12-18',
@@ -94,7 +94,7 @@ const gardeningAnswers = {
   'preferred-hours-end': '10:00',
   'postal-code': '2800*282',
   'number-of-hours': 1,
-  recurrence: 2,
+  recurrence: 1,
   'login-buttons': 'guest'
 };
 

@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { Body } from '../Text';
+import { Body, ErrorText } from '../Text';
 
 import {
   ButtonGroupContainer,
@@ -9,7 +9,7 @@ import {
   StyledContainer,
   ListContainer
 } from './styles';
-const ButtonGroup = ({ action, title, name, list, value }) => {
+const ButtonGroup = ({ action, title, name, list, value, error }) => {
   const filteredList = listToFilter => {
     const newList = {};
     for (let i = 0; i < listToFilter.length; i++) {
@@ -67,6 +67,7 @@ const ButtonGroup = ({ action, title, name, list, value }) => {
             );
           })}
       </ListContainer>
+      {error && <ErrorText>{error}</ErrorText>}
     </StyledContainer>
   );
 };
@@ -76,7 +77,8 @@ ButtonGroup.propTypes = {
   title: PropTypes.string,
   list: PropTypes.array,
   name: PropTypes.string,
-  value: PropTypes.object
+  value: PropTypes.object,
+  error: PropTypes.string
 };
 
 export default ButtonGroup;

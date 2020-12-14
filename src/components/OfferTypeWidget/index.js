@@ -126,7 +126,6 @@ const OfferTypeWidget = ({
   };
 
   const renderReadyPack = serviceOptions => {
-    console.log('err', errors);
     return (
       <>
         <RadioButton
@@ -241,17 +240,18 @@ const OfferTypeWidget = ({
               </>
               {/* Weekly option - day-selection */}
               <Row>
-                {values?.['recurrence'] === 1 && (
-                  <ButtonGroup
-                    error={errors?.['week-select']}
-                    name='week-select'
-                    list={weekSelectOptions}
-                    value={answers?.['week-select']}
-                    action={values =>
-                      action({ name: values?.name, value: values?.value })
-                    }
-                  />
-                )}
+                {values?.['recurrence'] === 1 ||
+                  (answers?.['recurrence'] === 1 && (
+                    <ButtonGroup
+                      error={errors?.['week-select']}
+                      name='week-select'
+                      list={weekSelectOptions}
+                      value={answers?.['week-select']}
+                      action={values =>
+                        action({ name: values?.name, value: values?.value })
+                      }
+                    />
+                  ))}
                 {/* Montly option - week-selection */}
                 {values?.['recurrence'] === 2 && (
                   <>
@@ -397,14 +397,15 @@ const OfferTypeWidget = ({
                   <TextContainer>
                     {selectedRecurrency?.pickedRecurrency}
                   </TextContainer>
-                  {values?.['recurrence'] === 1 && (
-                    <ButtonGroup
-                      error={errors?.['week-select']}
-                      name='week-select'
-                      list={weekSelectOptions}
-                      action={values => action(values)}
-                    />
-                  )}
+                  {values?.['recurrence'] === 1 ||
+                    (answers?.['recurrence'] === 1 && (
+                      <ButtonGroup
+                        error={errors?.['week-select']}
+                        name='week-select'
+                        list={weekSelectOptions}
+                        action={values => action(values)}
+                      />
+                    ))}
                 </Row>
                 {/* Hour Package daily, weekly, montly dates and hour preference */}
 

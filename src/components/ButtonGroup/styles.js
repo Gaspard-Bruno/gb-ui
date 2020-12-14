@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { media } from '../Layout';
 export const StyledContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
   padding: 16px 0px;
 `;
@@ -10,16 +10,6 @@ export const StyledContainer = styled.div`
 export const ListContainer = styled.div`
   display: flex;
   flex-flow: row nowrap;
-  gap: 12px;
-  ${media.smallDesktop(`
-    gap: 8px;
-  `)}
-  ${media.tablet(`
-    gap: 12px;
-  `)}
-  ${media.mobile(`
-    gap: 8px;
-  `)}
 `;
 
 export const ButtonGroupContainer = styled.div`
