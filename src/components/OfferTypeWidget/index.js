@@ -317,7 +317,10 @@ const OfferTypeWidget = ({
                 error={errors?.['preferred-hours-start']}
                 label='Preferência Horária'
                 name='preferred-hours-start'
-                defaultValue={answers?.['preferred-hours-start']}
+                defaultValue={getDefaultValues(
+                  preferredHoursOptions,
+                  answers?.['preferred-hours-start']
+                )}
                 options={preferredHoursOptions}
                 onChange={values =>
                   action({ name: 'preferred-hours-start', value: values.value })
@@ -328,7 +331,10 @@ const OfferTypeWidget = ({
                 error={errors?.['preferred-hours-end']}
                 label=''
                 name='preferred-hours-end'
-                defaultValue={answers?.['preferred-hours-end']}
+                defaultValue={getDefaultValues(
+                  preferredHoursOptions,
+                  answers?.['preferred-hours-end']
+                )}
                 options={preferredHoursOptions}
                 onChange={values =>
                   action({ name: 'preferred-hours-end', value: values.value })
