@@ -22,7 +22,6 @@ import { useDropzone } from 'react-dropzone';
 
 const FileUploader = ({ title, name, action, answers, error }) => {
   const [files, setFiles] = useState([]);
-  console.log(answers);
   const { getRootProps, getInputProps, open } = useDropzone({
     // Disable click and keydown behavior
     noClick: true,
