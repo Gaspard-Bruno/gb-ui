@@ -79,7 +79,11 @@ const OfferTypeWidget = ({
   const getDefaultValues = (options, answerValue) =>
     options?.find(e => e.value === answerValue);
 
-  const minDate = new Date().toISOString().split('T')[0];
+  const minDate = answers?.['service-start-date']
+    ? new Date(answers?.['service-start-date']).toISOString().split('T')[0]
+    : answers?.['service-end-date']
+    ? new Date(answers?.['service-end-date']).toISOString().split('T')[0]
+    : new Date().toISOString().split('T')[0];
 
   const renderOneTimeSpecific = serviceOptions => {
     return (
