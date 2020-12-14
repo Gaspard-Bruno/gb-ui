@@ -22347,7 +22347,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
 
   var renderOneTimeSpecific = function renderOneTimeSpecific(serviceOptions) {
     return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(RadioButton, {
-      error: errors,
+      error: errors === null || errors === void 0 ? void 0 : errors['offer-type'],
       name: "offer-type",
       action: _action,
       list: serviceOptions,
@@ -22383,8 +22383,9 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
   };
 
   var renderReadyPack = function renderReadyPack(serviceOptions) {
+    console.log('err', errors);
     return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(RadioButton, {
-      error: errors,
+      error: errors === null || errors === void 0 ? void 0 : errors['offer-type'],
       name: "offer-type",
       action: _action,
       list: serviceOptions,
@@ -26448,7 +26449,7 @@ var Form$1 = function Form(_ref) {
             packOptions: field.options,
             answers: answers,
             values: formik === null || formik === void 0 ? void 0 : formik.values,
-            errors: fieldProps.error,
+            errors: errors,
             action: function action(values) {
               return formik.setFieldValue(values.name, values.value);
             }
