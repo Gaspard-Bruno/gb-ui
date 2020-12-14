@@ -22527,7 +22527,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
       label: "Prefer\xEAncia Hor\xE1ria",
       name: "preferred-hours-start",
-      defaultValue: answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start'],
+      defaultValue: getDefaultValues(preferredHoursOptions, answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start']),
       options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
@@ -22539,7 +22539,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-end'],
       label: "",
       name: "preferred-hours-end",
-      defaultValue: answers === null || answers === void 0 ? void 0 : answers['preferred-hours-end'],
+      defaultValue: getDefaultValues(preferredHoursOptions, answers === null || answers === void 0 ? void 0 : answers['preferred-hours-end']),
       options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
