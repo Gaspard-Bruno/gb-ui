@@ -148,6 +148,11 @@ const Form = ({
       }
     };
 
+    const zipCodePlaceholder =
+      field.key === 'postal-code' || field.key === 'postalCode'
+        ? 'XXXX-XXX'
+        : undefined;
+
     //! Formik inputs logic
     if (field.key && hiddenFields.indexOf(field.key) === -1) {
       const widget = field.widget || field.type;
@@ -157,6 +162,7 @@ const Form = ({
         key: field.key ?? field.label?.toLowerCase(),
         onChange: v => formik.setFieldValue(field.key, v),
         value: formik.values[field.key] ?? initialValues[field.key],
+        placeholder: zipCodePlaceholder,
         translate,
         type: field.type,
         error:
@@ -233,7 +239,7 @@ const Form = ({
         case 'text':
         case 'password':
         case 'mini-text':
-          // fieldValidation(field);
+          fieldValidation(field);
           return (
             <TextInput
               key={field.key}
