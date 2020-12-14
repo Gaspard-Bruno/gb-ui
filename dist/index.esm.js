@@ -22452,7 +22452,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
           value: values.value
         });
       }
-    }), /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(TextContainer, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency)), /*#__PURE__*/React.createElement(Row, null, (values === null || values === void 0 ? void 0 : values['recurrence']) === 1 || (answers === null || answers === void 0 ? void 0 : answers['recurrence']) === 1 && /*#__PURE__*/React.createElement(ButtonGroup, {
+    }), /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(TextContainer, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency)), /*#__PURE__*/React.createElement(Row, null, (values === null || values === void 0 ? void 0 : values['recurrence']) === 1 && /*#__PURE__*/React.createElement(ButtonGroup, {
       error: errors === null || errors === void 0 ? void 0 : errors['week-select'],
       name: "week-select",
       list: weekSelectOptions,
@@ -22569,9 +22569,10 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
           value: values.value
         });
       }
-    }), /*#__PURE__*/React.createElement(TextContainer, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency), (values === null || values === void 0 ? void 0 : values['recurrence']) === 1 || (answers === null || answers === void 0 ? void 0 : answers['recurrence']) === 1 && /*#__PURE__*/React.createElement(ButtonGroup, {
+    }), /*#__PURE__*/React.createElement(TextContainer, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency), (values === null || values === void 0 ? void 0 : values['recurrence']) === 1 && /*#__PURE__*/React.createElement(ButtonGroup, {
       error: errors === null || errors === void 0 ? void 0 : errors['week-select'],
       name: "week-select",
+      value: answers === null || answers === void 0 ? void 0 : answers['week-select'],
       list: weekSelectOptions,
       action: function action(values) {
         return _action(values);
