@@ -21900,10 +21900,10 @@ var FileUploader = function FileUploader(_ref) {
 
   var displayAnswers = function displayAnswers(answers) {
     var files = answers === null || answers === void 0 ? void 0 : answers.map(function (elem, i) {
-      var _elem$filename;
+      var _elem$filename, _elem$filename2, _elem$filename2$split, _elem$filename2$split2;
 
       var fileName = elem === null || elem === void 0 ? void 0 : (_elem$filename = elem.filename) === null || _elem$filename === void 0 ? void 0 : _elem$filename.split('.')[0];
-      var fileExtension = elem === null || elem === void 0 ? void 0 : elem.filename.split('.').pop().toUpperCase();
+      var fileExtension = elem === null || elem === void 0 ? void 0 : (_elem$filename2 = elem.filename) === null || _elem$filename2 === void 0 ? void 0 : (_elem$filename2$split = _elem$filename2.split('.')) === null || _elem$filename2$split === void 0 ? void 0 : (_elem$filename2$split2 = _elem$filename2$split.pop()) === null || _elem$filename2$split2 === void 0 ? void 0 : _elem$filename2$split2.toUpperCase();
       return /*#__PURE__*/React__default['default'].createElement(AnswersFilesContainer, {
         key: elem.filename
       }, /*#__PURE__*/React__default['default'].createElement(Icon, {
@@ -26228,16 +26228,29 @@ var SchedulePicker = function SchedulePicker(_ref) {
       _ref$value = _ref.value,
       value = _ref$value === void 0 ? DAYS_OF_THE_WEEK : _ref$value;
 
+  var getInitialDay = function getInitialDay(key) {
+    var initialDateWeek = {
+      sunday: 16,
+      monday: 10,
+      tuesday: 11,
+      wednesday: 12,
+      thursday: 13,
+      friday: 14,
+      saturday: 15
+    };
+    return initialDateWeek[key];
+  };
+
   var convertToDates = function convertToDates(schedule) {
     var dates = [];
 
     var getDateString = function getDateString(day, hour) {
-      return "2019-06-".concat(9 + day, "T").concat(hour - 1, ":00:00");
+      return new Date("2019-06-".concat(getInitialDay(day), "T").concat(hour < 10 ? '0' + hour : hour, ":00:00"));
     };
 
     Object.keys(schedule).forEach(function (key, day) {
       schedule[key].forEach(function (hour) {
-        dates.push(new Date(getDateString(day, hour)));
+        dates.push(getDateString(key, hour));
       });
     });
     return dates;
