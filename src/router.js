@@ -77,6 +77,15 @@ const components = [
   {
     label: 'SchedulePicker',
     props: {
+      value: {
+        monday: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+        saturday: [9, 10, 11, 12, 13, 14, 15, 16],
+        sunday: [9, 10, 11, 12, 13, 14, 15, 16],
+        friday: [],
+        thursday: [],
+        tuesday: [],
+        wednesday: [9, 10, 11, 12, 13, 14, 15, 16]
+      },
       action: values => console.log(values),
       name: 'Applied-key'
     },

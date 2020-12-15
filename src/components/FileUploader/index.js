@@ -50,9 +50,9 @@ const FileUploader = ({ title, name, action, answers, error }) => {
     const files = answers?.map((elem, i) => {
       const fileName = elem?.filename?.split('.')[0];
       const fileExtension = elem?.filename
-        .split('.')
-        .pop()
-        .toUpperCase();
+        ?.split('.')
+        ?.pop()
+        ?.toUpperCase();
       return (
         <AnswersFilesContainer key={elem.filename}>
           <Icon name={fileExtension !== 'PDF' ? 'Arquive' : 'PDF'} />

@@ -29,16 +29,33 @@ const SchedulePicker = ({
   ],
   value = DAYS_OF_THE_WEEK
 }) => {
+  const getInitialDay = key => {
+    const initialDateWeek = {
+      sunday: 16,
+      monday: 10,
+      tuesday: 11,
+      wednesday: 12,
+      thursday: 13,
+      friday: 14,
+      saturday: 15
+    };
+    return initialDateWeek[key];
+  };
+
   const convertToDates = schedule => {
     const dates = [];
-    const getDateString = (day, hour) => `2019-06-${9 + day}T${hour - 1}:00:00`;
+    const getDateString = (day, hour) =>
+      new Date(
+        `2019-06-${getInitialDay(day)}T${hour < 10 ? '0' + hour : hour}:00:00`
+      );
     Object.keys(schedule).forEach((key, day) => {
       schedule[key].forEach(hour => {
-        dates.push(new Date(getDateString(day, hour)));
+        dates.push(getDateString(key, hour));
       });
     });
     return dates;
   };
+
   const convertSchedulePicks = picks => {
     if (picks) {
       picks.forEach(value => {
