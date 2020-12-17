@@ -1191,7 +1191,7 @@ const stepEight = () => {
           fields: [
             {
               type: 'dropdown',
-              key: 'language-selected',
+              key: 'languageSelected',
               label: '',
               options: [
                 { value: 0, label: 'Inglês' },
