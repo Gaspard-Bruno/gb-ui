@@ -26261,7 +26261,8 @@ var SchedulePicker = function SchedulePicker(_ref) {
       picks.forEach(function (value) {
         switch (value.getDay()) {
           case 0:
-            return DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours()) === -1 ? DAYS_OF_THE_WEEK.sunday.push(value.getHours()) : null;
+            console.log(DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours()));
+            return DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours()) === -1 ? DAYS_OF_THE_WEEK.sunday.push(value.getHours()) : DAYS_OF_THE_WEEK.sunday.splice(DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours()));
 
           case 1:
             return DAYS_OF_THE_WEEK.monday.indexOf(value.getHours()) === -1 ? DAYS_OF_THE_WEEK.monday.push(value.getHours()) : null;

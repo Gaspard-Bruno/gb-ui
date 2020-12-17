@@ -152,7 +152,11 @@ const specialistFormAnswers = {
     { value: 2, question: 'Acompanhamento TPC' },
     { value: 3, question: 'Explicações' }
   ],
-  foreignLanguageKnowledge: 0,
+  foreignLanguageKnowledge: 1,
+  'language-selected0': 0,
+  languageLevel0: 1,
+  language: 1,
+
   babysittingChildrenNumber: [
     { value: 0, question: 'Apenas 1' },
     { value: 1, question: 'Mais do que 1' },
