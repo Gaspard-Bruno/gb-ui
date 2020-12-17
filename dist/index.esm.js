@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import iconSet from 'Assets/fonts/icons/icons.json';
 import theme from 'Theme';
 import ReactDOM, { createPortal, findDOMNode, unstable_batchedUpdates } from 'react-dom';
-import { Row as Row$1 } from 'components/Layout';
-import Button$3 from 'components/Button';
 import { Tiny as Tiny$1 } from 'Components/Text';
 import { ReactComponent as ReactComponent$1 } from 'Assets/svg/logo-black.svg';
 import { ReactComponent as ReactComponent$2 } from 'Assets/svg/logo-white.svg';
@@ -23097,12 +23095,12 @@ var MultiFieldRender = function MultiFieldRender(_ref) {
       content = _ref.content,
       addAction = _ref.addAction,
       removeAction = _ref.removeAction;
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(StyledContentContainer, null, content, content && content.length ? /*#__PURE__*/React.createElement(Button$3, {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(StyledContentContainer, null, content, content && content.length ? /*#__PURE__*/React.createElement(Button$1, {
     type: "button",
     icon: "trash",
     btnType: "iconHolder",
     action: removeAction
-  }) : null), /*#__PURE__*/React.createElement(Row$1, null, /*#__PURE__*/React.createElement(StyledAddItem, {
+  }) : null), /*#__PURE__*/React.createElement(Row, null, /*#__PURE__*/React.createElement(StyledAddItem, {
     onClick: addAction,
     role: "presentation"
   }, label)));
@@ -26248,7 +26246,6 @@ var SchedulePicker = function SchedulePicker(_ref) {
       picks.forEach(function (value) {
         switch (value.getDay()) {
           case 0:
-            console.log(DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours()));
             return DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours()) === -1 ? DAYS_OF_THE_WEEK.sunday.push(value.getHours()) : DAYS_OF_THE_WEEK.sunday.splice(DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours()));
 
           case 1:

@@ -145,6 +145,7 @@ const components = [
     label: 'Form',
     props: [
       {
+        onSubmit: vals => console.log('submitting', vals),
         previewComponentTitle: 'Become Specialist',
         answers: FORM.specialistFormAnswers,
         questions: FORM.becomeSpecialist.questions,

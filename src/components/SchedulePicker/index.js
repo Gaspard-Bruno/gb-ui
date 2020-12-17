@@ -61,7 +61,6 @@ const SchedulePicker = ({
       picks.forEach(value => {
         switch (value.getDay()) {
           case 0:
-            console.log(DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours()));
             return DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours()) === -1
               ? DAYS_OF_THE_WEEK.sunday.push(value.getHours())
               : DAYS_OF_THE_WEEK.sunday.splice(

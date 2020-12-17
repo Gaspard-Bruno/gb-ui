@@ -7,8 +7,6 @@ var styled = require('styled-components');
 var iconSet = require('Assets/fonts/icons/icons.json');
 var theme = require('Theme');
 var ReactDOM = require('react-dom');
-var Layout = require('components/Layout');
-var Button$3 = require('components/Button');
 var Text = require('Components/Text');
 var logoBlack_svg = require('Assets/svg/logo-black.svg');
 var logoWhite_svg = require('Assets/svg/logo-white.svg');
@@ -24,7 +22,6 @@ var styled__default = /*#__PURE__*/_interopDefaultLegacy(styled);
 var iconSet__default = /*#__PURE__*/_interopDefaultLegacy(iconSet);
 var theme__default = /*#__PURE__*/_interopDefaultLegacy(theme);
 var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
-var Button__default = /*#__PURE__*/_interopDefaultLegacy(Button$3);
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -23110,12 +23107,12 @@ var MultiFieldRender = function MultiFieldRender(_ref) {
       content = _ref.content,
       addAction = _ref.addAction,
       removeAction = _ref.removeAction;
-  return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(StyledContentContainer, null, content, content && content.length ? /*#__PURE__*/React__default['default'].createElement(Button__default['default'], {
+  return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(StyledContentContainer, null, content, content && content.length ? /*#__PURE__*/React__default['default'].createElement(Button$1, {
     type: "button",
     icon: "trash",
     btnType: "iconHolder",
     action: removeAction
-  }) : null), /*#__PURE__*/React__default['default'].createElement(Layout.Row, null, /*#__PURE__*/React__default['default'].createElement(StyledAddItem, {
+  }) : null), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(StyledAddItem, {
     onClick: addAction,
     role: "presentation"
   }, label)));
@@ -26261,7 +26258,6 @@ var SchedulePicker = function SchedulePicker(_ref) {
       picks.forEach(function (value) {
         switch (value.getDay()) {
           case 0:
-            console.log(DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours()));
             return DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours()) === -1 ? DAYS_OF_THE_WEEK.sunday.push(value.getHours()) : DAYS_OF_THE_WEEK.sunday.splice(DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours()));
 
           case 1:
