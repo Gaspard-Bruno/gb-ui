@@ -912,7 +912,7 @@ const stepFive = () => {
               type: 'radio',
               label: 'Tem disponibilidade para recolher e entregar a roupa?',
               options: [
-                { label: 'Sim', value: 0 },
+                { label: 'Sim', value: 1 },
                 { label: 'Não', value: 0 }
               ]
             },
