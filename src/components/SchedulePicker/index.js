@@ -57,38 +57,37 @@ const SchedulePicker = ({
   };
 
   const convertSchedulePicks = picks => {
+    const sendDays = DAYS_OF_THE_WEEK;
     if (picks) {
       picks.forEach(value => {
         switch (value.getDay()) {
           case 0:
-            return DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours()) === -1
-              ? DAYS_OF_THE_WEEK.sunday.push(value.getHours())
-              : DAYS_OF_THE_WEEK.sunday.splice(
-                  DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours())
-                );
+            return sendDays.sunday.indexOf(value.getHours()) === -1
+              ? sendDays.sunday.push(value.getHours())
+              : null;
           case 1:
-            return DAYS_OF_THE_WEEK.monday.indexOf(value.getHours()) === -1
-              ? DAYS_OF_THE_WEEK.monday.push(value.getHours())
+            return sendDays.monday.indexOf(value.getHours()) === -1
+              ? sendDays.monday.push(value.getHours())
               : null;
           case 2:
-            return DAYS_OF_THE_WEEK.tuesday.indexOf(value.getHours()) === -1
-              ? DAYS_OF_THE_WEEK.tuesday.push(value.getHours())
+            return sendDays.tuesday.indexOf(value.getHours()) === -1
+              ? sendDays.tuesday.push(value.getHours())
               : null;
           case 3:
-            return DAYS_OF_THE_WEEK.wednesday.indexOf(value.getHours()) === -1
-              ? DAYS_OF_THE_WEEK.wednesday.push(value.getHours())
+            return sendDays.wednesday.indexOf(value.getHours()) === -1
+              ? sendDays.wednesday.push(value.getHours())
               : null;
           case 4:
-            return DAYS_OF_THE_WEEK.thursday.indexOf(value.getHours()) === -1
-              ? DAYS_OF_THE_WEEK.thursday.push(value.getHours())
+            return sendDays.thursday.indexOf(value.getHours()) === -1
+              ? sendDays.thursday.push(value.getHours())
               : null;
           case 5:
-            return DAYS_OF_THE_WEEK.friday.indexOf(value.getHours()) === -1
-              ? DAYS_OF_THE_WEEK.friday.push(value.getHours())
+            return sendDays.friday.indexOf(value.getHours()) === -1
+              ? sendDays.friday.push(value.getHours())
               : null;
           case 6:
-            return DAYS_OF_THE_WEEK.saturday.indexOf(value.getHours()) === -1
-              ? DAYS_OF_THE_WEEK.saturday.push(value.getHours())
+            return sendDays.saturday.indexOf(value.getHours()) === -1
+              ? sendDays.saturday.push(value.getHours())
               : null;
           default:
             return;
@@ -96,7 +95,7 @@ const SchedulePicker = ({
       });
     }
 
-    return DAYS_OF_THE_WEEK;
+    return sendDays;
   };
 
   const [pickedDays, setPickedDays] = useState(convertToDates(value));
