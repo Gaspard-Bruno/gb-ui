@@ -26206,15 +26206,6 @@ var StyledCell = styled__default['default'].div(_templateObject2$p());
 var StyledDateLabel = styled__default['default'].div(_templateObject3$i());
 
 var INITIAL_DATE = new Date('2019-06-10T00:00:00');
-var DAYS_OF_THE_WEEK = {
-  sunday: [],
-  monday: [],
-  tuesday: [],
-  wednesday: [],
-  thursday: [],
-  friday: [],
-  saturday: []
-};
 
 var SchedulePicker = function SchedulePicker(_ref) {
   var name = _ref.name,
@@ -26223,7 +26214,15 @@ var SchedulePicker = function SchedulePicker(_ref) {
       _ref$columnNames = _ref.columnNames,
       columnNames = _ref$columnNames === void 0 ? ['domingo', 'segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado'] : _ref$columnNames,
       _ref$value = _ref.value,
-      value = _ref$value === void 0 ? DAYS_OF_THE_WEEK : _ref$value;
+      value = _ref$value === void 0 ? {
+    sunday: [],
+    monday: [],
+    tuesday: [],
+    wednesday: [],
+    thursday: [],
+    friday: [],
+    saturday: []
+  } : _ref$value;
 
   var getInitialDay = function getInitialDay(key) {
     var initialDateWeek = {
@@ -26254,31 +26253,39 @@ var SchedulePicker = function SchedulePicker(_ref) {
   };
 
   var convertSchedulePicks = function convertSchedulePicks(picks) {
-    var sendDays = DAYS_OF_THE_WEEK;
+    var DAYS_OF_THE_WEEK = {
+      sunday: [],
+      monday: [],
+      tuesday: [],
+      wednesday: [],
+      thursday: [],
+      friday: [],
+      saturday: []
+    };
 
     if (picks) {
       picks.forEach(function (value) {
         switch (value.getDay()) {
           case 0:
-            return sendDays.sunday.indexOf(value.getHours()) === -1 ? sendDays.sunday.push(value.getHours()) : null;
+            return DAYS_OF_THE_WEEK.sunday.indexOf(value.getHours()) === -1 ? DAYS_OF_THE_WEEK.sunday.push(value.getHours()) : null;
 
           case 1:
-            return sendDays.monday.indexOf(value.getHours()) === -1 ? sendDays.monday.push(value.getHours()) : null;
+            return DAYS_OF_THE_WEEK.monday.indexOf(value.getHours()) === -1 ? DAYS_OF_THE_WEEK.monday.push(value.getHours()) : null;
 
           case 2:
-            return sendDays.tuesday.indexOf(value.getHours()) === -1 ? sendDays.tuesday.push(value.getHours()) : null;
+            return DAYS_OF_THE_WEEK.tuesday.indexOf(value.getHours()) === -1 ? DAYS_OF_THE_WEEK.tuesday.push(value.getHours()) : null;
 
           case 3:
-            return sendDays.wednesday.indexOf(value.getHours()) === -1 ? sendDays.wednesday.push(value.getHours()) : null;
+            return DAYS_OF_THE_WEEK.wednesday.indexOf(value.getHours()) === -1 ? DAYS_OF_THE_WEEK.wednesday.push(value.getHours()) : null;
 
           case 4:
-            return sendDays.thursday.indexOf(value.getHours()) === -1 ? sendDays.thursday.push(value.getHours()) : null;
+            return DAYS_OF_THE_WEEK.thursday.indexOf(value.getHours()) === -1 ? DAYS_OF_THE_WEEK.thursday.push(value.getHours()) : null;
 
           case 5:
-            return sendDays.friday.indexOf(value.getHours()) === -1 ? sendDays.friday.push(value.getHours()) : null;
+            return DAYS_OF_THE_WEEK.friday.indexOf(value.getHours()) === -1 ? DAYS_OF_THE_WEEK.friday.push(value.getHours()) : null;
 
           case 6:
-            return sendDays.saturday.indexOf(value.getHours()) === -1 ? sendDays.saturday.push(value.getHours()) : null;
+            return DAYS_OF_THE_WEEK.saturday.indexOf(value.getHours()) === -1 ? DAYS_OF_THE_WEEK.saturday.push(value.getHours()) : null;
 
           default:
             return;
@@ -26286,7 +26293,7 @@ var SchedulePicker = function SchedulePicker(_ref) {
       });
     }
 
-    return sendDays;
+    return DAYS_OF_THE_WEEK;
   };
 
   var _useState = React.useState(convertToDates(value)),
