@@ -255,16 +255,24 @@ const Form = ({
             <Tabs
               key={field.key}
               type={field.type}
-              tabs={field.options.map(opt => ({
+              /* tabs={field.options.map(opt => ({
                 name: opt.label,
                 value: opt.value
               }))}
+              initialTabIndex={field.options
+                .map(d => d.value)
+                .indexOf(formik.values[field.key])} */
+              //! temporay login / signup removal
+              tabs={[
+                {
+                  name: field.options[0]?.label,
+                  value: field.options[0]?.value
+                }
+              ]}
+              initialTabIndex={0}
               action={v =>
                 formik.setFieldValue(field.key, field.options[v].value)
               }
-              initialTabIndex={field.options
-                .map(d => d.value)
-                .indexOf(formik.values[field.key])}
             />
           );
         case 'radio':
