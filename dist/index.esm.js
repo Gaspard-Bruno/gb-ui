@@ -26401,7 +26401,7 @@ var Form$1 = function Form(_ref) {
   }; //! NIF Validation function
 
   var fieldRenderer = function fieldRenderer(field, formik, parentKey) {
-    var _field$options, _answers$field$key, _getParishesOptions;
+    var _field$options$, _field$options$2, _field$options, _answers$field$key, _getParishesOptions;
 
     var zipCodePlaceholder = field.key === 'postal-code' || field.key === 'postalCode' ? 'XXXX-XXX' : undefined; //! Formik inputs logic
 
@@ -26509,19 +26509,24 @@ var Form$1 = function Form(_ref) {
         case 'tabs':
           return /*#__PURE__*/React.createElement(Tabs, {
             key: field.key,
-            type: field.type,
-            tabs: field.options.map(function (opt) {
-              return {
-                name: opt.label,
-                value: opt.value
-              };
-            }),
+            type: field.type
+            /* tabs={field.options.map(opt => ({
+              name: opt.label,
+              value: opt.value
+            }))}
+            initialTabIndex={field.options
+              .map(d => d.value)
+              .indexOf(formik.values[field.key])} */
+            //! temporay login / signup removal
+            ,
+            tabs: [{
+              name: (_field$options$ = field.options[0]) === null || _field$options$ === void 0 ? void 0 : _field$options$.label,
+              value: (_field$options$2 = field.options[0]) === null || _field$options$2 === void 0 ? void 0 : _field$options$2.value
+            }],
+            initialTabIndex: 0,
             action: function action(v) {
               return formik.setFieldValue(field.key, field.options[v].value);
-            },
-            initialTabIndex: field.options.map(function (d) {
-              return d.value;
-            }).indexOf(formik.values[field.key])
+            }
           });
 
         case 'radio':
