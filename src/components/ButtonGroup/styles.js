@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 import { media } from '../Layout';
-export const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 16px 0px;
-`;
 
 export const ListContainer = styled.div`
   display: flex;
@@ -13,14 +7,10 @@ export const ListContainer = styled.div`
 `;
 
 export const ButtonGroupContainer = styled.div`
-  display: flex;
   align-items: center;
-  justify-content: center;
   p {
     cursor: pointer;
-    position: relative;
-    margin: 0px;
-    left: 37px;
+    line-height: 0px;
     color: ${props =>
       props.isSelected
         ? props.theme?.colors.darkBlue
@@ -30,7 +20,7 @@ export const ButtonGroupContainer = styled.div`
 `;
 
 export const StyledButton = styled.button`
-  margin: 0 !important;
+  margin-right: ${props => props.theme.margin - 8}px;
   outline: none;
   width: ${props => props.theme?.margin * 4}px;
   height: ${props => props.theme?.margin * 3}px;
@@ -50,6 +40,7 @@ export const StyledButton = styled.button`
   `)}
   ${media.mobile(`
     width: 37px;
+    margin-right: 6px;
   `)}
   border: ${props =>
     props.isSelected ? `none` : `1px solid ${props.theme?.colors.mediumBeige}`};

@@ -202,7 +202,7 @@ const components = [
     label: 'ButtonGroup',
     props: {
       list: [
-        { value: 0, label: 'S', isSelected: true, disabled: true },
+        { value: 0, label: 'S', isSelected: true },
         { value: 1, label: 'T', isSelected: true },
         { value: 2, label: 'Q', isSelected: true },
         { value: 3, label: 'Q', isSelected: true },

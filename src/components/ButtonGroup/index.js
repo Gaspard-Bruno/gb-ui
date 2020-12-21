@@ -38,7 +38,7 @@ const ButtonGroup = ({ action, title, name, list, value, error }) => {
 
   const labels = ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'];
   return (
-    <StyledContainer>
+    <React.Fragment>
       {title && <Body>{title}</Body>}
       <ListContainer>
         {list &&
@@ -47,14 +47,9 @@ const ButtonGroup = ({ action, title, name, list, value, error }) => {
               <ButtonGroupContainer
                 isSelected={selectedButtons[index]}
                 key={`${item}-${index}`}
-                onClick={() => {
-                  handleSelection(item.value, !selectedButtons[item.value]);
-                }}
               >
-                <Body>{labels[index]}</Body>
                 <StyledButton
                   key={`${item}-${index}`}
-                  item
                   type='button'
                   name={name}
                   disabled={item.disabled}
@@ -62,13 +57,15 @@ const ButtonGroup = ({ action, title, name, list, value, error }) => {
                   onClick={() => {
                     handleSelection(item.value, !selectedButtons[item.value]);
                   }}
-                ></StyledButton>
+                >
+                  <Body>{labels[index]}</Body>
+                </StyledButton>
               </ButtonGroupContainer>
             );
           })}
       </ListContainer>
       {error && <ErrorText>{error}</ErrorText>}
-    </StyledContainer>
+    </React.Fragment>
   );
 };
 
