@@ -21989,18 +21989,8 @@ FileUploader.propTypes = {
   error: propTypes.string
 };
 
-function _templateObject3$d() {
-  var data = _taggedTemplateLiteral(["\n  align-self: flex-end;\n"]);
-
-  _templateObject3$d = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject2$i() {
-  var data = _taggedTemplateLiteral(["\n  align-self: center;\n  margin-right: ", "px;\n  margin-left: ", "px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  align-self: flex-end;\n  margin-right: ", "px;\n  margin-left: ", "px;\n"]);
 
   _templateObject2$i = function _templateObject2() {
     return data;
@@ -22032,7 +22022,6 @@ var TextContainer = styled__default['default'](Body)(_templateObject2$i(), funct
 }, function (props) {
   return props.theme.margin;
 });
-var RecurrencyTextHolder = styled__default['default'](Body)(_templateObject3$d());
 
 var numberOfHoursOptions = [{
   label: '1',
@@ -22664,10 +22653,10 @@ function _templateObject4$9() {
   return data;
 }
 
-function _templateObject3$e() {
+function _templateObject3$d() {
   var data = _taggedTemplateLiteral(["\n  p {\n    margin: 0px;\n  }\n"]);
 
-  _templateObject3$e = function _templateObject3() {
+  _templateObject3$d = function _templateObject3() {
     return data;
   };
 
@@ -22695,7 +22684,7 @@ function _templateObject$n() {
 }
 var WidgetContainer$1 = styled__default['default'](Col)(_templateObject$n());
 var HeadingContainer = styled__default['default'](Row)(_templateObject2$j());
-var BodyContainer = styled__default['default'](Row)(_templateObject3$e());
+var BodyContainer = styled__default['default'](Row)(_templateObject3$d());
 var ExtrasContainer = styled__default['default'](Row)(_templateObject4$9(), function (props) {
   return props.theme.colors.lightestBeige;
 }, function (props) {
@@ -22733,10 +22722,10 @@ function _templateObject4$a() {
   return data;
 }
 
-function _templateObject3$f() {
+function _templateObject3$e() {
   var data = _taggedTemplateLiteral(["\n  width: ", "px;\n  height: ", "px;\n  border: ", ";\n"]);
 
-  _templateObject3$f = function _templateObject3() {
+  _templateObject3$e = function _templateObject3() {
     return data;
   };
 
@@ -22776,7 +22765,7 @@ var CheckboxWidgetContainer = styled__default['default'].div(_templateObject2$k(
 
   return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) / 2;
 });
-var StyledCheckbox$1 = styled__default['default'].input(_templateObject3$f(), function (props) {
+var StyledCheckbox$1 = styled__default['default'].input(_templateObject3$e(), function (props) {
   var _props$theme4;
 
   return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) * 1.5;
@@ -22860,10 +22849,10 @@ CheckBoxWidget.propTypes = {
   defaultValues: propTypes.oneOfType([propTypes.object, propTypes.array])
 };
 
-function _templateObject3$g() {
+function _templateObject3$f() {
   var data = _taggedTemplateLiteral(["\n  border-radius: 4px;\n  padding: ", "px;\n  margin: ", "px;\n  outline: none;\n  cursor: pointer;\n  border: none;\n  background-color: ", ";\n  margin-bottom: ", "px;\n  transition: all 0.25s;\n  > * {\n    color: ", ";\n    &:hover {\n      color: ", ";\n    }\n  }\n"]);
 
-  _templateObject3$g = function _templateObject3() {
+  _templateObject3$f = function _templateObject3() {
     return data;
   };
 
@@ -22893,7 +22882,7 @@ var TabContainer = styled__default['default'].div(_templateObject$p());
 var TabGroup = styled__default['default'].div(_templateObject2$l(), function (props) {
   return props.justify ? props.justify : 'flex-start';
 });
-var TabButton = styled__default['default'].button(_templateObject3$g(), function (props) {
+var TabButton = styled__default['default'].button(_templateObject3$f(), function (props) {
   var _props$theme;
 
   return ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) / 1.5;
@@ -22940,6 +22929,9 @@ var Tabs = function Tabs(_ref) {
     setSelectedTab(tabIndex);
   };
 
+  React.useEffect(function () {
+    setSelectedTab(initialTabIndex);
+  }, [initialTabIndex]);
   return /*#__PURE__*/React__default['default'].createElement(TabContainer, null, /*#__PURE__*/React__default['default'].createElement(TabGroup, {
     justify: justify
   }, tabs && tabs.length ? tabs.map(function (tab, i) {
@@ -22960,7 +22952,8 @@ Tabs.propTypes = {
   tabs: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string,
     children: propTypes.function
-  }))
+  })),
+  action: propTypes.func
 };
 Tabs.defaultProps = {
   type: 'primary'
@@ -22976,10 +22969,10 @@ function _templateObject4$b() {
   return data;
 }
 
-function _templateObject3$h() {
+function _templateObject3$g() {
   var data = _taggedTemplateLiteral(["\n  margin: 0;\n"]);
 
-  _templateObject3$h = function _templateObject3() {
+  _templateObject3$g = function _templateObject3() {
     return data;
   };
 
@@ -23032,7 +23025,7 @@ var StyledServiceHeader = styled__default['default'].div(_templateObject2$m(), f
 }, function (props) {
   return "1px solid ".concat(props.theme.colors.mediumBeige);
 });
-var StyledHeaderInfo = styled__default['default'](Heading)(_templateObject3$h());
+var StyledHeaderInfo = styled__default['default'](Heading)(_templateObject3$g());
 var StyledForm = styled__default['default'].div(_templateObject4$b(), function (props) {
   return getSelectedBackground$2(props);
 }, function (props) {
@@ -26172,10 +26165,10 @@ exports.default = _default;
 
 var ScheduleSelector = unwrapExports(lib);
 
-function _templateObject3$i() {
+function _templateObject3$h() {
   var data = _taggedTemplateLiteral(["\n  justify-content: center;\n  display: flex;\n  background: #ffffff;\n  box-shadow: 0px 4px 13px rgba(193, 188, 183, 0.3);\n"]);
 
-  _templateObject3$i = function _templateObject3() {
+  _templateObject3$h = function _templateObject3() {
     return data;
   };
 
@@ -26203,7 +26196,7 @@ function _templateObject$t() {
 }
 var StyledScheduleSelector = styled__default['default'](ScheduleSelector)(_templateObject$t());
 var StyledCell = styled__default['default'].div(_templateObject2$p());
-var StyledDateLabel = styled__default['default'].div(_templateObject3$i());
+var StyledDateLabel = styled__default['default'].div(_templateObject3$h());
 
 var INITIAL_DATE = new Date('2019-06-10T00:00:00');
 
@@ -37226,10 +37219,10 @@ function _templateObject4$c() {
   return data;
 }
 
-function _templateObject3$j() {
+function _templateObject3$i() {
   var data = _taggedTemplateLiteral(["\n  min-height: 32px;\n  min-width: 32px;\n  border-radius: 50%;\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-right: 8px;\n\n  svg {\n    width: 14px;\n  }\n"]);
 
-  _templateObject3$j = function _templateObject3() {
+  _templateObject3$i = function _templateObject3() {
     return data;
   };
 
@@ -37265,7 +37258,7 @@ var KanbanCard = styled__default['default'].div(_templateObject$u(), function (p
   return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin;
 });
 var BadgeContainer = styled__default['default'].div(_templateObject2$q());
-var IconContainer$1 = styled__default['default'].div(_templateObject3$j(), function (props) {
+var IconContainer$1 = styled__default['default'].div(_templateObject3$i(), function (props) {
   var _props$theme3;
 
   return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.lightBeige;
@@ -37339,10 +37332,10 @@ function _templateObject4$d() {
   return data;
 }
 
-function _templateObject3$k() {
+function _templateObject3$j() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  position: sticky;\n  top: 0;\n  background-color: ", ";\n  align-items: baseline;\n  justify-content: space-between;\n  width: 85%;\n  padding: 0px 30px;\n\n  h3 {\n    font-size: 16px;\n  }\n"]);
 
-  _templateObject3$k = function _templateObject3() {
+  _templateObject3$j = function _templateObject3() {
     return data;
   };
 
@@ -37382,7 +37375,7 @@ var ColumnCardsContainer = styled__default['default'].div(_templateObject2$r(), 
 
   return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.darkBlue;
 });
-var Header$1 = styled__default['default'].div(_templateObject3$k(), function (props) {
+var Header$1 = styled__default['default'].div(_templateObject3$j(), function (props) {
   var _props$theme4;
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.lightestBeige;
@@ -37527,10 +37520,10 @@ function _templateObject4$e() {
   return data;
 }
 
-function _templateObject3$l() {
+function _templateObject3$k() {
   var data = _taggedTemplateLiteral(["\n  & > div {\n    flex: ", ";\n  }\n  div {\n    ", "\n  }\n  display: flex;\n  margin-bottom: 0.5rem;\n  font-family: Space Grotesk;\n  font-style: normal;\n  font-weight: bold;\n  align-items: ", ";\n  justify: ", ";\n  ", "\n"]);
 
-  _templateObject3$l = function _templateObject3() {
+  _templateObject3$k = function _templateObject3() {
     return data;
   };
 
@@ -37568,7 +37561,7 @@ var ListWrapper = styled__default['default'].div(_templateObject$w(), function (
   return props.isBorded ? '10px' : 'none';
 });
 var ListContainer$2 = styled__default['default'].ul(_templateObject2$s());
-var ListItens = styled__default['default'].li(_templateObject3$l(), function (props) {
+var ListItens = styled__default['default'].li(_templateObject3$k(), function (props) {
   return props.hasFullWidthLi ? 1 : '';
 }, media.tablet("flex: 1; padding: 0px;"), function (props) {
   return props.hasIcon ? 'center' : 'baseline';
@@ -37791,10 +37784,10 @@ TrackerBox.propTypes = {
   action: propTypes.func
 };
 
-function _templateObject3$m() {
+function _templateObject3$l() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n"]);
 
-  _templateObject3$m = function _templateObject3() {
+  _templateObject3$l = function _templateObject3() {
     return data;
   };
 
@@ -37826,7 +37819,7 @@ var Left$1 = styled__default['default'].div(_templateObject2$u(), function (prop
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.grey;
 });
-var Right$1 = styled__default['default'].div(_templateObject3$m());
+var Right$1 = styled__default['default'].div(_templateObject3$l());
 
 var Pagination = function Pagination(_ref) {
   var totalPages = _ref.totalPages,
@@ -37909,10 +37902,10 @@ function _templateObject4$f() {
   return data;
 }
 
-function _templateObject3$n() {
+function _templateObject3$m() {
   var data = _taggedTemplateLiteral(["\n  margin-bottom: ", "px;\n  button {\n    transition: all 0.5s;\n    svg {\n      transition: all 0.5s;\n      transform: ", ";\n      > path {\n        fill: ", ";\n      }\n    }\n    ", "\n  }\n"]);
 
-  _templateObject3$n = function _templateObject3() {
+  _templateObject3$m = function _templateObject3() {
     return data;
   };
 
@@ -37960,7 +37953,7 @@ var NavHeader = styled__default['default'](Tiny)(_templateObject2$v(), function 
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.white;
 });
-var NavSection = styled__default['default'].div(_templateObject3$n(), function (props) {
+var NavSection = styled__default['default'].div(_templateObject3$m(), function (props) {
   var _props$theme5;
 
   return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 2;
@@ -38313,10 +38306,10 @@ var Table = function Table(_ref) {
   }));
 };
 
-function _templateObject3$o() {
+function _templateObject3$n() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    align-items: center;\n\n    svg {\n        margin-right: 26px;\n    }\n"]);
 
-  _templateObject3$o = function _templateObject3() {
+  _templateObject3$n = function _templateObject3() {
     return data;
   };
 
@@ -38348,7 +38341,7 @@ var LeftSection = styled__default['default'].div(_templateObject2$x(), function 
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.grey;
 });
-var RightSection = styled__default['default'].div(_templateObject3$o());
+var RightSection = styled__default['default'].div(_templateObject3$n());
 
 var TopBar = function TopBar(_ref) {
   var location = _ref.location,
