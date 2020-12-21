@@ -6217,18 +6217,8 @@ var Hero = styled__default['default'].div(_templateObject11$1(), function (props
 });
 var ReversedColumn = styled__default['default'](GridRow)(_templateObject12$1(), media.mobile("\n    flex-flow: column-reverse;\n    text-align: center\n  "));
 
-function _templateObject4$3() {
-  var data = _taggedTemplateLiteral(["\n  margin: 0 !important;\n  outline: none;\n  width: ", "px;\n  height: ", "px;\n  background-color: ", ";\n  };\n\n  \n  cursor: pointer;\n  ", "\n  ", "\n  ", "\n  border: ", ";\n  }\n"]);
-
-  _templateObject4$3 = function _templateObject4() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject3$5() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  p {\n    cursor: pointer;\n    position: relative;\n    margin: 0px;\n    left: 37px;\n    color: ", ";\n    margin: 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  margin-right: ", "px;\n  outline: none;\n  width: ", "px;\n  height: ", "px;\n  background-color: ", ";\n  };\n\n  \n  cursor: pointer;\n  ", "\n  ", "\n  ", "\n  border: ", ";\n  }\n"]);
 
   _templateObject3$5 = function _templateObject3() {
     return data;
@@ -6238,7 +6228,7 @@ function _templateObject3$5() {
 }
 
 function _templateObject2$6() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row nowrap;\n"]);
+  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  p {\n    cursor: pointer;\n    line-height: 0px;\n    color: ", ";\n    margin: 0;\n  }\n"]);
 
   _templateObject2$6 = function _templateObject2() {
     return data;
@@ -6248,7 +6238,7 @@ function _templateObject2$6() {
 }
 
 function _templateObject$7() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  padding: 16px 0px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row nowrap;\n"]);
 
   _templateObject$7 = function _templateObject() {
     return data;
@@ -6256,14 +6246,15 @@ function _templateObject$7() {
 
   return data;
 }
-var StyledContainer = styled__default['default'].div(_templateObject$7());
-var ListContainer = styled__default['default'].div(_templateObject2$6());
-var ButtonGroupContainer = styled__default['default'].div(_templateObject3$5(), function (props) {
+var ListContainer = styled__default['default'].div(_templateObject$7());
+var ButtonGroupContainer = styled__default['default'].div(_templateObject2$6(), function (props) {
   var _props$theme, _props$theme2;
 
   return props.isSelected ? (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.darkBlue : (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.grey;
 });
-var StyledButton = styled__default['default'].button(_templateObject4$3(), function (props) {
+var StyledButton = styled__default['default'].button(_templateObject3$5(), function (props) {
+  return props.theme.margin - 8;
+}, function (props) {
   var _props$theme3;
 
   return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) * 4;
@@ -6275,7 +6266,7 @@ var StyledButton = styled__default['default'].button(_templateObject4$3(), funct
   var _props$theme5, _props$theme6;
 
   return props.isSelected ? "".concat((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.feedback.warning.default) : "".concat((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.white);
-}, media.smallDesktop("\n    width: 45px;\n  "), media.tablet("\n    width: 81px;\n  "), media.mobile("\n    width: 37px;\n  "), function (props) {
+}, media.smallDesktop("\n    width: 45px;\n  "), media.tablet("\n    width: 81px;\n  "), media.mobile("\n    width: 37px;\n    margin-right: 6px;\n  "), function (props) {
   var _props$theme7;
 
   return props.isSelected ? "none" : "1px solid ".concat((_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.mediumBeige);
@@ -6317,16 +6308,12 @@ var ButtonGroup = function ButtonGroup(_ref) {
     }
   }, [action, name, selectedButtons]);
   var labels = ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'];
-  return /*#__PURE__*/React__default['default'].createElement(StyledContainer, null, title && /*#__PURE__*/React__default['default'].createElement(Body, null, title), /*#__PURE__*/React__default['default'].createElement(ListContainer, null, list && list.map(function (item, index) {
+  return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, title && /*#__PURE__*/React__default['default'].createElement(Body, null, title), /*#__PURE__*/React__default['default'].createElement(ListContainer, null, list && list.map(function (item, index) {
     return /*#__PURE__*/React__default['default'].createElement(ButtonGroupContainer, {
       isSelected: selectedButtons[index],
+      key: "".concat(item, "-").concat(index)
+    }, /*#__PURE__*/React__default['default'].createElement(StyledButton, {
       key: "".concat(item, "-").concat(index),
-      onClick: function onClick() {
-        handleSelection(item.value, !selectedButtons[item.value]);
-      }
-    }, /*#__PURE__*/React__default['default'].createElement(Body, null, labels[index]), /*#__PURE__*/React__default['default'].createElement(StyledButton, {
-      key: "".concat(item, "-").concat(index),
-      item: true,
       type: "button",
       name: name,
       disabled: item.disabled,
@@ -6334,7 +6321,7 @@ var ButtonGroup = function ButtonGroup(_ref) {
       onClick: function onClick() {
         handleSelection(item.value, !selectedButtons[item.value]);
       }
-    }));
+    }, /*#__PURE__*/React__default['default'].createElement(Body, null, labels[index])));
   })), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error));
 };
 
@@ -6462,7 +6449,7 @@ function _templateObject$9() {
 
   return data;
 }
-var StyledContainer$1 = styled__default['default'].div(_templateObject$9());
+var StyledContainer = styled__default['default'].div(_templateObject$9());
 var CheckboxGroupContainer = styled__default['default'].div(_templateObject2$7(), function (props) {
   var _props$theme;
 
@@ -6506,7 +6493,7 @@ var CheckBoxGroup = function CheckBoxGroup(_ref) {
     if (action) action(checkedItems);
   };
 
-  return /*#__PURE__*/React__default['default'].createElement(StyledContainer$1, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error), list && list.map(function (item, index) {
+  return /*#__PURE__*/React__default['default'].createElement(StyledContainer, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error), list && list.map(function (item, index) {
     return /*#__PURE__*/React__default['default'].createElement(CheckboxGroupContainer, {
       key: "".concat(item, "-").concat(index)
     }, /*#__PURE__*/React__default['default'].createElement(StyledCheckbox, {
@@ -6603,10 +6590,10 @@ DropDownMenu.propTypes = {
   }))
 };
 
-function _templateObject4$4() {
+function _templateObject4$3() {
   var data = _taggedTemplateLiteral(["\n  border-radius: 0 48px 48px 0;\n  outline: none !important;\n  background-color: ", ";\n  border: none;\n  padding: 0 ", "px;\n  flex: 1;\n  > p {\n    margin: ", "px;\n  }\n"]);
 
-  _templateObject4$4 = function _templateObject4() {
+  _templateObject4$3 = function _templateObject4() {
     return data;
   };
 
@@ -6670,7 +6657,7 @@ var Input = styled__default['default'].input(_templateObject3$7(), function (pro
 }, function (props) {
   return getStylesFromType(props.theme, props.type);
 });
-var Button$2 = styled__default['default'].button(_templateObject4$4(), function (props) {
+var Button$2 = styled__default['default'].button(_templateObject4$3(), function (props) {
   var _props$theme5;
 
   return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.brand.yellow;
@@ -13181,10 +13168,10 @@ function _templateObject5$3() {
   return data;
 }
 
-function _templateObject4$5() {
+function _templateObject4$4() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  color: ", ";\n  align-items: center;\n  padding: 10px;\n  font-style: normal;\n  font-weight: bold;\n  font-size: 14px;\n  line-height: 16px;\n\n  path {\n    ", "\n  }\n\n  span {\n    margin-left: 10px;\n  }\n"]);
 
-  _templateObject4$5 = function _templateObject4() {
+  _templateObject4$4 = function _templateObject4() {
     return data;
   };
 
@@ -13240,7 +13227,7 @@ var getIconColor = function getIconColor(filterLabel, theme) {
 };
 
 var FilterLabel = styled__default['default'].span(_templateObject3$8());
-var FilterTitle = styled__default['default'].div(_templateObject4$5(), function (props) {
+var FilterTitle = styled__default['default'].div(_templateObject4$4(), function (props) {
   var _props$theme3;
 
   return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.grey;
@@ -13468,10 +13455,10 @@ IconSwitch.defaultProps = {
   rightIcon: "List"
 };
 
-function _templateObject4$6() {
+function _templateObject4$5() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-wrap: wrap;\n\n    > * {\n        margin: 16px 16px 0px 0px;\n    }\n"]);
 
-  _templateObject4$6 = function _templateObject4() {
+  _templateObject4$5 = function _templateObject4() {
     return data;
   };
 
@@ -13510,7 +13497,7 @@ function _templateObject$h() {
 var StyledFilterBar = styled__default['default'].div(_templateObject$h());
 var Header = styled__default['default'].div(_templateObject2$d());
 var Selects = styled__default['default'].div(_templateObject3$a());
-var Filters = styled__default['default'].div(_templateObject4$6());
+var Filters = styled__default['default'].div(_templateObject4$5());
 
 var FilterBar = function FilterBar(_ref) {
   var availableFilters = _ref.availableFilters,
@@ -20259,10 +20246,10 @@ function _templateObject5$4() {
   return data;
 }
 
-function _templateObject4$7() {
+function _templateObject4$6() {
   var data = _taggedTemplateLiteral(["\n    display: ", ";\n    background-color: black;\n    color: black;\n    width: 10px;\n    height: 10px;\n    border-radius: 50%;\n  }\n"]);
 
-  _templateObject4$7 = function _templateObject4() {
+  _templateObject4$6 = function _templateObject4() {
     return data;
   };
 
@@ -20298,7 +20285,7 @@ function _templateObject$k() {
 
   return data;
 }
-var StyledContainer$2 = styled__default['default'].div(_templateObject$k());
+var StyledContainer$1 = styled__default['default'].div(_templateObject$k());
 var RadioGroudContainer = styled__default['default'].div(_templateObject2$g(), function (props) {
   return props.isVerticalAligned ? 'flex' : 'inline-flex';
 }, function (props) {
@@ -20341,7 +20328,7 @@ var StyledRadio = styled__default['default'].button(_templateObject3$b(), functi
 
   return props.isSelected ? (_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.colors.white : (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.colors.darkBlue;
 });
-var FocusedRadio = styled__default['default'].div(_templateObject4$7(), function (props) {
+var FocusedRadio = styled__default['default'].div(_templateObject4$6(), function (props) {
   return props.isSelected ? '' : 'none';
 });
 var SplitSelectContainer = styled__default['default'].div(_templateObject5$4());
@@ -20361,7 +20348,7 @@ var RadioButton = function RadioButton(_ref) {
       selectedButton = _useState2[0],
       setSelectedTab = _useState2[1];
 
-  return /*#__PURE__*/React__default['default'].createElement(StyledContainer$2, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), list && list.map(function (item, index) {
+  return /*#__PURE__*/React__default['default'].createElement(StyledContainer$1, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), list && list.map(function (item, index) {
     return /*#__PURE__*/React__default['default'].createElement(RadioGroudContainer, {
       align: align,
       isVerticalAligned: isVerticalAligned,
@@ -20480,10 +20467,10 @@ function _templateObject5$5() {
   return data;
 }
 
-function _templateObject4$8() {
+function _templateObject4$7() {
   var data = _taggedTemplateLiteral(["\n  display: block;\n  width: auto;\n  height: 100%;\n"]);
 
-  _templateObject4$8 = function _templateObject4() {
+  _templateObject4$7 = function _templateObject4() {
     return data;
   };
 
@@ -20526,7 +20513,7 @@ var FileUploaderContainer = styled__default['default'].div(_templateObject$l(), 
 });
 var UploaderRowWrapper = styled__default['default'](Row)(_templateObject2$h());
 var UploaderPreviewContainer = styled__default['default'].div(_templateObject3$c());
-var UploadedImages = styled__default['default'].img(_templateObject4$8());
+var UploadedImages = styled__default['default'].img(_templateObject4$7());
 var UploaderInput = styled__default['default'].input(_templateObject5$5());
 var ThumbsContainer = styled__default['default'].div(_templateObject6$2());
 var UploaderPreviewInner = styled__default['default'].div(_templateObject7$2());
@@ -22643,10 +22630,10 @@ OfferTypeWidget.propTypes = {
   packOptions: propTypes.array
 };
 
-function _templateObject4$9() {
+function _templateObject4$8() {
   var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border-radius: ", "px;\n  margin-top: ", "px;\n  p {\n    white-space: pre-wrap;\n    margin: 0;\n    padding: ", "px;\n  }\n"]);
 
-  _templateObject4$9 = function _templateObject4() {
+  _templateObject4$8 = function _templateObject4() {
     return data;
   };
 
@@ -22685,7 +22672,7 @@ function _templateObject$n() {
 var WidgetContainer$1 = styled__default['default'](Col)(_templateObject$n());
 var HeadingContainer = styled__default['default'](Row)(_templateObject2$j());
 var BodyContainer = styled__default['default'](Row)(_templateObject3$d());
-var ExtrasContainer = styled__default['default'](Row)(_templateObject4$9(), function (props) {
+var ExtrasContainer = styled__default['default'](Row)(_templateObject4$8(), function (props) {
   return props.theme.colors.lightestBeige;
 }, function (props) {
   return props.theme.margin / 2;
@@ -22712,10 +22699,10 @@ ServiceTypeWidget.propTypes = {
   extras: propTypes.string
 };
 
-function _templateObject4$a() {
+function _templateObject4$9() {
   var data = _taggedTemplateLiteral(["\n  > div {\n    width: 100%;\n    margin: 16px 30px;\n  }\n"]);
 
-  _templateObject4$a = function _templateObject4() {
+  _templateObject4$9 = function _templateObject4() {
     return data;
   };
 
@@ -22751,7 +22738,7 @@ function _templateObject$o() {
 
   return data;
 }
-var StyledContainer$3 = styled__default['default'].div(_templateObject$o());
+var StyledContainer$2 = styled__default['default'].div(_templateObject$o());
 var CheckboxWidgetContainer = styled__default['default'].div(_templateObject2$k(), function (props) {
   var _props$theme;
 
@@ -22778,7 +22765,7 @@ var StyledCheckbox$1 = styled__default['default'].input(_templateObject3$e(), fu
 
   return "1px solid ".concat((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.mediumBeige);
 });
-var ContentRow = styled__default['default'](Row)(_templateObject4$a());
+var ContentRow = styled__default['default'](Row)(_templateObject4$9());
 
 var CheckBoxWidget = function CheckBoxWidget(_ref) {
   var name = _ref.name,
@@ -22807,7 +22794,7 @@ var CheckBoxWidget = function CheckBoxWidget(_ref) {
     if (action) action(defaultValues);
   };
 
-  return /*#__PURE__*/React__default['default'].createElement(StyledContainer$3, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error), list && list.map(function (item, index) {
+  return /*#__PURE__*/React__default['default'].createElement(StyledContainer$2, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error), list && list.map(function (item, index) {
     return /*#__PURE__*/React__default['default'].createElement(CheckboxWidgetContainer, {
       key: "".concat(item, "-").concat(index)
     }, /*#__PURE__*/React__default['default'].createElement(StyledCheckbox$1, {
@@ -22959,10 +22946,10 @@ Tabs.defaultProps = {
   type: 'primary'
 };
 
-function _templateObject4$b() {
+function _templateObject4$a() {
   var data = _taggedTemplateLiteral(["\n  flex: 1;\n  display: flex;\n  flex-flow: column;\n  background-color: ", ";\n  margin: ", "px auto;\n  border: ", ";\n  > h1,\n  h2,\n  h3,\n  h4,\n  h5,\n  h6 {\n    text-align: left;\n  }\n  > div {\n    padding: 20px;\n    & > textarea {\n      min-height: ", "px;\n    }\n    & > p {\n      text-align: left;\n    }\n  }\n"]);
 
-  _templateObject4$b = function _templateObject4() {
+  _templateObject4$a = function _templateObject4() {
     return data;
   };
 
@@ -23026,7 +23013,7 @@ var StyledServiceHeader = styled__default['default'].div(_templateObject2$m(), f
   return "1px solid ".concat(props.theme.colors.mediumBeige);
 });
 var StyledHeaderInfo = styled__default['default'](Heading)(_templateObject3$g());
-var StyledForm = styled__default['default'].div(_templateObject4$b(), function (props) {
+var StyledForm = styled__default['default'].div(_templateObject4$a(), function (props) {
   return getSelectedBackground$2(props);
 }, function (props) {
   var _props$theme5;
@@ -37209,10 +37196,10 @@ function _templateObject5$6() {
   return data;
 }
 
-function _templateObject4$c() {
+function _templateObject4$b() {
   var data = _taggedTemplateLiteral(["\n  margin-top: 16px;\n  padding-top: 8px;\n  border-top: 1px solid ", ";\n"]);
 
-  _templateObject4$c = function _templateObject4() {
+  _templateObject4$b = function _templateObject4() {
     return data;
   };
 
@@ -37263,7 +37250,7 @@ var IconContainer$1 = styled__default['default'].div(_templateObject3$i(), funct
 
   return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.lightBeige;
 });
-var AdminContainer = styled__default['default'].div(_templateObject4$c(), function (props) {
+var AdminContainer = styled__default['default'].div(_templateObject4$b(), function (props) {
   var _props$theme4;
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.mediumBeige;
@@ -37322,10 +37309,10 @@ KanbanCard$1.propTypes = {
   })
 };
 
-function _templateObject4$d() {
+function _templateObject4$c() {
   var data = _taggedTemplateLiteral(["\n  path {\n    fill: ", ";\n  }\n"]);
 
-  _templateObject4$d = function _templateObject4() {
+  _templateObject4$c = function _templateObject4() {
     return data;
   };
 
@@ -37380,7 +37367,7 @@ var Header$1 = styled__default['default'].div(_templateObject3$j(), function (pr
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.lightestBeige;
 });
-var IconContainer$2 = styled__default['default'].div(_templateObject4$d(), function (props) {
+var IconContainer$2 = styled__default['default'].div(_templateObject4$c(), function (props) {
   var _props$theme5;
 
   return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.grey;
@@ -37510,10 +37497,10 @@ Kanban.propTypes = {
   onChangeStatus: propTypes.func
 };
 
-function _templateObject4$e() {
+function _templateObject4$d() {
   var data = _taggedTemplateLiteral([""]);
 
-  _templateObject4$e = function _templateObject4() {
+  _templateObject4$d = function _templateObject4() {
     return data;
   };
 
@@ -37581,7 +37568,7 @@ var getIconStyle = function getIconStyle(style, isIndexed) {
 };
 
 var regularStyle = "\n  &::before {\n      content: \"\";\n      padding: 5px;\n      font-weight: bold;\n      font-size: 16px;\n      align-items: baseline;\n      margin-right: 1.5rem;\n      background: ".concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.brand.orange, ";\n      border-radius: 2px;\n  }\n  ");
-var StyledIcon = styled__default['default'].nav(_templateObject4$e());
+var StyledIcon = styled__default['default'].nav(_templateObject4$d());
 
 var List = function List(_ref) {
   var data = _ref.data,
@@ -37892,10 +37879,10 @@ function _templateObject5$7() {
   return data;
 }
 
-function _templateObject4$f() {
+function _templateObject4$e() {
   var data = _taggedTemplateLiteral(["\n  padding: 0px 30px;\n  height: 40px;\n  display: flex;\n  align-items: center;\n  color: ", ";\n  &:visited {\n    color: ", ";\n  }\n  ", ";\n"]);
 
-  _templateObject4$f = function _templateObject4() {
+  _templateObject4$e = function _templateObject4() {
     return data;
   };
 
@@ -37975,7 +37962,7 @@ var getActiveLinkStyle = function getActiveLinkStyle(theme, active) {
   }
 };
 
-var NavLink$1 = styled__default['default'](Link$1)(_templateObject4$f(), function (props) {
+var NavLink$1 = styled__default['default'](Link$1)(_templateObject4$e(), function (props) {
   var _props$theme7;
 
   return (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.white;
