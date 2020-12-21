@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { ButtonText } from '../Text';
@@ -13,6 +13,10 @@ const Tabs = ({ justify, tabs, initialTabIndex, action }) => {
     }
     setSelectedTab(tabIndex);
   };
+
+  useEffect(() => {
+    setSelectedTab(initialTabIndex);
+  }, [initialTabIndex]);
 
   return (
     <TabContainer>
@@ -43,7 +47,8 @@ Tabs.propTypes = {
       name: PropTypes.string,
       children: PropTypes.function
     })
-  )
+  ),
+  action: PropTypes.func
 };
 
 Tabs.defaultProps = {
