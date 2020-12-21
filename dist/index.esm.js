@@ -21965,7 +21965,7 @@ FileUploader.propTypes = {
 };
 
 function _templateObject2$i() {
-  var data = _taggedTemplateLiteral(["\n  align-self: flex-end;\n  margin-right: ", "px;\n  margin-left: ", "px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  align-self: flex-end;\n  margin-right: ", "px;\n  margin-left: ", "px;\n  ", "\n"]);
 
   _templateObject2$i = function _templateObject2() {
     return data;
@@ -21996,7 +21996,7 @@ var TextContainer = styled(Body)(_templateObject2$i(), function (props) {
   return props.theme.margin;
 }, function (props) {
   return props.theme.margin;
-});
+}, media.mobile("\n    margin-right: 0px;\n    margin-left: 6px;\n  "));
 
 var numberOfHoursOptions = [{
   label: '1',
