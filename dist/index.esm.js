@@ -6265,7 +6265,7 @@ var StyledButton = styled.button(_templateObject4$3(), function (props) {
   var _props$theme5, _props$theme6;
 
   return props.isSelected ? "".concat((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.feedback.warning.default) : "".concat((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.white);
-}, media.smallDesktop("\n    width: 45px;\n  "), media.tablet("\n    width: 81px;\n  "), media.mobile("\n    width: 37px;\n  "), function (props) {
+}, media.smallDesktop("\n    width: 45px;\n  "), media.tablet("\n    width: 81px;\n  "), media.mobile("\n    width: 37px;\n    margin-right: 5px !important;\n  "), function (props) {
   var _props$theme7;
 
   return props.isSelected ? "none" : "1px solid ".concat((_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.mediumBeige);
@@ -20266,7 +20266,7 @@ function _templateObject3$b() {
 }
 
 function _templateObject2$g() {
-  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  align-items: ", ";\n  margin-top: ", "px;\n  margin-bottom: ", "px;\n  p {\n    margin: 0 ", "px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  align-items: ", ";\n  margin-top: ", "px;\n  margin-bottom: ", "px;\n  p {\n    margin: 0 ", "px;\n  }\n  ", "\n"]);
 
   _templateObject2$g = function _templateObject2() {
     return data;
@@ -20301,7 +20301,7 @@ var RadioGroudContainer = styled.div(_templateObject2$g(), function (props) {
   var _props$theme3;
 
   return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) / 2;
-});
+}, media.mobile("\n    padding: 10px 0px;\n  "));
 var StyledRadio = styled.button(_templateObject3$b(), function (props) {
   var _props$theme4;
 
