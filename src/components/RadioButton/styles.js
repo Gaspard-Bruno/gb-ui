@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { media } from '../Layout';
 
 export const StyledContainer = styled.div``;
 
@@ -11,6 +12,9 @@ export const RadioGroudContainer = styled.div`
   p {
     margin: 0 ${props => props.theme?.margin / 2}px;
   }
+  ${media.mobile(`
+    padding: 10px 0px;
+  `)}
 `;
 
 export const StyledRadio = styled.button`

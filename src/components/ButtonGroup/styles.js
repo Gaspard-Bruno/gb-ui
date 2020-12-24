@@ -46,6 +46,7 @@ export const StyledButton = styled.button`
   `)}
   ${media.mobile(`
     width: 37px;
+    margin-right: 5px !important;
   `)}
   border: ${props =>
     props.isSelected ? `none` : `1px solid ${props.theme?.colors.mediumBeige}`};
