@@ -38,7 +38,7 @@ const ButtonGroup = ({ action, title, name, list, value, error }) => {
 
   const labels = ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'];
   return (
-    <React.Fragment>
+    <StyledContainer>
       {title && <Body>{title}</Body>}
       <ListContainer>
         {list &&
@@ -65,7 +65,7 @@ const ButtonGroup = ({ action, title, name, list, value, error }) => {
           })}
       </ListContainer>
       {error && <ErrorText>{error}</ErrorText>}
-    </React.Fragment>
+    </StyledContainer>
   );
 };
 
