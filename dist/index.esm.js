@@ -5358,7 +5358,7 @@ function _templateObject2$1() {
 }
 
 function _templateObject$1() {
-  var data = _taggedTemplateLiteral(["\n  border-radius: 40px;\n  outline: none;\n  width: ", ";\n  height: 48px;\n  margin-top: ", ";\n  margin-bottom: ", ";\n  padding: 0 ", "px;\n  ", "\n  > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  border-radius: 40px;\n  outline: none;\n  width: ", ";\n  height: 48px;\n  margin-top: ", ";\n  margin-bottom: ", ";\n  padding: 0\n    ", "px;\n  ", "\n  > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n"]);
 
   _templateObject$1 = function _templateObject() {
     return data;
@@ -5367,13 +5367,16 @@ function _templateObject$1() {
   return data;
 }
 
-var getStyleFromBtnType = function getStyleFromBtnType() {
-  var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'primary';
-  var theme = arguments.length > 1 ? arguments[1] : undefined;
+var getStyleFromBtnType = function getStyleFromBtnType(isDisabled) {
+  var _theme$colors;
+
+  var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'primary';
+  var theme = arguments.length > 2 ? arguments[2] : undefined;
+  console.log('theme', isDisabled, theme);
 
   switch (type) {
     case 'primary':
-      return "\n\n        background-color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.yellow, ";\n        border: transparent;\n        &:hover {\n          background-color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.lighter, ";\n        }\n      ");
+      return "\n        background-color: ".concat(isDisabled ? theme.colors.lightBeige : theme.colors.brand.yellow, ";\n        border: transparent;\n        span {\n          color: ").concat(isDisabled ? theme === null || theme === void 0 ? void 0 : theme.colors.grey : theme === null || theme === void 0 ? void 0 : theme.colors.brand.darkBlue, ";\n          &:hover {\n            color: ").concat(isDisabled ? theme === null || theme === void 0 ? void 0 : theme.colors.grey : theme === null || theme === void 0 ? void 0 : theme.colors.brand.darkBlue, ";\n          } \n        }\n        &:hover {\n          background-color: ").concat(isDisabled ? theme === null || theme === void 0 ? void 0 : theme.colors.brand.lightBeige : theme === null || theme === void 0 ? void 0 : theme.colors.brand.lighter, ";\n        }\n      ");
 
     case 'secondary':
       return "\n        background-color: transparent;\n        border: 1px solid ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.yellow, ";\n        &:hover {\n          border: transparent;\n          background-color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.lighter, ";\n        }\n      ");
@@ -5382,10 +5385,10 @@ var getStyleFromBtnType = function getStyleFromBtnType() {
       return "\n        background-color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orange, ";\n        border: transparent;\n        &:hover {\n          border: transparent;\n          background-color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orangeLight, ";\n        }\n      ");
 
     case 'transparent':
-      return "\n        background-color: transparent;\n        border: transparent;\n        > span {\n          color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orange, ";\n          &:hover {\n            color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orangeDarker, ";\n          }\n        }\n      ");
+      return "\n        background-color: transparent;\n        border: transparent;\n        > span {\n          color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orange, ";\n          &:hover {\n            color: ").concat(isDisabled ? theme === null || theme === void 0 ? void 0 : theme.colors.grey : theme === null || theme === void 0 ? void 0 : theme.colors.brand.orangeDarker, ";\n          }\n        }\n      ");
 
     case 'borded':
-      return "\n        border: 1px solid ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.yellow, ";\n        box-sizing: border-box;\n        border-radius: 100px;\n        background-color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.white, ";\n        > span {\n          color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.darkBlue, ";\n          &:hover {\n            color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orangeDarker, ";\n          }\n        }\n      ");
+      return "\n        border: 1px solid ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.yellow, ";\n        box-sizing: border-box;\n        border-radius: 100px;\n        background-color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.white, ";\n        > span {\n          color: ").concat(isDisabled ? theme === null || theme === void 0 ? void 0 : (_theme$colors = theme.colors) === null || _theme$colors === void 0 ? void 0 : _theme$colors.grey : theme === null || theme === void 0 ? void 0 : theme.colors.brand.darkBlue, ";\n          &:hover {\n            color: ").concat(isDisabled ? theme === null || theme === void 0 ? void 0 : theme.colors.grey : theme === null || theme === void 0 ? void 0 : theme.colors.brand.orangeDarker, ";\n          }\n        }\n      ");
 
     case 'iconHolder':
       return "\n        border: 1px solid ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.yellow, ";\n        box-sizing: border-box;\n        border-radius: 100px;\n        padding: 20px;\n        width: 40px;\n        height: 40px;\n        background-color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.white, ";\n        > svg {\n          position: relative;\n          right: 11px;\n          bottom: 12px;\n        }\n      ");
@@ -5403,10 +5406,10 @@ var Button = styled.button(_templateObject$1(), function (props) {
 
   return props.small ? ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) * 0.75 : (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin;
 }, function (props) {
-  return getStyleFromBtnType(props.btnType, props.theme);
+  return getStyleFromBtnType(props.disabled, props.btnType, props.theme);
 });
 var IconButton = styled.button(_templateObject2$1(), function (props) {
-  return getStyleFromBtnType(props.btnType, props.theme);
+  return getStyleFromBtnType(props.disabled, props.btnType, props.theme);
 });
 
 var Button$1 = function Button$1(_ref) {
