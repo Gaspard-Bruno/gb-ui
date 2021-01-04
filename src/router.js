@@ -149,6 +149,7 @@ const components = [
         previewComponentTitle: 'Become Specialist',
         answers: FORM.specialistFormAnswers,
         questions: FORM.becomeSpecialist.questions,
+        isDisabled: true,
         errors: {
           instruments: 'required'
         }

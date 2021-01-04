@@ -1,14 +1,30 @@
 import styled from 'styled-components';
 
-const getStyleFromBtnType = (type = 'primary', theme) => {
+const getStyleFromBtnType = (isDisabled, type = 'primary', theme) => {
+  console.log('theme', isDisabled, theme);
   switch (type) {
     case 'primary':
       return `
-
-        background-color: ${theme?.colors.brand.yellow};
+        background-color: ${
+          isDisabled ? theme.colors.lightBeige : theme.colors.brand.yellow
+        };
         border: transparent;
+        span {
+          color: ${
+            isDisabled ? theme?.colors.grey : theme?.colors.brand.darkBlue
+          };
+          &:hover {
+            color: ${
+              isDisabled ? theme?.colors.grey : theme?.colors.brand.darkBlue
+            };
+          } 
+        }
         &:hover {
-          background-color: ${theme?.colors.brand.lighter};
+          background-color: ${
+            isDisabled
+              ? theme?.colors.brand.lightBeige
+              : theme?.colors.brand.lighter
+          };
         }
       `;
     case 'secondary':
@@ -36,7 +52,9 @@ const getStyleFromBtnType = (type = 'primary', theme) => {
         > span {
           color: ${theme?.colors.brand.orange};
           &:hover {
-            color: ${theme?.colors.brand.orangeDarker};
+            color: ${
+              isDisabled ? theme?.colors.grey : theme?.colors.brand.orangeDarker
+            };
           }
         }
       `;
@@ -47,9 +65,13 @@ const getStyleFromBtnType = (type = 'primary', theme) => {
         border-radius: 100px;
         background-color: ${theme?.colors.white};
         > span {
-          color: ${theme?.colors.brand.darkBlue};
+          color: ${
+            isDisabled ? theme?.colors?.grey : theme?.colors.brand.darkBlue
+          };
           &:hover {
-            color: ${theme?.colors.brand.orangeDarker};
+            color: ${
+              isDisabled ? theme?.colors.grey : theme?.colors.brand.orangeDarker
+            };
           }
         }
       `;
@@ -80,9 +102,10 @@ const Button = styled.button`
   height: 48px;
   margin-top: ${props => (props.fullWidth ? '20px' : '')};
   margin-bottom: ${props => (props.fullWidth ? '20px' : '')};
-  padding: 0 ${props =>
-    props.small ? props.theme?.margin * 0.75 : props.theme?.margin}px;
-  ${props => getStyleFromBtnType(props.btnType, props.theme)}
+  padding: 0
+    ${props =>
+      props.small ? props.theme?.margin * 0.75 : props.theme?.margin}px;
+  ${props => getStyleFromBtnType(props.disabled, props.btnType, props.theme)}
   > * {
     margin: 0 auto;
   }
@@ -99,7 +122,8 @@ export const IconButton = styled.button`
   > svg {
     margin-top: 0 !important;
   }
-  ${props => getStyleFromBtnType(props.btnType, props.theme)} > * {
+  ${props =>
+    getStyleFromBtnType(props.disabled, props.btnType, props.theme)} > * {
     margin: 0 auto;
   }
   &:hover {
