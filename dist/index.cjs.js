@@ -5480,7 +5480,7 @@ Button$1.defaultProps = {
 };
 
 function _templateObject3$1() {
-  var data = _taggedTemplateLiteral(["\n  padding-bottom: ", "px;\n  color: ", ";\n  opacity: ", ";\n  bottom: ", "px;\n  height: ", "px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  padding-bottom: ", "px;\n  color: ", ";\n  opacity: ", ";\n  bottom: ", "px;\n  height: ", ";\n  transform: scaleY(", ");\n"]);
 
   _templateObject3$1 = function _templateObject3() {
     return data;
@@ -5535,7 +5535,9 @@ var ContentContainer = styled__default['default'].div(_templateObject3$1(), func
 }, function (props) {
   return props.isOpen ? 0 : 100;
 }, function (props) {
-  return props.isOpen ? 'auto' : 0;
+  return props.isOpen ? 'auto' : '0px';
+}, function (props) {
+  return !props.isOpen ? 0 : '';
 });
 
 var Accordion = function Accordion(_ref) {
