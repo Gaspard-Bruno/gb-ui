@@ -5468,7 +5468,7 @@ Button$1.defaultProps = {
 };
 
 function _templateObject3$1() {
-  var data = _taggedTemplateLiteral(["\n  padding-bottom: ", "px;\n  position: relative;\n  color: ", ";\n  opacity: ", ";\n  bottom: ", "px;\n  height: ", "px;\n  transform: scaleY(", ");\n"]);
+  var data = _taggedTemplateLiteral(["\n  padding-bottom: ", "px;\n  color: ", ";\n  opacity: ", ";\n  bottom: ", "px;\n  height: ", "px;\n"]);
 
   _templateObject3$1 = function _templateObject3() {
     return data;
@@ -5524,8 +5524,6 @@ var ContentContainer = styled.div(_templateObject3$1(), function (props) {
   return props.isOpen ? 0 : 100;
 }, function (props) {
   return props.isOpen ? 'auto' : 0;
-}, function (props) {
-  return props.isOpen ? 1 : 0;
 });
 
 var Accordion = function Accordion(_ref) {
@@ -26154,18 +26152,8 @@ exports.default = _default;
 
 var ScheduleSelector = unwrapExports(lib);
 
-function _templateObject3$h() {
-  var data = _taggedTemplateLiteral(["\n  justify-content: center;\n  display: flex;\n  background: #ffffff;\n  box-shadow: 0px 4px 13px rgba(193, 188, 183, 0.3);\n"]);
-
-  _templateObject3$h = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject2$p() {
-  var data = _taggedTemplateLiteral([""]);
+  var data = _taggedTemplateLiteral(["\n  justify-content: center;\n  display: flex;\n  background: #ffffff;\n  box-shadow: 0px 4px 13px rgba(193, 188, 183, 0.3);\n"]);
 
   _templateObject2$p = function _templateObject2() {
     return data;
@@ -26184,8 +26172,7 @@ function _templateObject$t() {
   return data;
 }
 var StyledScheduleSelector = styled(ScheduleSelector)(_templateObject$t());
-var StyledCell = styled.div(_templateObject2$p());
-var StyledDateLabel = styled.div(_templateObject3$h());
+var StyledDateLabel = styled.div(_templateObject2$p());
 
 var INITIAL_DATE = new Date('2019-06-10T00:00:00');
 
@@ -26438,13 +26425,13 @@ var Form$1 = function Form(_ref) {
         case 'file-uploader':
           return /*#__PURE__*/React.createElement(FileUploader, {
             key: 'file-' + (field.key || parentKey),
-            name: field.key,
-            title: field.label,
-            answers: answers['files'],
+            name: field === null || field === void 0 ? void 0 : field.key,
+            title: field === null || field === void 0 ? void 0 : field.label,
+            answers: answers === null || answers === void 0 ? void 0 : answers['files'],
             action: function action(values) {
-              return formik.setFieldValue(field.key, values);
+              return formik.setFieldValue(field === null || field === void 0 ? void 0 : field.key, values);
             },
-            error: fieldProps.error
+            error: fieldProps === null || fieldProps === void 0 ? void 0 : fieldProps.error
           });
 
         case 'offer-type':
@@ -37208,10 +37195,10 @@ function _templateObject4$c() {
   return data;
 }
 
-function _templateObject3$i() {
+function _templateObject3$h() {
   var data = _taggedTemplateLiteral(["\n  min-height: 32px;\n  min-width: 32px;\n  border-radius: 50%;\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-right: 8px;\n\n  svg {\n    width: 14px;\n  }\n"]);
 
-  _templateObject3$i = function _templateObject3() {
+  _templateObject3$h = function _templateObject3() {
     return data;
   };
 
@@ -37247,7 +37234,7 @@ var KanbanCard = styled.div(_templateObject$u(), function (props) {
   return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin;
 });
 var BadgeContainer = styled.div(_templateObject2$q());
-var IconContainer$1 = styled.div(_templateObject3$i(), function (props) {
+var IconContainer$1 = styled.div(_templateObject3$h(), function (props) {
   var _props$theme3;
 
   return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.lightBeige;
@@ -37321,10 +37308,10 @@ function _templateObject4$d() {
   return data;
 }
 
-function _templateObject3$j() {
+function _templateObject3$i() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  position: sticky;\n  top: 0;\n  background-color: ", ";\n  align-items: baseline;\n  justify-content: space-between;\n  width: 85%;\n  padding: 0px 30px;\n\n  h3 {\n    font-size: 16px;\n  }\n"]);
 
-  _templateObject3$j = function _templateObject3() {
+  _templateObject3$i = function _templateObject3() {
     return data;
   };
 
@@ -37364,7 +37351,7 @@ var ColumnCardsContainer = styled.div(_templateObject2$r(), function (props) {
 
   return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.darkBlue;
 });
-var Header$1 = styled.div(_templateObject3$j(), function (props) {
+var Header$1 = styled.div(_templateObject3$i(), function (props) {
   var _props$theme4;
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.lightestBeige;
@@ -37509,10 +37496,10 @@ function _templateObject4$e() {
   return data;
 }
 
-function _templateObject3$k() {
+function _templateObject3$j() {
   var data = _taggedTemplateLiteral(["\n  & > div {\n    flex: ", ";\n  }\n  div {\n    ", "\n  }\n  display: flex;\n  margin-bottom: 0.5rem;\n  font-family: Space Grotesk;\n  font-style: normal;\n  font-weight: bold;\n  align-items: ", ";\n  justify: ", ";\n  ", "\n"]);
 
-  _templateObject3$k = function _templateObject3() {
+  _templateObject3$j = function _templateObject3() {
     return data;
   };
 
@@ -37550,7 +37537,7 @@ var ListWrapper = styled.div(_templateObject$w(), function (props) {
   return props.isBorded ? '10px' : 'none';
 });
 var ListContainer$2 = styled.ul(_templateObject2$s());
-var ListItens = styled.li(_templateObject3$k(), function (props) {
+var ListItens = styled.li(_templateObject3$j(), function (props) {
   return props.hasFullWidthLi ? 1 : '';
 }, media.tablet("flex: 1; padding: 0px;"), function (props) {
   return props.hasIcon ? 'center' : 'baseline';
@@ -37773,10 +37760,10 @@ TrackerBox.propTypes = {
   action: propTypes.func
 };
 
-function _templateObject3$l() {
+function _templateObject3$k() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n"]);
 
-  _templateObject3$l = function _templateObject3() {
+  _templateObject3$k = function _templateObject3() {
     return data;
   };
 
@@ -37808,7 +37795,7 @@ var Left$1 = styled.div(_templateObject2$u(), function (props) {
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.grey;
 });
-var Right$1 = styled.div(_templateObject3$l());
+var Right$1 = styled.div(_templateObject3$k());
 
 var Pagination = function Pagination(_ref) {
   var totalPages = _ref.totalPages,
@@ -37891,10 +37878,10 @@ function _templateObject4$f() {
   return data;
 }
 
-function _templateObject3$m() {
+function _templateObject3$l() {
   var data = _taggedTemplateLiteral(["\n  margin-bottom: ", "px;\n  button {\n    transition: all 0.5s;\n    svg {\n      transition: all 0.5s;\n      transform: ", ";\n      > path {\n        fill: ", ";\n      }\n    }\n    ", "\n  }\n"]);
 
-  _templateObject3$m = function _templateObject3() {
+  _templateObject3$l = function _templateObject3() {
     return data;
   };
 
@@ -37942,7 +37929,7 @@ var NavHeader = styled(Tiny)(_templateObject2$v(), function (props) {
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.white;
 });
-var NavSection = styled.div(_templateObject3$m(), function (props) {
+var NavSection = styled.div(_templateObject3$l(), function (props) {
   var _props$theme5;
 
   return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 2;
@@ -38295,10 +38282,10 @@ var Table = function Table(_ref) {
   }));
 };
 
-function _templateObject3$n() {
+function _templateObject3$m() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    align-items: center;\n\n    svg {\n        margin-right: 26px;\n    }\n"]);
 
-  _templateObject3$n = function _templateObject3() {
+  _templateObject3$m = function _templateObject3() {
     return data;
   };
 
@@ -38330,7 +38317,7 @@ var LeftSection = styled.div(_templateObject2$x(), function (props) {
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.grey;
 });
-var RightSection = styled.div(_templateObject3$n());
+var RightSection = styled.div(_templateObject3$m());
 
 var TopBar = function TopBar(_ref) {
   var location = _ref.location,
@@ -38350,4 +38337,4 @@ var TopBar = function TopBar(_ref) {
   })));
 };
 
-export { Accordion, AlertText, AlertTitle, Alert as Alerts, Avatar, BackofficeContainer, BackofficeKanbanContainer, BackofficePage, Badge$1 as Badge, Body, Button$1 as Button, ButtonGroup, ButtonText, Card$1 as Card, CheckBoxGroup, Code, Col, Divider, DropDownMenu, ErrorText, FileUploader, FilterBar, FilterButton, Form$1 as Form, FullPage, GridCol, GridRow, Heading, Hero, Icon, IconSwitch, Jumbo, Kanban, KanbanCard$1 as KanbanCard, KanbanColumn$1 as KanbanColumn, Link$1 as Link, List, Loading as Loader, Logo$1 as Logo, Page, Pagination, RadioButton, ReversedColumn, Row, SchedulePicker, SearchInput as Search, Select$2 as Select, Sidebar, SmallBody, SmallBodyFAQ, SubHeading, Table, Tabs, TextArea$1 as TextArea, Tiny, TopBar, TrackerBox, media };
+export { Accordion, AlertText, AlertTitle, Alert as Alerts, Avatar, BackofficeContainer, BackofficeKanbanContainer, BackofficePage, Badge$1 as Badge, Body, Button$1 as Button, ButtonGroup, ButtonText, Card$1 as Card, CheckBoxGroup, Code, Col, Divider, DropDownMenu, ErrorText, FileUploader, FilterBar, FilterButton, Form$1 as Form, FullPage, GridCol, GridRow, Heading, Hero, Icon, IconSwitch, Jumbo, Kanban, KanbanCard$1 as KanbanCard, KanbanColumn$1 as KanbanColumn, Link$1 as Link, List, Loading as Loader, Logo$1 as Logo, Page, Pagination, RadioButton, ReversedColumn, Row, SchedulePicker, SearchInput as Search, Select$2 as Select, Sidebar, SmallBody, SmallBodyFAQ, SubHeading, Table, Tabs, TextArea$1 as TextArea, TextInput, Tiny, TopBar, TrackerBox, media };
