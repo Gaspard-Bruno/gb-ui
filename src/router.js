@@ -63,10 +63,30 @@ import {
   AlertText,
   ErrorText,
   SchedulePicker,
-  FileUploader
+  FileUploader,
+  TextInput
 } from 'Components';
 
 const components = [
+  {
+    label: 'Test Select overflow',
+    props: {
+      options: [
+        { label: 'Test user', value: 0 },
+        { label: 'Test user', value: 0 },
+        { label: 'Test user', value: 0 },
+        { label: 'Test user', value: 0 }
+      ]
+    },
+    disabled: false,
+    section: 'General',
+    component: props => (
+      <>
+        <Accordion title='Select' content={<Select {...props} />} />
+        <Accordion title='Scheduler' content={<SchedulePicker />} />
+      </>
+    )
+  },
   {
     label: 'Avatar',
     props: { user: { fullName: 'Test user' }, hasText: true },

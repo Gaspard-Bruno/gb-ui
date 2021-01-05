@@ -188,11 +188,11 @@ const Form = ({
           return (
             <FileUploader
               key={'file-' + (field.key || parentKey)}
-              name={field.key}
-              title={field.label}
-              answers={answers['files']}
-              action={values => formik.setFieldValue(field.key, values)}
-              error={fieldProps.error}
+              name={field?.key}
+              title={field?.label}
+              answers={answers?.['files']}
+              action={values => formik.setFieldValue(field?.key, values)}
+              error={fieldProps?.error}
             />
           );
         case 'offer-type':

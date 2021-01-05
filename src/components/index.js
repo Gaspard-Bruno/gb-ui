@@ -43,6 +43,7 @@ import Sidebar from './Sidebar';
 import Table from './Table';
 import Tabs from './Tabs';
 import TextArea from './TextArea';
+import TextInput from './TextInput';
 import TopBar from './TopBar';
 import TrackerBox from './TrackerBox';
 import FileUploader from './FileUploader';
@@ -104,6 +105,7 @@ export {
   Table,
   Tabs,
   TextArea,
+  TextInput,
   TopBar,
   TrackerBox,
   Jumbo,

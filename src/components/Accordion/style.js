@@ -28,10 +28,8 @@ export const AccordionTitle = styled.div`
 `;
 export const ContentContainer = styled.div`
   padding-bottom: ${props => props.theme.margin}px;
-  position: relative;
   color: ${props => props.theme?.colors.grey};
   opacity: ${props => (props.isOpen ? 1 : 0)};
   bottom: ${props => (props.isOpen ? 0 : 100)}px;
   height: ${props => (props.isOpen ? 'auto' : 0)}px;
-  transform: scaleY(${props => (props.isOpen ? 1 : 0)});
 `;
