@@ -31,5 +31,6 @@ export const ContentContainer = styled.div`
   color: ${props => props.theme?.colors.grey};
   opacity: ${props => (props.isOpen ? 1 : 0)};
   bottom: ${props => (props.isOpen ? 0 : 100)}px;
-  height: ${props => (props.isOpen ? 'auto' : 0)}px;
+  height: ${props => (props.isOpen ? 'auto' : '0px')};
+  transform: scaleY(${props => (!props.isOpen ? 0 : '')});
 `;
