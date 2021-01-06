@@ -5384,7 +5384,6 @@ var getStyleFromBtnType = function getStyleFromBtnType(isDisabled) {
 
   var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'primary';
   var theme = arguments.length > 2 ? arguments[2] : undefined;
-  console.log('theme', isDisabled, theme);
 
   switch (type) {
     case 'primary':
