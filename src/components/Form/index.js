@@ -115,7 +115,6 @@ const Form = ({
       const values = formik.values[field.key] ?? initialValues[field.key];
       if (values) {
         if (field.key === 'email') {
-          console.log('adsasdsadsa', values);
           if (!validator.isEmail(values)) {
             validationErrors[field.key] = 'O email introduzido não é válido';
           } else {
@@ -124,7 +123,6 @@ const Form = ({
         }
         if (field.key === 'nif') {
           if (!nifValidation(values)) {
-            console.log('errrrosss', errors);
             validationErrors[field.key] = 'O NIF introduzido não é válido';
           } else {
             delete validationErrors[field.key];

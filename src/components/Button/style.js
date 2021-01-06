@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const getStyleFromBtnType = (isDisabled, type = 'primary', theme) => {
-  console.log('theme', isDisabled, theme);
   switch (type) {
     case 'primary':
       return `
