@@ -83,11 +83,6 @@ const getStyleFromBtnType = (isDisabled, type = 'primary', theme) => {
         width: 40px;
         height: 40px;
         background-color: ${theme?.colors.white};
-        > svg {
-          position: relative;
-          right: 11px;
-          bottom: 12px;
-        }
       `;
     default:
       break;
