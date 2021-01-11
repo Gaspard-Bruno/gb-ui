@@ -22023,6 +22023,75 @@ var TextContainer = styled__default['default'](Body)(_templateObject2$i(), funct
   return props.theme.margin;
 }, media.mobile("\n    margin-right: 0px;\n    margin-left: 6px;\n  "));
 
+function _templateObject4$9() {
+  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border-radius: ", "px;\n  margin-top: ", "px;\n  p {\n    white-space: pre-wrap;\n    margin: 0;\n    padding: ", "px;\n  }\n"]);
+
+  _templateObject4$9 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3$d() {
+  var data = _taggedTemplateLiteral(["\n  p {\n    margin: 0px;\n  }\n"]);
+
+  _templateObject3$d = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2$j() {
+  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  gap: 6px;\n  h2,\n  p {\n    margin: 0px;\n  }\n"]);
+
+  _templateObject2$j = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$n() {
+  var data = _taggedTemplateLiteral(["\n  padding: 0px;\n  width: auto !important;\n"]);
+
+  _templateObject$n = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var WidgetContainer$1 = styled__default['default'](Col)(_templateObject$n());
+var HeadingContainer = styled__default['default'](Row)(_templateObject2$j());
+var BodyContainer = styled__default['default'](Row)(_templateObject3$d());
+var ExtrasContainer = styled__default['default'](Row)(_templateObject4$9(), function (props) {
+  return props.theme.colors.lightestBeige;
+}, function (props) {
+  return props.theme.margin / 2;
+}, function (props) {
+  return props.theme.margin;
+}, function (props) {
+  return props.theme.margin;
+});
+
+var ServiceTypeWidget = function ServiceTypeWidget(_ref) {
+  var heading = _ref.heading,
+      headerText = _ref.headerText,
+      body = _ref.body,
+      extras = _ref.extras;
+  return /*#__PURE__*/React__default['default'].createElement(WidgetContainer$1, null, /*#__PURE__*/React__default['default'].createElement(HeadingContainer, null, /*#__PURE__*/React__default['default'].createElement(Heading, {
+    size: 5
+  }, heading), /*#__PURE__*/React__default['default'].createElement(Body, null, headerText)), /*#__PURE__*/React__default['default'].createElement(BodyContainer, null, /*#__PURE__*/React__default['default'].createElement(SmallBody, null, body)), /*#__PURE__*/React__default['default'].createElement(ExtrasContainer, null, /*#__PURE__*/React__default['default'].createElement(SmallBody, null, extras)));
+};
+
+ServiceTypeWidget.propTypes = {
+  heading: propTypes.string,
+  headerText: propTypes.string,
+  body: propTypes.string,
+  extras: propTypes.string
+};
+
 var numberOfHoursOptions = [{
   label: '1',
   value: 1
@@ -22254,7 +22323,8 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       values = _ref.values,
       errors = _ref.errors,
       answers = _ref.answers,
-      packOptions = _ref.packOptions;
+      packOptions = _ref.packOptions,
+      urgentPrices = _ref.urgentPrices;
 
   var renderContent = function renderContent() {
     var serviceOptions = {
@@ -22631,7 +22701,31 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     }, values['offer-type'] && values['offer-type'] !== 0 ? selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.total : null));
   };
 
-  return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(WidgetContainer, null, renderContent()));
+  var urgencyRateRender = React.useCallback(function () {
+    var urgencyFallBackProps = {
+      heading: '+2,44€',
+      headerText: '/ hora',
+      body: '*acresce ao valor final; não inclui a taxa de IVA em vigor',
+      extras: 'Serviço realizado em menos de 24H à data do primeiro contacto'
+    };
+    var urgencyProps = urgentPrices || urgencyFallBackProps; // check for default values
+
+    var dateAndHourDefault = (answers === null || answers === void 0 ? void 0 : answers['service-start-date']) && ((answers === null || answers === void 0 ? void 0 : answers['preferred-hours']) || (answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start'])) && new Date("".concat(answers === null || answers === void 0 ? void 0 : answers['service-start-date'], " ").concat(answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start'])); // check for new values
+
+    var dateAndHourValues = (values === null || values === void 0 ? void 0 : values['service-start-date']) && ((values === null || values === void 0 ? void 0 : values['preferred-hours']) || (values === null || values === void 0 ? void 0 : values['preferred-hours-start'])) && new Date("".concat(values === null || values === void 0 ? void 0 : values['service-start-date'], " ").concat((values === null || values === void 0 ? void 0 : values['preferred-hours']) || (values === null || values === void 0 ? void 0 : values['preferred-hours-start'])));
+    var datesToDiff = dateAndHourValues || dateAndHourDefault; // 86400000 ms = 24H
+    // hours*minutes*seconds*milliseconds
+
+    var oneDay = 24 * 60 * 60 * 1000;
+    var diffDays = Math.abs((new Date().getTime() - (datesToDiff === null || datesToDiff === void 0 ? void 0 : datesToDiff.getTime())) / oneDay);
+
+    if (diffDays < 1) {
+      return /*#__PURE__*/React__default['default'].createElement(ServiceTypeWidget, urgencyProps);
+    } else {
+      return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null);
+    }
+  }, [answers, urgentPrices, values]);
+  return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(WidgetContainer, null, renderContent(), urgencyRateRender()));
 };
 
 OfferTypeWidget.propTypes = {
@@ -22640,76 +22734,8 @@ OfferTypeWidget.propTypes = {
   values: propTypes.object,
   errors: propTypes.object,
   answers: propTypes.object,
-  packOptions: propTypes.array
-};
-
-function _templateObject4$9() {
-  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border-radius: ", "px;\n  margin-top: ", "px;\n  p {\n    white-space: pre-wrap;\n    margin: 0;\n    padding: ", "px;\n  }\n"]);
-
-  _templateObject4$9 = function _templateObject4() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject3$d() {
-  var data = _taggedTemplateLiteral(["\n  p {\n    margin: 0px;\n  }\n"]);
-
-  _templateObject3$d = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2$j() {
-  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  gap: 6px;\n  h2,\n  p {\n    margin: 0px;\n  }\n"]);
-
-  _templateObject2$j = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject$n() {
-  var data = _taggedTemplateLiteral(["\n  padding: 0px;\n  width: auto !important;\n"]);
-
-  _templateObject$n = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-var WidgetContainer$1 = styled__default['default'](Col)(_templateObject$n());
-var HeadingContainer = styled__default['default'](Row)(_templateObject2$j());
-var BodyContainer = styled__default['default'](Row)(_templateObject3$d());
-var ExtrasContainer = styled__default['default'](Row)(_templateObject4$9(), function (props) {
-  return props.theme.colors.lightestBeige;
-}, function (props) {
-  return props.theme.margin / 2;
-}, function (props) {
-  return props.theme.margin;
-}, function (props) {
-  return props.theme.margin;
-});
-
-var ServiceTypeWidget = function ServiceTypeWidget(_ref) {
-  var heading = _ref.heading,
-      headerText = _ref.headerText,
-      body = _ref.body,
-      extras = _ref.extras;
-  return /*#__PURE__*/React__default['default'].createElement(WidgetContainer$1, null, /*#__PURE__*/React__default['default'].createElement(HeadingContainer, null, /*#__PURE__*/React__default['default'].createElement(Heading, {
-    size: 5
-  }, heading), /*#__PURE__*/React__default['default'].createElement(Body, null, headerText)), /*#__PURE__*/React__default['default'].createElement(BodyContainer, null, /*#__PURE__*/React__default['default'].createElement(SmallBody, null, body)), /*#__PURE__*/React__default['default'].createElement(ExtrasContainer, null, /*#__PURE__*/React__default['default'].createElement(SmallBody, null, extras)));
-};
-
-ServiceTypeWidget.propTypes = {
-  heading: propTypes.string,
-  headerText: propTypes.string,
-  body: propTypes.string,
-  extras: propTypes.string
+  packOptions: propTypes.array,
+  urgentPrices: propTypes.object
 };
 
 function _templateObject4$a() {
@@ -26397,7 +26423,7 @@ var Form$1 = function Form(_ref) {
   var fieldRenderer = function fieldRenderer(field, formik, parentKey) {
     var _field$options$, _field$options$2, _field$options, _answers$field$key, _getParishesOptions;
 
-    var zipCodePlaceholder = field.key === 'postal-code' || field.key === 'postalCode' ? 'XXXX-XXX' : undefined; //! Formik inputs logic
+    var zipCodePlaceholder = field.key === 'postal-code' || field.key === 'postalCode' ? '0000-000' : undefined; //! Formik inputs logic
 
     if (field.key && hiddenFields.indexOf(field.key) === -1) {
       var _field$label, _field$key, _field$label2, _formik$values$field$2;
@@ -26455,6 +26481,7 @@ var Form$1 = function Form(_ref) {
             answers: answers,
             values: formik === null || formik === void 0 ? void 0 : formik.values,
             errors: errors,
+            urgentPrices: field === null || field === void 0 ? void 0 : field.urgentPrices,
             action: function action(values) {
               return formik.setFieldValue(values.name, values.value);
             }
