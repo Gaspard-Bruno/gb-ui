@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Heading, SmallBody, Body } from '../Text';
 import { Row } from '../Layout';
@@ -7,7 +7,7 @@ import RadioButton from '../RadioButton';
 import TextInput from '../TextInput';
 import Select from '../Select';
 import ButtonGroup from '../ButtonGroup';
-
+import ServiceTypeWidget from '../ServiceTypeWidget';
 import {
   numberOfHoursOptions,
   preferredHoursOptions,
@@ -25,7 +25,8 @@ const OfferTypeWidget = ({
   values,
   errors,
   answers,
-  packOptions
+  packOptions,
+  urgentPrices
 }) => {
   const renderContent = () => {
     const serviceOptions = {
@@ -417,7 +418,6 @@ const OfferTypeWidget = ({
                   )}
                 </Row>
                 {/* Hour Package daily, weekly, montly dates and hour preference */}
-
                 <TextInput
                   label='Data de Início'
                   name='service-start-date'
@@ -489,9 +489,53 @@ const OfferTypeWidget = ({
     );
   };
 
+  const urgencyRateRender = useCallback(() => {
+    const urgencyFallBackProps = {
+      heading: '+2,44€',
+      headerText: '/ hora',
+      body: '*acresce ao valor final; não inclui a taxa de IVA em vigor',
+      extras: 'Serviço realizado em menos de 24H à data do primeiro contacto'
+    };
+
+    const urgencyProps = urgentPrices || urgencyFallBackProps;
+    // check for default values
+    const dateAndHourDefault =
+      answers?.['service-start-date'] &&
+      (answers?.['preferred-hours'] || answers?.['preferred-hours-start']) &&
+      new Date(
+        `${answers?.['service-start-date']} ${answers?.['preferred-hours-start']}`
+      );
+
+    // check for new values
+    const dateAndHourValues =
+      values?.['service-start-date'] &&
+      (values?.['preferred-hours'] || values?.['preferred-hours-start']) &&
+      new Date(
+        `${values?.['service-start-date']} ${values?.['preferred-hours'] ||
+          values?.['preferred-hours-start']}`
+      );
+
+    const datesToDiff = dateAndHourValues || dateAndHourDefault;
+    // 86400000 ms = 24H
+    // hours*minutes*seconds*milliseconds
+    const oneDay = 24 * 60 * 60 * 1000;
+    const diffDays = Math.abs(
+      (new Date().getTime() - datesToDiff?.getTime()) / oneDay
+    );
+
+    if (diffDays < 1) {
+      return <ServiceTypeWidget {...urgencyProps} />;
+    } else {
+      return <></>;
+    }
+  }, [answers, urgentPrices, values]);
+
   return (
     <>
-      <WidgetContainer>{renderContent()}</WidgetContainer>
+      <WidgetContainer>
+        {renderContent()}
+        {urgencyRateRender()}
+      </WidgetContainer>
     </>
   );
 };
@@ -502,7 +546,8 @@ OfferTypeWidget.propTypes = {
   values: PropTypes.object,
   errors: PropTypes.object,
   answers: PropTypes.object,
-  packOptions: PropTypes.array
+  packOptions: PropTypes.array,
+  urgentPrices: PropTypes.object
 };
 
 export default OfferTypeWidget;

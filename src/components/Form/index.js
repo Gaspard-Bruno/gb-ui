@@ -148,7 +148,7 @@ const Form = ({
 
     const zipCodePlaceholder =
       field.key === 'postal-code' || field.key === 'postalCode'
-        ? 'XXXX-XXX'
+        ? '0000-000'
         : undefined;
 
     //! Formik inputs logic
@@ -202,6 +202,7 @@ const Form = ({
               answers={answers}
               values={formik?.values}
               errors={errors}
+              urgentPrices={field?.urgentPrices}
               action={values => formik.setFieldValue(values.name, values.value)}
             />
           );
