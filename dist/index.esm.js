@@ -22701,7 +22701,8 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     var dateAndHourDefault = (answers === null || answers === void 0 ? void 0 : answers['service-start-date']) && ((answers === null || answers === void 0 ? void 0 : answers['preferred-hours']) || (answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start'])) && new Date("".concat(answers === null || answers === void 0 ? void 0 : answers['service-start-date'], " ").concat(answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start'])); // check for new values
 
     var dateAndHourValues = (values === null || values === void 0 ? void 0 : values['service-start-date']) && ((values === null || values === void 0 ? void 0 : values['preferred-hours']) || (values === null || values === void 0 ? void 0 : values['preferred-hours-start'])) && new Date("".concat(values === null || values === void 0 ? void 0 : values['service-start-date'], " ").concat((values === null || values === void 0 ? void 0 : values['preferred-hours']) || (values === null || values === void 0 ? void 0 : values['preferred-hours-start'])));
-    var datesToDiff = dateAndHourValues || dateAndHourDefault; // 86400000 ms = 24H
+    var datesToDiff = dateAndHourValues || dateAndHourDefault;
+    if (!datesToDiff) return; // 86400000 ms = 24H
     // hours*minutes*seconds*milliseconds
 
     var oneDay = 24 * 60 * 60 * 1000;
