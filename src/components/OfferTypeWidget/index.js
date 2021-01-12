@@ -524,12 +524,19 @@ const OfferTypeWidget = ({
       (new Date().getTime() - datesToDiff?.getTime()) / oneDay
     );
 
+    const setUrgency = vals =>
+      setTimeout(() => {
+        action({ name: 'isUrgent', value: vals });
+      }, 2000);
+
     if (diffDays < 1) {
+      setUrgency(true);
       return <ServiceTypeWidget {...urgencyProps} />;
     } else {
+      setUrgency(false);
       return <></>;
     }
-  }, [answers, urgentPrices, values]);
+  }, [action, answers, urgentPrices, values]);
 
   return (
     <>

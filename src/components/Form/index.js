@@ -598,7 +598,7 @@ const Form = ({
     return formFields;
   };
 
-  const initialValues = {};
+  const initialValues = { isUrgent: null };
   const getInitialValues = valueQuestions =>
     valueQuestions.forEach(q => {
       const typeDefault =
