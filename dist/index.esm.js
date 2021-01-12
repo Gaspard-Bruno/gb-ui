@@ -22711,7 +22711,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     var setUrgency = function setUrgency(vals) {
       return setTimeout(function () {
         _action({
-          name: 'isUrgent',
+          name: 'is-urgent',
           value: vals
         });
       }, 2000);
@@ -26853,7 +26853,7 @@ var Form$1 = function Form(_ref) {
   };
 
   var initialValues = {
-    isUrgent: null
+    'is-urgent': null
   };
 
   var getInitialValues = function getInitialValues(valueQuestions) {
