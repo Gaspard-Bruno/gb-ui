@@ -22708,12 +22708,23 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     var oneDay = 24 * 60 * 60 * 1000;
     var diffDays = Math.abs((new Date().getTime() - (datesToDiff === null || datesToDiff === void 0 ? void 0 : datesToDiff.getTime())) / oneDay);
 
+    var setUrgency = function setUrgency(vals) {
+      return setTimeout(function () {
+        _action({
+          name: 'isUrgent',
+          value: vals
+        });
+      }, 2000);
+    };
+
     if (diffDays < 1) {
+      setUrgency(true);
       return /*#__PURE__*/React.createElement(ServiceTypeWidget, urgencyProps);
     } else {
+      setUrgency(false);
       return /*#__PURE__*/React.createElement(React.Fragment, null);
     }
-  }, [answers, urgentPrices, values]);
+  }, [_action, answers, urgentPrices, values]);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(WidgetContainer, null, renderContent(), urgencyRateRender()));
 };
 
@@ -26841,7 +26852,9 @@ var Form$1 = function Form(_ref) {
     return formFields;
   };
 
-  var initialValues = {};
+  var initialValues = {
+    isUrgent: null
+  };
 
   var getInitialValues = function getInitialValues(valueQuestions) {
     return valueQuestions.forEach(function (q) {
