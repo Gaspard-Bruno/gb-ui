@@ -516,6 +516,7 @@ const OfferTypeWidget = ({
       );
 
     const datesToDiff = dateAndHourValues || dateAndHourDefault;
+    if (!datesToDiff) return;
     // 86400000 ms = 24H
     // hours*minutes*seconds*milliseconds
     const oneDay = 24 * 60 * 60 * 1000;
