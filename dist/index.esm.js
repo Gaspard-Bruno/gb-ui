@@ -5849,7 +5849,7 @@ var t$1 = function t(translation, value) {
 };
 
 function _templateObject$5() {
-  var data = _taggedTemplateLiteral(["\n  height: 24px;\n  display: flex;\n  flex-flow: row nowrap;\n  width: fit-content;\n  background-color: ", ";\n  > p {\n    color: ", ";\n    margin: ", "px\n      ", "px;\n  }\n  > svg {\n    vertical-align: middle;\n    margin: auto ", "px;\n    margin-left: 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  border-radius: 2px;\n  height: 24px;\n  display: flex;\n  flex-flow: row nowrap;\n  width: fit-content;\n  background-color: ", ";\n  > p {\n    color: ", ";\n    margin: ", "px\n      ", "px;\n  }\n  > svg {\n    vertical-align: middle;\n    margin: auto ", "px;\n    margin-left: 0;\n  }\n"]);
 
   _templateObject$5 = function _templateObject() {
     return data;
