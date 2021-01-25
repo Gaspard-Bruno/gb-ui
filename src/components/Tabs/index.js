@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { ButtonText } from '../Text';
 import { TabContainer, TabButton, TabGroup } from './style';
 
-const Tabs = ({ justify, tabs, initialTabIndex, action }) => {
+const Tabs = ({ justify, tabs, initialTabIndex, action, className }) => {
   const [selectedTab, setSelectedTab] = useState(initialTabIndex);
 
   const handleTabChange = tabIndex => {
@@ -19,7 +19,7 @@ const Tabs = ({ justify, tabs, initialTabIndex, action }) => {
   }, [initialTabIndex]);
 
   return (
-    <TabContainer>
+    <TabContainer className={className}>
       <TabGroup justify={justify}>
         {tabs && tabs.length
           ? tabs.map((tab, i) => (
