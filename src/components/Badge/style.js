@@ -20,6 +20,7 @@ const getColorFromStatus = (theme, status) =>
   }[status]);
 
 const Badge = styled.span`
+  border-radius: 2px;
   height: 24px;
   display: flex;
   flex-flow: row nowrap;
