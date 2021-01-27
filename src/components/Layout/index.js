@@ -111,6 +111,11 @@ const Row = styled.div`
   justify-content: ${props => (props.justify ? props.justify : 'none')};
   min-height: ${props => props.theme?.margin * (props.size || 0)}px;
   ${props =>
+    props.collapse &&
+    media[props.collapse](`
+      display: none;
+  `)}
+  ${props =>
     (props.margin &&
       `
     ${media.desktop(`
