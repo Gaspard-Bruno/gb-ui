@@ -13,10 +13,16 @@ const Badge = ({
   isChip,
   onClick,
   text,
-  translate
+  translate,
+  className
 }) => {
   return (
-    <StyledBadge onClick={onClick} status={category || status} chip={isChip}>
+    <StyledBadge
+      className={className}
+      onClick={onClick}
+      status={category || status}
+      chip={isChip}
+    >
       <SmallBody>{t(translate, text)}</SmallBody>
       {isChip && <Icon name='Close' size={12} />}
     </StyledBadge>
