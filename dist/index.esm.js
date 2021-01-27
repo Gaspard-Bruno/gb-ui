@@ -5907,8 +5907,10 @@ var Badge$1 = function Badge$1(_ref) {
       isChip = _ref.isChip,
       onClick = _ref.onClick,
       text = _ref.text,
-      translate = _ref.translate;
+      translate = _ref.translate,
+      className = _ref.className;
   return /*#__PURE__*/React.createElement(Badge, {
+    className: className,
     onClick: onClick,
     status: category || status,
     chip: isChip
