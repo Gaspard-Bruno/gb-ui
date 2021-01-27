@@ -5990,7 +5990,7 @@ function _templateObject7$1() {
 }
 
 function _templateObject6$1() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row ", ";\n  background-color: ", ";\n  align-items: ", ";\n  width: 100%;\n  justify-content: ", ";\n  min-height: ", "px;\n  ", "\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row ", ";\n  background-color: ", ";\n  align-items: ", ";\n  width: 100%;\n  justify-content: ", ";\n  min-height: ", "px;\n  ", "\n  ", "\n  ", "\n"]);
 
   _templateObject6$1 = function _templateObject6() {
     return data;
@@ -6123,6 +6123,8 @@ var Row = styled.div(_templateObject6$1(), function (props) {
   var _props$theme10;
 
   return ((_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.margin) * (props.size || 0);
+}, function (props) {
+  return props.collapse && media[props.collapse]("\n      display: none;\n  ");
 }, function (props) {
   return props.margin && "\n    ".concat(media.desktop("\n    margin: 0 auto;\n  "), "\n  ").concat(media.smallDesktop("\n    margin: 0 120px;\n  "), "\n  ").concat(media.tablet("\n    margin: 0 48px;\n  "), "\n  ").concat(media.mobile("\n    margin: 0 32px;\n  "), "\n  ") || 'margin: 0 auto;';
 }, function (props) {
