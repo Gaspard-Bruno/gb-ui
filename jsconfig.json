@@ -5,7 +5,7 @@
       "Assets": ["./assets/*"],
       "Components": ["./components/*"],
       "Utils": ["./utils/*"],
-      "Config": ["./config.js"],
+      "Config": ["./config/*"],
       "Theme": ["./theme.js"]
     }
   }
