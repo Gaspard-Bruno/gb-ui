@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import chunk from 'lodash.chunk';
 import sc from 'lodash.startcase';
+import kebabcase from 'lodash.kebabcase';
 import snakecase from 'lodash.snakecase';
 import validator from 'validator';
 
@@ -152,7 +153,10 @@ const Form = ({
         : undefined;
 
     //! Formik inputs logic
-    if (field.key && hiddenFields.indexOf(field.key) === -1) {
+    if (
+      (field.key && hiddenFields.indexOf(field.key) === -1) ||
+      field.key === 'district'
+    ) {
       const widget = field.widget || field.type;
       const fieldProps = {
         label: field.label ?? sc(field.key),
@@ -340,17 +344,23 @@ const Form = ({
         case 'district':
           return (
             <React.Fragment key={'district'}>
-              <Select
-                options={districtOptions}
-                label={field?.label || 'Concelho'}
-                error={fieldProps.error}
-                defaultValue={districtOptions?.find(
-                  opt => opt.value === fieldProps.value
-                )}
-                onChange={option => {
-                  formik.setFieldValue(field.key, option.value);
-                }}
-              />
+              {hiddenFields.indexOf('district') === -1 ? (
+                <Select
+                  options={districtOptions}
+                  label={field?.label || 'Concelho'}
+                  error={fieldProps.error}
+                  defaultValue={districtOptions?.find(
+                    opt =>
+                      opt.value === fieldProps.value ||
+                      kebabcase(opt.label) === kebabcase(fieldProps.value)
+                  )}
+                  onChange={option => {
+                    formik.setFieldValue(field.key, kebabcase(option.value));
+                  }}
+                />
+              ) : (
+                <></>
+              )}
               {(formik.values[field.key] &&
                 (formik.values[field.key] === 'outro' ? (
                   <React.Fragment key={'district-other'}>
