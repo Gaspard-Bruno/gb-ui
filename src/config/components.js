@@ -91,6 +91,16 @@ const components = [
     component: props => <Avatar {...props} />
   },
   {
+    label: 'TextInput',
+    props: {
+      error: 'cenas',
+      hasIcon: true,
+      onChange: () => console.log('dsad')
+    },
+    section: 'General',
+    component: props => <TextInput {...props} />
+  },
+  {
     label: 'SchedulePicker',
     props: {
       value: {

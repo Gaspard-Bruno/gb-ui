@@ -32,9 +32,9 @@ const TextInput = ({
   return (
     <InputContainer error={error} mini={isMini}>
       {hasIcon && (
-        <nav onClickCapture={handleIconChange}>
+        <span onClickCapture={handleIconChange}>
           <Icon name={displayedIcon} />
-        </nav>
+        </span>
       )}
       {label && <Body>{label || ' '}</Body>}
       <StyledInput

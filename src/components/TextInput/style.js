@@ -5,12 +5,12 @@ export const InputContainer = styled.div`
   flex-flow: column nowrap;
   justify-content: flex-end;
   width: ${props => (props.mini ? '33%' : 'auto')};
-  & > nav {
-    position: absolute;
+  & > span {
+    position: relative;
+    top: 36px;
+    right: 10px;
     align-self: flex-end;
     background-color: white;
-    padding: 8px;
-    margin: 5px;
   }
   color: ${props =>
     props.error
