@@ -20473,7 +20473,7 @@ function _templateObject2$e() {
 }
 
 function _templateObject$i() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  & > nav {\n    position: absolute;\n    align-self: flex-end;\n    background-color: white;\n    padding: 8px;\n    margin: 5px;\n  }\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  & > span {\n    position: relative;\n    top: 36px;\n    right: 10px;\n    align-self: flex-end;\n    background-color: white;\n  }\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n"]);
 
   _templateObject$i = function _templateObject() {
     return data;
@@ -20563,7 +20563,7 @@ var TextInput = function TextInput(_ref) {
   return /*#__PURE__*/React.createElement(InputContainer, {
     error: error,
     mini: isMini
-  }, hasIcon && /*#__PURE__*/React.createElement("nav", {
+  }, hasIcon && /*#__PURE__*/React.createElement("span", {
     onClickCapture: handleIconChange
   }, /*#__PURE__*/React.createElement(Icon, {
     name: displayedIcon
