@@ -37,7 +37,7 @@ export const StyledForm = styled.div`
   display: flex;
   flex-flow: column;
   background-color: ${props => getSelectedBackground(props)};
-  margin: ${props => props.theme?.margin * 2}px auto;
+  margin-bottom: ${props => props.theme?.margin}px;
   border: ${props => `1px solid ${props.theme.colors.mediumBeige}`};
   > h1,
   h2,
