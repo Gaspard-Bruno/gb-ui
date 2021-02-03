@@ -23429,7 +23429,7 @@ Tabs.defaultProps = {
 };
 
 function _templateObject4$b() {
-  var data = _taggedTemplateLiteral(["\n  flex: 1;\n  display: flex;\n  flex-flow: column;\n  background-color: ", ";\n  margin: ", "px auto;\n  border: ", ";\n  > h1,\n  h2,\n  h3,\n  h4,\n  h5,\n  h6 {\n    text-align: left;\n  }\n  > div {\n    padding: 20px;\n    & > textarea {\n      min-height: ", "px;\n    }\n    & > p {\n      text-align: left;\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  flex: 1;\n  display: flex;\n  flex-flow: column;\n  background-color: ", ";\n  margin-bottom: ", "px;\n  border: ", ";\n  > h1,\n  h2,\n  h3,\n  h4,\n  h5,\n  h6 {\n    text-align: left;\n  }\n  > div {\n    padding: 20px;\n    & > textarea {\n      min-height: ", "px;\n    }\n    & > p {\n      text-align: left;\n    }\n  }\n"]);
 
   _templateObject4$b = function _templateObject4() {
     return data;
@@ -23500,7 +23500,7 @@ var StyledForm = styled.div(_templateObject4$b(), function (props) {
 }, function (props) {
   var _props$theme5;
 
-  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 2;
+  return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin;
 }, function (props) {
   return "1px solid ".concat(props.theme.colors.mediumBeige);
 }, function (props) {
