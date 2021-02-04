@@ -26869,7 +26869,7 @@ var Form$1 = function Form(_ref) {
     var zipCodePlaceholder = field.key === 'postal-code' || field.key === 'postalCode' ? '0000-000' : undefined; //! Formik inputs logic
 
     if (field.key && hiddenFields.indexOf(field.key) === -1 || field.key === 'district') {
-      var _field$label, _field$key, _field$label2, _formik$values$field$2;
+      var _field$label, _field$key, _field$label2, _formik$values$field$2, _ref2, _fieldProps$value;
 
       var widget = field.widget || field.type;
       var fieldProps = {
@@ -26886,11 +26886,12 @@ var Form$1 = function Form(_ref) {
         error: errors && (errors === null || errors === void 0 ? void 0 : errors[field.key]) ? errors === null || errors === void 0 ? void 0 : errors[field.key] : validationErrors && validationErrors[field.key] && validationErrors[field.key] // required, hasBeenTaken,
 
       };
+      var isOther = (typeof fieldProps.value === 'string' || fieldProps.value instanceof String) && ((_ref2 = (_fieldProps$value = fieldProps.value) !== null && _fieldProps$value !== void 0 ? _fieldProps$value : '') === null || _ref2 === void 0 ? void 0 : _ref2.toLowerCase()) === 'outro' || false;
 
       var getOptVal = function getOptVal(opt) {
-        var _fieldProps$value;
+        var _fieldProps$value2;
 
-        return fieldProps === null || fieldProps === void 0 ? void 0 : (_fieldProps$value = fieldProps.value) === null || _fieldProps$value === void 0 ? void 0 : _fieldProps$value.find(function (v) {
+        return fieldProps === null || fieldProps === void 0 ? void 0 : (_fieldProps$value2 = fieldProps.value) === null || _fieldProps$value2 === void 0 ? void 0 : _fieldProps$value2.find(function (v) {
           return v.value === opt.value;
         });
       };
@@ -27064,27 +27065,27 @@ var Form$1 = function Form(_ref) {
             onChange: function onChange(option) {
               formik.setFieldValue(field.key, lodash_kebabcase(option.value));
             }
-          }) : /*#__PURE__*/React.createElement(React.Fragment, null), formik.values[field.key] && (formik.values[field.key] === 'outro' ? /*#__PURE__*/React.createElement(React.Fragment, {
+          }) : /*#__PURE__*/React.createElement(React.Fragment, null), (formik.values[field.key] && isOther ? /*#__PURE__*/React.createElement(React.Fragment, {
             key: 'district-other'
           }, /*#__PURE__*/React.createElement(TextInput, {
             key: 'district-other',
             label: "Outro",
             error: fieldProps.error,
             onChange: function onChange(v) {
-              return formik.setFieldValue(field.key + 'district-other', v);
+              return formik.setFieldValue(field.key + '-other', v);
             },
             name: "district-other",
-            value: formik.values[field.key + 'district-other']
+            value: formik.values[field.key + '-other']
           }), /*#__PURE__*/React.createElement(TextInput, {
-            key: 'district-other-parishes',
+            key: 'district-other-parish',
             label: "Freguesia",
             error: fieldProps.error,
             onChange: function onChange(v) {
-              return formik.setFieldValue(field.key + 'district-other-parishes', v);
+              return formik.setFieldValue(field.key + '-parish', v);
             },
-            defaultValue: answers === null || answers === void 0 ? void 0 : answers['district-other-parishes'],
+            defaultValue: answers === null || answers === void 0 ? void 0 : answers['district-other-parish'],
             name: "district-other-parishes",
-            value: formik.values[field.key + 'district-other-parishes']
+            value: formik.values[field.key + '-parish']
           })) : /*#__PURE__*/React.createElement(Select$2, {
             label: "Freguesia",
             key: "".concat(formik.values['district'], "-parishes"),
