@@ -27081,7 +27081,7 @@ var Form$1 = function Form(_ref) {
             key: 'district-other'
           }, /*#__PURE__*/React__default['default'].createElement(TextInput, {
             key: 'district-other',
-            label: "Outro",
+            label: "Distrito",
             error: fieldProps.error,
             onChange: function onChange(v) {
               return formik.setFieldValue(field.key + '-other', v);
