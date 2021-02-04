@@ -370,7 +370,7 @@ const Form = ({
                 <React.Fragment key={'district-other'}>
                   <TextInput
                     key={'district-other'}
-                    label='Outro'
+                    label='Distrito'
                     error={fieldProps.error}
                     onChange={v =>
                       formik.setFieldValue(field.key + '-other', v)
