@@ -184,7 +184,7 @@ const components = [
         previewComponentTitle: 'Gardening (Pre-filled) with errors',
         questions: FORM.gardening.questions,
         hiddenFields: ['district'],
-        answers: { ...FORM.gardeningAnswers, district: 'Lisboa' },
+        answers: { ...FORM.gardeningAnswers, district: 'Outro' },
         errors: {
           'week-select': 'required',
           'pack-selection': 'required',

@@ -174,6 +174,11 @@ const Form = ({
               validationErrors[field.key] &&
               validationErrors[field.key] // required, hasBeenTaken,
       };
+      const isOther =
+        ((typeof fieldProps.value === 'string' ||
+          fieldProps.value instanceof String) &&
+          (fieldProps.value ?? '')?.toLowerCase() === 'outro') ||
+        false;
       const getOptVal = opt =>
         fieldProps?.value?.find(v => v.value === opt.value);
       switch (widget) {
@@ -361,51 +366,45 @@ const Form = ({
               ) : (
                 <></>
               )}
-              {(formik.values[field.key] &&
-                (formik.values[field.key] === 'outro' ? (
-                  <React.Fragment key={'district-other'}>
-                    <TextInput
-                      key={'district-other'}
-                      label='Outro'
-                      error={fieldProps.error}
-                      onChange={v =>
-                        formik.setFieldValue(field.key + 'district-other', v)
-                      }
-                      name='district-other'
-                      value={formik.values[field.key + 'district-other']}
-                    />
-                    <TextInput
-                      key={'district-other-parishes'}
-                      label='Freguesia'
-                      error={fieldProps.error}
-                      onChange={v =>
-                        formik.setFieldValue(
-                          field.key + 'district-other-parishes',
-                          v
-                        )
-                      }
-                      defaultValue={answers?.['district-other-parishes']}
-                      name='district-other-parishes'
-                      value={
-                        formik.values[field.key + 'district-other-parishes']
-                      }
-                    />
-                  </React.Fragment>
-                ) : (
-                  <Select
-                    label='Freguesia'
-                    key={`${formik.values['district']}-parishes`}
+              {(formik.values[field.key] && isOther ? (
+                <React.Fragment key={'district-other'}>
+                  <TextInput
+                    key={'district-other'}
+                    label='Outro'
                     error={fieldProps.error}
-                    isMini={Boolean(widget === 'mini-dropdown')}
-                    options={getParishesOptions(formik.values[field.key])}
-                    defaultValue={getParishesOptions(
-                      formik.values[field.key]
-                    )?.find(opt => opt.value === answers?.['parish'])}
-                    onChange={option =>
-                      formik.setFieldValue('parish', option.value)
+                    onChange={v =>
+                      formik.setFieldValue(field.key + '-other', v)
                     }
+                    name='district-other'
+                    value={formik.values[field.key + '-other']}
                   />
-                ))) || <></>}
+                  <TextInput
+                    key={'district-other-parish'}
+                    label='Freguesia'
+                    error={fieldProps.error}
+                    onChange={v =>
+                      formik.setFieldValue(field.key + '-parish', v)
+                    }
+                    defaultValue={answers?.['district-other-parish']}
+                    name='district-other-parishes'
+                    value={formik.values[field.key + '-parish']}
+                  />
+                </React.Fragment>
+              ) : (
+                <Select
+                  label='Freguesia'
+                  key={`${formik.values['district']}-parishes`}
+                  error={fieldProps.error}
+                  isMini={Boolean(widget === 'mini-dropdown')}
+                  options={getParishesOptions(formik.values[field.key])}
+                  defaultValue={getParishesOptions(
+                    formik.values[field.key]
+                  )?.find(opt => opt.value === answers?.['parish'])}
+                  onChange={option =>
+                    formik.setFieldValue('parish', option.value)
+                  }
+                />
+              )) || <></>}
             </React.Fragment>
           );
         case 'add-field':
