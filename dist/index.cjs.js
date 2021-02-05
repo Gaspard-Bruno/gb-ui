@@ -38299,13 +38299,14 @@ var Pagination = function Pagination(_ref) {
   var totalPages = _ref.totalPages,
       currentPage = _ref.currentPage,
       action = _ref.action,
-      t = _ref.t;
-  var boxes = React.useMemo(function () {
+      translate = _ref.translate;
+
+  var getBoxes = function getBoxes(currentPage, totalPages) {
     if (totalPages >= 4) {
       if (currentPage === 1 || currentPage === totalPages || currentPage === totalPages - 1) {
-        return currentPage === 1 ? [1, 2, '...', totalPages - 1, totalPages] : [1, '...', totalPages - 1, totalPages];
+        return [1, 2, totalPages - 1, totalPages];
       } else {
-        return [currentPage - 1, currentPage, currentPage + 1, '...', totalPages - 1, totalPages];
+        return [currentPage - 1, currentPage, totalPages - 1, totalPages];
       }
     } else {
       switch (totalPages) {
@@ -38319,26 +38320,26 @@ var Pagination = function Pagination(_ref) {
           return [totalPages];
       }
     }
-  }, [currentPage, totalPages]);
+  };
+
+  var pageNumberAry = getBoxes(currentPage, totalPages);
   return /*#__PURE__*/React__default['default'].createElement(StyledPagination, null, /*#__PURE__*/React__default['default'].createElement(Left$1, null, /*#__PURE__*/React__default['default'].createElement(SmallBody, {
     bold: true
-  }, t('page'), " ", currentPage, " ", t('of'), " ", totalPages)), /*#__PURE__*/React__default['default'].createElement(Right$1, null, /*#__PURE__*/React__default['default'].createElement(TrackerBox, {
+  }, t$1(translate, 'page'), " ", currentPage, " ", t$1(translate, 'of'), " ", totalPages)), /*#__PURE__*/React__default['default'].createElement(Right$1, null, /*#__PURE__*/React__default['default'].createElement(TrackerBox, {
     iconName: "chevron-left",
     boxType: "last",
     currentPage: currentPage,
     totalPages: totalPages,
     action: action
-  }), boxes && boxes.map(function (num, index) {
-    return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, {
-      key: 'pages' + num
-    }, num === '...' ? /*#__PURE__*/React__default['default'].createElement(TrackerBox, {
-      text: "...",
-      boxType: "ellipsis"
-    }) : /*#__PURE__*/React__default['default'].createElement(TrackerBox, {
+  }), pageNumberAry && pageNumberAry.map(function (num, index) {
+    return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(TrackerBox, {
       text: num,
       isActive: num === currentPage,
       currentPage: currentPage,
       action: action
+    }), index === 1 && pageNumberAry.length >= 4 && /*#__PURE__*/React__default['default'].createElement(TrackerBox, {
+      text: "...",
+      boxType: "ellipsis"
     }));
   }), /*#__PURE__*/React__default['default'].createElement(TrackerBox, {
     iconName: "chevron-right",
@@ -38350,10 +38351,9 @@ var Pagination = function Pagination(_ref) {
 };
 
 Pagination.propTypes = {
-  totalPages: propTypes.oneOfType([propTypes.string, propTypes.number]),
-  currentPage: propTypes.oneOfType([propTypes.string, propTypes.number]),
-  action: propTypes.func,
-  t: propTypes.func
+  totalPages: propTypes.string,
+  currentPage: propTypes.string,
+  action: propTypes.func
 };
 
 function _templateObject5$7() {
