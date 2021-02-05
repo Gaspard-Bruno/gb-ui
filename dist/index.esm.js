@@ -3,14 +3,13 @@ import styled from 'styled-components';
 import iconSet from 'Assets/fonts/icons/icons.json';
 import theme from 'Theme';
 import ReactDOM, { createPortal, findDOMNode, unstable_batchedUpdates } from 'react-dom';
-import { Tiny as Tiny$1, SmallBody as SmallBody$1 } from 'Components/Text';
+import { Tiny as Tiny$1 } from 'Components/Text';
 import { ReactComponent as ReactComponent$1 } from 'Assets/svg/logo-black.svg';
 import { ReactComponent as ReactComponent$2 } from 'Assets/svg/logo-white.svg';
 import { ReactComponent } from 'Assets/svg/logo-colorful.svg';
 import { ReactComponent as ReactComponent$5 } from 'Assets/svg/logo-black-tag.svg';
 import { ReactComponent as ReactComponent$4 } from 'Assets/svg/logo-white-tag.svg';
 import { ReactComponent as ReactComponent$3 } from 'Assets/svg/logo-colorful-tag.svg';
-import TrackerBox$1 from 'Components/TrackerBox';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -38170,6 +38169,83 @@ Logo$1.defaultProps = {
   color: 'colorful'
 };
 
+function _templateObject$z() {
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  margin-right: 8px;\n  height: 24px;\n  min-width: 23px;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  box-sizing: border-box;\n  border-radius: 2px;\n  font-size: 12px;\n  ", ";\n\n  &:hover {\n    cursor: pointer;\n  }\n\n  h3 {\n    margin: 0px;\n  }\n\n  svg {\n    height: 24px;\n    width: 24px;\n  }\n"]);
+
+  _templateObject$z = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+var getActiveStyles = function getActiveStyles(theme, isActive, type) {
+  if (isActive) {
+    return "\n            border: ".concat(type === "ellipsis" ? "none" : "1px solid " + (theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue), ";\n            color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue, ";\n        ");
+  } else {
+    return "\n            border: ".concat(type === "ellipsis" ? "none" : "1px solid " + (theme === null || theme === void 0 ? void 0 : theme.colors.mediumBeige), ";\n            h3 {\n                color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.mediumBeige, ";\n            }\n        ");
+  }
+};
+
+var StyledTracker = styled.div(_templateObject$z(), function (props) {
+  return getActiveStyles(props.theme, props.isActive, props.type);
+});
+
+var TrackerBox = function TrackerBox(_ref) {
+  var text = _ref.text,
+      currentPage = _ref.currentPage,
+      totalPages = _ref.totalPages,
+      iconName = _ref.iconName,
+      isActive = _ref.isActive,
+      boxType = _ref.boxType,
+      action = _ref.action;
+
+  var handleClick = function handleClick() {
+    switch (boxType) {
+      case 'last':
+        if (currentPage > 1) {
+          action(currentPage - 1);
+        }
+
+        break;
+
+      case 'ellipsis':
+        break;
+
+      case 'next':
+        if (currentPage !== totalPages) {
+          action(currentPage + 1);
+        }
+
+        break;
+
+      default:
+        action(text);
+        break;
+    }
+  };
+
+  return /*#__PURE__*/React.createElement(StyledTracker, {
+    isActive: isActive,
+    onClick: function onClick(e) {
+      return handleClick();
+    },
+    type: boxType
+  }, text ? /*#__PURE__*/React.createElement(Tiny, null, text) : /*#__PURE__*/React.createElement(Icon, {
+    name: iconName
+  }));
+};
+
+TrackerBox.propTypes = {
+  text: propTypes.string,
+  iconName: propTypes.string,
+  isActive: propTypes.bool,
+  currentPage: propTypes.number,
+  totalPage: propTypes.number,
+  boxType: propTypes.oneOf(['single', 'ellipsis', 'last', 'next']),
+  action: propTypes.func
+};
+
 function _templateObject3$k() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n"]);
 
@@ -38190,16 +38266,16 @@ function _templateObject2$u() {
   return data;
 }
 
-function _templateObject$z() {
+function _templateObject$A() {
   var data = _taggedTemplateLiteral(["\n  margin: 24px 0px 32px;\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n"]);
 
-  _templateObject$z = function _templateObject() {
+  _templateObject$A = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledPagination = styled.div(_templateObject$z());
+var StyledPagination = styled.div(_templateObject$A());
 var Left$1 = styled.div(_templateObject2$u(), function (props) {
   var _props$theme;
 
@@ -38232,9 +38308,9 @@ var Pagination = function Pagination(_ref) {
       }
     }
   }, [currentPage, totalPages]);
-  return /*#__PURE__*/React.createElement(StyledPagination, null, /*#__PURE__*/React.createElement(Left$1, null, /*#__PURE__*/React.createElement(SmallBody$1, {
+  return /*#__PURE__*/React.createElement(StyledPagination, null, /*#__PURE__*/React.createElement(Left$1, null, /*#__PURE__*/React.createElement(SmallBody, {
     bold: true
-  }, t('page'), " ", currentPage, " ", t('of'), " ", totalPages)), /*#__PURE__*/React.createElement(Right$1, null, /*#__PURE__*/React.createElement(TrackerBox$1, {
+  }, t('page'), " ", currentPage, " ", t('of'), " ", totalPages)), /*#__PURE__*/React.createElement(Right$1, null, /*#__PURE__*/React.createElement(TrackerBox, {
     iconName: "chevron-left",
     boxType: "last",
     currentPage: currentPage,
@@ -38243,16 +38319,16 @@ var Pagination = function Pagination(_ref) {
   }), boxes && boxes.map(function (num, index) {
     return /*#__PURE__*/React.createElement(React.Fragment, {
       key: 'pages' + num
-    }, num === '...' ? /*#__PURE__*/React.createElement(TrackerBox$1, {
+    }, num === '...' ? /*#__PURE__*/React.createElement(TrackerBox, {
       text: "...",
       boxType: "ellipsis"
-    }) : /*#__PURE__*/React.createElement(TrackerBox$1, {
+    }) : /*#__PURE__*/React.createElement(TrackerBox, {
       text: num,
       isActive: num === currentPage,
       currentPage: currentPage,
       action: action
     }));
-  }), /*#__PURE__*/React.createElement(TrackerBox$1, {
+  }), /*#__PURE__*/React.createElement(TrackerBox, {
     iconName: "chevron-right",
     boxType: "next",
     currentPage: currentPage,
@@ -38308,16 +38384,16 @@ function _templateObject2$v() {
   return data;
 }
 
-function _templateObject$A() {
+function _templateObject$B() {
   var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  color: white;\n  transition: width 0.5s linear;\n  width: ", ";\n  height: 100vh;\n  svg {\n    margin-top: ", "px;\n  }\n  > div {\n    transition: all 0.5s linear;\n\n    ", "\n  }\n"]);
 
-  _templateObject$A = function _templateObject() {
+  _templateObject$B = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledSidebar = styled.div(_templateObject$A(), function (props) {
+var StyledSidebar = styled.div(_templateObject$B(), function (props) {
   var _props$theme;
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.brand.orange;
@@ -38447,16 +38523,16 @@ Sidebar.defaultProps = {
   sidebarSections: []
 };
 
-function _templateObject$B() {
+function _templateObject$C() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  font-weight: normal;\n  border-bottom: 1px solid ", ";\n\n  .service {\n    font-weight: 500;\n    font-size: 16px;\n    line-height: 24px;\n    color: ", ";\n  }\n"]);
 
-  _templateObject$B = function _templateObject() {
+  _templateObject$C = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledTableRow = styled.div(_templateObject$B(), function (props) {
+var StyledTableRow = styled.div(_templateObject$C(), function (props) {
   var _props$theme;
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.mediumBeige;
@@ -38571,16 +38647,16 @@ function _templateObject2$w() {
   return data;
 }
 
-function _templateObject$C() {
+function _templateObject$D() {
   var data = _taggedTemplateLiteral(["\n  font-size: 14px;\n  line-height: 16px;\n  color: ", ";\n"]);
 
-  _templateObject$C = function _templateObject() {
+  _templateObject$D = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledTable = styled.div(_templateObject$C(), function (props) {
+var StyledTable = styled.div(_templateObject$D(), function (props) {
   var _props$theme;
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.darkBlue;
@@ -38712,16 +38788,16 @@ function _templateObject2$x() {
   return data;
 }
 
-function _templateObject$D() {
+function _templateObject$E() {
   var data = _taggedTemplateLiteral(["\n    height: 80px;\n    display: flex;\n    justify-content: space-between;\n    margin-bottom: 24px;\n    padding-bottom: 10px;\n    -webkit-box-shadow: 0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n    -moz-box-shadow:    0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n    box-shadow:         0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n"]);
 
-  _templateObject$D = function _templateObject() {
+  _templateObject$E = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledTopBar = styled.div(_templateObject$D());
+var StyledTopBar = styled.div(_templateObject$E());
 var LeftSection = styled.div(_templateObject2$x(), function (props) {
   var _props$theme;
 
@@ -38745,83 +38821,6 @@ var TopBar = function TopBar(_ref) {
     hasText: true,
     user: user
   })));
-};
-
-function _templateObject$E() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  margin-right: 8px;\n  height: 24px;\n  min-width: 23px;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  box-sizing: border-box;\n  border-radius: 2px;\n  font-size: 12px;\n  ", ";\n\n  &:hover {\n    cursor: pointer;\n  }\n\n  h3 {\n    margin: 0px;\n  }\n\n  svg {\n    height: 24px;\n    width: 24px;\n  }\n"]);
-
-  _templateObject$E = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-var getActiveStyles = function getActiveStyles(theme, isActive, type) {
-  if (isActive) {
-    return "\n            border: ".concat(type === "ellipsis" ? "none" : "1px solid " + (theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue), ";\n            color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue, ";\n        ");
-  } else {
-    return "\n            border: ".concat(type === "ellipsis" ? "none" : "1px solid " + (theme === null || theme === void 0 ? void 0 : theme.colors.mediumBeige), ";\n            h3 {\n                color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.mediumBeige, ";\n            }\n        ");
-  }
-};
-
-var StyledTracker = styled.div(_templateObject$E(), function (props) {
-  return getActiveStyles(props.theme, props.isActive, props.type);
-});
-
-var TrackerBox = function TrackerBox(_ref) {
-  var text = _ref.text,
-      currentPage = _ref.currentPage,
-      totalPages = _ref.totalPages,
-      iconName = _ref.iconName,
-      isActive = _ref.isActive,
-      boxType = _ref.boxType,
-      action = _ref.action;
-
-  var handleClick = function handleClick() {
-    switch (boxType) {
-      case 'last':
-        if (currentPage > 1) {
-          action(currentPage - 1);
-        }
-
-        break;
-
-      case 'ellipsis':
-        break;
-
-      case 'next':
-        if (currentPage !== totalPages) {
-          action(currentPage + 1);
-        }
-
-        break;
-
-      default:
-        action(text);
-        break;
-    }
-  };
-
-  return /*#__PURE__*/React.createElement(StyledTracker, {
-    isActive: isActive,
-    onClick: function onClick(e) {
-      return handleClick();
-    },
-    type: boxType
-  }, text ? /*#__PURE__*/React.createElement(Tiny, null, text) : /*#__PURE__*/React.createElement(Icon, {
-    name: iconName
-  }));
-};
-
-TrackerBox.propTypes = {
-  text: propTypes.string,
-  iconName: propTypes.string,
-  isActive: propTypes.bool,
-  currentPage: propTypes.number,
-  totalPage: propTypes.number,
-  boxType: propTypes.oneOf(['single', 'ellipsis', 'last', 'next']),
-  action: propTypes.func
 };
 
 export { Accordion, AlertText, AlertTitle, Alert as Alerts, Avatar, BackofficeContainer, BackofficeKanbanContainer, BackofficePage, Badge$1 as Badge, Body, Button$1 as Button, ButtonGroup, ButtonText, Card$1 as Card, CheckBoxGroup, Code, Col, Divider, DropDownMenu, ErrorText, FileUploader, FilterBar, FilterButton, Form$1 as Form, FullPage, GridCol, GridRow, Heading, Hero, Icon, IconSwitch, Jumbo, Kanban, KanbanCard$1 as KanbanCard, KanbanColumn$1 as KanbanColumn, Link$1 as Link, List, Loading as Loader, Logo$1 as Logo, Page, Pagination, RadioButton, ReversedColumn, Row, SchedulePicker, SearchInput as Search, Select$2 as Select, Sidebar, SmallBody, SmallBodyFAQ, SubHeading, Table, Tabs, TextArea$1 as TextArea, TextInput, Tiny, TopBar, TrackerBox, media };
