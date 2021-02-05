@@ -367,33 +367,33 @@ const Form = ({
                 <></>
               )}
               {(formik.values[field.key] && isOther ? (
-                <React.Fragment key={'district-other'}>
+                <React.Fragment key={'district_other'}>
                   <TextInput
-                    key={'district-other'}
+                    key={'district_other'}
                     label='Distrito'
                     error={fieldProps.error}
                     onChange={v =>
-                      formik.setFieldValue(field.key + '-other', v)
+                      formik.setFieldValue(field.key + '_other', v)
                     }
-                    name='district-other'
-                    value={formik.values[field.key + '-other']}
+                    name='district_other'
+                    value={formik.values[field.key + '_other']}
                   />
                   <TextInput
-                    key={'district-other-parish'}
+                    key={'district_other_parish'}
                     label='Freguesia'
                     error={fieldProps.error}
                     onChange={v =>
-                      formik.setFieldValue(field.key + '-parish', v)
+                      formik.setFieldValue(field.key + '_parish', v)
                     }
-                    defaultValue={answers?.['district-other-parish']}
-                    name='district-other-parishes'
-                    value={formik.values[field.key + '-parish']}
+                    defaultValue={answers?.['district_other_parish']}
+                    name='district_other_parish'
+                    value={formik.values[field.key + '_parish']}
                   />
                 </React.Fragment>
               ) : (
                 <Select
                   label='Freguesia'
-                  key={`${formik.values['district']}-parishes`}
+                  key={`${formik.values['district']}_parishes`}
                   error={fieldProps.error}
                   isMini={Boolean(widget === 'mini-dropdown')}
                   options={getParishesOptions(formik.values[field.key])}

@@ -1,15 +1,13 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import { useTranslate } from 'polyglot-react-redux-sdk';
+// import { useTranslate } from 'polyglot-react-redux-sdk';
 
 import { SmallBody } from 'Components/Text';
 import TrackerBox from 'Components/TrackerBox';
 import StyledPagination, { Left, Right } from './style';
 
-const Pagination = ({ totalPages, currentPage, action }) => {
-  const t = useTranslate('archive');
-
+const Pagination = ({ totalPages, currentPage, action, t }) => {
   const boxes = useMemo(() => {
     if (totalPages >= 4) {
       if (
@@ -90,7 +88,8 @@ const Pagination = ({ totalPages, currentPage, action }) => {
 Pagination.propTypes = {
   totalPages: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   currentPage: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  action: PropTypes.func
+  action: PropTypes.func,
+  t: PropTypes.func
 };
 
 export default Pagination;
