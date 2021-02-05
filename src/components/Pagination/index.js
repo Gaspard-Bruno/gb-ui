@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 // import { useTranslate } from 'polyglot-react-redux-sdk';
 
-import { SmallBody } from 'Components/Text';
-import TrackerBox from 'Components/TrackerBox';
+import { SmallBody } from '../Text';
+import TrackerBox from '../TrackerBox';
 import StyledPagination, { Left, Right } from './style';
 
 const Pagination = ({ totalPages, currentPage, action, t }) => {
