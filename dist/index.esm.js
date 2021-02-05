@@ -10,7 +10,6 @@ import { ReactComponent } from 'Assets/svg/logo-colorful.svg';
 import { ReactComponent as ReactComponent$5 } from 'Assets/svg/logo-black-tag.svg';
 import { ReactComponent as ReactComponent$4 } from 'Assets/svg/logo-white-tag.svg';
 import { ReactComponent as ReactComponent$3 } from 'Assets/svg/logo-colorful-tag.svg';
-import { useTranslate } from 'polyglot-react-redux-sdk';
 import TrackerBox$1 from 'Components/TrackerBox';
 
 function _defineProperty(obj, key, value) {
@@ -27068,29 +27067,29 @@ var Form$1 = function Form(_ref) {
               formik.setFieldValue(field.key, lodash_kebabcase(option.value));
             }
           }) : /*#__PURE__*/React.createElement(React.Fragment, null), (formik.values[field.key] && isOther ? /*#__PURE__*/React.createElement(React.Fragment, {
-            key: 'district-other'
+            key: 'district_other'
           }, /*#__PURE__*/React.createElement(TextInput, {
-            key: 'district-other',
+            key: 'district_other',
             label: "Distrito",
             error: fieldProps.error,
             onChange: function onChange(v) {
-              return formik.setFieldValue(field.key + '-other', v);
+              return formik.setFieldValue(field.key + '_other', v);
             },
-            name: "district-other",
-            value: formik.values[field.key + '-other']
+            name: "district_other",
+            value: formik.values[field.key + '_other']
           }), /*#__PURE__*/React.createElement(TextInput, {
-            key: 'district-other-parish',
+            key: 'district_other_parish',
             label: "Freguesia",
             error: fieldProps.error,
             onChange: function onChange(v) {
-              return formik.setFieldValue(field.key + '-parish', v);
+              return formik.setFieldValue(field.key + '_parish', v);
             },
-            defaultValue: answers === null || answers === void 0 ? void 0 : answers['district-other-parish'],
-            name: "district-other-parishes",
-            value: formik.values[field.key + '-parish']
+            defaultValue: answers === null || answers === void 0 ? void 0 : answers['district_other_parish'],
+            name: "district_other_parish",
+            value: formik.values[field.key + '_parish']
           })) : /*#__PURE__*/React.createElement(Select$2, {
             label: "Freguesia",
-            key: "".concat(formik.values['district'], "-parishes"),
+            key: "".concat(formik.values['district'], "_parishes"),
             error: fieldProps.error,
             isMini: Boolean(widget === 'mini-dropdown'),
             options: getParishesOptions(formik.values[field.key]),
@@ -38211,8 +38210,8 @@ var Right$1 = styled.div(_templateObject3$k());
 var Pagination = function Pagination(_ref) {
   var totalPages = _ref.totalPages,
       currentPage = _ref.currentPage,
-      action = _ref.action;
-  var t = useTranslate('archive');
+      action = _ref.action,
+      t = _ref.t;
   var boxes = useMemo$1(function () {
     if (totalPages >= 4) {
       if (currentPage === 1 || currentPage === totalPages || currentPage === totalPages - 1) {
@@ -38265,7 +38264,8 @@ var Pagination = function Pagination(_ref) {
 Pagination.propTypes = {
   totalPages: propTypes.oneOfType([propTypes.string, propTypes.number]),
   currentPage: propTypes.oneOfType([propTypes.string, propTypes.number]),
-  action: propTypes.func
+  action: propTypes.func,
+  t: propTypes.func
 };
 
 function _templateObject5$7() {
