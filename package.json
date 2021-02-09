@@ -100,7 +100,8 @@
     "react-dropzone": "^11.2.4",
     "react-schedule-selector": "^3.0.0",
     "react-select": "^3.1.0",
-    "validator": "^13.5.1"
+    "validator": "^13.5.1",
+    "yup": "^0.32.8"
   },
   "peerDependencies": {
     "react": "^16.13.1",

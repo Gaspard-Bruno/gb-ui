@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import { Formik } from 'formik';
+import React, { useRef, useEffect, useCallback, useState } from 'react';
+import { Formik, useFormik } from 'formik';
 import PropTypes from 'prop-types';
 import chunk from 'lodash.chunk';
 import sc from 'lodash.startcase';
@@ -27,9 +27,11 @@ import { Col, Row } from '../Layout';
 import MultiFieldRender from '../MultiFieldRender';
 import { FormContainer, StyledForm } from './styles';
 import SchedulePicker from '../SchedulePicker';
+import useFormErrors from 'hooks/useFormErrors/useFormErrors';
+
 import DISTRICT_PARISHES from './DISTRICT_PARISHES';
 
-import { fieldsValidator } from '../utils/fieldsValidator';
+import { fieldsValidator } from 'Components/utils/fieldsValidator';
 
 const districtOptions = Object.keys(DISTRICT_PARISHES).map(district => ({
   value: snakecase(district),
@@ -63,6 +65,47 @@ const Form = ({
   hiddenFields,
   children
 }) => {
+  /* const validationErrors = errors || {}; */
+
+  const [formState, setFormState] = useState({
+    answers: answers || {},
+    errors: errors || {}
+  });
+
+  const { formErrors, handledFields } = useFormErrors({
+    values: formState.answers,
+    questions: questions
+  });
+
+  /*  useEffect(() => {
+    if (formState.errors) {
+      formRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+      });
+    }
+  }, [formErrors, formState]); */
+
+  const handleSubmit = useCallback(
+    values => {
+      if (formState.errors) {
+        formRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'start'
+        });
+        return setFormState({
+          answers: { ...values },
+          errors: formErrors
+        });
+      }
+      onSubmit(values);
+    },
+    [formErrors, formState, onSubmit]
+  );
+
+  console.log('FORM', formErrors);
   const renderAddFields = (fields, count, formik) => {
     const addFields = [];
     for (let i = 0; i < count; i++) {
@@ -79,16 +122,7 @@ const Form = ({
     }
     return addFields;
   };
-
   const fieldRenderer = (field, formik, parentKey) => {
-    //! field Validation function
-    const validatedErrors = fieldsValidator(
-      field,
-      formik?.values,
-      errors,
-      initialValues
-    );
-
     const zipCodePlaceholder =
       field.key === 'postal-code' || field.key === 'postalCode'
         ? '0000-000'
@@ -104,12 +138,15 @@ const Form = ({
         label: field.label ?? sc(field.key),
         name: field.key,
         key: field.key ?? field.label?.toLowerCase(),
-        onChange: v => formik.setFieldValue(field.key, v),
+        onChange: v => {
+          formik.setFieldValue(field.key, v);
+          handledFields(field.key, v);
+        },
         value: formik.values[field.key] ?? initialValues[field.key],
         placeholder: zipCodePlaceholder,
         translate,
         type: field.type,
-        error: validatedErrors[field.key]
+        error: formErrors?.[field.key] // required, hasBeenTaken,
       };
       const isOther =
         ((typeof fieldProps.value === 'string' ||
@@ -147,7 +184,7 @@ const Form = ({
               packOptions={field.options}
               answers={answers}
               values={formik?.values}
-              errors={errors}
+              errors={formErrors}
               urgentPrices={field?.urgentPrices}
               action={values => formik.setFieldValue(values.name, values.value)}
             />
@@ -464,6 +501,7 @@ const Form = ({
         ))
       );
     };
+
     const fieldsRenderer = (fieldQuestions, parent) =>
       fieldQuestions.forEach((q, i) => {
         const children = q.children;
@@ -566,20 +604,10 @@ const Form = ({
 
   const formRef = useRef();
 
-  useEffect(() => {
-    if (errors) {
-      formRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'start'
-      });
-    }
-  }, [errors]);
-
   return (
     <FormContainer ref={formRef} bg={backgroundColor}>
       {children}
-      <Formik initialValues={initialValues} onSubmit={f => onSubmit(f)}>
+      <Formik initialValues={initialValues} onSubmit={f => handleSubmit(f)}>
         {formik => (
           <StyledForm onSubmit={formik.handleSubmit}>
             {renderFields(formik, questions)}

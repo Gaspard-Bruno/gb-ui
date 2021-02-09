@@ -175,39 +175,21 @@ const components = [
         previewComponentTitle: 'Become Specialist',
         answers: FORM.specialistFormAnswers,
         questions: FORM.becomeSpecialist.questions,
-        isDisabled: true,
-        errors: {
-          instruments: 'required'
-        }
+        isDisabled: true
       },
       {
         previewComponentTitle: 'Gardening (Pre-filled) with errors',
         questions: FORM.gardening.questions,
         hiddenFields: ['district'],
-        answers: { ...FORM.gardeningAnswers, district: 'Outro' },
-        errors: {
-          'week-select': 'required',
-          'pack-selection': 'required',
-          'offer-type': 'required',
-          district: 'required',
-          freguesia: 'required',
-          'number-of-hours': 'required',
-          'preferred-hours-start': 'required'
-        }
+        answers: { ...FORM.gardeningAnswers, district: 'Outro' }
       },
       {
         previewComponentTitle: 'Chef',
-        questions: FORM.chefAtHome.questions,
-        errors: {
-          district: 'required',
-          freguesia: 'required',
-          'preferred-hours-start': 'required'
-        }
+        questions: FORM.chefAtHome.questions
       },
       {
         questions: FORM.repairs.questions,
-        previewComponentTitle: 'Repairs',
-        answers: FORM.repairsAnswers
+        previewComponentTitle: 'Repairs'
       },
       {
         previewComponentTitle: 'Music Lessons',
@@ -219,8 +201,7 @@ const components = [
       },
       {
         previewComponentTitle: 'Pet Sitting',
-        questions: FORM.petsitting.questions,
-        answers: FORM.petSittingAnswers
+        questions: FORM.petsitting.questions
       }
     ],
     section: 'Form',
