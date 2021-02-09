@@ -5,7 +5,6 @@ import chunk from 'lodash.chunk';
 import sc from 'lodash.startcase';
 import kebabcase from 'lodash.kebabcase';
 import snakecase from 'lodash.snakecase';
-import validator from 'validator';
 
 import TextInput from '../TextInput';
 import Select from '../Select';
@@ -29,6 +28,9 @@ import MultiFieldRender from '../MultiFieldRender';
 import { FormContainer, StyledForm } from './styles';
 import SchedulePicker from '../SchedulePicker';
 import DISTRICT_PARISHES from './DISTRICT_PARISHES';
+
+import { fieldsValidator } from 'Components/utils/fieldsValidator';
+
 const districtOptions = Object.keys(DISTRICT_PARISHES).map(district => ({
   value: snakecase(district),
   label: district
@@ -61,7 +63,6 @@ const Form = ({
   hiddenFields,
   children
 }) => {
-  const validationErrors = errors || {};
   const renderAddFields = (fields, count, formik) => {
     const addFields = [];
     for (let i = 0; i < count; i++) {
@@ -79,73 +80,14 @@ const Form = ({
     return addFields;
   };
 
-  //! NIF Validation function
-  const nifValidation = nif => {
-    /* eslint-disable eqeqeq */
-
-    let checkDigit = 0;
-    if (nif != null && nif.length == 9) {
-      const c = nif.charAt(0);
-      if (
-        c == '1' ||
-        c == '2' ||
-        c == '5' ||
-        c == '6' ||
-        c == '8' ||
-        c == '9'
-      ) {
-        checkDigit = c * 9;
-        for (let i = 2; i <= 8; i++) {
-          checkDigit += nif.charAt(i - 1) * (10 - i);
-        }
-        checkDigit = 11 - (checkDigit % 11);
-        if (checkDigit >= 10) {
-          checkDigit = 0;
-        }
-        if (checkDigit == nif.charAt(8)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  };
-
   const fieldRenderer = (field, formik, parentKey) => {
     //! field Validation function
-    const fieldValidation = field => {
-      const values = formik.values[field.key] ?? initialValues[field.key];
-      if (values) {
-        if (field.key === 'email') {
-          if (!validator.isEmail(values)) {
-            validationErrors[field.key] = 'O email introduzido não é válido';
-          } else {
-            delete validationErrors[field.key];
-          }
-        }
-        if (field.key === 'nif') {
-          if (!nifValidation(values)) {
-            validationErrors[field.key] = 'O NIF introduzido não é válido';
-          } else {
-            delete validationErrors[field.key];
-          }
-        }
-        if (field.key === 'telephone') {
-          if (!validator.isMobilePhone(values, 'any')) {
-            validationErrors[field.key] = 'O telefone introduzido não é válido';
-          } else {
-            delete validationErrors[field.key];
-          }
-        }
-        if (field.key === 'postal-code' || field.key === 'postalCode') {
-          if (!validator.isPostalCode(values, 'PT')) {
-            validationErrors[field.key] =
-              'O código postal introduzido não é válido';
-          } else {
-            delete validationErrors[field.key];
-          }
-        }
-      }
-    };
+    const validatedErrors = fieldsValidator(
+      field,
+      formik?.values,
+      errors,
+      initialValues
+    );
 
     const zipCodePlaceholder =
       field.key === 'postal-code' || field.key === 'postalCode'
@@ -167,12 +109,7 @@ const Form = ({
         placeholder: zipCodePlaceholder,
         translate,
         type: field.type,
-        error:
-          errors && errors?.[field.key]
-            ? errors?.[field.key]
-            : validationErrors &&
-              validationErrors[field.key] &&
-              validationErrors[field.key] // required, hasBeenTaken,
+        error: validatedErrors[field.key]
       };
       const isOther =
         ((typeof fieldProps.value === 'string' ||
@@ -247,7 +184,6 @@ const Form = ({
         case 'text':
         case 'password':
         case 'mini-text':
-          // fieldValidation(field);
           return (
             <TextInput
               key={field.key}
