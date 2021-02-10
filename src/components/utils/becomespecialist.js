@@ -150,7 +150,7 @@ const stepFive = () => {
       options: [
         { label: 'Apoio Familiar a Crianças', value: 'babysitting' },
         { label: 'Apoio a Seniores', value: 'elder_company' },
-        { label: 'Aulas De Línguas', value: 'language_lessons' },
+        { label: 'Aulas De Línguas', value: 'language_classes' },
         { label: 'Aulas de Música', value: 'music_lessons' },
         { label: 'Chef Em Casa', value: 'chef_at_home' },
         { label: 'Costura', value: 'sewing' },
@@ -1050,17 +1050,17 @@ const stepFive = () => {
             }
           ]
         },
-        // !language_lessons
+        // !language_classes
         {
           type: 'object',
-          key: 'language_lessons',
+          key: 'language_classes',
           widget: 'mini-form',
           dependencyType: 'value-includes',
-          dependencyValue: 'language_lessons',
+          dependencyValue: 'language_classes',
           label: 'Aulas De Línguas',
           questions: [
             {
-              key: 'language_lessons',
+              key: 'language_classes',
               title: 'Aulas De Línguas',
               type: 'checkbox-widget',
               label: 'Qual a língua (ou línguas) que pode ensinar?',
