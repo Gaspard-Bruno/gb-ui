@@ -15,7 +15,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "git-branch-is master && (yarn build && git add . && git commit -m 'hook: compile changes' && git push origin) || true"
+      "pre-push": "git-branch-is master && (yarn build && git add . && git commit -m 'hook: compile changes' ) || true"
     }
   },
   "scripts": {
