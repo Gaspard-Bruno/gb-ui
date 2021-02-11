@@ -4,6 +4,7 @@ import iconSet from 'Assets/fonts/icons/icons.json';
 import theme from 'Theme';
 import ReactDOM, { createPortal, findDOMNode, unstable_batchedUpdates } from 'react-dom';
 import { Tiny as Tiny$1 } from 'Components/Text';
+import { fieldsValidator } from 'Components/utils/fieldsValidator';
 import { ReactComponent as ReactComponent$1 } from 'Assets/svg/logo-black.svg';
 import { ReactComponent as ReactComponent$2 } from 'Assets/svg/logo-white.svg';
 import { ReactComponent } from 'Assets/svg/logo-colorful.svg';
@@ -26842,7 +26843,6 @@ var Form$1 = function Form(_ref) {
       answers = _ref.answers,
       hiddenFields = _ref.hiddenFields,
       children = _ref.children;
-  var validationErrors = errors || {};
 
   var renderAddFields = function renderAddFields(fields, count, formik) {
     var addFields = [];
@@ -26861,15 +26861,17 @@ var Form$1 = function Form(_ref) {
     }
 
     return addFields;
-  }; //! NIF Validation function
+  };
 
   var fieldRenderer = function fieldRenderer(field, formik, parentKey) {
     var _field$options$, _field$options$2, _field$options, _answers$field$key, _getParishesOptions;
 
+    //! field Validation function
+    var validatedErrors = fieldsValidator(field, formik === null || formik === void 0 ? void 0 : formik.values, errors, initialValues);
     var zipCodePlaceholder = field.key === 'postal-code' || field.key === 'postalCode' ? '0000-000' : undefined; //! Formik inputs logic
 
     if (field.key && hiddenFields.indexOf(field.key) === -1 || field.key === 'district') {
-      var _field$label, _field$key, _field$label2, _formik$values$field$2, _ref2, _fieldProps$value;
+      var _field$label, _field$key, _field$label2, _formik$values$field$, _ref2, _fieldProps$value;
 
       var widget = field.widget || field.type;
       var fieldProps = {
@@ -26879,12 +26881,11 @@ var Form$1 = function Form(_ref) {
         onChange: function onChange(v) {
           return formik.setFieldValue(field.key, v);
         },
-        value: (_formik$values$field$2 = formik.values[field.key]) !== null && _formik$values$field$2 !== void 0 ? _formik$values$field$2 : initialValues[field.key],
+        value: (_formik$values$field$ = formik.values[field.key]) !== null && _formik$values$field$ !== void 0 ? _formik$values$field$ : initialValues[field.key],
         placeholder: zipCodePlaceholder,
         translate: translate,
         type: field.type,
-        error: errors && (errors === null || errors === void 0 ? void 0 : errors[field.key]) ? errors === null || errors === void 0 ? void 0 : errors[field.key] : validationErrors && validationErrors[field.key] && validationErrors[field.key] // required, hasBeenTaken,
-
+        error: validatedErrors[field.key]
       };
       var isOther = (typeof fieldProps.value === 'string' || fieldProps.value instanceof String) && ((_ref2 = (_fieldProps$value = fieldProps.value) !== null && _fieldProps$value !== void 0 ? _fieldProps$value : '') === null || _ref2 === void 0 ? void 0 : _ref2.toLowerCase()) === 'outro' || false;
 
@@ -26958,7 +26959,6 @@ var Form$1 = function Form(_ref) {
         case 'text':
         case 'password':
         case 'mini-text':
-          // fieldValidation(field);
           return /*#__PURE__*/React.createElement(TextInput, _extends({
             key: field.key
           }, fieldProps, {
