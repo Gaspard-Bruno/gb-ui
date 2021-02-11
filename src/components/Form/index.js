@@ -29,7 +29,7 @@ import { FormContainer, StyledForm } from './styles';
 import SchedulePicker from '../SchedulePicker';
 import DISTRICT_PARISHES from './DISTRICT_PARISHES';
 
-import { fieldsValidator } from 'Components/utils/fieldsValidator';
+import { fieldsValidator } from '../utils/fieldsValidator';
 
 const districtOptions = Object.keys(DISTRICT_PARISHES).map(district => ({
   value: snakecase(district),
