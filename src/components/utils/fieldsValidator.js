@@ -25,8 +25,18 @@ const nifValidation = nif => {
 };
 
 export const fieldsValidator = (field, values, errors, initialValues) => {
+  console.log(
+    '🚀 ~ file: fieldsValidator.js ~ line 28 ~ fieldsValidator ~ values',
+    values,
+    field
+  );
   const validationErrors = errors || {};
   const vals = values[field.key] ?? initialValues[field.key];
+
+  console.log(
+    '🚀 ~ file: fieldsValidator.js ~ line 30 ~ fieldsValidator ~ vals',
+    vals
+  );
 
   if (vals) {
     if (field.key === 'email') {

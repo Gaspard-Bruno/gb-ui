@@ -31,8 +31,6 @@ import useFormErrors from 'hooks/useFormErrors/useFormErrors';
 
 import DISTRICT_PARISHES from './DISTRICT_PARISHES';
 
-import { fieldsValidator } from 'Components/utils/fieldsValidator';
-
 const districtOptions = Object.keys(DISTRICT_PARISHES).map(district => ({
   value: snakecase(district),
   label: district
@@ -72,11 +70,6 @@ const Form = ({
     errors: errors || {}
   });
 
-  const { formErrors, handledFields } = useFormErrors({
-    values: formState.answers,
-    questions: questions
-  });
-
   /*  useEffect(() => {
     if (formState.errors) {
       formRef.current.scrollIntoView({
@@ -86,17 +79,26 @@ const Form = ({
       });
     }
   }, [formErrors, formState]); */
+  const { formErrors, handledFields } = useFormErrors({
+    values: formState.answers,
+    questions: questions
+  });
 
   const handleSubmit = useCallback(
     values => {
-      if (formState.errors) {
+      setFormState({
+        ...formState,
+        answers: { ...values }
+      });
+      console.log('🚀 ~ file: index.js ~ line 95 ~ formErrors', values);
+      if (Object.keys(formErrors).length) {
         formRef.current.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
           inline: 'start'
         });
         return setFormState({
-          answers: { ...values },
+          ...formState,
           errors: formErrors
         });
       }
@@ -105,7 +107,6 @@ const Form = ({
     [formErrors, formState, onSubmit]
   );
 
-  console.log('FORM', formErrors);
   const renderAddFields = (fields, count, formik) => {
     const addFields = [];
     for (let i = 0; i < count; i++) {
@@ -172,7 +173,10 @@ const Form = ({
               name={field?.key}
               title={field?.label}
               answers={answers?.['files']}
-              action={values => formik.setFieldValue(field?.key, values)}
+              action={values => {
+                handledFields(field?.key, values);
+                formik.setFieldValue(field?.key, values);
+              }}
               error={fieldProps?.error}
             />
           );
@@ -186,7 +190,10 @@ const Form = ({
               values={formik?.values}
               errors={formErrors}
               urgentPrices={field?.urgentPrices}
-              action={values => formik.setFieldValue(values.name, values.value)}
+              action={values => {
+                handledFields(values.name, values.value);
+                formik.setFieldValue(values.name, values.value);
+              }}
             />
           );
         case 'schedule-picker':
@@ -196,23 +203,34 @@ const Form = ({
               key={field.key}
               value={fieldProps.value}
               t={translate}
-              action={values => formik.setFieldValue(field.key, values)}
+              action={values => {
+                handledFields(field?.key, values);
+                formik.setFieldValue(field?.key, values);
+              }}
             />
           );
         case 'mini-form':
           return (
             <MiniForm
               key={'miniform-' + field.label}
-              onRemove={() =>
-                field.dependencyValue &&
-                parentKey &&
-                formik.setFieldValue(
+              onRemove={() => {
+                handledFields(
                   parentKey,
                   formik.values[parentKey].filter(
                     v => v !== field.dependencyValue
                   )
-                )
-              }
+                );
+                return (
+                  field.dependencyValue &&
+                  parentKey &&
+                  formik.setFieldValue(
+                    parentKey,
+                    formik.values[parentKey].filter(
+                      v => v !== field.dependencyValue
+                    )
+                  )
+                );
+              }}
               content={renderFields(formik, field.questions)}
               title={field.label}
               onSubmit={formik.handleSubmit}
@@ -251,9 +269,10 @@ const Form = ({
                 }
               ]}
               initialTabIndex={0}
-              action={v =>
-                formik.setFieldValue(field.key, field.options[v].value)
-              }
+              action={v => {
+                handledFields(field.key, field.options[v].value);
+                formik.setFieldValue(field.key, field.options[v].value);
+              }}
             />
           );
         case 'radio':
@@ -263,7 +282,10 @@ const Form = ({
               error={field.error}
               name={field.key}
               isVerticalAligned={field.isVerticalAligned}
-              action={option => formik.setFieldValue(option.name, option.value)}
+              action={option => {
+                handledFields(field.key, option.value);
+                formik.setFieldValue(option.name, option.value);
+              }}
               list={field.options}
               {...fieldProps}
             />
@@ -298,14 +320,20 @@ const Form = ({
                       return defaults;
                     })
               }
-              onChange={option =>
-                !field?.isMulti
-                  ? option && formik.setFieldValue(field.key, option.value)
-                  : formik.setFieldValue(
-                      field.key,
-                      option?.map(e => e.value) ?? []
-                    )
-              }
+              onChange={option => {
+                handledFields(
+                  field.key,
+                  !field?.isMulti
+                    ? option?.value ?? ''
+                    : option?.map(e => e.value) ?? []
+                );
+                return formik.setFieldValue(
+                  field.key,
+                  !field?.isMulti
+                    ? option?.value ?? ''
+                    : option?.map(e => e.value) ?? []
+                );
+              }}
             />
           );
         case 'service-type-detail':
@@ -333,6 +361,7 @@ const Form = ({
                       kebabcase(opt.label) === kebabcase(fieldProps.value)
                   )}
                   onChange={option => {
+                    handledFields(field.key, kebabcase(option.value));
                     formik.setFieldValue(field.key, kebabcase(option.value));
                   }}
                 />
@@ -345,9 +374,10 @@ const Form = ({
                     key={'district_other'}
                     label='Distrito'
                     error={fieldProps.error}
-                    onChange={v =>
-                      formik.setFieldValue(field.key + '_other', v)
-                    }
+                    onChange={v => {
+                      handledFields(field.key + '_other', v);
+                      formik.setFieldValue(field.key + '_other', v);
+                    }}
                     name='district_other'
                     value={formik.values[field.key + '_other']}
                   />
@@ -355,9 +385,10 @@ const Form = ({
                     key={'district_other_parish'}
                     label='Freguesia'
                     error={fieldProps.error}
-                    onChange={v =>
-                      formik.setFieldValue(field.key + '_parish', v)
-                    }
+                    onChange={v => {
+                      handledFields(field.key + '_parish', v);
+                      formik.setFieldValue(field.key + '_parish', v);
+                    }}
                     defaultValue={answers?.['district_other_parish']}
                     name='district_other_parish'
                     value={formik.values[field.key + '_parish']}
@@ -373,9 +404,10 @@ const Form = ({
                   defaultValue={getParishesOptions(
                     formik.values[field.key]
                   )?.find(opt => opt.value === answers?.['parish'])}
-                  onChange={option =>
-                    formik.setFieldValue('parish', option.value)
-                  }
+                  onChange={option => {
+                    handledFields('parish', option.value);
+                    formik.setFieldValue('parish', option.value);
+                  }}
                 />
               )) || <></>}
             </React.Fragment>
@@ -385,9 +417,11 @@ const Form = ({
             <MultiFieldRender
               label={field.label}
               addAction={() => {
+                handledFields(field.key, fieldProps.value + 1);
                 formik.setFieldValue(field.key, fieldProps.value + 1);
               }}
               removeAction={() => {
+                handledFields(field.key, fieldProps.value - 1);
                 formik.setFieldValue(field.key, fieldProps.value - 1);
               }}
               content={renderAddFields(field.fields, fieldProps.value, formik)}
@@ -401,12 +435,16 @@ const Form = ({
               defaultValue={fieldProps.value}
               {...fieldProps}
               isUniq
-              onChange={v =>
+              onChange={v => {
+                handledFields(
+                  field.key,
+                  Array.from(new Set([...fieldProps.value, v.value]))
+                );
                 formik.setFieldValue(
                   field.key,
                   Array.from(new Set([...fieldProps.value, v.value]))
-                )
-              }
+                );
+              }}
               onRemove={v =>
                 formik.setFieldValue(
                   field.key,
@@ -431,7 +469,10 @@ const Form = ({
                   : opt.isSelected
               }))}
               defaultValues={formik?.values[fieldProps.key]}
-              action={values => formik.setFieldValue(field.key, values)}
+              action={values => {
+                handledFields(field.key, values);
+                formik.setFieldValue(field.key, values);
+              }}
               content={field.optionalContent}
             />
           );
@@ -449,7 +490,10 @@ const Form = ({
                   ? getOptVal(opt).isSelected || false
                   : opt.isSelected
               }))}
-              action={values => formik.setFieldValue(field.key, values)}
+              action={values => {
+                handledFields(field.key, values);
+                formik.setFieldValue(field.key, values);
+              }}
             />
           );
         case 'button-group':
@@ -459,7 +503,10 @@ const Form = ({
               label={fieldProps?.label}
               list={field?.options}
               value={formik?.values[field.key]}
-              action={values => formik.setFieldValue(field.key, values.value)}
+              action={values => {
+                handledFields(field.key, values.value);
+                formik.setFieldValue(field.key, values.value);
+              }}
               {...fieldProps}
             />
           );
@@ -581,7 +628,7 @@ const Form = ({
     return formFields;
   };
 
-  const initialValues = { 'is-urgent': null };
+  const initialValues = {};
   const getInitialValues = valueQuestions =>
     valueQuestions.forEach(q => {
       const typeDefault =

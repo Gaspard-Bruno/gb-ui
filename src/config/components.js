@@ -174,8 +174,8 @@ const components = [
         onSubmit: vals => console.log('submitting', vals),
         previewComponentTitle: 'Become Specialist',
         answers: FORM.specialistFormAnswers,
-        questions: FORM.becomeSpecialist.questions,
-        isDisabled: true
+        questions: FORM.becomeSpecialist.questions
+        //isDisabled: true
       },
       {
         previewComponentTitle: 'Gardening (Pre-filled) with errors',

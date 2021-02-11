@@ -175,6 +175,7 @@ const stepFive = () => {
               key: 'instruments',
               title: 'Aulas de Música',
               type: 'checkbox-widget',
+              required: true,
               label: 'Qual o instrumento (ou instrumentos) que pode ensinar?',
               options: [
                 { label: 'Viola', value: 0, isSelected: false },
@@ -213,6 +214,7 @@ const stepFive = () => {
             {
               key: 'musicLessonsPlace',
               type: 'checkbox-widget',
+              required: true,
               label: 'Qual o local onde poderá realizar-se a aula?',
               options: [
                 { label: 'Na minha casa', value: 0, isSelected: false },
@@ -243,6 +245,7 @@ const stepFive = () => {
           questions: [
             {
               key: 'seniorSupportType',
+              required: true,
               title: 'Apoio a Seniores',
               type: 'checkbox-widget',
               label:
@@ -297,6 +300,7 @@ const stepFive = () => {
             {
               key: 'chefAtHomeFoodType',
               title: 'Experiência Gastronómica',
+              required: true,
               type: 'checkbox-widget',
               label: 'Qual é o tipo de comida que quer fazer?',
               options: [
@@ -329,6 +333,7 @@ const stepFive = () => {
             {
               key: 'chefAtHomeNumberOfPersons',
               type: 'checkbox-group',
+              required: true,
               label: 'Sente-se confortável cozinhar para quantas pessoas?',
               options: [
                 { label: 'Até 8 pessoas', value: 0, isSelected: false },
@@ -360,6 +365,7 @@ const stepFive = () => {
               key: 'petcareAnimalType',
               title: 'Pet Care (Visitas e Passeios)',
               type: 'checkbox-widget',
+              required: true,
               label: 'Qual é o tipo de animal que pode cuidar?',
               options: [
                 { label: 'Cão', value: 0, isSelected: false },
@@ -379,6 +385,7 @@ const stepFive = () => {
                   key: 'petcareAnimalSize',
                   label: 'Qual o porte do cão que pode cuidar?',
                   type: 'checkbox-group',
+                  required: true,
                   dependencyType: 'value',
                   dependencyValue: 0,
                   options: [
@@ -406,6 +413,7 @@ const stepFive = () => {
               label:
                 'Caso possa ficar na sua casa, tem um espaço exterior para o animal?',
               type: 'radio',
+              required: true,
               isVerticalAligned: true,
               options: [
                 { label: 'Sim', value: 1 },
@@ -416,6 +424,7 @@ const stepFive = () => {
               key: 'petsittingAnimalType',
               type: 'checkbox-widget',
               label: 'Qual é o tipo de animal que pode cuidar?',
+              required: true,
               options: [
                 { label: 'Cão', value: 0, isSelected: false },
                 { label: 'Gato', value: 1, isSelected: false },
@@ -435,6 +444,7 @@ const stepFive = () => {
                   label: 'Qual o porte do cão que pode cuidar?',
                   type: 'checkbox-group',
                   dependencyType: 'value',
+                  required: true,
                   dependencyValue: 0,
                   options: [
                     { label: 'Pequeno', value: 0, isSelected: false },
@@ -458,6 +468,7 @@ const stepFive = () => {
           questions: [
             {
               key: 'gardeningType',
+              required: true,
               title: 'Jardinagem',
               type: 'checkbox-widget',
               label: 'Este serviço tem várias tipologias, quais pode fazer?',
@@ -498,6 +509,7 @@ const stepFive = () => {
               label:
                 'Tem as ferramentas necessárias para realizar este serviço?',
               type: 'radio',
+              required: true,
               isVerticalAligned: true,
               options: [
                 { label: 'Sim', value: 1 },
@@ -519,6 +531,7 @@ const stepFive = () => {
               key: 'babysittingChildrenNumber',
               title: 'Apoio Familiar a Crianças',
               type: 'checkbox-group',
+              required: true,
               label: 'Quantas crianças pode acompanhar ao mesmo tempo?',
               options: [
                 { label: 'Apenas 1', value: 0, isSelected: false },
@@ -528,6 +541,7 @@ const stepFive = () => {
             {
               key: 'babysittingChildAge',
               type: 'checkbox-group',
+              required: true,
               label:
                 'Prefere realizar este serviço para crianças com que idade?',
               options: [
@@ -549,6 +563,7 @@ const stepFive = () => {
               key: 'babysittingServiceToDo',
               type: 'checkbox-widget',
               label: 'Que tipos de serviço gostaria de fazer?',
+              required: true,
               options: [
                 {
                   label: 'Companhia ao domicílio',
@@ -609,6 +624,7 @@ const stepFive = () => {
             {
               key: 'repairsType',
               title: 'Reparações',
+              required: true,
               type: 'checkbox-widget',
               label: 'Este serviço tem várias tipologias, quais pode fazer?',
               options: [
@@ -639,6 +655,7 @@ const stepFive = () => {
                   key: 'repairsSubTypeBricolage',
                   label: 'Que subtipo de reparações de Bricolage quer fazer?',
                   type: 'checkbox-widget',
+                  required: true,
                   excludeFromGroup: true,
                   dependencyType: 'value',
                   dependencyValue: 0,
@@ -740,6 +757,7 @@ const stepFive = () => {
                   label: 'Que subtipo de reparações de Canalização quer fazer?',
                   type: 'checkbox-widget',
                   excludeFromGroup: true,
+                  required: true,
                   dependencyType: 'value',
                   dependencyValue: 1,
                   options: [
@@ -798,6 +816,7 @@ const stepFive = () => {
                     'Que subtipo de reparações de Eletricidade quer fazer?',
                   type: 'checkbox-widget',
                   excludeFromGroup: true,
+                  required: true,
                   dependencyType: 'value',
                   dependencyValue: 2,
                   options: [
@@ -854,6 +873,7 @@ const stepFive = () => {
                 'Tem as ferramentas necessárias para realizar este(s) serviço(s)?',
               type: 'radio',
               isVerticalAligned: true,
+              required: true,
               options: [
                 { label: 'Sim', value: 1 },
                 { label: 'Não', value: 0 }
@@ -864,6 +884,7 @@ const stepFive = () => {
               label: 'Tem experiência para realizar reparações especializadas?',
               type: 'radio',
               isVerticalAligned: true,
+              required: true,
               options: [
                 { label: 'Sim', value: 1 },
                 { label: 'Não', value: 0 }
@@ -883,6 +904,7 @@ const stepFive = () => {
             {
               key: 'ironingClothType',
               type: 'checkbox-widget',
+              required: true,
               label:
                 'Qual é o tipo (ou tipos) de roupa que sabe passar a ferro?',
               options: [
@@ -910,6 +932,7 @@ const stepFive = () => {
             {
               key: 'ironingCar',
               type: 'radio',
+              required: true,
               label: 'Tem disponibilidade para recolher e entregar a roupa?',
               options: [
                 { label: 'Sim', value: 1 },
@@ -935,6 +958,7 @@ const stepFive = () => {
             {
               key: 'sewingType',
               type: 'checkbox-widget',
+              required: true,
               label: 'Que tipo(s) de costura quer  fazer?',
               options: [
                 { label: 'Bainhas à mão', value: 0, isSelected: false },
@@ -969,6 +993,7 @@ const stepFive = () => {
             {
               key: 'sewingBasicMaterial',
               type: 'radio',
+              required: true,
               label: 'Dispõe de material básico de costura (agulhas e linhas)?',
               options: [
                 { label: 'Sim', value: 1 },
@@ -977,6 +1002,7 @@ const stepFive = () => {
             },
             {
               key: 'sewingMachine',
+              required: true,
               type: 'radio',
               label: 'Dispõe de uma máquina de costura?',
               options: [
@@ -986,6 +1012,7 @@ const stepFive = () => {
             },
             {
               key: 'sewingCar',
+              required: true,
               type: 'radio',
               label: 'Tem disponibilidade para recolher e entregar a roupa?',
               options: [
@@ -1011,6 +1038,7 @@ const stepFive = () => {
           questions: [
             {
               key: 'cleaningType',
+              required: true,
               type: 'checkbox-widget',
               label: 'Que tipo(s) de limpeza quer fazer?',
               options: [
@@ -1062,6 +1090,7 @@ const stepFive = () => {
             {
               key: 'language_classes',
               title: 'Aulas De Línguas',
+              required: true,
               type: 'checkbox-widget',
               label: 'Qual a língua (ou línguas) que pode ensinar?',
               options: [
@@ -1081,6 +1110,7 @@ const stepFive = () => {
               ],
               optionalContent: {
                 key: 'lessonLevel',
+                required: true,
                 label:
                   'Qual o nível de ensino da(s) língua(s) que pode realizar?',
                 options: [
@@ -1097,6 +1127,7 @@ const stepFive = () => {
             {
               key: 'languageLessonsPlace',
               type: 'checkbox-widget',
+              required: true,
               label: 'Qual o local onde poderá realizar-se a aula?',
               options: [
                 { label: 'Na minha casa', value: 0, isSelected: false },

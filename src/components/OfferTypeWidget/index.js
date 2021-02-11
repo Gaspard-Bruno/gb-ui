@@ -526,7 +526,7 @@ const OfferTypeWidget = ({
 
     const setUrgency = vals =>
       setTimeout(() => {
-        action({ name: 'is-urgent', value: vals });
+        //action({ name: 'is-urgent', value: vals });
       }, 2000);
 
     if (diffDays < 1) {
@@ -536,7 +536,7 @@ const OfferTypeWidget = ({
       setUrgency(false);
       return <></>;
     }
-  }, [action, answers, urgentPrices, values]);
+  }, [answers, urgentPrices, values]);
 
   return (
     <>
