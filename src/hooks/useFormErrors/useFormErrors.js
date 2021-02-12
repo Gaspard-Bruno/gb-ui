@@ -44,9 +44,11 @@ const fieldValidator = (field, value) => {
         return 'O NIF introduzido não é válido';
       }
     }
-    if (pattern === 'telephone') {
+    if (pattern === 'telephone' || pattern === 'phone') {
       if (!validator.isMobilePhone(value, 'any')) {
         return 'O telefone introduzido não é válido';
+      } else {
+        console.log('phone is valid', value);
       }
     }
     if (pattern === 'postal-code' || pattern === 'postalCode') {

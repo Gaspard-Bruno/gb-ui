@@ -161,9 +161,7 @@ const Form = ({
           onChange: v => {
             formik.setFieldValue(field.key, v);
             const fieldError = validateField(field, v);
-            if (fieldError) {
-              setFormErrors({ ...formErrors, [field.key]: fieldError });
-            }
+            setFormErrors({ ...formErrors, [field.key]: fieldError });
           },
           value: formik.values[field.key] ?? initialValues.current[field.key],
           placeholder: zipCodePlaceholder,
@@ -638,10 +636,7 @@ const Form = ({
       >
         {formik => {
           return (
-            <StyledForm
-              onSubmit={formik.handleSubmit}
-              errors={formErrorsRef.current}
-            >
+            <StyledForm onSubmit={formik.handleSubmit}>
               {renderFields(formik, questions)}
               <Button
                 isDisabled={isDisabled}
