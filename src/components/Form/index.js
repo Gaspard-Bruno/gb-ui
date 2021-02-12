@@ -65,11 +65,6 @@ const Form = ({
 }) => {
   /* const validationErrors = errors || {}; */
 
-  const [formState, setFormState] = useState({
-    answers: answers || {},
-    errors: errors || {}
-  });
-
   /*  useEffect(() => {
     if (formState.errors) {
       formRef.current.scrollIntoView({
@@ -79,32 +74,56 @@ const Form = ({
       });
     }
   }, [formErrors, formState]); */
-  const { formErrors, handledFields } = useFormErrors({
-    values: formState.answers,
-    questions: questions
-  });
+  const initialValues = useRef({});
+  const flatFields = useRef([]);
+  const formErrorsRef = useRef({});
+  const [formErrors, setFormErrors] = useState(formErrorsRef.current);
+
+  const getInitialValues = valueQuestions => {
+    const getAnswers = qs =>
+      qs.forEach((q, parent) => {
+        const typeDefault =
+          (q.type === 'array' || q.type === 'uniq-array') &&
+          !q.widget === 'schedule-picker'
+            ? []
+            : undefined;
+        if (q.key) {
+          if (q.type === 'object') {
+            getAnswers(q.questions);
+          } else {
+            if (initialValues.current) {
+              initialValues.current[q.key] =
+                answers?.[q.key] ?? (q.value || typeDefault);
+            }
+          }
+          if (q.children) {
+            getAnswers(q.children);
+          }
+        }
+      });
+    getAnswers(valueQuestions);
+    // * For non-schema properties like 'offer-type' and 'district' childrenesfabfdm,gadfjilgms yetjx c
+    Object.keys(answers).forEach(ansKey => {
+      if (!initialValues.current[ansKey]) {
+        initialValues.current[ansKey] = answers[ansKey];
+      }
+    });
+  };
+
+  getInitialValues(questions);
+
+  const { validateField, validateAllFields } = useFormErrors({});
 
   const handleSubmit = useCallback(
     values => {
-      setFormState({
-        ...formState,
-        answers: { ...values }
-      });
-      console.log('🚀 ~ file: index.js ~ line 95 ~ formErrors', values);
-      if (Object.keys(formErrors).length) {
-        formRef.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-          inline: 'start'
-        });
-        return setFormState({
-          ...formState,
-          errors: formErrors
-        });
+      const errors = validateAllFields(flatFields.current, values);
+      if (!Object.keys(errors).length) {
+        onSubmit(values);
+      } else {
+        setFormErrors(errors);
       }
-      onSubmit(values);
     },
-    [formErrors, formState, onSubmit]
+    [onSubmit, validateAllFields]
   );
 
   const renderAddFields = (fields, count, formik) => {
@@ -123,410 +142,391 @@ const Form = ({
     }
     return addFields;
   };
-  const fieldRenderer = (field, formik, parentKey) => {
-    const zipCodePlaceholder =
-      field.key === 'postal-code' || field.key === 'postalCode'
-        ? '0000-000'
-        : undefined;
+  const fieldRenderer = useCallback(
+    (field, formik, parentKey) => {
+      const zipCodePlaceholder =
+        field.key === 'postal-code' || field.key === 'postalCode'
+          ? '0000-000'
+          : undefined;
 
-    //! Formik inputs logic
-    if (
-      (field.key && hiddenFields.indexOf(field.key) === -1) ||
-      field.key === 'district'
-    ) {
-      const widget = field.widget || field.type;
-      const fieldProps = {
-        label: field.label ?? sc(field.key),
-        name: field.key,
-        key: field.key ?? field.label?.toLowerCase(),
-        onChange: v => {
-          formik.setFieldValue(field.key, v);
-          handledFields(field.key, v);
-        },
-        value: formik.values[field.key] ?? initialValues[field.key],
-        placeholder: zipCodePlaceholder,
-        translate,
-        type: field.type,
-        error: formErrors?.[field.key] // required, hasBeenTaken,
-      };
-      const isOther =
-        ((typeof fieldProps.value === 'string' ||
-          fieldProps.value instanceof String) &&
-          (fieldProps.value ?? '')?.toLowerCase() === 'outro') ||
-        false;
-      const getOptVal = opt =>
-        fieldProps?.value?.find(v => v.value === opt.value);
-      switch (widget) {
-        case 'object':
-          return (
-            <Accordion
-              key={'accordion-' + (field.key || parentKey)}
-              isOpen={field.isOpen}
-              title={field.label}
-              content={renderFields(formik, field.questions, field.parentKey)}
-            />
-          );
-        case 'file-uploader':
-          return (
-            <FileUploader
-              key={'file-' + (field.key || parentKey)}
-              name={field?.key}
-              title={field?.label}
-              answers={answers?.['files']}
-              action={values => {
-                handledFields(field?.key, values);
-                formik.setFieldValue(field?.key, values);
-              }}
-              error={fieldProps?.error}
-            />
-          );
-        case 'offer-type':
-          return (
-            <OfferTypeWidget
-              key={'otw-' + (field.key || parentKey)}
-              offerType={field.formOfferType}
-              packOptions={field.options}
-              answers={answers}
-              values={formik?.values}
-              errors={formErrors}
-              urgentPrices={field?.urgentPrices}
-              action={values => {
-                handledFields(values.name, values.value);
-                formik.setFieldValue(values.name, values.value);
-              }}
-            />
-          );
-        case 'schedule-picker':
-          return (
-            <SchedulePicker
-              name={field.key}
-              key={field.key}
-              value={fieldProps.value}
-              t={translate}
-              action={values => {
-                handledFields(field?.key, values);
-                formik.setFieldValue(field?.key, values);
-              }}
-            />
-          );
-        case 'mini-form':
-          return (
-            <MiniForm
-              key={'miniform-' + field.label}
-              onRemove={() => {
-                handledFields(
-                  parentKey,
-                  formik.values[parentKey].filter(
-                    v => v !== field.dependencyValue
-                  )
-                );
-                return (
-                  field.dependencyValue &&
-                  parentKey &&
-                  formik.setFieldValue(
-                    parentKey,
-                    formik.values[parentKey].filter(
-                      v => v !== field.dependencyValue
-                    )
-                  )
-                );
-              }}
-              content={renderFields(formik, field.questions)}
-              title={field.label}
-              onSubmit={formik.handleSubmit}
-            />
-          );
-        case 'text':
-        case 'password':
-        case 'mini-text':
-          return (
-            <TextInput
-              key={field.key}
-              {...fieldProps}
-              isMini={Boolean(widget === 'mini-text')}
-            />
-          );
-        case 'text-area':
-          return <TextArea key={field.label} {...fieldProps} />;
-        case 'login':
-        case 'tabs':
-          return (
-            <Tabs
-              key={field.key}
-              type={field.type}
-              /* tabs={field.options.map(opt => ({
+      if (
+        (field.key && hiddenFields.indexOf(field.key) === -1) ||
+        field.key === 'district'
+      ) {
+        const widget = field.widget || field.type;
+        const fieldProps = {
+          label: field.label ?? sc(field.key),
+          name: field.key,
+          key: field.key ?? field.label?.toLowerCase(),
+          onChange: v => {
+            formik.setFieldValue(field.key, v);
+            const fieldError = validateField(field, v);
+            if (fieldError) {
+              setFormErrors({ ...formErrors, [field.key]: fieldError });
+            }
+          },
+          value: formik.values[field.key] ?? initialValues.current[field.key],
+          placeholder: zipCodePlaceholder,
+          error: formErrors[field.key],
+          translate,
+          type: field.type
+        };
+
+        flatFields.current.push(fieldProps);
+        //validateField(field, fieldProps.value, formik);
+        const isOther =
+          ((typeof fieldProps.value === 'string' ||
+            fieldProps.value instanceof String) &&
+            (fieldProps.value ?? '')?.toLowerCase() === 'outro') ||
+          false;
+        const getOptVal = opt =>
+          fieldProps?.value?.find(v => v.value === opt.value);
+        switch (widget) {
+          case 'object':
+            return (
+              <Accordion
+                key={'accordion-' + (field.key || parentKey)}
+                isOpen={field.isOpen}
+                title={field.label}
+                content={renderFields(formik, field.questions, field.parentKey)}
+              />
+            );
+          case 'file-uploader':
+            return (
+              <FileUploader
+                key={'file-' + (field.key || parentKey)}
+                name={field?.key}
+                title={field?.label}
+                answers={answers?.['files']}
+                action={values => {
+                  onChange(values);
+                }}
+                error={fieldProps?.error}
+              />
+            );
+          case 'offer-type':
+            return (
+              <OfferTypeWidget
+                key={'otw-' + (field.key || parentKey)}
+                offerType={field.formOfferType}
+                packOptions={field.options}
+                answers={answers}
+                values={formik?.values}
+                urgentPrices={field?.urgentPrices}
+                action={values => {
+                  onChange(values.name, values.value);
+                }}
+              />
+            );
+          case 'schedule-picker':
+            return (
+              <SchedulePicker
+                name={field.key}
+                key={field.key}
+                value={fieldProps.value}
+                t={translate}
+                action={values => {
+                  onChange(field.key, values);
+                }}
+              />
+            );
+          case 'mini-form':
+            return (
+              <MiniForm
+                key={'miniform-' + field.label}
+                onRemove={() => {
+                  if (field.dependencyValue && parentKey) {
+                    onChange(
+                      parentKey,
+                      formik.values[parentKey].filter(
+                        v => v !== field.dependencyValue
+                      )
+                    );
+                  }
+                }}
+                content={renderFields(formik, field.questions)}
+                title={field.label}
+                onSubmit={formik.handleSubmit}
+              />
+            );
+          case 'text':
+          case 'password':
+          case 'mini-text':
+            return (
+              <TextInput
+                key={field.key}
+                {...fieldProps}
+                isMini={Boolean(widget === 'mini-text')}
+              />
+            );
+          case 'text-area':
+            return <TextArea key={field.label} {...fieldProps} />;
+          case 'login':
+          case 'tabs':
+            return (
+              <Tabs
+                key={field.key}
+                type={field.type}
+                /* tabs={field.options.map(opt => ({
                 name: opt.label,
                 value: opt.value
               }))}
               initialTabIndex={field.options
                 .map(d => d.value)
                 .indexOf(formik.values[field.key])} */
-              //! temporay login / signup removal
-              tabs={[
-                {
-                  name: field.options[0]?.label,
-                  value: field.options[0]?.value
+                //! temporay login / signup removal
+                tabs={[
+                  {
+                    name: field.options[0]?.label,
+                    value: field.options[0]?.value
+                  }
+                ]}
+                initialTabIndex={0}
+                action={v => {
+                  onChange(field.key, field.options[v].value);
+                }}
+              />
+            );
+          case 'radio':
+            return (
+              <RadioButton
+                key={field.key}
+                error={fieldProps.error}
+                name={field.key}
+                isVerticalAligned={field.isVerticalAligned}
+                action={option => {
+                  onChange(field.key, option.value);
+                }}
+                list={field.options}
+                {...fieldProps}
+              />
+            );
+          case 'footnote':
+            return (
+              <Heading
+                style={{ marginTop: '35px', marginBottom: 0 }}
+                size={6}
+                key={'footnote' + field.key}
+              >
+                {field.label}
+              </Heading>
+            );
+          case 'mini-dropdown':
+          case 'dropdown':
+            return (
+              <Select
+                isMulti={field.isMulti}
+                isMini={Boolean(widget === 'mini-dropdown')}
+                options={field.options}
+                {...fieldProps}
+                defaultValue={
+                  !field?.isMulti
+                    ? field.options?.find(
+                        opt => opt.value === answers?.[field.key]
+                      )
+                    : answers?.[field.key]?.map(opt => {
+                        const defaults = field.options?.find(el => {
+                          return el.value === opt;
+                        });
+                        return defaults;
+                      })
                 }
-              ]}
-              initialTabIndex={0}
-              action={v => {
-                handledFields(field.key, field.options[v].value);
-                formik.setFieldValue(field.key, field.options[v].value);
-              }}
-            />
-          );
-        case 'radio':
-          return (
-            <RadioButton
-              key={field.key}
-              error={field.error}
-              name={field.key}
-              isVerticalAligned={field.isVerticalAligned}
-              action={option => {
-                handledFields(field.key, option.value);
-                formik.setFieldValue(option.name, option.value);
-              }}
-              list={field.options}
-              {...fieldProps}
-            />
-          );
+                onChange={option => {
+                  onChange(
+                    field.key,
+                    !field?.isMulti
+                      ? option?.value ?? ''
+                      : option?.map(e => e.value) ?? []
+                  );
+                }}
+              />
+            );
+          case 'service-type-detail':
+            return (
+              <React.Fragment key={'service-widget'}>
+                <ServiceTypeWidget
+                  heading={field?.heading}
+                  headerText={field?.headerText}
+                  body={field.body}
+                  extras={field.extras}
+                />
+              </React.Fragment>
+            );
+          case 'district':
+            return (
+              <React.Fragment key={'district'}>
+                {hiddenFields.indexOf('district') === -1 ? (
+                  <Select
+                    options={districtOptions}
+                    label={field?.label || 'Concelho'}
+                    error={fieldProps.error}
+                    defaultValue={districtOptions?.find(
+                      opt =>
+                        opt.value === fieldProps.value ||
+                        kebabcase(opt.label) === kebabcase(fieldProps.value)
+                    )}
+                    onChange={option => {
+                      onChange(field.key, kebabcase(option.value));
+                    }}
+                  />
+                ) : (
+                  <></>
+                )}
+                {(formik.values[field.key] && isOther ? (
+                  <React.Fragment key={'district_other'}>
+                    <TextInput
+                      key={'district_other'}
+                      label='Distrito'
+                      error={fieldProps.error}
+                      onChange={v => {
+                        onChange(field.key + '_other', v);
+                      }}
+                      name='district_other'
+                      value={formik.values[field.key + '_other']}
+                    />
+                    <TextInput
+                      key={'district_other_parish'}
+                      label='Freguesia'
+                      error={fieldProps.error}
+                      onChange={v => {
+                        onChange(field.key + '_parish', v);
+                      }}
+                      defaultValue={answers?.['district_other_parish']}
+                      name='district_other_parish'
+                      value={formik.values[field.key + '_parish']}
+                    />
+                  </React.Fragment>
+                ) : (
+                  <Select
+                    label='Freguesia'
+                    key={`${formik.values['district']}_parishes`}
+                    error={fieldProps.error}
+                    isMini={Boolean(widget === 'mini-dropdown')}
+                    options={getParishesOptions(formik.values[field.key])}
+                    defaultValue={getParishesOptions(
+                      formik.values[field.key]
+                    )?.find(opt => opt.value === answers?.['parish'])}
+                    onChange={option => {
+                      onChange('parish', option.value);
+                    }}
+                  />
+                )) || <></>}
+              </React.Fragment>
+            );
+          case 'add-field':
+            return (
+              <MultiFieldRender
+                label={field.label}
+                addAction={() => {
+                  onChange(field.key, fieldProps.value + 1);
+                }}
+                removeAction={() => {
+                  onChange(field.key, fieldProps.value - 1);
+                }}
+                content={renderAddFields(
+                  field.fields,
+                  fieldProps.value,
+                  formik
+                )}
+              />
+            );
+          case 'uniq-array':
+            return (
+              <Select
+                isMini={Boolean(widget === 'mini-dropdown')}
+                options={field.options}
+                defaultValue={fieldProps.value}
+                {...fieldProps}
+                isUniq
+                onChange={v => {
+                  onChange(
+                    field.key,
+                    Array.from(new Set([...fieldProps.value, v.value]))
+                  );
+                }}
+                onRemove={v =>
+                  formik.setFieldValue(
+                    field.key,
+                    fieldProps.value.filter(opt => opt !== v)
+                  )
+                }
+              />
+            );
+          case 'checkbox-widget':
+            return (
+              <CheckBoxWidget
+                {...fieldProps}
+                name={fieldProps.key}
+                key={fieldProps.key}
+                label={fieldProps?.label}
+                list={field?.options.map(opt => ({
+                  value: opt.value,
+                  question: opt.label,
+                  isSelectable: opt.isSelectable,
+                  isSelected: getOptVal(opt)
+                    ? getOptVal(opt).isSelected || false
+                    : opt.isSelected
+                }))}
+                defaultValues={formik?.values[fieldProps.key]}
+                action={values => {
+                  onChange(field.key, values);
+                }}
+                content={field.optionalContent}
+              />
+            );
+          case 'checkbox-group':
+            return (
+              <CheckBoxGroup
+                {...fieldProps}
+                name={fieldProps.key}
+                key={fieldProps.key}
+                label={fieldProps?.label}
+                list={field?.options.map(opt => ({
+                  value: opt.value,
+                  question: opt.label,
+                  isSelected: getOptVal(opt)
+                    ? getOptVal(opt).isSelected || false
+                    : opt.isSelected
+                }))}
+                action={values => {
+                  onChange(field.key, values);
+                }}
+              />
+            );
+          case 'button-group':
+            return (
+              <ButtonGroup
+                name={fieldProps.key}
+                label={fieldProps?.label}
+                list={field?.options}
+                value={formik?.values[field.key]}
+                action={values => {
+                  onChange(field.key, values.value);
+                }}
+                {...fieldProps}
+              />
+            );
+          default:
+            return <TextInput key={field.label} {...fieldProps} />;
+        }
+      }
+      switch (field?.type) {
         case 'footnote':
           return (
-            <Heading
-              style={{ marginTop: '35px', marginBottom: 0 }}
-              size={6}
-              key={'footnote' + field.key}
-            >
+            <Heading size={6} style={{ marginTop: '35px', marginBottom: 0 }}>
               {field.label}
             </Heading>
           );
-        case 'mini-dropdown':
-        case 'dropdown':
-          return (
-            <Select
-              isMulti={field.isMulti}
-              isMini={Boolean(widget === 'mini-dropdown')}
-              options={field.options}
-              {...fieldProps}
-              defaultValue={
-                !field?.isMulti
-                  ? field.options?.find(
-                      opt => opt.value === answers?.[field.key]
-                    )
-                  : answers?.[field.key]?.map(opt => {
-                      const defaults = field.options?.find(el => {
-                        return el.value === opt;
-                      });
-                      return defaults;
-                    })
-              }
-              onChange={option => {
-                handledFields(
-                  field.key,
-                  !field?.isMulti
-                    ? option?.value ?? ''
-                    : option?.map(e => e.value) ?? []
-                );
-                return formik.setFieldValue(
-                  field.key,
-                  !field?.isMulti
-                    ? option?.value ?? ''
-                    : option?.map(e => e.value) ?? []
-                );
-              }}
-            />
-          );
-        case 'service-type-detail':
-          return (
-            <React.Fragment key={'service-widget'}>
-              <ServiceTypeWidget
-                heading={field?.heading}
-                headerText={field?.headerText}
-                body={field.body}
-                extras={field.extras}
-              />
-            </React.Fragment>
-          );
-        case 'district':
-          return (
-            <React.Fragment key={'district'}>
-              {hiddenFields.indexOf('district') === -1 ? (
-                <Select
-                  options={districtOptions}
-                  label={field?.label || 'Concelho'}
-                  error={fieldProps.error}
-                  defaultValue={districtOptions?.find(
-                    opt =>
-                      opt.value === fieldProps.value ||
-                      kebabcase(opt.label) === kebabcase(fieldProps.value)
-                  )}
-                  onChange={option => {
-                    handledFields(field.key, kebabcase(option.value));
-                    formik.setFieldValue(field.key, kebabcase(option.value));
-                  }}
-                />
-              ) : (
-                <></>
-              )}
-              {(formik.values[field.key] && isOther ? (
-                <React.Fragment key={'district_other'}>
-                  <TextInput
-                    key={'district_other'}
-                    label='Distrito'
-                    error={fieldProps.error}
-                    onChange={v => {
-                      handledFields(field.key + '_other', v);
-                      formik.setFieldValue(field.key + '_other', v);
-                    }}
-                    name='district_other'
-                    value={formik.values[field.key + '_other']}
-                  />
-                  <TextInput
-                    key={'district_other_parish'}
-                    label='Freguesia'
-                    error={fieldProps.error}
-                    onChange={v => {
-                      handledFields(field.key + '_parish', v);
-                      formik.setFieldValue(field.key + '_parish', v);
-                    }}
-                    defaultValue={answers?.['district_other_parish']}
-                    name='district_other_parish'
-                    value={formik.values[field.key + '_parish']}
-                  />
-                </React.Fragment>
-              ) : (
-                <Select
-                  label='Freguesia'
-                  key={`${formik.values['district']}_parishes`}
-                  error={fieldProps.error}
-                  isMini={Boolean(widget === 'mini-dropdown')}
-                  options={getParishesOptions(formik.values[field.key])}
-                  defaultValue={getParishesOptions(
-                    formik.values[field.key]
-                  )?.find(opt => opt.value === answers?.['parish'])}
-                  onChange={option => {
-                    handledFields('parish', option.value);
-                    formik.setFieldValue('parish', option.value);
-                  }}
-                />
-              )) || <></>}
-            </React.Fragment>
-          );
-        case 'add-field':
-          return (
-            <MultiFieldRender
-              label={field.label}
-              addAction={() => {
-                handledFields(field.key, fieldProps.value + 1);
-                formik.setFieldValue(field.key, fieldProps.value + 1);
-              }}
-              removeAction={() => {
-                handledFields(field.key, fieldProps.value - 1);
-                formik.setFieldValue(field.key, fieldProps.value - 1);
-              }}
-              content={renderAddFields(field.fields, fieldProps.value, formik)}
-            />
-          );
-        case 'uniq-array':
-          return (
-            <Select
-              isMini={Boolean(widget === 'mini-dropdown')}
-              options={field.options}
-              defaultValue={fieldProps.value}
-              {...fieldProps}
-              isUniq
-              onChange={v => {
-                handledFields(
-                  field.key,
-                  Array.from(new Set([...fieldProps.value, v.value]))
-                );
-                formik.setFieldValue(
-                  field.key,
-                  Array.from(new Set([...fieldProps.value, v.value]))
-                );
-              }}
-              onRemove={v =>
-                formik.setFieldValue(
-                  field.key,
-                  fieldProps.value.filter(opt => opt !== v)
-                )
-              }
-            />
-          );
-        case 'checkbox-widget':
-          return (
-            <CheckBoxWidget
-              {...fieldProps}
-              name={fieldProps.key}
-              key={fieldProps.key}
-              label={fieldProps?.label}
-              list={field?.options.map(opt => ({
-                value: opt.value,
-                question: opt.label,
-                isSelectable: opt.isSelectable,
-                isSelected: getOptVal(opt)
-                  ? getOptVal(opt).isSelected || false
-                  : opt.isSelected
-              }))}
-              defaultValues={formik?.values[fieldProps.key]}
-              action={values => {
-                handledFields(field.key, values);
-                formik.setFieldValue(field.key, values);
-              }}
-              content={field.optionalContent}
-            />
-          );
-        case 'checkbox-group':
-          return (
-            <CheckBoxGroup
-              {...fieldProps}
-              name={fieldProps.key}
-              key={fieldProps.key}
-              label={fieldProps?.label}
-              list={field?.options.map(opt => ({
-                value: opt.value,
-                question: opt.label,
-                isSelected: getOptVal(opt)
-                  ? getOptVal(opt).isSelected || false
-                  : opt.isSelected
-              }))}
-              action={values => {
-                handledFields(field.key, values);
-                formik.setFieldValue(field.key, values);
-              }}
-            />
-          );
-        case 'button-group':
-          return (
-            <ButtonGroup
-              name={fieldProps.key}
-              label={fieldProps?.label}
-              list={field?.options}
-              value={formik?.values[field.key]}
-              action={values => {
-                handledFields(field.key, values.value);
-                formik.setFieldValue(field.key, values.value);
-              }}
-              {...fieldProps}
-            />
-          );
         default:
-          return <TextInput key={field.label} {...fieldProps} />;
+          return <></>;
       }
-    }
-    switch (field?.type) {
-      case 'footnote':
-        return (
-          <Heading size={6} style={{ marginTop: '35px', marginBottom: 0 }}>
-            {field.label}
-          </Heading>
-        );
-      default:
-        return <></>;
-    }
-  };
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [formErrors]
+  );
 
   const renderFields = (formik, fields) => {
+    flatFields.current.length = 0;
     const formFields = [];
     const columns = [];
     const columnsRenderer = (key = 'last-parent', groupBy = 2) => {
@@ -628,46 +628,32 @@ const Form = ({
     return formFields;
   };
 
-  const initialValues = {};
-  const getInitialValues = valueQuestions =>
-    valueQuestions.forEach(q => {
-      const typeDefault =
-        (q.type === 'array' || q.type === 'uniq-array') &&
-        !q.widget === 'schedule-picker'
-          ? []
-          : undefined;
-      if (q.key) {
-        if (q.type === 'object') {
-          getInitialValues(q.questions);
-        } else {
-          initialValues[q.key] = answers?.[q.key] ?? (q.value || typeDefault);
-        }
-        if (q.children) {
-          getInitialValues(q.children);
-        }
-      }
-    });
-  getInitialValues(questions);
-
   const formRef = useRef();
-
   return (
     <FormContainer ref={formRef} bg={backgroundColor}>
       {children}
-      <Formik initialValues={initialValues} onSubmit={f => handleSubmit(f)}>
-        {formik => (
-          <StyledForm onSubmit={formik.handleSubmit}>
-            {renderFields(formik, questions)}
-            <Button
-              isDisabled={isDisabled}
-              type={btnType}
-              action={() => btnType !== 'submit' && btnAction(formik.values)}
-              btnType={'primary'}
-              isFullWidth
-              text={submitLabel}
-            />
-          </StyledForm>
-        )}
+      <Formik
+        initialValues={initialValues.current}
+        onSubmit={f => handleSubmit(f)}
+      >
+        {formik => {
+          return (
+            <StyledForm
+              onSubmit={formik.handleSubmit}
+              errors={formErrorsRef.current}
+            >
+              {renderFields(formik, questions)}
+              <Button
+                isDisabled={isDisabled}
+                type={btnType}
+                action={() => btnType !== 'submit' && btnAction(formik.values)}
+                btnType={'primary'}
+                isFullWidth
+                text={submitLabel}
+              />
+            </StyledForm>
+          );
+        }}
       </Formik>
     </FormContainer>
   );

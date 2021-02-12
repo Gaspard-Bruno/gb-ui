@@ -27,166 +27,61 @@ const nifValidation = nif => {
   }
   return false;
 };
-const inputFieldValidator = (key, value, validationErrors) => {
-  if (key === 'email') {
-    if (!validator.isEmail(value)) {
-      validationErrors[key] = 'O email introduzido não é válido';
+const fieldValidator = (field, value) => {
+  const pattern = field.pattern || field.key;
+  const { maxLen, minLen, required } = field;
+  if (required && (!value || value !== 0)) {
+    return 'Obrigatório';
+  }
+  if (value || value === 0) {
+    if (pattern === 'email') {
+      if (!validator.isEmail(value)) {
+        return 'O email introduzido não é válido';
+      }
+    }
+    if (pattern === 'nif') {
+      if (!nifValidation(value)) {
+        return 'O NIF introduzido não é válido';
+      }
+    }
+    if (pattern === 'telephone') {
+      if (!validator.isMobilePhone(value, 'any')) {
+        return 'O telefone introduzido não é válido';
+      }
+    }
+    if (pattern === 'postal-code' || pattern === 'postalCode') {
+      if (!validator.isPostalCode(value, 'PT')) {
+        return 'O código postal introduzido não é válido';
+      }
     }
   }
-  if (key === 'nif') {
-    if (!nifValidation(value)) {
-      validationErrors[key] = 'O NIF introduzido não é válido';
-    }
-  }
-  if (key === 'telephone') {
-    if (!validator.isMobilePhone(value, 'any')) {
-      validationErrors[key] = 'O telefone introduzido não é válido';
-    }
-  }
-  if (key === 'postal-code' || key === 'postalCode') {
-    if (!validator.isPostalCode(value, 'PT')) {
-      validationErrors[key] = 'O código postal introduzido não é válido';
-    }
-  } else if ((value || value === 0) && validationErrors?.[key]) {
-    delete validationErrors[key];
-  }
-  return validationErrors;
+  return false;
 };
 
-const useFormErrors = ({ values, questions }) => {
-  const [formErrors, setHandledErrors] = useState({});
+const useFormErrors = ({}) => {
+  const validateField = useCallback((field, value) => {
+    const fieldError = fieldValidator(field, value);
+    if (fieldError) {
+      return fieldError;
+    }
+  }, []);
 
-  const handledFields = useCallback(
-    (field, value) => {
-      console.log(
-        field,
-        value,
-        'handling fields,',
-        formErrors,
-        inputFieldValidator(field, value, formErrors)
-      );
-      setHandledErrors({
-        ...formErrors,
-        ...inputFieldValidator(field, value)
-      });
-      return inputFieldValidator(field, value);
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [formErrors]
-  );
-
-  /* const fieldKeys = Object.keys(formProps);
-    const fields = {};
-    // Parent Keys
-    fieldKeys.forEach(field => {
-
-    });
-
-    const schema = Yup.object().shape(fields);
-    return schema; */
-
-  const handleValidation = useCallback(() => {
-    const payload = { ...values };
-    const createValidation = () => {
-      // get offer type for specific validation
-      const offerType = questions?.find(e => e.key === 'offer-type')
-        ?.formOfferType;
-      // get specific fields validation
-      const detailedFields = getFieldDetails(payload, offerType);
-      console.log(
-        offerType,
-        questions,
-        '🚀 ~ file: useFormErrors.js ~ line 87 ~ createValidation ~ detailedFields',
-        detailedFields,
-        payload,
-        formErrors
-      );
-
-      // get all fields we need to set required
-      const fieldKeys = questions?.map(e => e.key);
-      detailedFields.forEach(e => {
-        fieldKeys.push(e);
-      });
-
-      const fields = {};
-
-      fieldKeys.forEach(field => {
-        if (
-          field &&
-          !payload[field] &&
-          payload[field] !== 0 &&
-          field !== 'notes' &&
-          field !== 'files'
-        ) {
-          fields[field] = Yup.string().required('required');
-
-          // Do we have a picked service on MINI FORMS?
-          if (payload?.services?.length > 0) {
-            const pickedServices = payload?.services;
-            pickedServices.forEach(service => {
-              // get service questions
-              const pickedServiceFields = questions
-                ?.find(e => e.key === 'services')
-                ?.children.find(child => child.key === service)?.questions;
-
-              // add MINI-FORM service opts required fields
-              if (pickedServiceFields) {
-                pickedServiceFields.forEach(e => {
-                  // if fileUploader ignore required status
-                  if (e?.key && e?.key !== 'files') {
-                    fields[e.key] = Yup.string().required('required');
-                  }
-                });
-              }
-            });
-          }
+  const validateAllFields = useCallback(
+    (fields, values) => {
+      const errors = {};
+      fields.forEach(field => {
+        const fieldError = validateField(field, values[field.key]);
+        if (fieldError) {
+          errors[field.key] = fieldError;
         }
       });
-
-      const schema = Yup.object().shape(fields);
-
-      return schema;
-    };
-
-    const err = {};
-    validateYupSchema(payload, createValidation())
-      .then(resp => {
-        setHandledErrors(null);
-      })
-      .catch(e => {
-        // format errors {key: value:}
-        e.inner.map(el => {
-          return (err[el.path] = el.message);
-        });
-        return setHandledErrors(err);
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formErrors, questions]);
-
-  /*  const validate = useCallback(
-    formProps => {
-      const errors = {};
-      validateYupSchema(formProps, createValidation(formProps))
-        .then(resp => {
-          setHandledErrors({});
-        })
-        .catch(e => {
-          // format errors {key: value:}
-          e.inner.map(el => {
-            return (errors[el.path] = el.message);
-          });
-          setHandledErrors(errors);
-        });
+      return errors;
     },
-    [createValidation]
-  ); */
-
-  useEffect(() => {
-    handleValidation(values);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values]);
+    []
+  );
 
-  return { formErrors, handledFields };
+  return { validateField, validateAllFields };
 };
 
 export default useFormErrors;
