@@ -78,6 +78,10 @@ function _objectSpread2(target) {
   return target;
 }
 
+function _objectDestructuringEmpty(obj) {
+  if (obj == null) throw new TypeError("Cannot destructure undefined");
+}
+
 function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
   var target = {};
@@ -23149,22 +23153,18 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     var diffDays = Math.abs((new Date().getTime() - (datesToDiff === null || datesToDiff === void 0 ? void 0 : datesToDiff.getTime())) / oneDay);
 
     var setUrgency = function setUrgency(vals) {
-      return setTimeout(function () {
-        _action({
-          name: 'is-urgent',
-          value: vals
-        });
+      return setTimeout(function () {//action({ name: 'is-urgent', value: vals });
       }, 2000);
     };
 
     if (diffDays < 1) {
-      setUrgency(true);
+      setUrgency();
       return /*#__PURE__*/React.createElement(ServiceTypeWidget, urgencyProps);
     } else {
-      setUrgency(false);
+      setUrgency();
       return /*#__PURE__*/React.createElement(React.Fragment, null);
     }
-  }, [_action, answers, urgentPrices, values]);
+  }, [answers, urgentPrices, values]);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(WidgetContainer, null, renderContent(), urgencyRateRender()));
 };
 
@@ -26794,17 +26794,6 @@ SchedulePicker.propTypes = {
   list: propTypes.array,
   name: propTypes.string,
   error: propTypes.string
-};
-
-var DISTRICT_PARISHES = {
-  Lisboa: ['Ajuda', 'Alcântara', 'Alvalade', 'Areeiro', 'Arroios', 'Avenidas Novas', 'Beato', 'Belém', 'Benfica', 'Campo de Ourique', 'Campolide', 'Carnide', 'Estrela', 'Lumiar', 'Marvila', 'Misericórdia', 'Olivais', 'Parque das Nações', 'Penha de França', 'Santa Clara', 'Santa Maria Maior', 'Santo António', 'São Domingos de Benfica', 'São Vicente'],
-  Porto: ['Aldoar, foz do Douro e Nevogilde', 'Cedofeita, Santo Ildefonso, Sé, Miragaia, São Nicolau e Vitória', 'Lordelo do Ouro e Massarelos', 'Bonfim', 'Campanhã', 'Paranhos'],
-  Valongo: ['Alfena ', 'Ermesinde', 'Valongo', 'Campo e Sobrado - Campo', 'Campo e Sobrado - Sobrado'],
-  Maia: ['Aguas santas', 'Castêlo da Maia', 'Folgosa', 'Milheirós', 'Moreira', 'Nogueira e Silva Escura', 'Pedrouços', 'S. Pedro Fins', 'Vila Nova da Telha', 'Cidade da Maia'],
-  Paredes: ['Sobreira', 'Aguiar de Sousa', 'Astromil', 'Baltar', 'Beire', 'Cete', 'Cristelo', 'Duas igrejas', 'Grandra', 'Lordelo', 'Louredo', 'Parada de Todeia', 'Paredes', 'Rebordosa', 'Recarei', 'Sobrosa', 'Vandoma', 'Vilela'],
-  Matosinhos: ['Custóias, Leça do Balio e Guifões', 'Matosinhos e Leça da Palmeira', 'Perafita, Lavra e Santa Cruz do Bispo', 'São Mamede de Infesta e Senhora da Hora'],
-  Aveiro: ['Cacia', 'Eixo e Eirol', 'Esgeira', 'Glória e Vera Cruz', 'Oliveirinha', 'Requeixo, N. Sr.ª de Fátima e Nariz', 'St Joana', 'São Bernardo', 'São Jacinto'],
-  Outro: ['Outra']
 };
 
 var assertString_1 = createCommonjsModule(function (module, exports) {
@@ -33387,6 +33376,97 @@ module.exports.default = exports.default;
 
 var validator = unwrapExports(validator_1);
 
+var getFieldDetails = function getFieldDetails(answers) {
+  var fields = [];
+  var offerTypeAnswer = answers['offer-type'];
+  var mainDishAnswer = answers['main-dish'];
+  var numberOfChildren = answers['number-of-children'];
+  var numberOfAnimals = answers['number-of-animals'];
+  var loginAnswer = answers['login-buttons'];
+  var districtAnswer = answers['district']; //──── District Logic ────────────────────────────────────────────────────────────────────
+
+  if (typeof districtAnswer === 'string' && (districtAnswer === null || districtAnswer === void 0 ? void 0 : districtAnswer.toLowerCase()) === 'outro') {
+    fields.push('district_other', 'district_other_parish');
+  } else if (districtAnswer) {
+    fields.push('district_parish');
+  } //──── Offer Types ───────────────────────────────────────────────────────────────────────
+
+
+  if (offerTypeAnswer || offerTypeAnswer === 0) {
+    if (offerTypeAnswer === 0) {
+      if (answers['formOfferType'] !== 'one-time-service-specific') {
+        fields.push('service-start-date', 'preferred-hours-start', 'preferred-hours-end');
+      } else {
+        fields.push('service-start-date', 'preferred-hours');
+      }
+    }
+
+    if (offerTypeAnswer === 1) {
+      if ((answers === null || answers === void 0 ? void 0 : answers['recurrence']) === 1) {
+        fields.push('week-select');
+      }
+
+      fields.push('number-of-hours', 'recurrence', 'repetition', 'service-start-date', 'service-end-date', 'preferred-hours-start', 'preferred-hours-end');
+    }
+
+    if (offerTypeAnswer === 2) {
+      if (answers['formOfferType'] === 'hour-pack' || answers['formOfferType'] === 'ready-pack') {
+        fields.push('pack-selection', 'service-start-date');
+      } else {
+        fields.push('recurrence', 'repetition', 'service-start-date', 'preferred-hours-start', 'preferred-hours-end');
+      }
+    }
+  } //──── Gastro Experience ─────────────────────────────────────────────────────────────────
+
+
+  if (mainDishAnswer || mainDishAnswer === 0) {
+    if (mainDishAnswer === 0) {
+      fields.push('fish-dish');
+    }
+
+    if (mainDishAnswer === 1) {
+      fields.push('meat-dish');
+    }
+
+    if (mainDishAnswer === 2) {
+      fields.push('veggie-dish');
+    }
+  } //──── Babysitting ───────────────────────────────────────────────────────────────────────
+
+
+  if (numberOfChildren) {
+    var size = numberOfChildren;
+
+    for (var i = 1; i <= size; i++) {
+      fields.push("children-age-".concat(i));
+    }
+  } //──── Pet Forms ─────────────────────────────────────────────────────────────────────────
+
+
+  if (numberOfAnimals) {
+    var _size = numberOfAnimals;
+
+    for (var _i = 1; _i <= _size; _i++) {
+      fields.push("animal-size-".concat(_i), "animal-species-".concat(_i));
+    }
+  } //──── Login Fields ──────────────────────────────────────────────────────────────────────
+
+
+  if (loginAnswer === 'guest') {
+    fields.push('first-name', 'email', 'last-name', 'telephone', 'company-status');
+  }
+
+  if (loginAnswer === 'login') {
+    fields.push('email', 'password');
+  }
+
+  if (loginAnswer === 'signup') {
+    fields.push('first-name', 'email', 'last-name', 'telephone', 'password', 'company-status');
+  }
+
+  return fields;
+};
+
 var nifValidation = function nifValidation(nif) {
   /* eslint-disable eqeqeq */
   var checkDigit = 0;
@@ -33416,47 +33496,100 @@ var nifValidation = function nifValidation(nif) {
   return false;
 };
 
-var fieldsValidator = function fieldsValidator(field, values, errors, initialValues) {
-  var _values$field$key;
+var fieldValidator = function fieldValidator() {
+  var field = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var value = arguments.length > 1 ? arguments[1] : undefined;
+  var pattern = field.pattern || field.key;
+  var maxLen = field.maxLen,
+      minLen = field.minLen,
+      required = field.required;
 
-  var validationErrors = errors || {};
-  var vals = (_values$field$key = values[field.key]) !== null && _values$field$key !== void 0 ? _values$field$key : initialValues[field.key];
+  if (required && !value && value !== 0) {
+    return 'Obrigatório';
+  }
 
-  if (vals) {
-    if (field.key === 'email') {
-      if (!validator.isEmail(vals)) {
-        validationErrors[field.key] = 'O email introduzido não é válido';
-      } else {
-        delete validationErrors[field.key];
+  if (value && value.length && (value.length > maxLen || value.length < minLen)) {
+    return value.length >= maxLen ? "M\xE1ximo de ".concat(maxLen, " caract\xE9res") : "M\xEDnimo de ".concat(minLen, " caract\xE9res");
+  }
+
+  if (value || value === 0) {
+    if (pattern === 'email') {
+      if (!validator.isEmail(value)) {
+        return 'O email introduzido não é válido';
       }
     }
 
-    if (field.key === 'nif') {
-      if (!nifValidation(vals)) {
-        validationErrors[field.key] = 'O NIF introduzido não é válido';
-      } else {
-        delete validationErrors[field.key];
+    if (pattern === 'nif') {
+      if (!nifValidation(value)) {
+        return 'O NIF introduzido não é válido';
       }
     }
 
-    if (field.key === 'telephone') {
-      if (!validator.isMobilePhone(vals, 'any')) {
-        validationErrors[field.key] = 'O telefone introduzido não é válido';
-      } else {
-        delete validationErrors[field.key];
+    if (pattern === 'telephone' || pattern === 'phone') {
+      if (!validator.isMobilePhone(value, 'any')) {
+        return 'O telefone introduzido não é válido';
       }
     }
 
-    if (field.key === 'postal-code' || field.key === 'postalCode') {
-      if (!validator.isPostalCode(vals, 'PT')) {
-        validationErrors[field.key] = 'O código postal introduzido não é válido';
-      } else {
-        delete validationErrors[field.key];
+    if (pattern === 'postal-code' || pattern === 'postalCode') {
+      if (!validator.isPostalCode(value, 'PT')) {
+        return 'O código postal introduzido não é válido';
       }
     }
   }
 
-  return validationErrors;
+  return false;
+};
+
+var useFormErrors = function useFormErrors(_ref) {
+  _objectDestructuringEmpty(_ref);
+
+  var validateField = useCallback$1(function (field, value) {
+    var fieldError = fieldValidator(field, value);
+
+    if (fieldError) {
+      return fieldError;
+    }
+  }, []);
+  var validateAllFields = useCallback$1(function (fields, values) {
+    var errors = {};
+    var nestedFieldKeys = getFieldDetails(values);
+    nestedFieldKeys.forEach(function (fieldKey) {
+      var fieldError = validateField({
+        key: fieldKey,
+        required: true,
+        pattern: fieldKey
+      }, values[fieldKey]);
+
+      if (fieldError) {
+        errors[fieldKey] = fieldError;
+      }
+    });
+    fields.forEach(function (field) {
+      var fieldError = validateField(field, values[field.key], values);
+
+      if (fieldError) {
+        errors[field.key] = fieldError;
+      }
+    });
+    return errors;
+  }, // eslint-disable-next-line react-hooks/exhaustive-deps
+  []);
+  return {
+    validateField: validateField,
+    validateAllFields: validateAllFields
+  };
+};
+
+var DISTRICT_PARISHES = {
+  Lisboa: ['Ajuda', 'Alcântara', 'Alvalade', 'Areeiro', 'Arroios', 'Avenidas Novas', 'Beato', 'Belém', 'Benfica', 'Campo de Ourique', 'Campolide', 'Carnide', 'Estrela', 'Lumiar', 'Marvila', 'Misericórdia', 'Olivais', 'Parque das Nações', 'Penha de França', 'Santa Clara', 'Santa Maria Maior', 'Santo António', 'São Domingos de Benfica', 'São Vicente'],
+  Porto: ['Aldoar, foz do Douro e Nevogilde', 'Cedofeita, Santo Ildefonso, Sé, Miragaia, São Nicolau e Vitória', 'Lordelo do Ouro e Massarelos', 'Bonfim', 'Campanhã', 'Paranhos'],
+  Valongo: ['Alfena ', 'Ermesinde', 'Valongo', 'Campo e Sobrado - Campo', 'Campo e Sobrado - Sobrado'],
+  Maia: ['Aguas santas', 'Castêlo da Maia', 'Folgosa', 'Milheirós', 'Moreira', 'Nogueira e Silva Escura', 'Pedrouços', 'S. Pedro Fins', 'Vila Nova da Telha', 'Cidade da Maia'],
+  Paredes: ['Sobreira', 'Aguiar de Sousa', 'Astromil', 'Baltar', 'Beire', 'Cete', 'Cristelo', 'Duas igrejas', 'Grandra', 'Lordelo', 'Louredo', 'Parada de Todeia', 'Paredes', 'Rebordosa', 'Recarei', 'Sobrosa', 'Vandoma', 'Vilela'],
+  Matosinhos: ['Custóias, Leça do Balio e Guifões', 'Matosinhos e Leça da Palmeira', 'Perafita, Lavra e Santa Cruz do Bispo', 'São Mamede de Infesta e Senhora da Hora'],
+  Aveiro: ['Cacia', 'Eixo e Eirol', 'Esgeira', 'Glória e Vera Cruz', 'Oliveirinha', 'Requeixo, N. Sr.ª de Fátima e Nariz', 'St Joana', 'São Bernardo', 'São Jacinto'],
+  Outro: ['Outra']
 };
 
 var districtOptions = Object.keys(DISTRICT_PARISHES).map(function (district) {
@@ -33478,14 +33611,14 @@ var getParishesOptions = function getParishesOptions(parishValue) {
 };
 
 var Form$1 = function Form(_ref) {
-  var _onSubmit = _ref.onSubmit,
+  var onSubmit = _ref.onSubmit,
       isDisabled = _ref.isDisabled,
       questions = _ref.questions,
       submitLabel = _ref.submitLabel,
       backgroundColor = _ref.backgroundColor,
       translate = _ref.translate,
       fieldsWidgets = _ref.fieldsWidgets,
-      onChange = _ref.onChange,
+      _onChange = _ref.onChange,
       resetLabel = _ref.resetLabel,
       cancelLabel = _ref.cancelLabel,
       errors = _ref.errors,
@@ -33494,6 +33627,73 @@ var Form$1 = function Form(_ref) {
       answers = _ref.answers,
       hiddenFields = _ref.hiddenFields,
       children = _ref.children;
+
+  /* const validationErrors = errors || {}; */
+  var initialValues = useRef({});
+  var flatFields = useRef([]);
+
+  var _useState = useState({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      formErrors = _useState2[0],
+      setFormErrors = _useState2[1];
+
+  useEffect(function () {
+    if (Object.keys(formErrors).length) {
+      formRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+      });
+    }
+  }, [formErrors]);
+
+  var getInitialValues = function getInitialValues(valueQuestions) {
+    var getAnswers = function getAnswers(qs) {
+      return qs.forEach(function (q, parent) {
+        var typeDefault = (q.type === 'array' || q.type === 'uniq-array') && !q.widget === 'schedule-picker' ? [] : undefined;
+
+        if (q.key) {
+          if (q.type === 'object') {
+            getAnswers(q.questions);
+          } else {
+            if (initialValues.current) {
+              var _answers$q$key;
+
+              initialValues.current[q.key] = (_answers$q$key = answers === null || answers === void 0 ? void 0 : answers[q.key]) !== null && _answers$q$key !== void 0 ? _answers$q$key : q.value || typeDefault;
+            }
+          }
+
+          if (q.children) {
+            getAnswers(q.children);
+          }
+        }
+      });
+    };
+
+    getAnswers(valueQuestions); // * For non-schema properties like 'offer-type' and 'district' childrenesfabfdm,gadfjilgms yetjx c
+
+    Object.keys(answers).forEach(function (ansKey) {
+      if (!initialValues.current[ansKey]) {
+        initialValues.current[ansKey] = answers[ansKey];
+      }
+    });
+  };
+
+  getInitialValues(questions);
+
+  var _useFormErrors = useFormErrors({}),
+      validateField = _useFormErrors.validateField,
+      validateAllFields = _useFormErrors.validateAllFields;
+
+  var handleSubmit = useCallback$1(function (values) {
+    var errors = validateAllFields(flatFields.current, values);
+
+    if (!Object.keys(errors).length) {
+      onSubmit(values);
+    } else {
+      setFormErrors(errors);
+    }
+  }, [onSubmit, validateAllFields]);
 
   var renderAddFields = function renderAddFields(fields, count, formik) {
     var addFields = [];
@@ -33514,30 +33714,39 @@ var Form$1 = function Form(_ref) {
     return addFields;
   };
 
-  var fieldRenderer = function fieldRenderer(field, formik, parentKey) {
+  var fieldRenderer = useCallback$1(function (field, formik, parentKey) {
     var _field$options$, _field$options$2, _field$options, _answers$field$key, _getParishesOptions;
 
-    //! field Validation function
-    var validatedErrors = fieldsValidator(field, formik === null || formik === void 0 ? void 0 : formik.values, errors, initialValues);
-    var zipCodePlaceholder = field.key === 'postal-code' || field.key === 'postalCode' ? '0000-000' : undefined; //! Formik inputs logic
+    var zipCodePlaceholder = field.key === 'postal-code' || field.key === 'postalCode' ? '0000-000' : undefined;
 
     if (field.key && hiddenFields.indexOf(field.key) === -1 || field.key === 'district') {
       var _field$label, _field$key, _field$label2, _formik$values$field$, _ref2, _fieldProps$value;
 
       var widget = field.widget || field.type;
-      var fieldProps = {
+
+      var fieldProps = _objectSpread2(_objectSpread2({}, field), {}, {
         label: (_field$label = field.label) !== null && _field$label !== void 0 ? _field$label : lodash_startcase(field.key),
         name: field.key,
         key: (_field$key = field.key) !== null && _field$key !== void 0 ? _field$key : (_field$label2 = field.label) === null || _field$label2 === void 0 ? void 0 : _field$label2.toLowerCase(),
         onChange: function onChange(v) {
-          return formik.setFieldValue(field.key, v);
+          var f = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : field;
+          var fieldError = validateField(f, v);
+          setFormErrors(_objectSpread2(_objectSpread2({}, formErrors), {}, _defineProperty({}, f.key, fieldError)));
+          formik.setFieldValue(f.key, v);
+
+          if (_onChange) {
+            _onChange(f.key, v);
+          }
         },
-        value: (_formik$values$field$ = formik.values[field.key]) !== null && _formik$values$field$ !== void 0 ? _formik$values$field$ : initialValues[field.key],
+        value: (_formik$values$field$ = formik.values[field.key]) !== null && _formik$values$field$ !== void 0 ? _formik$values$field$ : initialValues.current[field.key],
         placeholder: zipCodePlaceholder,
+        error: formErrors[field.key],
         translate: translate,
-        type: field.type,
-        error: validatedErrors[field.key]
-      };
+        type: field.type
+      });
+
+      flatFields.current.push(fieldProps); //validateField(field, fieldProps.value, formik);
+
       var isOther = (typeof fieldProps.value === 'string' || fieldProps.value instanceof String) && ((_ref2 = (_fieldProps$value = fieldProps.value) !== null && _fieldProps$value !== void 0 ? _fieldProps$value : '') === null || _ref2 === void 0 ? void 0 : _ref2.toLowerCase()) === 'outro' || false;
 
       var getOptVal = function getOptVal(opt) {
@@ -33554,7 +33763,7 @@ var Form$1 = function Form(_ref) {
             key: 'accordion-' + (field.key || parentKey),
             isOpen: field.isOpen,
             title: field.label,
-            content: renderFields(formik, field.questions, field.parentKey)
+            content: renderFields(formik, field.questions, true)
           });
 
         case 'file-uploader':
@@ -33564,7 +33773,9 @@ var Form$1 = function Form(_ref) {
             title: field === null || field === void 0 ? void 0 : field.label,
             answers: answers === null || answers === void 0 ? void 0 : answers['files'],
             action: function action(values) {
-              return formik.setFieldValue(field === null || field === void 0 ? void 0 : field.key, values);
+              fieldProps.onChange(values, {
+                key: 'files'
+              });
             },
             error: fieldProps === null || fieldProps === void 0 ? void 0 : fieldProps.error
           });
@@ -33576,10 +33787,11 @@ var Form$1 = function Form(_ref) {
             packOptions: field.options,
             answers: answers,
             values: formik === null || formik === void 0 ? void 0 : formik.values,
-            errors: errors,
             urgentPrices: field === null || field === void 0 ? void 0 : field.urgentPrices,
             action: function action(values) {
-              return formik.setFieldValue(values.name, values.value);
+              fieldProps.onChange(values.value, {
+                key: values.name
+              });
             }
           });
 
@@ -33590,7 +33802,7 @@ var Form$1 = function Form(_ref) {
             value: fieldProps.value,
             t: translate,
             action: function action(values) {
-              return formik.setFieldValue(field.key, values);
+              fieldProps.onChange(values, field);
             }
           });
 
@@ -33598,11 +33810,15 @@ var Form$1 = function Form(_ref) {
           return /*#__PURE__*/React.createElement(MiniForm, {
             key: 'miniform-' + field.label,
             onRemove: function onRemove() {
-              return field.dependencyValue && parentKey && formik.setFieldValue(parentKey, formik.values[parentKey].filter(function (v) {
-                return v !== field.dependencyValue;
-              }));
+              if (field.dependencyValue && parentKey) {
+                fieldProps.onChange(formik.values[parentKey].filter(function (v) {
+                  return v !== field.dependencyValue;
+                }), {
+                  key: parentKey
+                });
+              }
             },
-            content: renderFields(formik, field.questions),
+            content: renderFields(formik, field.questions, true),
             title: field.label,
             onSubmit: formik.handleSubmit
           });
@@ -33627,12 +33843,12 @@ var Form$1 = function Form(_ref) {
             key: field.key,
             type: field.type
             /* tabs={field.options.map(opt => ({
-              name: opt.label,
-              value: opt.value
+            name: opt.label,
+            value: opt.value
             }))}
             initialTabIndex={field.options
-              .map(d => d.value)
-              .indexOf(formik.values[field.key])} */
+            .map(d => d.value)
+            .indexOf(formik.values[field.key])} */
             //! temporay login / signup removal
             ,
             tabs: [{
@@ -33641,18 +33857,18 @@ var Form$1 = function Form(_ref) {
             }],
             initialTabIndex: 0,
             action: function action(v) {
-              return formik.setFieldValue(field.key, field.options[v].value);
+              fieldProps.onChange(field.options[v].value, field);
             }
           });
 
         case 'radio':
           return /*#__PURE__*/React.createElement(RadioButton, _extends({
             key: field.key,
-            error: field.error,
+            error: fieldProps.error,
             name: field.key,
             isVerticalAligned: field.isVerticalAligned,
             action: function action(option) {
-              return formik.setFieldValue(option.name, option.value);
+              fieldProps.onChange(option.value, field);
             },
             list: field.options
           }, fieldProps));
@@ -33685,11 +33901,11 @@ var Form$1 = function Form(_ref) {
               return defaults;
             }),
             onChange: function onChange(option) {
-              var _option$map;
+              var _option$value, _option$map;
 
-              return !(field === null || field === void 0 ? void 0 : field.isMulti) ? option && formik.setFieldValue(field.key, option.value) : formik.setFieldValue(field.key, (_option$map = option === null || option === void 0 ? void 0 : option.map(function (e) {
+              fieldProps.onChange(!(field === null || field === void 0 ? void 0 : field.isMulti) ? (_option$value = option === null || option === void 0 ? void 0 : option.value) !== null && _option$value !== void 0 ? _option$value : '' : (_option$map = option === null || option === void 0 ? void 0 : option.map(function (e) {
                 return e.value;
-              })) !== null && _option$map !== void 0 ? _option$map : []);
+              })) !== null && _option$map !== void 0 ? _option$map : [], field);
             }
           }));
 
@@ -33714,40 +33930,46 @@ var Form$1 = function Form(_ref) {
               return opt.value === fieldProps.value || lodash_kebabcase(opt.label) === lodash_kebabcase(fieldProps.value);
             }),
             onChange: function onChange(option) {
-              formik.setFieldValue(field.key, lodash_kebabcase(option.value));
+              fieldProps.onChange(lodash_kebabcase(option.value), field);
             }
-          }) : /*#__PURE__*/React.createElement(React.Fragment, null), (formik.values[field.key] && isOther ? /*#__PURE__*/React.createElement(React.Fragment, {
+          }) : /*#__PURE__*/React.createElement(React.Fragment, null), (formik.values[field.key] && isOther && hiddenFields.indexOf('district') === -1 ? /*#__PURE__*/React.createElement(React.Fragment, {
             key: 'district_other'
           }, /*#__PURE__*/React.createElement(TextInput, {
             key: 'district_other',
             label: "Distrito",
-            error: fieldProps.error,
+            error: formErrors['district_other'],
             onChange: function onChange(v) {
-              return formik.setFieldValue(field.key + '_other', v);
+              fieldProps.onChange(v, {
+                key: 'district_other'
+              });
             },
             name: "district_other",
             value: formik.values[field.key + '_other']
           }), /*#__PURE__*/React.createElement(TextInput, {
             key: 'district_other_parish',
             label: "Freguesia",
-            error: fieldProps.error,
+            error: formErrors['district_other_sparish'],
             onChange: function onChange(v) {
-              return formik.setFieldValue(field.key + '_parish', v);
+              fieldProps.onChange(v, {
+                key: 'district_other_parish'
+              });
             },
             defaultValue: answers === null || answers === void 0 ? void 0 : answers['district_other_parish'],
             name: "district_other_parish",
-            value: formik.values[field.key + '_parish']
-          })) : /*#__PURE__*/React.createElement(Select$2, {
+            value: formik.values[field.key + 'other__parish']
+          })) : hiddenFields.indexOf('district') === -1 && /*#__PURE__*/React.createElement(Select$2, {
             label: "Freguesia",
             key: "".concat(formik.values['district'], "_parishes"),
-            error: fieldProps.error,
+            error: formErrors['district_parish'],
             isMini: Boolean(widget === 'mini-dropdown'),
             options: getParishesOptions(formik.values[field.key]),
             defaultValue: (_getParishesOptions = getParishesOptions(formik.values[field.key])) === null || _getParishesOptions === void 0 ? void 0 : _getParishesOptions.find(function (opt) {
-              return opt.value === (answers === null || answers === void 0 ? void 0 : answers['parish']);
+              return opt.value === (answers === null || answers === void 0 ? void 0 : answers['district_parish']);
             }),
             onChange: function onChange(option) {
-              return formik.setFieldValue('parish', option.value);
+              fieldProps.onChange(option.value, {
+                key: 'district_parish'
+              });
             }
           })) || /*#__PURE__*/React.createElement(React.Fragment, null));
 
@@ -33755,10 +33977,10 @@ var Form$1 = function Form(_ref) {
           return /*#__PURE__*/React.createElement(MultiFieldRender, {
             label: field.label,
             addAction: function addAction() {
-              formik.setFieldValue(field.key, fieldProps.value + 1);
+              fieldProps.onChange(fieldProps.value + 1, field);
             },
             removeAction: function removeAction() {
-              formik.setFieldValue(field.key, fieldProps.value - 1);
+              fieldProps.onChange(fieldProps.value - 1, field);
             },
             content: renderAddFields(field.fields, fieldProps.value, formik)
           });
@@ -33771,12 +33993,12 @@ var Form$1 = function Form(_ref) {
           }, fieldProps, {
             isUniq: true,
             onChange: function onChange(v) {
-              return formik.setFieldValue(field.key, Array.from(new Set([].concat(_toConsumableArray(fieldProps.value), [v.value]))));
+              fieldProps.onChange(Array.from(new Set([].concat(_toConsumableArray(fieldProps.value), [v.value]))), field);
             },
             onRemove: function onRemove(v) {
-              return formik.setFieldValue(field.key, fieldProps.value.filter(function (opt) {
+              return fieldProps.onChange(fieldProps.value.filter(function (opt) {
                 return opt !== v;
-              }));
+              }), field);
             }
           }));
 
@@ -33795,7 +34017,7 @@ var Form$1 = function Form(_ref) {
             }),
             defaultValues: formik === null || formik === void 0 ? void 0 : formik.values[fieldProps.key],
             action: function action(values) {
-              return formik.setFieldValue(field.key, values);
+              fieldProps.onChange(values, field);
             },
             content: field.optionalContent
           }));
@@ -33813,7 +34035,7 @@ var Form$1 = function Form(_ref) {
               };
             }),
             action: function action(values) {
-              return formik.setFieldValue(field.key, values);
+              fieldProps.onChange(values, field);
             }
           }));
 
@@ -33824,7 +34046,7 @@ var Form$1 = function Form(_ref) {
             list: field === null || field === void 0 ? void 0 : field.options,
             value: formik === null || formik === void 0 ? void 0 : formik.values[field.key],
             action: function action(values) {
-              return formik.setFieldValue(field.key, values.value);
+              fieldProps.onChange(values.value, field);
             }
           }, fieldProps));
 
@@ -33848,9 +34070,14 @@ var Form$1 = function Form(_ref) {
       default:
         return /*#__PURE__*/React.createElement(React.Fragment, null);
     }
-  };
+  }, // eslint-disable-next-line react-hooks/exhaustive-deps
+  [formErrors]);
 
-  var renderFields = function renderFields(formik, fields) {
+  var renderFields = function renderFields(formik, fields, skipReset) {
+    if (!skipReset) {
+      flatFields.current.length = 0;
+    }
+
     var formFields = [];
     var columns = [];
 
@@ -33947,53 +34174,19 @@ var Form$1 = function Form(_ref) {
     return formFields;
   };
 
-  var initialValues = {
-    'is-urgent': null
-  };
-
-  var getInitialValues = function getInitialValues(valueQuestions) {
-    return valueQuestions.forEach(function (q) {
-      var typeDefault = (q.type === 'array' || q.type === 'uniq-array') && !q.widget === 'schedule-picker' ? [] : undefined;
-
-      if (q.key) {
-        if (q.type === 'object') {
-          getInitialValues(q.questions);
-        } else {
-          var _answers$q$key;
-
-          initialValues[q.key] = (_answers$q$key = answers === null || answers === void 0 ? void 0 : answers[q.key]) !== null && _answers$q$key !== void 0 ? _answers$q$key : q.value || typeDefault;
-        }
-
-        if (q.children) {
-          getInitialValues(q.children);
-        }
-      }
-    });
-  };
-
-  getInitialValues(questions);
   var formRef = useRef();
-  useEffect(function () {
-    if (errors) {
-      formRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'start'
-      });
-    }
-  }, [errors]);
   return /*#__PURE__*/React.createElement(FormContainer, {
     ref: formRef,
     bg: backgroundColor
   }, children, /*#__PURE__*/React.createElement(Formik, {
-    initialValues: initialValues,
+    initialValues: initialValues.current,
     onSubmit: function onSubmit(f) {
-      return _onSubmit(f);
+      return handleSubmit(f);
     }
   }, function (formik) {
     return /*#__PURE__*/React.createElement(StyledForm$1, {
       onSubmit: formik.handleSubmit
-    }, renderFields(formik, questions), /*#__PURE__*/React.createElement(Button$1, {
+    }, renderFields(formik, questions, false), /*#__PURE__*/React.createElement(Button$1, {
       isDisabled: isDisabled,
       type: btnType,
       action: function action() {
@@ -34052,10 +34245,10 @@ Form$1.propTypes = {
 };
 Form$1.defaultProps = {
   onSubmit: function onSubmit(values) {
-    return console.log('Submitting form values', values);
+    return console.log('🚀 ~~ SUCCESS ~~ Submitting form values', values);
   },
   onChange: function onChange(values) {
-    return console.log('Changing form values', values);
+    return console.log('Changing form values, set onChange prop to override', values);
   },
   submitLabel: 'Submit',
   resetLabel: '',
