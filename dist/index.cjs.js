@@ -33388,7 +33388,10 @@ module.exports.default = exports.default;
 
 var validator = unwrapExports(validator_1);
 
-var getFieldDetails = function getFieldDetails(answers) {
+var getFieldDetails = function getFieldDetails(answers, schema) {
+  var offerTypeField = schema.find(function (q) {
+    return q.key === 'offer-type';
+  });
   var fields = [];
   var offerTypeAnswer = answers['offer-type'];
   var mainDishAnswer = answers['main-dish'];
@@ -33406,7 +33409,7 @@ var getFieldDetails = function getFieldDetails(answers) {
 
   if (offerTypeAnswer || offerTypeAnswer === 0) {
     if (offerTypeAnswer === 0) {
-      if (answers['formOfferType'] !== 'one-time-service-specific') {
+      if (offerTypeField['formOfferType'] !== 'one-time-service-specific') {
         fields.push('service-start-date', 'preferred-hours-start', 'preferred-hours-end');
       } else {
         fields.push('service-start-date', 'preferred-hours');
@@ -33422,7 +33425,7 @@ var getFieldDetails = function getFieldDetails(answers) {
     }
 
     if (offerTypeAnswer === 2) {
-      if (answers['formOfferType'] === 'hour-pack' || answers['formOfferType'] === 'ready-pack') {
+      if (offerTypeField['formOfferType'] === 'hour-pack' || offerTypeField['formOfferType'] === 'ready-pack') {
         fields.push('pack-selection', 'service-start-date');
       } else {
         fields.push('recurrence', 'repetition', 'service-start-date', 'preferred-hours-start', 'preferred-hours-end');
