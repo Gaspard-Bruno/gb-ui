@@ -65,23 +65,17 @@ import {
 
 const components = [
   {
-    label: 'Test Select overflow',
-    props: {
-      options: [
-        { label: 'Test user', value: 0 },
-        { label: 'Test user', value: 0 },
-        { label: 'Test user', value: 0 },
-        { label: 'Test user', value: 0 }
-      ]
-    },
+    label: 'Prefilled form validation',
+    section: 'Dev',
+
     disabled: false,
-    section: 'General',
-    component: props => (
-      <>
-        <Accordion title='Select' content={<Select {...props} />} />
-        <Accordion title='Scheduler' content={<SchedulePicker />} />
-      </>
-    )
+    props: {
+      previewComponentTitle: 'Gardening (Pre-filled) with errors',
+      questions: FORM.gardening.questions,
+      answers: { ...FORM.gardeningAnswers, district: 'Outro' }
+    },
+
+    component: props => <Form {...props}></Form>
   },
   {
     label: 'Avatar',
@@ -171,7 +165,6 @@ const components = [
     label: 'Form',
     props: [
       {
-        onSubmit: vals => console.log('submitting', vals),
         previewComponentTitle: 'Become Specialist',
         answers: FORM.specialistFormAnswers,
         questions: FORM.becomeSpecialist.questions

@@ -1,9 +1,24 @@
-export const getFieldDetails = (payload, offerType) => {
+export const getFieldDetails = answers => {
   const fields = [];
-  // offer-types
-  if (payload['offer-type'] !== 'undefined') {
-    if (payload['offer-type'] === 0) {
-      if (offerType !== 'one-time-service-specific') {
+  const offerTypeAnswer = answers['offer-type'];
+  const mainDishAnswer = answers['main-dish'];
+  const numberOfChildren = answers['number-of-children'];
+  const numberOfAnimals = answers['number-of-animals'];
+  const loginAnswer = answers['login-buttons'];
+  const districtAnswer = answers['district'];
+  //──── District Logic ────────────────────────────────────────────────────────────────────
+  if (
+    typeof districtAnswer === 'string' &&
+    districtAnswer?.toLowerCase() === 'outro'
+  ) {
+    fields.push('district_other', 'district_other_parish');
+  } else if (districtAnswer) {
+    fields.push('district_parish');
+  }
+  //──── Offer Types ───────────────────────────────────────────────────────────────────────
+  if (offerTypeAnswer || offerTypeAnswer === 0) {
+    if (offerTypeAnswer === 0) {
+      if (answers['formOfferType'] !== 'one-time-service-specific') {
         fields.push(
           'service-start-date',
           'preferred-hours-start',
@@ -13,8 +28,8 @@ export const getFieldDetails = (payload, offerType) => {
         fields.push('service-start-date', 'preferred-hours');
       }
     }
-    if (payload['offer-type'] === 1) {
-      if (payload?.['recurrence'] === 1) {
+    if (offerTypeAnswer === 1) {
+      if (answers?.['recurrence'] === 1) {
         fields.push('week-select');
       }
       fields.push(
@@ -27,8 +42,11 @@ export const getFieldDetails = (payload, offerType) => {
         'preferred-hours-end'
       );
     }
-    if (payload['offer-type'] === 2) {
-      if (offerType === 'hour-pack' || offerType === 'ready-pack') {
+    if (offerTypeAnswer === 2) {
+      if (
+        answers['formOfferType'] === 'hour-pack' ||
+        answers['formOfferType'] === 'ready-pack'
+      ) {
         fields.push('pack-selection', 'service-start-date');
       } else {
         fields.push(
@@ -41,34 +59,34 @@ export const getFieldDetails = (payload, offerType) => {
       }
     }
   }
-  // gastro form
-  if (payload['main-dish'] !== 'undefined') {
-    if (payload['main-dish'] === 0) {
+  //──── Gastro Experience ─────────────────────────────────────────────────────────────────
+  if (mainDishAnswer || mainDishAnswer === 0) {
+    if (mainDishAnswer === 0) {
       fields.push('fish-dish');
     }
-    if (payload['main-dish'] === 1) {
+    if (mainDishAnswer === 1) {
       fields.push('meat-dish');
     }
-    if (payload['main-dish'] === 2) {
+    if (mainDishAnswer === 2) {
       fields.push('veggie-dish');
     }
   }
-  // babysitting forms specific fields
-  if (payload['number-of-children']) {
-    const size = payload['number-of-children'];
+  //──── Babysitting ───────────────────────────────────────────────────────────────────────
+  if (numberOfChildren) {
+    const size = numberOfChildren;
     for (let i = 1; i <= size; i++) {
       fields.push(`children-age-${i}`);
     }
   }
-  // pet forms specific fields
-  if (payload['number-of-animals']) {
-    const size = payload['number-of-animals'];
+  //──── Pet Forms ─────────────────────────────────────────────────────────────────────────
+  if (numberOfAnimals) {
+    const size = numberOfAnimals;
     for (let i = 1; i <= size; i++) {
       fields.push(`animal-size-${i}`, `animal-species-${i}`);
     }
   }
-  // login fields
-  if (payload['login-buttons'] === 'guest') {
+  //──── Login Fields ──────────────────────────────────────────────────────────────────────
+  if (loginAnswer === 'guest') {
     fields.push(
       'first-name',
       'email',
@@ -77,10 +95,10 @@ export const getFieldDetails = (payload, offerType) => {
       'company-status'
     );
   }
-  if (payload['login-buttons'] === 'login') {
+  if (loginAnswer === 'login') {
     fields.push('email', 'password');
   }
-  if (payload['login-buttons'] === 'signup') {
+  if (loginAnswer === 'signup') {
     fields.push(
       'first-name',
       'email',

@@ -155,13 +155,17 @@ const Form = ({
       ) {
         const widget = field.widget || field.type;
         const fieldProps = {
+          ...field,
           label: field.label ?? sc(field.key),
           name: field.key,
           key: field.key ?? field.label?.toLowerCase(),
-          onChange: v => {
-            formik.setFieldValue(field.key, v);
-            const fieldError = validateField(field, v);
-            setFormErrors({ ...formErrors, [field.key]: fieldError });
+          onChange: (v, f = field) => {
+            const fieldError = validateField(f, v);
+            setFormErrors({ ...formErrors, [f.key]: fieldError });
+            formik.setFieldValue(f.key, v);
+            if (onChange) {
+              onChange(f.key, v);
+            }
           },
           value: formik.values[field.key] ?? initialValues.current[field.key],
           placeholder: zipCodePlaceholder,
@@ -197,7 +201,7 @@ const Form = ({
                 title={field?.label}
                 answers={answers?.['files']}
                 action={values => {
-                  onChange(values);
+                  fieldProps.onChange(values, { key: 'files' });
                 }}
                 error={fieldProps?.error}
               />
@@ -212,7 +216,7 @@ const Form = ({
                 values={formik?.values}
                 urgentPrices={field?.urgentPrices}
                 action={values => {
-                  onChange(values.name, values.value);
+                  fieldProps.onChange(values.value, { key: values.name });
                 }}
               />
             );
@@ -224,7 +228,7 @@ const Form = ({
                 value={fieldProps.value}
                 t={translate}
                 action={values => {
-                  onChange(field.key, values);
+                  fieldProps.onChange(values, field);
                 }}
               />
             );
@@ -234,11 +238,11 @@ const Form = ({
                 key={'miniform-' + field.label}
                 onRemove={() => {
                   if (field.dependencyValue && parentKey) {
-                    onChange(
-                      parentKey,
+                    fieldProps.onChange(
                       formik.values[parentKey].filter(
                         v => v !== field.dependencyValue
-                      )
+                      ),
+                      { key: parentKey }
                     );
                   }
                 }}
@@ -281,7 +285,7 @@ const Form = ({
                 ]}
                 initialTabIndex={0}
                 action={v => {
-                  onChange(field.key, field.options[v].value);
+                  fieldProps.onChange(field.options[v].value, field);
                 }}
               />
             );
@@ -293,7 +297,7 @@ const Form = ({
                 name={field.key}
                 isVerticalAligned={field.isVerticalAligned}
                 action={option => {
-                  onChange(field.key, option.value);
+                  fieldProps.onChange(option.value, field);
                 }}
                 list={field.options}
                 {...fieldProps}
@@ -330,11 +334,11 @@ const Form = ({
                       })
                 }
                 onChange={option => {
-                  onChange(
-                    field.key,
+                  fieldProps.onChange(
                     !field?.isMulti
                       ? option?.value ?? ''
-                      : option?.map(e => e.value) ?? []
+                      : option?.map(e => e.value) ?? [],
+                    field
                   );
                 }}
               />
@@ -364,20 +368,22 @@ const Form = ({
                         kebabcase(opt.label) === kebabcase(fieldProps.value)
                     )}
                     onChange={option => {
-                      onChange(field.key, kebabcase(option.value));
+                      fieldProps.onChange(kebabcase(option.value), field);
                     }}
                   />
                 ) : (
                   <></>
                 )}
-                {(formik.values[field.key] && isOther ? (
+                {(formik.values[field.key] &&
+                isOther &&
+                hiddenFields.indexOf('district') === -1 ? (
                   <React.Fragment key={'district_other'}>
                     <TextInput
                       key={'district_other'}
                       label='Distrito'
-                      error={fieldProps.error}
+                      error={formErrors['district_other']}
                       onChange={v => {
-                        onChange(field.key + '_other', v);
+                        fieldProps.onChange(v, { key: 'district_other' });
                       }}
                       name='district_other'
                       value={formik.values[field.key + '_other']}
@@ -385,29 +391,37 @@ const Form = ({
                     <TextInput
                       key={'district_other_parish'}
                       label='Freguesia'
-                      error={fieldProps.error}
+                      error={formErrors['district_other_sparish']}
                       onChange={v => {
-                        onChange(field.key + '_parish', v);
+                        fieldProps.onChange(v, {
+                          key: 'district_other_parish'
+                        });
                       }}
                       defaultValue={answers?.['district_other_parish']}
                       name='district_other_parish'
-                      value={formik.values[field.key + '_parish']}
+                      value={formik.values[field.key + 'other__parish']}
                     />
                   </React.Fragment>
                 ) : (
-                  <Select
-                    label='Freguesia'
-                    key={`${formik.values['district']}_parishes`}
-                    error={fieldProps.error}
-                    isMini={Boolean(widget === 'mini-dropdown')}
-                    options={getParishesOptions(formik.values[field.key])}
-                    defaultValue={getParishesOptions(
-                      formik.values[field.key]
-                    )?.find(opt => opt.value === answers?.['parish'])}
-                    onChange={option => {
-                      onChange('parish', option.value);
-                    }}
-                  />
+                  hiddenFields.indexOf('district') === -1 && (
+                    <Select
+                      label='Freguesia'
+                      key={`${formik.values['district']}_parishes`}
+                      error={formErrors['district_parish']}
+                      isMini={Boolean(widget === 'mini-dropdown')}
+                      options={getParishesOptions(formik.values[field.key])}
+                      defaultValue={getParishesOptions(
+                        formik.values[field.key]
+                      )?.find(
+                        opt => opt.value === answers?.['district_parish']
+                      )}
+                      onChange={option => {
+                        fieldProps.onChange(option.value, {
+                          key: 'district_parish'
+                        });
+                      }}
+                    />
+                  )
                 )) || <></>}
               </React.Fragment>
             );
@@ -416,10 +430,10 @@ const Form = ({
               <MultiFieldRender
                 label={field.label}
                 addAction={() => {
-                  onChange(field.key, fieldProps.value + 1);
+                  fieldProps.onChange(fieldProps.value + 1, field);
                 }}
                 removeAction={() => {
-                  onChange(field.key, fieldProps.value - 1);
+                  fieldProps.onChange(fieldProps.value - 1, field);
                 }}
                 content={renderAddFields(
                   field.fields,
@@ -437,15 +451,15 @@ const Form = ({
                 {...fieldProps}
                 isUniq
                 onChange={v => {
-                  onChange(
-                    field.key,
-                    Array.from(new Set([...fieldProps.value, v.value]))
+                  fieldProps.onChange(
+                    Array.from(new Set([...fieldProps.value, v.value])),
+                    field
                   );
                 }}
                 onRemove={v =>
-                  formik.setFieldValue(
-                    field.key,
-                    fieldProps.value.filter(opt => opt !== v)
+                  fieldProps.onChange(
+                    fieldProps.value.filter(opt => opt !== v),
+                    field
                   )
                 }
               />
@@ -467,7 +481,7 @@ const Form = ({
                 }))}
                 defaultValues={formik?.values[fieldProps.key]}
                 action={values => {
-                  onChange(field.key, values);
+                  fieldProps.onChange(values, field);
                 }}
                 content={field.optionalContent}
               />
@@ -487,7 +501,7 @@ const Form = ({
                     : opt.isSelected
                 }))}
                 action={values => {
-                  onChange(field.key, values);
+                  fieldProps.onChange(values, field);
                 }}
               />
             );
@@ -499,7 +513,7 @@ const Form = ({
                 list={field?.options}
                 value={formik?.values[field.key]}
                 action={values => {
-                  onChange(field.key, values.value);
+                  fieldProps.onChange(values.value, field);
                 }}
                 {...fieldProps}
               />
@@ -727,8 +741,10 @@ Form.propTypes = {
 };
 
 Form.defaultProps = {
-  onSubmit: values => console.log('Submitting form values', values),
-  onChange: values => console.log('Changing form values', values),
+  onSubmit: values =>
+    console.log('🚀 ~~ SUCCESS ~~ Submitting form values', values),
+  onChange: values =>
+    console.log('Changing form values, set onChange prop to override', values),
   submitLabel: 'Submit',
   resetLabel: '',
   btnType: 'submit',

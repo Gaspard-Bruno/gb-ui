@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { validateYupSchema } from 'formik';
 
 import { getFieldDetails } from './getFieldDetails';
+
 //! NIF Validation function
 const nifValidation = nif => {
   /* eslint-disable eqeqeq */
@@ -27,11 +28,20 @@ const nifValidation = nif => {
   }
   return false;
 };
-const fieldValidator = (field, value) => {
+const fieldValidator = (field = {}, value) => {
   const pattern = field.pattern || field.key;
   const { maxLen, minLen, required } = field;
-  if (required && (!value || value !== 0)) {
+  if (required && !value && value !== 0) {
     return 'Obrigatório';
+  }
+  if (
+    value &&
+    value.length &&
+    (value.length > maxLen || value.length < minLen)
+  ) {
+    return value.length >= maxLen
+      ? `Máximo de ${maxLen} caractéres`
+      : `Mínimo de ${minLen} caractéres`;
   }
   if (value || value === 0) {
     if (pattern === 'email') {
@@ -47,8 +57,6 @@ const fieldValidator = (field, value) => {
     if (pattern === 'telephone' || pattern === 'phone') {
       if (!validator.isMobilePhone(value, 'any')) {
         return 'O telefone introduzido não é válido';
-      } else {
-        console.log('phone is valid', value);
       }
     }
     if (pattern === 'postal-code' || pattern === 'postalCode') {
@@ -71,8 +79,24 @@ const useFormErrors = ({}) => {
   const validateAllFields = useCallback(
     (fields, values) => {
       const errors = {};
+
+      const nestedFieldKeys = getFieldDetails(values);
+
+      nestedFieldKeys.forEach(fieldKey => {
+        const fieldError = validateField(
+          {
+            key: fieldKey,
+            required: true,
+            pattern: fieldKey
+          },
+          values[fieldKey]
+        );
+        if (fieldError) {
+          errors[fieldKey] = fieldError;
+        }
+      });
       fields.forEach(field => {
-        const fieldError = validateField(field, values[field.key]);
+        const fieldError = validateField(field, values[field.key], values);
         if (fieldError) {
           errors[field.key] = fieldError;
         }
