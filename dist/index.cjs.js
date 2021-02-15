@@ -33634,6 +33634,7 @@ var Form$1 = function Form(_ref) {
       resetLabel = _ref.resetLabel,
       cancelLabel = _ref.cancelLabel,
       onError = _ref.onError,
+      errors = _ref.errors,
       btnType = _ref.btnType,
       btnAction = _ref.btnAction,
       answers = _ref.answers,
@@ -33650,14 +33651,14 @@ var Form$1 = function Form(_ref) {
       setFormErrors = _useState2[1];
 
   React.useEffect(function () {
-    if (Object.keys(formErrors).length) {
+    if (Object.keys(errors).length) {
       formRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
         inline: 'start'
       });
     }
-  }, [formErrors]);
+  }, [errors]);
 
   var getInitialValues = function getInitialValues(valueQuestions) {
     var getAnswers = function getAnswers(qs) {
@@ -33970,7 +33971,7 @@ var Form$1 = function Form(_ref) {
             defaultValue: answers === null || answers === void 0 ? void 0 : answers['district_other_parish'],
             name: "district_other_parish",
             value: formik.values[field.key + 'other__parish']
-          })) : hiddenFields.indexOf('district') === -1 && /*#__PURE__*/React__default['default'].createElement(Select$2, {
+          })) : hiddenFields.indexOf('district_parish') === -1 && /*#__PURE__*/React__default['default'].createElement(Select$2, {
             label: "Freguesia",
             key: "".concat(formik.values['district'], "_parishes"),
             error: formErrors['district_parish'],
@@ -34226,6 +34227,7 @@ Form$1.propTypes = {
   fieldsWidgets: propTypes.object,
   btnType: propTypes.string,
   btnAction: propTypes.func,
+  onError: propTypes.func,
   answers: propTypes.object,
   hiddenFields: propTypes.arrayOf(propTypes.string),
   questions: propTypes.arrayOf( // * Fields
