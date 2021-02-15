@@ -33633,7 +33633,7 @@ var Form$1 = function Form(_ref) {
       _onChange = _ref.onChange,
       resetLabel = _ref.resetLabel,
       cancelLabel = _ref.cancelLabel,
-      errors = _ref.errors,
+      onError = _ref.onError,
       btnType = _ref.btnType,
       btnAction = _ref.btnAction,
       answers = _ref.answers,
@@ -33704,8 +33704,9 @@ var Form$1 = function Form(_ref) {
       onSubmit(values);
     } else {
       setFormErrors(errors);
+      onError(errors);
     }
-  }, [onSubmit, validateAllFields]);
+  }, [onError, onSubmit, validateAllFields]);
 
   var renderAddFields = function renderAddFields(fields, count, formik) {
     var addFields = [];
@@ -34258,6 +34259,9 @@ Form$1.propTypes = {
 Form$1.defaultProps = {
   onSubmit: function onSubmit(values) {
     return console.log('🚀 ~~ SUCCESS ~~ Submitting form values', values);
+  },
+  onError: function onError(errors) {
+    return console.log('🔴 ~~ERRORS IN FORM ~~', errors);
   },
   onChange: function onChange(values) {
     return console.log('Changing form values, set onChange prop to override', values);
