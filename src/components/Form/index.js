@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
-import { Formik, useFormik } from 'formik';
+import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import chunk from 'lodash.chunk';
 import sc from 'lodash.startcase';
@@ -27,7 +27,7 @@ import { Col, Row } from '../Layout';
 import MultiFieldRender from '../MultiFieldRender';
 import { FormContainer, StyledForm } from './styles';
 import SchedulePicker from '../SchedulePicker';
-import useFormErrors from 'hooks/useFormErrors/useFormErrors';
+import useFormErrors from '../../hooks/useFormErrors';
 
 import DISTRICT_PARISHES from './DISTRICT_PARISHES';
 
@@ -65,20 +65,18 @@ const Form = ({
 }) => {
   /* const validationErrors = errors || {}; */
 
-  /*  useEffect(() => {
-    if (formState.errors) {
+  const initialValues = useRef({});
+  const flatFields = useRef([]);
+  const [formErrors, setFormErrors] = useState({});
+  useEffect(() => {
+    if (Object.keys(formErrors).length) {
       formRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
         inline: 'start'
       });
     }
-  }, [formErrors, formState]); */
-  const initialValues = useRef({});
-  const flatFields = useRef([]);
-  const formErrorsRef = useRef({});
-  const [formErrors, setFormErrors] = useState(formErrorsRef.current);
-
+  }, [formErrors]);
   const getInitialValues = valueQuestions => {
     const getAnswers = qs =>
       qs.forEach((q, parent) => {
@@ -190,7 +188,7 @@ const Form = ({
                 key={'accordion-' + (field.key || parentKey)}
                 isOpen={field.isOpen}
                 title={field.label}
-                content={renderFields(formik, field.questions, field.parentKey)}
+                content={renderFields(formik, field.questions, true)}
               />
             );
           case 'file-uploader':
@@ -246,7 +244,7 @@ const Form = ({
                     );
                   }
                 }}
-                content={renderFields(formik, field.questions)}
+                content={renderFields(formik, field.questions, true)}
                 title={field.label}
                 onSubmit={formik.handleSubmit}
               />
@@ -537,8 +535,10 @@ const Form = ({
     [formErrors]
   );
 
-  const renderFields = (formik, fields) => {
-    flatFields.current.length = 0;
+  const renderFields = (formik, fields, skipReset) => {
+    if (!skipReset) {
+      flatFields.current.length = 0;
+    }
     const formFields = [];
     const columns = [];
     const columnsRenderer = (key = 'last-parent', groupBy = 2) => {
@@ -651,7 +651,7 @@ const Form = ({
         {formik => {
           return (
             <StyledForm onSubmit={formik.handleSubmit}>
-              {renderFields(formik, questions)}
+              {renderFields(formik, questions, false)}
               <Button
                 isDisabled={isDisabled}
                 type={btnType}
