@@ -56,7 +56,7 @@ const Form = ({
   onChange,
   resetLabel,
   cancelLabel,
-  errors,
+  onError,
   btnType,
   btnAction,
   answers,
@@ -119,9 +119,10 @@ const Form = ({
         onSubmit(values);
       } else {
         setFormErrors(errors);
+        onError(errors);
       }
     },
-    [onSubmit, validateAllFields]
+    [onError, onSubmit, validateAllFields]
   );
 
   const renderAddFields = (fields, count, formik) => {
@@ -743,6 +744,7 @@ Form.propTypes = {
 Form.defaultProps = {
   onSubmit: values =>
     console.log('🚀 ~~ SUCCESS ~~ Submitting form values', values),
+  onError: errors => console.log('🔴 ~~ERRORS IN FORM ~~', errors),
   onChange: values =>
     console.log('Changing form values, set onChange prop to override', values),
   submitLabel: 'Submit',
