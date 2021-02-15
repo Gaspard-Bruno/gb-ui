@@ -57,6 +57,7 @@ const Form = ({
   resetLabel,
   cancelLabel,
   onError,
+  errors,
   btnType,
   btnAction,
   answers,
@@ -69,14 +70,14 @@ const Form = ({
   const flatFields = useRef([]);
   const [formErrors, setFormErrors] = useState({});
   useEffect(() => {
-    if (Object.keys(formErrors).length) {
+    if (Object.keys(errors).length) {
       formRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
         inline: 'start'
       });
     }
-  }, [formErrors]);
+  }, [errors]);
   const getInitialValues = valueQuestions => {
     const getAnswers = qs =>
       qs.forEach((q, parent) => {
@@ -402,7 +403,7 @@ const Form = ({
                     />
                   </React.Fragment>
                 ) : (
-                  hiddenFields.indexOf('district') === -1 && (
+                  hiddenFields.indexOf('district_parish') === -1 && (
                     <Select
                       label='Freguesia'
                       key={`${formik.values['district']}_parishes`}
@@ -683,6 +684,7 @@ Form.propTypes = {
   fieldsWidgets: PropTypes.object,
   btnType: PropTypes.string,
   btnAction: PropTypes.func,
+  onError: PropTypes.func,
   answers: PropTypes.object,
   hiddenFields: PropTypes.arrayOf(PropTypes.string),
   questions: PropTypes.arrayOf(
