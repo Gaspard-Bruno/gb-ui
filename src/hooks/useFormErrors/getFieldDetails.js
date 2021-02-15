@@ -1,4 +1,5 @@
-export const getFieldDetails = answers => {
+export const getFieldDetails = (answers, schema) => {
+  const offerTypeField = schema.find(q => q.key === 'offer-type');
   const fields = [];
   const offerTypeAnswer = answers['offer-type'];
   const mainDishAnswer = answers['main-dish'];
@@ -18,7 +19,7 @@ export const getFieldDetails = answers => {
   //──── Offer Types ───────────────────────────────────────────────────────────────────────
   if (offerTypeAnswer || offerTypeAnswer === 0) {
     if (offerTypeAnswer === 0) {
-      if (answers['formOfferType'] !== 'one-time-service-specific') {
+      if (offerTypeField['formOfferType'] !== 'one-time-service-specific') {
         fields.push(
           'service-start-date',
           'preferred-hours-start',
@@ -44,8 +45,8 @@ export const getFieldDetails = answers => {
     }
     if (offerTypeAnswer === 2) {
       if (
-        answers['formOfferType'] === 'hour-pack' ||
-        answers['formOfferType'] === 'ready-pack'
+        offerTypeField['formOfferType'] === 'hour-pack' ||
+        offerTypeField['formOfferType'] === 'ready-pack'
       ) {
         fields.push('pack-selection', 'service-start-date');
       } else {
