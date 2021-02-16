@@ -99,6 +99,7 @@
     },
     {
       "key": "lessons-objectivity",
+      "required": true,
       "label": "Qual é o objectivo das aulas?",
       "type": "text-area"
     },

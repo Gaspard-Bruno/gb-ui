@@ -215,6 +215,7 @@ const Form = ({
                 offerType={field.formOfferType}
                 packOptions={field.options}
                 answers={answers}
+                errors={formErrors}
                 values={formik?.values}
                 urgentPrices={field?.urgentPrices}
                 action={values => {

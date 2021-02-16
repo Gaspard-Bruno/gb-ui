@@ -5,16 +5,24 @@
     {
       "key": "district",
       "widget": "district",
+      "required": true,
       "label": "Distrito",
       "type": "dropdown",
       "options": [{ "value": 0, "label": "Lisboa" }]
     },
-    { "key": "address", "label": "Morada", "type": "text" },
-    { "key": "postal-code", "label": "Código Postal", "type": "text" },
+    { "key": "address", "label": "Morada",
+          "required": true,"type": "text" },
+    {
+      "key": "postal-code",
+      "label": "Código Postal",
+      "required": true,
+      "type": "text"
+    },
     { "type": "footnote", "label": "Serviço" },
     {
       "key": "service-type",
       "label": " ",
+      "required": true,
       "type": "radio",
       "options": [
         { "value": 0, "label": "Standard" },
@@ -47,6 +55,7 @@
       "type": "text",
       "key": "service-offer",
       "label": "Tipo de Serviço",
+      "required": true,
       "options": [
         { "label": "Arranjo de estendais", "value": 0 },
         { "label": "Colocar varões", "value": 1 },
@@ -72,6 +81,7 @@
     },
     {
       "key": "service-materials",
+      "required": true,
       "type": "radio",
       "label": "Tem os materiais necessários para realizar este serviço?",
       "options": [
@@ -88,6 +98,7 @@
     { "type": "footnote", "label": "Tipo de Oferta" },
     {
       "key": "offer-type",
+      "required": true,
       "widget": "offer-type",
       "formOfferType": "one-time-service-specific",
       "urgentPrices": {
@@ -113,6 +124,7 @@
           "key": "company-status",
           "label": "Continuar como convidado",
           "name": "guest.company-status",
+          "required": true,
           "dependencyType": "value",
           "dependencyValue": "guest",
           "options": [
@@ -124,6 +136,7 @@
           "name": "guest.firstName",
           "key": "first-name",
           "type": "text",
+          "required": true,
           "label": "Nome",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -131,6 +144,7 @@
         {
           "name": "guest.lastName",
           "key": "last-name",
+          "required": true,
           "type": "text",
           "label": "Apelido",
           "dependencyType": "value",
@@ -140,6 +154,8 @@
           "name": "guest.email",
           "type": "email",
           "key": "email",
+          "pattern": "email",
+          "required": true,
           "label": "Endereço de e-mail",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -148,7 +164,9 @@
           "name": "guest.telephone",
           "key": "telephone",
           "type": "text",
+          "pattern": "telephone",
           "label": "Número de Telemóvel",
+          "required": true,
           "dependencyType": "value",
           "dependencyValue": "guest"
         },
@@ -156,6 +174,8 @@
           "name": "login.email",
           "key": "email",
           "type": "email",
+          "pattern": "email",
+          "required": true,
           "label": "Endereço de e-mail",
           "dependencyType": "value",
           "dependencyValue": "login"
@@ -171,6 +191,8 @@
           "name": "login.password",
           "key": "password",
           "type": "password",
+          "pattern": "password",
+          "required": true,
           "label": "Senha",
           "dependencyType": "value",
           "dependencyValue": "login"
@@ -179,6 +201,7 @@
           "type": "radio",
           "key": "company-status",
           "label": "Crie uma conta e acompanhe o estado do seu pedido.",
+          "required": true,
           "name": "signup.company-status",
           "dependencyType": "value",
           "dependencyValue": "signup",
@@ -191,14 +214,17 @@
           "name": "signup.email",
           "type": "email",
           "key": "email",
+          "required": true,
           "label": "Endereço de e-mail",
           "dependencyType": "value",
           "dependencyValue": "signup"
         },
         {
           "name": "signup.telephone",
+          "required": true,
           "type": "text",
           "key": "telephone",
+          "pattern": "telephone",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "signup"
@@ -207,6 +233,8 @@
           "name": "signup.password",
           "type": "password",
           "label": "Senha",
+          "pattern": "password",
+          "required": true,
           "key": "password",
           "dependencyType": "value",
           "dependencyValue": "signup"
@@ -216,12 +244,14 @@
           "key": "first-name",
           "type": "text",
           "label": "Nome",
+          "required": true,
           "dependencyType": "value",
           "dependencyValue": "signup"
         },
         {
           "name": "signup.last-name",
           "key": "last-name",
+          "required": true,
           "type": "text",
           "label": "Apelido",
           "dependencyType": "value",

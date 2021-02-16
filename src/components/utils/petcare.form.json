@@ -87,6 +87,7 @@
     },
     {
       "key": "special-transportation",
+      "required": true,
       "type": "radio",
       "options": [
         { "label": "Não", "value": 0 },

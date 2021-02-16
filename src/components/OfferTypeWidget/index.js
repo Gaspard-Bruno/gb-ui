@@ -106,7 +106,7 @@ const OfferTypeWidget = ({
             name='service-start-date'
             type='date'
             minDate={minDate}
-            defaultValue={answers?.['service-start-date']}
+            defaultValue={answers?.['service-startfig date']}
             onChange={values =>
               action({ name: 'service-start-date', value: values })
             }
