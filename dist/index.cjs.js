@@ -33568,7 +33568,7 @@ var useFormErrors = function useFormErrors(_ref) {
   }, []);
   var validateAllFields = React.useCallback(function (fields, values) {
     var errors = {};
-    var nestedFieldKeys = getFieldDetails(values);
+    var nestedFieldKeys = getFieldDetails(values, fields);
     nestedFieldKeys.forEach(function (fieldKey) {
       var fieldError = validateField({
         key: fieldKey,
@@ -33654,7 +33654,7 @@ var Form$1 = function Form(_ref) {
       setFormErrors = _useState2[1];
 
   React.useEffect(function () {
-    if (Object.keys(errors).length) {
+    if (errors && Object.keys(errors).length) {
       formRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
@@ -33965,7 +33965,7 @@ var Form$1 = function Form(_ref) {
           }), /*#__PURE__*/React__default['default'].createElement(TextInput, {
             key: 'district_other_parish',
             label: "Freguesia",
-            error: formErrors['district_other_sparish'],
+            error: formErrors['district_other_parish'],
             onChange: function onChange(v) {
               fieldProps.onChange(v, {
                 key: 'district_other_parish'
