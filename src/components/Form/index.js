@@ -52,17 +52,17 @@ const Form = ({
   submitLabel,
   backgroundColor,
   translate,
-  fieldsWidgets,
   onChange,
-  resetLabel,
-  cancelLabel,
   onError,
   errors,
   btnType,
   btnAction,
-  answers,
+  answers = {},
   hiddenFields,
-  children
+  children,
+  fieldsWidgets,
+  resetLabel,
+  cancelLabel
 }) => {
   /* const validationErrors = errors || {}; */
 
@@ -101,12 +101,14 @@ const Form = ({
         }
       });
     getAnswers(valueQuestions);
-    // * For non-schema properties like 'offer-type' and 'district' childrenesfabfdm,gadfjilgms yetjx c
-    Object.keys(answers).forEach(ansKey => {
-      if (!initialValues.current[ansKey]) {
-        initialValues.current[ansKey] = answers[ansKey];
-      }
-    });
+    // * For non-schema properties like 'offer-type' and 'district' children
+    if (answers) {
+      Object.keys(answers).forEach(ansKey => {
+        if (!initialValues.current[ansKey]) {
+          initialValues.current[ansKey] = answers[ansKey];
+        }
+      });
+    }
   };
 
   getInitialValues(questions);
