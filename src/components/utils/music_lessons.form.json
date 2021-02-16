@@ -7,6 +7,7 @@
       "label": "Local para realização das aulas",
       "key": "lessons-location",
       "type": "dropdown",
+      "required": true,
       "options": [
         { "label": "Em minha casa", "value": 0 },
         { "label": "Casa do Professor", "value": 1 },
@@ -16,6 +17,7 @@
         {
           "key": "lessons-location-another",
           "label": "Outro",
+          "required": true,
           "type": "text",
           "dependencyType": "value",
           "dependencyValue": 2
@@ -26,21 +28,27 @@
       "key": "district",
       "widget": "district",
       "label": "Distrito",
+      "required": true,
       "type": "dropdown",
       "options": [{ "value": 0, "label": "Lisboa" }]
     },
-    { "key": "address", "label": "Morada", "type": "text" },
-    { "key": "postal-code", "label": "Código Postal", "type": "text" },
+    { "key": "address", "required": true, "label": "Morada", "type": "text" },
+    {
+      "key": "postal-code",
+      "required": true,
+      "label": "Código Postal",
+      "type": "text"
+    },
 
     { "label": "Serviço", "type": "footnote" },
     {
       "key": "service-type",
       "label": " ",
       "type": "radio",
+      "required": true,
       "options": [
         { "value": 0, "label": "Standard" },
-        { "value": 1, "label": "Premium" },
-        { "value": 2, "label": "Urgente" }
+        { "value": 1, "label": "Premium" }
       ],
       "children": [
         {
@@ -70,18 +78,20 @@
       "key": "intrument",
       "label": "Instrumento",
       "type": "dropdown",
+      "required": true,
       "options": [
         { "value": 0, "label": "Viola" },
         { "value": 1, "label": "Piano" },
         { "value": 2, "label": "Bateria" },
         { "value": 3, "label": "Acordeão" },
         { "value": 4, "label": "Violino" },
-        { "value": 4, "label": "Flauta" }
+        { "value": 5, "label": "Flauta" }
       ]
     },
     {
       "key": "actual-level",
       "label": "Nível Actual",
+      "required": true,
       "type": "dropdown",
       "options": [
         { "value": 0, "label": "Básico" },
@@ -94,7 +104,14 @@
     {
       "key": "offer-type",
       "widget": "offer-type",
-      "formOfferType": "hour-pack"
+      "formOfferType": "hour-pack",
+      "required": true,
+      "urgentPrices": {
+        "heading": "+2,44€",
+        "headerText": "/ hora",
+        "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+        "extras": "Serviço realizado em menos de 24H à data do primeiro contacto"
+      }
     },
 
     { "label": "Notas", "type": "footnote" },
@@ -124,12 +141,14 @@
           "type": "text",
           "label": "Nome",
           "dependencyType": "value",
+          "required": true,
           "dependencyValue": "guest"
         },
         {
           "name": "guest.lastName",
           "key": "last-name",
           "type": "text",
+          "required": true,
           "label": "Apelido",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -138,6 +157,8 @@
           "name": "guest.email",
           "type": "email",
           "key": "email",
+          "required": true,
+          "pattern": "email",
           "label": "Endereço de e-mail",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -146,12 +167,16 @@
           "name": "guest.telephone",
           "key": "telephone",
           "type": "text",
+          "required": true,
+          "pattern": "telephone",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "guest"
         },
         {
           "name": "login.email",
+          "required": true,
+          "pattern": "email",
           "key": "email",
           "type": "email",
           "label": "Endereço de e-mail",
@@ -169,6 +194,8 @@
           "name": "login.password",
           "key": "password",
           "type": "password",
+          "required": true,
+          "pattern": "password",
           "label": "Senha",
           "dependencyType": "value",
           "dependencyValue": "login"
@@ -179,6 +206,7 @@
           "label": "Crie uma conta e acompanhe o estado do seu pedido.",
           "name": "signup.company-status",
           "dependencyType": "value",
+          "required": true,
           "dependencyValue": "signup",
           "options": [
             { "label": "Particular", "value": 0, "isSelected": false },
@@ -188,6 +216,8 @@
         {
           "name": "signup.email",
           "type": "email",
+          "required": true,
+          "pattern": "email",
           "key": "email",
           "label": "Endereço de e-mail",
           "dependencyType": "value",
@@ -197,6 +227,8 @@
           "name": "signup.telephone",
           "type": "text",
           "key": "telephone",
+          "required": true,
+          "pattern": "telephone",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "signup"
@@ -206,12 +238,15 @@
           "type": "password",
           "label": "Senha",
           "key": "password",
+          "required": true,
+          "pattern": "password",
           "dependencyType": "value",
           "dependencyValue": "signup"
         },
         {
           "name": "signup.first-name",
           "key": "first-name",
+          "required": true,
           "type": "text",
           "label": "Nome",
           "dependencyType": "value",
@@ -221,6 +256,7 @@
           "name": "signup.last-name",
           "key": "last-name",
           "type": "text",
+          "required": true,
           "label": "Apelido",
           "dependencyType": "value",
           "dependencyValue": "signup"

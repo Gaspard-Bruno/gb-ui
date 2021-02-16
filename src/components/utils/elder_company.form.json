@@ -8,21 +8,27 @@
       "key": "district",
       "widget": "district",
       "label": "Distrito",
+      "required": true,
       "type": "dropdown",
       "options": [{ "value": 1, "label": "Lisboa" }]
     },
-    { "key": "address", "label": "Morada", "type": "text" },
-    { "key": "postal-code", "label": "Código Postal", "type": "text" },
+    { "key": "address", "label": "Morada", "required": true, "type": "text" },
+    {
+      "key": "postal-code",
+      "label": "Código Postal",
+      "required": true,
+      "type": "text"
+    },
 
     { "type": "footnote", "label": "Serviço" },
     {
       "key": "service-type",
       "label": " ",
+      "required": true,
       "type": "radio",
       "options": [
         { "value": 0, "label": "Standard" },
-        { "value": 1, "label": "Premium" },
-        { "value": 2, "label": "Urgente" }
+        { "value": 1, "label": "Premium" }
       ],
       "children": [
         {
@@ -51,6 +57,7 @@
     {
       "key": "service-offer",
       "type": "dropdown",
+      "required": true,
       "label": "Tipo de apoio",
       "options": [
         { "label": "Companhia / Passeios a pé", "value": 0 },
@@ -72,6 +79,7 @@
 
     {
       "key": "support-car",
+      "required": true,
       "type": "radio",
       "label": "No caso de acompanhamento em deslocações, é necessário a utilização do carro do Especialista 55+?",
       "options": [
@@ -83,8 +91,15 @@
     { "type": "footnote", "label": "Tipo de Oferta" },
     {
       "key": "offer-type",
+      "required": true,
       "widget": "offer-type",
-      "formOfferType": "hour-pack"
+      "formOfferType": "hour-pack",
+      "urgentPrices": {
+        "heading": "+2,44€",
+        "headerText": "/ hora",
+        "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+        "extras": "Serviço realizado em menos de 24H à data do primeiro contacto"
+      }
     },
 
     { "type": "footnote", "label": "Notas" },
@@ -100,6 +115,7 @@
           "type": "radio",
           "key": "company-status",
           "label": "Continuar como convidado",
+          "required": true,
           "name": "guest.company-status",
           "dependencyType": "value",
           "dependencyValue": "guest",
@@ -113,6 +129,7 @@
           "key": "first-name",
           "type": "text",
           "label": "Nome",
+          "required": true,
           "dependencyType": "value",
           "dependencyValue": "guest"
         },
@@ -120,6 +137,7 @@
           "name": "guest.lastName",
           "key": "last-name",
           "type": "text",
+          "required": true,
           "label": "Apelido",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -128,6 +146,8 @@
           "name": "guest.email",
           "type": "email",
           "key": "email",
+          "required": true,
+          "pattern":"email",
           "label": "Endereço de e-mail",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -136,6 +156,8 @@
           "name": "guest.telephone",
           "key": "telephone",
           "type": "text",
+          "required": true,
+          "pattern": "telephone",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -143,6 +165,8 @@
         {
           "name": "login.email",
           "key": "email",
+          "required": true,
+          "pattern": "email",
           "type": "email",
           "label": "Endereço de e-mail",
           "dependencyType": "value",
@@ -158,6 +182,8 @@
         {
           "name": "login.password",
           "key": "password",
+          "required": true,
+          "pattern": "password",
           "type": "password",
           "label": "Senha",
           "dependencyType": "value",
@@ -168,6 +194,7 @@
           "key": "company-status",
           "label": "Crie uma conta e acompanhe o estado do seu pedido.",
           "name": "signup.company-status",
+          "required": true,
           "dependencyType": "value",
           "dependencyValue": "signup",
           "options": [
@@ -179,13 +206,16 @@
           "name": "signup.email",
           "type": "email",
           "key": "email",
+          "required": true,
+          "pattern": "email",
           "label": "Endereço de e-mail",
           "dependencyType": "value",
           "dependencyValue": "signup"
         },
         {
           "name": "signup.telephone",
-          "type": "text",
+          "required": true,
+          "pattern": "telephone",
           "key": "telephone",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
@@ -193,6 +223,8 @@
         },
         {
           "name": "signup.password",
+          "required": true,
+          "pattern": "password",
           "type": "password",
           "label": "Senha",
           "key": "password",
@@ -203,6 +235,7 @@
           "name": "signup.first-name",
           "key": "first-name",
           "type": "text",
+          "required": true,
           "label": "Nome",
           "dependencyType": "value",
           "dependencyValue": "signup"
@@ -210,6 +243,7 @@
         {
           "name": "signup.last-name",
           "key": "last-name",
+          "required": true,
           "type": "text",
           "label": "Apelido",
           "dependencyType": "value",

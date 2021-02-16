@@ -11,7 +11,38 @@
     },
     { "key": "address", "label": "Morada", "type": "text" },
     { "key": "postal-code", "label": "Código Postal", "type": "text" },
-
+    { "type": "footnote", "label": "Serviço" },
+    {
+      "key": "service-type",
+      "label": " ",
+      "type": "radio",
+      "options": [
+        { "value": 0, "label": "Standard" },
+        { "value": 1, "label": "Premium" }
+      ],
+      "children": [
+        {
+          "key": "premium-service",
+          "widget": "service-type-detail",
+          "heading": "+2,50€",
+          "headerText": "/ hora",
+          "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+          "extras": "Serviço executado por um Especialista com avaliação superior a 4.9.",
+          "dependencyType": "value",
+          "dependencyValue": 1
+        },
+        {
+          "key": "urgent-service",
+          "widget": "service-type-detail",
+          "heading": "+2,44€",
+          "headerText": "/ hora",
+          "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+          "extras": "Serviço realizado em menos de 24H à data do primeiro contacto",
+          "dependencyType": "value",
+          "dependencyValue": 2
+        }
+      ]
+    },
     {
       "type": "text",
       "key": "service-offer",
@@ -58,7 +89,13 @@
     {
       "key": "offer-type",
       "widget": "offer-type",
-      "formOfferType": "one-time-service-specific"
+      "formOfferType": "one-time-service-specific",
+      "urgentPrices": {
+        "heading": "+2,44€",
+        "headerText": "/ hora",
+        "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+        "extras": "Serviço realizado em menos de 24H à data do primeiro contacto"
+      }
     },
 
     { "type": "footnote", "label": "Notas" },

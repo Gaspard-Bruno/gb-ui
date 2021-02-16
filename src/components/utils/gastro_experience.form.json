@@ -7,15 +7,22 @@
       "key": "district",
       "widget": "district",
       "label": "Distrito",
+      "required": true,
       "type": "dropdown",
       "options": [{ "value": 0, "label": "Lisboa" }]
     },
-    { "key": "address", "label": "Morada", "type": "text" },
-    { "key": "postal-code", "label": "Código Postal", "type": "text" },
+    { "key": "address", "label": "Morada", "required": true, "type": "text" },
+    {
+      "key": "postal-code",
+      "label": "Código Postal",
+      "required": true,
+      "type": "text"
+    },
 
     {
       "key": "number-of-persons",
       "label": "Número de Pessoas",
+      "required": true,
       "type": "dropdown",
       "options": [
         { "value": 4, "label": "4" },
@@ -34,6 +41,7 @@
       "key": "starter-option",
       "label": "Entrada",
       "type": "dropdown",
+      "required": true,
       "options": [
         { "value": 0, "label": "Caldo Verde" },
         { "value": 1, "label": "Gaspacho" },
@@ -44,6 +52,7 @@
     {
       "key": "main-dish",
       "label": " ",
+      "required": true,
       "type": "radio",
       "options": [
         { "label": "Peixe", "value": 0, "key": "fish-dish" },
@@ -56,6 +65,7 @@
           "label": "Prato de peixe",
           "type": "dropdown",
           "dependencyType": "value",
+          "required": true,
           "dependencyValue": 0,
           "options": [
             { "value": 0, "label": "Arroz de gambas" },
@@ -67,6 +77,7 @@
           "label": "Prato de carne",
           "type": "dropdown",
           "dependencyType": "value",
+          "required": true,
           "dependencyValue": 1,
           "options": [
             { "value": 0, "label": "Arroz de pato" },
@@ -81,6 +92,7 @@
           "key": "veggie-dish",
           "label": "Prato vegetariano",
           "type": "dropdown",
+          "required": true,
           "dependencyType": "value",
           "dependencyValue": 2,
           "options": [
@@ -93,6 +105,7 @@
     {
       "key": "dessert",
       "label": "Sobremesa",
+      "required": true,
       "type": "dropdown",
       "options": [
         { "value": 0, "label": "Arroz doce" },
@@ -103,6 +116,7 @@
     {
       "key": "wine",
       "label": "Vinho",
+      "required": true,
       "type": "dropdown",
       "options": [
         { "value": 0, "label": "Tinto" },
@@ -114,7 +128,14 @@
     {
       "key": "offer-type",
       "widget": "offer-type",
-      "formOfferType": "one-time-service-specific"
+      "formOfferType": "one-time-service-specific",
+      "required": true,
+      "urgentPrices": {
+        "heading": "+2,44€",
+        "headerText": "/ hora",
+        "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+        "extras": "Serviço realizado em menos de 24H à data do primeiro contacto"
+      }
     },
 
     {
@@ -135,6 +156,7 @@
           "key": "company-status",
           "label": "Continuar como convidado",
           "name": "guest.company-status",
+          "required": true,
           "dependencyType": "value",
           "dependencyValue": "guest",
           "options": [
@@ -146,6 +168,7 @@
           "name": "guest.firstName",
           "key": "first-name",
           "type": "text",
+          "required": true,
           "label": "Nome",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -154,6 +177,7 @@
           "name": "guest.lastName",
           "key": "last-name",
           "type": "text",
+          "required": true,
           "label": "Apelido",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -162,6 +186,8 @@
           "name": "guest.email",
           "type": "email",
           "key": "email",
+          "required": true,
+          "pattern": "email",
           "label": "Endereço de e-mail",
           "dependencyType": "value",
           "dependencyValue": "guest"
@@ -169,6 +195,8 @@
         {
           "name": "guest.telephone",
           "key": "telephone",
+          "required": true,
+          "pattern": "telephone",
           "type": "text",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
@@ -177,6 +205,8 @@
         {
           "name": "login.email",
           "key": "email",
+          "required": true,
+          "pattern": "email",
           "type": "email",
           "label": "Endereço de e-mail",
           "dependencyType": "value",
@@ -192,6 +222,8 @@
         {
           "name": "login.password",
           "key": "password",
+          "required": true,
+          "pattern": "password",
           "type": "password",
           "label": "Senha",
           "dependencyType": "value",
@@ -200,6 +232,7 @@
         {
           "type": "radio",
           "key": "company-status",
+          "required": true,
           "label": "Crie uma conta e acompanhe o estado do seu pedido.",
           "name": "signup.company-status",
           "dependencyType": "value",
@@ -212,6 +245,8 @@
         {
           "name": "signup.email",
           "type": "email",
+          "required": true,
+          "pattern": "email",
           "key": "email",
           "label": "Endereço de e-mail",
           "dependencyType": "value",
@@ -221,6 +256,8 @@
           "name": "signup.telephone",
           "type": "text",
           "key": "telephone",
+          "required": true,
+          "pattern": "telephone",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "signup"
@@ -228,6 +265,8 @@
         {
           "name": "signup.password",
           "type": "password",
+          "required": true,
+          "pattern": "password",
           "label": "Senha",
           "key": "password",
           "dependencyType": "value",
@@ -236,6 +275,7 @@
         {
           "name": "signup.first-name",
           "key": "first-name",
+          "required": true,
           "type": "text",
           "label": "Nome",
           "dependencyType": "value",
@@ -245,6 +285,7 @@
           "name": "signup.last-name",
           "key": "last-name",
           "type": "text",
+          "required": true,
           "label": "Apelido",
           "dependencyType": "value",
           "dependencyValue": "signup"

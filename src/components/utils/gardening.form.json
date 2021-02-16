@@ -5,6 +5,7 @@
     {
       "key": "chosen-language",
       "label": "Idioma Preferido",
+      "required": true,
       "type": "dropdown",
       "options": [
         { "value": 1, "label": "Português" },
@@ -17,22 +18,28 @@
     {
       "key": "district",
       "widget": "district",
+      "required": true,
       "label": "Distrito",
       "type": "dropdown",
       "options": [{ "value": 1, "label": "Lisboa" }]
     },
-    { "key": "address", "label": "Morada", "type": "text" },
-    { "key": "postal-code", "label": "Código Postal", "type": "text" },
+    { "key": "address", "label": "Morada", "required": true, "type": "text" },
+    {
+      "key": "postal-code",
+      "label": "Código Postal",
+      "required": true,
+      "type": "text"
+    },
 
     { "label": "Serviço", "type": "footnote" },
     {
       "key": "service-type",
       "label": " ",
       "type": "radio",
+      "required": true,
       "options": [
         { "value": 0, "label": "Standard" },
-        { "value": 1, "label": "Premium" },
-        { "value": 2, "label": "Urgente" }
+        { "value": 1, "label": "Premium" }
       ],
       "children": [
         {
@@ -60,6 +67,7 @@
     {
       "key": "service-offer",
       "type": "dropdown",
+      "required": true,
       "label": "Tipo de serviço",
       "options": [
         { "label": "Limpeza de ervas", "value": 1 },
@@ -71,10 +79,12 @@
     {
       "key": "area-size",
       "label": "Área m2 (Aproximadamente)",
+      "required": true,
       "type": "text"
     },
     {
       "key": "materials",
+      "required": true,
       "type": "dropdown",
       "label": "Tem as ferramentas necessários para realizar este serviço?",
       "options": [
@@ -92,8 +102,15 @@
     { "type": "footnote", "label": "Tipo de Oferta" },
     {
       "key": "offer-type",
+      "required": true,
       "widget": "offer-type",
-      "formOfferType": "hour-pack"
+      "formOfferType": "hour-pack",
+      "urgentPrices": {
+        "heading": "+2,44€",
+        "headerText": "/ hora",
+        "body": "*acresce ao valor final; não inclui a taxa de IVA em vigor",
+        "extras": "Serviço realizado em menos de 24H à data do primeiro contacto"
+      }
     },
 
     { "label": "Notas", "type": "footnote" },
@@ -110,6 +127,7 @@
           "key": "company-status",
           "label": "Continuar como convidado",
           "name": "guest.company-status",
+          "required": true,
           "dependencyType": "value",
           "dependencyValue": "guest",
           "options": [
@@ -120,6 +138,7 @@
         {
           "name": "guest.firstName",
           "key": "first-name",
+          "required": true,
           "type": "text",
           "label": "Nome",
           "dependencyType": "value",
@@ -128,6 +147,7 @@
         {
           "name": "guest.lastName",
           "key": "last-name",
+          "required": true,
           "type": "text",
           "label": "Apelido",
           "dependencyType": "value",
@@ -136,6 +156,8 @@
         {
           "name": "guest.email",
           "type": "email",
+          "required": true,
+          "pattern": "email",
           "key": "email",
           "label": "Endereço de e-mail",
           "dependencyType": "value",
@@ -144,6 +166,8 @@
         {
           "name": "guest.telephone",
           "key": "telephone",
+          "required": true,
+          "pattern": "telephone",
           "type": "text",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
@@ -152,6 +176,8 @@
         {
           "name": "login.email",
           "key": "email",
+          "required": true,
+          "pattern": "email",
           "type": "email",
           "label": "Endereço de e-mail",
           "dependencyType": "value",
@@ -168,12 +194,15 @@
           "name": "login.password",
           "key": "password",
           "type": "password",
+          "required": true,
+          "pattern": "password",
           "label": "Senha",
           "dependencyType": "value",
           "dependencyValue": "login"
         },
         {
           "type": "radio",
+          "required": true,
           "key": "company-status",
           "label": "Crie uma conta e acompanhe o estado do seu pedido.",
           "name": "signup.company-status",
@@ -188,6 +217,8 @@
           "name": "signup.email",
           "type": "email",
           "key": "email",
+          "required": true,
+          "pattern": "email",
           "label": "Endereço de e-mail",
           "dependencyType": "value",
           "dependencyValue": "signup"
@@ -196,6 +227,8 @@
           "name": "signup.telephone",
           "type": "text",
           "key": "telephone",
+          "required": true,
+          "pattern": "telephone",
           "label": "Número de Telemóvel",
           "dependencyType": "value",
           "dependencyValue": "signup"
@@ -205,12 +238,15 @@
           "type": "password",
           "label": "Senha",
           "key": "password",
+          "required": true,
+          "pattern": "password",
           "dependencyType": "value",
           "dependencyValue": "signup"
         },
         {
           "name": "signup.first-name",
           "key": "first-name",
+          "required": true,
           "type": "text",
           "label": "Nome",
           "dependencyType": "value",
@@ -219,6 +255,7 @@
         {
           "name": "signup.last-name",
           "key": "last-name",
+          "required": true,
           "type": "text",
           "label": "Apelido",
           "dependencyType": "value",
