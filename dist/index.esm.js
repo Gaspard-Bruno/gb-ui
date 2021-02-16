@@ -22850,7 +22850,7 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       name: "service-start-date",
       type: "date",
       minDate: minDate,
-      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start-date'],
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-startfig date'],
       onChange: function onChange(values) {
         return _action({
           name: 'service-start-date',
@@ -33794,6 +33794,7 @@ var Form$1 = function Form(_ref) {
             offerType: field.formOfferType,
             packOptions: field.options,
             answers: answers,
+            errors: formErrors,
             values: formik === null || formik === void 0 ? void 0 : formik.values,
             urgentPrices: field === null || field === void 0 ? void 0 : field.urgentPrices,
             action: function action(values) {
