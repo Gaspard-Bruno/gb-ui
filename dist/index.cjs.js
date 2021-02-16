@@ -33632,17 +33632,18 @@ var Form$1 = function Form(_ref) {
       submitLabel = _ref.submitLabel,
       backgroundColor = _ref.backgroundColor,
       translate = _ref.translate,
-      fieldsWidgets = _ref.fieldsWidgets,
       _onChange = _ref.onChange,
-      resetLabel = _ref.resetLabel,
-      cancelLabel = _ref.cancelLabel,
       onError = _ref.onError,
       errors = _ref.errors,
       btnType = _ref.btnType,
       btnAction = _ref.btnAction,
-      answers = _ref.answers,
+      _ref$answers = _ref.answers,
+      answers = _ref$answers === void 0 ? {} : _ref$answers,
       hiddenFields = _ref.hiddenFields,
-      children = _ref.children;
+      children = _ref.children,
+      fieldsWidgets = _ref.fieldsWidgets,
+      resetLabel = _ref.resetLabel,
+      cancelLabel = _ref.cancelLabel;
 
   /* const validationErrors = errors || {}; */
   var initialValues = React.useRef({});
@@ -33686,13 +33687,15 @@ var Form$1 = function Form(_ref) {
       });
     };
 
-    getAnswers(valueQuestions); // * For non-schema properties like 'offer-type' and 'district' childrenesfabfdm,gadfjilgms yetjx c
+    getAnswers(valueQuestions); // * For non-schema properties like 'offer-type' and 'district' children
 
-    Object.keys(answers).forEach(function (ansKey) {
-      if (!initialValues.current[ansKey]) {
-        initialValues.current[ansKey] = answers[ansKey];
-      }
-    });
+    if (answers) {
+      Object.keys(answers).forEach(function (ansKey) {
+        if (!initialValues.current[ansKey]) {
+          initialValues.current[ansKey] = answers[ansKey];
+        }
+      });
+    }
   };
 
   getInitialValues(questions);
