@@ -78,7 +78,7 @@ const useFormErrors = ({}) => {
     (fields, values) => {
       const errors = {};
 
-      const nestedFieldKeys = getFieldDetails(values);
+      const nestedFieldKeys = getFieldDetails(values, fields);
 
       nestedFieldKeys.forEach(fieldKey => {
         const fieldError = validateField(

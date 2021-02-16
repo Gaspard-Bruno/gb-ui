@@ -70,7 +70,7 @@ const Form = ({
   const flatFields = useRef([]);
   const [formErrors, setFormErrors] = useState({});
   useEffect(() => {
-    if (Object.keys(errors).length) {
+    if (errors && Object.keys(errors).length) {
       formRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
@@ -391,7 +391,7 @@ const Form = ({
                     <TextInput
                       key={'district_other_parish'}
                       label='Freguesia'
-                      error={formErrors['district_other_sparish']}
+                      error={formErrors['district_other_parish']}
                       onChange={v => {
                         fieldProps.onChange(v, {
                           key: 'district_other_parish'
