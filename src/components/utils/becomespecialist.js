@@ -8,17 +8,24 @@ const stepOne = () => {
       key: 'sexType',
       label: 'Sexo',
       type: 'radio',
+      required: true,
       options: [
         { value: 0, label: 'Feminino' },
         { value: 1, label: 'Masculino' }
       ]
     },
-    { key: 'name', type: 'text', label: 'Nome' },
-    { key: 'lastName', type: 'text', label: 'Apelido' },
-    { key: 'birthDate', type: 'date', label: 'Data de Nascimento' },
-    { key: 'nif', type: 'text', label: 'NIF' },
+    { key: 'name', type: 'text', required: true, label: 'Nome' },
+    { key: 'lastName', type: 'text', required: true, label: 'Apelido' },
+    {
+      key: 'birthDate',
+      type: 'date',
+      required: true,
+      label: 'Data de Nascimento'
+    },
+    { key: 'nif', type: 'text', label: 'NIF', pattern: 'nif', required: true },
     {
       key: 'maritalStatus',
+      required: true,
       type: 'radio',
       isVerticalAligned: true,
       label: 'Estado Civil',
@@ -41,16 +48,21 @@ const stepTwo = () => {
     {
       key: 'telephone',
       label: 'Número de Telemóvel',
+      required: true,
+      pattern: 'telephone',
       type: 'text'
     },
     {
       key: 'email',
       label: 'Endereço de Email',
+      required: true,
+      pattern: 'email',
       type: 'email'
     },
     {
       key: 'preferredContact',
       type: 'radio',
+      required: true,
       isVerticalAligned: true,
       label: 'Método de contacto preferencial',
       options: [
@@ -70,12 +82,14 @@ const stepThree = () => {
     }, */
     {
       key: 'country',
+      required: true,
       label: 'País',
       type: 'dropdown',
       options: [{ label: 'Portugal', value: 1 }]
     },
     {
       key: 'district',
+      required: true,
       widget: 'district',
       label: 'Distrito',
       type: 'dropdown',
@@ -84,16 +98,20 @@ const stepThree = () => {
     {
       key: 'address',
       label: 'Morada',
+      required: true,
       type: 'text'
     },
     {
       key: 'postalCode',
       label: 'Código Postal',
+      required: true,
+      pattern: 'postal-code',
       type: 'text'
     },
     {
       key: 'location',
       label: 'Localidade',
+      required: true,
       type: 'text'
     }
   ];
@@ -110,6 +128,7 @@ const stepFour = () => {
       label: 'Situação Profissional',
       type: 'radio',
       isVerticalAligned: true,
+      required: true,
       options: [
         { label: 'Pré Reforma', value: 0 },
         { label: 'Desempregado', value: 1 },
@@ -120,6 +139,7 @@ const stepFour = () => {
     {
       key: 'professionalExperience',
       label: 'Experiência Profissional anterior',
+      required: true,
       type: 'text-area',
       placeholder: 'Conte-nos um pouco sobre a sua Experiência Profissional'
     }
@@ -136,6 +156,7 @@ const stepFive = () => {
       label: 'Tem carro disponível caso seja necessário em algum serviço ?',
       key: 'hasCar',
       type: 'radio',
+      required: true,
       isVerticalAligned: true,
       options: [
         { label: 'Sim', value: 1 },
@@ -146,6 +167,7 @@ const stepFive = () => {
       key: 'services',
       label: 'Serviços',
       type: 'uniq-array',
+      required: true,
       value: [],
       options: [
         { label: 'Apoio Familiar a Crianças', value: 'babysitting' },
@@ -1174,6 +1196,7 @@ const stepSeven = () => {
       label: 'Tem actividade aberta ?',
       type: 'radio',
       isVerticalAligned: true,
+      required: true,
       options: [
         { label: 'Sim', value: 1 },
         { label: 'Não', value: 0 }
@@ -1183,6 +1206,7 @@ const stepSeven = () => {
       key: 'paymentMethod',
       label: 'Método de Pagamento Preferencial',
       type: 'radio',
+      required: true,
       isVerticalAligned: true,
       options: [
         { label: 'Recibos Mensais', value: 0 },
@@ -1206,6 +1230,7 @@ const stepEight = () => {
       label: 'Tem conhecimento ou fala fluentemente alguma língua estrangeira?',
       type: 'radio',
       isVerticalAligned: true,
+      required: true,
       options: [
         { label: 'Sim', value: 1 },
         { label: 'Não', value: 0 }
@@ -1261,12 +1286,14 @@ const stepNine = () => {
     {
       key: 'known55',
       label: 'Como soube da 55+',
+      required: true,
       type: 'text-area'
     },
     {
       key: 'mainMotivation',
       label:
         'Porque quer fazer parte da 55+? Qual é a sua principal motivação?',
+      required: true,
       type: 'text-area'
     },
     {
