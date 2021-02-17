@@ -1,0 +1,519 @@
+{
+  "Lisboa": {
+    "label": "Lisboa",
+    "value": "lisboa",
+    "parishes": [
+      "Alcântara",
+      "Alvalade",
+      "Areeiro",
+      "Arroios",
+      "Avenidas Novas",
+      "Beato",
+      "Belém",
+      "Benfica",
+      "Campo de Ourique",
+      "Campolide",
+      "Carnide",
+      "Estrela",
+      "Lumiar",
+      "Marvila",
+      "Misericórdia",
+      "Olivais",
+      "Parque das Nações",
+      "Penha de França",
+      "Santa Clara",
+      "Santa Maria Maior",
+      "Santo António",
+      "São Domingos de Benfica",
+      "São Vicente"
+    ]
+  },
+  "Amadora": {
+    "label": "Amadora",
+    "value": "amadora",
+    "parishes": [
+      "Águas Livres",
+      "Alfragide",
+      "Encosta do Sol",
+      "Falagueira-Venda Nova",
+      "Mina de Água",
+      "Venteira"
+    ]
+  },
+  "Odivelas": {
+    "label": "Odivelas",
+    "value": "odivelas",
+    "parishes": [
+      "Odivelas",
+      "Pontinha e Famões",
+      "Póvoa de Santo Adrião e Olival Basto",
+      "Ramada e Caneças"
+    ]
+  },
+  "Sintra": {
+    "label": "Sintra",
+    "value": "sintra",
+    "parishes": [
+      "Agualva e Mira-Sintra",
+      "Algueirão-Mem Martins",
+      "Almargem do Bispo, Pero Pinheiro e Montelavar",
+      "Cacém e São Marcos",
+      "Casal de Cambra",
+      "Colares",
+      "Massamá e Monte Abraão",
+      "Queluz e Belas",
+      "Rio de Mouro",
+      "São João das Lampas e Terrugem",
+      "Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)"
+    ]
+  },
+  "Cascais": {
+    "label": "Cascais",
+    "value": "cascais",
+    "parishes": [
+      "Alcabideche",
+      "Carcavelos e Parede",
+      "Cascais e Estoril",
+      "São Domingos de Rana"
+    ]
+  },
+  "Oeiras": {
+    "label": "Oeiras",
+    "value": "oeiras",
+    "parishes": [
+      "Algés, Linda-a-Velha e Cruz Quebrada-Dafundo",
+      "Barcarena",
+      "Carnaxide e Queijas",
+      "Oeiras e São Julião da Barra, Paço de Arcos e Caxias",
+      "Porto Salvo"
+    ]
+  },
+  "Loures": {
+    "label": "Loures",
+    "value": "loures",
+    "parishes": [
+      "Bucelas",
+      "Camarate, Unhos e Apelação",
+      "Fanhões",
+      "Loures",
+      "Lousa",
+      "Moscavide e Portela",
+      "Sacavém e Prior Velho",
+      "Santa Iria de Azoia, São João da Talha e Bobadela",
+      "Santo Antão e São Julião do Tojal",
+      "Santo António dos Cavaleiros e Frielas"
+    ]
+  },
+  "Almada": {
+    "label": "Almada",
+    "value": "almada",
+    "parishes": [
+      "Almada, Cova da Piedade, Pragal e Cacilhas",
+      "Caparica e Trafaria",
+      "Charneca de Caparica e Sobreda",
+      "Costa da Caparica",
+      "Laranjeiro e Feijó"
+    ]
+  },
+  "Porto": {
+    "label": "Porto",
+    "value": "porto",
+    "parishes": [
+      "Aldoar, foz do Douro e Nevogilde",
+      "Cedofeita, Santo Ildefonso, Sé, Miragaia, São Nicolau e Vitória",
+      "Lordelo do Ouro e Massarelos",
+      "Bonfim",
+      "Campanhã",
+      "Paranhos"
+    ]
+  },
+  "Valongo": {
+    "label": "Valongo",
+    "value": "valongo",
+    "parishes": [
+      "Alfena",
+      "Ermesinde",
+      "Valongo",
+      "Campo e Sobrado - Campo",
+      "Campo e Sobrado - Sobrado"
+    ]
+  },
+  "Maia": {
+    "label": "Maia",
+    "value": "maia",
+    "parishes": [
+      "Aguas santas",
+      "Castêlo da Maia",
+      "Folgosa",
+      "Milheirós",
+      "Moreira",
+      "Nogueira e Silva Escura",
+      "Pedrouços",
+      "S, Pedro Fins",
+      "Vila Nova da Telha",
+      "Cidade da Maia"
+    ]
+  },
+  "Paredes": {
+    "label": "Paredes",
+    "value": "paredes",
+    "parishes": [
+      "Sobreira",
+      "Aguiar de Sousa",
+      "Astromil",
+      "Baltar",
+      "Beire",
+      "Cete",
+      "Cristelo",
+      "Duas igrejas",
+      "Grandra",
+      "Lordelo",
+      "Louredo",
+      "Parada de Todeia",
+      "Paredes",
+      "Rebordosa",
+      "Recarei",
+      "Sobrosa",
+      "Vandoma",
+      "Vilela"
+    ]
+  },
+  "Matosinhos": {
+    "label": "Matosinhos",
+    "value": "matosinhos",
+    "parishes": [
+      "Custóias, Leça do Balio e Guifões",
+      "Matosinhos e Leça da Palmeira",
+      "Perafita, Lavra e Santa Cruz do Bispo",
+      "São Mamede de Infesta e Senhora da Hora"
+    ]
+  },
+  "Vila do Conde": {
+    "label": "Vila do Conde",
+    "value": "vila-do-conde",
+    "parishes": [
+      "Árvore",
+      "Aveleda",
+      "Azurara",
+      "Bagunte, Ferreiró, Outeiro Maior e Parada",
+      "Fajozes",
+      "Fornelo e Vairão",
+      "Gião",
+      "Guilhabreu",
+      "Junqueira",
+      "Labruge",
+      "Macieira da Maia",
+      "Malta e Canidelo",
+      "Mindelo",
+      "Modivas",
+      "Retorta e Tougues",
+      "Rio Mau e Arcos",
+      "Touguinha e Touguinhó",
+      "Vila Chã",
+      "Vila do Conde",
+      "Vilar de Pinheiro",
+      "Vilar e Mosteiró"
+    ]
+  },
+  "Trofa": {
+    "label": "Trofa",
+    "value": "trofa",
+    "parishes": [
+      "Alvarelhos e Guidões",
+      "Bougado (São Martinho e Santiago)",
+      "Coronado (São Romão e São Mamede)",
+      "Covelas",
+      "Muro"
+    ]
+  },
+  "Santo Tirso": {
+    "label": "Santo Tirso",
+    "value": "santo-tirso",
+    "parishes": [
+      "Agrela",
+      "Água Longa",
+      "Areias, Sequeiró, Lama e Palmeira",
+      "Aves",
+      "Carreira e Refojos de Riba de Ave",
+      "Lamelas e Guimarei",
+      "Monte Córdova",
+      "Negrelos (São Tomé)",
+      "Rebordões",
+      "Reguenga",
+      "Roriz",
+      "Santo Tirso, Couto (Santa Cristina e São Miguel) e Burgães",
+      "Vila Nova do Campo",
+      "Vilarinho"
+    ]
+  },
+  "Lousada": {
+    "label": "Lousada",
+    "value": "lousada",
+    "parishes": [
+      "Aveleda",
+      "Caíde de Rei",
+      "Cernadelo e Lousada (São Miguel e Santa Margarida)",
+      "Cristelos, Boim e Ordem",
+      "Figueiras e Covas",
+      "Lodares",
+      "Lustosa e Barrosas (Santo Estêvão)",
+      "Macieira",
+      "Meinedo",
+      "Nespereira e Casais",
+      "Nevogilde",
+      "Silvares, Pias, Nogueira e Alvarenga",
+      "Sousela",
+      "Torno",
+      "Vilar do Torno e Alentém"
+    ]
+  },
+  "Penafiel": {
+    "label": "Penafiel",
+    "value": "penafiel",
+    "parishes": [
+      "Abragão",
+      "Boelhe",
+      "Bustelo",
+      "Cabeça Santa",
+      "Canelas",
+      "Capela",
+      "Castelões",
+      "Croca",
+      "Duas Igrejas",
+      "Eja",
+      "Fonte Arcada",
+      "Galegos",
+      "Guilhufe e Urrô",
+      "Irivo",
+      "Lagares e Figueira",
+      "Luzim e Vila Cova",
+      "Oldrões",
+      "Paço de Sousa",
+      "Penafiel",
+      "Perozelo",
+      "Rans",
+      "Recezinhos (São Mamede)",
+      "Recezinhos (São Martinho)",
+      "Rio de Moinhos",
+      "Rio Mau",
+      "Sebolido",
+      "Termas de São Vicente",
+      "Valpedre"
+    ]
+  },
+  "Gondomar": {
+    "label": "Gondomar",
+    "value": "gondomar",
+    "parishes": [
+      "Baguim do Monte (Rio Tinto)",
+      "Fânzeres e São Pedro da Cova",
+      "Foz do Sousa e Covelo",
+      "Gondomar (São Cosme), Valbom e Jovim",
+      "Lomba",
+      "Melres e Medas",
+      "Rio Tinto"
+    ]
+  },
+  "Vila Nova de Gaia": {
+    "label": "Vila Nova de Gaia",
+    "value": "vila-nova-de-gaia",
+    "parishes": [
+      "Arcozelo",
+      "Avintes",
+      "Canelas",
+      "Canidelo",
+      "Grijó e Sermonde",
+      "Gulpilhares e Valadares",
+      "Madalena",
+      "Mafamude e Vilar do Paraíso",
+      "Oliveira do Douro",
+      "Pedroso e Seixezelo",
+      "Sandim, Olival, Lever e Crestuma",
+      "Santa Marinha e São Pedro da Afurada",
+      "São Félix da Marinha",
+      "Serzedo e Perosinho",
+      "Vilar de Andorinho"
+    ]
+  },
+  "Aveiro": {
+    "label": "Aveiro",
+    "value": "aveiro",
+    "parishes": [
+      "Cacia",
+      "Eixo e Eirol",
+      "Esgeira",
+      "Glória e Vera Cruz",
+      "Oliveirinha",
+      "Requeixo, N, Sr.ª de Fátima e Nariz",
+      "St Joana",
+      "São Bernardo",
+      "São Jacinto"
+    ]
+  },
+  "Murtosa": {
+    "label": "Murtosa",
+    "value": "murtosa",
+    "parishes": ["Bunheiro", "Monte", "Murtosa", "Torreira"]
+  },
+  "Espinho": {
+    "label": "Espinho",
+    "value": "espinho",
+    "parishes": ["Anta e Guetim", "Espinho", "Paramos", "Silvalde"]
+  },
+  "Ílhavo": {
+    "label": "Ílhavo",
+    "value": "ilhavo",
+    "parishes": [
+      "Gafanha da Encarnação",
+      "Gafanha da Nazaré",
+      "Ílhavo (São Salvador)",
+      "Gafanha do Carmo"
+    ]
+  },
+  "Oliveira do Bairro": {
+    "label": "Oliveira do Bairro",
+    "value": "oliveira-do-bairro",
+    "parishes": [
+      "Oliveira do Bairro",
+      "Oiã",
+      "Palhaça",
+      "Bustos, Troviscal e Mamarrosa"
+    ]
+  },
+  "Vagos": {
+    "label": "Vagos",
+    "value": "vagos",
+    "parishes": [
+      "Gafanha da boa hora",
+      "Vagos e Santo António",
+      "Soza",
+      "Santo André de Vagos",
+      "Ouca",
+      "Calvão",
+      "Ponte de Vagos e Santa Catarina",
+      "Fonte de Angeão e Covão do Lobo"
+    ]
+  },
+  "Ovar": {
+    "label": "Ovar",
+    "value": "ovar",
+    "parishes": [
+      "Cortegaça",
+      "Esmoriz",
+      "Maceda",
+      "Ovar, São João, Arada e São Vicente de Pereira Jusã",
+      "Válega"
+    ]
+  },
+  "São João da Madeira": {
+    "label": "São João da Madeira",
+    "value": "sao-joao-da-madeira",
+    "parishes": ["São João da Madeira"]
+  },
+  "Feira": {
+    "label": "Feira",
+    "value": "feira",
+    "parishes": [
+      "Argoncilhe",
+      "Arrifana",
+      "Escapães",
+      "Fiães",
+      "Fornos",
+      "Lourosa",
+      "Milheirós de Poiares",
+      "Mozelos",
+      "Nogueira da Regedoura",
+      "Paços de Brandão",
+      "Rio Meão",
+      "Romariz",
+      "Sanguedo",
+      "Santa Maria De Lamas",
+      "São João De Ver",
+      "São Paio De Oleiros",
+      "Caldas de São Jorge e Pigeiros",
+      "Canedo, Vale e Vila Maior",
+      "Lobão, Gião, Louredo e Guizande",
+      "Santa Maria Da Feira, Travanca, Sanfins e Espargo",
+      "São Miguel Do Souto e Mosteirô"
+    ]
+  },
+  "Águeda": {
+    "label": "Águeda",
+    "value": "agueda",
+    "parishes": [
+      "Aguada de Cima",
+      "Préstimo e Macieira de Alcoba",
+      "Águeda e Borralha",
+      "Recardães e Espinhel",
+      "Barrô e Aguada de Baixo",
+      "Travassô e Óis da Ribeira",
+      "Belazaima do Chão, Castanheira do Vouga e Agadão",
+      "Trofa, Segadães e Lamas do Vouga",
+      "Fermentelos",
+      "Valongo do Vouga",
+      "Macinhata do Vouga"
+    ]
+  },
+  "Sever do Vouga": {
+    "label": "Sever do Vouga",
+    "value": "sever-do-vouga",
+    "parishes": [
+      "Dornelas",
+      "Silva Escura",
+      "Roucas do Vouga",
+      "Couto de Esteves",
+      "Pessegueiro do Vouga",
+      "Cedrim do Vouga",
+      "Paradela",
+      "Talhadas"
+    ]
+  },
+  "Oliveira de Azeméis": {
+    "label": "Oliveira de Azeméis",
+    "value": "oliveira-de-azemeis",
+    "parishes": [
+      "Oliveira de Azeméis",
+      "Carregosa",
+      "Cesar",
+      "Cucujães",
+      "Fajões",
+      "Loureiro",
+      "Macieira de Sarnes",
+      "Macinhata da Seixa",
+      "Madail",
+      "Nogueira do Cravo",
+      "Ossela",
+      "Palmaz",
+      "Pindelo",
+      "Pinheiro da Bemposta",
+      "S, Martinho da Gândara",
+      "Santiago de Riba-Ul",
+      "Travanca",
+      "Ul",
+      "S, Roque"
+    ]
+  },
+  "Estarreja": {
+    "label": "Estarreja",
+    "value": "estarreja",
+    "parishes": [
+      "Avanca",
+      "Beduído e Veiros",
+      "Canelas e Fermelã",
+      "Pardilhó",
+      "Salreu"
+    ]
+  },
+  "Albergaria a velha": {
+    "label": "Albergaria a velha",
+    "value": "albergaria-a-velha",
+    "parishes": [
+      "Albergaria-a-Velha e Valmaior",
+      "Alquerubim",
+      "Angeja",
+      "Branca",
+      "Ribeira de Fráguas",
+      "S, João de Loure e Frossos"
+    ]
+  }
+}

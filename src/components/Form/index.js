@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import chunk from 'lodash.chunk';
 import sc from 'lodash.startcase';
 import kebabcase from 'lodash.kebabcase';
-import snakecase from 'lodash.snakecase';
 
 import TextInput from '../TextInput';
 import Select from '../Select';
@@ -29,16 +28,19 @@ import { FormContainer, StyledForm } from './styles';
 import SchedulePicker from '../SchedulePicker';
 import useFormErrors from '../../hooks/useFormErrors';
 
-import DISTRICT_PARISHES from './DISTRICT_PARISHES';
+import DISTRICT_PARISHES from '../utils/districts.json';
 
-const districtOptions = Object.keys(DISTRICT_PARISHES).map(district => ({
-  value: snakecase(district),
-  label: district
+const districtOptions = Object.values(DISTRICT_PARISHES).map(district => ({
+  value: district.value,
+  label: district.label
 }));
 
-const getParishesOptions = parishValue => {
+const getParishesOptions = districtValue => {
+  const district = Object.values(DISTRICT_PARISHES).find(
+    district => district.value === districtValue
+  );
   return (
-    DISTRICT_PARISHES[sc(parishValue)]?.map(parish => ({
+    district?.parishes?.map(parish => ({
       label: parish,
       value: parish
     })) ?? []
