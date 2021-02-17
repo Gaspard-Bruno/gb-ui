@@ -20042,442 +20042,6 @@ function words$1(string, pattern, guard) {
 
 var lodash_kebabcase = kebabCase;
 
-/**
- * lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash modularize exports="npm" -o ./`
- * Copyright jQuery Foundation and other contributors <https://jquery.org/>
- * Released under MIT license <https://lodash.com/license>
- * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
- */
-
-/** Used as references for various `Number` constants. */
-var INFINITY$6 = 1 / 0;
-
-/** `Object#toString` result references. */
-var symbolTag$7 = '[object Symbol]';
-
-/** Used to match words composed of alphanumeric characters. */
-var reAsciiWord$2 = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g;
-
-/** Used to match Latin Unicode letters (excluding mathematical operators). */
-var reLatin$2 = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g;
-
-/** Used to compose unicode character classes. */
-var rsAstralRange$2 = '\\ud800-\\udfff',
-    rsComboMarksRange$2 = '\\u0300-\\u036f\\ufe20-\\ufe23',
-    rsComboSymbolsRange$2 = '\\u20d0-\\u20f0',
-    rsDingbatRange$2 = '\\u2700-\\u27bf',
-    rsLowerRange$2 = 'a-z\\xdf-\\xf6\\xf8-\\xff',
-    rsMathOpRange$2 = '\\xac\\xb1\\xd7\\xf7',
-    rsNonCharRange$2 = '\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf',
-    rsPunctuationRange$2 = '\\u2000-\\u206f',
-    rsSpaceRange$2 = ' \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000',
-    rsUpperRange$2 = 'A-Z\\xc0-\\xd6\\xd8-\\xde',
-    rsVarRange$2 = '\\ufe0e\\ufe0f',
-    rsBreakRange$2 = rsMathOpRange$2 + rsNonCharRange$2 + rsPunctuationRange$2 + rsSpaceRange$2;
-
-/** Used to compose unicode capture groups. */
-var rsApos$2 = "['\u2019]",
-    rsBreak$2 = '[' + rsBreakRange$2 + ']',
-    rsCombo$2 = '[' + rsComboMarksRange$2 + rsComboSymbolsRange$2 + ']',
-    rsDigits$2 = '\\d+',
-    rsDingbat$2 = '[' + rsDingbatRange$2 + ']',
-    rsLower$2 = '[' + rsLowerRange$2 + ']',
-    rsMisc$2 = '[^' + rsAstralRange$2 + rsBreakRange$2 + rsDigits$2 + rsDingbatRange$2 + rsLowerRange$2 + rsUpperRange$2 + ']',
-    rsFitz$2 = '\\ud83c[\\udffb-\\udfff]',
-    rsModifier$2 = '(?:' + rsCombo$2 + '|' + rsFitz$2 + ')',
-    rsNonAstral$2 = '[^' + rsAstralRange$2 + ']',
-    rsRegional$2 = '(?:\\ud83c[\\udde6-\\uddff]){2}',
-    rsSurrPair$2 = '[\\ud800-\\udbff][\\udc00-\\udfff]',
-    rsUpper$2 = '[' + rsUpperRange$2 + ']',
-    rsZWJ$2 = '\\u200d';
-
-/** Used to compose unicode regexes. */
-var rsLowerMisc$2 = '(?:' + rsLower$2 + '|' + rsMisc$2 + ')',
-    rsUpperMisc$2 = '(?:' + rsUpper$2 + '|' + rsMisc$2 + ')',
-    rsOptLowerContr$2 = '(?:' + rsApos$2 + '(?:d|ll|m|re|s|t|ve))?',
-    rsOptUpperContr$2 = '(?:' + rsApos$2 + '(?:D|LL|M|RE|S|T|VE))?',
-    reOptMod$2 = rsModifier$2 + '?',
-    rsOptVar$2 = '[' + rsVarRange$2 + ']?',
-    rsOptJoin$2 = '(?:' + rsZWJ$2 + '(?:' + [rsNonAstral$2, rsRegional$2, rsSurrPair$2].join('|') + ')' + rsOptVar$2 + reOptMod$2 + ')*',
-    rsSeq$2 = rsOptVar$2 + reOptMod$2 + rsOptJoin$2,
-    rsEmoji$2 = '(?:' + [rsDingbat$2, rsRegional$2, rsSurrPair$2].join('|') + ')' + rsSeq$2;
-
-/** Used to match apostrophes. */
-var reApos$2 = RegExp(rsApos$2, 'g');
-
-/**
- * Used to match [combining diacritical marks](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks) and
- * [combining diacritical marks for symbols](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks_for_Symbols).
- */
-var reComboMark$2 = RegExp(rsCombo$2, 'g');
-
-/** Used to match complex or compound words. */
-var reUnicodeWord$2 = RegExp([
-  rsUpper$2 + '?' + rsLower$2 + '+' + rsOptLowerContr$2 + '(?=' + [rsBreak$2, rsUpper$2, '$'].join('|') + ')',
-  rsUpperMisc$2 + '+' + rsOptUpperContr$2 + '(?=' + [rsBreak$2, rsUpper$2 + rsLowerMisc$2, '$'].join('|') + ')',
-  rsUpper$2 + '?' + rsLowerMisc$2 + '+' + rsOptLowerContr$2,
-  rsUpper$2 + '+' + rsOptUpperContr$2,
-  rsDigits$2,
-  rsEmoji$2
-].join('|'), 'g');
-
-/** Used to detect strings that need a more robust regexp to match words. */
-var reHasUnicodeWord$2 = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
-
-/** Used to map Latin Unicode letters to basic Latin letters. */
-var deburredLetters$2 = {
-  // Latin-1 Supplement block.
-  '\xc0': 'A',  '\xc1': 'A', '\xc2': 'A', '\xc3': 'A', '\xc4': 'A', '\xc5': 'A',
-  '\xe0': 'a',  '\xe1': 'a', '\xe2': 'a', '\xe3': 'a', '\xe4': 'a', '\xe5': 'a',
-  '\xc7': 'C',  '\xe7': 'c',
-  '\xd0': 'D',  '\xf0': 'd',
-  '\xc8': 'E',  '\xc9': 'E', '\xca': 'E', '\xcb': 'E',
-  '\xe8': 'e',  '\xe9': 'e', '\xea': 'e', '\xeb': 'e',
-  '\xcc': 'I',  '\xcd': 'I', '\xce': 'I', '\xcf': 'I',
-  '\xec': 'i',  '\xed': 'i', '\xee': 'i', '\xef': 'i',
-  '\xd1': 'N',  '\xf1': 'n',
-  '\xd2': 'O',  '\xd3': 'O', '\xd4': 'O', '\xd5': 'O', '\xd6': 'O', '\xd8': 'O',
-  '\xf2': 'o',  '\xf3': 'o', '\xf4': 'o', '\xf5': 'o', '\xf6': 'o', '\xf8': 'o',
-  '\xd9': 'U',  '\xda': 'U', '\xdb': 'U', '\xdc': 'U',
-  '\xf9': 'u',  '\xfa': 'u', '\xfb': 'u', '\xfc': 'u',
-  '\xdd': 'Y',  '\xfd': 'y', '\xff': 'y',
-  '\xc6': 'Ae', '\xe6': 'ae',
-  '\xde': 'Th', '\xfe': 'th',
-  '\xdf': 'ss',
-  // Latin Extended-A block.
-  '\u0100': 'A',  '\u0102': 'A', '\u0104': 'A',
-  '\u0101': 'a',  '\u0103': 'a', '\u0105': 'a',
-  '\u0106': 'C',  '\u0108': 'C', '\u010a': 'C', '\u010c': 'C',
-  '\u0107': 'c',  '\u0109': 'c', '\u010b': 'c', '\u010d': 'c',
-  '\u010e': 'D',  '\u0110': 'D', '\u010f': 'd', '\u0111': 'd',
-  '\u0112': 'E',  '\u0114': 'E', '\u0116': 'E', '\u0118': 'E', '\u011a': 'E',
-  '\u0113': 'e',  '\u0115': 'e', '\u0117': 'e', '\u0119': 'e', '\u011b': 'e',
-  '\u011c': 'G',  '\u011e': 'G', '\u0120': 'G', '\u0122': 'G',
-  '\u011d': 'g',  '\u011f': 'g', '\u0121': 'g', '\u0123': 'g',
-  '\u0124': 'H',  '\u0126': 'H', '\u0125': 'h', '\u0127': 'h',
-  '\u0128': 'I',  '\u012a': 'I', '\u012c': 'I', '\u012e': 'I', '\u0130': 'I',
-  '\u0129': 'i',  '\u012b': 'i', '\u012d': 'i', '\u012f': 'i', '\u0131': 'i',
-  '\u0134': 'J',  '\u0135': 'j',
-  '\u0136': 'K',  '\u0137': 'k', '\u0138': 'k',
-  '\u0139': 'L',  '\u013b': 'L', '\u013d': 'L', '\u013f': 'L', '\u0141': 'L',
-  '\u013a': 'l',  '\u013c': 'l', '\u013e': 'l', '\u0140': 'l', '\u0142': 'l',
-  '\u0143': 'N',  '\u0145': 'N', '\u0147': 'N', '\u014a': 'N',
-  '\u0144': 'n',  '\u0146': 'n', '\u0148': 'n', '\u014b': 'n',
-  '\u014c': 'O',  '\u014e': 'O', '\u0150': 'O',
-  '\u014d': 'o',  '\u014f': 'o', '\u0151': 'o',
-  '\u0154': 'R',  '\u0156': 'R', '\u0158': 'R',
-  '\u0155': 'r',  '\u0157': 'r', '\u0159': 'r',
-  '\u015a': 'S',  '\u015c': 'S', '\u015e': 'S', '\u0160': 'S',
-  '\u015b': 's',  '\u015d': 's', '\u015f': 's', '\u0161': 's',
-  '\u0162': 'T',  '\u0164': 'T', '\u0166': 'T',
-  '\u0163': 't',  '\u0165': 't', '\u0167': 't',
-  '\u0168': 'U',  '\u016a': 'U', '\u016c': 'U', '\u016e': 'U', '\u0170': 'U', '\u0172': 'U',
-  '\u0169': 'u',  '\u016b': 'u', '\u016d': 'u', '\u016f': 'u', '\u0171': 'u', '\u0173': 'u',
-  '\u0174': 'W',  '\u0175': 'w',
-  '\u0176': 'Y',  '\u0177': 'y', '\u0178': 'Y',
-  '\u0179': 'Z',  '\u017b': 'Z', '\u017d': 'Z',
-  '\u017a': 'z',  '\u017c': 'z', '\u017e': 'z',
-  '\u0132': 'IJ', '\u0133': 'ij',
-  '\u0152': 'Oe', '\u0153': 'oe',
-  '\u0149': "'n", '\u017f': 'ss'
-};
-
-/** Detect free variable `global` from Node.js. */
-var freeGlobal$4 = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
-
-/** Detect free variable `self`. */
-var freeSelf$4 = typeof self == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root$4 = freeGlobal$4 || freeSelf$4 || Function('return this')();
-
-/**
- * A specialized version of `_.reduce` for arrays without support for
- * iteratee shorthands.
- *
- * @private
- * @param {Array} [array] The array to iterate over.
- * @param {Function} iteratee The function invoked per iteration.
- * @param {*} [accumulator] The initial value.
- * @param {boolean} [initAccum] Specify using the first element of `array` as
- *  the initial value.
- * @returns {*} Returns the accumulated value.
- */
-function arrayReduce$2(array, iteratee, accumulator, initAccum) {
-  var index = -1,
-      length = array ? array.length : 0;
-
-  if (initAccum && length) {
-    accumulator = array[++index];
-  }
-  while (++index < length) {
-    accumulator = iteratee(accumulator, array[index], index, array);
-  }
-  return accumulator;
-}
-
-/**
- * Splits an ASCII `string` into an array of its words.
- *
- * @private
- * @param {string} The string to inspect.
- * @returns {Array} Returns the words of `string`.
- */
-function asciiWords$2(string) {
-  return string.match(reAsciiWord$2) || [];
-}
-
-/**
- * The base implementation of `_.propertyOf` without support for deep paths.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Function} Returns the new accessor function.
- */
-function basePropertyOf$2(object) {
-  return function(key) {
-    return object == null ? undefined : object[key];
-  };
-}
-
-/**
- * Used by `_.deburr` to convert Latin-1 Supplement and Latin Extended-A
- * letters to basic Latin letters.
- *
- * @private
- * @param {string} letter The matched letter to deburr.
- * @returns {string} Returns the deburred letter.
- */
-var deburrLetter$2 = basePropertyOf$2(deburredLetters$2);
-
-/**
- * Checks if `string` contains a word composed of Unicode symbols.
- *
- * @private
- * @param {string} string The string to inspect.
- * @returns {boolean} Returns `true` if a word is found, else `false`.
- */
-function hasUnicodeWord$2(string) {
-  return reHasUnicodeWord$2.test(string);
-}
-
-/**
- * Splits a Unicode `string` into an array of its words.
- *
- * @private
- * @param {string} The string to inspect.
- * @returns {Array} Returns the words of `string`.
- */
-function unicodeWords$2(string) {
-  return string.match(reUnicodeWord$2) || [];
-}
-
-/** Used for built-in method references. */
-var objectProto$i = Object.prototype;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var objectToString$5 = objectProto$i.toString;
-
-/** Built-in value references. */
-var Symbol$5 = root$4.Symbol;
-
-/** Used to convert symbols to primitives and strings. */
-var symbolProto$5 = Symbol$5 ? Symbol$5.prototype : undefined,
-    symbolToString$4 = symbolProto$5 ? symbolProto$5.toString : undefined;
-
-/**
- * The base implementation of `_.toString` which doesn't convert nullish
- * values to empty strings.
- *
- * @private
- * @param {*} value The value to process.
- * @returns {string} Returns the string.
- */
-function baseToString$4(value) {
-  // Exit early for strings to avoid a performance hit in some environments.
-  if (typeof value == 'string') {
-    return value;
-  }
-  if (isSymbol$5(value)) {
-    return symbolToString$4 ? symbolToString$4.call(value) : '';
-  }
-  var result = (value + '');
-  return (result == '0' && (1 / value) == -INFINITY$6) ? '-0' : result;
-}
-
-/**
- * Creates a function like `_.camelCase`.
- *
- * @private
- * @param {Function} callback The function to combine each word.
- * @returns {Function} Returns the new compounder function.
- */
-function createCompounder$2(callback) {
-  return function(string) {
-    return arrayReduce$2(words$2(deburr$2(string).replace(reApos$2, '')), callback, '');
-  };
-}
-
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike$5(value) {
-  return !!value && typeof value == 'object';
-}
-
-/**
- * Checks if `value` is classified as a `Symbol` primitive or object.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
- * @example
- *
- * _.isSymbol(Symbol.iterator);
- * // => true
- *
- * _.isSymbol('abc');
- * // => false
- */
-function isSymbol$5(value) {
-  return typeof value == 'symbol' ||
-    (isObjectLike$5(value) && objectToString$5.call(value) == symbolTag$7);
-}
-
-/**
- * Converts `value` to a string. An empty string is returned for `null`
- * and `undefined` values. The sign of `-0` is preserved.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to process.
- * @returns {string} Returns the string.
- * @example
- *
- * _.toString(null);
- * // => ''
- *
- * _.toString(-0);
- * // => '-0'
- *
- * _.toString([1, 2, 3]);
- * // => '1,2,3'
- */
-function toString$5(value) {
-  return value == null ? '' : baseToString$4(value);
-}
-
-/**
- * Deburrs `string` by converting
- * [Latin-1 Supplement](https://en.wikipedia.org/wiki/Latin-1_Supplement_(Unicode_block)#Character_table)
- * and [Latin Extended-A](https://en.wikipedia.org/wiki/Latin_Extended-A)
- * letters to basic Latin letters and removing
- * [combining diacritical marks](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks).
- *
- * @static
- * @memberOf _
- * @since 3.0.0
- * @category String
- * @param {string} [string=''] The string to deburr.
- * @returns {string} Returns the deburred string.
- * @example
- *
- * _.deburr('déjà vu');
- * // => 'deja vu'
- */
-function deburr$2(string) {
-  string = toString$5(string);
-  return string && string.replace(reLatin$2, deburrLetter$2).replace(reComboMark$2, '');
-}
-
-/**
- * Converts `string` to
- * [snake case](https://en.wikipedia.org/wiki/Snake_case).
- *
- * @static
- * @memberOf _
- * @since 3.0.0
- * @category String
- * @param {string} [string=''] The string to convert.
- * @returns {string} Returns the snake cased string.
- * @example
- *
- * _.snakeCase('Foo Bar');
- * // => 'foo_bar'
- *
- * _.snakeCase('fooBar');
- * // => 'foo_bar'
- *
- * _.snakeCase('--FOO-BAR--');
- * // => 'foo_bar'
- */
-var snakeCase = createCompounder$2(function(result, word, index) {
-  return result + (index ? '_' : '') + word.toLowerCase();
-});
-
-/**
- * Splits `string` into an array of its words.
- *
- * @static
- * @memberOf _
- * @since 3.0.0
- * @category String
- * @param {string} [string=''] The string to inspect.
- * @param {RegExp|string} [pattern] The pattern to match words.
- * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
- * @returns {Array} Returns the words of `string`.
- * @example
- *
- * _.words('fred, barney, & pebbles');
- * // => ['fred', 'barney', 'pebbles']
- *
- * _.words('fred, barney, & pebbles', /[^, ]+/g);
- * // => ['fred', 'barney', '&', 'pebbles']
- */
-function words$2(string, pattern, guard) {
-  string = toString$5(string);
-  pattern = guard ? undefined : pattern;
-
-  if (pattern === undefined) {
-    return hasUnicodeWord$2(string) ? unicodeWords$2(string) : asciiWords$2(string);
-  }
-  return string.match(pattern) || [];
-}
-
-var lodash_snakecase = snakeCase;
-
 function _templateObject2$e() {
   var data = _taggedTemplateLiteral(["\n  border-radius: 2px;\n  padding: ", "px ", "px;\n  border: 1px solid\n    ", ";\n  font-family: Muli;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  color: ", ";\n  outline: none;\n  &:focus {\n    outline: none;\n    border-radius: 2px;\n    border-color: ", ";\n  }\n  &:disabled {\n    background-color: ", ";\n    color: ", ";\n  },\n"]);
 
@@ -23712,10 +23276,10 @@ var fails = function (exec) {
   }
 };
 
-var toString$6 = {}.toString;
+var toString$5 = {}.toString;
 
 var classofRaw = function (it) {
-  return toString$6.call(it).slice(8, -1);
+  return toString$5.call(it).slice(8, -1);
 };
 
 var split = ''.split;
@@ -23872,12 +23436,12 @@ var useSymbolAsUid = nativeSymbol
   && typeof Symbol.iterator == 'symbol';
 
 var WellKnownSymbolsStore = shared('wks');
-var Symbol$6 = global_1.Symbol;
-var createWellKnownSymbol = useSymbolAsUid ? Symbol$6 : Symbol$6 && Symbol$6.withoutSetter || uid;
+var Symbol$5 = global_1.Symbol;
+var createWellKnownSymbol = useSymbolAsUid ? Symbol$5 : Symbol$5 && Symbol$5.withoutSetter || uid;
 
 var wellKnownSymbol = function (name) {
   if (!has$2(WellKnownSymbolsStore, name)) {
-    if (nativeSymbol && has$2(Symbol$6, name)) WellKnownSymbolsStore[name] = Symbol$6[name];
+    if (nativeSymbol && has$2(Symbol$5, name)) WellKnownSymbolsStore[name] = Symbol$5[name];
     else WellKnownSymbolsStore[name] = createWellKnownSymbol('Symbol.' + name);
   } return WellKnownSymbolsStore[name];
 };
@@ -33596,33 +33160,581 @@ var useFormErrors = function useFormErrors(_ref) {
   };
 };
 
+var Lisboa = {
+	label: "Lisboa",
+	value: "lisboa",
+	parishes: [
+		"Alcântara",
+		"Alvalade",
+		"Areeiro",
+		"Arroios",
+		"Avenidas Novas",
+		"Beato",
+		"Belém",
+		"Benfica",
+		"Campo de Ourique",
+		"Campolide",
+		"Carnide",
+		"Estrela",
+		"Lumiar",
+		"Marvila",
+		"Misericórdia",
+		"Olivais",
+		"Parque das Nações",
+		"Penha de França",
+		"Santa Clara",
+		"Santa Maria Maior",
+		"Santo António",
+		"São Domingos de Benfica",
+		"São Vicente"
+	]
+};
+var Amadora = {
+	label: "Amadora",
+	value: "amadora",
+	parishes: [
+		"Águas Livres",
+		"Alfragide",
+		"Encosta do Sol",
+		"Falagueira-Venda Nova",
+		"Mina de Água",
+		"Venteira"
+	]
+};
+var Odivelas = {
+	label: "Odivelas",
+	value: "odivelas",
+	parishes: [
+		"Odivelas",
+		"Pontinha e Famões",
+		"Póvoa de Santo Adrião e Olival Basto",
+		"Ramada e Caneças"
+	]
+};
+var Sintra = {
+	label: "Sintra",
+	value: "sintra",
+	parishes: [
+		"Agualva e Mira-Sintra",
+		"Algueirão-Mem Martins",
+		"Almargem do Bispo, Pero Pinheiro e Montelavar",
+		"Cacém e São Marcos",
+		"Casal de Cambra",
+		"Colares",
+		"Massamá e Monte Abraão",
+		"Queluz e Belas",
+		"Rio de Mouro",
+		"São João das Lampas e Terrugem",
+		"Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)"
+	]
+};
+var Cascais = {
+	label: "Cascais",
+	value: "cascais",
+	parishes: [
+		"Alcabideche",
+		"Carcavelos e Parede",
+		"Cascais e Estoril",
+		"São Domingos de Rana"
+	]
+};
+var Oeiras = {
+	label: "Oeiras",
+	value: "oeiras",
+	parishes: [
+		"Algés, Linda-a-Velha e Cruz Quebrada-Dafundo",
+		"Barcarena",
+		"Carnaxide e Queijas",
+		"Oeiras e São Julião da Barra, Paço de Arcos e Caxias",
+		"Porto Salvo"
+	]
+};
+var Loures = {
+	label: "Loures",
+	value: "loures",
+	parishes: [
+		"Bucelas",
+		"Camarate, Unhos e Apelação",
+		"Fanhões",
+		"Loures",
+		"Lousa",
+		"Moscavide e Portela",
+		"Sacavém e Prior Velho",
+		"Santa Iria de Azoia, São João da Talha e Bobadela",
+		"Santo Antão e São Julião do Tojal",
+		"Santo António dos Cavaleiros e Frielas"
+	]
+};
+var Almada = {
+	label: "Almada",
+	value: "almada",
+	parishes: [
+		"Almada, Cova da Piedade, Pragal e Cacilhas",
+		"Caparica e Trafaria",
+		"Charneca de Caparica e Sobreda",
+		"Costa da Caparica",
+		"Laranjeiro e Feijó"
+	]
+};
+var Porto = {
+	label: "Porto",
+	value: "porto",
+	parishes: [
+		"Aldoar, foz do Douro e Nevogilde",
+		"Cedofeita, Santo Ildefonso, Sé, Miragaia, São Nicolau e Vitória",
+		"Lordelo do Ouro e Massarelos",
+		"Bonfim",
+		"Campanhã",
+		"Paranhos"
+	]
+};
+var Valongo = {
+	label: "Valongo",
+	value: "valongo",
+	parishes: [
+		"Alfena",
+		"Ermesinde",
+		"Valongo",
+		"Campo e Sobrado - Campo",
+		"Campo e Sobrado - Sobrado"
+	]
+};
+var Maia = {
+	label: "Maia",
+	value: "maia",
+	parishes: [
+		"Aguas santas",
+		"Castêlo da Maia",
+		"Folgosa",
+		"Milheirós",
+		"Moreira",
+		"Nogueira e Silva Escura",
+		"Pedrouços",
+		"S, Pedro Fins",
+		"Vila Nova da Telha",
+		"Cidade da Maia"
+	]
+};
+var Paredes = {
+	label: "Paredes",
+	value: "paredes",
+	parishes: [
+		"Sobreira",
+		"Aguiar de Sousa",
+		"Astromil",
+		"Baltar",
+		"Beire",
+		"Cete",
+		"Cristelo",
+		"Duas igrejas",
+		"Grandra",
+		"Lordelo",
+		"Louredo",
+		"Parada de Todeia",
+		"Paredes",
+		"Rebordosa",
+		"Recarei",
+		"Sobrosa",
+		"Vandoma",
+		"Vilela"
+	]
+};
+var Matosinhos = {
+	label: "Matosinhos",
+	value: "matosinhos",
+	parishes: [
+		"Custóias, Leça do Balio e Guifões",
+		"Matosinhos e Leça da Palmeira",
+		"Perafita, Lavra e Santa Cruz do Bispo",
+		"São Mamede de Infesta e Senhora da Hora"
+	]
+};
+var Trofa = {
+	label: "Trofa",
+	value: "trofa",
+	parishes: [
+		"Alvarelhos e Guidões",
+		"Bougado (São Martinho e Santiago)",
+		"Coronado (São Romão e São Mamede)",
+		"Covelas",
+		"Muro"
+	]
+};
+var Lousada = {
+	label: "Lousada",
+	value: "lousada",
+	parishes: [
+		"Aveleda",
+		"Caíde de Rei",
+		"Cernadelo e Lousada (São Miguel e Santa Margarida)",
+		"Cristelos, Boim e Ordem",
+		"Figueiras e Covas",
+		"Lodares",
+		"Lustosa e Barrosas (Santo Estêvão)",
+		"Macieira",
+		"Meinedo",
+		"Nespereira e Casais",
+		"Nevogilde",
+		"Silvares, Pias, Nogueira e Alvarenga",
+		"Sousela",
+		"Torno",
+		"Vilar do Torno e Alentém"
+	]
+};
+var Penafiel = {
+	label: "Penafiel",
+	value: "penafiel",
+	parishes: [
+		"Abragão",
+		"Boelhe",
+		"Bustelo",
+		"Cabeça Santa",
+		"Canelas",
+		"Capela",
+		"Castelões",
+		"Croca",
+		"Duas Igrejas",
+		"Eja",
+		"Fonte Arcada",
+		"Galegos",
+		"Guilhufe e Urrô",
+		"Irivo",
+		"Lagares e Figueira",
+		"Luzim e Vila Cova",
+		"Oldrões",
+		"Paço de Sousa",
+		"Penafiel",
+		"Perozelo",
+		"Rans",
+		"Recezinhos (São Mamede)",
+		"Recezinhos (São Martinho)",
+		"Rio de Moinhos",
+		"Rio Mau",
+		"Sebolido",
+		"Termas de São Vicente",
+		"Valpedre"
+	]
+};
+var Gondomar = {
+	label: "Gondomar",
+	value: "gondomar",
+	parishes: [
+		"Baguim do Monte (Rio Tinto)",
+		"Fânzeres e São Pedro da Cova",
+		"Foz do Sousa e Covelo",
+		"Gondomar (São Cosme), Valbom e Jovim",
+		"Lomba",
+		"Melres e Medas",
+		"Rio Tinto"
+	]
+};
+var Aveiro = {
+	label: "Aveiro",
+	value: "aveiro",
+	parishes: [
+		"Cacia",
+		"Eixo e Eirol",
+		"Esgeira",
+		"Glória e Vera Cruz",
+		"Oliveirinha",
+		"Requeixo, N, Sr.ª de Fátima e Nariz",
+		"St Joana",
+		"São Bernardo",
+		"São Jacinto"
+	]
+};
+var Murtosa = {
+	label: "Murtosa",
+	value: "murtosa",
+	parishes: [
+		"Bunheiro",
+		"Monte",
+		"Murtosa",
+		"Torreira"
+	]
+};
+var Espinho = {
+	label: "Espinho",
+	value: "espinho",
+	parishes: [
+		"Anta e Guetim",
+		"Espinho",
+		"Paramos",
+		"Silvalde"
+	]
+};
+var Vagos = {
+	label: "Vagos",
+	value: "vagos",
+	parishes: [
+		"Gafanha da boa hora",
+		"Vagos e Santo António",
+		"Soza",
+		"Santo André de Vagos",
+		"Ouca",
+		"Calvão",
+		"Ponte de Vagos e Santa Catarina",
+		"Fonte de Angeão e Covão do Lobo"
+	]
+};
+var Ovar = {
+	label: "Ovar",
+	value: "ovar",
+	parishes: [
+		"Cortegaça",
+		"Esmoriz",
+		"Maceda",
+		"Ovar, São João, Arada e São Vicente de Pereira Jusã",
+		"Válega"
+	]
+};
+var Feira = {
+	label: "Feira",
+	value: "feira",
+	parishes: [
+		"Argoncilhe",
+		"Arrifana",
+		"Escapães",
+		"Fiães",
+		"Fornos",
+		"Lourosa",
+		"Milheirós de Poiares",
+		"Mozelos",
+		"Nogueira da Regedoura",
+		"Paços de Brandão",
+		"Rio Meão",
+		"Romariz",
+		"Sanguedo",
+		"Santa Maria De Lamas",
+		"São João De Ver",
+		"São Paio De Oleiros",
+		"Caldas de São Jorge e Pigeiros",
+		"Canedo, Vale e Vila Maior",
+		"Lobão, Gião, Louredo e Guizande",
+		"Santa Maria Da Feira, Travanca, Sanfins e Espargo",
+		"São Miguel Do Souto e Mosteirô"
+	]
+};
+var Estarreja = {
+	label: "Estarreja",
+	value: "estarreja",
+	parishes: [
+		"Avanca",
+		"Beduído e Veiros",
+		"Canelas e Fermelã",
+		"Pardilhó",
+		"Salreu"
+	]
+};
 var DISTRICT_PARISHES = {
-  Lisboa: ['Ajuda', 'Alcântara', 'Alvalade', 'Areeiro', 'Arroios', 'Avenidas Novas', 'Beato', 'Belém', 'Benfica', 'Campo de Ourique', 'Campolide', 'Carnide', 'Estrela', 'Lumiar', 'Marvila', 'Misericórdia', 'Olivais', 'Parque das Nações', 'Penha de França', 'Santa Clara', 'Santa Maria Maior', 'Santo António', 'São Domingos de Benfica', 'São Vicente'],
-  Porto: ['Aldoar, foz do Douro e Nevogilde', 'Cedofeita, Santo Ildefonso, Sé, Miragaia, São Nicolau e Vitória', 'Lordelo do Ouro e Massarelos', 'Bonfim', 'Campanhã', 'Paranhos'],
-  Valongo: ['Alfena ', 'Ermesinde', 'Valongo', 'Campo e Sobrado - Campo', 'Campo e Sobrado - Sobrado'],
-  Maia: ['Aguas santas', 'Castêlo da Maia', 'Folgosa', 'Milheirós', 'Moreira', 'Nogueira e Silva Escura', 'Pedrouços', 'S. Pedro Fins', 'Vila Nova da Telha', 'Cidade da Maia'],
-  Paredes: ['Sobreira', 'Aguiar de Sousa', 'Astromil', 'Baltar', 'Beire', 'Cete', 'Cristelo', 'Duas igrejas', 'Grandra', 'Lordelo', 'Louredo', 'Parada de Todeia', 'Paredes', 'Rebordosa', 'Recarei', 'Sobrosa', 'Vandoma', 'Vilela'],
-  Matosinhos: ['Custóias, Leça do Balio e Guifões', 'Matosinhos e Leça da Palmeira', 'Perafita, Lavra e Santa Cruz do Bispo', 'São Mamede de Infesta e Senhora da Hora'],
-  Aveiro: ['Cacia', 'Eixo e Eirol', 'Esgeira', 'Glória e Vera Cruz', 'Oliveirinha', 'Requeixo, N. Sr.ª de Fátima e Nariz', 'St Joana', 'São Bernardo', 'São Jacinto'],
-  Outro: ['Outra']
+	Lisboa: Lisboa,
+	Amadora: Amadora,
+	Odivelas: Odivelas,
+	Sintra: Sintra,
+	Cascais: Cascais,
+	Oeiras: Oeiras,
+	Loures: Loures,
+	Almada: Almada,
+	Porto: Porto,
+	Valongo: Valongo,
+	Maia: Maia,
+	Paredes: Paredes,
+	Matosinhos: Matosinhos,
+	"Vila do Conde": {
+	label: "Vila do Conde",
+	value: "vila-do-conde",
+	parishes: [
+		"Árvore",
+		"Aveleda",
+		"Azurara",
+		"Bagunte, Ferreiró, Outeiro Maior e Parada",
+		"Fajozes",
+		"Fornelo e Vairão",
+		"Gião",
+		"Guilhabreu",
+		"Junqueira",
+		"Labruge",
+		"Macieira da Maia",
+		"Malta e Canidelo",
+		"Mindelo",
+		"Modivas",
+		"Retorta e Tougues",
+		"Rio Mau e Arcos",
+		"Touguinha e Touguinhó",
+		"Vila Chã",
+		"Vila do Conde",
+		"Vilar de Pinheiro",
+		"Vilar e Mosteiró"
+	]
+},
+	Trofa: Trofa,
+	"Santo Tirso": {
+	label: "Santo Tirso",
+	value: "santo-tirso",
+	parishes: [
+		"Agrela",
+		"Água Longa",
+		"Areias, Sequeiró, Lama e Palmeira",
+		"Aves",
+		"Carreira e Refojos de Riba de Ave",
+		"Lamelas e Guimarei",
+		"Monte Córdova",
+		"Negrelos (São Tomé)",
+		"Rebordões",
+		"Reguenga",
+		"Roriz",
+		"Santo Tirso, Couto (Santa Cristina e São Miguel) e Burgães",
+		"Vila Nova do Campo",
+		"Vilarinho"
+	]
+},
+	Lousada: Lousada,
+	Penafiel: Penafiel,
+	Gondomar: Gondomar,
+	"Vila Nova de Gaia": {
+	label: "Vila Nova de Gaia",
+	value: "vila-nova-de-gaia",
+	parishes: [
+		"Arcozelo",
+		"Avintes",
+		"Canelas",
+		"Canidelo",
+		"Grijó e Sermonde",
+		"Gulpilhares e Valadares",
+		"Madalena",
+		"Mafamude e Vilar do Paraíso",
+		"Oliveira do Douro",
+		"Pedroso e Seixezelo",
+		"Sandim, Olival, Lever e Crestuma",
+		"Santa Marinha e São Pedro da Afurada",
+		"São Félix da Marinha",
+		"Serzedo e Perosinho",
+		"Vilar de Andorinho"
+	]
+},
+	Aveiro: Aveiro,
+	Murtosa: Murtosa,
+	Espinho: Espinho,
+	"Ílhavo": {
+	label: "Ílhavo",
+	value: "ilhavo",
+	parishes: [
+		"Gafanha da Encarnação",
+		"Gafanha da Nazaré",
+		"Ílhavo (São Salvador)",
+		"Gafanha do Carmo"
+	]
+},
+	"Oliveira do Bairro": {
+	label: "Oliveira do Bairro",
+	value: "oliveira-do-bairro",
+	parishes: [
+		"Oliveira do Bairro",
+		"Oiã",
+		"Palhaça",
+		"Bustos, Troviscal e Mamarrosa"
+	]
+},
+	Vagos: Vagos,
+	Ovar: Ovar,
+	"São João da Madeira": {
+	label: "São João da Madeira",
+	value: "sao-joao-da-madeira",
+	parishes: [
+		"São João da Madeira"
+	]
+},
+	Feira: Feira,
+	"Águeda": {
+	label: "Águeda",
+	value: "agueda",
+	parishes: [
+		"Aguada de Cima",
+		"Préstimo e Macieira de Alcoba",
+		"Águeda e Borralha",
+		"Recardães e Espinhel",
+		"Barrô e Aguada de Baixo",
+		"Travassô e Óis da Ribeira",
+		"Belazaima do Chão, Castanheira do Vouga e Agadão",
+		"Trofa, Segadães e Lamas do Vouga",
+		"Fermentelos",
+		"Valongo do Vouga",
+		"Macinhata do Vouga"
+	]
+},
+	"Sever do Vouga": {
+	label: "Sever do Vouga",
+	value: "sever-do-vouga",
+	parishes: [
+		"Dornelas",
+		"Silva Escura",
+		"Roucas do Vouga",
+		"Couto de Esteves",
+		"Pessegueiro do Vouga",
+		"Cedrim do Vouga",
+		"Paradela",
+		"Talhadas"
+	]
+},
+	"Oliveira de Azeméis": {
+	label: "Oliveira de Azeméis",
+	value: "oliveira-de-azemeis",
+	parishes: [
+		"Oliveira de Azeméis",
+		"Carregosa",
+		"Cesar",
+		"Cucujães",
+		"Fajões",
+		"Loureiro",
+		"Macieira de Sarnes",
+		"Macinhata da Seixa",
+		"Madail",
+		"Nogueira do Cravo",
+		"Ossela",
+		"Palmaz",
+		"Pindelo",
+		"Pinheiro da Bemposta",
+		"S, Martinho da Gândara",
+		"Santiago de Riba-Ul",
+		"Travanca",
+		"Ul",
+		"S, Roque"
+	]
+},
+	Estarreja: Estarreja,
+	"Albergaria a velha": {
+	label: "Albergaria a velha",
+	value: "albergaria-a-velha",
+	parishes: [
+		"Albergaria-a-Velha e Valmaior",
+		"Alquerubim",
+		"Angeja",
+		"Branca",
+		"Ribeira de Fráguas",
+		"S, João de Loure e Frossos"
+	]
+}
 };
 
-var districtOptions = Object.keys(DISTRICT_PARISHES).map(function (district) {
+var districtOptions = Object.values(DISTRICT_PARISHES).map(function (district) {
   return {
-    value: lodash_snakecase(district),
-    label: district
+    value: district.value,
+    label: district.label
   };
 });
 
-var getParishesOptions = function getParishesOptions(parishValue) {
-  var _DISTRICT_PARISHES$sc, _DISTRICT_PARISHES$sc2;
+var getParishesOptions = function getParishesOptions(districtValue) {
+  var _district$parishes$ma, _district$parishes;
 
-  return (_DISTRICT_PARISHES$sc = (_DISTRICT_PARISHES$sc2 = DISTRICT_PARISHES[lodash_startcase(parishValue)]) === null || _DISTRICT_PARISHES$sc2 === void 0 ? void 0 : _DISTRICT_PARISHES$sc2.map(function (parish) {
+  var district = Object.values(DISTRICT_PARISHES).find(function (district) {
+    return district.value === districtValue;
+  });
+  return (_district$parishes$ma = district === null || district === void 0 ? void 0 : (_district$parishes = district.parishes) === null || _district$parishes === void 0 ? void 0 : _district$parishes.map(function (parish) {
     return {
       label: parish,
       value: parish
     };
-  })) !== null && _DISTRICT_PARISHES$sc !== void 0 ? _DISTRICT_PARISHES$sc : [];
+  })) !== null && _district$parishes$ma !== void 0 ? _district$parishes$ma : [];
 };
 
 var Form$1 = function Form(_ref) {
@@ -34305,21 +34417,21 @@ function symbolObservablePonyfill(root) {
 
 /* global window */
 
-var root$5;
+var root$4;
 
 if (typeof self !== 'undefined') {
-  root$5 = self;
+  root$4 = self;
 } else if (typeof window !== 'undefined') {
-  root$5 = window;
+  root$4 = window;
 } else if (typeof global !== 'undefined') {
-  root$5 = global;
+  root$4 = global;
 } else if (typeof module !== 'undefined') {
-  root$5 = module;
+  root$4 = module;
 } else {
-  root$5 = Function('return this')();
+  root$4 = Function('return this')();
 }
 
-var result = symbolObservablePonyfill(root$5);
+var result = symbolObservablePonyfill(root$4);
 
 /**
  * These are private action types reserved by Redux.

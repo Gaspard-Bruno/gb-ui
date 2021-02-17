@@ -116,6 +116,7 @@
     "@babel/preset-react": "^7.10.4",
     "@rollup/plugin-babel": "^5.2.1",
     "@rollup/plugin-image": "^2.0.5",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@welldone-software/why-did-you-render": "^4.2.7",
     "cross-env": "^7.0.2",

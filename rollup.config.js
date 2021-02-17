@@ -2,6 +2,7 @@ import babel from '@rollup/plugin-babel';
 import del from 'rollup-plugin-delete';
 import commonjs from 'rollup-plugin-commonjs';
 import image from '@rollup/plugin-image';
+import json from '@rollup/plugin-json';
 import externals from 'rollup-plugin-node-externals';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import pkg from './package.json';
@@ -13,6 +14,7 @@ export default {
     { file: pkg.module, format: 'esm' }
   ],
   plugins: [
+    json(),
     image(),
     babel({
       exclude: ['node_modules/**', 'src/router.js', 'src/App.js'] // Default: undefined
