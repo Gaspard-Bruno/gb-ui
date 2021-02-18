@@ -33119,13 +33119,13 @@ var fieldValidator = function fieldValidator() {
     }
 
     if (pattern === 'telephone' || pattern === 'phone') {
-      if (!validator.isMobilePhone(value, 'any')) {
+      if (!validator.isMobilePhone(value.toString(), 'any')) {
         return 'O telefone introduzido não é válido';
       }
     }
 
     if (pattern === 'postal-code' || pattern === 'postalCode') {
-      if (!validator.isPostalCode(value, 'PT')) {
+      if (!validator.isPostalCode(value.toString(), 'PT')) {
         return 'O código postal introduzido não é válido';
       }
     }
