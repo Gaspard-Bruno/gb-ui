@@ -84,11 +84,24 @@ const OfferTypeWidget = ({
     return !isNaN(new Date(d).getTime());
   };
 
-  const minDate = answers?.['service-start-date']
-    ? new Date(answers?.['service-start-date']).toISOString().split('T')[0]
-    : answers?.['service-end-date']
-    ? new Date(answers?.['service-end-date']).toISOString().split('T')[0]
-    : new Date().toISOString().split('T')[0];
+  const minDate = () => {
+    if (
+      isDateValid(values?.['service-start-date']) ||
+      isDateValid(values?.['service-start-date'])
+    ) {
+      if (isDateValid(values?.['service-start-date'])) {
+        return new Date(values?.['service-start-date'])
+          .toISOString()
+          .split('T')[0];
+      } else if (isDateValid(values?.['service-end-date'])) {
+        return new Date(values?.['service-end-date'])
+          .toISOString()
+          .split('T')[0];
+      }
+    } else {
+      return new Date().toISOString().split('T')[0];
+    }
+  };
 
   const renderOneTimeSpecific = serviceOptions => {
     return (
@@ -109,11 +122,13 @@ const OfferTypeWidget = ({
             error={errors?.['service-start-date']}
             name='service-start-date'
             type='date'
-            minDate={minDate}
-            defaultValue={answers?.['service-startfig date']}
-            onChange={values =>
-              action({ name: 'service-start-date', value: values })
-            }
+            minDate={minDate()}
+            defaultValue={answers?.['service-start date']}
+            onChange={values => {
+              if (isDateValid(values)) {
+                action({ name: 'service-start-date', value: values });
+              }
+            }}
           />
           <TextContainer> - </TextContainer>
           <Select
@@ -153,11 +168,13 @@ const OfferTypeWidget = ({
               error={errors?.['service-start-date']}
               name='service-start-date'
               type='date'
-              minDate={minDate}
+              minDate={minDate()}
               defaultValue={answers?.['service-start-date']}
-              onChange={values =>
-                action({ name: 'service-start-date', value: values })
-              }
+              onChange={values => {
+                if (isDateValid(values)) {
+                  action({ name: 'service-start-date', value: values });
+                }
+              }}
             />
             {
               <Row>
@@ -305,7 +322,7 @@ const OfferTypeWidget = ({
               label='Data de Início'
               name='service-start-date'
               type='date'
-              minDate={minDate}
+              minDate={minDate()}
               onChange={values => {
                 if (isDateValid(values)) {
                   action({ name: 'service-start-date', value: values });
@@ -318,7 +335,7 @@ const OfferTypeWidget = ({
               label='Data de Fim'
               name='service-end-date'
               type='date'
-              minDate={minDate}
+              minDate={minDate()}
               onChange={values => {
                 if (isDateValid(values)) {
                   action({ name: 'service-end-date', value: values });
@@ -430,7 +447,7 @@ const OfferTypeWidget = ({
                   label='Data de Início'
                   name='service-start-date'
                   type='date'
-                  minDate={minDate}
+                  minDate={minDate()}
                   defaultValue={answers?.['service-start-date']}
                   error={errors?.['service-start-date']}
                   onChange={values => {
@@ -480,7 +497,7 @@ const OfferTypeWidget = ({
                 label='Data do Início'
                 name='service-start-date'
                 type='date'
-                minDate={minDate}
+                minDate={minDate()}
                 defaultValue={answers?.['service-start-date']}
                 error={errors?.['service-start-date']}
                 onChange={values => {
