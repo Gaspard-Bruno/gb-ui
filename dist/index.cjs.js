@@ -23350,6 +23350,7 @@ var _index2 = _interopRequireDefault(addMilliseconds_1);
 
 var _index3 = _interopRequireDefault(requiredArgs_1);
 
+<<<<<<< HEAD
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MILLISECONDS_IN_HOUR = 3600000;
@@ -23381,6 +23382,342 @@ function addHours(dirtyDate, dirtyAmount) {
   var amount = (0, _index.default)(dirtyAmount);
   return (0, _index2.default)(dirtyDate, amount * MILLISECONDS_IN_HOUR);
 }
+=======
+  var isDateValid = function isDateValid(d) {
+    return !isNaN(new Date(d).getTime());
+  };
+
+  var minDate = function minDate() {
+    if (isDateValid(values === null || values === void 0 ? void 0 : values['service-start-date']) || isDateValid(values === null || values === void 0 ? void 0 : values['service-start-date'])) {
+      if (isDateValid(values === null || values === void 0 ? void 0 : values['service-start-date'])) {
+        return new Date(values === null || values === void 0 ? void 0 : values['service-start-date']).toISOString().split('T')[0];
+      } else if (isDateValid(values === null || values === void 0 ? void 0 : values['service-end-date'])) {
+        return new Date(values === null || values === void 0 ? void 0 : values['service-end-date']).toISOString().split('T')[0];
+      }
+    } else {
+      return new Date().toISOString().split('T')[0];
+    }
+  };
+
+  var renderOneTimeSpecific = function renderOneTimeSpecific(serviceOptions) {
+    return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(RadioButton, {
+      error: errors === null || errors === void 0 ? void 0 : errors['offer-type'],
+      name: "offer-type",
+      action: _action,
+      list: serviceOptions,
+      value: answers === null || answers === void 0 ? void 0 : answers['offer-type']
+    }), /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(Heading, {
+      size: 6
+    }, "Data e Hora do Servi\xE7o")), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(TextInput, {
+      label: "Data",
+      error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
+      name: "service-start-date",
+      type: "date",
+      minDate: minDate(),
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start date'],
+      onChange: function onChange(values) {
+        if (isDateValid(values)) {
+          _action({
+            name: 'service-start-date',
+            value: values
+          });
+        }
+      }
+    }), /*#__PURE__*/React__default['default'].createElement(TextContainer, null, " - "), /*#__PURE__*/React__default['default'].createElement(Select$2, {
+      label: "Hora",
+      name: "preferred-hours",
+      error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours'],
+      defaultValue: getDefaultValues(preferredHoursOptions, answers === null || answers === void 0 ? void 0 : answers['preferred-hours']),
+      options: preferredHoursOptions,
+      onChange: function onChange(values) {
+        return _action({
+          name: 'preferred-hours',
+          value: values.value
+        });
+      }
+    })));
+  };
+
+  var renderReadyPack = function renderReadyPack(serviceOptions) {
+    return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(RadioButton, {
+      error: errors === null || errors === void 0 ? void 0 : errors['offer-type'],
+      name: "offer-type",
+      action: _action,
+      list: serviceOptions,
+      value: answers === null || answers === void 0 ? void 0 : answers['offer-type']
+    }), values['offer-type'] === 0 && /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(Heading, {
+      size: 6
+    }, "Data e Hora Preferencial"), /*#__PURE__*/React__default['default'].createElement(TextInput, {
+      label: "Data",
+      error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
+      name: "service-start-date",
+      type: "date",
+      minDate: minDate(),
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start-date'],
+      onChange: function onChange(values) {
+        if (isDateValid(values)) {
+          _action({
+            name: 'service-start-date',
+            value: values
+          });
+        }
+      }
+    }), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
+      error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
+      label: "Prefer\xEAncia Hor\xE1ria",
+      name: "preferred-hours-start",
+      defaultValue: getDefaultValues(preferredHoursOptions, answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start']),
+      options: preferredHoursOptions,
+      onChange: function onChange(values) {
+        return _action({
+          name: 'preferred-hours-start',
+          value: values.value
+        });
+      }
+    }), /*#__PURE__*/React__default['default'].createElement(TextContainer, null, " - "), /*#__PURE__*/React__default['default'].createElement(Select$2, {
+      label: "",
+      error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-end'],
+      name: "preferred-hours-end",
+      defaultValue: getDefaultValues(preferredHoursOptions, answers === null || answers === void 0 ? void 0 : answers['preferred-hours-end']),
+      options: preferredHoursOptions,
+      onChange: function onChange(values) {
+        return _action({
+          name: 'preferred-hours-end',
+          value: values.value
+        });
+      }
+    }))), values['offer-type'] === 1 && /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
+      error: errors === null || errors === void 0 ? void 0 : errors['number-of-hours'],
+      label: "N\xFAmero de Horas",
+      name: "number-of-hours",
+      defaultValue: getDefaultValues(numberOfHoursOptions, answers === null || answers === void 0 ? void 0 : answers['number-of-hours']),
+      options: numberOfHoursOptions,
+      onChange: function onChange(values) {
+        return _action({
+          name: 'number-of-hours',
+          value: values.value
+        });
+      }
+    }), /*#__PURE__*/React__default['default'].createElement(Body, null, "Poder\xE1 alterar a recorr\xEAncia e reagendar para mais tarde atrav\xE9s da Equipa da 55+."), /*#__PURE__*/React__default['default'].createElement(Select$2, {
+      error: errors === null || errors === void 0 ? void 0 : errors['recurrence'],
+      label: "Recorr\xEAncia",
+      name: "recurrence",
+      defaultValue: getDefaultValues(recurrenceOptions, answers === null || answers === void 0 ? void 0 : answers['recurrence']),
+      onChange: function onChange(values) {
+        return _action({
+          name: 'recurrence',
+          value: values.value
+        });
+      },
+      options: recurrenceOptions
+    }), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
+      error: errors === null || errors === void 0 ? void 0 : errors['repetition'],
+      label: "Repeti\xE7\xE3o a cada",
+      defaultValue: getDefaultValues(repetitionOptions, answers === null || answers === void 0 ? void 0 : answers['repetition']),
+      options: repetitionOptions,
+      onChange: function onChange(values) {
+        return _action({
+          name: 'repetition',
+          value: values.value
+        });
+      }
+    }), /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(TextContainer, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency)), /*#__PURE__*/React__default['default'].createElement(Row, null, (values === null || values === void 0 ? void 0 : values['recurrence']) === 1 && /*#__PURE__*/React__default['default'].createElement(ButtonGroup, {
+      error: errors === null || errors === void 0 ? void 0 : errors['week-select'],
+      name: "week-select",
+      list: weekSelectOptions,
+      value: answers === null || answers === void 0 ? void 0 : answers['week-select'],
+      action: function action(values) {
+        return _action({
+          name: values === null || values === void 0 ? void 0 : values.name,
+          value: values === null || values === void 0 ? void 0 : values.value
+        });
+      }
+    }), (values === null || values === void 0 ? void 0 : values['recurrence']) === 2 && /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
+      error: errors === null || errors === void 0 ? void 0 : errors['montly-recurrence'],
+      label: "Ocorre em",
+      defaultValue: getDefaultValues(montlyRecurrenceOptions, answers === null || answers === void 0 ? void 0 : answers['montly-recurrence']),
+      options: montlyRecurrenceOptions,
+      onChange: function onChange(values) {
+        return _action({
+          name: 'montly-recurrence',
+          value: values.value
+        });
+      }
+    }), /*#__PURE__*/React__default['default'].createElement(TextContainer, null, " - "), /*#__PURE__*/React__default['default'].createElement(Select$2, {
+      error: errors === null || errors === void 0 ? void 0 : errors['montly-recurrence-weekday'],
+      defaultValue: getDefaultValues(montlyRecurrenceWeekDaysOptions, answers === null || answers === void 0 ? void 0 : answers['montly-recurrence-weekday']),
+      options: montlyRecurrenceWeekDaysOptions,
+      onChange: function onChange(values) {
+        return _action({
+          name: 'montly-recurrence-weekday',
+          value: values.value
+        });
+      }
+    }), /*#__PURE__*/React__default['default'].createElement(TextContainer, null, "do M\xEAs")))), /*#__PURE__*/React__default['default'].createElement(TextInput, {
+      error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start-date'],
+      label: "Data de In\xEDcio",
+      name: "service-start-date",
+      type: "date",
+      minDate: minDate(),
+      onChange: function onChange(values) {
+        if (isDateValid(values)) {
+          _action({
+            name: 'service-start-date',
+            value: values
+          });
+        }
+      }
+    }), /*#__PURE__*/React__default['default'].createElement(TextInput, {
+      error: errors === null || errors === void 0 ? void 0 : errors['service-end-date'],
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-end-date'],
+      label: "Data de Fim",
+      name: "service-end-date",
+      type: "date",
+      minDate: minDate(),
+      onChange: function onChange(values) {
+        if (isDateValid(values)) {
+          _action({
+            name: 'service-end-date',
+            value: values
+          });
+        }
+      }
+    }), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
+      error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
+      label: "Prefer\xEAncia Hor\xE1ria",
+      name: "preferred-hours-start",
+      defaultValue: getDefaultValues(preferredHoursOptions, answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start']),
+      options: preferredHoursOptions,
+      onChange: function onChange(values) {
+        return _action({
+          name: 'preferred-hours-start',
+          value: values.value
+        });
+      }
+    }), /*#__PURE__*/React__default['default'].createElement(TextContainer, null, " - "), /*#__PURE__*/React__default['default'].createElement(Select$2, {
+      error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-end'],
+      label: "",
+      name: "preferred-hours-end",
+      defaultValue: getDefaultValues(preferredHoursOptions, answers === null || answers === void 0 ? void 0 : answers['preferred-hours-end']),
+      options: preferredHoursOptions,
+      onChange: function onChange(values) {
+        return _action({
+          name: 'preferred-hours-end',
+          value: values.value
+        });
+      }
+    }))), values['offer-type'] === 2 && /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(SmallBody, null, "*V\xE1lido apenas para particulares"), /*#__PURE__*/React__default['default'].createElement(Select$2, {
+      label: "Escolha o Pack",
+      name: "pack-selection",
+      error: errors === null || errors === void 0 ? void 0 : errors['pack-selection'],
+      defaultValue: getDefaultValues(packOptions, answers === null || answers === void 0 ? void 0 : answers['pack-selection']),
+      options: packOptions,
+      onChange: function onChange(values) {
+        return _action({
+          name: 'pack-selection',
+          value: values.value
+        });
+      }
+    }), /*#__PURE__*/React__default['default'].createElement(SmallBody, null, "*n\xE3o inclui a taxa de IVA em vigor"), values['pack-selection'] === 0 && offerType !== 'ready-pack' || values['pack-selection'] === 1 && offerType !== 'ready-pack' ? /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(Body, null, "Poder\xE1 alterar a recorr\xEAncia e reagendar para mais tarde atrav\xE9s da Equipa da 55+."), /*#__PURE__*/React__default['default'].createElement(Select$2, {
+      label: "Recorr\xEAncia",
+      name: "recurrence",
+      defaultValue: getDefaultValues(recurrenceOptions, answers === null || answers === void 0 ? void 0 : answers['recurrence']),
+      error: errors === null || errors === void 0 ? void 0 : errors['recurrence'],
+      onChange: function onChange(values) {
+        return _action({
+          name: 'recurrence',
+          value: values.value
+        });
+      },
+      options: recurrenceOptions
+    }), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
+      error: errors === null || errors === void 0 ? void 0 : errors['repetition'],
+      label: "Repeti\xE7\xE3o a cada",
+      defaultValue: getDefaultValues(repetitionOptions, answers === null || answers === void 0 ? void 0 : answers['repetition']),
+      options: repetitionOptions,
+      onChange: function onChange(values) {
+        return _action({
+          name: 'repetition',
+          value: values.value
+        });
+      }
+    }), /*#__PURE__*/React__default['default'].createElement(TextContainer, null, selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.pickedRecurrency), (values === null || values === void 0 ? void 0 : values['recurrence']) === 1 && /*#__PURE__*/React__default['default'].createElement(ButtonGroup, {
+      error: errors === null || errors === void 0 ? void 0 : errors['week-select'],
+      name: "week-select",
+      value: answers === null || answers === void 0 ? void 0 : answers['week-select'],
+      list: weekSelectOptions,
+      action: function action(values) {
+        return _action(values);
+      }
+    })), /*#__PURE__*/React__default['default'].createElement(TextInput, {
+      label: "Data de In\xEDcio",
+      name: "service-start-date",
+      type: "date",
+      minDate: minDate(),
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start-date'],
+      error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
+      onChange: function onChange(values) {
+        if (isDateValid(values)) {
+          _action({
+            name: 'service-start-date',
+            value: values
+          });
+        }
+      }
+    }), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
+      error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
+      label: "Prefer\xEAncia Hor\xE1ria",
+      defaultValue: getDefaultValues(preferredHoursOptions, answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start']),
+      name: "preferred-hours-start",
+      options: preferredHoursOptions,
+      onChange: function onChange(values) {
+        return _action({
+          name: 'preferred-hours-start',
+          value: values.value
+        });
+      }
+    }), /*#__PURE__*/React__default['default'].createElement(TextContainer, null, " - "), /*#__PURE__*/React__default['default'].createElement(Select$2, {
+      error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-end'],
+      label: "",
+      name: "preferred-hours-end",
+      defaultValue: getDefaultValues(preferredHoursOptions, answers === null || answers === void 0 ? void 0 : answers['preferred-hours-end']),
+      options: preferredHoursOptions,
+      onChange: function onChange(values) {
+        return _action({
+          name: 'preferred-hours-end',
+          value: values.value
+        });
+      }
+    }))) : /*#__PURE__*/React__default['default'].createElement(TextInput, {
+      label: "Data do In\xEDcio",
+      name: "service-start-date",
+      type: "date",
+      minDate: minDate(),
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start-date'],
+      error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
+      onChange: function onChange(values) {
+        if (isDateValid(values)) {
+          _action({
+            name: 'service-start-date',
+            value: values
+          });
+        }
+      }
+    })), /*#__PURE__*/React__default['default'].createElement(Heading, {
+      size: 6
+    }, values['offer-type'] && values['offer-type'] !== 0 ? selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.total : null));
+  };
+
+  var urgencyRateRender = React.useCallback(function () {
+    var urgencyFallBackProps = {
+      heading: '+2,44€',
+      headerText: '/ hora',
+      body: '*acresce ao valor final; não inclui a taxa de IVA em vigor',
+      extras: 'Serviço realizado em menos de 24H à data do primeiro contacto'
+    };
+    var urgencyProps = urgentPrices || urgencyFallBackProps; // check for default values
+>>>>>>> e22e70d... hook: compile changes
 
 module.exports = exports.default;
 });
