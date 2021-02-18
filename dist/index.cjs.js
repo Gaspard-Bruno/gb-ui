@@ -22409,7 +22409,21 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     });
   };
 
-  var minDate = (answers === null || answers === void 0 ? void 0 : answers['service-start-date']) ? new Date(answers === null || answers === void 0 ? void 0 : answers['service-start-date']).toISOString().split('T')[0] : (answers === null || answers === void 0 ? void 0 : answers['service-end-date']) ? new Date(answers === null || answers === void 0 ? void 0 : answers['service-end-date']).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+  var isDateValid = function isDateValid(d) {
+    return !isNaN(new Date(d).getTime());
+  };
+
+  var minDate = function minDate() {
+    if (isDateValid(values === null || values === void 0 ? void 0 : values['service-start-date']) || isDateValid(values === null || values === void 0 ? void 0 : values['service-start-date'])) {
+      if (isDateValid(values === null || values === void 0 ? void 0 : values['service-start-date'])) {
+        return new Date(values === null || values === void 0 ? void 0 : values['service-start-date']).toISOString().split('T')[0];
+      } else if (isDateValid(values === null || values === void 0 ? void 0 : values['service-end-date'])) {
+        return new Date(values === null || values === void 0 ? void 0 : values['service-end-date']).toISOString().split('T')[0];
+      }
+    } else {
+      return new Date().toISOString().split('T')[0];
+    }
+  };
 
   var renderOneTimeSpecific = function renderOneTimeSpecific(serviceOptions) {
     return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(RadioButton, {
@@ -22425,13 +22439,15 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
       name: "service-start-date",
       type: "date",
-      minDate: minDate,
-      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-startfig date'],
+      minDate: minDate(),
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start date'],
       onChange: function onChange(values) {
-        return _action({
-          name: 'service-start-date',
-          value: values
-        });
+        if (isDateValid(values)) {
+          _action({
+            name: 'service-start-date',
+            value: values
+          });
+        }
       }
     }), /*#__PURE__*/React__default['default'].createElement(TextContainer, null, " - "), /*#__PURE__*/React__default['default'].createElement(Select$2, {
       label: "Hora",
@@ -22462,13 +22478,15 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
       name: "service-start-date",
       type: "date",
-      minDate: minDate,
+      minDate: minDate(),
       defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start-date'],
       onChange: function onChange(values) {
-        return _action({
-          name: 'service-start-date',
-          value: values
-        });
+        if (isDateValid(values)) {
+          _action({
+            name: 'service-start-date',
+            value: values
+          });
+        }
       }
     }), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
@@ -22567,12 +22585,14 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data de In\xEDcio",
       name: "service-start-date",
       type: "date",
-      minDate: minDate,
+      minDate: minDate(),
       onChange: function onChange(values) {
-        return _action({
-          name: 'service-start-date',
-          value: values
-        });
+        if (isDateValid(values)) {
+          _action({
+            name: 'service-start-date',
+            value: values
+          });
+        }
       }
     }), /*#__PURE__*/React__default['default'].createElement(TextInput, {
       error: errors === null || errors === void 0 ? void 0 : errors['service-end-date'],
@@ -22580,12 +22600,14 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data de Fim",
       name: "service-end-date",
       type: "date",
-      minDate: minDate,
+      minDate: minDate(),
       onChange: function onChange(values) {
-        return _action({
-          name: 'service-end-date',
-          value: values
-        });
+        if (isDateValid(values)) {
+          _action({
+            name: 'service-end-date',
+            value: values
+          });
+        }
       }
     }), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
@@ -22658,14 +22680,16 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data de In\xEDcio",
       name: "service-start-date",
       type: "date",
-      minDate: minDate,
+      minDate: minDate(),
       defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start-date'],
       error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
       onChange: function onChange(values) {
-        return _action({
-          name: 'service-start-date',
-          value: values
-        });
+        if (isDateValid(values)) {
+          _action({
+            name: 'service-start-date',
+            value: values
+          });
+        }
       }
     }), /*#__PURE__*/React__default['default'].createElement(Row, null, /*#__PURE__*/React__default['default'].createElement(Select$2, {
       error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
@@ -22695,14 +22719,16 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       label: "Data do In\xEDcio",
       name: "service-start-date",
       type: "date",
-      minDate: minDate,
+      minDate: minDate(),
       defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start-date'],
       error: errors === null || errors === void 0 ? void 0 : errors['service-start-date'],
       onChange: function onChange(values) {
-        return _action({
-          name: 'service-start-date',
-          value: values
-        });
+        if (isDateValid(values)) {
+          _action({
+            name: 'service-start-date',
+            value: values
+          });
+        }
       }
     })), /*#__PURE__*/React__default['default'].createElement(Heading, {
       size: 6
