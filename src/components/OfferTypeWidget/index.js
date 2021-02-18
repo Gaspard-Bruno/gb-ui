@@ -80,6 +80,10 @@ const OfferTypeWidget = ({
   const getDefaultValues = (options, answerValue) =>
     options?.find(e => e.value === answerValue);
 
+  const isDateValid = d => {
+    return !isNaN(new Date(d).getTime());
+  };
+
   const minDate = answers?.['service-start-date']
     ? new Date(answers?.['service-start-date']).toISOString().split('T')[0]
     : answers?.['service-end-date']
@@ -302,9 +306,11 @@ const OfferTypeWidget = ({
               name='service-start-date'
               type='date'
               minDate={minDate}
-              onChange={values =>
-                action({ name: 'service-start-date', value: values })
-              }
+              onChange={values => {
+                if (isDateValid(values)) {
+                  action({ name: 'service-start-date', value: values });
+                }
+              }}
             />
             <TextInput
               error={errors?.['service-end-date']}
@@ -313,9 +319,11 @@ const OfferTypeWidget = ({
               name='service-end-date'
               type='date'
               minDate={minDate}
-              onChange={values =>
-                action({ name: 'service-end-date', value: values })
-              }
+              onChange={values => {
+                if (isDateValid(values)) {
+                  action({ name: 'service-end-date', value: values });
+                }
+              }}
             />
             <Row>
               <Select
@@ -425,9 +433,11 @@ const OfferTypeWidget = ({
                   minDate={minDate}
                   defaultValue={answers?.['service-start-date']}
                   error={errors?.['service-start-date']}
-                  onChange={values =>
-                    action({ name: 'service-start-date', value: values })
-                  }
+                  onChange={values => {
+                    if (isDateValid(values)) {
+                      action({ name: 'service-start-date', value: values });
+                    }
+                  }}
                 />
                 <Row>
                   <Select
@@ -473,9 +483,11 @@ const OfferTypeWidget = ({
                 minDate={minDate}
                 defaultValue={answers?.['service-start-date']}
                 error={errors?.['service-start-date']}
-                onChange={values =>
-                  action({ name: 'service-start-date', value: values })
-                }
+                onChange={values => {
+                  if (isDateValid(values)) {
+                    action({ name: 'service-start-date', value: values });
+                  }
+                }}
               />
             )}
           </>
