@@ -16,7 +16,12 @@ const getColorFromStatus = (theme, status) =>
     canceled: theme?.feedback.error.default,
     rejected: theme?.feedback.error.default,
     new_candidate: theme?.brand.blue,
-    accepted: theme?.brand.green
+    accepted: theme?.brand.green,
+    casa: theme.muted.blue,
+    acompanhamento: theme.muted.green,
+    aulas: theme.muted.yellow,
+    reparações: theme.muted.blue,
+    comingSoon: theme.brand.lightBeige
   }[status]);
 
 const Badge = styled.span`
