@@ -6,7 +6,6 @@ var React = require('react');
 var styled = require('styled-components');
 var iconSet = require('Assets/fonts/icons/icons.json');
 var theme = require('Theme');
-var Icon$1 = require('Components/Icon');
 var ReactDOM = require('react-dom');
 var Text = require('Components/Text');
 var logoBlack_svg = require('Assets/svg/logo-black.svg');
@@ -22,7 +21,6 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var styled__default = /*#__PURE__*/_interopDefaultLegacy(styled);
 var iconSet__default = /*#__PURE__*/_interopDefaultLegacy(iconSet);
 var theme__default = /*#__PURE__*/_interopDefaultLegacy(theme);
-var Icon__default = /*#__PURE__*/_interopDefaultLegacy(Icon$1);
 var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
 
 function _defineProperty(obj, key, value) {
@@ -5839,7 +5837,7 @@ var Avatar = function Avatar(_ref) {
     size: size
   }) : /*#__PURE__*/React__default['default'].createElement(AvatarInitials, {
     size: size
-  }, (user === null || user === void 0 ? void 0 : user.fullName) && /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, (user === null || user === void 0 ? void 0 : (_user$full_name = user.full_name) === null || _user$full_name === void 0 ? void 0 : _user$full_name.slice(0, 2)) || (user === null || user === void 0 ? void 0 : user.fullName.slice(0, 2)))), hasText && /*#__PURE__*/React__default['default'].createElement("p", null, (user === null || user === void 0 ? void 0 : user.full_name) || (user === null || user === void 0 ? void 0 : user.fullName)), hasCarat && /*#__PURE__*/React__default['default'].createElement(Icon__default['default'], {
+  }, (user === null || user === void 0 ? void 0 : user.fullName) && /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, (user === null || user === void 0 ? void 0 : (_user$full_name = user.full_name) === null || _user$full_name === void 0 ? void 0 : _user$full_name.slice(0, 2)) || (user === null || user === void 0 ? void 0 : user.fullName.slice(0, 2)))), hasText && /*#__PURE__*/React__default['default'].createElement("p", null, (user === null || user === void 0 ? void 0 : user.full_name) || (user === null || user === void 0 ? void 0 : user.fullName)), hasCarat && /*#__PURE__*/React__default['default'].createElement(Icon, {
     name: "chevron-down"
   }));
 };

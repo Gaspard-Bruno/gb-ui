@@ -2,7 +2,6 @@ import React, { Component, useState, useCallback as useCallback$1, createContext
 import styled from 'styled-components';
 import iconSet from 'Assets/fonts/icons/icons.json';
 import theme from 'Theme';
-import Icon$1 from 'Components/Icon';
 import ReactDOM, { createPortal, findDOMNode, unstable_batchedUpdates } from 'react-dom';
 import { Tiny as Tiny$1 } from 'Components/Text';
 import { ReactComponent as ReactComponent$1 } from 'Assets/svg/logo-black.svg';
@@ -5826,7 +5825,7 @@ var Avatar = function Avatar(_ref) {
     size: size
   }) : /*#__PURE__*/React.createElement(AvatarInitials, {
     size: size
-  }, (user === null || user === void 0 ? void 0 : user.fullName) && /*#__PURE__*/React.createElement(React.Fragment, null, (user === null || user === void 0 ? void 0 : (_user$full_name = user.full_name) === null || _user$full_name === void 0 ? void 0 : _user$full_name.slice(0, 2)) || (user === null || user === void 0 ? void 0 : user.fullName.slice(0, 2)))), hasText && /*#__PURE__*/React.createElement("p", null, (user === null || user === void 0 ? void 0 : user.full_name) || (user === null || user === void 0 ? void 0 : user.fullName)), hasCarat && /*#__PURE__*/React.createElement(Icon$1, {
+  }, (user === null || user === void 0 ? void 0 : user.fullName) && /*#__PURE__*/React.createElement(React.Fragment, null, (user === null || user === void 0 ? void 0 : (_user$full_name = user.full_name) === null || _user$full_name === void 0 ? void 0 : _user$full_name.slice(0, 2)) || (user === null || user === void 0 ? void 0 : user.fullName.slice(0, 2)))), hasText && /*#__PURE__*/React.createElement("p", null, (user === null || user === void 0 ? void 0 : user.full_name) || (user === null || user === void 0 ? void 0 : user.fullName)), hasCarat && /*#__PURE__*/React.createElement(Icon, {
     name: "chevron-down"
   }));
 };
