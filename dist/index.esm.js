@@ -33836,10 +33836,13 @@ var Form$1 = function Form(_ref) {
     if (!Object.keys(errors).length) {
       onSubmit(values);
     } else {
+      Object.keys(errors).forEach(function (e) {
+        if (hiddenFields.indexOf(e) !== -1) delete errors[e];
+      });
       setFormErrors(errors);
       onError(errors);
     }
-  }, [onError, onSubmit, validateAllFields]);
+  }, [hiddenFields, onError, onSubmit, validateAllFields]);
 
   var renderAddFields = function renderAddFields(fields, count, formik) {
     var addFields = [];
