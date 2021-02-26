@@ -5744,7 +5744,7 @@ Alert.defaultProps = {
 };
 
 function _templateObject3$3() {
-  var data = _taggedTemplateLiteral(["\n  border-radius: 50%;\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  font-size: 11px;\n  margin-right: 8px;\n  text-transform: uppercase;\n  ", ";\n  color: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  border-radius: 50%;\n  background-color: ", ";\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 11px;\n  margin-right: 8px;\n  text-transform: uppercase;\n  ", ";\n  color: ", ";\n"]);
 
   _templateObject3$3 = function _templateObject3() {
     return data;
@@ -5764,7 +5764,7 @@ function _templateObject2$4() {
 }
 
 function _templateObject$4() {
-  var data = _taggedTemplateLiteral(["\n  height: 80px;\n  display: flex;\n  align-items: flex-start;\n  color: ", ";\n  svg {\n    margin-left: 8px;\n    width: 14px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  text-transform: capitalize;\n  display: flex;\n  align-items: center;\n  color: ", ";\n  svg {\n    margin-left: 8px;\n    width: 14px;\n  }\n"]);
 
   _templateObject$4 = function _templateObject() {
     return data;
@@ -5776,31 +5776,35 @@ function _templateObject$4() {
 var getStyleFromAvatarSize = function getStyleFromAvatarSize(size, theme) {
   switch (size) {
     case 'small':
-      return "\n                height: 32px;\n                width: 32px;\n            ";
+      return "\n        height: 32px;\n        min-width: 32px;\n       ";
 
     case 'medium':
-      return "\n                height: 40px;\n                width: 40px;\n            ";
+      return "\n        height: 40px;\n        min-width: 40px;\n       ";
 
     case 'large':
-      return "\n                height: 80px;\n                width: 80px;\n            ";
+      return "\n        height: 80px;\n        min-width: 80px;\n        ";
 
     default:
-      return "\n                height: 40px;\n                width: 40px;\n            ";
+      return;
   }
 };
 
-var getRandomColor = function getRandomColor(theme) {
-  var keys = Object.keys(theme.colors.muted);
-  return theme.colors.muted[keys[keys.length * Math.random() << 0]];
+var getRandomColor = function getRandomColor(avatarDefault, theme) {
+  if (avatarDefault) {
+    return avatarDefault;
+  }
+
+  var keys = Object.keys(theme === null || theme === void 0 ? void 0 : theme.colors.muted);
+  return theme === null || theme === void 0 ? void 0 : theme.colors.muted[keys[keys.length * Math.random() << 0]];
 };
 
 var getTextColor = function getTextColor(size, user, theme) {
-  if (size === 'small' && (user === null || user === void 0 ? void 0 : user.avatar)) {
-    return "".concat(theme.colors.grey, ";");
+  if (size === 'small' && user.avatar) {
+    return "".concat(theme === null || theme === void 0 ? void 0 : theme.colors.grey, ";");
   } else if (size === 'medium') {
-    return "".concat(theme.colors.brand.orange);
+    return "".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orange);
   } else {
-    return "".concat(theme.colors.darkBlue, ";");
+    return "".concat(theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue, ";");
   }
 };
 
@@ -5813,11 +5817,13 @@ var AvatarImage = styled__default['default'].div(_templateObject2$4(), function 
   return getStyleFromAvatarSize(props.size);
 });
 var AvatarInitials = styled__default['default'].div(_templateObject3$3(), function (props) {
-  return getRandomColor(props.theme);
+  return getRandomColor(props.avatarDefault, props.theme);
 }, function (props) {
   return getStyleFromAvatarSize(props.size);
 }, function (props) {
-  return props.theme.colors.darkBlue;
+  var _props$theme;
+
+  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.darkBlue;
 });
 
 var Avatar = function Avatar(_ref) {
