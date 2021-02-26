@@ -6,6 +6,7 @@ var React = require('react');
 var styled = require('styled-components');
 var iconSet = require('Assets/fonts/icons/icons.json');
 var theme = require('Theme');
+var Icon$1 = require('Components/Icon');
 var ReactDOM = require('react-dom');
 var Text = require('Components/Text');
 var logoBlack_svg = require('Assets/svg/logo-black.svg');
@@ -21,6 +22,7 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var styled__default = /*#__PURE__*/_interopDefaultLegacy(styled);
 var iconSet__default = /*#__PURE__*/_interopDefaultLegacy(iconSet);
 var theme__default = /*#__PURE__*/_interopDefaultLegacy(theme);
+var Icon__default = /*#__PURE__*/_interopDefaultLegacy(Icon$1);
 var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
 
 function _defineProperty(obj, key, value) {
@@ -5744,7 +5746,7 @@ Alert.defaultProps = {
 };
 
 function _templateObject3$3() {
-  var data = _taggedTemplateLiteral(["\n  border-radius: 50%;\n  background-color: ", ";\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 11px;\n  margin-right: 8px;\n  text-transform: uppercase;\n  ", ";\n  color: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  border-radius: 50%;\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  font-size: 11px;\n  margin-right: 8px;\n  text-transform: uppercase;\n  ", ";\n  color: ", ";\n"]);
 
   _templateObject3$3 = function _templateObject3() {
     return data;
@@ -5764,7 +5766,7 @@ function _templateObject2$4() {
 }
 
 function _templateObject$4() {
-  var data = _taggedTemplateLiteral(["\n  text-transform: capitalize;\n  display: flex;\n  align-items: center;\n  color: ", ";\n  svg {\n    margin-left: 8px;\n    width: 14px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  height: 80px;\n  display: flex;\n  align-items: flex-start;\n  color: ", ";\n  svg {\n    margin-left: 8px;\n    width: 14px;\n  }\n"]);
 
   _templateObject$4 = function _templateObject() {
     return data;
@@ -5775,36 +5777,32 @@ function _templateObject$4() {
 
 var getStyleFromAvatarSize = function getStyleFromAvatarSize(size, theme) {
   switch (size) {
-    case "small":
-      return "\n        height: 32px;\n        min-width: 32px;\n       ";
+    case 'small':
+      return "\n                height: 32px;\n                width: 32px;\n            ";
 
-    case "medium":
-      return "\n        height: 40px;\n        min-width: 40px;\n       ";
+    case 'medium':
+      return "\n                height: 40px;\n                width: 40px;\n            ";
 
-    case "large":
-      return "\n        height: 80px;\n        min-width: 80px;\n        ";
+    case 'large':
+      return "\n                height: 80px;\n                width: 80px;\n            ";
 
     default:
-      return;
+      return "\n                height: 40px;\n                width: 40px;\n            ";
   }
 };
 
-var getRandomColor = function getRandomColor(avatarDefault, theme) {
-  if (avatarDefault) {
-    return avatarDefault;
-  }
-
-  var keys = Object.keys(theme === null || theme === void 0 ? void 0 : theme.colors.muted);
-  return theme === null || theme === void 0 ? void 0 : theme.colors.muted[keys[keys.length * Math.random() << 0]];
+var getRandomColor = function getRandomColor(theme) {
+  var keys = Object.keys(theme.colors.muted);
+  return theme.colors.muted[keys[keys.length * Math.random() << 0]];
 };
 
 var getTextColor = function getTextColor(size, user, theme) {
-  if (size === "small" && user.avatar) {
-    return "".concat(theme === null || theme === void 0 ? void 0 : theme.colors.grey, ";");
-  } else if (size === "medium") {
-    return "".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orange);
+  if (size === 'small' && (user === null || user === void 0 ? void 0 : user.avatar)) {
+    return "".concat(theme.colors.grey, ";");
+  } else if (size === 'medium') {
+    return "".concat(theme.colors.brand.orange);
   } else {
-    return "".concat(theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue, ";");
+    return "".concat(theme.colors.darkBlue, ";");
   }
 };
 
@@ -5817,16 +5815,16 @@ var AvatarImage = styled__default['default'].div(_templateObject2$4(), function 
   return getStyleFromAvatarSize(props.size);
 });
 var AvatarInitials = styled__default['default'].div(_templateObject3$3(), function (props) {
-  return getRandomColor(props.avatarDefault, props.theme);
+  return getRandomColor(props.theme);
 }, function (props) {
   return getStyleFromAvatarSize(props.size);
 }, function (props) {
-  var _props$theme;
-
-  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.darkBlue;
+  return props.theme.colors.darkBlue;
 });
 
 var Avatar = function Avatar(_ref) {
+  var _user$full_name;
+
   var action = _ref.action,
       size = _ref.size,
       hasCarat = _ref.hasCarat,
@@ -5836,13 +5834,12 @@ var Avatar = function Avatar(_ref) {
     onClick: action,
     size: size,
     user: user
-  }, size && user && user.avatar ? /*#__PURE__*/React__default['default'].createElement(AvatarImage, {
-    avatar: "".concat(user.avatar),
+  }, size && user && (user === null || user === void 0 ? void 0 : user.avatar) ? /*#__PURE__*/React__default['default'].createElement(AvatarImage, {
+    avatar: "".concat(user === null || user === void 0 ? void 0 : user.avatar),
     size: size
   }) : /*#__PURE__*/React__default['default'].createElement(AvatarInitials, {
-    size: size,
-    avatarDefault: user.avatarDefault
-  }, user.fullName ? user.fullName.slice(0, 2) : ''), hasText && /*#__PURE__*/React__default['default'].createElement("p", null, user.fullName), hasCarat && /*#__PURE__*/React__default['default'].createElement(Icon, {
+    size: size
+  }, (user === null || user === void 0 ? void 0 : user.fullName) && /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, (user === null || user === void 0 ? void 0 : (_user$full_name = user.full_name) === null || _user$full_name === void 0 ? void 0 : _user$full_name.slice(0, 2)) || (user === null || user === void 0 ? void 0 : user.fullName.slice(0, 2)))), hasText && /*#__PURE__*/React__default['default'].createElement("p", null, (user === null || user === void 0 ? void 0 : user.full_name) || (user === null || user === void 0 ? void 0 : user.fullName)), hasCarat && /*#__PURE__*/React__default['default'].createElement(Icon__default['default'], {
     name: "chevron-down"
   }));
 };
@@ -5888,7 +5885,12 @@ var getColorFromStatus = function getColorFromStatus(theme, status) {
     canceled: theme === null || theme === void 0 ? void 0 : theme.feedback.error.default,
     rejected: theme === null || theme === void 0 ? void 0 : theme.feedback.error.default,
     new_candidate: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
-    accepted: theme === null || theme === void 0 ? void 0 : theme.brand.green
+    accepted: theme === null || theme === void 0 ? void 0 : theme.brand.green,
+    casa: theme.muted.blue,
+    acompanhamento: theme.muted.green,
+    aulas: theme.muted.yellow,
+    reparações: theme.muted.blue,
+    comingSoon: theme.brand.lightBeige
   }[status];
 };
 
@@ -6525,7 +6527,11 @@ var CheckBoxGroup = function CheckBoxGroup(_ref) {
         return handleItems(name, item === null || item === void 0 ? void 0 : item.question);
       },
       key: index
-    }), item.question && /*#__PURE__*/React__default['default'].createElement(Body, null, item.question));
+    }), item.question && /*#__PURE__*/React__default['default'].createElement(Body, {
+      dangerouslySetInnerHTML: {
+        __html: item.question
+      }
+    }));
   }));
 };
 

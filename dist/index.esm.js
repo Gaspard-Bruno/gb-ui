@@ -2,6 +2,7 @@ import React, { Component, useState, useCallback as useCallback$1, createContext
 import styled from 'styled-components';
 import iconSet from 'Assets/fonts/icons/icons.json';
 import theme from 'Theme';
+import Icon$1 from 'Components/Icon';
 import ReactDOM, { createPortal, findDOMNode, unstable_batchedUpdates } from 'react-dom';
 import { Tiny as Tiny$1 } from 'Components/Text';
 import { ReactComponent as ReactComponent$1 } from 'Assets/svg/logo-black.svg';
@@ -5732,7 +5733,7 @@ Alert.defaultProps = {
 };
 
 function _templateObject3$3() {
-  var data = _taggedTemplateLiteral(["\n  border-radius: 50%;\n  background-color: ", ";\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 11px;\n  margin-right: 8px;\n  text-transform: uppercase;\n  ", ";\n  color: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  border-radius: 50%;\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  font-size: 11px;\n  margin-right: 8px;\n  text-transform: uppercase;\n  ", ";\n  color: ", ";\n"]);
 
   _templateObject3$3 = function _templateObject3() {
     return data;
@@ -5752,7 +5753,7 @@ function _templateObject2$4() {
 }
 
 function _templateObject$4() {
-  var data = _taggedTemplateLiteral(["\n  text-transform: capitalize;\n  display: flex;\n  align-items: center;\n  color: ", ";\n  svg {\n    margin-left: 8px;\n    width: 14px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  height: 80px;\n  display: flex;\n  align-items: flex-start;\n  color: ", ";\n  svg {\n    margin-left: 8px;\n    width: 14px;\n  }\n"]);
 
   _templateObject$4 = function _templateObject() {
     return data;
@@ -5763,36 +5764,32 @@ function _templateObject$4() {
 
 var getStyleFromAvatarSize = function getStyleFromAvatarSize(size, theme) {
   switch (size) {
-    case "small":
-      return "\n        height: 32px;\n        min-width: 32px;\n       ";
+    case 'small':
+      return "\n                height: 32px;\n                width: 32px;\n            ";
 
-    case "medium":
-      return "\n        height: 40px;\n        min-width: 40px;\n       ";
+    case 'medium':
+      return "\n                height: 40px;\n                width: 40px;\n            ";
 
-    case "large":
-      return "\n        height: 80px;\n        min-width: 80px;\n        ";
+    case 'large':
+      return "\n                height: 80px;\n                width: 80px;\n            ";
 
     default:
-      return;
+      return "\n                height: 40px;\n                width: 40px;\n            ";
   }
 };
 
-var getRandomColor = function getRandomColor(avatarDefault, theme) {
-  if (avatarDefault) {
-    return avatarDefault;
-  }
-
-  var keys = Object.keys(theme === null || theme === void 0 ? void 0 : theme.colors.muted);
-  return theme === null || theme === void 0 ? void 0 : theme.colors.muted[keys[keys.length * Math.random() << 0]];
+var getRandomColor = function getRandomColor(theme) {
+  var keys = Object.keys(theme.colors.muted);
+  return theme.colors.muted[keys[keys.length * Math.random() << 0]];
 };
 
 var getTextColor = function getTextColor(size, user, theme) {
-  if (size === "small" && user.avatar) {
-    return "".concat(theme === null || theme === void 0 ? void 0 : theme.colors.grey, ";");
-  } else if (size === "medium") {
-    return "".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orange);
+  if (size === 'small' && (user === null || user === void 0 ? void 0 : user.avatar)) {
+    return "".concat(theme.colors.grey, ";");
+  } else if (size === 'medium') {
+    return "".concat(theme.colors.brand.orange);
   } else {
-    return "".concat(theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue, ";");
+    return "".concat(theme.colors.darkBlue, ";");
   }
 };
 
@@ -5805,16 +5802,16 @@ var AvatarImage = styled.div(_templateObject2$4(), function (props) {
   return getStyleFromAvatarSize(props.size);
 });
 var AvatarInitials = styled.div(_templateObject3$3(), function (props) {
-  return getRandomColor(props.avatarDefault, props.theme);
+  return getRandomColor(props.theme);
 }, function (props) {
   return getStyleFromAvatarSize(props.size);
 }, function (props) {
-  var _props$theme;
-
-  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.darkBlue;
+  return props.theme.colors.darkBlue;
 });
 
 var Avatar = function Avatar(_ref) {
+  var _user$full_name;
+
   var action = _ref.action,
       size = _ref.size,
       hasCarat = _ref.hasCarat,
@@ -5824,13 +5821,12 @@ var Avatar = function Avatar(_ref) {
     onClick: action,
     size: size,
     user: user
-  }, size && user && user.avatar ? /*#__PURE__*/React.createElement(AvatarImage, {
-    avatar: "".concat(user.avatar),
+  }, size && user && (user === null || user === void 0 ? void 0 : user.avatar) ? /*#__PURE__*/React.createElement(AvatarImage, {
+    avatar: "".concat(user === null || user === void 0 ? void 0 : user.avatar),
     size: size
   }) : /*#__PURE__*/React.createElement(AvatarInitials, {
-    size: size,
-    avatarDefault: user.avatarDefault
-  }, user.fullName ? user.fullName.slice(0, 2) : ''), hasText && /*#__PURE__*/React.createElement("p", null, user.fullName), hasCarat && /*#__PURE__*/React.createElement(Icon, {
+    size: size
+  }, (user === null || user === void 0 ? void 0 : user.fullName) && /*#__PURE__*/React.createElement(React.Fragment, null, (user === null || user === void 0 ? void 0 : (_user$full_name = user.full_name) === null || _user$full_name === void 0 ? void 0 : _user$full_name.slice(0, 2)) || (user === null || user === void 0 ? void 0 : user.fullName.slice(0, 2)))), hasText && /*#__PURE__*/React.createElement("p", null, (user === null || user === void 0 ? void 0 : user.full_name) || (user === null || user === void 0 ? void 0 : user.fullName)), hasCarat && /*#__PURE__*/React.createElement(Icon$1, {
     name: "chevron-down"
   }));
 };
@@ -5876,7 +5872,12 @@ var getColorFromStatus = function getColorFromStatus(theme, status) {
     canceled: theme === null || theme === void 0 ? void 0 : theme.feedback.error.default,
     rejected: theme === null || theme === void 0 ? void 0 : theme.feedback.error.default,
     new_candidate: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
-    accepted: theme === null || theme === void 0 ? void 0 : theme.brand.green
+    accepted: theme === null || theme === void 0 ? void 0 : theme.brand.green,
+    casa: theme.muted.blue,
+    acompanhamento: theme.muted.green,
+    aulas: theme.muted.yellow,
+    reparações: theme.muted.blue,
+    comingSoon: theme.brand.lightBeige
   }[status];
 };
 
@@ -6513,7 +6514,11 @@ var CheckBoxGroup = function CheckBoxGroup(_ref) {
         return handleItems(name, item === null || item === void 0 ? void 0 : item.question);
       },
       key: index
-    }), item.question && /*#__PURE__*/React.createElement(Body, null, item.question));
+    }), item.question && /*#__PURE__*/React.createElement(Body, {
+      dangerouslySetInnerHTML: {
+        __html: item.question
+      }
+    }));
   }));
 };
 
