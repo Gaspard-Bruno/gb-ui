@@ -123,11 +123,14 @@ const Form = ({
       if (!Object.keys(errors).length) {
         onSubmit(values);
       } else {
+        Object.keys(errors).forEach(e => {
+          if (hiddenFields.indexOf(e) !== -1) delete errors[e];
+        });
         setFormErrors(errors);
         onError(errors);
       }
     },
-    [onError, onSubmit, validateAllFields]
+    [hiddenFields, onError, onSubmit, validateAllFields]
   );
 
   const renderAddFields = (fields, count, formik) => {
