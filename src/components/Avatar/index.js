@@ -6,14 +6,10 @@ import Icon from '../Icon';
 import AvatarContainer, {
   AvatarImage,
   AvatarInitials,
-  InfoContainer,
-  EmailText,
-  Link
 } from './style';
 
 const Avatar = ({ action, size, hasCarat, hasText, hasEmail, user }) => {
   const isDeleted = user?.adminStatus === 'deleted';
-const Avatar = ({ action, size, hasCarat, hasText, user }) => {
   const fullName = user?.fullName ?? user?.full_name ?? '';
   return (
     <AvatarContainer onClick={action} size={size} user={user}>

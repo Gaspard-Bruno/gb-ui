@@ -118,6 +118,7 @@
     "@rollup/plugin-image": "^2.0.5",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
+    "@svgr/rollup": "^5.5.0",
     "@welldone-software/why-did-you-render": "^4.2.7",
     "cross-env": "^7.0.2",
     "customize-cra": "^1.0.0",
