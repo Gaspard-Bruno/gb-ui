@@ -22,7 +22,7 @@ const Avatar = ({ action, size, hasCarat, hasText, hasEmail, user }) => {
           ?
         </AvatarInitials>
       ) : (
-        <AvatarInitials size={size} avatarDefault={user.avatarDefault}>
+        <AvatarInitials size={size} avatarDefault={user?.avatarDefault}>
           {fullName ? fullName.slice(0, 2) : ''}
         </AvatarInitials>
       )}
