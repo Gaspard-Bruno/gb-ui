@@ -5915,7 +5915,7 @@ var Avatar = function Avatar(_ref) {
     isDeleted: isDeleted
   }, "?") : /*#__PURE__*/React__default['default'].createElement(AvatarInitials, {
     size: size,
-    avatarDefault: user.avatarDefault
+    avatarDefault: user === null || user === void 0 ? void 0 : user.avatarDefault
   }, fullName ? fullName.slice(0, 2) : ''), hasText && /*#__PURE__*/React__default['default'].createElement("p", null, fullName), hasCarat && /*#__PURE__*/React__default['default'].createElement(Icon, {
     name: "chevron-down"
   }));
