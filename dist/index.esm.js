@@ -13537,7 +13537,7 @@ FilterButton.defaultProps = {
 };
 
 function _templateObject3$a() {
-  var data = _taggedTemplateLiteral(["\n    padding: 10px;\n    ", ";\n\n    path {\n        ", ";\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n  padding: 10px;\n  ", ";\n\n  path {\n    ", ";\n  }\n"]);
 
   _templateObject3$a = function _templateObject3() {
     return data;
@@ -13547,7 +13547,7 @@ function _templateObject3$a() {
 }
 
 function _templateObject2$d() {
-  var data = _taggedTemplateLiteral(["\n    padding: 10px;\n    border-right: 1px solid ", ";\n\n    path {\n        ", ";\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n  padding: 10px;\n  border-right: 1px solid ", ";\n\n  path {\n    ", ";\n  }\n"]);
 
   _templateObject2$d = function _templateObject2() {
     return data;
@@ -13557,7 +13557,7 @@ function _templateObject2$d() {
 }
 
 function _templateObject$h() {
-  var data = _taggedTemplateLiteral(["\n    background-color: ", ";\n    border-radius: 30px;\n    display: flex;\n    width: 90px;\n    height: 40px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border-radius: 30px;\n  display: flex;\n  width: 90px;\n  height: 40px;\n  cursor: pointer;\n"]);
 
   _templateObject$h = function _templateObject() {
     return data;
