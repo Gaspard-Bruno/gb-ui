@@ -18,7 +18,7 @@ const LOGO_MAP = {
   blackTag: <LogoBlackTag />
 };
 
-const Logo = ({ size, isCenter = true, color, background }) => {
+const Logo = ({ size, isCenter = true, color = 'colorful', background }) => {
   return (
     <LogoContainer center={isCenter} size={size}>
       {!background ? LOGO_MAP[color] : background}
