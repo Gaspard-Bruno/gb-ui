@@ -13,6 +13,8 @@ import AvatarContainer, {
 
 const Avatar = ({ action, size, hasCarat, hasText, hasEmail, user }) => {
   const isDeleted = user?.adminStatus === 'deleted';
+const Avatar = ({ action, size, hasCarat, hasText, user }) => {
+  const fullName = user?.fullName ?? user?.full_name ?? '';
   return (
     <AvatarContainer onClick={action} size={size} user={user}>
       {size && user && user.avatar && (
@@ -24,20 +26,11 @@ const Avatar = ({ action, size, hasCarat, hasText, hasEmail, user }) => {
           ?
         </AvatarInitials>
       ) : (
-        <AvatarInitials size={size} avatarDefault={user?.avatarDefault}>
-          {user?.fullName ? user.fullName.slice(0, 2) : ''}
+        <AvatarInitials size={size} avatarDefault={user.avatarDefault}>
+          {fullName ? fullName.slice(0, 2) : ''}
         </AvatarInitials>
       )}
-
-      <InfoContainer>
-        {hasText && (
-          <>
-            {isDeleted && <Link>[deleted Admin]</Link>}
-            <Link>{user?.fullName}</Link>
-          </>
-        )}
-        {hasEmail && <EmailText>{user?.email}</EmailText>}
-      </InfoContainer>
+      {hasText && <p>{fullName}</p>}
       {hasCarat && <Icon name='chevron-down' />}
     </AvatarContainer>
   );
