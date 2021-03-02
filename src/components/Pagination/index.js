@@ -1,14 +1,12 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import { useTranslate } from 'polyglot-react-redux-sdk';
-
+import t from '../utils/translation';
 import { SmallBody } from '../Text';
 import TrackerBox from '../TrackerBox';
 import StyledPagination, { Left, Right } from './style';
 
-const Pagination = ({ totalPages, currentPage, action }) => {
-  const t = useTranslate('archive');
+const Pagination = ({ totalPages, currentPage, action, translate }) => {
 
   const boxes = useMemo(() => {
     if (totalPages >= 4) {
@@ -46,7 +44,7 @@ const Pagination = ({ totalPages, currentPage, action }) => {
     <StyledPagination>
       <Left>
         <SmallBody bold={true}>
-          {t('page')} {currentPage} {t('of')} {totalPages}
+          {t(translate,'page')} {currentPage} {t(translate, 'of')} {totalPages}
         </SmallBody>
       </Left>
 
@@ -66,7 +64,7 @@ const Pagination = ({ totalPages, currentPage, action }) => {
                   <TrackerBox text='...' boxType='ellipsis' />
                 ) : (
                   <TrackerBox
-                    text={num}
+                    text={String(num)}
                     isActive={num === currentPage}
                     currentPage={currentPage}
                     action={action}
@@ -90,7 +88,8 @@ const Pagination = ({ totalPages, currentPage, action }) => {
 Pagination.propTypes = {
   totalPages: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   currentPage: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  action: PropTypes.func
+  action: PropTypes.func,
+  translate: PropTypes.func,
 };
 
 export default Pagination;
