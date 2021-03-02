@@ -1,10 +1,11 @@
 import Accordion from './Accordion';
 import Alerts from './Alerts';
 import Avatar from './Avatar';
-import Badge from './Badge';
+import Badge, { getBadgeColorFromStatus } from './Badge';
 import Button from './Button';
 import ButtonGroup from './ButtonGroup';
 import Card from './Card';
+import Checkbox from './Checkbox'
 import CheckBoxGroup from './CheckBoxGroup';
 import Divider from './Divider';
 import DropDownMenu from './DropDownMenu';
@@ -47,6 +48,7 @@ import TextInput from './TextInput';
 import TopBar from './TopBar';
 import TrackerBox from './TrackerBox';
 import FileUploader from './FileUploader';
+import Slider from './Slider';
 import {
   Jumbo,
   Heading,
@@ -70,6 +72,7 @@ export {
   Button,
   ButtonGroup,
   Card,
+  Checkbox,
   CheckBoxGroup,
   Divider,
   DropDownMenu,
@@ -121,5 +124,7 @@ export {
   AlertText,
   ErrorText,
   SchedulePicker,
-  FileUploader
+  FileUploader,
+  Slider,
+  getBadgeColorFromStatus
 };
