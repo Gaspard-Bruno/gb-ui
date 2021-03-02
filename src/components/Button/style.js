@@ -1,47 +1,41 @@
 import styled from 'styled-components';
 
-const getStyleFromBtnType = (isDisabled, type = 'primary', theme) => {
+const getStyleFromBtnType = (type = 'primary', disabled, theme) => {
+  if (disabled) {
+    return `
+      background-color: ${theme.colors.lightBeige};
+      border: transparent;
+      color: ${theme.colors.grey};
+      &:hover {
+        cursor: default;
+      }
+    `;
+  }
   switch (type) {
     case 'primary':
       return `
-        background-color: ${
-          isDisabled ? theme.colors.lightBeige : theme.colors.brand.yellow
-        };
-        border: transparent;
-        span {
-          color: ${
-            isDisabled ? theme?.colors.grey : theme?.colors.brand.darkBlue
-          };
-          &:hover {
-            color: ${
-              isDisabled ? theme?.colors.grey : theme?.colors.brand.darkBlue
-            };
-          } 
-        }
+        border: 1px solid transparent;
+        background-color: ${theme.colors.brand.yellow};
         &:hover {
-          background-color: ${
-            isDisabled
-              ? theme?.colors.brand.lightBeige
-              : theme?.colors.brand.lighter
-          };
+          background-color: ${theme.colors.brand.lighter};
         }
       `;
     case 'secondary':
       return `
         background-color: transparent;
-        border: 1px solid ${theme?.colors.brand.yellow};
+        border: 1px solid ${theme.colors.brand.yellow};
         &:hover {
-          border: transparent;
-          background-color: ${theme?.colors.brand.lighter};
+          border: 1px solid transparent;
+          background-color: ${theme.colors.brand.lighter};
         }
       `;
     case 'terceary':
       return `
-        background-color: ${theme?.colors.brand.orange};
+        background-color: ${theme.colors.brand.orange};
         border: transparent;
         &:hover {
           border: transparent;
-          background-color: ${theme?.colors.brand.orangeLight};
+          background-color: ${theme.colors.brand.orangeLight};
         }
       `;
     case 'transparent':
@@ -49,40 +43,43 @@ const getStyleFromBtnType = (isDisabled, type = 'primary', theme) => {
         background-color: transparent;
         border: transparent;
         > span {
-          color: ${theme?.colors.brand.orange};
+          color: ${theme.colors.brand.orange};
           &:hover {
-            color: ${
-              isDisabled ? theme?.colors.grey : theme?.colors.brand.orangeDarker
-            };
+            color: ${theme.colors.brand.orangeDarker};
           }
         }
       `;
     case 'borded':
       return `
-        border: 1px solid ${theme?.colors.brand.yellow};
+        border: 1px solid ${theme.colors.brand.yellow};
         box-sizing: border-box;
         border-radius: 100px;
-        background-color: ${theme?.colors.white};
+        background-color: ${theme.colors.white};
         > span {
-          color: ${
-            isDisabled ? theme?.colors?.grey : theme?.colors.brand.darkBlue
-          };
+          color: ${theme.colors.brand.darkBlue};
           &:hover {
-            color: ${
-              isDisabled ? theme?.colors.grey : theme?.colors.brand.orangeDarker
-            };
+            color: ${theme.colors.brand.orangeDarker};
           }
         }
       `;
-    case 'iconHolder':
+    case 'resting':
       return `
-        border: 1px solid ${theme?.colors.brand.yellow};
-        box-sizing: border-box;
-        border-radius: 100px;
-        padding: 20px;
-        width: 40px;
-        height: 40px;
-        background-color: ${theme?.colors.white};
+        background-color: ${theme.colors.lightestBeige};
+        border: 1px solid transparent;
+        > span {
+          color: ${theme.colors.grey};
+        }
+      `;
+    case 'active':
+      return `
+        background-color: ${theme.colors.lightestBeige};
+        border: 1px solid transparent;
+        > span {
+          color: ${theme.colors.brand.orange};
+          &:hover {
+            color: ${theme.colors.brand.orangeDarker};
+          }
+        }
       `;
     default:
       break;
@@ -93,36 +90,43 @@ const Button = styled.button`
   border-radius: 40px;
   outline: none;
   width: ${props => (props.fullWidth ? '244px' : '')};
-  height: 48px;
   margin-top: ${props => (props.fullWidth ? '20px' : '')};
   margin-bottom: ${props => (props.fullWidth ? '20px' : '')};
-  padding: 0
-    ${props =>
-      props.small ? props.theme?.margin * 0.75 : props.theme?.margin}px;
-  ${props => getStyleFromBtnType(props.disabled, props.btnType, props.theme)}
+  padding: ${props =>
+    props.small ? props.theme.margin * 0.75 : props.theme.margin}px;
   > * {
     margin: 0 auto;
   }
   &:hover {
     cursor: pointer;
   }
+  ${props => getStyleFromBtnType(props.btnType, props.disabled, props.theme)}
 `;
+
+const getIconStyle = (btnType, theme) => {
+  switch (btnType) {
+    case 'borded':
+      return `
+        border: 1px solid ${theme.colors.brand.yellow};
+        padding: 8px;
+      `;
+
+    default:
+      break;
+  }
+};
 
 export const IconButton = styled.button`
   border-radius: 50%;
-  outline: none;
-  width: 32px;
-  height: 32px;
-  > svg {
-    margin-top: 0 !important;
-  }
+  padding: ${props => props.theme.margin}px;
   ${props =>
-    getStyleFromBtnType(props.disabled, props.btnType, props.theme)} > * {
+    getStyleFromBtnType(props.btnType, props.disabled, props.theme)} > * {
     margin: 0 auto;
   }
   &:hover {
     cursor: pointer;
   }
+  ${props => getIconStyle(props.btnType, props.theme)}
 `;
 
 export default Button;

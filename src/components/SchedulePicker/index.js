@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyledScheduleSelector, StyledDateLabel } from './styles';
 import PropTypes from 'prop-types';
 import theme from 'Theme';
-import { Tiny } from 'Components/Text';
+import { Tiny } from '../Text';
 
 const INITIAL_DATE = new Date('2019-06-10T00:00:00');
 const SchedulePicker = ({

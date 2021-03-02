@@ -31,7 +31,11 @@ const CheckBoxGroup = ({ name, label, list, error, action }) => {
                 onChange={() => handleItems(name, item?.question)}
                 key={index}
               ></StyledCheckbox>
-              {item.question && <Body>{item.question}</Body>}
+              {item.question && (
+                <Body
+                  dangerouslySetInnerHTML={{ __html: item.question }}
+                ></Body>
+              )}
             </CheckboxGroupContainer>
           );
         })}

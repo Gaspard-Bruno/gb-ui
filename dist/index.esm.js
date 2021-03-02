@@ -2,14 +2,15 @@ import React, { Component, useState, useCallback as useCallback$1, createContext
 import styled from 'styled-components';
 import iconSet from 'Assets/fonts/icons/icons.json';
 import theme from 'Theme';
+import { useTranslate } from 'polyglot-react-redux-sdk';
 import ReactDOM, { createPortal, findDOMNode, unstable_batchedUpdates } from 'react-dom';
-import { Tiny as Tiny$1 } from 'Components/Text';
 import { ReactComponent as ReactComponent$1 } from 'Assets/svg/logo-black.svg';
 import { ReactComponent as ReactComponent$2 } from 'Assets/svg/logo-white.svg';
 import { ReactComponent } from 'Assets/svg/logo-colorful.svg';
 import { ReactComponent as ReactComponent$5 } from 'Assets/svg/logo-black-tag.svg';
 import { ReactComponent as ReactComponent$4 } from 'Assets/svg/logo-white-tag.svg';
 import { ReactComponent as ReactComponent$3 } from 'Assets/svg/logo-colorful-tag.svg';
+import useAuth from 'Hooks/useAuth';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -5352,7 +5353,7 @@ Icon.defaultProps = {
 };
 
 function _templateObject2$1() {
-  var data = _taggedTemplateLiteral(["\n  border-radius: 50%;\n  outline: none;\n  width: 32px;\n  height: 32px;\n  > svg {\n    margin-top: 0 !important;\n  }\n  ", " > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  border-radius: 50%;\n  padding: ", "px;\n  ", " > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n  ", "\n"]);
 
   _templateObject2$1 = function _templateObject2() {
     return data;
@@ -5362,7 +5363,7 @@ function _templateObject2$1() {
 }
 
 function _templateObject$1() {
-  var data = _taggedTemplateLiteral(["\n  border-radius: 40px;\n  outline: none;\n  width: ", ";\n  height: 48px;\n  margin-top: ", ";\n  margin-bottom: ", ";\n  padding: 0\n    ", "px;\n  ", "\n  > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  border-radius: 40px;\n  outline: none;\n  width: ", ";\n  margin-top: ", ";\n  margin-bottom: ", ";\n  padding: ", "px;\n  > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n  ", "\n"]);
 
   _templateObject$1 = function _templateObject() {
     return data;
@@ -5371,30 +5372,36 @@ function _templateObject$1() {
   return data;
 }
 
-var getStyleFromBtnType = function getStyleFromBtnType(isDisabled) {
-  var _theme$colors;
-
-  var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'primary';
+var getStyleFromBtnType = function getStyleFromBtnType() {
+  var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'primary';
+  var disabled = arguments.length > 1 ? arguments[1] : undefined;
   var theme = arguments.length > 2 ? arguments[2] : undefined;
+
+  if (disabled) {
+    return "\n      background-color: ".concat(theme.colors.lightBeige, ";\n      border: transparent;\n      color: ").concat(theme.colors.grey, ";\n      &:hover {\n        cursor: default;\n      }\n    ");
+  }
 
   switch (type) {
     case 'primary':
-      return "\n        background-color: ".concat(isDisabled ? theme.colors.lightBeige : theme.colors.brand.yellow, ";\n        border: transparent;\n        span {\n          color: ").concat(isDisabled ? theme === null || theme === void 0 ? void 0 : theme.colors.grey : theme === null || theme === void 0 ? void 0 : theme.colors.brand.darkBlue, ";\n          &:hover {\n            color: ").concat(isDisabled ? theme === null || theme === void 0 ? void 0 : theme.colors.grey : theme === null || theme === void 0 ? void 0 : theme.colors.brand.darkBlue, ";\n          } \n        }\n        &:hover {\n          background-color: ").concat(isDisabled ? theme === null || theme === void 0 ? void 0 : theme.colors.brand.lightBeige : theme === null || theme === void 0 ? void 0 : theme.colors.brand.lighter, ";\n        }\n      ");
+      return "\n        border: 1px solid transparent;\n        background-color: ".concat(theme.colors.brand.yellow, ";\n        &:hover {\n          background-color: ").concat(theme.colors.brand.lighter, ";\n        }\n      ");
 
     case 'secondary':
-      return "\n        background-color: transparent;\n        border: 1px solid ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.yellow, ";\n        &:hover {\n          border: transparent;\n          background-color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.lighter, ";\n        }\n      ");
+      return "\n        background-color: transparent;\n        border: 1px solid ".concat(theme.colors.brand.yellow, ";\n        &:hover {\n          border: 1px solid transparent;\n          background-color: ").concat(theme.colors.brand.lighter, ";\n        }\n      ");
 
     case 'terceary':
-      return "\n        background-color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orange, ";\n        border: transparent;\n        &:hover {\n          border: transparent;\n          background-color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orangeLight, ";\n        }\n      ");
+      return "\n        background-color: ".concat(theme.colors.brand.orange, ";\n        border: transparent;\n        &:hover {\n          border: transparent;\n          background-color: ").concat(theme.colors.brand.orangeLight, ";\n        }\n      ");
 
     case 'transparent':
-      return "\n        background-color: transparent;\n        border: transparent;\n        > span {\n          color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orange, ";\n          &:hover {\n            color: ").concat(isDisabled ? theme === null || theme === void 0 ? void 0 : theme.colors.grey : theme === null || theme === void 0 ? void 0 : theme.colors.brand.orangeDarker, ";\n          }\n        }\n      ");
+      return "\n        background-color: transparent;\n        border: transparent;\n        > span {\n          color: ".concat(theme.colors.brand.orange, ";\n          &:hover {\n            color: ").concat(theme.colors.brand.orangeDarker, ";\n          }\n        }\n      ");
 
     case 'borded':
-      return "\n        border: 1px solid ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.yellow, ";\n        box-sizing: border-box;\n        border-radius: 100px;\n        background-color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.white, ";\n        > span {\n          color: ").concat(isDisabled ? theme === null || theme === void 0 ? void 0 : (_theme$colors = theme.colors) === null || _theme$colors === void 0 ? void 0 : _theme$colors.grey : theme === null || theme === void 0 ? void 0 : theme.colors.brand.darkBlue, ";\n          &:hover {\n            color: ").concat(isDisabled ? theme === null || theme === void 0 ? void 0 : theme.colors.grey : theme === null || theme === void 0 ? void 0 : theme.colors.brand.orangeDarker, ";\n          }\n        }\n      ");
+      return "\n        border: 1px solid ".concat(theme.colors.brand.yellow, ";\n        box-sizing: border-box;\n        border-radius: 100px;\n        background-color: ").concat(theme.colors.white, ";\n        > span {\n          color: ").concat(theme.colors.brand.darkBlue, ";\n          &:hover {\n            color: ").concat(theme.colors.brand.orangeDarker, ";\n          }\n        }\n      ");
 
-    case 'iconHolder':
-      return "\n        border: 1px solid ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.yellow, ";\n        box-sizing: border-box;\n        border-radius: 100px;\n        padding: 20px;\n        width: 40px;\n        height: 40px;\n        background-color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.white, ";\n      ");
+    case 'resting':
+      return "\n        background-color: ".concat(theme.colors.lightestBeige, ";\n        border: 1px solid transparent;\n        > span {\n          color: ").concat(theme.colors.grey, ";\n        }\n      ");
+
+    case 'active':
+      return "\n        background-color: ".concat(theme.colors.lightestBeige, ";\n        border: 1px solid transparent;\n        > span {\n          color: ").concat(theme.colors.brand.orange, ";\n          &:hover {\n            color: ").concat(theme.colors.brand.orangeDarker, ";\n          }\n        }\n      ");
   }
 };
 
@@ -5405,14 +5412,24 @@ var Button = styled.button(_templateObject$1(), function (props) {
 }, function (props) {
   return props.fullWidth ? '20px' : '';
 }, function (props) {
-  var _props$theme, _props$theme2;
-
-  return props.small ? ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) * 0.75 : (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin;
+  return props.small ? props.theme.margin * 0.75 : props.theme.margin;
 }, function (props) {
-  return getStyleFromBtnType(props.disabled, props.btnType, props.theme);
+  return getStyleFromBtnType(props.btnType, props.disabled, props.theme);
 });
+
+var getIconStyle = function getIconStyle(btnType, theme) {
+  switch (btnType) {
+    case 'borded':
+      return "\n        border: 1px solid ".concat(theme.colors.brand.yellow, ";\n        padding: 8px;\n      ");
+  }
+};
+
 var IconButton = styled.button(_templateObject2$1(), function (props) {
-  return getStyleFromBtnType(props.disabled, props.btnType, props.theme);
+  return props.theme.margin;
+}, function (props) {
+  return getStyleFromBtnType(props.btnType, props.disabled, props.theme);
+}, function (props) {
+  return getIconStyle(props.btnType, props.theme);
 });
 
 var Button$1 = function Button$1(_ref) {
@@ -5442,7 +5459,6 @@ var Button$1 = function Button$1(_ref) {
   if (icon) {
     return /*#__PURE__*/React.createElement(IconButton, {
       btnType: btnType,
-      type: type,
       disabled: isDisabled,
       small: isSmall,
       onClick: action
@@ -5462,12 +5478,11 @@ Button$1.propTypes = {
   type: propTypes.string,
   text: propTypes.string,
   children: propTypes.oneOfType([propTypes.element, propTypes.array]),
-  btnType: propTypes.oneOf(['primary', 'secondary', 'terceary', 'transparent', 'borded', 'iconHolder']),
+  btnType: propTypes.oneOf(['primary', 'secondary', 'terceary', 'transparent', 'borded', 'resting', 'active']),
   icon: propTypes.string
 };
 Button$1.defaultProps = {
-  btnType: 'primary',
-  type: 'button'
+  type: 'primary'
 };
 
 function _templateObject3$1() {
@@ -5546,7 +5561,6 @@ var Accordion = function Accordion(_ref) {
   }, /*#__PURE__*/React.createElement(Heading, {
     size: 6
   }, title), /*#__PURE__*/React.createElement(Button$1, {
-    type: "button",
     btnType: "transparent",
     icon: "chevron-down",
     action: function action() {
@@ -5559,8 +5573,11 @@ var Accordion = function Accordion(_ref) {
 
 Accordion.propTypes = {
   title: propTypes.string,
-  content: propTypes.oneOfType([propTypes.object, propTypes.array]),
+  content: propTypes.func,
   isOpen: propTypes.bool
+};
+Accordion.whyDidYouRender = {
+  customName: 'Accordion'
 };
 
 function _templateObject5$1() {
@@ -5731,8 +5748,38 @@ Alert.defaultProps = {
   type: 'defaultSimple'
 };
 
-function _templateObject3$3() {
+function _templateObject6$1() {
+  var data = _taggedTemplateLiteral(["\n  text-decoration: none;\n  color: ", ";\n  &:hover {\n    cursor: pointer;\n  }\n"]);
+
+  _templateObject6$1 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5$2() {
   var data = _taggedTemplateLiteral(["\n  border-radius: 50%;\n  background-color: ", ";\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 11px;\n  margin-right: 8px;\n  text-transform: uppercase;\n  ", ";\n  color: ", ";\n"]);
+
+  _templateObject5$2 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4$2() {
+  var data = _taggedTemplateLiteral(["\n  border-radius: 50%;\n  background-image: url(", ");\n  background-position: center;\n  margin-right: 8px;\n  ", ";\n"]);
+
+  _templateObject4$2 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3$3() {
+  var data = _taggedTemplateLiteral(["\n  text-transform: capitalize;\n  display: flex;\n  align-items: center;\n  color: ", ";\n  svg {\n    margin-left: 8px;\n    width: 14px;\n  }\n  cursor: pointer;\n\n  ", "\n"]);
 
   _templateObject3$3 = function _templateObject3() {
     return data;
@@ -5742,7 +5789,7 @@ function _templateObject3$3() {
 }
 
 function _templateObject2$4() {
-  var data = _taggedTemplateLiteral(["\n  border-radius: 50%;\n  background-image: url(", ");\n  background-position: center;\n  margin-right: 8px;\n  ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  margin-top: ", "px!important;\n  text-transform: none;\n  color: ", ";\n"]);
 
   _templateObject2$4 = function _templateObject2() {
     return data;
@@ -5752,7 +5799,7 @@ function _templateObject2$4() {
 }
 
 function _templateObject$4() {
-  var data = _taggedTemplateLiteral(["\n  text-transform: capitalize;\n  display: flex;\n  align-items: center;\n  color: ", ";\n  svg {\n    margin-left: 8px;\n    width: 14px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  p {\n    margin: 0;\n    line-height: 1;\n  }\n"]);
 
   _templateObject$4 = function _templateObject() {
     return data;
@@ -5763,13 +5810,13 @@ function _templateObject$4() {
 
 var getStyleFromAvatarSize = function getStyleFromAvatarSize(size, theme) {
   switch (size) {
-    case "small":
+    case 'small':
       return "\n        height: 32px;\n        min-width: 32px;\n       ";
 
-    case "medium":
+    case 'medium':
       return "\n        height: 40px;\n        min-width: 40px;\n       ";
 
-    case "large":
+    case 'large':
       return "\n        height: 80px;\n        min-width: 80px;\n        ";
 
     default:
@@ -5777,41 +5824,61 @@ var getStyleFromAvatarSize = function getStyleFromAvatarSize(size, theme) {
   }
 };
 
-var getRandomColor = function getRandomColor(avatarDefault, theme) {
+var getRandomColor = function getRandomColor(avatarDefault, theme, deleted) {
   if (avatarDefault) {
     return avatarDefault;
   }
 
-  var keys = Object.keys(theme === null || theme === void 0 ? void 0 : theme.colors.muted);
-  return theme === null || theme === void 0 ? void 0 : theme.colors.muted[keys[keys.length * Math.random() << 0]];
+  if (deleted) {
+    return theme.colors.backdrop;
+  }
+
+  var keys = Object.keys(theme.colors.muted);
+  return theme.colors.muted[keys[keys.length * Math.random() << 0]];
 };
 
 var getTextColor = function getTextColor(size, user, theme) {
-  if (size === "small" && user.avatar) {
-    return "".concat(theme === null || theme === void 0 ? void 0 : theme.colors.grey, ";");
-  } else if (size === "medium") {
-    return "".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orange);
-  } else {
-    return "".concat(theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue, ";");
-  }
+  var colorMap = {
+    small: theme.colors.grey,
+    medium: theme.colors.brand.orange,
+    default: theme.colors.darkBlue
+  };
+  if ((user === null || user === void 0 ? void 0 : user.adminStatus) === 'deleted') return "".concat(theme.colors.grey);
+  if (colorMap[size]) return "".concat(colorMap[size]);
+  return "".concat(colorMap.default);
 };
 
-var AvatarContainer = styled.div(_templateObject$4(), function (props) {
-  return getTextColor(props.size, props.user, props.theme);
+var getDeletedStyles = function getDeletedStyles(theme) {
+  return "\n    color: ".concat(theme.colors.grey, ";\n  ");
+};
+
+var InfoContainer = styled.div(_templateObject$4());
+var EmailText = styled.p(_templateObject2$4(), function (props) {
+  return props.theme.margin * 0.5;
+}, function (props) {
+  return props.theme.colors.grey;
 });
-var AvatarImage = styled.div(_templateObject2$4(), function (props) {
+var AvatarContainer = styled.div(_templateObject3$3(), function (props) {
+  return getTextColor(props.size, props.user, props.theme);
+}, function (props) {
+  var _props$user;
+
+  return ((_props$user = props.user) === null || _props$user === void 0 ? void 0 : _props$user.adminStatus) === 'deleted' && getDeletedStyles(props.theme);
+});
+var AvatarImage = styled.div(_templateObject4$2(), function (props) {
   return props.avatar;
 }, function (props) {
   return getStyleFromAvatarSize(props.size);
 });
-var AvatarInitials = styled.div(_templateObject3$3(), function (props) {
-  return getRandomColor(props.avatarDefault, props.theme);
+var AvatarInitials = styled.div(_templateObject5$2(), function (props) {
+  return getRandomColor(props.avatarDefault, props.theme, props.isDeleted);
 }, function (props) {
   return getStyleFromAvatarSize(props.size);
 }, function (props) {
-  var _props$theme;
-
-  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.darkBlue;
+  return props.theme.colors.darkBlue;
+});
+var Link$2 = styled.a(_templateObject6$1(), function (props) {
+  return getTextColor(props.size, props.user, props.theme);
 });
 
 var Avatar = function Avatar(_ref) {
@@ -5819,18 +5886,23 @@ var Avatar = function Avatar(_ref) {
       size = _ref.size,
       hasCarat = _ref.hasCarat,
       hasText = _ref.hasText,
+      hasEmail = _ref.hasEmail,
       user = _ref.user;
+  var isDeleted = (user === null || user === void 0 ? void 0 : user.adminStatus) === 'deleted';
   return /*#__PURE__*/React.createElement(AvatarContainer, {
     onClick: action,
     size: size,
     user: user
-  }, size && user && user.avatar ? /*#__PURE__*/React.createElement(AvatarImage, {
+  }, size && user && user.avatar && /*#__PURE__*/React.createElement(AvatarImage, {
     avatar: "".concat(user.avatar),
     size: size
-  }) : /*#__PURE__*/React.createElement(AvatarInitials, {
+  }), isDeleted ? /*#__PURE__*/React.createElement(AvatarInitials, {
     size: size,
-    avatarDefault: user.avatarDefault
-  }, user.fullName ? user.fullName.slice(0, 2) : ''), hasText && /*#__PURE__*/React.createElement("p", null, user.fullName), hasCarat && /*#__PURE__*/React.createElement(Icon, {
+    isDeleted: isDeleted
+  }, "?") : /*#__PURE__*/React.createElement(AvatarInitials, {
+    size: size,
+    avatarDefault: user === null || user === void 0 ? void 0 : user.avatarDefault
+  }, (user === null || user === void 0 ? void 0 : user.fullName) ? user.fullName.slice(0, 2) : ''), /*#__PURE__*/React.createElement(InfoContainer, null, hasText && /*#__PURE__*/React.createElement(React.Fragment, null, isDeleted && /*#__PURE__*/React.createElement(Link$2, null, "[deleted Admin]"), /*#__PURE__*/React.createElement(Link$2, null, user === null || user === void 0 ? void 0 : user.fullName)), hasEmail && /*#__PURE__*/React.createElement(EmailText, null, user === null || user === void 0 ? void 0 : user.email)), hasCarat && /*#__PURE__*/React.createElement(Icon, {
     name: "chevron-down"
   }));
 };
@@ -5840,6 +5912,7 @@ Avatar.propTypes = {
   size: propTypes.oneOf(['small', 'medium', 'large']),
   hasCarat: propTypes.bool,
   hasText: propTypes.bool,
+  hasEmail: propTypes.bool,
   user: propTypes.object
 };
 Avatar.defaultProps = {
@@ -5876,7 +5949,36 @@ var getColorFromStatus = function getColorFromStatus(theme, status) {
     canceled: theme === null || theme === void 0 ? void 0 : theme.feedback.error.default,
     rejected: theme === null || theme === void 0 ? void 0 : theme.feedback.error.default,
     new_candidate: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
-    accepted: theme === null || theme === void 0 ? void 0 : theme.brand.green
+    accepted: theme === null || theme === void 0 ? void 0 : theme.brand.green,
+    casa: theme.muted.blue,
+    acompanhamento: theme.muted.green,
+    aulas: theme.muted.yellow,
+    reparações: theme.muted.blue,
+    comingSoon: theme.brand.lightBeige,
+    // Backoffice
+    awaiting_service_payment: theme.brand.yellow,
+    awaiting_meeting: theme.brand.yellow,
+    cancelled: theme.feedback.error.default,
+    awaiting_details: theme.brand.yellow,
+    reopened: theme.brand.yellow,
+    // services
+    Costura: theme.muted.blue,
+    'Apoio a Seniores': theme.muted.green,
+    Jardinagem: theme.muted.blue,
+    Limpezas: theme.muted.blue,
+    'Experiência Gastronómica': theme.muted.blue,
+    'Apoio Familiar a Crianças': theme.muted.green,
+    Petsitting: theme.muted.green,
+    Petcare: theme.muted.green,
+    'Aulas de Música': theme.muted.yellow,
+    Reparações: theme.muted.blue,
+    'Passar a Ferro': theme.muted.blue,
+    'Chef em Casa': theme.muted.blue,
+    'Aulas de Línguas': theme.muted.yellow,
+    // serviceType
+    standard: theme.brand.blue,
+    premium: theme.feedback.success.default,
+    test: theme.feedback.warning.default
   }[status];
 };
 
@@ -5991,30 +6093,30 @@ function _templateObject7$1() {
   return data;
 }
 
-function _templateObject6$1() {
+function _templateObject6$2() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row ", ";\n  background-color: ", ";\n  align-items: ", ";\n  width: 100%;\n  justify-content: ", ";\n  min-height: ", "px;\n  ", "\n  ", "\n  ", "\n"]);
 
-  _templateObject6$1 = function _templateObject6() {
+  _templateObject6$2 = function _templateObject6() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject5$2() {
+function _templateObject5$3() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  max-height: calc(70vh);\n  overflow-x: scroll;\n  overflow-y: hidden;\n  padding-bottom: 40px;\n  transition: height 0.3s ease-out;\n\n  > * {\n    margin-right: 16px;\n  }\n\n  &::-webkit-scrollbar {\n    margin-top: 32px;\n    height: 4px;\n    background-color: ", ";\n  }\n\n  &::-webkit-scrollbar-thumb {\n    margin-top: 30px;\n    background: ", ";\n    border-radius: 30px;\n  }\n"]);
 
-  _templateObject5$2 = function _templateObject5() {
+  _templateObject5$3 = function _templateObject5() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject4$2() {
+function _templateObject4$3() {
   var data = _taggedTemplateLiteral(["\n  margin: 0px 32px;\n"]);
 
-  _templateObject4$2 = function _templateObject4() {
+  _templateObject4$3 = function _templateObject4() {
     return data;
   };
 
@@ -6103,8 +6205,8 @@ var Page = styled.div(_templateObject2$5(), function (props) {
 var BackofficePage = styled.div(_templateObject3$4(), function (props) {
   return getPageBackground(props);
 });
-var BackofficeContainer = styled.div(_templateObject4$2());
-var BackofficeKanbanContainer = styled.div(_templateObject5$2(), function (props) {
+var BackofficeContainer = styled.div(_templateObject4$3());
+var BackofficeKanbanContainer = styled.div(_templateObject5$3(), function (props) {
   var _props$theme8;
 
   return (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.lightestBeige;
@@ -6113,7 +6215,7 @@ var BackofficeKanbanContainer = styled.div(_templateObject5$2(), function (props
 
   return (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors.darkBlue;
 });
-var Row = styled.div(_templateObject6$1(), function (props) {
+var Row = styled.div(_templateObject6$2(), function (props) {
   return props.noWrap ? 'nowrap' : 'wrap';
 }, function (props) {
   return getSelectedBackground(props);
@@ -6215,10 +6317,10 @@ var Hero = styled.div(_templateObject11$1(), function (props) {
 });
 var ReversedColumn = styled(GridRow)(_templateObject12$1(), media.mobile("\n    flex-flow: column-reverse;\n    text-align: center\n  "));
 
-function _templateObject4$3() {
+function _templateObject4$4() {
   var data = _taggedTemplateLiteral(["\n  margin-right: ", "px !important;\n  outline: none;\n  width: ", "px;\n  height: ", "px;\n  background-color: ", ";\n  };\n\n  \n  cursor: pointer;\n  ", "\n  ", "\n  ", "\n  border: ", ";\n  }\n"]);
 
-  _templateObject4$3 = function _templateObject4() {
+  _templateObject4$4 = function _templateObject4() {
     return data;
   };
 
@@ -6261,7 +6363,7 @@ var ButtonGroupContainer = styled.div(_templateObject3$5(), function (props) {
 
   return props.isSelected ? (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.darkBlue : (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.grey;
 });
-var StyledButton = styled.button(_templateObject4$3(), function (props) {
+var StyledButton = styled.button(_templateObject4$4(), function (props) {
   return props.theme.margin - 8;
 }, function (props) {
   var _props$theme3;
@@ -6513,7 +6615,11 @@ var CheckBoxGroup = function CheckBoxGroup(_ref) {
         return handleItems(name, item === null || item === void 0 ? void 0 : item.question);
       },
       key: index
-    }), item.question && /*#__PURE__*/React.createElement(Body, null, item.question));
+    }), item.question && /*#__PURE__*/React.createElement(Body, {
+      dangerouslySetInnerHTML: {
+        __html: item.question
+      }
+    }));
   }));
 };
 
@@ -6599,10 +6705,10 @@ DropDownMenu.propTypes = {
   }))
 };
 
-function _templateObject4$4() {
+function _templateObject4$5() {
   var data = _taggedTemplateLiteral(["\n  border-radius: 0 48px 48px 0;\n  outline: none !important;\n  background-color: ", ";\n  border: none;\n  padding: 0 ", "px;\n  flex: 1;\n  > p {\n    margin: ", "px;\n  }\n"]);
 
-  _templateObject4$4 = function _templateObject4() {
+  _templateObject4$5 = function _templateObject4() {
     return data;
   };
 
@@ -6620,7 +6726,7 @@ function _templateObject3$7() {
 }
 
 function _templateObject2$9() {
-  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  margin: 12px 0px 0px 8px;\n\n  svg {\n    height: 20px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  margin: 12px 0px 0px 8px;\n\n  svg {\n    height: 16px;\n    width: 16px;\n  }\n"]);
 
   _templateObject2$9 = function _templateObject2() {
     return data;
@@ -6639,45 +6745,31 @@ function _templateObject$c() {
   return data;
 }
 var Container = styled.div(_templateObject$c(), function (props) {
-  var _props$theme;
-
-  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.mediumBeige;
+  return props.theme.mediumBeige;
 });
 
 var getStylesFromType = function getStylesFromType(theme, type) {
-  if (type === 'service') {
-    return "\n    border-radius: 2px;\n    padding-left: 40px;\n    color: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.mediumBeige, ";\n    position: relative;\n    &:focus {\n      outline: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue, ";\n    }\n  ");
+  if (type === 'filter') {
+    return "\n    border-radius: 2px;\n    padding-left: 40px;\n    color: ".concat(theme.colors.darkBlue, ";\n    position: relative;\n    border: 1px solid ").concat(theme.colors.mediumBeige, " !important;\n    &:focus {\n      outline: ").concat(theme.colors.mediumBeige, ";\n    }\n  ");
   }
 };
 
 var SearchIconContainer = styled.div(_templateObject2$9());
 var Input = styled.input(_templateObject3$7(), function (props) {
-  var _props$theme2;
-
-  return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.grey;
+  return props.theme.colors.grey;
 }, function (props) {
-  var _props$theme3;
-
-  return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) * 1.5;
+  return props.theme.margin * 1.5;
 }, function (props) {
-  var _props$theme4;
-
-  return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.grey;
+  return props.theme.grey;
 }, function (props) {
   return getStylesFromType(props.theme, props.type);
 });
-var Button$2 = styled.button(_templateObject4$4(), function (props) {
-  var _props$theme5;
-
-  return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.brand.yellow;
+var Button$2 = styled.button(_templateObject4$5(), function (props) {
+  return props.theme.colors.brand.yellow;
 }, function (props) {
-  var _props$theme6;
-
-  return ((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.margin) * 1;
+  return props.theme.margin * 1;
 }, function (props) {
-  var _props$theme7;
-
-  return (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.margin;
+  return props.theme.margin;
 });
 
 var SearchInput = function SearchInput(_ref) {
@@ -6686,8 +6778,9 @@ var SearchInput = function SearchInput(_ref) {
       defaultValue = _ref.defaultValue,
       label = _ref.label,
       onChange = _ref.onChange,
-      _ref$style = _ref.style,
-      style = _ref$style === void 0 ? 'main' : _ref$style;
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'main' : _ref$type;
+  var t = useTranslate('buttons');
 
   var _useState = useState(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -6703,12 +6796,12 @@ var SearchInput = function SearchInput(_ref) {
 
   return /*#__PURE__*/React.createElement(Container, null, /*#__PURE__*/React.createElement(Input, {
     placeholder: placeholder,
-    type: style,
+    type: type,
     value: val,
     onChange: handleChange
-  }), style === 'service' && /*#__PURE__*/React.createElement(SearchIconContainer, null, /*#__PURE__*/React.createElement(Icon, {
+  }), type === 'filter' && /*#__PURE__*/React.createElement(SearchIconContainer, null, /*#__PURE__*/React.createElement(Icon, {
     name: "Search"
-  })), style === 'main' && /*#__PURE__*/React.createElement(Button$2, null, /*#__PURE__*/React.createElement(Body, null, "Search")));
+  })), type === 'main' && /*#__PURE__*/React.createElement(Button$2, null, /*#__PURE__*/React.createElement(Body, null, t('searchBtn'))));
 };
 
 SearchInput.propTypes = {
@@ -6716,7 +6809,7 @@ SearchInput.propTypes = {
   placeholder: propTypes.string,
   label: propTypes.string,
   defaultValue: propTypes.string,
-  style: propTypes.oneOf(['noButton', 'main', 'secondary', 'service']),
+  type: propTypes.oneOf(['noButton', 'main', 'secondary', 'filter']),
   onChange: propTypes.func
 };
 
@@ -13167,20 +13260,20 @@ Select$2.propTypes = {
   onChange: propTypes.func
 };
 
-function _templateObject5$3() {
+function _templateObject5$4() {
   var data = _taggedTemplateLiteral(["\n  border-left: 1px solid ", ";\n  height: 100%;\n  display: flex;\n  align-items: center;\n  padding-left: 10px;\n  margin-left: 10px;\n\n  path {\n    fill: ", ";\n  }\n"]);
 
-  _templateObject5$3 = function _templateObject5() {
+  _templateObject5$4 = function _templateObject5() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject4$5() {
+function _templateObject4$6() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  color: ", ";\n  align-items: center;\n  padding: 10px;\n  font-style: normal;\n  font-weight: bold;\n  font-size: 14px;\n  line-height: 16px;\n\n  path {\n    ", "\n  }\n\n  span {\n    margin-left: 10px;\n  }\n"]);
 
-  _templateObject4$5 = function _templateObject4() {
+  _templateObject4$6 = function _templateObject4() {
     return data;
   };
 
@@ -13236,14 +13329,14 @@ var getIconColor = function getIconColor(filterLabel, theme) {
 };
 
 var FilterLabel = styled.span(_templateObject3$8());
-var FilterTitle = styled.div(_templateObject4$5(), function (props) {
+var FilterTitle = styled.div(_templateObject4$6(), function (props) {
   var _props$theme3;
 
   return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.grey;
 }, function (props) {
   return getIconColor(props.filterLabel, props.theme);
 });
-var CloseContainer = styled.div(_templateObject5$3(), function (props) {
+var CloseContainer = styled.div(_templateObject5$4(), function (props) {
   var _props$theme4;
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.mediumBeige;
@@ -13464,10 +13557,10 @@ IconSwitch.defaultProps = {
   rightIcon: "List"
 };
 
-function _templateObject4$6() {
+function _templateObject4$7() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-wrap: wrap;\n\n    > * {\n        margin: 16px 16px 0px 0px;\n    }\n"]);
 
-  _templateObject4$6 = function _templateObject4() {
+  _templateObject4$7 = function _templateObject4() {
     return data;
   };
 
@@ -13506,7 +13599,7 @@ function _templateObject$h() {
 var StyledFilterBar = styled.div(_templateObject$h());
 var Header = styled.div(_templateObject2$d());
 var Selects = styled.div(_templateObject3$a());
-var Filters = styled.div(_templateObject4$6());
+var Filters = styled.div(_templateObject4$7());
 
 var FilterBar = function FilterBar(_ref) {
   var availableFilters = _ref.availableFilters,
@@ -20245,20 +20338,20 @@ TextArea$1.propTypes = {
   onChange: propTypes.func
 };
 
-function _templateObject5$4() {
+function _templateObject5$5() {
   var data = _taggedTemplateLiteral(["\n  display: grid;\n  grid-template-columns: repeat(2, 48%);\n  justify-content: space-between;\n  align-items: flex-end;\n"]);
 
-  _templateObject5$4 = function _templateObject5() {
+  _templateObject5$5 = function _templateObject5() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject4$7() {
+function _templateObject4$8() {
   var data = _taggedTemplateLiteral(["\n    display: ", ";\n    background-color: black;\n    color: black;\n    width: 10px;\n    height: 10px;\n    border-radius: 50%;\n  }\n"]);
 
-  _templateObject4$7 = function _templateObject4() {
+  _templateObject4$8 = function _templateObject4() {
     return data;
   };
 
@@ -20337,10 +20430,10 @@ var StyledRadio = styled.button(_templateObject3$b(), function (props) {
 
   return props.isSelected ? (_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.colors.white : (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.colors.darkBlue;
 });
-var FocusedRadio = styled.div(_templateObject4$7(), function (props) {
+var FocusedRadio = styled.div(_templateObject4$8(), function (props) {
   return props.isSelected ? '' : 'none';
 });
-var SplitSelectContainer = styled.div(_templateObject5$4());
+var SplitSelectContainer = styled.div(_templateObject5$5());
 
 var RadioButton = function RadioButton(_ref) {
   var align = _ref.align,
@@ -20456,30 +20549,30 @@ function _templateObject7$2() {
   return data;
 }
 
-function _templateObject6$2() {
+function _templateObject6$3() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  margin-top: 16px;\n"]);
 
-  _templateObject6$2 = function _templateObject6() {
+  _templateObject6$3 = function _templateObject6() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject5$5() {
+function _templateObject5$6() {
   var data = _taggedTemplateLiteral([""]);
 
-  _templateObject5$5 = function _templateObject5() {
+  _templateObject5$6 = function _templateObject5() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject4$8() {
+function _templateObject4$9() {
   var data = _taggedTemplateLiteral(["\n  display: block;\n  width: auto;\n  height: 100%;\n"]);
 
-  _templateObject4$8 = function _templateObject4() {
+  _templateObject4$9 = function _templateObject4() {
     return data;
   };
 
@@ -20522,9 +20615,9 @@ var FileUploaderContainer = styled.div(_templateObject$l(), function (props) {
 });
 var UploaderRowWrapper = styled(Row)(_templateObject2$h());
 var UploaderPreviewContainer = styled.div(_templateObject3$c());
-var UploadedImages = styled.img(_templateObject4$8());
-var UploaderInput = styled.input(_templateObject5$5());
-var ThumbsContainer = styled.div(_templateObject6$2());
+var UploadedImages = styled.img(_templateObject4$9());
+var UploaderInput = styled.input(_templateObject5$6());
+var ThumbsContainer = styled.div(_templateObject6$3());
 var UploaderPreviewInner = styled.div(_templateObject7$2());
 var AnswersContainer = styled.div(_templateObject8$2());
 var AnswersTitleHolder = styled.div(_templateObject9$2(), function (props) {
@@ -22019,10 +22112,10 @@ var TextContainer = styled(Body)(_templateObject2$i(), function (props) {
   return props.theme.margin;
 }, media.mobile("\n    margin-right: 0px;\n    margin-left: 6px;\n  "));
 
-function _templateObject4$9() {
+function _templateObject4$a() {
   var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border-radius: ", "px;\n  margin-top: ", "px;\n  p {\n    white-space: pre-wrap;\n    margin: 0;\n    padding: ", "px;\n  }\n"]);
 
-  _templateObject4$9 = function _templateObject4() {
+  _templateObject4$a = function _templateObject4() {
     return data;
   };
 
@@ -22061,7 +22154,7 @@ function _templateObject$n() {
 var WidgetContainer$1 = styled(Col)(_templateObject$n());
 var HeadingContainer = styled(Row)(_templateObject2$j());
 var BodyContainer = styled(Row)(_templateObject3$d());
-var ExtrasContainer = styled(Row)(_templateObject4$9(), function (props) {
+var ExtrasContainer = styled(Row)(_templateObject4$a(), function (props) {
   return props.theme.colors.lightestBeige;
 }, function (props) {
   return props.theme.margin / 2;
@@ -22768,10 +22861,10 @@ OfferTypeWidget.propTypes = {
   urgentPrices: propTypes.object
 };
 
-function _templateObject4$a() {
+function _templateObject4$b() {
   var data = _taggedTemplateLiteral(["\n  > div {\n    width: 100%;\n    margin: 16px 30px;\n  }\n"]);
 
-  _templateObject4$a = function _templateObject4() {
+  _templateObject4$b = function _templateObject4() {
     return data;
   };
 
@@ -22834,7 +22927,7 @@ var StyledCheckbox$1 = styled.input(_templateObject3$e(), function (props) {
 
   return "1px solid ".concat((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.mediumBeige);
 });
-var ContentRow = styled(Row)(_templateObject4$a());
+var ContentRow = styled(Row)(_templateObject4$b());
 
 var CheckBoxWidget = function CheckBoxWidget(_ref) {
   var name = _ref.name,
@@ -23018,10 +23111,10 @@ Tabs.defaultProps = {
   type: 'primary'
 };
 
-function _templateObject4$b() {
+function _templateObject4$c() {
   var data = _taggedTemplateLiteral(["\n  flex: 1;\n  display: flex;\n  flex-flow: column;\n  background-color: ", ";\n  margin-bottom: ", "px;\n  border: ", ";\n  > h1,\n  h2,\n  h3,\n  h4,\n  h5,\n  h6 {\n    text-align: left;\n  }\n  > div {\n    padding: 20px;\n    & > textarea {\n      min-height: ", "px;\n    }\n    & > p {\n      text-align: left;\n    }\n  }\n"]);
 
-  _templateObject4$b = function _templateObject4() {
+  _templateObject4$c = function _templateObject4() {
     return data;
   };
 
@@ -23085,7 +23178,7 @@ var StyledServiceHeader = styled.div(_templateObject2$m(), function (props) {
   return "1px solid ".concat(props.theme.colors.mediumBeige);
 });
 var StyledHeaderInfo = styled(Heading)(_templateObject3$g());
-var StyledForm = styled.div(_templateObject4$b(), function (props) {
+var StyledForm = styled.div(_templateObject4$c(), function (props) {
   return getSelectedBackground$2(props);
 }, function (props) {
   var _props$theme5;
@@ -26345,7 +26438,7 @@ var SchedulePicker = function SchedulePicker(_ref) {
   var renderCustomDateLabel = function renderCustomDateLabel() {
     var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Date();
     var dayHeader = t ? t(".scheduler.".concat(columnNames[date.getDay()])) : columnNames[date.getDay()];
-    return /*#__PURE__*/React.createElement(StyledDateLabel, null, /*#__PURE__*/React.createElement(Tiny$1, null, dayHeader.charAt(0).toUpperCase()));
+    return /*#__PURE__*/React.createElement(StyledDateLabel, null, /*#__PURE__*/React.createElement(Tiny, null, dayHeader.charAt(0).toUpperCase()));
   };
 
   var handleChange = function handleChange(newSchedule) {
@@ -44649,30 +44742,30 @@ function _templateObject7$3() {
   return data;
 }
 
-function _templateObject6$3() {
+function _templateObject6$4() {
   var data = _taggedTemplateLiteral(["\n  margin: 8px 0px;\n  text-transform: capitalize;\n\n  span {\n    color: ", ";\n  }\n"]);
 
-  _templateObject6$3 = function _templateObject6() {
+  _templateObject6$4 = function _templateObject6() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject5$6() {
+function _templateObject5$7() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  margin-top: 14px;\n  text-transform: capitalize;\n"]);
 
-  _templateObject5$6 = function _templateObject5() {
+  _templateObject5$7 = function _templateObject5() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject4$c() {
+function _templateObject4$d() {
   var data = _taggedTemplateLiteral(["\n  margin-top: 16px;\n  padding-top: 8px;\n  border-top: 1px solid ", ";\n"]);
 
-  _templateObject4$c = function _templateObject4() {
+  _templateObject4$d = function _templateObject4() {
     return data;
   };
 
@@ -44723,13 +44816,13 @@ var IconContainer$1 = styled.div(_templateObject3$h(), function (props) {
 
   return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.lightBeige;
 });
-var AdminContainer = styled.div(_templateObject4$c(), function (props) {
+var AdminContainer = styled.div(_templateObject4$d(), function (props) {
   var _props$theme4;
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.mediumBeige;
 });
-var Details = styled.div(_templateObject5$6());
-var ServiceDetails = styled(SmallBody)(_templateObject6$3(), function (props) {
+var Details = styled.div(_templateObject5$7());
+var ServiceDetails = styled(SmallBody)(_templateObject6$4(), function (props) {
   var _props$theme5;
 
   return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.grey;
@@ -44782,10 +44875,10 @@ KanbanCard$1.propTypes = {
   })
 };
 
-function _templateObject4$d() {
+function _templateObject4$e() {
   var data = _taggedTemplateLiteral(["\n  path {\n    fill: ", ";\n  }\n"]);
 
-  _templateObject4$d = function _templateObject4() {
+  _templateObject4$e = function _templateObject4() {
     return data;
   };
 
@@ -44840,7 +44933,7 @@ var Header$1 = styled.div(_templateObject3$i(), function (props) {
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.lightestBeige;
 });
-var IconContainer$2 = styled.div(_templateObject4$d(), function (props) {
+var IconContainer$2 = styled.div(_templateObject4$e(), function (props) {
   var _props$theme5;
 
   return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.grey;
@@ -44970,10 +45063,10 @@ Kanban.propTypes = {
   onChangeStatus: propTypes.func
 };
 
-function _templateObject4$e() {
+function _templateObject4$f() {
   var data = _taggedTemplateLiteral([""]);
 
-  _templateObject4$e = function _templateObject4() {
+  _templateObject4$f = function _templateObject4() {
     return data;
   };
 
@@ -45028,10 +45121,10 @@ var ListItens = styled.li(_templateObject3$j(), function (props) {
 }, function (props) {
   return props.justify ? props.justify : 'center';
 }, function (props) {
-  return props.hasIcon && props.indexedList ? getIconStyle(props.indexedStyle, props.indexedList) : props.hasIcon ? getIconStyle('main') : regularStyle;
+  return props.hasIcon && props.indexedList ? getIconStyle$1(props.indexedStyle, props.indexedList) : props.hasIcon ? getIconStyle$1('main') : regularStyle;
 });
 
-var getIconStyle = function getIconStyle(style, isIndexed) {
+var getIconStyle$1 = function getIconStyle(style, isIndexed) {
   var customStyles = {
     main: "\n    nav {\n      width: 20px;\n      height: 20px;\n      padding: 2px;\n      font-weight: bold;\n      font-size: 16px;\n      margin-right: ".concat(theme === null || theme === void 0 ? void 0 : theme.margin, "px;\n      color: white;\n      background: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orange, ";\n      border-radius: 2px;\n      text-align: center;\xAB\n    }\n    p {\n      color: ").concat(isIndexed && (theme === null || theme === void 0 ? void 0 : theme.colors.brand.orange), ";\n    }\n    "),
     completed: "\n    nav {\n      width: 20px;\n      height: 20px;\n      padding: 2px;\n      font-weight: bold;\n      font-size: 16px;\n      margin-right: ".concat(theme === null || theme === void 0 ? void 0 : theme.margin, "px;\n      color: white;\n      background: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue, ";\n      border-radius: 2px;\n      text-align: center;\n    }\n    p {\n      color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.darkBlue, "\n    }\n    "),
@@ -45041,7 +45134,7 @@ var getIconStyle = function getIconStyle(style, isIndexed) {
 };
 
 var regularStyle = "\n  &::before {\n      content: \"\";\n      padding: 5px;\n      font-weight: bold;\n      font-size: 16px;\n      align-items: baseline;\n      margin-right: 1.5rem;\n      background: ".concat(theme === null || theme === void 0 ? void 0 : theme.colors.brand.orange, ";\n      border-radius: 2px;\n  }\n  ");
-var StyledIcon = styled.nav(_templateObject4$e());
+var StyledIcon = styled.nav(_templateObject4$f());
 
 var List = function List(_ref) {
   var data = _ref.data,
@@ -45275,24 +45368,21 @@ function _templateObject$A() {
 }
 var StyledPagination = styled.div(_templateObject$A());
 var Left$1 = styled.div(_templateObject2$u(), function (props) {
-  var _props$theme;
-
-  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.grey;
+  return props.theme.colors.grey;
 });
 var Right$1 = styled.div(_templateObject3$k());
 
 var Pagination = function Pagination(_ref) {
   var totalPages = _ref.totalPages,
       currentPage = _ref.currentPage,
-      action = _ref.action,
-      translate = _ref.translate;
-
-  var getBoxes = function getBoxes(currentPage, totalPages) {
+      action = _ref.action;
+  var t = useTranslate('archive');
+  var boxes = useMemo$1(function () {
     if (totalPages >= 4) {
       if (currentPage === 1 || currentPage === totalPages || currentPage === totalPages - 1) {
-        return [1, 2, totalPages - 1, totalPages];
+        return currentPage === 1 ? [1, 2, '...', totalPages - 1, totalPages] : [1, '...', totalPages - 1, totalPages];
       } else {
-        return [currentPage - 1, currentPage, totalPages - 1, totalPages];
+        return [currentPage - 1, currentPage, currentPage + 1, '...', totalPages - 1, totalPages];
       }
     } else {
       switch (totalPages) {
@@ -45306,26 +45396,26 @@ var Pagination = function Pagination(_ref) {
           return [totalPages];
       }
     }
-  };
-
-  var pageNumberAry = getBoxes(currentPage, totalPages);
+  }, [currentPage, totalPages]);
   return /*#__PURE__*/React.createElement(StyledPagination, null, /*#__PURE__*/React.createElement(Left$1, null, /*#__PURE__*/React.createElement(SmallBody, {
     bold: true
-  }, t$1(translate, 'page'), " ", currentPage, " ", t$1(translate, 'of'), " ", totalPages)), /*#__PURE__*/React.createElement(Right$1, null, /*#__PURE__*/React.createElement(TrackerBox, {
+  }, t('page'), " ", currentPage, " ", t('of'), " ", totalPages)), /*#__PURE__*/React.createElement(Right$1, null, /*#__PURE__*/React.createElement(TrackerBox, {
     iconName: "chevron-left",
     boxType: "last",
     currentPage: currentPage,
     totalPages: totalPages,
     action: action
-  }), pageNumberAry && pageNumberAry.map(function (num, index) {
-    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(TrackerBox, {
+  }), boxes && boxes.map(function (num, index) {
+    return /*#__PURE__*/React.createElement(React.Fragment, {
+      key: 'pages' + num
+    }, num === '...' ? /*#__PURE__*/React.createElement(TrackerBox, {
+      text: "...",
+      boxType: "ellipsis"
+    }) : /*#__PURE__*/React.createElement(TrackerBox, {
       text: num,
       isActive: num === currentPage,
       currentPage: currentPage,
       action: action
-    }), index === 1 && pageNumberAry.length >= 4 && /*#__PURE__*/React.createElement(TrackerBox, {
-      text: "...",
-      boxType: "ellipsis"
     }));
   }), /*#__PURE__*/React.createElement(TrackerBox, {
     iconName: "chevron-right",
@@ -45337,25 +45427,25 @@ var Pagination = function Pagination(_ref) {
 };
 
 Pagination.propTypes = {
-  totalPages: propTypes.string,
-  currentPage: propTypes.string,
+  totalPages: propTypes.oneOfType([propTypes.string, propTypes.number]),
+  currentPage: propTypes.oneOfType([propTypes.string, propTypes.number]),
   action: propTypes.func
 };
 
-function _templateObject5$7() {
+function _templateObject5$8() {
   var data = _taggedTemplateLiteral(["\n  padding: 0px 30px;\n  height: 40px;\n  display: flex;\n  align-items: center;\n\n  color: ", ";\n  ", "\n"]);
 
-  _templateObject5$7 = function _templateObject5() {
+  _templateObject5$8 = function _templateObject5() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject4$f() {
+function _templateObject4$g() {
   var data = _taggedTemplateLiteral(["\n  padding: 0px 30px;\n  height: 40px;\n  display: flex;\n  align-items: center;\n  color: ", ";\n  &:visited {\n    color: ", ";\n  }\n  ", ";\n"]);
 
-  _templateObject4$f = function _templateObject4() {
+  _templateObject4$g = function _templateObject4() {
     return data;
   };
 
@@ -45435,7 +45525,7 @@ var getActiveLinkStyle = function getActiveLinkStyle(theme, active) {
   }
 };
 
-var NavLink$1 = styled(Link$1)(_templateObject4$f(), function (props) {
+var NavLink$1 = styled(Link$1)(_templateObject4$g(), function (props) {
   var _props$theme7;
 
   return (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.white;
@@ -45446,7 +45536,7 @@ var NavLink$1 = styled(Link$1)(_templateObject4$f(), function (props) {
 }, function (props) {
   return getActiveLinkStyle(props.theme, props.disabled);
 });
-var NavText = styled(ButtonText)(_templateObject5$7(), function (props) {
+var NavText = styled(ButtonText)(_templateObject5$8(), function (props) {
   var _props$theme9;
 
   return (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors.white;
@@ -45766,8 +45856,18 @@ var Table = function Table(_ref) {
   }));
 };
 
+function _templateObject4$h() {
+  var data = _taggedTemplateLiteral(["\n  text-transform: capitalize;\n  font-weight: bold;\n  font-size: 24px;\n  line-height: 32px;\n  margin: 0px;\n"]);
+
+  _templateObject4$h = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject3$m() {
-  var data = _taggedTemplateLiteral(["\n    display: flex;\n    align-items: center;\n\n    svg {\n        margin-right: 26px;\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n\n  svg {\n    margin-right: 26px;\n  }\n"]);
 
   _templateObject3$m = function _templateObject3() {
     return data;
@@ -45777,7 +45877,7 @@ function _templateObject3$m() {
 }
 
 function _templateObject2$x() {
-  var data = _taggedTemplateLiteral(["\n    display: flex;\n    align-items: center;\n    padding-left: 32px;\n\n    svg {\n        margin-right: 24px;\n    }\n\n    p {\n        font-weight: bold;\n        font-size: 24px;\n        line-height: 32px;\n        margin: 0px;\n    }\n\n    span {\n        font-weight: bold;\n        font-size: 12px;\n        line-height: 10px;\n        letter-spacing: 1px;\n        text-transform: uppercase;\n        color: ", ";\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  padding-left: 32px;\n\n  svg {\n    margin-right: 24px;\n  }\n\n  p {\n    margin: 0px;\n  }\n\n  span {\n    font-weight: bold;\n    font-size: 12px;\n    line-height: 10px;\n    letter-spacing: 1px;\n    text-transform: uppercase;\n    color: ", ";\n  }\n"]);
 
   _templateObject2$x = function _templateObject2() {
     return data;
@@ -45787,7 +45887,7 @@ function _templateObject2$x() {
 }
 
 function _templateObject$E() {
-  var data = _taggedTemplateLiteral(["\n    height: 80px;\n    display: flex;\n    justify-content: space-between;\n    margin-bottom: 24px;\n    padding-bottom: 10px;\n    -webkit-box-shadow: 0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n    -moz-box-shadow:    0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n    box-shadow:         0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n"]);
+  var data = _taggedTemplateLiteral(["\n  height: 80px;\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 24px;\n  padding-bottom: 10px;\n  -webkit-box-shadow: 0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n  -moz-box-shadow: 0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n  box-shadow: 0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n"]);
 
   _templateObject$E = function _templateObject() {
     return data;
@@ -45797,27 +45897,48 @@ function _templateObject$E() {
 }
 var StyledTopBar = styled.div(_templateObject$E());
 var LeftSection = styled.div(_templateObject2$x(), function (props) {
-  var _props$theme;
-
-  return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.grey;
+  return props.theme.colors.grey;
 });
 var RightSection = styled.div(_templateObject3$m());
+var ClientName = styled.div(_templateObject4$h());
 
 var TopBar = function TopBar(_ref) {
   var location = _ref.location,
       title = _ref.title,
-      back = _ref.back,
-      user = _ref.user;
+      back = _ref.back;
+
+  var _useAuth = useAuth(),
+      user = _useAuth.user;
+
   var history = useHistory();
-  return /*#__PURE__*/React.createElement(StyledTopBar, null, /*#__PURE__*/React.createElement(LeftSection, null, back && /*#__PURE__*/React.createElement(Link$1, null, /*#__PURE__*/React.createElement(Icon, {
-    name: "chevron-left"
-  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("span", null, location)), /*#__PURE__*/React.createElement("p", null, title))), /*#__PURE__*/React.createElement(RightSection, null, /*#__PURE__*/React.createElement(Icon, {
+  var memoUser = useMemo$1(function () {
+    var _user$attributes, _user$attributes2, _user$attributes3;
+
+    return {
+      avatar: user === null || user === void 0 ? void 0 : (_user$attributes = user.attributes) === null || _user$attributes === void 0 ? void 0 : _user$attributes.avatar,
+      avatarDefault: user === null || user === void 0 ? void 0 : (_user$attributes2 = user.attributes) === null || _user$attributes2 === void 0 ? void 0 : _user$attributes2.avatarDefault,
+      fullName: user === null || user === void 0 ? void 0 : (_user$attributes3 = user.attributes) === null || _user$attributes3 === void 0 ? void 0 : _user$attributes3.fullName
+    };
+  }, [user]);
+
+  var handleNavigateToSettings = function handleNavigateToSettings() {
+    history.push('/dashboard/settings');
+  };
+
+  return /*#__PURE__*/React.createElement(StyledTopBar, null, /*#__PURE__*/React.createElement(LeftSection, null, back && /*#__PURE__*/React.createElement(Button$1, {
+    icon: "chevron-left",
+    btnType: "transparent",
+    action: function action() {
+      return history.goBack();
+    }
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("span", null, location)), /*#__PURE__*/React.createElement(ClientName, null, title))), /*#__PURE__*/React.createElement(RightSection, null, /*#__PURE__*/React.createElement(Icon, {
     name: "Bell"
-  }), /*#__PURE__*/React.createElement(Avatar, {
+  }), user && /*#__PURE__*/React.createElement(Avatar, {
     size: "medium",
     hasCarat: true,
     hasText: true,
-    user: user
+    user: memoUser,
+    action: handleNavigateToSettings
   })));
 };
 

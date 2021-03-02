@@ -1,34 +1,59 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Link } from '../Text';
+import Button from '../Button';
+import useAuth from 'Hooks/useAuth';
 
 import Icon from '../Icon';
 import Avatar from '../Avatar';
 
-import StyledTopBar, { LeftSection, RightSection } from './style';
+import StyledTopBar, { LeftSection, RightSection, ClientName } from './style';
 
-const TopBar = ({ location, title, back, user }) => {
+const TopBar = ({ location, title, back }) => {
+  const { user } = useAuth();
   const history = useHistory();
+
+  const memoUser = useMemo(
+    () => ({
+      avatar: user?.attributes?.avatar,
+      avatarDefault: user?.attributes?.avatarDefault,
+      fullName: user?.attributes?.fullName
+    }),
+    [user]
+  );
+
+  const handleNavigateToSettings = () => {
+    history.push('/dashboard/settings');
+  };
+
   return (
     <StyledTopBar>
       <LeftSection>
         {back && (
-          <Link>
-            <Icon name='chevron-left' />
-          </Link>
+          <Button
+            icon='chevron-left'
+            btnType='transparent'
+            action={() => history.goBack()}
+          ></Button>
         )}
         <div>
           <p>
             <span>{location}</span>
           </p>
-          <p>{title}</p>
+          <ClientName>{title}</ClientName>
         </div>
       </LeftSection>
-
       <RightSection>
         <Icon name='Bell' />
-        <Avatar size='medium' hasCarat={true} hasText={true} user={user} />
+        {user && (
+          <Avatar
+            size='medium'
+            hasCarat={true}
+            hasText={true}
+            user={memoUser}
+            action={handleNavigateToSettings}
+          />
+        )}
       </RightSection>
     </StyledTopBar>
   );
