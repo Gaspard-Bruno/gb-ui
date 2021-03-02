@@ -21,7 +21,33 @@ const getColorFromStatus = (theme, status) =>
     acompanhamento: theme.muted.green,
     aulas: theme.muted.yellow,
     reparações: theme.muted.blue,
-    comingSoon: theme.brand.lightBeige
+    comingSoon: theme.brand.lightBeige,
+    // Backoffice
+    awaiting_service_payment: theme.brand.yellow,
+    awaiting_meeting: theme.brand.yellow,
+    cancelled: theme.feedback.error.default,
+    awaiting_details: theme.brand.yellow,
+    reopened: theme.brand.yellow,
+
+    // services
+    Costura: theme.muted.blue,
+    'Apoio a Seniores': theme.muted.green,
+    Jardinagem: theme.muted.blue,
+    Limpezas: theme.muted.blue,
+    'Experiência Gastronómica': theme.muted.blue,
+    'Apoio Familiar a Crianças': theme.muted.green,
+    Petsitting: theme.muted.green,
+    Petcare: theme.muted.green,
+    'Aulas de Música': theme.muted.yellow,
+    Reparações: theme.muted.blue,
+    'Passar a Ferro': theme.muted.blue,
+    'Chef em Casa': theme.muted.blue,
+    'Aulas de Línguas': theme.muted.yellow,
+
+    // serviceType
+    standard: theme.brand.blue,
+    premium: theme.feedback.success.default,
+    test: theme.feedback.warning.default
   }[status]);
 
 const Badge = styled.span`

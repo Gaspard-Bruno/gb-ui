@@ -12,7 +12,6 @@ const Accordion = ({ title, isOpen, content }) => {
       <AccordionTitle isOpen={setOpen}>
         <Heading size={6}>{title}</Heading>
         <Button
-          type='button'
           btnType='transparent'
           icon='chevron-down'
           action={() => setSetOpen(!setOpen)}
@@ -25,8 +24,11 @@ const Accordion = ({ title, isOpen, content }) => {
 
 Accordion.propTypes = {
   title: PropTypes.string,
-  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  content: PropTypes.func,
   isOpen: PropTypes.bool
 };
 
+Accordion.whyDidYouRender = {
+  customName: 'Accordion'
+};
 export default Accordion;

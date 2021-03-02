@@ -36,7 +36,6 @@ const Button = ({
     return (
       <IconButton
         btnType={btnType}
-        type={type}
         disabled={isDisabled}
         small={isSmall}
         onClick={action}
@@ -62,14 +61,14 @@ Button.propTypes = {
     'terceary',
     'transparent',
     'borded',
-    'iconHolder'
+    'resting',
+    'active'
   ]),
   icon: PropTypes.string
 };
 
 Button.defaultProps = {
-  btnType: 'primary',
-  type: 'button'
+  type: 'primary'
 };
 
 export default Button;

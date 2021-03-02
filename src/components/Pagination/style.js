@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledPagination = styled.div`
   margin: 24px 0px 32px;
@@ -10,7 +10,7 @@ const StyledPagination = styled.div`
 
 export const Left = styled.div`
   p {
-    color: ${props => props.theme?.colors.grey};
+    color: ${props => props.theme.colors.grey};
   }
 `;
 

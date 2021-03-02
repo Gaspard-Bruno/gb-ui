@@ -6,20 +6,21 @@ const Container = styled.div`
   justify-content: flex-start;
   padding: 0;
   input {
-    border: 1px solid ${props => props.theme?.colors.mediumBeige};
+    border: 1px solid ${props => props.theme.mediumBeige};
   }
   position: relative;
 `;
 
 const getStylesFromType = (theme, type) => {
-  if (type === 'service') {
+  if (type === 'filter') {
     return `
     border-radius: 2px;
     padding-left: 40px;
-    color: ${theme?.colors.mediumBeige};
+    color: ${theme.colors.darkBlue};
     position: relative;
+    border: 1px solid ${theme.colors.mediumBeige} !important;
     &:focus {
-      outline: ${theme?.colors.darkBlue};
+      outline: ${theme.colors.mediumBeige};
     }
   `;
   }
@@ -30,33 +31,34 @@ export const SearchIconContainer = styled.div`
   margin: 12px 0px 0px 8px;
 
   svg {
-    height: 20px;
+    height: 16px;
+    width: 16px;
   }
 `;
 
 const Input = styled.input`
   flex: 3;
   border-radius: 48px 0 0 48px;
-  color: ${props => props.theme?.colors.grey};
-  padding: 0 ${props => props.theme?.margin * 1.5}px;
+  color: ${props => props.theme.colors.grey};
+  padding: 0 ${props => props.theme.margin * 1.5}px;
   &:focus {
     outline: none;
   }
   font-family: Muli;
   font-size: 16px;
   line-height: 24px;
-  color: ${props => props.theme?.grey};
+  color: ${props => props.theme.grey};
   ${props => getStylesFromType(props.theme, props.type)}
 `;
 const Button = styled.button`
   border-radius: 0 48px 48px 0;
   outline: none !important;
-  background-color: ${props => props.theme?.colors.brand.yellow};
+  background-color: ${props => props.theme.colors.brand.yellow};
   border: none;
-  padding: 0 ${props => props.theme?.margin * 1}px;
+  padding: 0 ${props => props.theme.margin * 1}px;
   flex: 1;
   > p {
-    margin: ${props => props.theme?.margin}px;
+    margin: ${props => props.theme.margin}px;
   }
 `;
 
