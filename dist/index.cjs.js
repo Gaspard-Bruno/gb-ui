@@ -45658,8 +45658,8 @@ var Right$1 = styled__default['default'].div(_templateObject3$l());
 var Pagination = function Pagination(_ref) {
   var totalPages = _ref.totalPages,
       currentPage = _ref.currentPage,
-      action = _ref.action;
-  var t = polyglotReactReduxSdk.useTranslate('archive');
+      action = _ref.action,
+      translate = _ref.translate;
   var boxes = React.useMemo(function () {
     if (totalPages >= 4) {
       if (currentPage === 1 || currentPage === totalPages || currentPage === totalPages - 1) {
@@ -45682,7 +45682,7 @@ var Pagination = function Pagination(_ref) {
   }, [currentPage, totalPages]);
   return /*#__PURE__*/React__default['default'].createElement(StyledPagination, null, /*#__PURE__*/React__default['default'].createElement(Left$1, null, /*#__PURE__*/React__default['default'].createElement(SmallBody, {
     bold: true
-  }, t('page'), " ", currentPage, " ", t('of'), " ", totalPages)), /*#__PURE__*/React__default['default'].createElement(Right$1, null, /*#__PURE__*/React__default['default'].createElement(TrackerBox, {
+  }, t$1(translate, 'page'), " ", currentPage, " ", t$1(translate, 'of'), " ", totalPages)), /*#__PURE__*/React__default['default'].createElement(Right$1, null, /*#__PURE__*/React__default['default'].createElement(TrackerBox, {
     iconName: "chevron-left",
     boxType: "last",
     currentPage: currentPage,
@@ -45695,7 +45695,7 @@ var Pagination = function Pagination(_ref) {
       text: "...",
       boxType: "ellipsis"
     }) : /*#__PURE__*/React__default['default'].createElement(TrackerBox, {
-      text: num,
+      text: String(num),
       isActive: num === currentPage,
       currentPage: currentPage,
       action: action
@@ -45712,7 +45712,8 @@ var Pagination = function Pagination(_ref) {
 Pagination.propTypes = {
   totalPages: propTypes.oneOfType([propTypes.string, propTypes.number]),
   currentPage: propTypes.oneOfType([propTypes.string, propTypes.number]),
-  action: propTypes.func
+  action: propTypes.func,
+  translate: propTypes.func
 };
 
 function _templateObject5$8() {
