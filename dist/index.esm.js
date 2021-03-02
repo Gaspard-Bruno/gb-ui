@@ -22414,6 +22414,59 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       answers = _ref.answers,
       packOptions = _ref.packOptions,
       urgentPrices = _ref.urgentPrices;
+  var urgencyFallBackProps = {
+    heading: '+2,44€',
+    headerText: '/ hora',
+    body: '*acresce ao valor final; não inclui a taxa de IVA em vigor',
+    extras: 'Serviço realizado em menos de 24H à data do primeiro contacto'
+  };
+  var urgencyProps = urgentPrices || urgencyFallBackProps; // check for default values
+
+  var dateAndHourDefault = (answers === null || answers === void 0 ? void 0 : answers['service-start-date']) && ((answers === null || answers === void 0 ? void 0 : answers['preferred-hours']) || (answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start'])) && new Date("".concat(answers === null || answers === void 0 ? void 0 : answers['service-start-date'], " ").concat(answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start'])); // check for new values
+
+  var dateAndHourValues = (values === null || values === void 0 ? void 0 : values['service-start-date']) && ((values === null || values === void 0 ? void 0 : values['preferred-hours']) || (values === null || values === void 0 ? void 0 : values['preferred-hours-start'])) && new Date("".concat(values === null || values === void 0 ? void 0 : values['service-start-date'], " ").concat((values === null || values === void 0 ? void 0 : values['preferred-hours']) || (values === null || values === void 0 ? void 0 : values['preferred-hours-start'])));
+  var datesToDiff = dateAndHourValues || dateAndHourDefault; // if (!datesToDiff) return;
+  // 86400000 ms = 24H
+  // hours*minutes*seconds*milliseconds
+
+  var oneDay = 24 * 60 * 60 * 1000;
+  var diffDays = Number.parseFloat((new Date().getTime() - (datesToDiff === null || datesToDiff === void 0 ? void 0 : datesToDiff.getTime())) / oneDay).toFixed(0);
+  useEffect(function () {
+    var setUrgency = function setUrgency(vals) {
+      return _action({
+        name: 'is-urgent',
+        value: vals
+      });
+    };
+
+    if (Number(diffDays) === -1) {
+      setUrgency(true);
+    } else {
+      setUrgency(false);
+    }
+
+    console.log('diffDay', diffDays); // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [diffDays]);
+  var selectedRecurrency = useMemo$1(function () {
+    var status = {
+      pickedRecurrency: '',
+      total: ''
+    };
+
+    if ((values === null || values === void 0 ? void 0 : values['recurrence']) === 0 || (answers === null || answers === void 0 ? void 0 : answers['recurrence']) === 0) {
+      status.pickedRecurrency = 'Dia';
+    }
+
+    if ((values === null || values === void 0 ? void 0 : values['recurrence']) === 1 || (answers === null || answers === void 0 ? void 0 : answers['recurrence']) === 1) {
+      status.pickedRecurrency = 'Semana';
+    }
+
+    if ((values === null || values === void 0 ? void 0 : values['recurrence']) === 2 || (answers === null || answers === void 0 ? void 0 : answers['recurrence']) === 2) {
+      status.pickedRecurrency = 'Mês';
+    }
+
+    return status;
+  }, [answers, values]);
 
   var renderContent = function renderContent() {
     var serviceOptions = {
@@ -22462,27 +22515,6 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
         return null;
     }
   };
-
-  var selectedRecurrency = useMemo$1(function () {
-    var status = {
-      pickedRecurrency: '',
-      total: ''
-    };
-
-    if ((values === null || values === void 0 ? void 0 : values['recurrence']) === 0 || (answers === null || answers === void 0 ? void 0 : answers['recurrence']) === 0) {
-      status.pickedRecurrency = 'Dia';
-    }
-
-    if ((values === null || values === void 0 ? void 0 : values['recurrence']) === 1 || (answers === null || answers === void 0 ? void 0 : answers['recurrence']) === 1) {
-      status.pickedRecurrency = 'Semana';
-    }
-
-    if ((values === null || values === void 0 ? void 0 : values['recurrence']) === 2 || (answers === null || answers === void 0 ? void 0 : answers['recurrence']) === 2) {
-      status.pickedRecurrency = 'Mês';
-    }
-
-    return status;
-  }, [answers, values]);
 
   var getDefaultValues = function getDefaultValues(options, answerValue) {
     return options === null || options === void 0 ? void 0 : options.find(function (e) {
@@ -22816,39 +22848,9 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     }, values['offer-type'] && values['offer-type'] !== 0 ? selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.total : null));
   };
 
-  var urgencyRateRender = useCallback$1(function () {
-    var urgencyFallBackProps = {
-      heading: '+2,44€',
-      headerText: '/ hora',
-      body: '*acresce ao valor final; não inclui a taxa de IVA em vigor',
-      extras: 'Serviço realizado em menos de 24H à data do primeiro contacto'
-    };
-    var urgencyProps = urgentPrices || urgencyFallBackProps; // check for default values
-
-    var dateAndHourDefault = (answers === null || answers === void 0 ? void 0 : answers['service-start-date']) && ((answers === null || answers === void 0 ? void 0 : answers['preferred-hours']) || (answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start'])) && new Date("".concat(answers === null || answers === void 0 ? void 0 : answers['service-start-date'], " ").concat(answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start'])); // check for new values
-
-    var dateAndHourValues = (values === null || values === void 0 ? void 0 : values['service-start-date']) && ((values === null || values === void 0 ? void 0 : values['preferred-hours']) || (values === null || values === void 0 ? void 0 : values['preferred-hours-start'])) && new Date("".concat(values === null || values === void 0 ? void 0 : values['service-start-date'], " ").concat((values === null || values === void 0 ? void 0 : values['preferred-hours']) || (values === null || values === void 0 ? void 0 : values['preferred-hours-start'])));
-    var datesToDiff = dateAndHourValues || dateAndHourDefault;
-    if (!datesToDiff) return; // 86400000 ms = 24H
-    // hours*minutes*seconds*milliseconds
-
-    var oneDay = 24 * 60 * 60 * 1000;
-    var diffDays = Math.abs((new Date().getTime() - (datesToDiff === null || datesToDiff === void 0 ? void 0 : datesToDiff.getTime())) / oneDay);
-
-    var setUrgency = function setUrgency(vals) {
-      return setTimeout(function () {//action({ name: 'is-urgent', value: vals });
-      }, 2000);
-    };
-
-    if (diffDays < 1) {
-      setUrgency();
-      return /*#__PURE__*/React.createElement(ServiceTypeWidget, urgencyProps);
-    } else {
-      setUrgency();
-      return /*#__PURE__*/React.createElement(React.Fragment, null);
-    }
-  }, [answers, urgentPrices, values]);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(WidgetContainer, null, renderContent(), urgencyRateRender()));
+  console.log('diff antes', diffDays === -1);
+  console.log('props', urgencyProps);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(WidgetContainer, null, renderContent(), Number(diffDays) === -1 && /*#__PURE__*/React.createElement(ServiceTypeWidget, urgencyProps)));
 };
 
 OfferTypeWidget.propTypes = {
