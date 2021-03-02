@@ -5,7 +5,7 @@ import t from '../utils/translation';
 
 import { SmallBody } from '../Text';
 import Icon from '../Icon';
-import StyledBadge from './style';
+import StyledBadge, { getBadgeColorFromStatus } from './style';
 
 const Badge = ({
   status = 'active',
@@ -37,5 +37,6 @@ Badge.propTypes = {
   isChip: PropTypes.bool,
   text: PropTypes.string
 };
+export { getBadgeColorFromStatus };
 
 export default Badge;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const getColorFromStatus = (theme, status) =>
+export const getBadgeColorFromStatus = (theme, status) =>
   ({
     contact: theme?.brand.blue,
     received: theme?.brand.blue,
@@ -59,7 +59,7 @@ const Badge = styled.span`
   background-color: ${props =>
     props.chip
       ? props.theme?.colors.lightBeige
-      : getColorFromStatus(props.theme?.colors, props.status)};
+      : getBadgeColorFromStatus(props.theme?.colors, props.status)};
   > p {
     color: ${props =>
       props.chip ? props.theme?.colors.darkBlue : props.theme?.colors.black};

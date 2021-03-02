@@ -5935,8 +5935,7 @@ function _templateObject$5() {
 
   return data;
 }
-
-var getColorFromStatus = function getColorFromStatus(theme, status) {
+var getBadgeColorFromStatus = function getBadgeColorFromStatus(theme, status) {
   return {
     contact: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
     received: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
@@ -5984,11 +5983,10 @@ var getColorFromStatus = function getColorFromStatus(theme, status) {
     test: theme.feedback.warning.default
   }[status];
 };
-
 var Badge = styled.span(_templateObject$5(), function (props) {
   var _props$theme, _props$theme2;
 
-  return props.chip ? (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.lightBeige : getColorFromStatus((_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors, props.status);
+  return props.chip ? (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.lightBeige : getBadgeColorFromStatus((_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors, props.status);
 }, function (props) {
   var _props$theme3, _props$theme4;
 
@@ -46095,4 +46093,4 @@ CardSlider.propTypes = {
   hasButton: propTypes.bool
 };
 
-export { Accordion, AlertText, AlertTitle, Alert as Alerts, Avatar, BackofficeContainer, BackofficeKanbanContainer, BackofficePage, Badge$1 as Badge, Body, Button$1 as Button, ButtonGroup, ButtonText, Card$1 as Card, CheckBoxGroup, Checkbox, Code, Col, Divider, DropDownMenu, ErrorText, FileUploader, FilterBar, FilterButton, Form$1 as Form, FullPage, GridCol, GridRow, Heading, Hero, Icon, IconSwitch, Jumbo, Kanban, KanbanCard$1 as KanbanCard, KanbanColumn$1 as KanbanColumn, Link$1 as Link, List, Loading as Loader, Logo$1 as Logo, Page, Pagination, RadioButton, ReversedColumn, Row, SchedulePicker, SearchInput as Search, Select$2 as Select, Sidebar, CardSlider as Slider, SmallBody, SmallBodyFAQ, SubHeading, Table, Tabs, TextArea$1 as TextArea, TextInput, Tiny, TopBar, TrackerBox, media };
+export { Accordion, AlertText, AlertTitle, Alert as Alerts, Avatar, BackofficeContainer, BackofficeKanbanContainer, BackofficePage, Badge$1 as Badge, Body, Button$1 as Button, ButtonGroup, ButtonText, Card$1 as Card, CheckBoxGroup, Checkbox, Code, Col, Divider, DropDownMenu, ErrorText, FileUploader, FilterBar, FilterButton, Form$1 as Form, FullPage, GridCol, GridRow, Heading, Hero, Icon, IconSwitch, Jumbo, Kanban, KanbanCard$1 as KanbanCard, KanbanColumn$1 as KanbanColumn, Link$1 as Link, List, Loading as Loader, Logo$1 as Logo, Page, Pagination, RadioButton, ReversedColumn, Row, SchedulePicker, SearchInput as Search, Select$2 as Select, Sidebar, CardSlider as Slider, SmallBody, SmallBodyFAQ, SubHeading, Table, Tabs, TextArea$1 as TextArea, TextInput, Tiny, TopBar, TrackerBox, getBadgeColorFromStatus, media };

@@ -5949,8 +5949,7 @@ function _templateObject$5() {
 
   return data;
 }
-
-var getColorFromStatus = function getColorFromStatus(theme, status) {
+var getBadgeColorFromStatus = function getBadgeColorFromStatus(theme, status) {
   return {
     contact: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
     received: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
@@ -5998,11 +5997,10 @@ var getColorFromStatus = function getColorFromStatus(theme, status) {
     test: theme.feedback.warning.default
   }[status];
 };
-
 var Badge = styled__default['default'].span(_templateObject$5(), function (props) {
   var _props$theme, _props$theme2;
 
-  return props.chip ? (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.lightBeige : getColorFromStatus((_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors, props.status);
+  return props.chip ? (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.lightBeige : getBadgeColorFromStatus((_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors, props.status);
 }, function (props) {
   var _props$theme3, _props$theme4;
 
@@ -46169,4 +46167,5 @@ exports.TextInput = TextInput;
 exports.Tiny = Tiny;
 exports.TopBar = TopBar;
 exports.TrackerBox = TrackerBox;
+exports.getBadgeColorFromStatus = getBadgeColorFromStatus;
 exports.media = media;
