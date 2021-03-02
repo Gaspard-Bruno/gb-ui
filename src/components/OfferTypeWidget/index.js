@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Heading, SmallBody, Body } from '../Text';
 import { Row } from '../Layout';
@@ -28,6 +28,69 @@ const OfferTypeWidget = ({
   packOptions,
   urgentPrices
 }) => {
+  const urgencyFallBackProps = {
+    heading: '+2,44€',
+    headerText: '/ hora',
+    body: '*acresce ao valor final; não inclui a taxa de IVA em vigor',
+    extras: 'Serviço realizado em menos de 24H à data do primeiro contacto'
+  };
+
+  const urgencyProps = urgentPrices || urgencyFallBackProps;
+  // check for default values
+  const dateAndHourDefault =
+    answers?.['service-start-date'] &&
+    (answers?.['preferred-hours'] || answers?.['preferred-hours-start']) &&
+    new Date(
+      `${answers?.['service-start-date']} ${answers?.['preferred-hours-start']}`
+    );
+
+  // check for new values
+  const dateAndHourValues =
+    values?.['service-start-date'] &&
+    (values?.['preferred-hours'] || values?.['preferred-hours-start']) &&
+    new Date(
+      `${values?.['service-start-date']} ${values?.['preferred-hours'] ||
+        values?.['preferred-hours-start']}`
+    );
+
+  const datesToDiff = dateAndHourValues || dateAndHourDefault;
+  // if (!datesToDiff) return;
+  // 86400000 ms = 24H
+  // hours*minutes*seconds*milliseconds
+  const oneDay = 24 * 60 * 60 * 1000;
+  const diffDays = Number.parseFloat(
+    (new Date().getTime() - datesToDiff?.getTime()) / oneDay
+  ).toFixed(0);
+
+  useEffect(() => {
+    const setUrgency = vals => action({ name: 'is-urgent', value: vals });
+    if (Number(diffDays) === -1) {
+      setUrgency(true);
+    } else {
+      setUrgency(false);
+    }
+    console.log('diffDay', diffDays);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [diffDays]);
+
+  const selectedRecurrency = useMemo(() => {
+    const status = {
+      pickedRecurrency: '',
+      total: ''
+    };
+
+    if (values?.['recurrence'] === 0 || answers?.['recurrence'] === 0) {
+      status.pickedRecurrency = 'Dia';
+    }
+    if (values?.['recurrence'] === 1 || answers?.['recurrence'] === 1) {
+      status.pickedRecurrency = 'Semana';
+    }
+    if (values?.['recurrence'] === 2 || answers?.['recurrence'] === 2) {
+      status.pickedRecurrency = 'Mês';
+    }
+    return status;
+  }, [answers, values]);
+
   const renderContent = () => {
     const serviceOptions = {
       // ready-pack && hour-pack
@@ -58,24 +121,6 @@ const OfferTypeWidget = ({
         return null;
     }
   };
-
-  const selectedRecurrency = useMemo(() => {
-    const status = {
-      pickedRecurrency: '',
-      total: ''
-    };
-
-    if (values?.['recurrence'] === 0 || answers?.['recurrence'] === 0) {
-      status.pickedRecurrency = 'Dia';
-    }
-    if (values?.['recurrence'] === 1 || answers?.['recurrence'] === 1) {
-      status.pickedRecurrency = 'Semana';
-    }
-    if (values?.['recurrence'] === 2 || answers?.['recurrence'] === 2) {
-      status.pickedRecurrency = 'Mês';
-    }
-    return status;
-  }, [answers, values]);
 
   const getDefaultValues = (options, answerValue) =>
     options?.find(e => e.value === answerValue);
@@ -518,60 +563,13 @@ const OfferTypeWidget = ({
     );
   };
 
-  const urgencyRateRender = useCallback(() => {
-    const urgencyFallBackProps = {
-      heading: '+2,44€',
-      headerText: '/ hora',
-      body: '*acresce ao valor final; não inclui a taxa de IVA em vigor',
-      extras: 'Serviço realizado em menos de 24H à data do primeiro contacto'
-    };
-
-    const urgencyProps = urgentPrices || urgencyFallBackProps;
-    // check for default values
-    const dateAndHourDefault =
-      answers?.['service-start-date'] &&
-      (answers?.['preferred-hours'] || answers?.['preferred-hours-start']) &&
-      new Date(
-        `${answers?.['service-start-date']} ${answers?.['preferred-hours-start']}`
-      );
-
-    // check for new values
-    const dateAndHourValues =
-      values?.['service-start-date'] &&
-      (values?.['preferred-hours'] || values?.['preferred-hours-start']) &&
-      new Date(
-        `${values?.['service-start-date']} ${values?.['preferred-hours'] ||
-          values?.['preferred-hours-start']}`
-      );
-
-    const datesToDiff = dateAndHourValues || dateAndHourDefault;
-    if (!datesToDiff) return;
-    // 86400000 ms = 24H
-    // hours*minutes*seconds*milliseconds
-    const oneDay = 24 * 60 * 60 * 1000;
-    const diffDays = Math.abs(
-      (new Date().getTime() - datesToDiff?.getTime()) / oneDay
-    );
-
-    const setUrgency = vals =>
-      setTimeout(() => {
-        //action({ name: 'is-urgent', value: vals });
-      }, 2000);
-
-    if (diffDays < 1) {
-      setUrgency(true);
-      return <ServiceTypeWidget {...urgencyProps} />;
-    } else {
-      setUrgency(false);
-      return <></>;
-    }
-  }, [answers, urgentPrices, values]);
-
+  console.log('diff antes', diffDays === -1);
+  console.log('props', urgencyProps);
   return (
     <>
       <WidgetContainer>
         {renderContent()}
-        {urgencyRateRender()}
+        {Number(diffDays) === -1 && <ServiceTypeWidget {...urgencyProps} />}
       </WidgetContainer>
     </>
   );
