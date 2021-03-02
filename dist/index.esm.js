@@ -13630,8 +13630,8 @@ IconSwitch.propTypes = {
   rightIcon: propTypes.string
 };
 IconSwitch.defaultProps = {
-  leftIcon: "kanban",
-  rightIcon: "List"
+  leftIcon: 'kanban',
+  rightIcon: 'List'
 };
 
 function _templateObject4$8() {
@@ -45320,7 +45320,8 @@ var Logo$1 = function Logo$1(_ref) {
   var size = _ref.size,
       _ref$isCenter = _ref.isCenter,
       isCenter = _ref$isCenter === void 0 ? true : _ref$isCenter,
-      color = _ref.color,
+      _ref$color = _ref.color,
+      color = _ref$color === void 0 ? 'colorful' : _ref$color,
       background = _ref.background;
   return /*#__PURE__*/React.createElement(Logo, {
     center: isCenter,
