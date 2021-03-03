@@ -8,13 +8,11 @@ import PropTypes from 'prop-types';
 import { Body, ErrorText } from '../Text';
 
 const CheckBoxGroup = ({ name, label, list, error, action }) => {
-  const checkedItems = list;
   const handleItems = (name, event) => {
-    const itemIndex = checkedItems.indexOf(
-      checkedItems.find(e => e.question === event)
-    );
-    checkedItems[itemIndex].isSelected = !list[itemIndex].isSelected;
-    if (action) action(checkedItems);
+    const itemIndex = list.indexOf(list.find(e => e.question === event));
+    const newList = [...list];
+    newList[itemIndex].isSelected = !list[itemIndex].isSelected;
+    if (action) action(newList);
   };
   return (
     <StyledContainer>
