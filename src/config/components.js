@@ -65,14 +65,26 @@ import {
 
 const components = [
   {
-    label: 'Prefilled form validation',
-    section: 'Dev',
+    label: 'Form ~ Prefilled',
+    section: 'Form',
 
     disabled: false,
     props: {
       previewComponentTitle: 'Gardening (Pre-filled) with errors',
       questions: FORM.gardening.questions,
       answers: { ...FORM.gardeningAnswers, district: 'Outro' }
+    },
+
+    component: props => <Form {...props}></Form>
+  },
+  {
+    label: 'Form ~ Settings',
+    section: 'Form',
+
+    disabled: false,
+    props: {
+      previewComponentTitle: 'Settings',
+      questions: FORM.settingsSchema.questions,
     },
 
     component: props => <Form {...props}></Form>
@@ -93,6 +105,22 @@ const components = [
     },
     section: 'General',
     component: props => <TextInput {...props} />
+  },
+  {
+    label: 'TopBar',
+    section: 'General',
+    props: {
+      user: {
+        attributes: {
+          avatar: '#000',
+          avatarDefault: 'blue',
+          location: 'non- settings',
+          title: 'non-settings',
+          fullName: 'David Morais'
+        }
+      }
+    },
+    component: props => <TopBar {...props}></TopBar>
   },
   {
     label: 'SchedulePicker',

@@ -9,6 +9,7 @@ import language_classes from './schemas/language_classes.json';
 import musicLessons from './schemas/music_lessons.json';
 import repairs from './schemas/repairs.json';
 import gardening from './schemas/gardening.json';
+import settingsSchema from './settingsSchema.js';
 import becomeSpecialist from './becomespecialist.js';
 import sewing from './schemas/sewing.json';
 
@@ -180,6 +181,7 @@ export default {
   gardening,
   petSittingAnswers,
   repairsAnswers,
+  settingsSchema,
   gardeningAnswers,
   specialistFormAnswers
 };

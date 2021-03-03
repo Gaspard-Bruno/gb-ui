@@ -6665,14 +6665,16 @@ var CheckBoxGroup = function CheckBoxGroup(_ref) {
       list = _ref.list,
       error = _ref.error,
       action = _ref.action;
-  var checkedItems = list;
 
   var handleItems = function handleItems(name, event) {
-    var itemIndex = checkedItems.indexOf(checkedItems.find(function (e) {
+    var itemIndex = list.indexOf(list.find(function (e) {
       return e.question === event;
     }));
-    checkedItems[itemIndex].isSelected = !list[itemIndex].isSelected;
-    if (action) action(checkedItems);
+
+    var newList = _toConsumableArray(list);
+
+    newList[itemIndex].isSelected = !list[itemIndex].isSelected;
+    if (action) action(newList);
   };
 
   return /*#__PURE__*/React.createElement(StyledContainer$1, null, label && /*#__PURE__*/React.createElement(Body, null, label), error && /*#__PURE__*/React.createElement(ErrorText, null, error), list && list.map(function (item, index) {
