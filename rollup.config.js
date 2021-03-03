@@ -3,6 +3,7 @@ import del from 'rollup-plugin-delete';
 import commonjs from 'rollup-plugin-commonjs';
 import image from '@rollup/plugin-image';
 import svgr from '@svgr/rollup';
+import css from 'rollup-plugin-import-css';
 import json from '@rollup/plugin-json';
 import externals from 'rollup-plugin-node-externals';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
@@ -16,6 +17,7 @@ export default {
   ],
   plugins: [
     json(),
+    css(),
     svgr(),
     image(),
     babel({
