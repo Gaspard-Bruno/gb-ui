@@ -80,7 +80,9 @@ const AvatarContainer = styled.div`
     width: 14px;
   }
   cursor: pointer;
-
+  p {
+    color: ${props => props.theme.colors.darkBlue};
+  }
   ${props =>
     props.user?.adminStatus === 'deleted' && getDeletedStyles(props.theme)}
 `;
@@ -93,7 +95,7 @@ export const AvatarImage = styled.div`
   ${props => getStyleFromAvatarSize(props.size)};
 `;
 
-export const AvatarInitials = styled.div`
+export const AvatarInitials = styled.span`
   border-radius: 50%;
   background-color: ${props =>
     getRandomColor(props.avatarDefault, props.theme, props.isDeleted)};

@@ -1,16 +1,15 @@
 import React, { useMemo } from 'react';
+import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom';
 
 import Button from '../Button';
-import useAuth from 'Hooks/useAuth';
 
 import Icon from '../Icon';
 import Avatar from '../Avatar';
 
 import StyledTopBar, { LeftSection, RightSection, ClientName } from './style';
 
-const TopBar = ({ location, title, back }) => {
-  const { user } = useAuth();
+const TopBar = ({ location, title, back, user }) => {
   const history = useHistory();
 
   const memoUser = useMemo(
@@ -59,4 +58,11 @@ const TopBar = ({ location, title, back }) => {
   );
 };
 
+
+TopBar.propTypes = {
+  location: PropTypes.object,
+  title: PropTypes.string,
+  user: PropTypes.object,
+  back: PropTypes.bool,
+}
 export default TopBar;

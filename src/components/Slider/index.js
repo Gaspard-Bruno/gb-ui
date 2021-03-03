@@ -1,12 +1,12 @@
-import React from "react";
-import Slider from "react-slick";
-import Badge from "../Badge";
-import { Heading } from "../Text";
-import { Row } from "../Layout";
-import { CarouselContainer, ItemContainer, ItemImage } from "./styles";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import PropTypes from "prop-types";
+import React from 'react';
+import Slider from 'react-slick';
+import Badge from '../Badge';
+import { Heading } from '../Text';
+import { Row } from '../Layout';
+import { CarouselContainer, ItemContainer, ItemImage } from './styles';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import PropTypes from 'prop-types';
 
 const CardSlider = ({ list }) => {
   const settings = {
@@ -30,8 +30,8 @@ const renderItems = items => {
     items.map((item, index) => {
       return (
         <ItemContainer key={`${item.category}-${index}`}>
-          <ItemImage alt="" src={item.img} />
-          <Row justify="flex-start">
+          <ItemImage alt='' src={item.img} />
+          <Row justify='flex-start'>
             <Badge
               text={item.category}
               category={item.category}

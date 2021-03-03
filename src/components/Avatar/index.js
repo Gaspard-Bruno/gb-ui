@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 
 import Icon from '../Icon';
 
-import AvatarContainer, {
-  AvatarImage,
-  AvatarInitials,
-} from './style';
+import AvatarContainer, { AvatarImage, AvatarInitials } from './style';
 
 const Avatar = ({ action, size, hasCarat, hasText, hasEmail, user }) => {
   const isDeleted = user?.adminStatus === 'deleted';
