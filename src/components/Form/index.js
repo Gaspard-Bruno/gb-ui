@@ -197,7 +197,18 @@ const Form = ({
                 key={'accordion-' + (field.key || parentKey)}
                 isOpen={field.isOpen}
                 title={field.label}
-                content={renderFields(formik, field.questions, true)}
+                content={
+                  <>
+                    {renderFields(formik, field.questions, true)}
+                    {field.submit && (
+                      <Button
+                        type='submit'
+                        btnType={'primary'}
+                        text={field.submitLabel || 'Submit'}
+                      />
+                    )}
+                  </>
+                }
               />
             );
           case 'file-uploader':
@@ -320,6 +331,18 @@ const Form = ({
               >
                 {field.label}
               </Heading>
+            );
+          case 'space':
+            return (
+              <Col>
+                {field.submit && (
+                  <Button
+                    type='submit'
+                    btnType={'primary'}
+                    text={field.submitLabel || 'Submit'}
+                  />
+                )}
+              </Col>
             );
           case 'mini-dropdown':
           case 'dropdown':
@@ -706,10 +729,21 @@ Form.propTypes = {
         'radio',
         'form',
         'object',
+        'file-uploader',
+        'offer-type',
+        'schedule-pickker',
         'footnote',
         'array',
         'text-area',
-        'tabs'
+        'tabs',
+        'mini-text',
+        'space',
+        'service-type-detail',
+        'district',
+        'add-field',
+        'uniq-array',
+        'mini-dropdown',
+        'footnote'
       ]),
       key: PropTypes.string,
       // ! To be replaced with label/translate on key 👇
