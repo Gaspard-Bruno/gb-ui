@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
-import PropTypes from 'prop-types'
-import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Button from '../Button';
 
@@ -9,9 +8,14 @@ import Avatar from '../Avatar';
 
 import StyledTopBar, { LeftSection, RightSection, ClientName } from './style';
 
-const TopBar = ({ location, title, back, user }) => {
-  const history = useHistory();
-
+const TopBar = ({
+  location,
+  title,
+  back,
+  user,
+  onAvatarClick,
+  onBackClick
+}) => {
   const memoUser = useMemo(
     () => ({
       avatar: user?.attributes?.avatar,
@@ -21,10 +25,6 @@ const TopBar = ({ location, title, back, user }) => {
     [user]
   );
 
-  const handleNavigateToSettings = () => {
-    history.push('/dashboard/settings');
-  };
-
   return (
     <StyledTopBar>
       <LeftSection>
@@ -32,7 +32,7 @@ const TopBar = ({ location, title, back, user }) => {
           <Button
             icon='chevron-left'
             btnType='transparent'
-            action={() => history.goBack()}
+            action={onBackClick}
           ></Button>
         )}
         <div>
@@ -50,7 +50,7 @@ const TopBar = ({ location, title, back, user }) => {
             hasCarat={true}
             hasText={true}
             user={memoUser}
-            action={handleNavigateToSettings}
+            action={onAvatarClick}
           />
         )}
       </RightSection>
@@ -58,11 +58,16 @@ const TopBar = ({ location, title, back, user }) => {
   );
 };
 
-
 TopBar.propTypes = {
   location: PropTypes.object,
   title: PropTypes.string,
   user: PropTypes.object,
   back: PropTypes.bool,
-}
+  onBackClick: PropTypes.func,
+  onAvatarClick: PropTypes.func
+};
+
+TopBar.defaultProps = {
+  onBackClick: () => console.log('🔴 ~~ TopBar Component 👉 "back" prop requires you to specificy "onBackClick" callback'),
+};
 export default TopBar;
