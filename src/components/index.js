@@ -49,6 +49,7 @@ import TopBar from './TopBar';
 import TrackerBox from './TrackerBox';
 import FileUploader from './FileUploader';
 import Slider from './Slider';
+import Switcher from './Switcher';
 import {
   Jumbo,
   Heading,
@@ -105,6 +106,7 @@ export {
   Search,
   Select,
   Sidebar,
+  Switcher,
   Table,
   Tabs,
   TextArea,

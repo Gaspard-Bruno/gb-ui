@@ -12,6 +12,8 @@ import Accordion from '../Accordion';
 import CheckBoxGroup from '../CheckBoxGroup';
 import ButtonGroup from '../ButtonGroup';
 import RadioButton from '../RadioButton';
+import Switcher from '../Switcher';
+import SchedulePicker from '../SchedulePicker';
 
 import FileUploader from '../FileUploader';
 import OfferTypeWidget from '../OfferTypeWidget';
@@ -21,11 +23,10 @@ import CheckBoxWidget from '../CheckBoxWidget';
 import Tabs from '../Tabs';
 import MiniForm from '../MiniForm';
 import Button from '../Button';
-import { Heading } from '../Text';
+import { Heading, Body } from '../Text';
 import { Col, Row } from '../Layout';
 import MultiFieldRender from '../MultiFieldRender';
 import { FormContainer, StyledForm } from './styles';
-import SchedulePicker from '../SchedulePicker';
 import useFormErrors from '../../hooks/useFormErrors';
 
 import DISTRICT_PARISHES from '../utils/districts.json';
@@ -322,6 +323,22 @@ const Form = ({
                 {...fieldProps}
               />
             );
+          case 'bool':
+            return (
+              <Row align='center' justify='space-between'>
+                <Body>{field.label}</Body>
+                <Switcher
+                  key={field.key}
+                  error={fieldProps.error}
+                  action={val => {
+                    fieldProps.onChange(val, field);
+                  }}
+                  disabled={field.disabled}
+                  checked={fieldProps.value}
+                  {...fieldProps}
+                />
+              </Row>
+            );
           case 'footnote':
             return (
               <Heading
@@ -331,6 +348,16 @@ const Form = ({
               >
                 {field.label}
               </Heading>
+            );
+          case 'note':
+            return (
+              <Body
+              alt
+                style={{ marginTop: '35px', marginBottom: 0 }}
+                key={'footnote' + field.key}
+              >
+                {field.label}
+              </Body>
             );
           case 'space':
             return (
