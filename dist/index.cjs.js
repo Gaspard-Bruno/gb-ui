@@ -25875,13 +25875,13 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       }
     }), /*#__PURE__*/React__default['default'].createElement(TextContainer, null, " - "), /*#__PURE__*/React__default['default'].createElement(Select$2, {
       label: "Hora",
-      name: "preferred-hours",
-      error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours'],
-      defaultValue: getDefaultValues(preferredHoursOptions, answers === null || answers === void 0 ? void 0 : answers['preferred-hours']),
+      name: "preferred-hours-start",
+      error: errors === null || errors === void 0 ? void 0 : errors['preferred-hours-start'],
+      defaultValue: getDefaultValues(preferredHoursOptions, answers === null || answers === void 0 ? void 0 : answers['preferred-hours-start']),
       options: preferredHoursOptions,
       onChange: function onChange(values) {
         return _action({
-          name: 'preferred-hours',
+          name: 'preferred-hours-start',
           value: values.value
         });
       }
@@ -33242,7 +33242,7 @@ var getFieldDetails = function getFieldDetails(answers, schema) {
       if (offerTypeField['formOfferType'] !== 'one-time-service-specific') {
         fields.push('service-start-date', 'preferred-hours-start', 'preferred-hours-end');
       } else {
-        fields.push('service-start-date', 'preferred-hours');
+        fields.push('service-start-date', 'preferred-hours-start');
       }
     }
 
