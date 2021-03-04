@@ -4707,13 +4707,6 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 var useContext = React.useContext;
-function useHistory() {
-  if (process.env.NODE_ENV !== "production") {
-    !(typeof useContext === "function") ? process.env.NODE_ENV !== "production" ? invariant(false, "You must use React >= 16.8 in order to use useHistory()") : invariant(false) : void 0;
-  }
-
-  return useContext(historyContext);
-}
 
 if (process.env.NODE_ENV !== "production") {
   if (typeof window !== "undefined") {
@@ -46301,8 +46294,9 @@ var TopBar = function TopBar(_ref) {
   var location = _ref.location,
       title = _ref.title,
       back = _ref.back,
-      user = _ref.user;
-  var history = useHistory();
+      user = _ref.user,
+      onAvatarClick = _ref.onAvatarClick,
+      onBackClick = _ref.onBackClick;
   var memoUser = useMemo$1(function () {
     var _user$attributes, _user$attributes2, _user$attributes3;
 
@@ -46312,17 +46306,10 @@ var TopBar = function TopBar(_ref) {
       fullName: user === null || user === void 0 ? void 0 : (_user$attributes3 = user.attributes) === null || _user$attributes3 === void 0 ? void 0 : _user$attributes3.fullName
     };
   }, [user]);
-
-  var handleNavigateToSettings = function handleNavigateToSettings() {
-    history.push('/dashboard/settings');
-  };
-
   return /*#__PURE__*/React.createElement(StyledTopBar, null, /*#__PURE__*/React.createElement(LeftSection, null, back && /*#__PURE__*/React.createElement(Button$1, {
     icon: "chevron-left",
     btnType: "transparent",
-    action: function action() {
-      return history.goBack();
-    }
+    action: onBackClick
   }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("span", null, location)), /*#__PURE__*/React.createElement(ClientName, null, title))), /*#__PURE__*/React.createElement(RightSection, null, /*#__PURE__*/React.createElement(Icon, {
     name: "Bell"
   }), user && /*#__PURE__*/React.createElement(Avatar, {
@@ -46330,7 +46317,7 @@ var TopBar = function TopBar(_ref) {
     hasCarat: true,
     hasText: true,
     user: memoUser,
-    action: handleNavigateToSettings
+    action: onAvatarClick
   })));
 };
 
@@ -46338,7 +46325,14 @@ TopBar.propTypes = {
   location: propTypes.object,
   title: propTypes.string,
   user: propTypes.object,
-  back: propTypes.bool
+  back: propTypes.bool,
+  onBackClick: propTypes.func,
+  onAvatarClick: propTypes.func
+};
+TopBar.defaultProps = {
+  onBackClick: function onBackClick() {
+    return console.log('🔴 ~~ TopBar Component 👉 "back" prop requires you to specificy "onBackClick" callback');
+  }
 };
 
 var initialState_1 = createCommonjsModule(function (module, exports) {
