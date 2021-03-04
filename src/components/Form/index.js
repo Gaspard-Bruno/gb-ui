@@ -72,6 +72,7 @@ const Form = ({
   const initialValues = useRef({});
   const flatFields = useRef([]);
   const [formErrors, setFormErrors] = useState({});
+  const [openAccordions, setOpenAccordions] = useState({});
   useEffect(() => {
     if (errors && Object.keys(errors).length) {
       formRef.current.scrollIntoView({
@@ -196,8 +197,19 @@ const Form = ({
             return (
               <Accordion
                 key={'accordion-' + (field.key || parentKey)}
-                isOpen={field.isOpen}
+                isOpen={openAccordions[field.key] || false}
                 title={field.label}
+                action={open => {
+                  if (field.closeOthers) {
+                    console.log('closing other');
+                    setOpenAccordions({ [field.key]: open });
+                  } else {
+                    setOpenAccordions({
+                      ...openAccordions,
+                      [field.key]: open
+                    });
+                  }
+                }}
                 content={
                   <>
                     {renderFields(formik, field.questions, true)}
@@ -352,8 +364,8 @@ const Form = ({
           case 'note':
             return (
               <Body
-              alt
-                style={{ marginTop: '35px', marginBottom: 0 }}
+                alt
+                style={{ margin: '32px 0' }}
                 key={'footnote' + field.key}
               >
                 {field.label}
@@ -361,7 +373,7 @@ const Form = ({
             );
           case 'space':
             return (
-              <Col>
+              <Row>
                 {field.submit && (
                   <Button
                     type='submit'
@@ -369,7 +381,7 @@ const Form = ({
                     text={field.submitLabel || 'Submit'}
                   />
                 )}
-              </Col>
+              </Row>
             );
           case 'mini-dropdown':
           case 'dropdown':
@@ -592,7 +604,7 @@ const Form = ({
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [formErrors]
+    [formErrors, openAccordions]
   );
 
   const renderFields = (formik, fields, skipReset) => {

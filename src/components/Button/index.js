@@ -39,12 +39,13 @@ const Button = ({
         disabled={isDisabled}
         small={isSmall}
         onClick={action}
+        type={type}
       >
         <Icon name={icon} />
       </IconButton>
     );
   }
-  return <StyledButton />;
+  return <StyledButton  />;
 };
 
 Button.propTypes = {

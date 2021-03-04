@@ -32,20 +32,20 @@ const stepTwo = () => {
     { type: 'footnote', label: 'Alteração de Password' },
     {
       key: 'password',
-      type: 'text',
+      type: 'password',
       label: 'Password Antiga',
       widget: 'password'
     },
     { key: 'space', widget: 'space' },
     {
       key: 'new-password',
-      type: 'text',
+      type: 'password',
       label: 'Password Nova',
       widget: 'password'
     },
     {
       key: 'new-password-repeat',
-      type: 'text',
+      type: 'password',
       label: 'Repetir Password Nova',
       widget: 'password'
     }
@@ -55,22 +55,15 @@ const stepTwo = () => {
 const stepThree = () => {
   return [
     {
-      key: 'known55',
-      label: 'Como soube da 55+',
-      required: true,
-      type: 'text-area'
-    },
-    {
-      key: 'mainMotivation',
+      type: 'footnote',
       label:
-        'Porque quer fazer parte da 55+? Qual é a sua principal motivação?',
-      required: true,
-      type: 'text-area'
+        'Receba notificações, pedidos e outros lembreres relacionados com as suas atividades na plataforma.',
+      widget: 'note'
     },
     {
-      key: 'otherInfo',
-      label: 'Outras Informações',
-      type: 'text-area'
+      key: 'accepted_newsletter',
+      label: 'Receber notificações por email',
+      type: 'bool'
     }
   ];
 };
@@ -83,6 +76,7 @@ const formSteps = {
   questions: steps.map((step, stepIndex) => ({
     type: 'object',
     submit: true,
+    closeOthers: true,
     submitLabel: 'Actualizar',
     key: `settings-form-${stepIndex}`,
     label: STEP_LABELS[stepIndex],
