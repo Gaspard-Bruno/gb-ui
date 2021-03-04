@@ -1,6 +1,6 @@
 const stepOne = () => {
   return [
-    { key: 'name', type: 'text', label: 'Nome' },
+    { key: 'firstName', type: 'text', label: 'Nome' },
     { key: 'lastName', type: 'text', label: 'Apelido' },
     { key: 'email', type: 'text', label: 'Email', widget: 'email' },
     { key: 'password', type: 'text', label: 'Password', widget: 'password' }
@@ -10,7 +10,7 @@ const stepOne = () => {
 const stepTwo = () => {
   return [
     {
-      key: 'email',
+      key: 'email-check',
       type: 'text',
       label: 'Endereço de Email',
       widget: 'email '
