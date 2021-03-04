@@ -19,6 +19,7 @@ export const AccordionTitle = styled.div`
     color: ${props => props.theme?.colors.brand.orange};
   }
   > button {
+    outline: none;
     margin: 0 ${props => props.theme.margin}px !important;
   }
   svg {
