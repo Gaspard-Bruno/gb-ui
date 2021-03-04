@@ -26,7 +26,7 @@ export const getFieldDetails = (answers, schema) => {
           'preferred-hours-end'
         );
       } else {
-        fields.push('service-start-date', 'preferred-hours');
+        fields.push('service-start-date', 'preferred-hours-start');
       }
     }
     if (offerTypeAnswer === 1) {

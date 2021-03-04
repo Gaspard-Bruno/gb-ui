@@ -178,15 +178,15 @@ const OfferTypeWidget = ({
           <TextContainer> - </TextContainer>
           <Select
             label='Hora'
-            name='preferred-hours'
-            error={errors?.['preferred-hours']}
+            name='preferred-hours-start'
+            error={errors?.['preferred-hours-start']}
             defaultValue={getDefaultValues(
               preferredHoursOptions,
-              answers?.['preferred-hours']
+              answers?.['preferred-hours-start']
             )}
             options={preferredHoursOptions}
             onChange={values =>
-              action({ name: 'preferred-hours', value: values.value })
+              action({ name: 'preferred-hours-start', value: values.value })
             }
           />
         </Row>
