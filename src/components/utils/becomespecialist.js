@@ -181,7 +181,9 @@ const stepFive = () => {
         { label: 'Passar a Ferro', value: 'ironing' },
         { label: 'Pet care (Visitas e passeios)', value: 'petcare' },
         { label: 'Pet sitting (Estadia)', value: 'petsitting' },
-        { label: 'Reparações', value: 'repairs' }
+        { label: 'Electricista', value: 'electrician' },
+        { label: 'Canalizador', value: 'plumbing' },
+        { label: 'Bricolage', value: 'bricolage' }
       ],
       children: [
         //! Aulas de Música
@@ -639,253 +641,279 @@ const stepFive = () => {
           type: 'object',
           widget: 'mini-form',
           dependencyType: 'value-includes',
-          dependencyValue: 'repairs',
-          label: 'Reparações',
-          key: 'repairs',
+          dependencyValue: 'electrician',
+          label: 'Electricista',
+          key: 'electrician',
           questions: [
             {
-              key: 'repairsType',
-              title: 'Reparações',
-              required: true,
+              key: 'repairsSubTypeElectricity',
+              label: 'Que subtipo de reparações de Eletricidade quer fazer?',
               type: 'checkbox-widget',
-              label: 'Este serviço tem várias tipologias, quais pode fazer?',
+              excludeFromGroup: true,
+              required: true,
               options: [
                 {
-                  label:
-                    'Bricolage (furos, pinturas, pequenas reparações, etc.)',
+                  label: 'Montagem de Interruptores e Tomadas Elétricas',
                   value: 0,
                   isSelected: false
                 },
-                { label: 'Canalizações', value: 1, isSelected: false },
-                { label: 'Eletricidade', value: 2, isSelected: false },
+                {
+                  label: 'Montagem de Candeeiros',
+                  value: 1,
+                  isSelected: false
+                },
+                {
+                  label: 'Reparação de Estores Elétricos',
+                  value: 2,
+                  isSelected: false
+                },
+                {
+                  label:
+                    'Instalação de Calhas para a passagem de Cabos Elétricos',
+                  value: 3,
+                  isSelected: false
+                },
+                {
+                  label: 'Colocação de Lâmpadas',
+                  value: 4,
+                  isSelected: false
+                },
+                {
+                  label:
+                    'Montagem e Reparação de Termoacumulador e Esquentador',
+                  value: 5,
+                  isSelected: false
+                },
+                {
+                  label: 'Revisões e Reparações de Quadros Elétricos',
+                  value: 6,
+                  isSelected: false
+                },
                 {
                   label: 'Outro',
-                  value: 3,
+                  value: 7,
                   isSelected: false,
                   isSelectable: true
                 }
-              ],
-              children: [
+              ]
+            },
+            {
+              key: 'repairsTools',
+              label:
+                'Tem as ferramentas necessárias para realizar este(s) serviço(s)?',
+              type: 'radio',
+              isVerticalAligned: true,
+              required: true,
+              options: [
+                { label: 'Sim', value: 1 },
+                { label: 'Não', value: 0 }
+              ]
+            },
+            {
+              key: 'repairsExperience',
+              label: 'Tem experiência para realizar reparações especializadas?',
+              type: 'radio',
+              isVerticalAligned: true,
+              required: true,
+              options: [
+                { label: 'Sim', value: 1 },
+                { label: 'Não', value: 0 }
+              ]
+            }
+          ]
+        },
+        {
+          type: 'object',
+          widget: 'mini-form',
+          dependencyType: 'value-includes',
+          dependencyValue: 'plumbing',
+          label: 'Canalizador',
+          key: 'plumbing',
+          questions: [
+            {
+              key: 'repairsSubTypePluming',
+              label: 'Que subtipo de reparações de Canalização quer fazer?',
+              type: 'checkbox-widget',
+              excludeFromGroup: true,
+              required: true,
+              options: [
                 {
-                  key: 'repairsTypeOther',
-                  label: '',
-                  dependencyType: 'value',
-                  dependencyValue: 3,
-                  type: 'text'
+                  label: 'Desentupimento de Canalizações',
+                  value: 0,
+                  isSelected: false
                 },
                 {
-                  key: 'repairsSubTypeBricolage',
-                  label: 'Que subtipo de reparações de Bricolage quer fazer?',
-                  type: 'checkbox-widget',
-                  required: true,
-                  excludeFromGroup: true,
-                  dependencyType: 'value',
-                  dependencyValue: 0,
-                  options: [
-                    {
-                      label: 'Montagem de Móveis e Estantes',
-                      value: 0,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Instalação de Calhas e Cortinados',
-                      value: 1,
-                      isSelected: false
-                    },
-                    {
-                      label:
-                        'Instalação de Objetos na Parede (ex.: quadros, espelhos, etc.). Limitado ao peso/dimensão (incluem-se obras de arte)',
-                      value: 2,
-                      isSelected: false
-                    },
-                    {
-                      label:
-                        'Reparação / Substituição de Dobradiças, Portas e Janelas (excluem-se portas blindadas)',
-                      value: 3,
-                      isSelected: false
-                    },
-                    {
-                      label:
-                        'Reparação /Substituição de Fechaduras e Puxadores',
-                      value: 4,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Reparação / Substituição de Vidros',
-                      value: 5,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Preparação de Paredes para Pintura',
-                      value: 6,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Serviços de Pintura',
-                      value: 7,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Colocação Silicone',
-                      value: 8,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Colocação Toalheiros',
-                      value: 9,
-                      isSelected: false
-                    },
-                    {
-                      label:
-                        'Reparação de Estores (afinação de estores e substituição de réguas)',
-                      value: 10,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Reparação de Estendais',
-                      value: 11,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Colocação de Varões de Cortinados',
-                      value: 12,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Colocação de Candeeiros',
-                      value: 13,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Colocação de Maçanetas e Puxadores',
-                      value: 14,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Abertura de Fechaduras',
-                      value: 15,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Outro',
-                      value: 16,
-                      isSelected: false,
-                      isSelectable: true
-                    }
-                  ]
+                  label: 'Descalcificação de Tubagens',
+                  value: 1,
+                  isSelected: false
                 },
                 {
-                  key: 'repairsSubTypePluming',
-                  label: 'Que subtipo de reparações de Canalização quer fazer?',
-                  type: 'checkbox-widget',
-                  excludeFromGroup: true,
-                  required: true,
-                  dependencyType: 'value',
-                  dependencyValue: 1,
-                  options: [
-                    {
-                      label: 'Desentupimento de Canalizações',
-                      value: 0,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Descalcificação de Tubagens',
-                      value: 1,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Limpeza de Canalizações',
-                      value: 2,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Reparação / Substituição de Torneiras',
-                      value: 3,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Reparação / Substituição de Louças Sanitárias',
-                      value: 4,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Reparação / Substituição de Autoclismos',
-                      value: 5,
-                      isSelected: false
-                    },
+                  label: 'Limpeza de Canalizações',
+                  value: 2,
+                  isSelected: false
+                },
+                {
+                  label: 'Reparação / Substituição de Torneiras',
+                  value: 3,
+                  isSelected: false
+                },
+                {
+                  label: 'Reparação / Substituição de Louças Sanitárias',
+                  value: 4,
+                  isSelected: false
+                },
+                {
+                  label: 'Reparação / Substituição de Autoclismos',
+                  value: 5,
+                  isSelected: false
+                },
 
-                    {
-                      label: 'Colocação de Chuveiros',
-                      value: 6,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Reparação de Fugas de Água',
-                      value: 7,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Outro',
-                      value: 8,
-                      isSelected: false,
-                      isSelectable: true
-                    }
-                  ]
+                {
+                  label: 'Colocação de Chuveiros',
+                  value: 6,
+                  isSelected: false
                 },
                 {
-                  key: 'repairsSubTypeElectricity',
+                  label: 'Reparação de Fugas de Água',
+                  value: 7,
+                  isSelected: false
+                },
+                {
+                  label: 'Outro',
+                  value: 8,
+                  isSelected: false,
+                  isSelectable: true
+                }
+              ]
+            },
+            {
+              key: 'repairsTools',
+              label:
+                'Tem as ferramentas necessárias para realizar este(s) serviço(s)?',
+              type: 'radio',
+              isVerticalAligned: true,
+              required: true,
+              options: [
+                { label: 'Sim', value: 1 },
+                { label: 'Não', value: 0 }
+              ]
+            },
+            {
+              key: 'repairsExperience',
+              label: 'Tem experiência para realizar reparações especializadas?',
+              type: 'radio',
+              isVerticalAligned: true,
+              required: true,
+              options: [
+                { label: 'Sim', value: 1 },
+                { label: 'Não', value: 0 }
+              ]
+            }
+          ]
+        },
+        {
+          type: 'object',
+          widget: 'mini-form',
+          dependencyType: 'value-includes',
+          dependencyValue: 'bricolage',
+          label: 'Bricolage',
+          key: 'bricolage',
+          questions: [
+            {
+              key: 'repairsSubTypeBricolage',
+              label: 'Que subtipo de reparações de Bricolage quer fazer?',
+              type: 'checkbox-widget',
+              required: true,
+              excludeFromGroup: true,
+              options: [
+                {
+                  label: 'Montagem de Móveis e Estantes',
+                  value: 0,
+                  isSelected: false
+                },
+                {
+                  label: 'Instalação de Calhas e Cortinados',
+                  value: 1,
+                  isSelected: false
+                },
+                {
                   label:
-                    'Que subtipo de reparações de Eletricidade quer fazer?',
-                  type: 'checkbox-widget',
-                  excludeFromGroup: true,
-                  required: true,
-                  dependencyType: 'value',
-                  dependencyValue: 2,
-                  options: [
-                    {
-                      label: 'Montagem de Interruptores e Tomadas Elétricas',
-                      value: 0,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Montagem de Candeeiros',
-                      value: 1,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Reparação de Estores Elétricos',
-                      value: 2,
-                      isSelected: false
-                    },
-                    {
-                      label:
-                        'Instalação de Calhas para a passagem de Cabos Elétricos',
-                      value: 3,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Colocação de Lâmpadas',
-                      value: 4,
-                      isSelected: false
-                    },
-                    {
-                      label:
-                        'Montagem e Reparação de Termoacumulador e Esquentador',
-                      value: 5,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Revisões e Reparações de Quadros Elétricos',
-                      value: 6,
-                      isSelected: false
-                    },
-                    {
-                      label: 'Outro',
-                      value: 7,
-                      isSelected: false,
-                      isSelectable: true
-                    }
-                  ]
+                    'Instalação de Objetos na Parede (ex.: quadros, espelhos, etc.). Limitado ao peso/dimensão (incluem-se obras de arte)',
+                  value: 2,
+                  isSelected: false
+                },
+                {
+                  label:
+                    'Reparação / Substituição de Dobradiças, Portas e Janelas (excluem-se portas blindadas)',
+                  value: 3,
+                  isSelected: false
+                },
+                {
+                  label: 'Reparação /Substituição de Fechaduras e Puxadores',
+                  value: 4,
+                  isSelected: false
+                },
+                {
+                  label: 'Reparação / Substituição de Vidros',
+                  value: 5,
+                  isSelected: false
+                },
+                {
+                  label: 'Preparação de Paredes para Pintura',
+                  value: 6,
+                  isSelected: false
+                },
+                {
+                  label: 'Serviços de Pintura',
+                  value: 7,
+                  isSelected: false
+                },
+                {
+                  label: 'Colocação Silicone',
+                  value: 8,
+                  isSelected: false
+                },
+                {
+                  label: 'Colocação Toalheiros',
+                  value: 9,
+                  isSelected: false
+                },
+                {
+                  label:
+                    'Reparação de Estores (afinação de estores e substituição de réguas)',
+                  value: 10,
+                  isSelected: false
+                },
+                {
+                  label: 'Reparação de Estendais',
+                  value: 11,
+                  isSelected: false
+                },
+                {
+                  label: 'Colocação de Varões de Cortinados',
+                  value: 12,
+                  isSelected: false
+                },
+                {
+                  label: 'Colocação de Candeeiros',
+                  value: 13,
+                  isSelected: false
+                },
+                {
+                  label: 'Colocação de Maçanetas e Puxadores',
+                  value: 14,
+                  isSelected: false
+                },
+                {
+                  label: 'Abertura de Fechaduras',
+                  value: 15,
+                  isSelected: false
+                },
+                {
+                  label: 'Outro',
+                  value: 16,
+                  isSelected: false,
+                  isSelectable: true
                 }
               ]
             },
@@ -921,7 +949,7 @@ const stepFive = () => {
           dependencyType: 'value-includes',
           dependencyValue: 'ironing',
           label: 'Passar a Ferro',
-          key: 'repairs',
+          key: 'ironing',
           questions: [
             {
               key: 'ironingClothType',
