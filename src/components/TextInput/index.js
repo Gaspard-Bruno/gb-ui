@@ -8,6 +8,7 @@ import StyledInput, { InputContainer } from './style';
 const TextInput = ({
   error,
   placeholder,
+  disabled,
   defaultValue,
   label,
   onChange,
@@ -21,6 +22,7 @@ const TextInput = ({
     { name: 'eye-off', type: 'password' },
     { name: 'eye-on', type: 'text' }
   ];
+
   const [displayedIcon, setDisplayedIcon] = useState(defaultIcons[0].name);
   const [inputType, setInputType] = useState(type || 'text');
 
@@ -40,6 +42,7 @@ const TextInput = ({
       <StyledInput
         type={inputType}
         error={error}
+        disabled={disabled}
         min={minDate}
         defaultValue={defaultValue}
         value={otherProps.value}
@@ -53,6 +56,7 @@ const TextInput = ({
 
 TextInput.propTypes = {
   error: PropTypes.string,
+  disabled: PropTypes.bool,
   placeholder: PropTypes.string,
   label: PropTypes.string,
   defaultValue: PropTypes.string,

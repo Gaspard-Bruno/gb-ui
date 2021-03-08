@@ -2,8 +2,21 @@ const stepOne = () => {
   return [
     { key: 'firstName', type: 'text', label: 'Nome' },
     { key: 'lastName', type: 'text', label: 'Apelido' },
-    { key: 'email', type: 'text', label: 'Email', widget: 'email' },
-    { key: 'password', type: 'text', label: 'Password', widget: 'password' }
+    {
+      key: 'email',
+      type: 'text',
+      label: 'Email',
+      widget: 'email',
+      disabled: true
+    },
+    {
+      key: 'password',
+      type: 'text',
+      label: 'Password',
+      widget: 'password',
+      defaultValue: 'password',
+      disabled: true
+    }
   ];
 };
 
@@ -68,7 +81,12 @@ const stepThree = () => {
   ];
 };
 
-const steps = [stepOne(), stepTwo(), stepThree()];
+const steps = [
+  stepOne(),
+  stepTwo(),
+  // ! Uncoment when email notifications go live
+  //stepThree()
+];
 
 const STEP_LABELS = ['Dados Pessoais', 'Dados de Acesso', 'Notificações'];
 const formSteps = {

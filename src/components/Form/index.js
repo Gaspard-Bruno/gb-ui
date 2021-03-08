@@ -153,10 +153,10 @@ const Form = ({
   };
   const fieldRenderer = useCallback(
     (field, formik, parentKey) => {
-      const zipCodePlaceholder =
+      const placeholder =
         field.key === 'postal-code' || field.key === 'postalCode'
           ? '0000-000'
-          : undefined;
+          : field.placeholder;
 
       if (
         (field.key && hiddenFields.indexOf(field.key) === -1) ||
@@ -177,10 +177,10 @@ const Form = ({
             }
           },
           value: formik.values[field.key] ?? initialValues.current[field.key],
-          placeholder: zipCodePlaceholder,
+          placeholder,
           error: formErrors[field.key],
           translate,
-          type: field.type
+          type: field.widget || field.type
         };
 
         flatFields.current.push(fieldProps);
