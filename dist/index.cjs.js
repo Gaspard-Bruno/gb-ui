@@ -20275,6 +20275,7 @@ var Input$2 = styled__default['default'].input(_templateObject2$f(), function (p
 var TextInput = function TextInput(_ref) {
   var error = _ref.error,
       placeholder = _ref.placeholder,
+      disabled = _ref.disabled,
       defaultValue = _ref.defaultValue,
       label = _ref.label,
       _onChange = _ref.onChange,
@@ -20282,7 +20283,7 @@ var TextInput = function TextInput(_ref) {
       hasIcon = _ref.hasIcon,
       isMini = _ref.isMini,
       minDate = _ref.minDate,
-      otherProps = _objectWithoutProperties(_ref, ["error", "placeholder", "defaultValue", "label", "onChange", "type", "hasIcon", "isMini", "minDate"]);
+      otherProps = _objectWithoutProperties(_ref, ["error", "placeholder", "disabled", "defaultValue", "label", "onChange", "type", "hasIcon", "isMini", "minDate"]);
 
   var defaultIcons = [{
     name: 'eye-off',
@@ -20320,6 +20321,7 @@ var TextInput = function TextInput(_ref) {
   })), label && /*#__PURE__*/React__default['default'].createElement(Body, null, label || ' '), /*#__PURE__*/React__default['default'].createElement(Input$2, {
     type: inputType,
     error: error,
+    disabled: disabled,
     min: minDate,
     defaultValue: defaultValue,
     value: otherProps.value,
@@ -20332,6 +20334,7 @@ var TextInput = function TextInput(_ref) {
 
 TextInput.propTypes = {
   error: propTypes.string,
+  disabled: propTypes.bool,
   placeholder: propTypes.string,
   label: propTypes.string,
   defaultValue: propTypes.string,
@@ -34123,7 +34126,7 @@ var Form$1 = function Form(_ref) {
   var fieldRenderer = React.useCallback(function (field, formik, parentKey) {
     var _field$options$, _field$options$2, _field$options, _answers$field$key, _getParishesOptions;
 
-    var zipCodePlaceholder = field.key === 'postal-code' || field.key === 'postalCode' ? '0000-000' : undefined;
+    var placeholder = field.key === 'postal-code' || field.key === 'postalCode' ? '0000-000' : field.placeholder;
 
     if (field.key && hiddenFields.indexOf(field.key) === -1 || field.key === 'district') {
       var _field$label, _field$key, _field$label2, _formik$values$field$, _ref2, _fieldProps$value;
@@ -34145,10 +34148,10 @@ var Form$1 = function Form(_ref) {
           }
         },
         value: (_formik$values$field$ = formik.values[field.key]) !== null && _formik$values$field$ !== void 0 ? _formik$values$field$ : initialValues.current[field.key],
-        placeholder: zipCodePlaceholder,
+        placeholder: placeholder,
         error: formErrors[field.key],
         translate: translate,
-        type: field.type
+        type: field.widget || field.type
       });
 
       flatFields.current.push(fieldProps); //validateField(field, fieldProps.value, formik);
