@@ -5989,7 +5989,13 @@ var getBadgeColorFromStatus = function getBadgeColorFromStatus(theme, status) {
     // serviceType
     standard: theme.brand.blue,
     premium: theme.feedback.success.default,
-    test: theme.feedback.warning.default
+    test: theme.feedback.warning.default,
+    // payments
+    draft: theme.colors.grey,
+    open: theme.feedback.error.default,
+    paid: theme === null || theme === void 0 ? void 0 : theme.feedback.success.default,
+    uncollectible: theme.colors.grey,
+    void: theme.colors.grey
   }[status];
 };
 var Badge = styled__default['default'].span(_templateObject$5(), function (props) {
