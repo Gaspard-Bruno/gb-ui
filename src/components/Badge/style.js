@@ -50,11 +50,11 @@ export const getBadgeColorFromStatus = (theme, status) =>
     test: theme.feedback.warning.default,
 
     // payments
-    draft: theme.colors.grey,
+    draft: theme.grey,
     open: theme.feedback.error.default,
     paid: theme?.feedback.success.default,
     uncollectible: theme.colors.grey,
-    void: theme.colors.grey
+    void: theme.grey
   }[status]);
 
 const Badge = styled.span`
