@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ErrorText, Body, Tiny } from '../Text';
+import { ErrorText, Body } from '../Text';
 import StyledSelect, { SelectContainer, selectStyles } from './style';
 import { Row } from '../Layout';
 import Button from '../Button';
@@ -34,15 +34,20 @@ const Select = ({
       />
       {isUniq && (
         <Row>
-          {defaultValue.map(val => (
-            <Button
-              key={label + val + 'badge'}
-              text={options.find(opt => opt.value === val)?.label}
-              icon='trash'
-              type='button'
-              action={() => onRemove(val)}
-            ></Button>
-          ))}
+          {defaultValue.map(val => {
+            const btnLabel = options.find(opt => opt.value === val)?.label;
+            return (
+              btnLabel && (
+                <Button
+                  key={label + val + 'badge'}
+                  text={btnLabel}
+                  icon='trash'
+                  type='button'
+                  action={() => onRemove(val)}
+                ></Button>
+              )
+            );
+          })}
         </Row>
       )}
       {error && <ErrorText>{error}</ErrorText>}

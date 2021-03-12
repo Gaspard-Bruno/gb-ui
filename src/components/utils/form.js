@@ -109,7 +109,7 @@ const specialistFormAnswers = {
   district: 1,
   lastName: 'Morais',
   location: '4',
-  services: ['music_lessons', 'babysitting'],
+  services: ['music_lessons', 'babysitting', 'repairs'],
   sexType: 1,
   birthDate: '1111-11-26',
   otherInfo: '3',
