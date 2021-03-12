@@ -13324,11 +13324,12 @@ var Select$2 = function Select(_ref) {
   }), isUniq && /*#__PURE__*/React__default['default'].createElement(Row, null, defaultValue.map(function (val) {
     var _options$find;
 
-    return /*#__PURE__*/React__default['default'].createElement(Button$1, {
+    var btnLabel = (_options$find = options.find(function (opt) {
+      return opt.value === val;
+    })) === null || _options$find === void 0 ? void 0 : _options$find.label;
+    return btnLabel && /*#__PURE__*/React__default['default'].createElement(Button$1, {
       key: label + val + 'badge',
-      text: (_options$find = options.find(function (opt) {
-        return opt.value === val;
-      })) === null || _options$find === void 0 ? void 0 : _options$find.label,
+      text: btnLabel,
       icon: "trash",
       type: "button",
       action: function action() {
