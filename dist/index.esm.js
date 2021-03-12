@@ -5977,7 +5977,13 @@ var getBadgeColorFromStatus = function getBadgeColorFromStatus(theme, status) {
     // serviceType
     standard: theme.brand.blue,
     premium: theme.feedback.success.default,
-    test: theme.feedback.warning.default
+    test: theme.feedback.warning.default,
+    // payments
+    draft: theme.grey,
+    open: theme.feedback.error.default,
+    paid: theme === null || theme === void 0 ? void 0 : theme.feedback.success.default,
+    uncollectible: theme.colors.grey,
+    void: theme.grey
   }[status];
 };
 var Badge = styled.span(_templateObject$5(), function (props) {
@@ -20211,7 +20217,7 @@ function _templateObject2$f() {
 }
 
 function _templateObject$j() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  & > span {\n    position: relative;\n    top: 36px;\n    right: 10px;\n    align-self: flex-end;\n    background-color: white;\n  }\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  & > span {\n    position: absolute;\n    margin: 12px;\n    align-self: flex-end;\n    background-color: white;\n  }\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n"]);
 
   _templateObject$j = function _templateObject() {
     return data;
