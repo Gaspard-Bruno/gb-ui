@@ -34119,7 +34119,7 @@ var Form$1 = function Form(_ref) {
   };
 
   var fieldRenderer = useCallback$1(function (field, formik, parentKey) {
-    var _field$options$, _field$options$2, _field$options, _answers$field$key, _getParishesOptions;
+    var _field$options, _answers$field$key, _getParishesOptions;
 
     var placeholder = field.key === 'postal-code' || field.key === 'postalCode' ? '0000-000' : field.placeholder;
 
@@ -34258,21 +34258,26 @@ var Form$1 = function Form(_ref) {
         case 'tabs':
           return /*#__PURE__*/React.createElement(Tabs, {
             key: field.key,
-            type: field.type
-            /* tabs={field.options.map(opt => ({
-            name: opt.label,
-            value: opt.value
-            }))}
-            initialTabIndex={field.options
-            .map(d => d.value)
-            .indexOf(formik.values[field.key])} */
-            //! temporay login / signup removal
+            type: field.type,
+            tabs: field.options.map(function (opt) {
+              return {
+                name: opt.label,
+                value: opt.value
+              };
+            }),
+            initialTabIndex: field.options.map(function (d) {
+              return d.value;
+            }).indexOf(formik.values[field.key])
+            /* //! temporay login / signup removal
+            tabs={[
+              {
+                name: field.options[0]?.label,
+                value: field.options[0]?.value
+              }
+            ]} */
+
+            /* initialTabIndex={0} */
             ,
-            tabs: [{
-              name: (_field$options$ = field.options[0]) === null || _field$options$ === void 0 ? void 0 : _field$options$.label,
-              value: (_field$options$2 = field.options[0]) === null || _field$options$2 === void 0 ? void 0 : _field$options$2.value
-            }],
-            initialTabIndex: 0,
             action: function action(v) {
               fieldProps.onChange(field.options[v].value, field);
             }
