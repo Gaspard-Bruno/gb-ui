@@ -5383,7 +5383,7 @@ var getStyleFromBtnType = function getStyleFromBtnType() {
       return "\n        border: 1px solid transparent;\n        background-color: ".concat(theme.colors.brand.yellow, ";\n        &:hover {\n          background-color: ").concat(theme.colors.brand.lighter, ";\n        }\n      ");
 
     case 'secondary':
-      return "\n        background-color: transparent;\n        border: 1px solid ".concat(theme.colors.brand.yellow, ";\n        &:hover {\n          border: 1px solid transparent;\n          background-color: ").concat(theme.colors.brand.lighter, ";\n        }\n      ");
+      return "\n        background-color: ".concat(theme.colors.white, ";\n        border: 1px solid ").concat(theme.colors.brand.yellow, ";\n        &:hover {\n          border: 1px solid transparent;\n          background-color: ").concat(theme.colors.brand.lighter, ";\n        }\n      ");
 
     case 'terceary':
       return "\n        background-color: ".concat(theme.colors.brand.orange, ";\n        border: transparent;\n        &:hover {\n          border: transparent;\n          background-color: ").concat(theme.colors.brand.orangeLight, ";\n        }\n      ");
