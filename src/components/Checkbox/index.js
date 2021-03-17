@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Icon from '../Icon';
 
@@ -8,10 +9,11 @@ import StyledCheckbox, {
   IconContainer
 } from './style';
 
-const Checkbox = ({ checked, action }) => {
+const Checkbox = ({ checked, action, disabled }) => {
   const handleCheck = () => {
-    action();
-    console.log(checked);
+    if (!disabled) {
+      action();
+    }
   };
 
   return (
@@ -26,3 +28,9 @@ const Checkbox = ({ checked, action }) => {
 };
 
 export default Checkbox;
+
+Checkbox.propTypes = {
+  checked: PropTypes.bool,
+  action: PropTypes.func,
+  disabled: PropTypes.bool
+}
