@@ -22,7 +22,7 @@ const getStyleFromBtnType = (type = 'primary', disabled, theme) => {
       `;
     case 'secondary':
       return `
-        background-color: transparent;
+        background-color: ${theme.colors.white};
         border: 1px solid ${theme.colors.brand.yellow};
         &:hover {
           border: 1px solid transparent;
