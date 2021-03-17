@@ -6,9 +6,8 @@ export const InputContainer = styled.div`
   justify-content: flex-end;
   width: ${props => (props.mini ? '33%' : 'auto')};
   & > span {
-    position: relative;
-    top: 36px;
-    right: 10px;
+    position: absolute;
+    margin: 12px;
     align-self: flex-end;
     background-color: white;
   }

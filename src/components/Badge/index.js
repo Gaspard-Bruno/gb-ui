@@ -17,15 +17,17 @@ const Badge = ({
   className
 }) => {
   return (
-    <StyledBadge
-      className={className}
-      onClick={onClick}
-      status={category || status}
-      chip={isChip}
-    >
-      <SmallBody>{t(translate, text)}</SmallBody>
-      {isChip && <Icon name='Close' size={12} />}
-    </StyledBadge>
+    text && (
+      <StyledBadge
+        className={className}
+        onClick={onClick}
+        status={category || status}
+        chip={isChip}
+      >
+        <SmallBody>{t(translate, text)}</SmallBody>
+        {isChip && <Icon name='Close' size={12} />}
+      </StyledBadge>
+    )
   );
 };
 

@@ -5949,41 +5949,41 @@ var getBadgeColorFromStatus = function getBadgeColorFromStatus(theme, status) {
     rejected: theme === null || theme === void 0 ? void 0 : theme.feedback.error.default,
     new_candidate: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
     accepted: theme === null || theme === void 0 ? void 0 : theme.brand.green,
-    casa: theme.muted.blue,
-    acompanhamento: theme.muted.green,
-    aulas: theme.muted.yellow,
-    reparações: theme.muted.blue,
-    comingSoon: theme.brand.lightBeige,
+    casa: theme === null || theme === void 0 ? void 0 : theme.muted.blue,
+    acompanhamento: theme === null || theme === void 0 ? void 0 : theme.muted.green,
+    aulas: theme === null || theme === void 0 ? void 0 : theme.muted.yellow,
+    reparações: theme === null || theme === void 0 ? void 0 : theme.muted.blue,
+    comingSoon: theme === null || theme === void 0 ? void 0 : theme.brand.lightBeige,
     // Backoffice
-    awaiting_service_payment: theme.brand.yellow,
-    awaiting_meeting: theme.brand.yellow,
-    cancelled: theme.feedback.error.default,
-    awaiting_details: theme.brand.yellow,
-    reopened: theme.brand.yellow,
+    awaiting_service_payment: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
+    awaiting_meeting: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
+    cancelled: theme === null || theme === void 0 ? void 0 : theme.feedback.error.default,
+    awaiting_details: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
+    reopened: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
     // services
-    Costura: theme.muted.blue,
-    'Apoio a Seniores': theme.muted.green,
-    Jardinagem: theme.muted.blue,
-    Limpezas: theme.muted.blue,
-    'Experiência Gastronómica': theme.muted.blue,
-    'Apoio Familiar a Crianças': theme.muted.green,
-    Petsitting: theme.muted.green,
-    Petcare: theme.muted.green,
-    'Aulas de Música': theme.muted.yellow,
-    Reparações: theme.muted.blue,
-    'Passar a Ferro': theme.muted.blue,
-    'Chef em Casa': theme.muted.blue,
-    'Aulas de Línguas': theme.muted.yellow,
+    Costura: theme === null || theme === void 0 ? void 0 : theme.muted.blue,
+    'Apoio a Seniores': theme === null || theme === void 0 ? void 0 : theme.muted.green,
+    Jardinagem: theme === null || theme === void 0 ? void 0 : theme.muted.blue,
+    Limpezas: theme === null || theme === void 0 ? void 0 : theme.muted.blue,
+    'Experiência Gastronómica': theme === null || theme === void 0 ? void 0 : theme.muted.blue,
+    'Apoio Familiar a Crianças': theme === null || theme === void 0 ? void 0 : theme.muted.green,
+    Petsitting: theme === null || theme === void 0 ? void 0 : theme.muted.green,
+    Petcare: theme === null || theme === void 0 ? void 0 : theme.muted.green,
+    'Aulas de Música': theme === null || theme === void 0 ? void 0 : theme.muted.yellow,
+    Reparações: theme === null || theme === void 0 ? void 0 : theme.muted.blue,
+    'Passar a Ferro': theme === null || theme === void 0 ? void 0 : theme.muted.blue,
+    'Chef em Casa': theme === null || theme === void 0 ? void 0 : theme.muted.blue,
+    'Aulas de Línguas': theme === null || theme === void 0 ? void 0 : theme.muted.yellow,
     // serviceType
-    standard: theme.brand.blue,
-    premium: theme.feedback.success.default,
-    test: theme.feedback.warning.default,
+    standard: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
+    premium: theme === null || theme === void 0 ? void 0 : theme.feedback.success.default,
+    test: theme === null || theme === void 0 ? void 0 : theme.feedback.warning.default,
     // payments
-    draft: theme.colors.grey,
-    open: theme.feedback.error.default,
+    draft: theme === null || theme === void 0 ? void 0 : theme.grey,
+    open: theme === null || theme === void 0 ? void 0 : theme.feedback.error.default,
     paid: theme === null || theme === void 0 ? void 0 : theme.feedback.success.default,
-    uncollectible: theme.colors.grey,
-    void: theme.colors.grey
+    uncollectible: theme === null || theme === void 0 ? void 0 : theme.grey,
+    void: theme === null || theme === void 0 ? void 0 : theme.grey
   }[status];
 };
 var Badge = styled.span(_templateObject$5(), function (props) {
@@ -6017,7 +6017,7 @@ var Badge$1 = function Badge$1(_ref) {
       text = _ref.text,
       translate = _ref.translate,
       className = _ref.className;
-  return /*#__PURE__*/React.createElement(Badge, {
+  return text && /*#__PURE__*/React.createElement(Badge, {
     className: className,
     onClick: onClick,
     status: category || status,
@@ -13319,11 +13319,12 @@ var Select$2 = function Select(_ref) {
   }), isUniq && /*#__PURE__*/React.createElement(Row, null, defaultValue.map(function (val) {
     var _options$find;
 
-    return /*#__PURE__*/React.createElement(Button$1, {
+    var btnLabel = (_options$find = options.find(function (opt) {
+      return opt.value === val;
+    })) === null || _options$find === void 0 ? void 0 : _options$find.label;
+    return btnLabel && /*#__PURE__*/React.createElement(Button$1, {
       key: label + val + 'badge',
-      text: (_options$find = options.find(function (opt) {
-        return opt.value === val;
-      })) === null || _options$find === void 0 ? void 0 : _options$find.label,
+      text: btnLabel,
       icon: "trash",
       type: "button",
       action: function action() {
@@ -20224,7 +20225,7 @@ function _templateObject2$f() {
 }
 
 function _templateObject$j() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  & > span {\n    position: relative;\n    top: 36px;\n    right: 10px;\n    align-self: flex-end;\n    background-color: white;\n  }\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  & > span {\n    position: absolute;\n    margin: 12px;\n    align-self: flex-end;\n    background-color: white;\n  }\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n"]);
 
   _templateObject$j = function _templateObject() {
     return data;
@@ -34125,7 +34126,7 @@ var Form$1 = function Form(_ref) {
   };
 
   var fieldRenderer = useCallback$1(function (field, formik, parentKey) {
-    var _field$options$, _field$options$2, _field$options, _answers$field$key, _getParishesOptions;
+    var _field$options, _answers$field$key, _getParishesOptions;
 
     var placeholder = field.key === 'postal-code' || field.key === 'postalCode' ? '0000-000' : field.placeholder;
 
@@ -34264,21 +34265,26 @@ var Form$1 = function Form(_ref) {
         case 'tabs':
           return /*#__PURE__*/React.createElement(Tabs, {
             key: field.key,
-            type: field.type
-            /* tabs={field.options.map(opt => ({
-            name: opt.label,
-            value: opt.value
-            }))}
-            initialTabIndex={field.options
-            .map(d => d.value)
-            .indexOf(formik.values[field.key])} */
-            //! temporay login / signup removal
+            type: field.type,
+            tabs: field.options.map(function (opt) {
+              return {
+                name: opt.label,
+                value: opt.value
+              };
+            }),
+            initialTabIndex: field.options.map(function (d) {
+              return d.value;
+            }).indexOf(formik.values[field.key])
+            /* //! temporay login / signup removal
+            tabs={[
+              {
+                name: field.options[0]?.label,
+                value: field.options[0]?.value
+              }
+            ]} */
+
+            /* initialTabIndex={0} */
             ,
-            tabs: [{
-              name: (_field$options$ = field.options[0]) === null || _field$options$ === void 0 ? void 0 : _field$options$.label,
-              value: (_field$options$2 = field.options[0]) === null || _field$options$2 === void 0 ? void 0 : _field$options$2.value
-            }],
-            initialTabIndex: 0,
             action: function action(v) {
               fieldProps.onChange(field.options[v].value, field);
             }
