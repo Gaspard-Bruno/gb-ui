@@ -6591,11 +6591,13 @@ var StyledCheckBox = styled.div(_templateObject4$5(), function (props) {
 
 var Checkbox = function Checkbox(_ref) {
   var checked = _ref.checked,
-      action = _ref.action;
+      action = _ref.action,
+      disabled = _ref.disabled;
 
   var handleCheck = function handleCheck() {
-    action();
-    console.log(checked);
+    if (!disabled) {
+      action();
+    }
   };
 
   return /*#__PURE__*/React.createElement(CheckboxContainer, {
@@ -6609,6 +6611,11 @@ var Checkbox = function Checkbox(_ref) {
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "Check"
   })));
+};
+Checkbox.propTypes = {
+  checked: propTypes.bool,
+  action: propTypes.func,
+  disabled: propTypes.bool
 };
 
 function _templateObject3$7() {
