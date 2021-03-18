@@ -5426,17 +5426,18 @@ var Button$1 = function Button$1(_ref) {
       action = _ref.action,
       type = _ref.type,
       isFullWidth = _ref.isFullWidth,
-      children = _ref.children;
+      children = _ref.children,
+      otherProps = _objectWithoutProperties(_ref, ["isDisabled", "btnType", "text", "isSmall", "icon", "action", "type", "isFullWidth", "children"]);
 
   if (text) {
-    return /*#__PURE__*/React.createElement(Button, {
+    return /*#__PURE__*/React.createElement(Button, _extends({
       fullWidth: isFullWidth,
       btnType: btnType,
       disabled: isDisabled,
       small: isSmall,
       onClick: action,
       type: type
-    }, children, text && /*#__PURE__*/React.createElement(ButtonText, null, text), icon && /*#__PURE__*/React.createElement(Icon, {
+    }, otherProps), children, text && /*#__PURE__*/React.createElement(ButtonText, null, text), icon && /*#__PURE__*/React.createElement(Icon, {
       name: icon
     }));
   }
