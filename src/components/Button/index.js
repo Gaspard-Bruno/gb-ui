@@ -14,7 +14,8 @@ const Button = ({
   action,
   type,
   isFullWidth,
-  children
+  children,
+  ...otherProps
 }) => {
   if (text) {
     return (
@@ -25,6 +26,7 @@ const Button = ({
         small={isSmall}
         onClick={action}
         type={type}
+        {...otherProps}
       >
         {children}
         {text && <ButtonText>{text}</ButtonText>}
