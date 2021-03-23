@@ -20238,7 +20238,7 @@ function _templateObject2$f() {
 }
 
 function _templateObject$j() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  & > span {\n    position: absolute;\n    margin: 12px;\n    align-self: flex-end;\n    background-color: white;\n  }\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  & > span {\n    position: absolute;\n    margin-bottom: ", "px;\n    margin-right: 12px;\n    align-self: flex-end;\n    background-color: white;\n  }\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n"]);
 
   _templateObject$j = function _templateObject() {
     return data;
@@ -20248,6 +20248,8 @@ function _templateObject$j() {
 }
 var InputContainer = styled__default['default'].div(_templateObject$j(), function (props) {
   return props.mini ? '33%' : 'auto';
+}, function (props) {
+  return props.error ? 35 : 12;
 }, function (props) {
   var _props$theme, _props$theme2;
 

@@ -5,13 +5,7 @@ export const InputContainer = styled.div`
   flex-flow: column nowrap;
   justify-content: flex-end;
   width: ${props => (props.mini ? '33%' : 'auto')};
-  & > span {
-    position: absolute;
-    margin-bottom: ${props => (props.error ? 35 : 12)}px;
-    margin-right: 12px;
-    align-self: flex-end;
-    background-color: white;
-  }
+
   color: ${props =>
     props.error
       ? props.theme?.colors.feedback.error.default
@@ -22,6 +16,17 @@ export const InputContainer = styled.div`
   }
 `;
 
+export const StyledIconContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  & > span {
+    position: relative;
+    top: 36px;
+    right: 12px;
+    align-self: flex-end;
+    background-color: white;
+  }
+`;
 const Input = styled.input`
   border-radius: 2px;
   padding: ${props => props.theme?.margin - 5}px ${props =>

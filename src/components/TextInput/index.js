@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { ErrorText, Body } from '../Text';
 import Icon from '../Icon';
-import StyledInput, { InputContainer } from './style';
+import StyledInput, { InputContainer, StyledIconContainer } from './style';
 
 const TextInput = ({
   error,
@@ -34,9 +34,11 @@ const TextInput = ({
   return (
     <InputContainer error={error} mini={isMini}>
       {hasIcon && (
-        <span onClickCapture={handleIconChange}>
-          <Icon name={displayedIcon} />
-        </span>
+        <StyledIconContainer>
+          <span onClickCapture={handleIconChange}>
+            <Icon name={displayedIcon} />
+          </span>
+        </StyledIconContainer>
       )}
       {label && <Body>{label || ' '}</Body>}
       <StyledInput
