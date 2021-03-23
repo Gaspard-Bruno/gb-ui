@@ -20227,8 +20227,18 @@ function words$1(string, pattern, guard) {
 
 var lodash_kebabcase = kebabCase;
 
-function _templateObject3$c() {
+function _templateObject4$9() {
   var data = _taggedTemplateLiteral(["\n  border-radius: 2px;\n  padding: ", "px ", "px;\n  border: 1px solid\n    ", ";\n  font-family: Muli;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  color: ", ";\n  outline: none;\n  &:focus {\n    outline: none;\n    border-radius: 2px;\n    border-color: ", ";\n  }\n  &:disabled {\n    background-color: ", ";\n    color: ", ";\n  },\n"]);
+
+  _templateObject4$9 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3$c() {
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: flex-end;\n  position: relative;\n  & > span {\n    position: absolute;\n    right: 10px;\n    bottom: 12px;\n    align-self: flex-end;\n    background-color: white;\n  }\n"]);
 
   _templateObject3$c = function _templateObject3() {
     return data;
@@ -20238,7 +20248,7 @@ function _templateObject3$c() {
 }
 
 function _templateObject2$f() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: flex-end;\n  position: relative;\n  & > span {\n    position: absolute;\n    right: 10px;\n    bottom: 12px;\n    align-self: flex-end;\n    background-color: white;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n"]);
 
   _templateObject2$f = function _templateObject2() {
     return data;
@@ -20248,7 +20258,7 @@ function _templateObject2$f() {
 }
 
 function _templateObject$j() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  p {\n    position: relative;\n    top: 14px;\n  }\n"]);
 
   _templateObject$j = function _templateObject() {
     return data;
@@ -20256,7 +20266,8 @@ function _templateObject$j() {
 
   return data;
 }
-var InputContainer = styled__default['default'].div(_templateObject$j(), function (props) {
+var StyledErrorContainer = styled__default['default'].div(_templateObject$j());
+var InputContainer = styled__default['default'].div(_templateObject2$f(), function (props) {
   return props.mini ? '33%' : 'auto';
 }, function (props) {
   var _props$theme, _props$theme2;
@@ -20267,8 +20278,8 @@ var InputContainer = styled__default['default'].div(_templateObject$j(), functio
 
   return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) / 2;
 });
-var StyledIconContainer = styled__default['default'].div(_templateObject2$f());
-var Input$2 = styled__default['default'].input(_templateObject3$c(), function (props) {
+var StyledIconContainer = styled__default['default'].div(_templateObject3$c());
+var Input$2 = styled__default['default'].input(_templateObject4$9(), function (props) {
   var _props$theme4;
 
   return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) - 5;
@@ -20355,7 +20366,7 @@ var TextInput = function TextInput(_ref) {
     onClickCapture: handleIconChange
   }, /*#__PURE__*/React__default['default'].createElement(Icon, {
     name: displayedIcon
-  }))), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error));
+  }))), error && /*#__PURE__*/React__default['default'].createElement(StyledErrorContainer, null, /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error)));
 };
 
 TextInput.propTypes = {
@@ -20466,10 +20477,10 @@ function _templateObject5$5() {
   return data;
 }
 
-function _templateObject4$9() {
+function _templateObject4$a() {
   var data = _taggedTemplateLiteral(["\n    display: ", ";\n    background-color: black;\n    color: black;\n    width: 10px;\n    height: 10px;\n    border-radius: 50%;\n  }\n"]);
 
-  _templateObject4$9 = function _templateObject4() {
+  _templateObject4$a = function _templateObject4() {
     return data;
   };
 
@@ -20548,7 +20559,7 @@ var StyledRadio = styled__default['default'].button(_templateObject3$d(), functi
 
   return props.isSelected ? (_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.colors.white : (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.colors.darkBlue;
 });
-var FocusedRadio = styled__default['default'].div(_templateObject4$9(), function (props) {
+var FocusedRadio = styled__default['default'].div(_templateObject4$a(), function (props) {
   return props.isSelected ? '' : 'none';
 });
 var SplitSelectContainer = styled__default['default'].div(_templateObject5$5());
@@ -23909,10 +23920,10 @@ function _templateObject5$6() {
   return data;
 }
 
-function _templateObject4$a() {
+function _templateObject4$b() {
   var data = _taggedTemplateLiteral(["\n  display: block;\n  width: auto;\n  height: 100%;\n"]);
 
-  _templateObject4$a = function _templateObject4() {
+  _templateObject4$b = function _templateObject4() {
     return data;
   };
 
@@ -23955,7 +23966,7 @@ var FileUploaderContainer = styled__default['default'].div(_templateObject$o(), 
 });
 var UploaderRowWrapper = styled__default['default'](Row)(_templateObject2$k());
 var UploaderPreviewContainer = styled__default['default'].div(_templateObject3$e());
-var UploadedImages = styled__default['default'].img(_templateObject4$a());
+var UploadedImages = styled__default['default'].img(_templateObject4$b());
 var UploaderInput = styled__default['default'].input(_templateObject5$6());
 var ThumbsContainer = styled__default['default'].div(_templateObject6$3());
 var UploaderPreviewInner = styled__default['default'].div(_templateObject7$2());
@@ -25452,10 +25463,10 @@ var TextContainer = styled__default['default'](Body)(_templateObject2$l(), funct
   return props.theme.margin;
 }, media.mobile("\n    margin-right: 0px;\n    margin-left: 6px;\n  "));
 
-function _templateObject4$b() {
+function _templateObject4$c() {
   var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border-radius: ", "px;\n  margin-top: ", "px;\n  p {\n    white-space: pre-wrap;\n    margin: 0;\n    padding: ", "px;\n  }\n"]);
 
-  _templateObject4$b = function _templateObject4() {
+  _templateObject4$c = function _templateObject4() {
     return data;
   };
 
@@ -25494,7 +25505,7 @@ function _templateObject$q() {
 var WidgetContainer$1 = styled__default['default'](Col)(_templateObject$q());
 var HeadingContainer = styled__default['default'](Row)(_templateObject2$m());
 var BodyContainer = styled__default['default'](Row)(_templateObject3$f());
-var ExtrasContainer = styled__default['default'](Row)(_templateObject4$b(), function (props) {
+var ExtrasContainer = styled__default['default'](Row)(_templateObject4$c(), function (props) {
   return props.theme.colors.lightestBeige;
 }, function (props) {
   return props.theme.margin / 2;
@@ -26203,10 +26214,10 @@ OfferTypeWidget.propTypes = {
   urgentPrices: propTypes.object
 };
 
-function _templateObject4$c() {
+function _templateObject4$d() {
   var data = _taggedTemplateLiteral(["\n  > div {\n    width: 100%;\n    margin: 16px 30px;\n  }\n"]);
 
-  _templateObject4$c = function _templateObject4() {
+  _templateObject4$d = function _templateObject4() {
     return data;
   };
 
@@ -26269,7 +26280,7 @@ var StyledCheckbox$1 = styled__default['default'].input(_templateObject3$g(), fu
 
   return "1px solid ".concat((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.mediumBeige);
 });
-var ContentRow = styled__default['default'](Row)(_templateObject4$c());
+var ContentRow = styled__default['default'](Row)(_templateObject4$d());
 
 var CheckBoxWidget = function CheckBoxWidget(_ref) {
   var name = _ref.name,
@@ -26453,10 +26464,10 @@ Tabs.defaultProps = {
   type: 'primary'
 };
 
-function _templateObject4$d() {
+function _templateObject4$e() {
   var data = _taggedTemplateLiteral(["\n  flex: 1;\n  display: flex;\n  flex-flow: column;\n  background-color: ", ";\n  margin-bottom: ", "px;\n  border: ", ";\n  > h1,\n  h2,\n  h3,\n  h4,\n  h5,\n  h6 {\n    text-align: left;\n  }\n  > div {\n    padding: 20px;\n    & > textarea {\n      min-height: ", "px;\n    }\n    & > p {\n      text-align: left;\n    }\n  }\n"]);
 
-  _templateObject4$d = function _templateObject4() {
+  _templateObject4$e = function _templateObject4() {
     return data;
   };
 
@@ -26520,7 +26531,7 @@ var StyledServiceHeader = styled__default['default'].div(_templateObject2$p(), f
   return "1px solid ".concat(props.theme.colors.mediumBeige);
 });
 var StyledHeaderInfo = styled__default['default'](Heading)(_templateObject3$i());
-var StyledForm = styled__default['default'].div(_templateObject4$d(), function (props) {
+var StyledForm = styled__default['default'].div(_templateObject4$e(), function (props) {
   return getSelectedBackground$2(props);
 }, function (props) {
   var _props$theme5;
@@ -45002,10 +45013,10 @@ function _templateObject5$7() {
   return data;
 }
 
-function _templateObject4$e() {
+function _templateObject4$f() {
   var data = _taggedTemplateLiteral(["\n  margin-top: 16px;\n  padding-top: 8px;\n  border-top: 1px solid ", ";\n"]);
 
-  _templateObject4$e = function _templateObject4() {
+  _templateObject4$f = function _templateObject4() {
     return data;
   };
 
@@ -45056,7 +45067,7 @@ var IconContainer$2 = styled__default['default'].div(_templateObject3$j(), funct
 
   return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.lightBeige;
 });
-var AdminContainer = styled__default['default'].div(_templateObject4$e(), function (props) {
+var AdminContainer = styled__default['default'].div(_templateObject4$f(), function (props) {
   var _props$theme4;
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.mediumBeige;
@@ -45115,10 +45126,10 @@ KanbanCard$1.propTypes = {
   })
 };
 
-function _templateObject4$f() {
+function _templateObject4$g() {
   var data = _taggedTemplateLiteral(["\n  path {\n    fill: ", ";\n  }\n"]);
 
-  _templateObject4$f = function _templateObject4() {
+  _templateObject4$g = function _templateObject4() {
     return data;
   };
 
@@ -45173,7 +45184,7 @@ var Header$1 = styled__default['default'].div(_templateObject3$k(), function (pr
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.lightestBeige;
 });
-var IconContainer$3 = styled__default['default'].div(_templateObject4$f(), function (props) {
+var IconContainer$3 = styled__default['default'].div(_templateObject4$g(), function (props) {
   var _props$theme5;
 
   return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.grey;
@@ -45303,10 +45314,10 @@ Kanban.propTypes = {
   onChangeStatus: propTypes.func
 };
 
-function _templateObject4$g() {
+function _templateObject4$h() {
   var data = _taggedTemplateLiteral([""]);
 
-  _templateObject4$g = function _templateObject4() {
+  _templateObject4$h = function _templateObject4() {
     return data;
   };
 
@@ -45374,7 +45385,7 @@ var getIconStyle$1 = function getIconStyle(style, isIndexed) {
 };
 
 var regularStyle = "\n  &::before {\n      content: \"\";\n      padding: 5px;\n      font-weight: bold;\n      font-size: 16px;\n      align-items: baseline;\n      margin-right: 1.5rem;\n      background: ".concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.brand.orange, ";\n      border-radius: 2px;\n  }\n  ");
-var StyledIcon = styled__default['default'].nav(_templateObject4$g());
+var StyledIcon = styled__default['default'].nav(_templateObject4$h());
 
 var List = function List(_ref) {
   var data = _ref.data,
@@ -45876,10 +45887,10 @@ function _templateObject5$8() {
   return data;
 }
 
-function _templateObject4$h() {
+function _templateObject4$i() {
   var data = _taggedTemplateLiteral(["\n  padding: 0px 30px;\n  height: 40px;\n  display: flex;\n  align-items: center;\n  color: ", ";\n  &:visited {\n    color: ", ";\n  }\n  ", ";\n"]);
 
-  _templateObject4$h = function _templateObject4() {
+  _templateObject4$i = function _templateObject4() {
     return data;
   };
 
@@ -45959,7 +45970,7 @@ var getActiveLinkStyle = function getActiveLinkStyle(theme, active) {
   }
 };
 
-var NavLink$1 = styled__default['default'](Link$1)(_templateObject4$h(), function (props) {
+var NavLink$1 = styled__default['default'](Link$1)(_templateObject4$i(), function (props) {
   var _props$theme7;
 
   return (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.white;
@@ -46290,10 +46301,10 @@ var Table = function Table(_ref) {
   }));
 };
 
-function _templateObject4$i() {
+function _templateObject4$j() {
   var data = _taggedTemplateLiteral(["\n  text-transform: capitalize;\n  font-weight: bold;\n  font-size: 24px;\n  line-height: 32px;\n  margin: 0px;\n"]);
 
-  _templateObject4$i = function _templateObject4() {
+  _templateObject4$j = function _templateObject4() {
     return data;
   };
 
@@ -46334,7 +46345,7 @@ var LeftSection = styled__default['default'].div(_templateObject2$z(), function 
   return props.theme.colors.grey;
 });
 var RightSection = styled__default['default'].div(_templateObject3$o());
-var ClientName = styled__default['default'].div(_templateObject4$i());
+var ClientName = styled__default['default'].div(_templateObject4$j());
 
 var TopBar = function TopBar(_ref) {
   var location = _ref.location,
