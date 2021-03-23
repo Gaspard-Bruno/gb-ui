@@ -20226,7 +20226,7 @@ function _templateObject3$c() {
 }
 
 function _templateObject2$f() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: flex-end;\n  & > span {\n    position: relative;\n    top: 36px;\n    right: 12px;\n    align-self: flex-end;\n    background-color: white;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: flex-end;\n  position: relative;\n  & > span {\n    position: absolute;\n    right: 10px;\n    bottom: 12px;\n    align-self: flex-end;\n    background-color: white;\n  }\n"]);
 
   _templateObject2$f = function _templateObject2() {
     return data;
@@ -20328,11 +20328,7 @@ var TextInput = function TextInput(_ref) {
   return /*#__PURE__*/React.createElement(InputContainer, {
     error: error,
     mini: isMini
-  }, hasIcon && /*#__PURE__*/React.createElement(StyledIconContainer, null, /*#__PURE__*/React.createElement("span", {
-    onClickCapture: handleIconChange
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: displayedIcon
-  }))), label && /*#__PURE__*/React.createElement(Body, null, label || ' '), /*#__PURE__*/React.createElement(Input$2, {
+  }, label && /*#__PURE__*/React.createElement(Body, null, label || ' '), /*#__PURE__*/React.createElement(Input$2, {
     type: inputType,
     error: error,
     disabled: disabled,
@@ -20343,7 +20339,11 @@ var TextInput = function TextInput(_ref) {
     onChange: function onChange(e) {
       return _onChange(e.target.value);
     }
-  }), error && /*#__PURE__*/React.createElement(ErrorText, null, error));
+  }), hasIcon && /*#__PURE__*/React.createElement(StyledIconContainer, null, /*#__PURE__*/React.createElement("span", {
+    onClickCapture: handleIconChange
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: displayedIcon
+  }))), error && /*#__PURE__*/React.createElement(ErrorText, null, error));
 };
 
 TextInput.propTypes = {
