@@ -7,7 +7,8 @@ export const InputContainer = styled.div`
   width: ${props => (props.mini ? '33%' : 'auto')};
   & > span {
     position: absolute;
-    margin: 12px;
+    margin-bottom: ${props => (props.error ? 35 : 12)}px;
+    margin-right: 12px;
     align-self: flex-end;
     background-color: white;
   }
