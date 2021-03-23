@@ -19,10 +19,11 @@ export const InputContainer = styled.div`
 export const StyledIconContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  position: relative;
   & > span {
-    position: relative;
-    top: 36px;
-    right: 12px;
+    position: absolute;
+    right: 10px;
+    bottom: 12px;
     align-self: flex-end;
     background-color: white;
   }

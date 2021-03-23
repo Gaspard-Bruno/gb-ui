@@ -33,13 +33,6 @@ const TextInput = ({
   };
   return (
     <InputContainer error={error} mini={isMini}>
-      {hasIcon && (
-        <StyledIconContainer>
-          <span onClickCapture={handleIconChange}>
-            <Icon name={displayedIcon} />
-          </span>
-        </StyledIconContainer>
-      )}
       {label && <Body>{label || ' '}</Body>}
       <StyledInput
         type={inputType}
@@ -51,6 +44,13 @@ const TextInput = ({
         placeholder={placeholder}
         onChange={e => onChange(e.target.value)}
       />
+      {hasIcon && (
+        <StyledIconContainer>
+          <span onClickCapture={handleIconChange}>
+            <Icon name={displayedIcon} />
+          </span>
+        </StyledIconContainer>
+      )}
       {error && <ErrorText>{error}</ErrorText>}
     </InputContainer>
   );
