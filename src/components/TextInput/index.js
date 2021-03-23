@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 
 import { ErrorText, Body } from '../Text';
 import Icon from '../Icon';
-import StyledInput, { InputContainer, StyledIconContainer } from './style';
+import StyledInput, {
+  InputContainer,
+  StyledIconContainer,
+  StyledErrorContainer
+} from './style';
 
 const TextInput = ({
   error,
@@ -51,7 +55,11 @@ const TextInput = ({
           </span>
         </StyledIconContainer>
       )}
-      {error && <ErrorText>{error}</ErrorText>}
+      {error && (
+        <StyledErrorContainer>
+          <ErrorText>{error}</ErrorText>
+        </StyledErrorContainer>
+      )}
     </InputContainer>
   );
 };
