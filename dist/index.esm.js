@@ -20215,8 +20215,18 @@ function words$1(string, pattern, guard) {
 
 var lodash_kebabcase = kebabCase;
 
-function _templateObject2$f() {
+function _templateObject3$c() {
   var data = _taggedTemplateLiteral(["\n  border-radius: 2px;\n  padding: ", "px ", "px;\n  border: 1px solid\n    ", ";\n  font-family: Muli;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  color: ", ";\n  outline: none;\n  &:focus {\n    outline: none;\n    border-radius: 2px;\n    border-color: ", ";\n  }\n  &:disabled {\n    background-color: ", ";\n    color: ", ";\n  },\n"]);
+
+  _templateObject3$c = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2$f() {
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: flex-end;\n  & > span {\n    position: relative;\n    top: 36px;\n    right: 12px;\n    align-self: flex-end;\n    background-color: white;\n  }\n"]);
 
   _templateObject2$f = function _templateObject2() {
     return data;
@@ -20226,7 +20236,7 @@ function _templateObject2$f() {
 }
 
 function _templateObject$j() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  & > span {\n    position: absolute;\n    margin-bottom: ", "px;\n    margin-right: 12px;\n    align-self: flex-end;\n    background-color: white;\n  }\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n"]);
 
   _templateObject$j = function _templateObject() {
     return data;
@@ -20237,8 +20247,6 @@ function _templateObject$j() {
 var InputContainer = styled.div(_templateObject$j(), function (props) {
   return props.mini ? '33%' : 'auto';
 }, function (props) {
-  return props.error ? 35 : 12;
-}, function (props) {
   var _props$theme, _props$theme2;
 
   return props.error ? (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.feedback.error.default : (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.darkBlue;
@@ -20247,7 +20255,8 @@ var InputContainer = styled.div(_templateObject$j(), function (props) {
 
   return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) / 2;
 });
-var Input$2 = styled.input(_templateObject2$f(), function (props) {
+var StyledIconContainer = styled.div(_templateObject2$f());
+var Input$2 = styled.input(_templateObject3$c(), function (props) {
   var _props$theme4;
 
   return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) - 5;
@@ -20319,11 +20328,11 @@ var TextInput = function TextInput(_ref) {
   return /*#__PURE__*/React.createElement(InputContainer, {
     error: error,
     mini: isMini
-  }, hasIcon && /*#__PURE__*/React.createElement("span", {
+  }, hasIcon && /*#__PURE__*/React.createElement(StyledIconContainer, null, /*#__PURE__*/React.createElement("span", {
     onClickCapture: handleIconChange
   }, /*#__PURE__*/React.createElement(Icon, {
     name: displayedIcon
-  })), label && /*#__PURE__*/React.createElement(Body, null, label || ' '), /*#__PURE__*/React.createElement(Input$2, {
+  }))), label && /*#__PURE__*/React.createElement(Body, null, label || ' '), /*#__PURE__*/React.createElement(Input$2, {
     type: inputType,
     error: error,
     disabled: disabled,
@@ -20455,10 +20464,10 @@ function _templateObject4$9() {
   return data;
 }
 
-function _templateObject3$c() {
+function _templateObject3$d() {
   var data = _taggedTemplateLiteral(["\n  -webkit-transition: all 0.25s;\n  margin: 0 !important;\n  outline: none;\n  width: ", "px;\n  height: ", "px;\n  border-radius: 15px;\n  border-color: transparent;\n  border: ", ";\n  background-color: ", ";\n  transition: all 0.25s;\n  > * {\n    color: ", ";\n    &:hover {\n      color: ", ";\n    }\n  }\n"]);
 
-  _templateObject3$c = function _templateObject3() {
+  _templateObject3$d = function _templateObject3() {
     return data;
   };
 
@@ -20502,7 +20511,7 @@ var RadioGroudContainer = styled.div(_templateObject2$h(), function (props) {
 
   return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) / 2;
 }, media.mobile("\n    padding: 10px 0px;\n  "));
-var StyledRadio = styled.button(_templateObject3$c(), function (props) {
+var StyledRadio = styled.button(_templateObject3$d(), function (props) {
   var _props$theme4;
 
   return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) * 1.5;
@@ -23898,10 +23907,10 @@ function _templateObject4$a() {
   return data;
 }
 
-function _templateObject3$d() {
+function _templateObject3$e() {
   var data = _taggedTemplateLiteral(["\n  display: inline-flex;\n  border-radius: 2;\n  border: 1px solid #eaeaea;\n  margin-bottom: 8;\n  margin-right: 8;\n  width: 100px;\n  height: 100px;\n  padding: 4;\n  box-sizing: border-box;\n"]);
 
-  _templateObject3$d = function _templateObject3() {
+  _templateObject3$e = function _templateObject3() {
     return data;
   };
 
@@ -23933,7 +23942,7 @@ var FileUploaderContainer = styled.div(_templateObject$o(), function (props) {
   return props.theme.colors.mediumBeige;
 });
 var UploaderRowWrapper = styled(Row)(_templateObject2$k());
-var UploaderPreviewContainer = styled.div(_templateObject3$d());
+var UploaderPreviewContainer = styled.div(_templateObject3$e());
 var UploadedImages = styled.img(_templateObject4$a());
 var UploaderInput = styled.input(_templateObject5$6());
 var ThumbsContainer = styled.div(_templateObject6$3());
@@ -25441,10 +25450,10 @@ function _templateObject4$b() {
   return data;
 }
 
-function _templateObject3$e() {
+function _templateObject3$f() {
   var data = _taggedTemplateLiteral(["\n  p {\n    margin: 0px;\n  }\n"]);
 
-  _templateObject3$e = function _templateObject3() {
+  _templateObject3$f = function _templateObject3() {
     return data;
   };
 
@@ -25472,7 +25481,7 @@ function _templateObject$q() {
 }
 var WidgetContainer$1 = styled(Col)(_templateObject$q());
 var HeadingContainer = styled(Row)(_templateObject2$m());
-var BodyContainer = styled(Row)(_templateObject3$e());
+var BodyContainer = styled(Row)(_templateObject3$f());
 var ExtrasContainer = styled(Row)(_templateObject4$b(), function (props) {
   return props.theme.colors.lightestBeige;
 }, function (props) {
@@ -26192,10 +26201,10 @@ function _templateObject4$c() {
   return data;
 }
 
-function _templateObject3$f() {
+function _templateObject3$g() {
   var data = _taggedTemplateLiteral(["\n  width: ", "px;\n  height: ", "px;\n  border: ", ";\n"]);
 
-  _templateObject3$f = function _templateObject3() {
+  _templateObject3$g = function _templateObject3() {
     return data;
   };
 
@@ -26235,7 +26244,7 @@ var CheckboxWidgetContainer = styled.div(_templateObject2$n(), function (props) 
 
   return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) / 2;
 });
-var StyledCheckbox$1 = styled.input(_templateObject3$f(), function (props) {
+var StyledCheckbox$1 = styled.input(_templateObject3$g(), function (props) {
   var _props$theme4;
 
   return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) * 1.5;
@@ -26319,10 +26328,10 @@ CheckBoxWidget.propTypes = {
   defaultValues: propTypes.oneOfType([propTypes.object, propTypes.array])
 };
 
-function _templateObject3$g() {
+function _templateObject3$h() {
   var data = _taggedTemplateLiteral(["\n  border-radius: 4px;\n  padding: ", "px;\n  margin: ", "px;\n  outline: none;\n  cursor: pointer;\n  border: none;\n  background-color: ", ";\n  margin-bottom: ", "px;\n  transition: all 0.25s;\n  > * {\n    color: ", ";\n    &:hover {\n      color: ", ";\n    }\n  }\n"]);
 
-  _templateObject3$g = function _templateObject3() {
+  _templateObject3$h = function _templateObject3() {
     return data;
   };
 
@@ -26352,7 +26361,7 @@ var TabContainer = styled.div(_templateObject$s());
 var TabGroup = styled.div(_templateObject2$o(), function (props) {
   return props.justify ? props.justify : 'flex-start';
 });
-var TabButton = styled.button(_templateObject3$g(), function (props) {
+var TabButton = styled.button(_templateObject3$h(), function (props) {
   var _props$theme;
 
   return ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) / 1.5;
@@ -26442,10 +26451,10 @@ function _templateObject4$d() {
   return data;
 }
 
-function _templateObject3$h() {
+function _templateObject3$i() {
   var data = _taggedTemplateLiteral(["\n  margin: 0;\n"]);
 
-  _templateObject3$h = function _templateObject3() {
+  _templateObject3$i = function _templateObject3() {
     return data;
   };
 
@@ -26498,7 +26507,7 @@ var StyledServiceHeader = styled.div(_templateObject2$p(), function (props) {
 }, function (props) {
   return "1px solid ".concat(props.theme.colors.mediumBeige);
 });
-var StyledHeaderInfo = styled(Heading)(_templateObject3$h());
+var StyledHeaderInfo = styled(Heading)(_templateObject3$i());
 var StyledForm = styled.div(_templateObject4$d(), function (props) {
   return getSelectedBackground$2(props);
 }, function (props) {
@@ -44991,10 +45000,10 @@ function _templateObject4$e() {
   return data;
 }
 
-function _templateObject3$i() {
+function _templateObject3$j() {
   var data = _taggedTemplateLiteral(["\n  min-height: 32px;\n  min-width: 32px;\n  border-radius: 50%;\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-right: 8px;\n\n  svg {\n    width: 14px;\n  }\n"]);
 
-  _templateObject3$i = function _templateObject3() {
+  _templateObject3$j = function _templateObject3() {
     return data;
   };
 
@@ -45030,7 +45039,7 @@ var KanbanCard = styled.div(_templateObject$w(), function (props) {
   return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin;
 });
 var BadgeContainer = styled.div(_templateObject2$s());
-var IconContainer$2 = styled.div(_templateObject3$i(), function (props) {
+var IconContainer$2 = styled.div(_templateObject3$j(), function (props) {
   var _props$theme3;
 
   return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.lightBeige;
@@ -45104,10 +45113,10 @@ function _templateObject4$f() {
   return data;
 }
 
-function _templateObject3$j() {
+function _templateObject3$k() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  position: sticky;\n  top: 0;\n  background-color: ", ";\n  align-items: baseline;\n  justify-content: space-between;\n  width: 85%;\n  padding: 0px 30px;\n\n  h3 {\n    font-size: 16px;\n  }\n"]);
 
-  _templateObject3$j = function _templateObject3() {
+  _templateObject3$k = function _templateObject3() {
     return data;
   };
 
@@ -45147,7 +45156,7 @@ var ColumnCardsContainer = styled.div(_templateObject2$t(), function (props) {
 
   return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.darkBlue;
 });
-var Header$1 = styled.div(_templateObject3$j(), function (props) {
+var Header$1 = styled.div(_templateObject3$k(), function (props) {
   var _props$theme4;
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.lightestBeige;
@@ -45292,10 +45301,10 @@ function _templateObject4$g() {
   return data;
 }
 
-function _templateObject3$k() {
+function _templateObject3$l() {
   var data = _taggedTemplateLiteral(["\n  & > div {\n    flex: ", ";\n  }\n  div {\n    ", "\n  }\n  display: flex;\n  margin-bottom: 0.5rem;\n  font-family: Space Grotesk;\n  font-style: normal;\n  font-weight: bold;\n  align-items: ", ";\n  justify: ", ";\n  ", "\n"]);
 
-  _templateObject3$k = function _templateObject3() {
+  _templateObject3$l = function _templateObject3() {
     return data;
   };
 
@@ -45333,7 +45342,7 @@ var ListWrapper = styled.div(_templateObject$y(), function (props) {
   return props.isBorded ? '10px' : 'none';
 });
 var ListContainer$2 = styled.ul(_templateObject2$u());
-var ListItens = styled.li(_templateObject3$k(), function (props) {
+var ListItens = styled.li(_templateObject3$l(), function (props) {
   return props.hasFullWidthLi ? 1 : '';
 }, media.tablet("flex: 1; padding: 0px;"), function (props) {
   return props.hasIcon ? 'center' : 'baseline';
@@ -45749,10 +45758,10 @@ TrackerBox.propTypes = {
   action: propTypes.func
 };
 
-function _templateObject3$l() {
+function _templateObject3$m() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n"]);
 
-  _templateObject3$l = function _templateObject3() {
+  _templateObject3$m = function _templateObject3() {
     return data;
   };
 
@@ -45782,7 +45791,7 @@ var StyledPagination = styled.div(_templateObject$C());
 var Left$1 = styled.div(_templateObject2$w(), function (props) {
   return props.theme.colors.grey;
 });
-var Right$1 = styled.div(_templateObject3$l());
+var Right$1 = styled.div(_templateObject3$m());
 
 var Pagination = function Pagination(_ref) {
   var totalPages = _ref.totalPages,
@@ -45865,10 +45874,10 @@ function _templateObject4$h() {
   return data;
 }
 
-function _templateObject3$m() {
+function _templateObject3$n() {
   var data = _taggedTemplateLiteral(["\n  margin-bottom: ", "px;\n  button {\n    transition: all 0.5s;\n    svg {\n      transition: all 0.5s;\n      transform: ", ";\n      > path {\n        fill: ", ";\n      }\n    }\n    ", "\n  }\n"]);
 
-  _templateObject3$m = function _templateObject3() {
+  _templateObject3$n = function _templateObject3() {
     return data;
   };
 
@@ -45916,7 +45925,7 @@ var NavHeader = styled(Tiny)(_templateObject2$x(), function (props) {
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.white;
 });
-var NavSection = styled.div(_templateObject3$m(), function (props) {
+var NavSection = styled.div(_templateObject3$n(), function (props) {
   var _props$theme5;
 
   return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 2;
@@ -46279,10 +46288,10 @@ function _templateObject4$i() {
   return data;
 }
 
-function _templateObject3$n() {
+function _templateObject3$o() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n\n  svg {\n    margin-right: 26px;\n  }\n"]);
 
-  _templateObject3$n = function _templateObject3() {
+  _templateObject3$o = function _templateObject3() {
     return data;
   };
 
@@ -46312,7 +46321,7 @@ var StyledTopBar = styled.div(_templateObject$G());
 var LeftSection = styled.div(_templateObject2$z(), function (props) {
   return props.theme.colors.grey;
 });
-var RightSection = styled.div(_templateObject3$n());
+var RightSection = styled.div(_templateObject3$o());
 var ClientName = styled.div(_templateObject4$i());
 
 var TopBar = function TopBar(_ref) {
@@ -50994,10 +51003,10 @@ exports["default"] = _default;
 
 var Slider = unwrapExports(lib$1);
 
-function _templateObject3$o() {
+function _templateObject3$p() {
   var data = _taggedTemplateLiteral(["\n  width: 368px;\n  height: 220px;\n"]);
 
-  _templateObject3$o = function _templateObject3() {
+  _templateObject3$p = function _templateObject3() {
     return data;
   };
 
@@ -51025,7 +51034,7 @@ function _templateObject$H() {
 }
 var CarouselContainer = styled.div(_templateObject$H());
 var ItemContainer = styled.div(_templateObject2$A());
-var ItemImage = styled.img(_templateObject3$o());
+var ItemImage = styled.img(_templateObject3$p());
 
 var CardSlider = function CardSlider(_ref) {
   var list = _ref.list;
