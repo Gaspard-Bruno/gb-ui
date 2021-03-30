@@ -97,20 +97,21 @@
     "lodash.kebabcase": "^4.1.1",
     "lodash.snakecase": "^4.1.1",
     "lodash.startcase": "^4.4.0",
-    "react": "^16.13.1",
     "react-beautiful-dnd": "^13.0.0",
     "react-datepicker": "^3.6.0",
-    "react-dom": "^16.13.1",
     "react-dropzone": "^11.2.4",
     "react-schedule-selector": "^3.0.0",
     "react-select": "^3.1.0",
     "react-slick": "^0.28.0",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^5.1.1",
     "validator": "^13.5.1",
     "yup": "^0.32.8"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
+  },
   "devDependencies": {
     "@babel/cli": "^7.11.6",
     "@babel/core": "^7.11.6",
