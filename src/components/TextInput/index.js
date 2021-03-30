@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Datepicker, { registerLocale } from 'react-datepicker';
+import Datepicker, { registerLocale } from 'react-datepicker/dist/es';
 import { format } from 'date-fns';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -79,7 +79,7 @@ const TextInput = ({
       {label && <Body>{label || ' '}</Body>}
       {type === 'date' ? (
         <Datepicker
-          selected={(defaultValue && new Date(defaultValue)) || ''}
+          selected={value || (defaultValue && new Date(defaultValue)) || ''}
           dateFormat={'dd/MM/yyyy'}
           locale={'pt-PT'}
           onChange={e => {
