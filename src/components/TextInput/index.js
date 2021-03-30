@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Datepicker, { registerLocale } from 'react-datepicker';
+import { format } from 'date-fns';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 import { ErrorText, Body } from '../Text';
 import Icon from '../Icon';
-import StyledInput, {
+import {
   InputContainer,
   StyledIconContainer,
   StyledErrorContainer
@@ -26,28 +30,77 @@ const TextInput = ({
     { name: 'eye-off', type: 'password' },
     { name: 'eye-on', type: 'text' }
   ];
-
   const [displayedIcon, setDisplayedIcon] = useState(defaultIcons[0].name);
   const [inputType, setInputType] = useState(type || 'text');
+  const [value, setValue] = useState(otherProps.value);
 
   const handleIconChange = () => {
     const newIcon = defaultIcons.find(e => e.name !== displayedIcon);
     setInputType(newIcon.type);
     setDisplayedIcon(newIcon.name);
   };
+  // const getDateValue = () => {
+  //   console.log('got date value', otherProps, value || defaultValue);
+  //   if (value || defaultValue) {
+  //     const dateValue = new Date(value || defaultValue);
+  //     console.log(
+  //       '🚀 ~ file: index.js ~ line 46 ~ getDateValue ~ dateValue',
+  //       dateValue
+  //     );
+  //     return format(dateValue, 'dd/MM/yyyy');
+  //   }
+  // };
+  const months = [
+    'Jan',
+    'Fev',
+    'Mar',
+    'Abr',
+    'Mai',
+    'Jun',
+    'Jul',
+    'Ago',
+    'Set',
+    'Oct',
+    'Nov',
+    'Dez'
+  ];
+  const days = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
+
+  const locale = {
+    localize: {
+      month: n => months[n],
+      day: n => days[n]
+    },
+    formatLong: {}
+  };
+  registerLocale('pt-PT', locale);
   return (
     <InputContainer error={error} mini={isMini}>
       {label && <Body>{label || ' '}</Body>}
-      <StyledInput
-        type={inputType}
-        error={error}
-        disabled={disabled}
-        min={minDate}
-        defaultValue={defaultValue}
-        value={otherProps.value}
-        placeholder={placeholder}
-        onChange={e => onChange(e.target.value)}
-      />
+      {type === 'date' ? (
+        <Datepicker
+          selected={(defaultValue && new Date(defaultValue)) || ''}
+          dateFormat={'dd/MM/yyyy'}
+          locale={'pt-PT'}
+          onChange={e => {
+            if (onChange) {
+              onChange(format(e, 'dd/MM/yyyy'));
+            }
+            setValue(e);
+          }}
+        />
+      ) : (
+        <input
+          type={inputType}
+          error={error}
+          disabled={disabled}
+          min={minDate}
+          defaultValue={defaultValue}
+          value={value}
+          placeholder={placeholder}
+          onChange={e => onChange(e.target.value)}
+        />
+      )}
       {hasIcon && (
         <StyledIconContainer>
           <span onClickCapture={handleIconChange}>

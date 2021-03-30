@@ -1,5 +1,6 @@
 import React from 'react';
 import FORM from 'Components/utils/form';
+/* eslint-disable */
 import THEME, { GlobalStyles } from 'Theme';
 import {
   Accordion,
@@ -70,7 +71,6 @@ const components = [
 
     disabled: false,
     props: {
-      previewComponentTitle: 'Gardening (Pre-filled) with errors',
       questions: FORM.gardening.questions,
       answers: { ...FORM.gardeningAnswers, district: 'Outro' }
     },
@@ -84,7 +84,7 @@ const components = [
     disabled: false,
     props: {
       previewComponentTitle: 'Settings',
-      questions: FORM.settingsSchema.questions,
+      questions: FORM.settingsSchema.questions
     },
 
     component: props => <Form {...props}></Form>
@@ -100,8 +100,7 @@ const components = [
     label: 'TextInput',
     props: {
       error: 'cenas',
-      hasIcon: true,
-      onChange: () => console.log('dsad')
+      type: 'date',
     },
     section: 'General',
     component: props => <TextInput {...props} />

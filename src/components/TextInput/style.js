@@ -21,22 +21,8 @@ export const InputContainer = styled.div`
     min-height: 24px;
     margin: ${props => props.theme?.margin / 2}px 0;
   }
-`;
-
-export const StyledIconContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-  & > span {
-    position: absolute;
-    right: 10px;
-    bottom: 12px;
-    align-self: flex-end;
-    background-color: white;
-  }
-`;
-const Input = styled.input`
-  border-radius: 2px;
+  input {
+      border-radius: 2px;
   padding: ${props => props.theme?.margin - 5}px ${props =>
   props.theme?.margin / 2}px;
   border: 1px solid
@@ -62,7 +48,18 @@ const Input = styled.input`
   &:disabled {
     background-color: ${props => props.theme?.colors.lightBeige};
     color: ${props => props.theme?.colors.grey};
-  },
+  }
 `;
 
-export default Input;
+export const StyledIconContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  & > span {
+    position: absolute;
+    right: 10px;
+    bottom: 12px;
+    align-self: flex-end;
+    background-color: white;
+  }
+`;
