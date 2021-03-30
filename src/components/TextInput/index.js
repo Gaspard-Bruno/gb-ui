@@ -96,7 +96,7 @@ const TextInput = ({
           disabled={disabled}
           min={minDate}
           defaultValue={defaultValue}
-          value={value}
+          value={otherProps.value}
           placeholder={placeholder}
           onChange={e => onChange(e.target.value)}
         />

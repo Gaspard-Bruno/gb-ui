@@ -44,6 +44,7 @@ export default {
           'Component',
           'createContext',
           'createElement',
+          'Fragment',
           'forwardRef',
           'useCallback',
           'useContext',
@@ -74,7 +75,8 @@ export default {
         'node_modules/formik/node_modules/scheduler/index.js': [
           'unstable_runWithPriority',
           'unstable_LowPriority'
-        ]
+        ],
+        'node_modules/react-datepicker/dist/es': ['registerLocale']
       }
     })
   ],
