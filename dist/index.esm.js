@@ -35786,7 +35786,7 @@ function _templateObject3$c() {
 }
 
 function _templateObject2$f() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n  input {\n      border-radius: 2px;\n  padding: ", "px ", "px;\n  border: 1px solid\n    ", ";\n  font-family: Muli;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  color: ", ";\n  outline: none;\n  &:focus {\n    outline: none;\n    border-radius: 2px;\n    border-color: ", ";\n  }\n  &:disabled {\n    background-color: ", ";\n    color: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  .datepicker {\n    button: {\n      margin-top:0px;\n    }\n  }\n\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n  input {\n      border-radius: 2px;\n  padding: ", "px ", "px;\n  border: 1px solid\n    ", ";\n  font-family: Muli;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  color: ", ";\n  outline: none;\n  &:focus {\n    outline: none;\n    border-radius: 2px;\n    border-color: ", ";\n  }\n  &:disabled {\n    background-color: ", ";\n    color: ", ";\n  }\n"]);
 
   _templateObject2$f = function _templateObject2() {
     return data;
@@ -35919,6 +35919,7 @@ var TextInput = function TextInput(_ref) {
     error: error,
     mini: isMini
   }, label && /*#__PURE__*/React.createElement(Body, null, label || ' '), type === 'date' ? /*#__PURE__*/React.createElement(Wt, {
+    className: "datepicker",
     selected: value || defaultValue && new Date(defaultValue) || '',
     dateFormat: 'dd/MM/yyyy',
     locale: 'pt-PT',
