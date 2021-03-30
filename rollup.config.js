@@ -17,7 +17,9 @@ export default {
   ],
   plugins: [
     json(),
-    css(),
+    css({
+      include: 'react-datepicker/dist/react-datepicker.css'
+    }),
     svgr(),
     image(),
     babel({
