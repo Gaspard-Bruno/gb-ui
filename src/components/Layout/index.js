@@ -75,6 +75,8 @@ const BackofficePage = styled.div`
 
 const BackofficeContainer = styled.div`
   margin: 0px 32px;
+  overflow: scroll;
+  height: calc(100vh - 90px);
 `;
 
 const BackofficeKanbanContainer = styled.div`
