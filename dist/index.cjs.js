@@ -6131,7 +6131,7 @@ function _templateObject5$3() {
 }
 
 function _templateObject4$3() {
-  var data = _taggedTemplateLiteral(["\n  margin: 0px 32px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  margin: 0px 32px;\n  overflow: scroll;\n  height: calc(100vh - 90px);\n"]);
 
   _templateObject4$3 = function _templateObject4() {
     return data;
