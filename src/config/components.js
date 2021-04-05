@@ -100,6 +100,7 @@ const components = [
     label: 'TextInput Date',
     props: {
       error: 'error',
+      defaultValue: '2020-12-16',
       type: 'date'
     },
     section: 'General',

@@ -33,7 +33,8 @@ const TextInput = ({
   const [displayedIcon, setDisplayedIcon] = useState(defaultIcons[0].name);
   const [inputType, setInputType] = useState(type || 'text');
   const [dateValue, setDateValue] = useState(
-    defaultValue && new Date(defaultValue)
+    (defaultValue && new Date(defaultValue)) ||
+      (otherProps.value && new Date(otherProps.value))
   );
 
   const handleIconChange = () => {
