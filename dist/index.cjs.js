@@ -41906,6 +41906,21 @@ var CheckBoxWidget = function CheckBoxWidget(_ref) {
     if (action) action(defaultValues);
   };
 
+  var getDefaultValue = function getDefaultValue(item, dv, content) {
+    var valQuestion = dv.find(function (e) {
+      return (e === null || e === void 0 ? void 0 : e.question) === (item === null || item === void 0 ? void 0 : item.question);
+    });
+
+    if (content) {
+      var optionsDefaulValue = content === null || content === void 0 ? void 0 : content.options.find(function (opt) {
+        return (opt === null || opt === void 0 ? void 0 : opt.value) === valQuestion[content === null || content === void 0 ? void 0 : content.key];
+      });
+      return optionsDefaulValue;
+    } else {
+      return valQuestion['other'];
+    }
+  };
+
   return /*#__PURE__*/React__default['default'].createElement(StyledContainer$3, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error), list && list.map(function (item, index) {
     return /*#__PURE__*/React__default['default'].createElement(CheckboxWidgetContainer, {
       key: "".concat(item, "-").concat(index)
@@ -41923,7 +41938,8 @@ var CheckBoxWidget = function CheckBoxWidget(_ref) {
           item: item === null || item === void 0 ? void 0 : item.question,
           value: value
         });
-      }
+      },
+      defaultValue: getDefaultValue(item, defaultValues)
     }), content && item.isSelected ? /*#__PURE__*/React__default['default'].createElement(Select$2, {
       label: content === null || content === void 0 ? void 0 : content.label,
       options: content === null || content === void 0 ? void 0 : content.options,
@@ -41932,7 +41948,8 @@ var CheckBoxWidget = function CheckBoxWidget(_ref) {
           item: item === null || item === void 0 ? void 0 : item.question,
           value: values.value
         });
-      }
+      },
+      defaultValue: getDefaultValue(item, defaultValues, content)
     }) : null));
   }));
 };
