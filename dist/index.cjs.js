@@ -5047,7 +5047,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 function _templateObject12() {
-  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  transition: all 0.2s;\n  opacity: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  transition: all 0.2s;\n  opacity: ", ";\n  margin: 0 !important;\n"]);
 
   _templateObject12 = function _templateObject12() {
     return data;
