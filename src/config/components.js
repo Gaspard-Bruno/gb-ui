@@ -97,7 +97,7 @@ const components = [
     component: props => <Avatar {...props} />
   },
   {
-    label: 'TextInput (Date)',
+    label: 'TextInput Date',
     props: {
       error: 'error',
       type: 'date'

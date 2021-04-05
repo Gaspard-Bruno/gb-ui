@@ -11,6 +11,8 @@ import {
   StyledErrorContainer
 } from './style';
 
+import 'react-datepicker/dist/react-datepicker.css';
+
 const TextInput = ({
   error,
   placeholder,
