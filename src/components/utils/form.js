@@ -111,7 +111,7 @@ const specialistFormAnswers = {
   location: '4',
   services: ['music_lessons', 'babysitting', 'repairs'],
   sexType: 1,
-  birthDate: '1111-11-26',
+  birthDate: '2020-12-06',
   otherInfo: '3',
   telephone: '1',
   postalCode: '3',
