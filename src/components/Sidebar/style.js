@@ -2,18 +2,21 @@ import styled from 'styled-components';
 import { Link, Tiny, ButtonText } from '../Text';
 
 const StyledSidebar = styled.div`
-  background-color: ${(props) => props.theme?.colors.brand.orange};
+  background-color: ${props => props.theme?.colors.brand.orange};
   color: white;
   transition: width 0.5s linear;
-  width: ${(props) => (props.open ? '240px' : '45px')};
+  width: ${props => (props.open ? '240px' : '45px')};
   height: 100vh;
   svg {
-    margin-top: ${(props) => props.theme?.margin}px;
+    margin-top: ${props => props.theme?.margin}px;
+  }
+  button svg {
+    margin-top: 0;
   }
   > div {
     transition: all 0.5s linear;
 
-    ${(props) =>
+    ${props =>
       !props.open
         ? `
     position: fixed;
@@ -27,22 +30,22 @@ const StyledSidebar = styled.div`
 
 export const NavHeader = styled(Tiny)`
   text-transform: uppercase;
-  margin-top: ${(props) => props.theme?.margin * 2};
-  color: ${(props) => props.theme?.colors.white};
+  margin-top: ${props => props.theme?.margin * 2};
+  color: ${props => props.theme?.colors.white};
 `;
 
 export const NavSection = styled.div`
-  margin-bottom: ${(props) => props.theme?.margin * 2}px;
+  margin-bottom: ${props => props.theme?.margin * 2}px;
   button {
     transition: all 0.5s;
     svg {
       transition: all 0.5s;
-      transform: ${(props) => (props.open ? 'rotate(180deg)' : 'rotate(0deg)')};
+      transform: ${props => (props.open ? 'rotate(180deg)' : 'rotate(0deg)')};
       > path {
-        fill: ${(props) => props.theme?.colors.white};
+        fill: ${props => props.theme?.colors.white};
       }
     }
-    ${(props) =>
+    ${props =>
       !props.open
         ? `
     position: fixed;
@@ -76,11 +79,11 @@ export const NavLink = styled(Link)`
   height: 40px;
   display: flex;
   align-items: center;
-  color: ${(props) => props.theme?.colors.white};
+  color: ${props => props.theme?.colors.white};
   &:visited {
-    color: ${(props) => props.theme?.colors.white};
+    color: ${props => props.theme?.colors.white};
   }
-  ${(props) => getActiveLinkStyle(props.theme, props.disabled)};
+  ${props => getActiveLinkStyle(props.theme, props.disabled)};
 `;
 export const NavText = styled(ButtonText)`
   padding: 0px 30px;
@@ -88,8 +91,8 @@ export const NavText = styled(ButtonText)`
   display: flex;
   align-items: center;
 
-  color: ${(props) => props.theme?.colors.white};
-  ${(props) => getActiveLinkStyle(props.theme, props.disabled)}
+  color: ${props => props.theme?.colors.white};
+  ${props => getActiveLinkStyle(props.theme, props.disabled)}
 `;
 
 export default StyledSidebar;
