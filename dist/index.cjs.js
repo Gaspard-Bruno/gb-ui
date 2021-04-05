@@ -35889,7 +35889,15 @@ var TextInput = function TextInput(_ref) {
       inputType = _useState4[0],
       setInputType = _useState4[1];
 
-  var _useState5 = React.useState(defaultValue && new Date(defaultValue) || otherProps.value && new Date(otherProps.value)),
+  var _useState5 = React.useState(function () {
+    if (inputType === 'date') {
+      var value = otherProps.value || defaultValue;
+      var split = (value || '').split('/');
+      return split[2] ? new Date(split[1] + '/' + split[0] + '/' + split[2]) : new Date(value);
+    }
+
+    return undefined;
+  }()),
       _useState6 = _slicedToArray(_useState5, 2),
       dateValue = _useState6[0],
       setDateValue = _useState6[1];
@@ -35932,10 +35940,12 @@ var TextInput = function TextInput(_ref) {
     locale: 'pt-PT',
     onChange: function onChange(e) {
       if (_onChange) {
-        _onChange(format(e, 'dd/MM/yyyy'));
-      }
+        _onChange(format(e, 'yyyy-MM-dd'));
 
-      setDateValue(e);
+        setDateValue(e);
+      } else {
+        setDateValue(new Date(e));
+      }
     }
   }) : /*#__PURE__*/React__default['default'].createElement("input", {
     type: inputType,
