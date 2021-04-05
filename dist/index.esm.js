@@ -61396,8 +61396,10 @@ var Left$1 = styled.div(_templateObject2$w(), function (props) {
 var Right$1 = styled.div(_templateObject3$m());
 
 var Pagination = function Pagination(_ref) {
-  var totalPages = _ref.totalPages,
-      currentPage = _ref.currentPage,
+  var _ref$currentPage = _ref.currentPage,
+      currentPage = _ref$currentPage === void 0 ? 1 : _ref$currentPage,
+      _ref$totalPages = _ref.totalPages,
+      totalPages = _ref$totalPages === void 0 ? currentPage : _ref$totalPages,
       action = _ref.action,
       translate = _ref.translate;
   var boxes = useMemo$1(function () {
