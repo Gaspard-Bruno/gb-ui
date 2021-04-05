@@ -12,7 +12,7 @@ export const InputContainer = styled.div`
   flex-flow: column nowrap;
   justify-content: flex-end;
   width: ${props => (props.mini ? '33%' : 'auto')};
-  .datepicker {
+  .react-datepicker {
     button {
       margin-top:0px;
     }

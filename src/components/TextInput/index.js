@@ -86,7 +86,6 @@ const TextInput = ({
       {label && <Body>{label || ' '}</Body>}
       {type === 'date' ? (
         <Datepicker
-          className='datepicker'
           selected={dateValue || ''}
           dateFormat={'dd/MM/yyyy'}
           locale={'pt-PT'}
