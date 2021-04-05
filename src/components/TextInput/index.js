@@ -32,7 +32,9 @@ const TextInput = ({
   ];
   const [displayedIcon, setDisplayedIcon] = useState(defaultIcons[0].name);
   const [inputType, setInputType] = useState(type || 'text');
-  const [value, setValue] = useState(otherProps.value);
+  const [dateValue, setDateValue] = useState(
+    defaultValue && new Date(defaultValue)
+  );
 
   const handleIconChange = () => {
     const newIcon = defaultIcons.find(e => e.name !== displayedIcon);
@@ -40,13 +42,8 @@ const TextInput = ({
     setDisplayedIcon(newIcon.name);
   };
   // const getDateValue = () => {
-  //   console.log('got date value', otherProps, value || defaultValue);
   //   if (value || defaultValue) {
   //     const dateValue = new Date(value || defaultValue);
-  //     console.log(
-  //       '🚀 ~ file: index.js ~ line 46 ~ getDateValue ~ dateValue',
-  //       dateValue
-  //     );
   //     return format(dateValue, 'dd/MM/yyyy');
   //   }
   // };
@@ -80,14 +77,14 @@ const TextInput = ({
       {type === 'date' ? (
         <Datepicker
           className='datepicker'
-          selected={value || (defaultValue && new Date(defaultValue)) || ''}
+          selected={dateValue || ''}
           dateFormat={'dd/MM/yyyy'}
           locale={'pt-PT'}
           onChange={e => {
             if (onChange) {
               onChange(format(e, 'dd/MM/yyyy'));
             }
-            setValue(e);
+            setDateValue(e);
           }}
         />
       ) : (
