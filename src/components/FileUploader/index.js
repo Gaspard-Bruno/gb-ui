@@ -155,7 +155,7 @@ const FileUploader = ({ title, name, action, answers, error }) => {
           <ThumbsContainer>{filesPreview}</ThumbsContainer>
         </FileUploaderContainer>
       )}
-      {error && <ErrorText>{error}</ErrorText>}
+      <ErrorText error={error}>{error}</ErrorText>
     </React.Fragment>
   );
 };

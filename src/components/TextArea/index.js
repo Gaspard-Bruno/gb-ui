@@ -14,7 +14,7 @@ const TextArea = ({ error, placeholder, value, label, onChange }) => (
       placeholder={placeholder}
       value={value}
     ></StyledTextArea>
-    {error && <ErrorText>{error}</ErrorText>}
+    <ErrorText error={error}>{error}</ErrorText>
   </TextAreaContainer>
 );
 

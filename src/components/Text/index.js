@@ -192,9 +192,11 @@ export const AlertTitle = styled.h3`
 `;
 
 export const ErrorText = styled(SmallBody)`
-  color: ${props => props.theme?.colors.feedback.error.default};
-  margin: 0px !important;
+  color: ${props => props.theme.colors.feedback.error.default};
+  transition: all 0.2s;
+  opacity: ${props => (props.error ? 1 : 0)};
 `;
+
 export default {
   Jumbo,
   Heading,

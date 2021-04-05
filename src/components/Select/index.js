@@ -50,7 +50,7 @@ const Select = ({
           })}
         </Row>
       )}
-      {error && <ErrorText>{error}</ErrorText>}
+      <ErrorText error={error}>{error}</ErrorText>
     </SelectContainer>
   );
 };

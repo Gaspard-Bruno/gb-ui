@@ -64,7 +64,7 @@ const ButtonGroup = ({ action, title, name, list, value, error }) => {
             );
           })}
       </ListContainer>
-      {error && <ErrorText>{error}</ErrorText>}
+      <ErrorText error={error}>{error}</ErrorText>
     </StyledContainer>
   );
 };

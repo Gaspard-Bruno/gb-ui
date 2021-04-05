@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 
-export const StyledErrorContainer = styled.div`
-  position: absolute;
-  p {
-    position: relative;
-    top: 14px;
-  }
-`;
 export const InputContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;

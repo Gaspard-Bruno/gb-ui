@@ -17,7 +17,7 @@ const CheckBoxGroup = ({ name, label, list, error, action }) => {
   return (
     <StyledContainer>
       {label && <Body>{label}</Body>}
-      {error && <ErrorText>{error}</ErrorText>}
+      <ErrorText error={error}>{error}</ErrorText>
       {list &&
         list.map((item, index) => {
           return (

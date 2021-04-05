@@ -5,11 +5,7 @@ import { format } from 'date-fns';
 
 import { ErrorText, Body } from '../Text';
 import Icon from '../Icon';
-import {
-  InputContainer,
-  StyledIconContainer,
-  StyledErrorContainer
-} from './style';
+import { InputContainer, StyledIconContainer } from './style';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -117,11 +113,7 @@ const TextInput = ({
           </span>
         </StyledIconContainer>
       )}
-      {error && (
-        <StyledErrorContainer>
-          <ErrorText>{error}</ErrorText>
-        </StyledErrorContainer>
-      )}
+      <ErrorText error={error}>{error}</ErrorText>
     </InputContainer>
   );
 };

@@ -55,7 +55,7 @@ const RadioButton = ({
             </RadioGroudContainer>
           );
         })}
-      {error && <ErrorText>{error}</ErrorText>}
+      <ErrorText error={error}>{error}</ErrorText>
     </StyledContainer>
   );
 };
