@@ -39,6 +39,18 @@ const CheckBoxWidget = ({
     if (action) action(defaultValues);
   };
 
+  const getDefaultValue = (item, dv, content) => {
+    const valQuestion = dv.find(e => e?.question === item?.question);
+    if (content) {
+      const optionsDefaulValue = content?.options.find(
+        opt => opt?.value === valQuestion[content?.key]
+      );
+      return optionsDefaulValue;
+    } else {
+      return valQuestion['other'];
+    }
+  };
+
   return (
     <StyledContainer>
       {label && <Body>{label}</Body>}
@@ -64,6 +76,7 @@ const CheckBoxWidget = ({
                         value
                       })
                     }
+                    defaultValue={getDefaultValue(item, defaultValues)}
                   />
                 )}
                 {content && item.isSelected ? (
@@ -76,6 +89,7 @@ const CheckBoxWidget = ({
                         value: values.value
                       })
                     }
+                    defaultValue={getDefaultValue(item, defaultValues, content)}
                   />
                 ) : null}
               </ContentRow>

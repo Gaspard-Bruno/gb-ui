@@ -146,12 +146,50 @@ const specialistFormAnswers = {
     },
     { value: 2, question: 'Maiores de 10 anos' }
   ],
+  instruments: [
+    { value: 0, question: 'Viola', isSelected: false },
+    { value: 1, question: 'Piano', isSelected: true, lessonLevel: 1 },
+    { value: 2, question: 'Violino', isSelected: false },
+    {
+      value: 3,
+      question: 'Acordeão',
+      isSelected: true,
+      lessonLevel: 1
+    },
+    { value: 4, question: 'Bateria' / 'Percussão', isSelected: false },
+    { value: 5, question: 'Flauta', isSelected: false },
+    {
+      value: 6,
+      question: 'Outro',
+      isSelected: false,
+      isSelectable: true
+    }
+  ],
+  musicLessonsPlace: [
+    { value: 0, question: 'Na minha casa', isSelected: false },
+    { value: 1, question: 'Na casa do Cliente', isSelected: false },
+    {
+      other: 'A combinar na data',
+      value: 2,
+      question: 'Outro Espaço',
+      isSelected: true,
+      isSelectable: true
+    }
+  ],
+
   professionalExperience: 'dd',
   babysittingServiceToDo: [
-    { value: 0, question: 'Companhia', isSelected: true },
+    { value: 0, question: 'Companhia' },
     { value: 1, question: 'Deslocações' },
     { value: 2, question: 'Acompanhamento TPC' },
-    { value: 3, question: 'Explicações' }
+    { value: 3, question: 'Explicações' },
+    {
+      value: 4,
+      question: 'Outro',
+      isSelected: true,
+      isSelectable: true,
+      other: 'Coisas de estudo'
+    }
   ],
   foreignLanguageKnowledge: 1,
   'language-selected0': 0,
