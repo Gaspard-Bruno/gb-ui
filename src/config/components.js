@@ -97,13 +97,21 @@ const components = [
     component: props => <Avatar {...props} />
   },
   {
-    label: 'TextInput',
+    label: 'TextInput (Date)',
     props: {
-      error: 'cenas',
-      type: 'date',
+      error: 'error',
+      type: 'date'
     },
     section: 'General',
     component: props => <TextInput {...props} />
+  },
+  {
+    label: 'Pagination',
+    section: 'General',
+    props: {
+      action: () => console.log('cenas'),
+    },
+    component: props => <Pagination {...props}></Pagination>
   },
   {
     label: 'TopBar',

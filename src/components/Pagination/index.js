@@ -6,8 +6,12 @@ import { SmallBody } from '../Text';
 import TrackerBox from '../TrackerBox';
 import StyledPagination, { Left, Right } from './style';
 
-const Pagination = ({ totalPages, currentPage, action, translate }) => {
-
+const Pagination = ({
+  currentPage = 1,
+  totalPages = currentPage,
+  action,
+  translate
+}) => {
   const boxes = useMemo(() => {
     if (totalPages >= 4) {
       if (
@@ -44,7 +48,7 @@ const Pagination = ({ totalPages, currentPage, action, translate }) => {
     <StyledPagination>
       <Left>
         <SmallBody bold={true}>
-          {t(translate,'page')} {currentPage} {t(translate, 'of')} {totalPages}
+          {t(translate, 'page')} {currentPage} {t(translate, 'of')} {totalPages}
         </SmallBody>
       </Left>
 
@@ -89,7 +93,7 @@ Pagination.propTypes = {
   totalPages: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   currentPage: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   action: PropTypes.func,
-  translate: PropTypes.func,
+  translate: PropTypes.func
 };
 
 export default Pagination;
