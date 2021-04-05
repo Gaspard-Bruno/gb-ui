@@ -5047,7 +5047,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 function _templateObject12() {
-  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  margin: 0px !important;\n"]);
+  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  transition: all 0.2s;\n  opacity: ", ";\n"]);
 
   _templateObject12 = function _templateObject12() {
     return data;
@@ -5258,9 +5258,9 @@ var AlertTitle = styled__default['default'].h3(_templateObject11(), function (pr
   return (_props$theme43 = props.theme) === null || _props$theme43 === void 0 ? void 0 : _props$theme43.colors.red;
 });
 var ErrorText = styled__default['default'](SmallBody)(_templateObject12(), function (props) {
-  var _props$theme44;
-
-  return (_props$theme44 = props.theme) === null || _props$theme44 === void 0 ? void 0 : _props$theme44.colors.feedback.error.default;
+  return props.theme.colors.feedback.error.default;
+}, function (props) {
+  return props.error ? 1 : 0;
 });
 
 var IcomoonReact = createCommonjsModule(function (module, exports) {
@@ -6450,7 +6450,9 @@ var ButtonGroup = function ButtonGroup(_ref) {
         handleSelection(item.value, !selectedButtons[item.value]);
       }
     }, /*#__PURE__*/React__default['default'].createElement(Body, null, labels[index])));
-  })), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error));
+  })), /*#__PURE__*/React__default['default'].createElement(ErrorText, {
+    error: error
+  }, error));
 };
 
 ButtonGroup.propTypes = {
@@ -6706,7 +6708,9 @@ var CheckBoxGroup = function CheckBoxGroup(_ref) {
     if (action) action(newList);
   };
 
-  return /*#__PURE__*/React__default['default'].createElement(StyledContainer$1, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error), list && list.map(function (item, index) {
+  return /*#__PURE__*/React__default['default'].createElement(StyledContainer$1, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), /*#__PURE__*/React__default['default'].createElement(ErrorText, {
+    error: error
+  }, error), list && list.map(function (item, index) {
     return /*#__PURE__*/React__default['default'].createElement(CheckboxGroupContainer, {
       key: "".concat(item, "-").concat(index)
     }, /*#__PURE__*/React__default['default'].createElement(StyledCheckbox, {
@@ -13352,7 +13356,9 @@ var Select$2 = function Select(_ref) {
         return onRemove(val);
       }
     });
-  })), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error));
+  })), /*#__PURE__*/React__default['default'].createElement(ErrorText, {
+    error: error
+  }, error));
 };
 
 Select$2.propTypes = {
@@ -35787,18 +35793,8 @@ function cleanEscapedString(input) {
   return input.match(escapedStringRegExp)[1].replace(doubleQuoteRegExp, "'");
 }
 
-function _templateObject3$c() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: flex-end;\n  position: relative;\n  & > span {\n    position: absolute;\n    right: 10px;\n    bottom: 12px;\n    align-self: flex-end;\n    background-color: white;\n  }\n"]);
-
-  _templateObject3$c = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject2$f() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  .react-datepicker {\n    button {\n      margin-top:0px;\n    }\n  }\n\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n  input {\n      border-radius: 2px;\n  padding: ", "px ", "px;\n  border: 1px solid\n    ", ";\n  font-family: Muli;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  color: ", ";\n  outline: none;\n  &:focus {\n    outline: none;\n    border-radius: 2px;\n    border-color: ", ";\n  }\n  &:disabled {\n    background-color: ", ";\n    color: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: flex-end;\n  position: relative;\n  & > span {\n    position: absolute;\n    right: 10px;\n    bottom: 12px;\n    align-self: flex-end;\n    background-color: white;\n  }\n"]);
 
   _templateObject2$f = function _templateObject2() {
     return data;
@@ -35808,7 +35804,7 @@ function _templateObject2$f() {
 }
 
 function _templateObject$j() {
-  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  p {\n    position: relative;\n    top: 14px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  .react-datepicker {\n    button {\n      margin-top:0px;\n    }\n  }\n\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n  input {\n      border-radius: 2px;\n  padding: ", "px ", "px;\n  border: 1px solid\n    ", ";\n  font-family: Muli;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  color: ", ";\n  outline: none;\n  &:focus {\n    outline: none;\n    border-radius: 2px;\n    border-color: ", ";\n  }\n  &:disabled {\n    background-color: ", ";\n    color: ", ";\n  }\n"]);
 
   _templateObject$j = function _templateObject() {
     return data;
@@ -35816,8 +35812,7 @@ function _templateObject$j() {
 
   return data;
 }
-var StyledErrorContainer = styled__default['default'].div(_templateObject$j());
-var InputContainer = styled__default['default'].div(_templateObject2$f(), function (props) {
+var InputContainer = styled__default['default'].div(_templateObject$j(), function (props) {
   return props.mini ? '33%' : 'auto';
 }, function (props) {
   var _props$theme, _props$theme2;
@@ -35856,7 +35851,7 @@ var InputContainer = styled__default['default'].div(_templateObject2$f(), functi
 
   return (_props$theme12 = props.theme) === null || _props$theme12 === void 0 ? void 0 : _props$theme12.colors.grey;
 });
-var StyledIconContainer = styled__default['default'].div(_templateObject3$c());
+var StyledIconContainer = styled__default['default'].div(_templateObject2$f());
 
 var TextInput = function TextInput(_ref) {
   var error = _ref.error,
@@ -35963,7 +35958,9 @@ var TextInput = function TextInput(_ref) {
     onClickCapture: handleIconChange
   }, /*#__PURE__*/React__default['default'].createElement(Icon, {
     name: displayedIcon
-  }))), error && /*#__PURE__*/React__default['default'].createElement(StyledErrorContainer, null, /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error)));
+  }))), /*#__PURE__*/React__default['default'].createElement(ErrorText, {
+    error: error
+  }, error));
 };
 
 TextInput.propTypes = {
@@ -36053,7 +36050,9 @@ var TextArea$1 = function TextArea$1(_ref) {
     error: error,
     placeholder: placeholder,
     value: value
-  }), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error));
+  }), /*#__PURE__*/React__default['default'].createElement(ErrorText, {
+    error: error
+  }, error));
 };
 
 TextArea$1.propTypes = {
@@ -36084,10 +36083,10 @@ function _templateObject4$9() {
   return data;
 }
 
-function _templateObject3$d() {
+function _templateObject3$c() {
   var data = _taggedTemplateLiteral(["\n  -webkit-transition: all 0.25s;\n  margin: 0 !important;\n  outline: none;\n  width: ", "px;\n  height: ", "px;\n  border-radius: 15px;\n  border-color: transparent;\n  border: ", ";\n  background-color: ", ";\n  transition: all 0.25s;\n  > * {\n    color: ", ";\n    &:hover {\n      color: ", ";\n    }\n  }\n"]);
 
-  _templateObject3$d = function _templateObject3() {
+  _templateObject3$c = function _templateObject3() {
     return data;
   };
 
@@ -36131,7 +36130,7 @@ var RadioGroudContainer = styled__default['default'].div(_templateObject2$h(), f
 
   return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) / 2;
 }, media.mobile("\n    padding: 10px 0px;\n  "));
-var StyledRadio = styled__default['default'].button(_templateObject3$d(), function (props) {
+var StyledRadio = styled__default['default'].button(_templateObject3$c(), function (props) {
   var _props$theme4;
 
   return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) * 1.5;
@@ -36201,7 +36200,9 @@ var RadioButton = function RadioButton(_ref) {
     })), /*#__PURE__*/React__default['default'].createElement(Body, {
       name: item.key
     }, item.label));
-  }), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error));
+  }), /*#__PURE__*/React__default['default'].createElement(ErrorText, {
+    error: error
+  }, error));
 };
 
 RadioButton.propTypes = {
@@ -39527,10 +39528,10 @@ function _templateObject4$a() {
   return data;
 }
 
-function _templateObject3$e() {
+function _templateObject3$d() {
   var data = _taggedTemplateLiteral(["\n  display: inline-flex;\n  border-radius: 2;\n  border: 1px solid #eaeaea;\n  margin-bottom: 8;\n  margin-right: 8;\n  width: 100px;\n  height: 100px;\n  padding: 4;\n  box-sizing: border-box;\n"]);
 
-  _templateObject3$e = function _templateObject3() {
+  _templateObject3$d = function _templateObject3() {
     return data;
   };
 
@@ -39562,7 +39563,7 @@ var FileUploaderContainer = styled__default['default'].div(_templateObject$o(), 
   return props.theme.colors.mediumBeige;
 });
 var UploaderRowWrapper = styled__default['default'](Row)(_templateObject2$k());
-var UploaderPreviewContainer = styled__default['default'].div(_templateObject3$e());
+var UploaderPreviewContainer = styled__default['default'].div(_templateObject3$d());
 var UploadedImages = styled__default['default'].img(_templateObject4$a());
 var UploaderInput = styled__default['default'].input(_templateObject5$6());
 var ThumbsContainer = styled__default['default'].div(_templateObject6$3());
@@ -41015,7 +41016,9 @@ var FileUploader = function FileUploader(_ref) {
     type: "button",
     text: "Carregue aqui",
     btnType: "primary"
-  })), /*#__PURE__*/React__default['default'].createElement(ThumbsContainer, null, filesPreview)), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error));
+  })), /*#__PURE__*/React__default['default'].createElement(ThumbsContainer, null, filesPreview)), /*#__PURE__*/React__default['default'].createElement(ErrorText, {
+    error: error
+  }, error));
 };
 
 FileUploader.propTypes = {
@@ -41070,10 +41073,10 @@ function _templateObject4$b() {
   return data;
 }
 
-function _templateObject3$f() {
+function _templateObject3$e() {
   var data = _taggedTemplateLiteral(["\n  p {\n    margin: 0px;\n  }\n"]);
 
-  _templateObject3$f = function _templateObject3() {
+  _templateObject3$e = function _templateObject3() {
     return data;
   };
 
@@ -41101,7 +41104,7 @@ function _templateObject$q() {
 }
 var WidgetContainer$1 = styled__default['default'](Col)(_templateObject$q());
 var HeadingContainer = styled__default['default'](Row)(_templateObject2$m());
-var BodyContainer = styled__default['default'](Row)(_templateObject3$f());
+var BodyContainer = styled__default['default'](Row)(_templateObject3$e());
 var ExtrasContainer = styled__default['default'](Row)(_templateObject4$b(), function (props) {
   return props.theme.colors.lightestBeige;
 }, function (props) {
@@ -41821,10 +41824,10 @@ function _templateObject4$c() {
   return data;
 }
 
-function _templateObject3$g() {
+function _templateObject3$f() {
   var data = _taggedTemplateLiteral(["\n  width: ", "px;\n  height: ", "px;\n  border: ", ";\n"]);
 
-  _templateObject3$g = function _templateObject3() {
+  _templateObject3$f = function _templateObject3() {
     return data;
   };
 
@@ -41864,7 +41867,7 @@ var CheckboxWidgetContainer = styled__default['default'].div(_templateObject2$n(
 
   return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) / 2;
 });
-var StyledCheckbox$1 = styled__default['default'].input(_templateObject3$g(), function (props) {
+var StyledCheckbox$1 = styled__default['default'].input(_templateObject3$f(), function (props) {
   var _props$theme4;
 
   return ((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.margin) * 1.5;
@@ -41921,7 +41924,9 @@ var CheckBoxWidget = function CheckBoxWidget(_ref) {
     }
   };
 
-  return /*#__PURE__*/React__default['default'].createElement(StyledContainer$3, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), error && /*#__PURE__*/React__default['default'].createElement(ErrorText, null, error), list && list.map(function (item, index) {
+  return /*#__PURE__*/React__default['default'].createElement(StyledContainer$3, null, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label), /*#__PURE__*/React__default['default'].createElement(ErrorText, {
+    error: error
+  }, error), list && list.map(function (item, index) {
     return /*#__PURE__*/React__default['default'].createElement(CheckboxWidgetContainer, {
       key: "".concat(item, "-").concat(index)
     }, /*#__PURE__*/React__default['default'].createElement(StyledCheckbox$1, {
@@ -41965,10 +41970,10 @@ CheckBoxWidget.propTypes = {
   defaultValues: propTypes.oneOfType([propTypes.object, propTypes.array])
 };
 
-function _templateObject3$h() {
+function _templateObject3$g() {
   var data = _taggedTemplateLiteral(["\n  border-radius: 4px;\n  padding: ", "px;\n  margin: ", "px;\n  outline: none;\n  cursor: pointer;\n  border: none;\n  background-color: ", ";\n  margin-bottom: ", "px;\n  transition: all 0.25s;\n  > * {\n    color: ", ";\n    &:hover {\n      color: ", ";\n    }\n  }\n"]);
 
-  _templateObject3$h = function _templateObject3() {
+  _templateObject3$g = function _templateObject3() {
     return data;
   };
 
@@ -41998,7 +42003,7 @@ var TabContainer = styled__default['default'].div(_templateObject$s());
 var TabGroup = styled__default['default'].div(_templateObject2$o(), function (props) {
   return props.justify ? props.justify : 'flex-start';
 });
-var TabButton = styled__default['default'].button(_templateObject3$h(), function (props) {
+var TabButton = styled__default['default'].button(_templateObject3$g(), function (props) {
   var _props$theme;
 
   return ((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.margin) / 1.5;
@@ -42088,10 +42093,10 @@ function _templateObject4$d() {
   return data;
 }
 
-function _templateObject3$i() {
+function _templateObject3$h() {
   var data = _taggedTemplateLiteral(["\n  margin: 0;\n"]);
 
-  _templateObject3$i = function _templateObject3() {
+  _templateObject3$h = function _templateObject3() {
     return data;
   };
 
@@ -42144,7 +42149,7 @@ var StyledServiceHeader = styled__default['default'].div(_templateObject2$p(), f
 }, function (props) {
   return "1px solid ".concat(props.theme.colors.mediumBeige);
 });
-var StyledHeaderInfo = styled__default['default'](Heading)(_templateObject3$i());
+var StyledHeaderInfo = styled__default['default'](Heading)(_templateObject3$h());
 var StyledForm = styled__default['default'].div(_templateObject4$d(), function (props) {
   return getSelectedBackground$2(props);
 }, function (props) {
@@ -60637,10 +60642,10 @@ function _templateObject4$e() {
   return data;
 }
 
-function _templateObject3$j() {
+function _templateObject3$i() {
   var data = _taggedTemplateLiteral(["\n  min-height: 32px;\n  min-width: 32px;\n  border-radius: 50%;\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-right: 8px;\n\n  svg {\n    width: 14px;\n  }\n"]);
 
-  _templateObject3$j = function _templateObject3() {
+  _templateObject3$i = function _templateObject3() {
     return data;
   };
 
@@ -60676,7 +60681,7 @@ var KanbanCard = styled__default['default'].div(_templateObject$w(), function (p
   return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin;
 });
 var BadgeContainer = styled__default['default'].div(_templateObject2$s());
-var IconContainer$2 = styled__default['default'].div(_templateObject3$j(), function (props) {
+var IconContainer$2 = styled__default['default'].div(_templateObject3$i(), function (props) {
   var _props$theme3;
 
   return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.lightBeige;
@@ -60750,10 +60755,10 @@ function _templateObject4$f() {
   return data;
 }
 
-function _templateObject3$k() {
+function _templateObject3$j() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  position: sticky;\n  top: 0;\n  background-color: ", ";\n  align-items: baseline;\n  justify-content: space-between;\n  width: 85%;\n  padding: 0px 30px;\n\n  h3 {\n    font-size: 16px;\n  }\n"]);
 
-  _templateObject3$k = function _templateObject3() {
+  _templateObject3$j = function _templateObject3() {
     return data;
   };
 
@@ -60793,7 +60798,7 @@ var ColumnCardsContainer = styled__default['default'].div(_templateObject2$t(), 
 
   return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.darkBlue;
 });
-var Header$1 = styled__default['default'].div(_templateObject3$k(), function (props) {
+var Header$1 = styled__default['default'].div(_templateObject3$j(), function (props) {
   var _props$theme4;
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.lightestBeige;
@@ -60938,10 +60943,10 @@ function _templateObject4$g() {
   return data;
 }
 
-function _templateObject3$l() {
+function _templateObject3$k() {
   var data = _taggedTemplateLiteral(["\n  & > div {\n    flex: ", ";\n  }\n  div {\n    ", "\n  }\n  display: flex;\n  margin-bottom: 0.5rem;\n  font-family: Space Grotesk;\n  font-style: normal;\n  font-weight: bold;\n  align-items: ", ";\n  justify: ", ";\n  ", "\n"]);
 
-  _templateObject3$l = function _templateObject3() {
+  _templateObject3$k = function _templateObject3() {
     return data;
   };
 
@@ -60979,7 +60984,7 @@ var ListWrapper = styled__default['default'].div(_templateObject$y(), function (
   return props.isBorded ? '10px' : 'none';
 });
 var ListContainer$2 = styled__default['default'].ul(_templateObject2$u());
-var ListItens = styled__default['default'].li(_templateObject3$l(), function (props) {
+var ListItens = styled__default['default'].li(_templateObject3$k(), function (props) {
   return props.hasFullWidthLi ? 1 : '';
 }, media.tablet("flex: 1; padding: 0px;"), function (props) {
   return props.hasIcon ? 'center' : 'baseline';
@@ -61395,10 +61400,10 @@ TrackerBox.propTypes = {
   action: propTypes.func
 };
 
-function _templateObject3$m() {
+function _templateObject3$l() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n"]);
 
-  _templateObject3$m = function _templateObject3() {
+  _templateObject3$l = function _templateObject3() {
     return data;
   };
 
@@ -61428,7 +61433,7 @@ var StyledPagination = styled__default['default'].div(_templateObject$C());
 var Left$1 = styled__default['default'].div(_templateObject2$w(), function (props) {
   return props.theme.colors.grey;
 });
-var Right$1 = styled__default['default'].div(_templateObject3$m());
+var Right$1 = styled__default['default'].div(_templateObject3$l());
 
 var Pagination = function Pagination(_ref) {
   var _ref$currentPage = _ref.currentPage,
@@ -61513,10 +61518,10 @@ function _templateObject4$h() {
   return data;
 }
 
-function _templateObject3$n() {
+function _templateObject3$m() {
   var data = _taggedTemplateLiteral(["\n  margin-bottom: ", "px;\n  button {\n    transition: all 0.5s;\n    svg {\n      transition: all 0.5s;\n      transform: ", ";\n      > path {\n        fill: ", ";\n      }\n    }\n    ", "\n  }\n"]);
 
-  _templateObject3$n = function _templateObject3() {
+  _templateObject3$m = function _templateObject3() {
     return data;
   };
 
@@ -61564,7 +61569,7 @@ var NavHeader = styled__default['default'](Tiny)(_templateObject2$x(), function 
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.white;
 });
-var NavSection = styled__default['default'].div(_templateObject3$n(), function (props) {
+var NavSection = styled__default['default'].div(_templateObject3$m(), function (props) {
   var _props$theme5;
 
   return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 2;
@@ -61927,10 +61932,10 @@ function _templateObject4$i() {
   return data;
 }
 
-function _templateObject3$o() {
+function _templateObject3$n() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n\n  svg {\n    margin-right: 26px;\n  }\n"]);
 
-  _templateObject3$o = function _templateObject3() {
+  _templateObject3$n = function _templateObject3() {
     return data;
   };
 
@@ -61960,7 +61965,7 @@ var StyledTopBar = styled__default['default'].div(_templateObject$G());
 var LeftSection = styled__default['default'].div(_templateObject2$z(), function (props) {
   return props.theme.colors.grey;
 });
-var RightSection = styled__default['default'].div(_templateObject3$o());
+var RightSection = styled__default['default'].div(_templateObject3$n());
 var ClientName = styled__default['default'].div(_templateObject4$i());
 
 var TopBar = function TopBar(_ref) {
@@ -66593,10 +66598,10 @@ exports["default"] = _default;
 
 var Slider = unwrapExports(lib$2);
 
-function _templateObject3$p() {
+function _templateObject3$o() {
   var data = _taggedTemplateLiteral(["\n  width: 368px;\n  height: 220px;\n"]);
 
-  _templateObject3$p = function _templateObject3() {
+  _templateObject3$o = function _templateObject3() {
     return data;
   };
 
@@ -66624,7 +66629,7 @@ function _templateObject$H() {
 }
 var CarouselContainer = styled__default['default'].div(_templateObject$H());
 var ItemContainer = styled__default['default'].div(_templateObject2$A());
-var ItemImage = styled__default['default'].img(_templateObject3$p());
+var ItemImage = styled__default['default'].img(_templateObject3$o());
 
 var CardSlider = function CardSlider(_ref) {
   var list = _ref.list;
