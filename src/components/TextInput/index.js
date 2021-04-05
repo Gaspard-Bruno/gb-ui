@@ -33,8 +33,16 @@ const TextInput = ({
   const [displayedIcon, setDisplayedIcon] = useState(defaultIcons[0].name);
   const [inputType, setInputType] = useState(type || 'text');
   const [dateValue, setDateValue] = useState(
-    (defaultValue && new Date(defaultValue)) ||
-      (otherProps.value && new Date(otherProps.value))
+    (() => {
+      if (inputType === 'date') {
+        const value = otherProps.value || defaultValue;
+        const split = (value || '').split('/');
+        return split[2]
+          ? new Date(split[1] + '/' + split[0] + '/' + split[2])
+          : new Date(value);
+      }
+      return undefined;
+    })()
   );
 
   const handleIconChange = () => {
@@ -83,9 +91,11 @@ const TextInput = ({
           locale={'pt-PT'}
           onChange={e => {
             if (onChange) {
-              onChange(format(e, 'dd/MM/yyyy'));
+              onChange(format(e, 'yyyy-MM-dd'));
+              setDateValue(e);
+            } else {
+              setDateValue(new Date(e));
             }
-            setDateValue(e);
           }}
         />
       ) : (

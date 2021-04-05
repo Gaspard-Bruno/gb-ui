@@ -72,7 +72,14 @@ const components = [
     disabled: false,
     props: {
       questions: FORM.gardening.questions,
-      answers: { ...FORM.gardeningAnswers, district: 'Outro' }
+      onSubmit: vals => {
+        console.log('writin to storage', vals);
+        localStorage.setItem('GARDENING_FORM', JSON.stringify(vals));
+      },
+      answers: JSON.parse(localStorage.getItem('GARDENING_FORM')) || {
+        ...FORM.gardeningAnswers,
+        district: 'Outro'
+      }
     },
 
     component: props => <Form {...props}></Form>
@@ -110,7 +117,7 @@ const components = [
     label: 'Pagination',
     section: 'General',
     props: {
-      action: () => console.log('cenas'),
+      action: () => console.log('cenas')
     },
     component: props => <Pagination {...props}></Pagination>
   },
