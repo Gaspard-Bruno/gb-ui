@@ -35877,10 +35877,10 @@ var TextInput = function TextInput(_ref) {
       inputType = _useState4[0],
       setInputType = _useState4[1];
 
-  var _useState5 = useState(otherProps.value),
+  var _useState5 = useState(defaultValue && new Date(defaultValue)),
       _useState6 = _slicedToArray(_useState5, 2),
-      value = _useState6[0],
-      setValue = _useState6[1];
+      dateValue = _useState6[0],
+      setDateValue = _useState6[1];
 
   var handleIconChange = function handleIconChange() {
     var newIcon = defaultIcons.find(function (e) {
@@ -35889,13 +35889,8 @@ var TextInput = function TextInput(_ref) {
     setInputType(newIcon.type);
     setDisplayedIcon(newIcon.name);
   }; // const getDateValue = () => {
-  //   console.log('got date value', otherProps, value || defaultValue);
   //   if (value || defaultValue) {
   //     const dateValue = new Date(value || defaultValue);
-  //     console.log(
-  //       '🚀 ~ file: index.js ~ line 46 ~ getDateValue ~ dateValue',
-  //       dateValue
-  //     );
   //     return format(dateValue, 'dd/MM/yyyy');
   //   }
   // };
@@ -35920,7 +35915,7 @@ var TextInput = function TextInput(_ref) {
     mini: isMini
   }, label && /*#__PURE__*/React.createElement(Body, null, label || ' '), type === 'date' ? /*#__PURE__*/React.createElement(Wt, {
     className: "datepicker",
-    selected: value || defaultValue && new Date(defaultValue) || '',
+    selected: dateValue || '',
     dateFormat: 'dd/MM/yyyy',
     locale: 'pt-PT',
     onChange: function onChange(e) {
@@ -35928,7 +35923,7 @@ var TextInput = function TextInput(_ref) {
         _onChange(format(e, 'dd/MM/yyyy'));
       }
 
-      setValue(e);
+      setDateValue(e);
     }
   }) : /*#__PURE__*/React.createElement("input", {
     type: inputType,
@@ -61499,7 +61494,7 @@ function _templateObject2$x() {
 }
 
 function _templateObject$D() {
-  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  color: white;\n  transition: width 0.5s linear;\n  width: ", ";\n  height: 100vh;\n  svg {\n    margin-top: ", "px;\n  }\n  > div {\n    transition: all 0.5s linear;\n\n    ", "\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  color: white;\n  transition: width 0.5s linear;\n  width: ", ";\n  height: 100vh;\n  svg {\n    margin-top: ", "px;\n  }\n  button svg {\n    margin-top: 0;\n  }\n  > div {\n    transition: all 0.5s linear;\n\n    ", "\n  }\n"]);
 
   _templateObject$D = function _templateObject() {
     return data;
