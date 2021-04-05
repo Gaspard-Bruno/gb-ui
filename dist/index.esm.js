@@ -35877,7 +35877,7 @@ var TextInput = function TextInput(_ref) {
       inputType = _useState4[0],
       setInputType = _useState4[1];
 
-  var _useState5 = useState(defaultValue && new Date(defaultValue)),
+  var _useState5 = useState(defaultValue && new Date(defaultValue) || otherProps.value && new Date(otherProps.value)),
       _useState6 = _slicedToArray(_useState5, 2),
       dateValue = _useState6[0],
       setDateValue = _useState6[1];
