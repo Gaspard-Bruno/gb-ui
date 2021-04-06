@@ -6111,7 +6111,7 @@ function _templateObject7$1() {
 }
 
 function _templateObject6$2() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row ", ";\n  background-color: ", ";\n  align-items: ", ";\n  width: 100%;\n  justify-content: ", ";\n  min-height: ", "px;\n  ", "\n  ", "\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row ", ";\n  background-color: ", ";\n  align-items: ", ";\n  flex: ", ";\n  width: 100%;\n  justify-content: ", ";\n  min-height: ", "px;\n  ", "\n  ", "\n  ", "\n"]);
 
   _templateObject6$2 = function _templateObject6() {
     return data;
@@ -6238,6 +6238,8 @@ var Row = styled__default['default'].div(_templateObject6$2(), function (props) 
   return getSelectedBackground(props);
 }, function (props) {
   return props.align ? props.align : 'none';
+}, function (props) {
+  return props.size || 1;
 }, function (props) {
   return props.justify ? props.justify : 'none';
 }, function (props) {
