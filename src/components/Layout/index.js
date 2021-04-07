@@ -109,10 +109,10 @@ const Row = styled.div`
   flex-flow: row ${props => (props.noWrap ? 'nowrap' : 'wrap')};
   background-color: ${props => getSelectedBackground(props)};
   align-items: ${props => (props.align ? props.align : 'none')};
-  flex: ${props => props.size || 1};
   width: 100%;
   justify-content: ${props => (props.justify ? props.justify : 'none')};
   min-height: ${props => props.theme?.margin * (props.size || 0)}px;
+  ${props => (props.size ? `flex: ${props.size}` : '')};
   ${props =>
     props.collapse &&
     media[props.collapse](`
