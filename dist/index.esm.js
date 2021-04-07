@@ -6099,7 +6099,7 @@ function _templateObject7$1() {
 }
 
 function _templateObject6$2() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row ", ";\n  background-color: ", ";\n  align-items: ", ";\n  flex: ", ";\n  width: 100%;\n  justify-content: ", ";\n  min-height: ", "px;\n  ", "\n  ", "\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row ", ";\n  background-color: ", ";\n  align-items: ", ";\n  width: 100%;\n  justify-content: ", ";\n  min-height: ", "px;\n  ", ";\n  ", "\n  ", "\n  ", "\n"]);
 
   _templateObject6$2 = function _templateObject6() {
     return data;
@@ -6227,13 +6227,13 @@ var Row = styled.div(_templateObject6$2(), function (props) {
 }, function (props) {
   return props.align ? props.align : 'none';
 }, function (props) {
-  return props.size || 1;
-}, function (props) {
   return props.justify ? props.justify : 'none';
 }, function (props) {
   var _props$theme10;
 
   return ((_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.margin) * (props.size || 0);
+}, function (props) {
+  return props.size ? "flex: ".concat(props.size) : '';
 }, function (props) {
   return props.collapse && media[props.collapse]("\n      display: none;\n  ");
 }, function (props) {
