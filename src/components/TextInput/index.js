@@ -83,6 +83,9 @@ const TextInput = ({
       {type === 'date' ? (
         <Datepicker
           selected={dateValue || ''}
+          showMonthDropdown
+          showYearDropdown
+          dropdownMode='select'
           dateFormat={'dd/MM/yyyy'}
           locale={'pt-PT'}
           onChange={e => {
