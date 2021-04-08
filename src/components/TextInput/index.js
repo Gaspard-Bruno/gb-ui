@@ -77,10 +77,16 @@ const TextInput = ({
     formatLong: {}
   };
   registerLocale('pt-PT', locale);
+  const isValid = date => {
+    // eslint-disable-next-line no-self-compare
+    return date.getTime() === date.getTime();
+  };
+
+  const isDateValid = isValid(new Date(dateValue));
   return (
     <InputContainer error={error} mini={isMini}>
       {label && <Body>{label || ' '}</Body>}
-      {type === 'date' ? (
+      {type === 'date' && isDateValid ? (
         <Datepicker
           selected={dateValue || ''}
           showMonthDropdown
@@ -106,7 +112,7 @@ const TextInput = ({
           defaultValue={defaultValue}
           value={otherProps.value}
           placeholder={placeholder}
-          onChange={e => onChange(e.target.value)}
+          onChange={e => onChange && onChange(e.target.value)}
         />
       )}
       {hasIcon && (
