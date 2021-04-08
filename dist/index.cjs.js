@@ -35934,6 +35934,9 @@ var TextInput = function TextInput(_ref) {
     mini: isMini
   }, label && /*#__PURE__*/React__default['default'].createElement(Body, null, label || ' '), type === 'date' ? /*#__PURE__*/React__default['default'].createElement(Wt, {
     selected: dateValue || '',
+    showMonthDropdown: true,
+    showYearDropdown: true,
+    dropdownMode: "select",
     dateFormat: 'dd/MM/yyyy',
     locale: 'pt-PT',
     onChange: function onChange(e) {
