@@ -35917,10 +35917,17 @@ var TextInput = function TextInput(_ref) {
     formatLong: {}
   };
   Ke('pt-PT', locale);
+
+  var isValid = function isValid(date) {
+    // eslint-disable-next-line no-self-compare
+    return date.getTime() === date.getTime();
+  };
+
+  var isDateValid = isValid(new Date(dateValue));
   return /*#__PURE__*/React.createElement(InputContainer, {
     error: error,
     mini: isMini
-  }, label && /*#__PURE__*/React.createElement(Body, null, label || ' '), type === 'date' ? /*#__PURE__*/React.createElement(Wt, {
+  }, label && /*#__PURE__*/React.createElement(Body, null, label || ' '), type === 'date' && isDateValid ? /*#__PURE__*/React.createElement(Wt, {
     selected: dateValue || '',
     showMonthDropdown: true,
     showYearDropdown: true,
@@ -35945,7 +35952,7 @@ var TextInput = function TextInput(_ref) {
     value: otherProps.value,
     placeholder: placeholder,
     onChange: function onChange(e) {
-      return _onChange(e.target.value);
+      return _onChange && _onChange(e.target.value);
     }
   }), hasIcon && /*#__PURE__*/React.createElement(StyledIconContainer, null, /*#__PURE__*/React.createElement("span", {
     onClickCapture: handleIconChange
