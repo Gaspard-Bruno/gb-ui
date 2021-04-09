@@ -120,16 +120,16 @@ const Form = ({
   const { validateField, validateAllFields } = useFormErrors({});
 
   const handleSubmit = useCallback(
-    values => {
+    (values, btnLabel) => {
       const errors = validateAllFields(flatFields.current, values);
+      Object.keys(errors).forEach(e => {
+        if (hiddenFields.indexOf(e) !== -1) delete errors[e];
+      });
       if (!Object.keys(errors).length) {
-        onSubmit(values);
+        onSubmit(values, btnLabel);
       } else {
-        Object.keys(errors).forEach(e => {
-          if (hiddenFields.indexOf(e) !== -1) delete errors[e];
-        });
         setFormErrors(errors);
-        onError(errors);
+        onError(errors, values, btnLabel);
       }
     },
     [hiddenFields, onError, onSubmit, validateAllFields]
@@ -377,6 +377,7 @@ const Form = ({
                 {field.submit && (
                   <Button
                     type='submit'
+                    action={() => handleSubmit(formik.values, field.buttonId)}
                     btnType={'primary'}
                     text={field.submitLabel || 'Submit'}
                   />
