@@ -49746,17 +49746,17 @@ var Form$1 = function Form(_ref) {
       validateField = _useFormErrors.validateField,
       validateAllFields = _useFormErrors.validateAllFields;
 
-  var handleSubmit = useCallback$1(function (values) {
+  var handleSubmit = useCallback$1(function (values, btnLabel) {
     var errors = validateAllFields(flatFields.current, values);
+    Object.keys(errors).forEach(function (e) {
+      if (hiddenFields.indexOf(e) !== -1) delete errors[e];
+    });
 
     if (!Object.keys(errors).length) {
-      onSubmit(values);
+      onSubmit(values, btnLabel);
     } else {
-      Object.keys(errors).forEach(function (e) {
-        if (hiddenFields.indexOf(e) !== -1) delete errors[e];
-      });
       setFormErrors(errors);
-      onError(errors);
+      onError(errors, values, btnLabel);
     }
   }, [hiddenFields, onError, onSubmit, validateAllFields]);
 
@@ -49992,6 +49992,9 @@ var Form$1 = function Form(_ref) {
         case 'space':
           return /*#__PURE__*/React.createElement(Row, null, field.submit && /*#__PURE__*/React.createElement(Button$1, {
             type: "submit",
+            action: function action() {
+              return handleSubmit(formik.values, field.buttonId);
+            },
             btnType: 'primary',
             text: field.submitLabel || 'Submit'
           }));
