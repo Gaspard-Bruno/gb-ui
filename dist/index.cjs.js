@@ -42302,8 +42302,8 @@ var getSelectedBackground$3 = function getSelectedBackground(props) {
   }
 };
 
-var StyledFootnote = styled__default['default'](Heading)(_templateObject$v(), function (props) {
-  return props.hidden && media.mobile("display: none");
+var StyledSpaceRow = styled__default['default'](Row)(_templateObject$v(), function (props) {
+  return props.hidden && media.mobile("display: none; flex: 0;");
 });
 var FormContainer = styled__default['default'].div(_templateObject2$r(), function (props) {
   return getSelectedBackground$3(props);
@@ -49996,7 +49996,7 @@ var Form$1 = function Form(_ref) {
           }, fieldProps)));
 
         case 'footnote':
-          return /*#__PURE__*/React__default['default'].createElement(StyledFootnote, {
+          return /*#__PURE__*/React__default['default'].createElement(Heading, {
             style: {
               marginTop: '35px',
               marginBottom: 0
@@ -50015,7 +50015,9 @@ var Form$1 = function Form(_ref) {
           }, field.label);
 
         case 'space':
-          return /*#__PURE__*/React__default['default'].createElement(Row, null, field.submit && /*#__PURE__*/React__default['default'].createElement(Button$1, {
+          return /*#__PURE__*/React__default['default'].createElement(StyledSpaceRow, {
+            hidden: field === null || field === void 0 ? void 0 : field.hidden
+          }, field.submit && /*#__PURE__*/React__default['default'].createElement(Button$1, {
             type: "submit",
             action: function action() {
               return handleSubmit(formik.values, field.buttonId);
@@ -50200,8 +50202,7 @@ var Form$1 = function Form(_ref) {
 
     switch (field === null || field === void 0 ? void 0 : field.type) {
       case 'footnote':
-        return /*#__PURE__*/React__default['default'].createElement(StyledFootnote, {
-          hidden: field === null || field === void 0 ? void 0 : field.hidden,
+        return /*#__PURE__*/React__default['default'].createElement(Heading, {
           size: 6,
           style: {
             marginTop: '35px',
