@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Row, media } from '../Layout';
+import { media, Col } from '../Layout';
 
 const getSelectedBackground = props => {
   switch (props.bg) {
@@ -14,9 +14,12 @@ const getSelectedBackground = props => {
   }
 };
 
-export const StyledSpaceRow = styled(Row)`
-  ${props => props.hidden && media.mobile(`display: none; flex: 0;`)}
+export const StyledCol = styled(Col)`
+  && {
+    ${props => props.hidden && media.mobile(`display: none; flex: 0;`)}
+  }
 `;
+
 export const FormContainer = styled.div`
   background-color: ${props => getSelectedBackground(props)};
   border-radius: 10px;

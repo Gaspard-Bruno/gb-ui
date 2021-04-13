@@ -26,7 +26,7 @@ import Button from '../Button';
 import { Body, Heading } from '../Text';
 import { Col, Row } from '../Layout';
 import MultiFieldRender from '../MultiFieldRender';
-import { FormContainer, StyledForm, StyledSpaceRow } from './styles';
+import { FormContainer, StyledForm, StyledCol } from './styles';
 import useFormErrors from '../../hooks/useFormErrors';
 
 import DISTRICT_PARISHES from '../utils/districts.json';
@@ -373,7 +373,7 @@ const Form = ({
             );
           case 'space':
             return (
-              <StyledSpaceRow hidden={field?.hidden}>
+              <Row>
                 {field.submit && (
                   <Button
                     type='submit'
@@ -382,7 +382,7 @@ const Form = ({
                     text={field.submitLabel || 'Submit'}
                   />
                 )}
-              </StyledSpaceRow>
+              </Row>
             );
           case 'mini-dropdown':
           case 'dropdown':
@@ -658,9 +658,14 @@ const Form = ({
                       {fieldRenderer(q, formik)}
                     </Row>
                   ) : (
-                    <Col size={1} key={'columns' + i} padding={0}>
+                    <StyledCol
+                      hidden={q?.hidden}
+                      size={1}
+                      key={'columns' + i}
+                      padding={0}
+                    >
                       {fieldRenderer(q, formik)}
-                    </Col>
+                    </StyledCol>
                   )
                 );
               }
