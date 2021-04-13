@@ -23,10 +23,10 @@ import CheckBoxWidget from '../CheckBoxWidget';
 import Tabs from '../Tabs';
 import MiniForm from '../MiniForm';
 import Button from '../Button';
-import { Heading, Body } from '../Text';
+import { Body } from '../Text';
 import { Col, Row } from '../Layout';
 import MultiFieldRender from '../MultiFieldRender';
-import { FormContainer, StyledForm } from './styles';
+import { FormContainer, StyledForm, StyledFootnote } from './styles';
 import useFormErrors from '../../hooks/useFormErrors';
 
 import DISTRICT_PARISHES from '../utils/districts.json';
@@ -353,13 +353,13 @@ const Form = ({
             );
           case 'footnote':
             return (
-              <Heading
+              <StyledFootnote
                 style={{ marginTop: '35px', marginBottom: 0 }}
                 size={6}
                 key={'footnote' + field.key}
               >
                 {field.label}
-              </Heading>
+              </StyledFootnote>
             );
           case 'note':
             return (
@@ -596,9 +596,13 @@ const Form = ({
       switch (field?.type) {
         case 'footnote':
           return (
-            <Heading size={6} style={{ marginTop: '35px', marginBottom: 0 }}>
+            <StyledFootnote
+              hidden={field?.hidden}
+              size={6}
+              style={{ marginTop: '35px', marginBottom: 0 }}
+            >
               {field.label}
-            </Heading>
+            </StyledFootnote>
           );
         default:
           return <></>;
