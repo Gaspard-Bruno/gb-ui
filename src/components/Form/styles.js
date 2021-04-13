@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Heading, media } from '../Text';
+import { Heading } from '../Text';
+import { media } from '../Layout';
 const getSelectedBackground = props => {
   switch (props.bg) {
     case 'alt':
