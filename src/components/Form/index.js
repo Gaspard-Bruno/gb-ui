@@ -23,10 +23,10 @@ import CheckBoxWidget from '../CheckBoxWidget';
 import Tabs from '../Tabs';
 import MiniForm from '../MiniForm';
 import Button from '../Button';
-import { Body } from '../Text';
+import { Body, Heading } from '../Text';
 import { Col, Row } from '../Layout';
 import MultiFieldRender from '../MultiFieldRender';
-import { FormContainer, StyledForm, StyledFootnote } from './styles';
+import { FormContainer, StyledForm, StyledSpaceRow } from './styles';
 import useFormErrors from '../../hooks/useFormErrors';
 
 import DISTRICT_PARISHES from '../utils/districts.json';
@@ -353,13 +353,13 @@ const Form = ({
             );
           case 'footnote':
             return (
-              <StyledFootnote
+              <Heading
                 style={{ marginTop: '35px', marginBottom: 0 }}
                 size={6}
                 key={'footnote' + field.key}
               >
                 {field.label}
-              </StyledFootnote>
+              </Heading>
             );
           case 'note':
             return (
@@ -373,7 +373,7 @@ const Form = ({
             );
           case 'space':
             return (
-              <Row>
+              <StyledSpaceRow hidden={field?.hidden}>
                 {field.submit && (
                   <Button
                     type='submit'
@@ -382,7 +382,7 @@ const Form = ({
                     text={field.submitLabel || 'Submit'}
                   />
                 )}
-              </Row>
+              </StyledSpaceRow>
             );
           case 'mini-dropdown':
           case 'dropdown':
@@ -596,13 +596,9 @@ const Form = ({
       switch (field?.type) {
         case 'footnote':
           return (
-            <StyledFootnote
-              hidden={field?.hidden}
-              size={6}
-              style={{ marginTop: '35px', marginBottom: 0 }}
-            >
+            <Heading size={6} style={{ marginTop: '35px', marginBottom: 0 }}>
               {field.label}
-            </StyledFootnote>
+            </Heading>
           );
         default:
           return <></>;

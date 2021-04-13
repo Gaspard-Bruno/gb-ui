@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Heading } from '../Text';
-import { media } from '../Layout';
+import { Row, media } from '../Layout';
+
 const getSelectedBackground = props => {
   switch (props.bg) {
     case 'alt':
@@ -14,10 +14,9 @@ const getSelectedBackground = props => {
   }
 };
 
-export const StyledFootnote = styled(Heading)`
-  ${props => props.hidden && media.mobile(`display: none`)}
+export const StyledSpaceRow = styled(Row)`
+  ${props => props.hidden && media.mobile(`display: none; flex: 0;`)}
 `;
-
 export const FormContainer = styled.div`
   background-color: ${props => getSelectedBackground(props)};
   border-radius: 10px;
