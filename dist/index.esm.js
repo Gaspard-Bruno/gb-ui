@@ -42263,7 +42263,7 @@ function _templateObject2$r() {
 }
 
 function _templateObject$v() {
-  var data = _taggedTemplateLiteral(["\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  && {\n    ", "\n  }\n"]);
 
   _templateObject$v = function _templateObject() {
     return data;
@@ -42290,7 +42290,7 @@ var getSelectedBackground$3 = function getSelectedBackground(props) {
   }
 };
 
-var StyledSpaceRow = styled(Row)(_templateObject$v(), function (props) {
+var StyledCol = styled(Col)(_templateObject$v(), function (props) {
   return props.hidden && media.mobile("display: none; flex: 0;");
 });
 var FormContainer = styled.div(_templateObject2$r(), function (props) {
@@ -50003,9 +50003,7 @@ var Form$1 = function Form(_ref) {
           }, field.label);
 
         case 'space':
-          return /*#__PURE__*/React.createElement(StyledSpaceRow, {
-            hidden: field === null || field === void 0 ? void 0 : field.hidden
-          }, field.submit && /*#__PURE__*/React.createElement(Button$1, {
+          return /*#__PURE__*/React.createElement(Row, null, field.submit && /*#__PURE__*/React.createElement(Button$1, {
             type: "submit",
             action: function action() {
               return handleSubmit(formik.values, field.buttonId);
@@ -50246,7 +50244,8 @@ var Form$1 = function Form(_ref) {
                 columns.push(q.excludeFromGroup ? /*#__PURE__*/React.createElement(Row, {
                   key: 'columns' + i,
                   padding: 0
-                }, fieldRenderer(q, formik)) : /*#__PURE__*/React.createElement(Col, {
+                }, fieldRenderer(q, formik)) : /*#__PURE__*/React.createElement(StyledCol, {
+                  hidden: q === null || q === void 0 ? void 0 : q.hidden,
                   size: 1,
                   key: 'columns' + i,
                   padding: 0
