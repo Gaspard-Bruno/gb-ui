@@ -16,8 +16,7 @@ const SearchInput = ({
   onChange,
   type = 'main'
 }) => {
-
-  const [val, setVal] = useState('');
+  const [val, setVal] = useState(defaultValue || '');
 
   const handleChange = e => {
     setVal(e.target.value);
@@ -33,6 +32,7 @@ const SearchInput = ({
         placeholder={placeholder}
         type={type}
         value={val}
+        defaultValue={defaultValue}
         onChange={handleChange}
       />
       {type === 'filter' && (
