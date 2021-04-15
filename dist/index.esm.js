@@ -6878,7 +6878,7 @@ var SearchInput = function SearchInput(_ref) {
       _ref$type = _ref.type,
       type = _ref$type === void 0 ? 'main' : _ref$type;
 
-  var _useState = useState(''),
+  var _useState = useState(defaultValue || ''),
       _useState2 = _slicedToArray(_useState, 2),
       val = _useState2[0],
       setVal = _useState2[1];
@@ -6894,6 +6894,7 @@ var SearchInput = function SearchInput(_ref) {
     placeholder: placeholder,
     type: type,
     value: val,
+    defaultValue: defaultValue,
     onChange: handleChange
   }), type === 'filter' && /*#__PURE__*/React.createElement(SearchIconContainer, null, /*#__PURE__*/React.createElement(Icon, {
     name: "Search"
