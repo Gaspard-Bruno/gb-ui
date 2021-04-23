@@ -71,13 +71,13 @@ const components = [
 
     disabled: false,
     props: {
+      hiddenFields: ['login-buttons'],
       questions: FORM.gardening.questions,
       onSubmit: vals => {
         console.log('writin to storage', vals);
         localStorage.setItem('GARDENING_FORM', JSON.stringify(vals));
       },
       answers: JSON.parse(localStorage.getItem('GARDENING_FORM')) || {
-        ...FORM.gardeningAnswers,
         district: 'Outro'
       }
     },
@@ -216,7 +216,7 @@ const components = [
       {
         previewComponentTitle: 'Gardening (Pre-filled) with errors',
         questions: FORM.gardening.questions,
-        hiddenFields: ['district'],
+        hiddenFields: ['district', 'login-buttons'],
         answers: { ...FORM.gardeningAnswers, district: 'Outro' }
       },
       {

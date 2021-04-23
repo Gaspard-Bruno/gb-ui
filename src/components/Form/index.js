@@ -162,6 +162,7 @@ const Form = ({
         (field.key && hiddenFields.indexOf(field.key) === -1) ||
         field.key === 'district'
       ) {
+        console.log(field, hiddenFields);
         const widget = field.widget || field.type;
         const fieldProps = {
           ...field,

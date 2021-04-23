@@ -120,7 +120,6 @@
       "groupBy": 1,
       "widget": "login",
       "type": "tabs",
-      "value": "guest",
       "children": [
         {
           "type": "radio",

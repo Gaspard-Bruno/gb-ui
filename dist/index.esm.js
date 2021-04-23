@@ -49015,6 +49015,8 @@ var nifValidation = function nifValidation(nif) {
 };
 
 var fieldValidator = function fieldValidator() {
+  var _value$trim;
+
   var field = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var value = arguments.length > 1 ? arguments[1] : undefined;
   var pattern = field.pattern || field.key;
@@ -49022,7 +49024,7 @@ var fieldValidator = function fieldValidator() {
       minLen = field.minLen,
       required = field.required;
 
-  if (required && (!value && value !== 0 || !(value === null || value === void 0 ? void 0 : value.trim()))) {
+  if (required && (!value && value !== 0 || !(value === null || value === void 0 ? void 0 : (_value$trim = value.trim) === null || _value$trim === void 0 ? void 0 : _value$trim.call(value)))) {
     return 'Obrigatório';
   }
 
@@ -49801,6 +49803,7 @@ var Form$1 = function Form(_ref) {
     if (field.key && hiddenFields.indexOf(field.key) === -1 || field.key === 'district') {
       var _field$label, _field$key, _field$label2, _formik$values$field$, _ref2, _fieldProps$value;
 
+      console.log(field, hiddenFields);
       var widget = field.widget || field.type;
 
       var fieldProps = _objectSpread2(_objectSpread2({}, field), {}, {
