@@ -69,7 +69,6 @@ const OfferTypeWidget = ({
     } else {
       setUrgency(false);
     }
-    console.log('diffDay', diffDays);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [diffDays]);
 
@@ -563,8 +562,6 @@ const OfferTypeWidget = ({
     );
   };
 
-  console.log('diff antes', diffDays === -1);
-  console.log('props', urgencyProps);
   return (
     <>
       <WidgetContainer>

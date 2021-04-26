@@ -74,7 +74,6 @@ const components = [
       hiddenFields: ['login-buttons'],
       questions: FORM.gardening.questions,
       onSubmit: vals => {
-        console.log('writin to storage', vals);
         localStorage.setItem('GARDENING_FORM', JSON.stringify(vals));
       },
       answers: JSON.parse(localStorage.getItem('GARDENING_FORM')) || {

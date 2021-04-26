@@ -108,7 +108,7 @@ FilterButton.propTypes = {
 };
 
 FilterButton.defaultProps = {
-  translate: () => console.log('Changed Filters')
+  translate: () => null
   // leftIcon: "kanban",
   // rightIcon: "List"
 };

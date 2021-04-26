@@ -32,7 +32,6 @@ const TextInput = ({
     (() => {
       const value = otherProps.value || defaultValue;
       if (inputType === 'date' && value) {
-        console.log('checking value');
         const split = (value || '').split('/');
         return split[2]
           ? new Date(split[1] + '/' + split[0] + '/' + split[2])
