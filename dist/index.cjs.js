@@ -49036,7 +49036,7 @@ var fieldValidator = function fieldValidator() {
       minLen = field.minLen,
       required = field.required;
 
-  if (required && (!value && value !== 0 || !(value === null || value === void 0 ? void 0 : (_value$trim = value.trim) === null || _value$trim === void 0 ? void 0 : _value$trim.call(value)))) {
+  if (required && (!value && value !== 0 || typeof value === 'string' && !(value === null || value === void 0 ? void 0 : (_value$trim = value.trim) === null || _value$trim === void 0 ? void 0 : _value$trim.call(value)))) {
     return 'Obrigatório';
   }
 
