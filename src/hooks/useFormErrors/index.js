@@ -29,7 +29,10 @@ const nifValidation = nif => {
 const fieldValidator = (field = {}, value) => {
   const pattern = field.pattern || field.key;
   const { maxLen, minLen, required } = field;
-  if (required && ((!value && value !== 0) || !value?.trim?.())) {
+  if (
+    required &&
+    ((!value && value !== 0) || (typeof value === 'string' && !value?.trim?.()))
+  ) {
     return 'Obrigatório';
   }
   if (
