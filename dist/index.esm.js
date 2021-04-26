@@ -49799,7 +49799,6 @@ var Form$1 = function Form(_ref) {
     if (field.key && hiddenFields.indexOf(field.key) === -1 || field.key === 'district') {
       var _field$label, _field$key, _field$label2, _formik$values$field$, _ref2, _fieldProps$value;
 
-      console.log(field, hiddenFields);
       var widget = field.widget || field.type;
 
       var fieldProps = _objectSpread2(_objectSpread2({}, field), {}, {
