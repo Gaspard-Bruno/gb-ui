@@ -13577,7 +13577,7 @@ FilterButton.propTypes = {
 };
 FilterButton.defaultProps = {
   translate: function translate() {
-    return console.log('Changed Filters');
+    return null;
   } // leftIcon: "kanban",
   // rightIcon: "List"
 
@@ -35891,7 +35891,6 @@ var TextInput = function TextInput(_ref) {
     var value = otherProps.value || defaultValue;
 
     if (inputType === 'date' && value) {
-      console.log('checking value');
       var split = (value || '').split('/');
       return split[2] ? new Date(split[1] + '/' + split[0] + '/' + split[2]) : new Date(value);
     }
@@ -41407,9 +41406,8 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
       setUrgency(true);
     } else {
       setUrgency(false);
-    }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    console.log('diffDay', diffDays); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [diffDays]);
   var selectedRecurrency = React.useMemo(function () {
     var status = {
@@ -41812,8 +41810,6 @@ var OfferTypeWidget = function OfferTypeWidget(_ref) {
     }, values['offer-type'] && values['offer-type'] !== 0 ? selectedRecurrency === null || selectedRecurrency === void 0 ? void 0 : selectedRecurrency.total : null));
   };
 
-  console.log('diff antes', diffDays === -1);
-  console.log('props', urgencyProps);
   return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(WidgetContainer, null, renderContent(), Number(diffDays) === -1 && /*#__PURE__*/React__default['default'].createElement(ServiceTypeWidget, urgencyProps)));
 };
 
