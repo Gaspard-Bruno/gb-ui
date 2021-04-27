@@ -41042,7 +41042,7 @@ FileUploader.propTypes = {
 };
 
 function _templateObject2$l() {
-  var data = _taggedTemplateLiteral(["\n  align-self: flex-end;\n  margin-right: ", "px;\n  margin-left: ", "px;\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  align-self: center;\n  margin: 0 ", "px;\n  ", "\n"]);
 
   _templateObject2$l = function _templateObject2() {
     return data;
@@ -41070,8 +41070,6 @@ var WidgetContainer = styled__default['default'].div(_templateObject$p(), functi
   return ((_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.margin) * 1.5;
 });
 var TextContainer = styled__default['default'](Body)(_templateObject2$l(), function (props) {
-  return props.theme.margin;
-}, function (props) {
   return props.theme.margin;
 }, media.mobile("\n    margin-right: 0px;\n    margin-left: 6px;\n  "));
 
