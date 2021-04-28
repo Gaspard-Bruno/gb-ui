@@ -61704,7 +61704,7 @@ Sidebar.defaultProps = {
 };
 
 function _templateObject$E() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  font-weight: normal;\n  border-bottom: 1px solid ", ";\n\n  .service {\n    font-weight: 500;\n    font-size: 16px;\n    line-height: 24px;\n    color: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  padding: 0;\n  outline: none;\n  margin: 0;\n  background: transparent;\n  cursor: ", ";\n  border: none;\n  &:hover {\n    svg path {\n      fill: ", " !important;\n    }\n  }\n"]);
 
   _templateObject$E = function _templateObject() {
     return data;
@@ -61712,7 +61712,180 @@ function _templateObject$E() {
 
   return data;
 }
-var StyledTableRow = styled__default['default'].div(_templateObject$E(), function (props) {
+var StyledIconButton = styled__default['default'].button(_templateObject$E(), function (_ref) {
+  var isInteractive = _ref.isInteractive;
+  return isInteractive ? 'pointer' : 'initial';
+}, function (_ref2) {
+  var isInteractive = _ref2.isInteractive,
+      onHoverColor = _ref2.onHoverColor;
+  return isInteractive && onHoverColor || '';
+});
+
+var StarsRating = function StarsRating(_ref) {
+  var defaultRating = _ref.defaultRating,
+      isInteractive = _ref.isInteractive,
+      _ref$maxRating = _ref.maxRating,
+      maxRating = _ref$maxRating === void 0 ? 5 : _ref$maxRating,
+      _ref$starSize = _ref.starSize,
+      starSize = _ref$starSize === void 0 ? 24 : _ref$starSize,
+      _ref$color = _ref.color,
+      color = _ref$color === void 0 ? '#FEC35A' : _ref$color,
+      _ref$onHoverColor = _ref.onHoverColor,
+      onHoverColor = _ref$onHoverColor === void 0 ? '#171F46' : _ref$onHoverColor,
+      labels = _ref.labels;
+
+  var _useState = React.useState(defaultRating),
+      _useState2 = _slicedToArray(_useState, 2),
+      rating = _useState2[0],
+      setRating = _useState2[1];
+
+  var _useState3 = React.useState(-1),
+      _useState4 = _slicedToArray(_useState3, 2),
+      hoveredRating = _useState4[0],
+      setHoveredRating = _useState4[1];
+
+  var isHovered = function isHovered(idx) {
+    return isInteractive && hoveredRating >= idx ? onHoverColor : '';
+  };
+
+  var handleSetRating = function handleSetRating(rating) {
+    if (isInteractive) {
+      setRating(rating);
+    }
+  };
+
+  var stars = [];
+
+  var _loop = function _loop(i) {
+    if (isHovered(i)) {
+      stars.push( /*#__PURE__*/React__default['default'].createElement(StyledIconButton, {
+        onClick: function onClick() {
+          return handleSetRating(i + 1);
+        },
+        onMouseEnter: function onMouseEnter() {
+          return setHoveredRating(i);
+        },
+        onMouseLeave: function onMouseLeave() {
+          return setHoveredRating(-1);
+        },
+        isInteractive: isInteractive,
+        onHoverColor: isHovered(i)
+      }, /*#__PURE__*/React__default['default'].createElement(Icon, {
+        size: starSize,
+        name: "star-Filled",
+        color: onHoverColor
+      })));
+      return "continue";
+    }
+
+    if (i + 0.5 === rating) {
+      stars.push( /*#__PURE__*/React__default['default'].createElement(StyledIconButton, {
+        onClick: function onClick() {
+          return handleSetRating(i + 1);
+        },
+        onMouseEnter: function onMouseEnter() {
+          return setHoveredRating(i);
+        },
+        onMouseLeave: function onMouseLeave() {
+          return setHoveredRating(-1);
+        },
+        isInteractive: isInteractive,
+        onHoverColor: isHovered(i)
+      }, /*#__PURE__*/React__default['default'].createElement(Icon, {
+        size: starSize,
+        name: "Star-Half",
+        color: color
+      })));
+      return "continue";
+    }
+
+    if (rating > i) {
+      stars.push( /*#__PURE__*/React__default['default'].createElement(StyledIconButton, {
+        onClick: function onClick() {
+          return handleSetRating(i + 1);
+        },
+        onMouseEnter: function onMouseEnter() {
+          return setHoveredRating(i);
+        },
+        onMouseLeave: function onMouseLeave() {
+          return setHoveredRating(-1);
+        },
+        isInteractive: isInteractive,
+        onHoverColor: isHovered(i)
+      }, /*#__PURE__*/React__default['default'].createElement(Icon, {
+        size: starSize,
+        name: "star-Filled",
+        color: color
+      })));
+      return "continue";
+    } else {
+      stars.push( /*#__PURE__*/React__default['default'].createElement(StyledIconButton, {
+        isInteractive: isInteractive,
+        onClick: function onClick() {
+          return handleSetRating(i + 1);
+        },
+        onMouseEnter: function onMouseEnter() {
+          return setHoveredRating(i);
+        },
+        onMouseLeave: function onMouseLeave() {
+          return setHoveredRating(-1);
+        },
+        onHoverColor: isHovered(i)
+      }, /*#__PURE__*/React__default['default'].createElement(Icon, {
+        size: starSize,
+        name: "star",
+        color: color
+      })));
+      return "continue";
+    }
+  };
+
+  for (var i = 0; i < maxRating; i += 1) {
+    var _ret = _loop(i);
+
+    if (_ret === "continue") continue;
+  }
+
+  return /*#__PURE__*/React__default['default'].createElement(Col, null, /*#__PURE__*/React__default['default'].createElement(Row, {
+    justify: labels && labels.length && 'space-between',
+    noWrap: true
+  }, stars), labels && /*#__PURE__*/React__default['default'].createElement(Row, {
+    justify: "space-between"
+  }, labels.map(function (l) {
+    return /*#__PURE__*/React__default['default'].createElement(SmallBody, {
+      key: 'stars-labels' + l
+    }, l);
+  })));
+};
+
+StarsRating.propTypes = {
+  labels: propTypes.arrayOf(propTypes.string),
+  isInteractive: propTypes.bool,
+  defaultRating: propTypes.number,
+  starSize: propTypes.number,
+  color: propTypes.string,
+  onHoverColor: propTypes.string,
+  maxRating: propTypes.number
+};
+StarsRating.defaultProps = {
+  isInteractive: false,
+  color: '#FEC35A',
+  onHoverColor: '#171F46',
+  starSize: 24,
+  maxRating: 5,
+  defaultRating: 0
+};
+
+function _templateObject$F() {
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  font-weight: normal;\n  border-bottom: 1px solid ", ";\n\n  .service {\n    font-weight: 500;\n    font-size: 16px;\n    line-height: 24px;\n    color: ", ";\n  }\n"]);
+
+  _templateObject$F = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var StyledTableRow = styled__default['default'].div(_templateObject$F(), function (props) {
   var _props$theme;
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.mediumBeige;
@@ -61827,16 +62000,16 @@ function _templateObject2$y() {
   return data;
 }
 
-function _templateObject$F() {
+function _templateObject$G() {
   var data = _taggedTemplateLiteral(["\n  font-size: 14px;\n  line-height: 16px;\n  color: ", ";\n"]);
 
-  _templateObject$F = function _templateObject() {
+  _templateObject$G = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledTable = styled__default['default'].div(_templateObject$F(), function (props) {
+var StyledTable = styled__default['default'].div(_templateObject$G(), function (props) {
   var _props$theme;
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.darkBlue;
@@ -61978,16 +62151,16 @@ function _templateObject2$z() {
   return data;
 }
 
-function _templateObject$G() {
+function _templateObject$H() {
   var data = _taggedTemplateLiteral(["\n  height: 80px;\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 24px;\n  padding-bottom: 10px;\n  -webkit-box-shadow: 0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n  -moz-box-shadow: 0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n  box-shadow: 0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n"]);
 
-  _templateObject$G = function _templateObject() {
+  _templateObject$H = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledTopBar = styled__default['default'].div(_templateObject$G());
+var StyledTopBar = styled__default['default'].div(_templateObject$H());
 var LeftSection = styled__default['default'].div(_templateObject2$z(), function (props) {
   return props.theme.colors.grey;
 });
@@ -66644,16 +66817,16 @@ function _templateObject2$A() {
   return data;
 }
 
-function _templateObject$H() {
+function _templateObject$I() {
   var data = _taggedTemplateLiteral(["\n  margin-top: 10px;\n  display: flex;\n  flex-direction: column;\n  flex: 1;\n  width: 105%;\n  & > button {\n    display: flex;\n    margin: 0 auto;\n    width: calc(100% / 5);\n  }\n"]);
 
-  _templateObject$H = function _templateObject() {
+  _templateObject$I = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var CarouselContainer = styled__default['default'].div(_templateObject$H());
+var CarouselContainer = styled__default['default'].div(_templateObject$I());
 var ItemContainer = styled__default['default'].div(_templateObject2$A());
 var ItemImage = styled__default['default'].img(_templateObject3$p());
 
@@ -66748,6 +66921,7 @@ exports.Sidebar = Sidebar;
 exports.Slider = CardSlider;
 exports.SmallBody = SmallBody;
 exports.SmallBodyFAQ = SmallBodyFAQ;
+exports.StarsRating = StarsRating;
 exports.SubHeading = SubHeading;
 exports.Switcher = Switcher;
 exports.Table = Table;
