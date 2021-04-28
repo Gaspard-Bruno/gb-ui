@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Row } from '../Layout';
+import { Row, Col } from '../Layout';
+import { SmallBody } from '../Text';
 import Icon from '../Icon';
 
 import { StyledIconButton } from './style';
@@ -9,8 +10,10 @@ const StarsRating = ({
   defaultRating,
   isInteractive,
   maxRating = 5,
+  starSize = 24,
   color = '#FEC35A',
-  onHoverColor = '#171F46'
+  onHoverColor = '#171F46',
+  labels
 }) => {
   const [rating, setRating] = useState(defaultRating);
   const [hoveredRating, setHoveredRating] = useState(-1);
@@ -32,7 +35,7 @@ const StarsRating = ({
           isInteractive={isInteractive}
           onHoverColor={isHovered(i)}
         >
-          <Icon name='star-Filled' color={onHoverColor} />
+          <Icon size={starSize} name='star-Filled' color={onHoverColor} />
         </StyledIconButton>
       );
       continue;
@@ -46,7 +49,7 @@ const StarsRating = ({
           isInteractive={isInteractive}
           onHoverColor={isHovered(i)}
         >
-          <Icon name='Star-Half' color={color} />
+          <Icon size={starSize} name='Star-Half' color={color} />
         </StyledIconButton>
       );
       continue;
@@ -60,7 +63,7 @@ const StarsRating = ({
           isInteractive={isInteractive}
           onHoverColor={isHovered(i)}
         >
-          <Icon name='star-Filled' color={color} />
+          <Icon size={starSize} name='star-Filled' color={color} />
         </StyledIconButton>
       );
       continue;
@@ -73,19 +76,34 @@ const StarsRating = ({
           onMouseLeave={() => setHoveredRating(-1)}
           onHoverColor={isHovered(i)}
         >
-          <Icon name='star' color={color} />
+          <Icon size={starSize} name='star' color={color} />
         </StyledIconButton>
       );
       continue;
     }
   }
 
-  return <Row noWrap>{stars}</Row>;
+  return (
+    <Col>
+      <Row justify={labels && labels.length && 'space-between'} noWrap>
+        {stars}
+      </Row>
+      {labels && (
+        <Row justify='space-between'>
+          {labels.map(l => (
+            <SmallBody key={'stars-labels' + l}>{l}</SmallBody>
+          ))}
+        </Row>
+      )}
+    </Col>
+  );
 };
 
 StarsRating.propTypes = {
+  labels: PropTypes.arrayOf(PropTypes.string),
   isInteractive: PropTypes.bool,
   defaultRating: PropTypes.number,
+  starSize: PropTypes.number,
   color: PropTypes.string,
   onHoverColor: PropTypes.string,
   maxRating: PropTypes.number
@@ -95,6 +113,7 @@ StarsRating.defaultProps = {
   isInteractive: false,
   color: '#FEC35A',
   onHoverColor: '#171F46',
+  starSize: 24,
   maxRating: 5,
   defaultRating: 0
 };

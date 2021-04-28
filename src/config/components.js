@@ -212,7 +212,8 @@ const components = [
       { defaultRating: 3, isInteractive: false },
       {
         defaultRating: 2,
-        isInteractive: true
+        isInteractive: true,
+        labels: ['Nada satisfeito', 'Extremamente Satisfeito']
       },
       {
         defaultRating: 2.5  ,
