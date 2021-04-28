@@ -61720,6 +61720,7 @@ var StarsRating = function StarsRating(_ref) {
       color = _ref$color === void 0 ? '#FEC35A' : _ref$color,
       _ref$onHoverColor = _ref.onHoverColor,
       onHoverColor = _ref$onHoverColor === void 0 ? '#171F46' : _ref$onHoverColor,
+      onChangeRating = _ref.onChangeRating,
       labels = _ref.labels;
 
   var _useState = useState(defaultRating),
@@ -61739,6 +61740,10 @@ var StarsRating = function StarsRating(_ref) {
   var handleSetRating = function handleSetRating(rating) {
     if (isInteractive) {
       setRating(rating);
+
+      if (onChangeRating) {
+        onChangeRating(rating);
+      }
     }
   };
 
@@ -61849,6 +61854,7 @@ var StarsRating = function StarsRating(_ref) {
 StarsRating.propTypes = {
   labels: propTypes.arrayOf(propTypes.string),
   isInteractive: propTypes.bool,
+  onChangeRating: propTypes.func,
   defaultRating: propTypes.number,
   starSize: propTypes.number,
   color: propTypes.string,
