@@ -5,7 +5,7 @@ import Badge, { getBadgeColorFromStatus } from './Badge';
 import Button from './Button';
 import ButtonGroup from './ButtonGroup';
 import Card from './Card';
-import Checkbox from './Checkbox'
+import Checkbox from './Checkbox';
 import CheckBoxGroup from './CheckBoxGroup';
 import Divider from './Divider';
 import DropDownMenu from './DropDownMenu';
@@ -41,6 +41,7 @@ import RadioButton from './RadioButton';
 import Search from './Search';
 import Select from './Select';
 import Sidebar from './Sidebar';
+import StarsRating from './StarsRating';
 import Table from './Table';
 import Tabs from './Tabs';
 import TextArea from './TextArea';
@@ -128,5 +129,6 @@ export {
   SchedulePicker,
   FileUploader,
   Slider,
+  StarsRating,
   getBadgeColorFromStatus
 };

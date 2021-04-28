@@ -59,6 +59,7 @@ import {
   AlertTitle,
   AlertText,
   ErrorText,
+  StarsRating,
   SchedulePicker,
   FileUploader,
   TextInput
@@ -202,6 +203,22 @@ const components = [
     disabled: false,
     section: 'General',
     component: props => <Badge {...props} />
+  },
+  {
+    label: 'Stars Rating',
+    section: 'Account',
+    component: props => <StarsRating {...props} />,
+    props: [
+      { defaultRating: 3, isInteractive: false },
+      {
+        defaultRating: 2,
+        isInteractive: true
+      },
+      {
+        defaultRating: 2.5  ,
+        isInteractive: true
+      }
+    ]
   },
   {
     label: 'Form',
