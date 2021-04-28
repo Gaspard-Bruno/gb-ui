@@ -13,6 +13,7 @@ const StarsRating = ({
   starSize = 24,
   color = '#FEC35A',
   onHoverColor = '#171F46',
+  onChangeRating,
   labels
 }) => {
   const [rating, setRating] = useState(defaultRating);
@@ -22,6 +23,9 @@ const StarsRating = ({
   const handleSetRating = rating => {
     if (isInteractive) {
       setRating(rating);
+      if (onChangeRating) {
+        onChangeRating(rating);
+      }
     }
   };
   const stars = [];
@@ -102,6 +106,7 @@ const StarsRating = ({
 StarsRating.propTypes = {
   labels: PropTypes.arrayOf(PropTypes.string),
   isInteractive: PropTypes.bool,
+  onChangeRating: PropTypes.func,
   defaultRating: PropTypes.number,
   starSize: PropTypes.number,
   color: PropTypes.string,
