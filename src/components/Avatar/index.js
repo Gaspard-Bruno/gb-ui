@@ -8,6 +8,7 @@ import AvatarContainer, { AvatarImage, AvatarInitials } from './style';
 const Avatar = ({ action, size, hasCarat, hasText, hasEmail, user }) => {
   const isDeleted = user?.adminStatus === 'deleted';
   const fullName = user?.fullName ?? user?.full_name ?? '';
+  const avatarDefault = user?.avatar_default || user?.avatarDefault;
   return (
     <AvatarContainer onClick={action} size={size} user={user}>
       {size && user && user.avatar && (
@@ -19,7 +20,7 @@ const Avatar = ({ action, size, hasCarat, hasText, hasEmail, user }) => {
           ?
         </AvatarInitials>
       ) : (
-        <AvatarInitials size={size} avatarDefault={user?.avatarDefault}>
+        <AvatarInitials size={size} avatarDefault={avatarDefault}>
           {fullName ? fullName.slice(0, 2) : ''}
         </AvatarInitials>
       )}
