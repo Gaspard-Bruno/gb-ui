@@ -5890,6 +5890,7 @@ var Avatar = function Avatar(_ref) {
       user = _ref.user;
   var isDeleted = (user === null || user === void 0 ? void 0 : user.adminStatus) === 'deleted';
   var fullName = (_ref2 = (_user$fullName = user === null || user === void 0 ? void 0 : user.fullName) !== null && _user$fullName !== void 0 ? _user$fullName : user === null || user === void 0 ? void 0 : user.full_name) !== null && _ref2 !== void 0 ? _ref2 : '';
+  var avatarDefault = (user === null || user === void 0 ? void 0 : user.avatar_default) || (user === null || user === void 0 ? void 0 : user.avatarDefault);
   return /*#__PURE__*/React.createElement(AvatarContainer, {
     onClick: action,
     size: size,
@@ -5902,7 +5903,7 @@ var Avatar = function Avatar(_ref) {
     isDeleted: isDeleted
   }, "?") : /*#__PURE__*/React.createElement(AvatarInitials, {
     size: size,
-    avatarDefault: user === null || user === void 0 ? void 0 : user.avatarDefault
+    avatarDefault: avatarDefault
   }, fullName ? fullName.slice(0, 2) : ''), hasText && /*#__PURE__*/React.createElement("p", null, fullName), hasCarat && /*#__PURE__*/React.createElement(Icon, {
     name: "chevron-down"
   }));
