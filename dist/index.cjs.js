@@ -23414,7 +23414,7 @@ function addHours(dirtyDate, dirtyAmount) {
       name: "service-start-date",
       type: "date",
       minDate: minDate(),
-      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start date'],
+      defaultValue: answers === null || answers === void 0 ? void 0 : answers['service-start-date'],
       onChange: function onChange(values) {
         if (isDateValid(values)) {
           _action({
