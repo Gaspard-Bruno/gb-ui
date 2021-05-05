@@ -61794,7 +61794,7 @@ var StarsRating = function StarsRating(_ref) {
     }
 
     if (rating > i) {
-      stars.push( /*#__PURE__*/React.createElement(StyledIconButton, {
+      stars.push(rating >= i + 0.5 ? /*#__PURE__*/React.createElement(StyledIconButton, {
         onClick: function onClick() {
           return handleSetRating(i + 1);
         },
@@ -61808,7 +61808,23 @@ var StarsRating = function StarsRating(_ref) {
         onHoverColor: isHovered(i)
       }, /*#__PURE__*/React.createElement(Icon, {
         size: starSize,
-        name: "star-Filled",
+        name: 'star-Filled',
+        color: color
+      })) : /*#__PURE__*/React.createElement(StyledIconButton, {
+        onClick: function onClick() {
+          return handleSetRating(i + 1);
+        },
+        onMouseEnter: function onMouseEnter() {
+          return setHoveredRating(i);
+        },
+        onMouseLeave: function onMouseLeave() {
+          return setHoveredRating(-1);
+        },
+        isInteractive: isInteractive,
+        onHoverColor: isHovered(i)
+      }, /*#__PURE__*/React.createElement(Icon, {
+        size: starSize,
+        name: "star",
         color: color
       })));
       return "continue";
