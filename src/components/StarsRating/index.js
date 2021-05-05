@@ -60,15 +60,27 @@ const StarsRating = ({
     }
     if (rating > i) {
       stars.push(
-        <StyledIconButton
-          onClick={() => handleSetRating(i + 1)}
-          onMouseEnter={() => setHoveredRating(i)}
-          onMouseLeave={() => setHoveredRating(-1)}
-          isInteractive={isInteractive}
-          onHoverColor={isHovered(i)}
-        >
-          <Icon size={starSize} name='star-Filled' color={color} />
-        </StyledIconButton>
+        rating >= i + 0.5 ? (
+          <StyledIconButton
+            onClick={() => handleSetRating(i + 1)}
+            onMouseEnter={() => setHoveredRating(i)}
+            onMouseLeave={() => setHoveredRating(-1)}
+            isInteractive={isInteractive}
+            onHoverColor={isHovered(i)}
+          >
+            <Icon size={starSize} name={'star-Filled'} color={color} />
+          </StyledIconButton>
+        ) : (
+          <StyledIconButton
+            onClick={() => handleSetRating(i + 1)}
+            onMouseEnter={() => setHoveredRating(i)}
+            onMouseLeave={() => setHoveredRating(-1)}
+            isInteractive={isInteractive}
+            onHoverColor={isHovered(i)}
+          >
+            <Icon size={starSize} name='star' color={color} />
+          </StyledIconButton>
+        )
       );
       continue;
     } else {

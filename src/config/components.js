@@ -216,7 +216,15 @@ const components = [
         labels: ['Nada satisfeito', 'Extremamente Satisfeito']
       },
       {
-        defaultRating: 2.5  ,
+        defaultRating: 2.5,
+        isInteractive: true
+      },
+      {
+        defaultRating: 2.4,
+        isInteractive: true
+      },
+      {
+        defaultRating: 2.6  ,
         isInteractive: true
       }
     ]
