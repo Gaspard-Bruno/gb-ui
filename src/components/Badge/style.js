@@ -59,10 +59,11 @@ export const getBadgeColorFromStatus = (theme, status) =>
 
 const Badge = styled.span`
   border-radius: 2px;
-  height: 24px;
+  min-height: 24px;
   display: flex;
   flex-flow: row nowrap;
   width: fit-content;
+  height: fit-content;
   background-color: ${props =>
     props.chip
       ? props.theme?.colors.lightBeige
