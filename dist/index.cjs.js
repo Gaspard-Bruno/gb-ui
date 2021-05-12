@@ -35868,7 +35868,10 @@ var TextInput = function TextInput(_ref) {
       hasIcon = _ref.hasIcon,
       isMini = _ref.isMini,
       minDate = _ref.minDate,
-      otherProps = _objectWithoutProperties(_ref, ["error", "placeholder", "disabled", "defaultValue", "label", "onChange", "type", "hasIcon", "isMini", "minDate"]);
+      maxDate = _ref.maxDate,
+      min = _ref.min,
+      max = _ref.max,
+      otherProps = _objectWithoutProperties(_ref, ["error", "placeholder", "disabled", "defaultValue", "label", "onChange", "type", "hasIcon", "isMini", "minDate", "maxDate", "min", "max"]);
 
   var defaultIcons = [{
     name: 'eye-off',
@@ -35960,7 +35963,8 @@ var TextInput = function TextInput(_ref) {
     type: inputType,
     error: error,
     disabled: disabled,
-    min: minDate,
+    min: min || minDate,
+    max: max || maxDate,
     defaultValue: defaultValue,
     value: otherProps.value,
     placeholder: placeholder,
@@ -35979,6 +35983,8 @@ var TextInput = function TextInput(_ref) {
 TextInput.propTypes = {
   error: propTypes.string,
   disabled: propTypes.bool,
+  min: propTypes.number,
+  max: propTypes.number,
   placeholder: propTypes.string,
   label: propTypes.string,
   defaultValue: propTypes.string,
@@ -35986,7 +35992,8 @@ TextInput.propTypes = {
   type: propTypes.string,
   isMini: propTypes.bool,
   hasIcon: propTypes.bool,
-  minDate: propTypes.string
+  minDate: propTypes.string,
+  maxDate: propTypes.string
 };
 
 function _templateObject2$g() {
