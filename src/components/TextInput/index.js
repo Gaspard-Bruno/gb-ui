@@ -20,6 +20,9 @@ const TextInput = ({
   hasIcon,
   isMini,
   minDate,
+  maxDate,
+  min,
+  max,
   ...otherProps
 }) => {
   const defaultIcons = [
@@ -107,7 +110,8 @@ const TextInput = ({
           type={inputType}
           error={error}
           disabled={disabled}
-          min={minDate}
+          min={min || minDate}
+          max={max || maxDate}
           defaultValue={defaultValue}
           value={otherProps.value}
           placeholder={placeholder}
@@ -129,6 +133,8 @@ const TextInput = ({
 TextInput.propTypes = {
   error: PropTypes.string,
   disabled: PropTypes.bool,
+  min: PropTypes.number,
+  max: PropTypes.number,
   placeholder: PropTypes.string,
   label: PropTypes.string,
   defaultValue: PropTypes.string,
@@ -136,7 +142,8 @@ TextInput.propTypes = {
   type: PropTypes.string,
   isMini: PropTypes.bool,
   hasIcon: PropTypes.bool,
-  minDate: PropTypes.string
+  minDate: PropTypes.string,
+  maxDate: PropTypes.string
 };
 
 export default TextInput;

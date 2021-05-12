@@ -108,7 +108,8 @@ const components = [
     props: {
       error: 'error',
       defaultValue: '22',
-      type: 'date'
+      min: 0,
+      type: 'number'
     },
     section: 'General',
     component: props => <TextInput {...props} />
