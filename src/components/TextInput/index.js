@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Datepicker, { registerLocale } from 'react-datepicker/dist/es';
+import Datepicker from 'react-datepicker/dist/es';
+import pt from 'date-fns/locale/pt';
 import { format } from 'date-fns';
 
 import { ErrorText, Body } from '../Text';
@@ -49,36 +50,7 @@ const TextInput = ({
     setInputType(newIcon.type);
     setDisplayedIcon(newIcon.name);
   };
-  // const getDateValue = () => {
-  //   if (value || defaultValue) {
-  //     const dateValue = new Date(value || defaultValue);
-  //     return format(dateValue, 'dd/MM/yyyy');
-  //   }
-  // };
-  const months = [
-    'Jan',
-    'Fev',
-    'Mar',
-    'Abr',
-    'Mai',
-    'Jun',
-    'Jul',
-    'Ago',
-    'Set',
-    'Oct',
-    'Nov',
-    'Dez'
-  ];
-  const days = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
 
-  const locale = {
-    localize: {
-      month: n => months[n],
-      day: n => days[n]
-    },
-    formatLong: {}
-  };
-  registerLocale('pt-PT', locale);
   const isValid = date => {
     // eslint-disable-next-line no-self-compare
     return date.getTime() === date.getTime();
@@ -95,7 +67,7 @@ const TextInput = ({
           showYearDropdown
           dropdownMode='select'
           dateFormat={'dd/MM/yyyy'}
-          locale={'pt-PT'}
+          locale={pt}
           onChange={e => {
             if (onChange) {
               onChange(format(e, 'yyyy-MM-dd'));
