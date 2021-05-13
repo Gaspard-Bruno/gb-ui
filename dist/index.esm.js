@@ -36334,6 +36334,12 @@ var TextInput = function TextInput(_ref) {
       max = _ref.max,
       otherProps = _objectWithoutProperties(_ref, ["error", "placeholder", "disabled", "defaultValue", "label", "onChange", "type", "hasIcon", "isMini", "minDate", "maxDate", "min", "max"]);
 
+  var isValid = function isValid(date) {
+    var dateObj = new Date(date); // eslint-disable-next-line no-self-compare
+
+    return dateObj.getTime() === dateObj.getTime();
+  };
+
   var defaultIcons = [{
     name: 'eye-off',
     type: 'password'
@@ -36355,12 +36361,25 @@ var TextInput = function TextInput(_ref) {
   var _useState5 = useState(function () {
     var value = otherProps.value || defaultValue;
 
-    if (inputType === 'date' && value) {
-      var split = (value || '').split('/');
-      return split[2] ? new Date(split[1] + '/' + split[0] + '/' + split[2]) : new Date(value);
+    if (!value) {
+      return null;
     }
 
-    return undefined;
+    if (inputType === 'date' && value) {
+      var split = (value || '').split('/');
+
+      if (split[2]) {
+        return new Date(split[1] + '/' + split[0] + '/' + split[2]);
+      }
+
+      if (isValid(value)) {
+        return new Date(value);
+      } else {
+        return null;
+      }
+    }
+
+    return null;
   }()),
       _useState6 = _slicedToArray(_useState5, 2),
       dateValue = _useState6[0],
@@ -36374,21 +36393,17 @@ var TextInput = function TextInput(_ref) {
     setDisplayedIcon(newIcon.name);
   };
 
-  var isValid = function isValid(date) {
-    // eslint-disable-next-line no-self-compare
-    return date.getTime() === date.getTime();
-  };
-
   var isDateValid = isValid(new Date(dateValue));
   return /*#__PURE__*/React.createElement(InputContainer, {
     error: error,
     mini: isMini
-  }, label && /*#__PURE__*/React.createElement(Body, null, label || ' '), type === 'date' && isDateValid ? /*#__PURE__*/React.createElement(Wt, {
-    selected: dateValue || '',
+  }, label && /*#__PURE__*/React.createElement(Body, null, label || ' '), type === 'date' && isDateValid ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Wt, {
+    selected: dateValue,
     showMonthDropdown: true,
     showYearDropdown: true,
     dropdownMode: "select",
     dateFormat: 'dd/MM/yyyy',
+    placeholderText: placeholder,
     locale: pt$2,
     onChange: function onChange(e) {
       if (_onChange) {
@@ -36399,7 +36414,9 @@ var TextInput = function TextInput(_ref) {
         setDateValue(new Date(e));
       }
     }
-  }) : /*#__PURE__*/React.createElement("input", {
+  }), /*#__PURE__*/React.createElement(StyledIconContainer, null, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(Icon, {
+    name: 'calendar'
+  })))) : /*#__PURE__*/React.createElement("input", {
     type: inputType,
     error: error,
     disabled: disabled,
