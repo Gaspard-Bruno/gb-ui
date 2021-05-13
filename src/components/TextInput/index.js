@@ -88,11 +88,12 @@ const TextInput = ({
               }
             }}
           />
+          {/*
           <StyledIconContainer>
             <span>
               <Icon name={'calendar'} />
             </span>
-          </StyledIconContainer>
+          </StyledIconContainer> */}
         </>
       ) : (
         <input
