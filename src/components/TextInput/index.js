@@ -70,23 +70,30 @@ const TextInput = ({
     <InputContainer error={error} mini={isMini}>
       {label && <Body>{label || ' '}</Body>}
       {type === 'date' && isDateValid ? (
-        <Datepicker
-          selected={dateValue}
-          showMonthDropdown
-          showYearDropdown
-          dropdownMode='select'
-          dateFormat={'dd/MM/yyyy'}
-          placeholderText={placeholder}
-          locale={pt}
-          onChange={e => {
-            if (onChange) {
-              onChange(format(e, 'yyyy-MM-dd'));
-              setDateValue(e);
-            } else {
-              setDateValue(new Date(e));
-            }
-          }}
-        />
+        <>
+          <Datepicker
+            selected={dateValue}
+            showMonthDropdown
+            showYearDropdown
+            dropdownMode='select'
+            dateFormat={'dd/MM/yyyy'}
+            placeholderText={placeholder}
+            locale={pt}
+            onChange={e => {
+              if (onChange) {
+                onChange(format(e, 'yyyy-MM-dd'));
+                setDateValue(e);
+              } else {
+                setDateValue(new Date(e));
+              }
+            }}
+          />
+          <StyledIconContainer>
+            <span>
+              <Icon name={'calendar'} />
+            </span>
+          </StyledIconContainer>
+        </>
       ) : (
         <input
           type={inputType}
