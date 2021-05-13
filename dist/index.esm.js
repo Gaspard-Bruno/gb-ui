@@ -36414,9 +36414,7 @@ var TextInput = function TextInput(_ref) {
         setDateValue(new Date(e));
       }
     }
-  }), /*#__PURE__*/React.createElement(StyledIconContainer, null, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(Icon, {
-    name: 'calendar'
-  })))) : /*#__PURE__*/React.createElement("input", {
+  })) : /*#__PURE__*/React.createElement("input", {
     type: inputType,
     error: error,
     disabled: disabled,

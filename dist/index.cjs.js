@@ -36426,9 +36426,7 @@ var TextInput = function TextInput(_ref) {
         setDateValue(new Date(e));
       }
     }
-  }), /*#__PURE__*/React__default['default'].createElement(StyledIconContainer, null, /*#__PURE__*/React__default['default'].createElement("span", null, /*#__PURE__*/React__default['default'].createElement(Icon, {
-    name: 'calendar'
-  })))) : /*#__PURE__*/React__default['default'].createElement("input", {
+  })) : /*#__PURE__*/React__default['default'].createElement("input", {
     type: inputType,
     error: error,
     disabled: disabled,
