@@ -26,6 +26,12 @@ const TextInput = ({
   max,
   ...otherProps
 }) => {
+  const isValid = date => {
+    const dateObj = new Date(date);
+    // eslint-disable-next-line no-self-compare
+    return dateObj.getTime() === dateObj.getTime();
+  };
+
   const defaultIcons = [
     { name: 'eye-off', type: 'password' },
     { name: 'eye-on', type: 'text' }
@@ -35,13 +41,21 @@ const TextInput = ({
   const [dateValue, setDateValue] = useState(
     (() => {
       const value = otherProps.value || defaultValue;
+      if (!value) {
+        return null;
+      }
       if (inputType === 'date' && value) {
         const split = (value || '').split('/');
-        return split[2]
-          ? new Date(split[1] + '/' + split[0] + '/' + split[2])
-          : new Date(value);
+        if (split[2]) {
+          return new Date(split[1] + '/' + split[0] + '/' + split[2]);
+        }
+        if (isValid(value)) {
+          return new Date(value);
+        } else {
+          return null;
+        }
       }
-      return undefined;
+      return null;
     })()
   );
 
@@ -51,22 +65,18 @@ const TextInput = ({
     setDisplayedIcon(newIcon.name);
   };
 
-  const isValid = date => {
-    // eslint-disable-next-line no-self-compare
-    return date.getTime() === date.getTime();
-  };
-
   const isDateValid = isValid(new Date(dateValue));
   return (
     <InputContainer error={error} mini={isMini}>
       {label && <Body>{label || ' '}</Body>}
       {type === 'date' && isDateValid ? (
         <Datepicker
-          selected={dateValue || ''}
+          selected={dateValue}
           showMonthDropdown
           showYearDropdown
           dropdownMode='select'
           dateFormat={'dd/MM/yyyy'}
+          placeholderText={placeholder}
           locale={pt}
           onChange={e => {
             if (onChange) {
