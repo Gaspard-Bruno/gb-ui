@@ -1237,7 +1237,7 @@ const stepSeven = () => {
       required: true,
       isVerticalAligned: true,
       options: [
-        { label: 'Recibos Mensais', value: 0 },
+        { label: 'Recibos Verdes Mensais', value: 0 },
         {
           label: 'Acto Isolado (Acumular todos os serviços ao longo do ano)',
           value: 1
