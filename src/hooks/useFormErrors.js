@@ -1,8 +1,6 @@
 import { useCallback } from 'react';
 import validator from 'validator';
 
-import { getFieldDetails } from './getFieldDetails';
-
 //! NIF Validation function
 const nifValidation = nif => {
   /* eslint-disable eqeqeq */
@@ -81,7 +79,7 @@ const useFormErrors = ({}) => {
     (fields, values) => {
       const errors = {};
 
-      const nestedFieldKeys = getFieldDetails(values, fields);
+      const nestedFieldKeys = [];
 
       nestedFieldKeys.forEach(fieldKey => {
         const fieldError = validateField(
