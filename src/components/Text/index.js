@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import React from 'react';
 import get from 'lodash.get';
 
 export const Jumbo = styled.h1`
@@ -135,7 +136,9 @@ const StyledLink = styled.a`
     color: ${props => props.theme?.colors.brand.red};
   }
 `;
-export const Link = ({to, newTab}) => <StyledLink href={to} target={newTab ? 'blank' : ''}/>
+export const Link = ({ to, newTab }) => (
+  <StyledLink href={to} target={newTab ? 'blank' : ''} />
+);
 
 export const ButtonText = styled.span`
   text-decoration: none;

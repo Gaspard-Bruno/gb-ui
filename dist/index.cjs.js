@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var React$1 = require('react');
+var React = require('react');
 var styled = require('styled-components');
 var iconSet = require('Assets/fonts/icons/icons.json');
 var ne = require('react-dom');
@@ -10,7 +10,7 @@ var theme = require('Theme');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-var React__default = /*#__PURE__*/_interopDefaultLegacy(React$1);
+var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var styled__default = /*#__PURE__*/_interopDefaultLegacy(styled);
 var iconSet__default = /*#__PURE__*/_interopDefaultLegacy(iconSet);
 var ne__default = /*#__PURE__*/_interopDefaultLegacy(ne);
@@ -2442,7 +2442,7 @@ var StyledLink = styled__default['default'].a(_templateObject8(), function (prop
 var Link = function Link(_ref) {
   var to = _ref.to,
       newTab = _ref.newTab;
-  return /*#__PURE__*/React.createElement(StyledLink, {
+  return /*#__PURE__*/React__default['default'].createElement(StyledLink, {
     href: to,
     target: newTab ? 'blank' : ''
   });
@@ -2794,7 +2794,7 @@ var Accordion = function Accordion(_ref) {
       content = _ref.content,
       action = _ref.action;
 
-  var _useState = React$1.useState(isOpen),
+  var _useState = React.useState(isOpen),
       _useState2 = _slicedToArray(_useState, 2),
       setOpen = _useState2[0],
       setSetOpen = _useState2[1];
@@ -2804,7 +2804,7 @@ var Accordion = function Accordion(_ref) {
     if (action) action(!setOpen);
   };
 
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     if (isOpen !== setOpen) {
       setSetOpen(isOpen);
     } // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -3538,7 +3538,7 @@ var SearchInput = function SearchInput(_ref) {
       _ref$type = _ref.type,
       type = _ref$type === void 0 ? 'main' : _ref$type;
 
-  var _useState = React$1.useState(defaultValue || ''),
+  var _useState = React.useState(defaultValue || ''),
       _useState2 = _slicedToArray(_useState, 2),
       val = _useState2[0],
       setVal = _useState2[1];
@@ -5042,25 +5042,25 @@ function css() {
   return serializeStyles(args);
 }
 
-var EmotionCacheContext = React$1.createContext( // we're doing this to avoid preconstruct's dead code elimination in this one case
+var EmotionCacheContext = React.createContext( // we're doing this to avoid preconstruct's dead code elimination in this one case
 // because this module is primarily intended for the browser and node
 // but it's also required in react native and similar environments sometimes
 // and we could have a special build just for that
 // but this is much easier and the native packages
 // might use a different theme context in the future anyway
 typeof HTMLElement !== 'undefined' ? createCache() : null);
-var ThemeContext = React$1.createContext({});
+var ThemeContext = React.createContext({});
 var CacheProvider = EmotionCacheContext.Provider;
 
 var withEmotionCache = function withEmotionCache(func) {
   var render = function render(props, ref) {
-    return React$1.createElement(EmotionCacheContext.Consumer, null, function (cache) {
+    return React.createElement(EmotionCacheContext.Consumer, null, function (cache) {
       return func(props, cache, ref);
     });
   }; // $FlowFixMe
 
 
-  return React$1.forwardRef(render);
+  return React.forwardRef(render);
 };
 
 // thus we only need to replace what is a valid character for JS, but not for CSS
@@ -5114,7 +5114,7 @@ var render = function render(cache, props, theme, ref) {
 
   newProps.ref = ref;
   newProps.className = className;
-  var ele = React$1.createElement(type, newProps);
+  var ele = React.createElement(type, newProps);
 
   return ele;
 };
@@ -5124,7 +5124,7 @@ var Emotion =
 withEmotionCache(function (props, cache, ref) {
   // use Context.read for the theme when it's stable
   if (typeof props.css === 'function') {
-    return React$1.createElement(ThemeContext.Consumer, null, function (theme) {
+    return React.createElement(ThemeContext.Consumer, null, function (theme) {
       return render(cache, props, theme, ref);
     });
   }
@@ -5142,7 +5142,7 @@ var jsx = function jsx(type, props) {
 
   if (props == null || !hasOwnProperty$2.call(props, 'css')) {
     // $FlowFixMe
-    return React$1.createElement.apply(undefined, args);
+    return React.createElement.apply(undefined, args);
   }
 
   if (process.env.NODE_ENV !== 'production' && typeof props.css === 'string' && // check if there is a css declaration
@@ -5188,7 +5188,7 @@ var jsx = function jsx(type, props) {
   } // $FlowFixMe
 
 
-  return React$1.createElement.apply(null, createElementArgArray);
+  return React.createElement.apply(null, createElementArgArray);
 };
 
 var keyframes = function keyframes() {
@@ -5264,7 +5264,7 @@ function merge(registered, css, className) {
 }
 
 var ClassNames = withEmotionCache(function (props, context) {
-  return React$1.createElement(ThemeContext.Consumer, null, function (theme) {
+  return React.createElement(ThemeContext.Consumer, null, function (theme) {
     var hasRendered = false;
 
     var css = function css() {
@@ -6032,7 +6032,7 @@ function (_Component) {
   };
 
   return MenuPlacer;
-}(React$1.Component);
+}(React.Component);
 MenuPlacer.contextTypes = {
   getPortalPlacement: propTypes.func
 };
@@ -6221,7 +6221,7 @@ function (_Component2) {
   };
 
   return MenuPortal;
-}(React$1.Component);
+}(React.Component);
 MenuPortal.childContextTypes = {
   getPortalPlacement: propTypes.func
 };
@@ -7430,7 +7430,7 @@ function (_Component) {
   };
 
   return NodeResolver;
-}(React$1.Component);
+}(React.Component);
 
 var STYLE_KEYS = ['boxSizing', 'height', 'overflow', 'paddingRight', 'position'];
 var LOCK_STYLES = {
@@ -7580,7 +7580,7 @@ function (_Component) {
   };
 
   return ScrollLock;
-}(React$1.Component);
+}(React.Component);
 
 ScrollLock.defaultProps = {
   accountForScrollbars: true
@@ -7668,7 +7668,7 @@ function (_PureComponent) {
   };
 
   return ScrollBlock;
-}(React$1.PureComponent);
+}(React.PureComponent);
 
 function _objectWithoutPropertiesLoose$1$2(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
@@ -7818,7 +7818,7 @@ function (_Component) {
   };
 
   return ScrollCaptor;
-}(React$1.Component);
+}(React.Component);
 
 function ScrollCaptorSwitch(_ref) {
   var _ref$isEnabled = _ref.isEnabled,
@@ -9741,7 +9741,7 @@ function (_Component) {
   };
 
   return Select;
-}(React$1.Component);
+}(React.Component);
 
 Select.defaultProps = defaultProps;
 
@@ -9868,7 +9868,7 @@ var manageState = function manageState(SelectComponent) {
     };
 
     return StateManager;
-  }(React$1.Component), _class.defaultProps = defaultProps$1, _temp;
+  }(React.Component), _class.defaultProps = defaultProps$1, _temp;
 };
 
 var index = manageState(Select);
@@ -10461,7 +10461,7 @@ var FilterButton = function FilterButton(_ref) {
       _onChange = _ref.onChange,
       onClose = _ref.onClose;
 
-  var _useState = React$1.useState(false),
+  var _useState = React.useState(false),
       _useState2 = _slicedToArray(_useState, 2),
       showDropdown = _useState2[0],
       setShowDropdown = _useState2[1];
@@ -10576,7 +10576,7 @@ var IconSwitch = function IconSwitch(_ref) {
       rightIcon = _ref.rightIcon,
       onChange = _ref.onChange;
 
-  var _useState = React$1.useState(leftChecked),
+  var _useState = React.useState(leftChecked),
       _useState2 = _slicedToArray(_useState, 2),
       checked = _useState2[0],
       setChecked = _useState2[1];
@@ -10660,7 +10660,7 @@ var FilterBar = function FilterBar(_ref) {
       showLayout = _ref.showLayout,
       handleLayoutChange = _ref.handleLayoutChange;
 
-  var _useState = React$1.useState([]),
+  var _useState = React.useState([]),
       _useState2 = _slicedToArray(_useState, 2),
       activeFilters = _useState2[0],
       setActiveFilters = _useState2[1];
@@ -14584,7 +14584,7 @@ var isString = function isString(obj) {
 /** @private Does a React component have exactly 0 children? */
 
 var isEmptyChildren = function isEmptyChildren(children) {
-  return React$1.Children.count(children) === 0;
+  return React.Children.count(children) === 0;
 };
 /** @private is the given object/value a promise? */
 
@@ -14736,11 +14736,11 @@ function setNestedObjectValues(object, value, visited, response) {
 
 var FormikContext =
 /*#__PURE__*/
-React$1.createContext(undefined);
+React.createContext(undefined);
 var FormikProvider = FormikContext.Provider;
 var FormikConsumer = FormikContext.Consumer;
 function useFormikContext() {
-  var formik = React$1.useContext(FormikContext);
+  var formik = React.useContext(FormikContext);
   !!!formik ? process.env.NODE_ENV !== "production" ? warning(false, "Formik context is undefined, please verify you are calling useFormikContext() as child of a <Formik> component.") : warning(false) : void 0;
   return formik;
 }
@@ -14847,28 +14847,28 @@ function useFormik(_ref) {
     onSubmit: onSubmit
   }, rest);
 
-  var initialValues = React$1.useRef(props.initialValues);
-  var initialErrors = React$1.useRef(props.initialErrors || emptyErrors);
-  var initialTouched = React$1.useRef(props.initialTouched || emptyTouched);
-  var initialStatus = React$1.useRef(props.initialStatus);
-  var isMounted = React$1.useRef(false);
-  var fieldRegistry = React$1.useRef({});
+  var initialValues = React.useRef(props.initialValues);
+  var initialErrors = React.useRef(props.initialErrors || emptyErrors);
+  var initialTouched = React.useRef(props.initialTouched || emptyTouched);
+  var initialStatus = React.useRef(props.initialStatus);
+  var isMounted = React.useRef(false);
+  var fieldRegistry = React.useRef({});
 
   if (process.env.NODE_ENV !== "production") {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    React$1.useEffect(function () {
+    React.useEffect(function () {
       !(typeof isInitialValid === 'undefined') ? process.env.NODE_ENV !== "production" ? warning(false, 'isInitialValid has been deprecated and will be removed in future versions of Formik. Please use initialErrors or validateOnMount instead.') : warning(false) : void 0; // eslint-disable-next-line
     }, []);
   }
 
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     isMounted.current = true;
     return function () {
       isMounted.current = false;
     };
   }, []);
 
-  var _React$useReducer = React$1.useReducer(formikReducer, {
+  var _React$useReducer = React.useReducer(formikReducer, {
     values: props.initialValues,
     errors: props.initialErrors || emptyErrors,
     touched: props.initialTouched || emptyTouched,
@@ -14880,7 +14880,7 @@ function useFormik(_ref) {
       state = _React$useReducer[0],
       dispatch = _React$useReducer[1];
 
-  var runValidateHandler = React$1.useCallback(function (values, field) {
+  var runValidateHandler = React.useCallback(function (values, field) {
     return new Promise(function (resolve, reject) {
       var maybePromisedErrors = props.validate(values, field);
 
@@ -14906,7 +14906,7 @@ function useFormik(_ref) {
    * Run validation against a Yup schema and optionally run a function if successful
    */
 
-  var runValidationSchema = React$1.useCallback(function (values, field) {
+  var runValidationSchema = React.useCallback(function (values, field) {
     var validationSchema = props.validationSchema;
     var schema = isFunction$2(validationSchema) ? validationSchema(field) : validationSchema;
     var promise = field && schema.validateAt ? schema.validateAt(field, values) : validateYupSchema(values, schema);
@@ -14931,12 +14931,12 @@ function useFormik(_ref) {
       });
     });
   }, [props.validationSchema]);
-  var runSingleFieldLevelValidation = React$1.useCallback(function (field, value) {
+  var runSingleFieldLevelValidation = React.useCallback(function (field, value) {
     return new Promise(function (resolve) {
       return resolve(fieldRegistry.current[field].validate(value));
     });
   }, []);
-  var runFieldLevelValidations = React$1.useCallback(function (values) {
+  var runFieldLevelValidations = React.useCallback(function (values) {
     var fieldKeysWithValidation = Object.keys(fieldRegistry.current).filter(function (f) {
       return isFunction$2(fieldRegistry.current[f].validate);
     }); // Construct an array with all of the field validation functions
@@ -14960,7 +14960,7 @@ function useFormik(_ref) {
     });
   }, [runSingleFieldLevelValidation]); // Run all validations and return the result
 
-  var runAllValidations = React$1.useCallback(function (values) {
+  var runAllValidations = React.useCallback(function (values) {
     return Promise.all([runFieldLevelValidations(values), props.validationSchema ? runValidationSchema(values) : {}, props.validate ? runValidateHandler(values) : {}]).then(function (_ref2) {
       var fieldErrors = _ref2[0],
           schemaErrors = _ref2[1],
@@ -15029,12 +15029,12 @@ function useFormik(_ref) {
       return combinedErrors;
     });
   });
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     if (validateOnMount && isMounted.current === true && reactFastCompare(initialValues.current, props.initialValues)) {
       validateFormWithLowPriority(initialValues.current);
     }
   }, [validateOnMount, validateFormWithLowPriority]);
-  var resetForm = React$1.useCallback(function (nextState) {
+  var resetForm = React.useCallback(function (nextState) {
     var values = nextState && nextState.values ? nextState.values : initialValues.current;
     var errors = nextState && nextState.errors ? nextState.errors : initialErrors.current ? initialErrors.current : props.initialErrors || {};
     var touched = nextState && nextState.touched ? nextState.touched : initialTouched.current ? initialTouched.current : props.initialTouched || {};
@@ -15071,7 +15071,7 @@ function useFormik(_ref) {
       dispatchFn();
     }
   }, [props.initialErrors, props.initialStatus, props.initialTouched]);
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     if (isMounted.current === true && !reactFastCompare(initialValues.current, props.initialValues)) {
       if (enableReinitialize) {
         initialValues.current = props.initialValues;
@@ -15083,7 +15083,7 @@ function useFormik(_ref) {
       }
     }
   }, [enableReinitialize, props.initialValues, resetForm, validateOnMount, validateFormWithLowPriority]);
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     if (enableReinitialize && isMounted.current === true && !reactFastCompare(initialErrors.current, props.initialErrors)) {
       initialErrors.current = props.initialErrors || emptyErrors;
       dispatch({
@@ -15092,7 +15092,7 @@ function useFormik(_ref) {
       });
     }
   }, [enableReinitialize, props.initialErrors]);
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     if (enableReinitialize && isMounted.current === true && !reactFastCompare(initialTouched.current, props.initialTouched)) {
       initialTouched.current = props.initialTouched || emptyTouched;
       dispatch({
@@ -15101,7 +15101,7 @@ function useFormik(_ref) {
       });
     }
   }, [enableReinitialize, props.initialTouched]);
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     if (enableReinitialize && isMounted.current === true && !reactFastCompare(initialStatus.current, props.initialStatus)) {
       initialStatus.current = props.initialStatus;
       dispatch({
@@ -15173,13 +15173,13 @@ function useFormik(_ref) {
 
     return Promise.resolve();
   });
-  var registerField = React$1.useCallback(function (name, _ref3) {
+  var registerField = React.useCallback(function (name, _ref3) {
     var validate = _ref3.validate;
     fieldRegistry.current[name] = {
       validate: validate
     };
   }, []);
-  var unregisterField = React$1.useCallback(function (name) {
+  var unregisterField = React.useCallback(function (name) {
     delete fieldRegistry.current[name];
   }, []);
   var setTouched = useEventCallback(function (touched, shouldValidate) {
@@ -15190,7 +15190,7 @@ function useFormik(_ref) {
     var willValidate = shouldValidate === undefined ? validateOnBlur : shouldValidate;
     return willValidate ? validateFormWithLowPriority(state.values) : Promise.resolve();
   });
-  var setErrors = React$1.useCallback(function (errors) {
+  var setErrors = React.useCallback(function (errors) {
     dispatch({
       type: 'SET_ERRORS',
       payload: errors
@@ -15204,7 +15204,7 @@ function useFormik(_ref) {
     var willValidate = shouldValidate === undefined ? validateOnChange : shouldValidate;
     return willValidate ? validateFormWithLowPriority(values) : Promise.resolve();
   });
-  var setFieldError = React$1.useCallback(function (field, value) {
+  var setFieldError = React.useCallback(function (field, value) {
     dispatch({
       type: 'SET_FIELD_ERROR',
       payload: {
@@ -15224,7 +15224,7 @@ function useFormik(_ref) {
     var willValidate = shouldValidate === undefined ? validateOnChange : shouldValidate;
     return willValidate ? validateFormWithLowPriority(setIn(state.values, field, value)) : Promise.resolve();
   });
-  var executeChange = React$1.useCallback(function (eventOrTextValue, maybePath) {
+  var executeChange = React.useCallback(function (eventOrTextValue, maybePath) {
     // By default, assume that the first argument is a string. This allows us to use
     // handleChange with React Native and React Native Web's onChangeText prop which
     // provides just the value of the input.
@@ -15293,7 +15293,7 @@ function useFormik(_ref) {
     var willValidate = shouldValidate === undefined ? validateOnBlur : shouldValidate;
     return willValidate ? validateFormWithLowPriority(state.values) : Promise.resolve();
   });
-  var executeBlur = React$1.useCallback(function (e, path) {
+  var executeBlur = React.useCallback(function (e, path) {
     if (e.persist) {
       e.persist();
     }
@@ -15323,7 +15323,7 @@ function useFormik(_ref) {
       executeBlur(eventOrString);
     }
   });
-  var setFormikState = React$1.useCallback(function (stateOrCb) {
+  var setFormikState = React.useCallback(function (stateOrCb) {
     if (isFunction$2(stateOrCb)) {
       dispatch({
         type: 'SET_FORMIK_STATE',
@@ -15338,13 +15338,13 @@ function useFormik(_ref) {
       });
     }
   }, []);
-  var setStatus = React$1.useCallback(function (status) {
+  var setStatus = React.useCallback(function (status) {
     dispatch({
       type: 'SET_STATUS',
       payload: status
     });
   }, []);
-  var setSubmitting = React$1.useCallback(function (isSubmitting) {
+  var setSubmitting = React.useCallback(function (isSubmitting) {
     dispatch({
       type: 'SET_ISSUBMITTING',
       payload: isSubmitting
@@ -15475,7 +15475,7 @@ function useFormik(_ref) {
 
     resetForm();
   });
-  var getFieldMeta = React$1.useCallback(function (name) {
+  var getFieldMeta = React.useCallback(function (name) {
     return {
       value: getIn(state.values, name),
       error: getIn(state.errors, name),
@@ -15485,7 +15485,7 @@ function useFormik(_ref) {
       initialError: getIn(initialErrors.current, name)
     };
   }, [state.errors, state.touched, state.values]);
-  var getFieldHelpers = React$1.useCallback(function (name) {
+  var getFieldHelpers = React.useCallback(function (name) {
     return {
       setValue: function setValue(value, shouldValidate) {
         return setFieldValue(name, value, shouldValidate);
@@ -15498,7 +15498,7 @@ function useFormik(_ref) {
       }
     };
   }, [setFieldValue, setFieldTouched, setFieldError]);
-  var getFieldProps = React$1.useCallback(function (nameOrOptions) {
+  var getFieldProps = React.useCallback(function (nameOrOptions) {
     var isAnObject = isObject$2(nameOrOptions);
     var name = isAnObject ? nameOrOptions.name : nameOrOptions;
     var valueState = getIn(state.values, name);
@@ -15533,10 +15533,10 @@ function useFormik(_ref) {
 
     return field;
   }, [handleBlur, handleChange, state.values]);
-  var dirty = React$1.useMemo(function () {
+  var dirty = React.useMemo(function () {
     return !reactFastCompare(initialValues.current, state.values);
   }, [initialValues.current, state.values]);
-  var isValid = React$1.useMemo(function () {
+  var isValid = React.useMemo(function () {
     return typeof isInitialValid !== 'undefined' ? dirty ? state.errors && Object.keys(state.errors).length === 0 : isInitialValid !== false && isFunction$2(isInitialValid) ? isInitialValid(props) : isInitialValid : state.errors && Object.keys(state.errors).length === 0;
   }, [isInitialValid, dirty, state.errors, props]);
 
@@ -15583,21 +15583,21 @@ function Formik(props) {
       render = props.render,
       innerRef = props.innerRef; // This allows folks to pass a ref to <Formik />
 
-  React$1.useImperativeHandle(innerRef, function () {
+  React.useImperativeHandle(innerRef, function () {
     return formikbag;
   });
 
   if (process.env.NODE_ENV !== "production") {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    React$1.useEffect(function () {
+    React.useEffect(function () {
       !!props.render ? process.env.NODE_ENV !== "production" ? warning(false, "<Formik render> has been deprecated and will be removed in future versions of Formik. Please use a child callback function instead. To get rid of this warning, replace <Formik render={(props) => ...} /> with <Formik>{(props) => ...}</Formik>") : warning(false) : void 0; // eslint-disable-next-line
     }, []);
   }
 
-  return React$1.createElement(FormikProvider, {
+  return React.createElement(FormikProvider, {
     value: formikbag
-  }, component ? React$1.createElement(component, formikbag) : render ? render(formikbag) : children // children come last, always called
-  ? isFunction$2(children) ? children(formikbag) : !isEmptyChildren(children) ? React$1.Children.only(children) : null : null);
+  }, component ? React.createElement(component, formikbag) : render ? render(formikbag) : children // children come last, always called
+  ? isFunction$2(children) ? children(formikbag) : !isEmptyChildren(children) ? React.Children.only(children) : null : null);
 }
 
 function warnAboutMissingIdentifier(_ref4) {
@@ -15763,15 +15763,15 @@ function getValueForCheckbox(currentValue, checked, valueProp) {
 // @see https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
 
 
-var useIsomorphicLayoutEffect = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? React$1.useLayoutEffect : React$1.useEffect;
+var useIsomorphicLayoutEffect = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? React.useLayoutEffect : React.useEffect;
 
 function useEventCallback(fn) {
-  var ref = React$1.useRef(fn); // we copy a ref to the callback scoped to the current state/props on each render
+  var ref = React.useRef(fn); // we copy a ref to the callback scoped to the current state/props on each render
 
   useIsomorphicLayoutEffect(function () {
     ref.current = fn;
   });
-  return React$1.useCallback(function () {
+  return React.useCallback(function () {
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
@@ -15782,7 +15782,7 @@ function useEventCallback(fn) {
 
 var Form =
 /*#__PURE__*/
-React$1.forwardRef(function (props, ref) {
+React.forwardRef(function (props, ref) {
   // iOS needs an "action" attribute for nice input: https://stackoverflow.com/a/39485162/406725
   // We default the action to "#" in case the preventDefault fails (just updates the URL hash)
   var action = props.action,
@@ -15794,7 +15794,7 @@ React$1.forwardRef(function (props, ref) {
       handleReset = _useFormikContext.handleReset,
       handleSubmit = _useFormikContext.handleSubmit;
 
-  return React$1.createElement("form", Object.assign({
+  return React.createElement("form", Object.assign({
     onSubmit: handleSubmit,
     ref: ref,
     onReset: handleReset,
@@ -25898,11 +25898,11 @@ function onClickOutsideHOC(WrappedComponent, config) {
 
       props.disableOnClickOutside = this.disableOnClickOutside;
       props.enableOnClickOutside = this.enableOnClickOutside;
-      return React$1.createElement(WrappedComponent, props);
+      return React.createElement(WrappedComponent, props);
     };
 
     return onClickOutside;
-  }(React$1.Component), _class.displayName = "OnClickOutside(" + componentName + ")", _class.defaultProps = {
+  }(React.Component), _class.displayName = "OnClickOutside(" + componentName + ")", _class.defaultProps = {
     eventTypes: ['mousedown', 'touchstart'],
     excludeScrollbar: config && config.excludeScrollbar || false,
     outsideClickIgnoreClass: IGNORE_CLASS_NAME,
@@ -30166,15 +30166,15 @@ function (_React$Component) {
   };
 
   _proto.render = function render() {
-    return React$1.createElement(ManagerReferenceNodeContext.Provider, {
+    return React.createElement(ManagerReferenceNodeContext.Provider, {
       value: this.referenceNode
-    }, React$1.createElement(ManagerReferenceNodeSetterContext.Provider, {
+    }, React.createElement(ManagerReferenceNodeSetterContext.Provider, {
       value: this.setReferenceNode
     }, this.props.children));
   };
 
   return Manager;
-}(React$1.Component);
+}(React.Component);
 
 /**
  * Takes an argument and if it's an array, returns the first item in the array,
@@ -30406,7 +30406,7 @@ function (_React$Component) {
   };
 
   return InnerPopper;
-}(React$1.Component);
+}(React.Component);
 
 defineProperty$2(InnerPopper, "defaultProps", {
   placement: 'bottom',
@@ -30418,8 +30418,8 @@ function Popper$1(_ref) {
   var referenceElement = _ref.referenceElement,
       props = objectWithoutPropertiesLoose(_ref, ["referenceElement"]);
 
-  return React$1.createElement(ManagerReferenceNodeContext.Consumer, null, function (referenceNode) {
-    return React$1.createElement(InnerPopper, _extends_1({
+  return React.createElement(ManagerReferenceNodeContext.Consumer, null, function (referenceNode) {
+    return React.createElement(InnerPopper, _extends_1({
       referenceElement: referenceElement !== undefined ? referenceElement : referenceNode
     }, props));
   });
@@ -30461,11 +30461,11 @@ function (_React$Component) {
   };
 
   return InnerReference;
-}(React$1.Component);
+}(React.Component);
 
 function Reference(props) {
-  return React$1.createElement(ManagerReferenceNodeSetterContext.Consumer, null, function (setReferenceNode) {
-    return React$1.createElement(InnerReference, _extends_1({
+  return React.createElement(ManagerReferenceNodeSetterContext.Consumer, null, function (setReferenceNode) {
+    return React.createElement(InnerReference, _extends_1({
       setReferenceNode: setReferenceNode
     }, props));
   });
@@ -33415,17 +33415,17 @@ var TextInput = function TextInput(_ref) {
     type: 'text'
   }];
 
-  var _useState = React$1.useState(defaultIcons[0].name),
+  var _useState = React.useState(defaultIcons[0].name),
       _useState2 = _slicedToArray(_useState, 2),
       displayedIcon = _useState2[0],
       setDisplayedIcon = _useState2[1];
 
-  var _useState3 = React$1.useState(type || 'text'),
+  var _useState3 = React.useState(type || 'text'),
       _useState4 = _slicedToArray(_useState3, 2),
       inputType = _useState4[0],
       setInputType = _useState4[1];
 
-  var _useState5 = React$1.useState(function () {
+  var _useState5 = React.useState(function () {
     var value = otherProps.value || defaultValue;
 
     if (!value) {
@@ -33712,7 +33712,7 @@ var RadioButton = function RadioButton(_ref) {
       value = _ref.value,
       error = _ref.error;
 
-  var _useState = React$1.useState(value),
+  var _useState = React.useState(value),
       _useState2 = _slicedToArray(_useState, 2),
       selectedButton = _useState2[0],
       setSelectedTab = _useState2[1];
@@ -34563,7 +34563,7 @@ function _objectWithoutPropertiesLoose$7(source, excluded) { if (source == null)
  * ```
  */
 
-var Dropzone = /*#__PURE__*/React$1.forwardRef(function (_ref, ref) {
+var Dropzone = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
   var children = _ref.children,
       params = _objectWithoutProperties$2(_ref, ["children"]);
 
@@ -34571,13 +34571,13 @@ var Dropzone = /*#__PURE__*/React$1.forwardRef(function (_ref, ref) {
       open = _useDropzone.open,
       props = _objectWithoutProperties$2(_useDropzone, ["open"]);
 
-  React$1.useImperativeHandle(ref, function () {
+  React.useImperativeHandle(ref, function () {
     return {
       open: open
     };
   }, [open]); // TODO: Figure out why react-styleguidist cannot create docs if we don't return a jsx element
 
-  return /*#__PURE__*/React__default['default'].createElement(React$1.Fragment, null, children(_objectSpread(_objectSpread({}, props), {}, {
+  return /*#__PURE__*/React__default['default'].createElement(React.Fragment, null, children(_objectSpread(_objectSpread({}, props), {}, {
     open: open
   })));
 });
@@ -34932,10 +34932,10 @@ function useDropzone() {
       noDrag = _defaultProps$options.noDrag,
       noDragEventsBubbling = _defaultProps$options.noDragEventsBubbling;
 
-  var rootRef = React$1.useRef(null);
-  var inputRef = React$1.useRef(null);
+  var rootRef = React.useRef(null);
+  var inputRef = React.useRef(null);
 
-  var _useReducer = React$1.useReducer(reducer, initialState),
+  var _useReducer = React.useReducer(reducer, initialState),
       _useReducer2 = _slicedToArray$2(_useReducer, 2),
       state = _useReducer2[0],
       dispatch = _useReducer2[1];
@@ -34944,7 +34944,7 @@ function useDropzone() {
       isFileDialogActive = state.isFileDialogActive,
       draggedFiles = state.draggedFiles; // Fn for opening the file dialog programmatically
 
-  var openFileDialog = React$1.useCallback(function () {
+  var openFileDialog = React.useCallback(function () {
     if (inputRef.current) {
       dispatch({
         type: 'openDialog'
@@ -34975,14 +34975,14 @@ function useDropzone() {
     }
   };
 
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     window.addEventListener('focus', onWindowFocus, false);
     return function () {
       window.removeEventListener('focus', onWindowFocus, false);
     };
   }, [inputRef, isFileDialogActive, onFileDialogCancel]); // Cb to open the file dialog when SPACE/ENTER occurs on the dropzone
 
-  var onKeyDownCb = React$1.useCallback(function (event) {
+  var onKeyDownCb = React.useCallback(function (event) {
     // Ignore keyboard events bubbling up the DOM tree
     if (!rootRef.current || !rootRef.current.isEqualNode(event.target)) {
       return;
@@ -34994,18 +34994,18 @@ function useDropzone() {
     }
   }, [rootRef, inputRef]); // Update focus state for the dropzone
 
-  var onFocusCb = React$1.useCallback(function () {
+  var onFocusCb = React.useCallback(function () {
     dispatch({
       type: 'focus'
     });
   }, []);
-  var onBlurCb = React$1.useCallback(function () {
+  var onBlurCb = React.useCallback(function () {
     dispatch({
       type: 'blur'
     });
   }, []); // Cb to open the file dialog when click occurs on the dropzone
 
-  var onClickCb = React$1.useCallback(function () {
+  var onClickCb = React.useCallback(function () {
     if (noClick) {
       return;
     } // In IE11/Edge the file-browser dialog is blocking, therefore, use setTimeout()
@@ -35019,7 +35019,7 @@ function useDropzone() {
       openFileDialog();
     }
   }, [inputRef, noClick]);
-  var dragTargetsRef = React$1.useRef([]);
+  var dragTargetsRef = React.useRef([]);
 
   var onDocumentDrop = function onDocumentDrop(event) {
     if (rootRef.current && rootRef.current.contains(event.target)) {
@@ -35031,7 +35031,7 @@ function useDropzone() {
     dragTargetsRef.current = [];
   };
 
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     if (preventDropOnDocument) {
       document.addEventListener('dragover', onDocumentDragOver, false);
       document.addEventListener('drop', onDocumentDrop, false);
@@ -35044,7 +35044,7 @@ function useDropzone() {
       }
     };
   }, [rootRef, preventDropOnDocument]);
-  var onDragEnterCb = React$1.useCallback(function (event) {
+  var onDragEnterCb = React.useCallback(function (event) {
     event.preventDefault(); // Persist here because we need the event later after getFilesFromEvent() is done
 
     event.persist();
@@ -35069,7 +35069,7 @@ function useDropzone() {
       });
     }
   }, [getFilesFromEvent, onDragEnter, noDragEventsBubbling]);
-  var onDragOverCb = React$1.useCallback(function (event) {
+  var onDragOverCb = React.useCallback(function (event) {
     event.preventDefault();
     event.persist();
     stopPropagation(event);
@@ -35088,7 +35088,7 @@ function useDropzone() {
 
     return false;
   }, [onDragOver, noDragEventsBubbling]);
-  var onDragLeaveCb = React$1.useCallback(function (event) {
+  var onDragLeaveCb = React.useCallback(function (event) {
     event.preventDefault();
     event.persist();
     stopPropagation(event); // Only deactivate once the dropzone and all children have been left
@@ -35120,7 +35120,7 @@ function useDropzone() {
       onDragLeave(event);
     }
   }, [rootRef, onDragLeave, noDragEventsBubbling]);
-  var onDropCb = React$1.useCallback(function (event) {
+  var onDropCb = React.useCallback(function (event) {
     event.preventDefault(); // Persist here because we need the event later after getFilesFromEvent() is done
 
     event.persist();
@@ -35213,7 +35213,7 @@ function useDropzone() {
     }
   };
 
-  var getRootProps = React$1.useMemo(function () {
+  var getRootProps = React.useMemo(function () {
     return function () {
       var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
           _ref2$refKey = _ref2.refKey,
@@ -35242,10 +35242,10 @@ function useDropzone() {
       } : {}), rest);
     };
   }, [rootRef, onKeyDownCb, onFocusCb, onBlurCb, onClickCb, onDragEnterCb, onDragOverCb, onDragLeaveCb, onDropCb, noKeyboard, noDrag, disabled]);
-  var onInputElementClick = React$1.useCallback(function (event) {
+  var onInputElementClick = React.useCallback(function (event) {
     event.stopPropagation();
   }, []);
-  var getInputProps = React$1.useMemo(function () {
+  var getInputProps = React.useMemo(function () {
     return function () {
       var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
           _ref3$refKey = _ref3.refKey,
@@ -35351,7 +35351,7 @@ var FileUploader = function FileUploader(_ref) {
       answers = _ref.answers,
       error = _ref.error;
 
-  var _useState = React$1.useState([]),
+  var _useState = React.useState([]),
       _useState2 = _slicedToArray(_useState, 2),
       files = _useState2[0],
       setFiles = _useState2[1];
@@ -35430,7 +35430,7 @@ var FileUploader = function FileUploader(_ref) {
     return newFiles;
   };
 
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     if (action) {
       action(uploadBase64Files(files));
     } // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35702,7 +35702,7 @@ var Tabs = function Tabs(_ref) {
       action = _ref.action,
       className = _ref.className;
 
-  var _useState = React$1.useState(initialTabIndex),
+  var _useState = React.useState(initialTabIndex),
       _useState2 = _slicedToArray(_useState, 2),
       selectedTab = _useState2[0],
       setSelectedTab = _useState2[1];
@@ -35715,7 +35715,7 @@ var Tabs = function Tabs(_ref) {
     setSelectedTab(tabIndex);
   };
 
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     setSelectedTab(initialTabIndex);
   }, [initialTabIndex]);
   return /*#__PURE__*/React__default['default'].createElement(TabContainer, {
@@ -42564,14 +42564,14 @@ var fieldValidator = function fieldValidator() {
 var useFormErrors = function useFormErrors(_ref) {
   _objectDestructuringEmpty(_ref);
 
-  var validateField = React$1.useCallback(function (field, value) {
+  var validateField = React.useCallback(function (field, value) {
     var fieldError = fieldValidator(field, value);
 
     if (fieldError) {
       return fieldError;
     }
   }, []);
-  var validateAllFields = React$1.useCallback(function (fields, values) {
+  var validateAllFields = React.useCallback(function (fields, values) {
     var errors = {};
     var nestedFieldKeys = [];
     nestedFieldKeys.forEach(function (fieldKey) {
@@ -43199,20 +43199,20 @@ var Form$1 = function Form(_ref) {
       cancelLabel = _ref.cancelLabel;
 
   /* const validationErrors = errors || {}; */
-  var initialValues = React$1.useRef({});
-  var flatFields = React$1.useRef([]);
+  var initialValues = React.useRef({});
+  var flatFields = React.useRef([]);
 
-  var _useState = React$1.useState({}),
+  var _useState = React.useState({}),
       _useState2 = _slicedToArray(_useState, 2),
       formErrors = _useState2[0],
       setFormErrors = _useState2[1];
 
-  var _useState3 = React$1.useState({}),
+  var _useState3 = React.useState({}),
       _useState4 = _slicedToArray(_useState3, 2),
       openAccordions = _useState4[0],
       setOpenAccordions = _useState4[1];
 
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     if (errors && Object.keys(errors).length) {
       formRef.current.scrollIntoView({
         behavior: 'smooth',
@@ -43262,7 +43262,7 @@ var Form$1 = function Form(_ref) {
       validateField = _useFormErrors.validateField,
       validateAllFields = _useFormErrors.validateAllFields;
 
-  var handleSubmit = React$1.useCallback(function (values, btnLabel) {
+  var handleSubmit = React.useCallback(function (values, btnLabel) {
     var errors = validateAllFields(flatFields.current, values);
     Object.keys(errors).forEach(function (e) {
       if (hiddenFields.indexOf(e) !== -1) delete errors[e];
@@ -43295,7 +43295,7 @@ var Form$1 = function Form(_ref) {
     return addFields;
   };
 
-  var fieldRenderer = React$1.useCallback(function (field, formik, parentKey) {
+  var fieldRenderer = React.useCallback(function (field, formik, parentKey) {
     var _field$options, _answers$field$key, _getParishesOptions;
 
     var placeholder = field.key === 'postal-code' || field.key === 'postalCode' ? '0000-000' : field.placeholder;
@@ -43759,7 +43759,7 @@ var Form$1 = function Form(_ref) {
     return formFields;
   };
 
-  var formRef = React$1.useRef();
+  var formRef = React.useRef();
   return /*#__PURE__*/React__default['default'].createElement(FormContainer, {
     ref: formRef,
     bg: backgroundColor
@@ -44576,7 +44576,7 @@ function Provider(_ref) {
   var store = _ref.store,
       context = _ref.context,
       children = _ref.children;
-  var contextValue = React$1.useMemo(function () {
+  var contextValue = React.useMemo(function () {
     var subscription = new Subscription(store);
     subscription.onStateChange = subscription.notifyNestedSubs;
     return {
@@ -44584,10 +44584,10 @@ function Provider(_ref) {
       subscription: subscription
     };
   }, [store]);
-  var previousState = React$1.useMemo(function () {
+  var previousState = React.useMemo(function () {
     return store.getState();
   }, [store]);
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     var subscription = contextValue.subscription;
     subscription.trySubscribe();
 
@@ -44641,7 +44641,7 @@ function _objectWithoutPropertiesLoose$8(source, excluded) {
 // is created synchronously, otherwise a store update may occur before the
 // subscription is created and an inconsistent state may be observed
 
-var useIsomorphicLayoutEffect$1 = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? React$1.useLayoutEffect : React$1.useEffect;
+var useIsomorphicLayoutEffect$1 = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? React.useLayoutEffect : React.useEffect;
 
 var EMPTY_ARRAY = [];
 var NO_SUBSCRIPTION_ARRAY = [null, null];
@@ -44846,12 +44846,12 @@ _ref) {
     // that just executes the given callback immediately.
 
 
-    var usePureOnlyMemo = pure ? React$1.useMemo : function (callback) {
+    var usePureOnlyMemo = pure ? React.useMemo : function (callback) {
       return callback();
     };
 
     function ConnectFunction(props) {
-      var _useMemo = React$1.useMemo(function () {
+      var _useMemo = React.useMemo(function () {
         // Distinguish between actual "data" props that were passed to the wrapper component,
         // and values needed to control behavior (forwarded refs, alternate context instances).
         // To maintain the wrapperProps object reference, memoize this destructuring.
@@ -44864,13 +44864,13 @@ _ref) {
           reactReduxForwardedRef = _useMemo[1],
           wrapperProps = _useMemo[2];
 
-      var ContextToUse = React$1.useMemo(function () {
+      var ContextToUse = React.useMemo(function () {
         // Users may optionally pass in a custom context instance to use instead of our ReactReduxContext.
         // Memoize the check that determines which context instance we should use.
         return propsContext && propsContext.Consumer && reactIs_4(React__default['default'].createElement(propsContext.Consumer, null)) ? propsContext : Context;
       }, [propsContext, Context]); // Retrieve the store and ancestor subscription via context, if available
 
-      var contextValue = React$1.useContext(ContextToUse); // The store _must_ exist as either a prop or in context.
+      var contextValue = React.useContext(ContextToUse); // The store _must_ exist as either a prop or in context.
       // We'll check to see if it _looks_ like a Redux store first.
       // This allows us to pass through a `store` prop that is just a plain value.
 
@@ -44883,13 +44883,13 @@ _ref) {
 
 
       var store = didStoreComeFromProps ? props.store : contextValue.store;
-      var childPropsSelector = React$1.useMemo(function () {
+      var childPropsSelector = React.useMemo(function () {
         // The child props selector needs the store reference as an input.
         // Re-create this selector whenever the store changes.
         return createChildSelector(store);
       }, [store]);
 
-      var _useMemo2 = React$1.useMemo(function () {
+      var _useMemo2 = React.useMemo(function () {
         if (!shouldHandleStateChanges) return NO_SUBSCRIPTION_ARRAY; // This Subscription's source should match where store came from: props vs. context. A component
         // connected to the store via props shouldn't use subscription from context, or vice versa.
 
@@ -44906,7 +44906,7 @@ _ref) {
       // and memoize that value to avoid unnecessary context updates.
 
 
-      var overriddenContextValue = React$1.useMemo(function () {
+      var overriddenContextValue = React.useMemo(function () {
         if (didStoreComeFromProps) {
           // This component is directly subscribed to a store from props.
           // We don't want descendants reading from this store - pass down whatever
@@ -44922,7 +44922,7 @@ _ref) {
       }, [didStoreComeFromProps, contextValue, subscription]); // We need to force this wrapper component to re-render whenever a Redux store update
       // causes a change to the calculated child component props (or we caught an error in mapState)
 
-      var _useReducer = React$1.useReducer(storeStateUpdatesReducer, EMPTY_ARRAY, initStateUpdates),
+      var _useReducer = React.useReducer(storeStateUpdatesReducer, EMPTY_ARRAY, initStateUpdates),
           _useReducer$ = _useReducer[0],
           previousStateUpdateResult = _useReducer$[0],
           forceComponentUpdateDispatch = _useReducer[1]; // Propagate any mapState/mapDispatch errors upwards
@@ -44933,10 +44933,10 @@ _ref) {
       } // Set up refs to coordinate values between the subscription effect and the render logic
 
 
-      var lastChildProps = React$1.useRef();
-      var lastWrapperProps = React$1.useRef(wrapperProps);
-      var childPropsFromStoreUpdate = React$1.useRef();
-      var renderIsScheduled = React$1.useRef(false);
+      var lastChildProps = React.useRef();
+      var lastWrapperProps = React.useRef(wrapperProps);
+      var childPropsFromStoreUpdate = React.useRef();
+      var renderIsScheduled = React.useRef(false);
       var actualChildProps = usePureOnlyMemo(function () {
         // Tricky logic here:
         // - This render may have been triggered by a Redux store update that produced new child props
@@ -44962,14 +44962,14 @@ _ref) {
       useIsomorphicLayoutEffectWithArgs(subscribeUpdates, [shouldHandleStateChanges, store, subscription, childPropsSelector, lastWrapperProps, lastChildProps, renderIsScheduled, childPropsFromStoreUpdate, notifyNestedSubs, forceComponentUpdateDispatch], [store, subscription, childPropsSelector]); // Now that all that's done, we can finally try to actually render the child component.
       // We memoize the elements for the rendered child component as an optimization.
 
-      var renderedWrappedComponent = React$1.useMemo(function () {
+      var renderedWrappedComponent = React.useMemo(function () {
         return React__default['default'].createElement(WrappedComponent, _extends$f({}, actualChildProps, {
           ref: reactReduxForwardedRef
         }));
       }, [reactReduxForwardedRef, WrappedComponent, actualChildProps]); // If React sees the exact same element reference as last time, it bails out of re-rendering
       // that child, same as if it was wrapped in React.memo() or returned false from shouldComponentUpdate.
 
-      var renderedChild = React$1.useMemo(function () {
+      var renderedChild = React.useMemo(function () {
         if (shouldHandleStateChanges) {
           // If this component is subscribed to store updates, we need to pass its own
           // subscription instance down to our descendants. That means rendering the same
@@ -45417,19 +45417,19 @@ function areInputsEqual$1(newInputs, lastInputs) {
 }
 
 function useMemoOne(getResult, inputs) {
-  var initial = React$1.useState(function () {
+  var initial = React.useState(function () {
     return {
       inputs: inputs,
       result: getResult()
     };
   })[0];
-  var committed = React$1.useRef(initial);
+  var committed = React.useRef(initial);
   var isInputMatch = Boolean(inputs && committed.current.inputs && areInputsEqual$1(inputs, committed.current.inputs));
   var cache = isInputMatch ? committed.current : {
     inputs: inputs,
     result: getResult()
   };
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     committed.current = cache;
   }, [cache]);
   return cache.result;
@@ -50588,7 +50588,7 @@ var getStyles$1 = (function (contextId) {
   };
 });
 
-var useIsomorphicLayoutEffect$2 = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? React$1.useLayoutEffect : React$1.useEffect;
+var useIsomorphicLayoutEffect$2 = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? React.useLayoutEffect : React.useEffect;
 
 var getHead = function getHead() {
   var head = document.querySelector('head');
@@ -50611,8 +50611,8 @@ function useStyleMarshal(contextId, nonce) {
   var styles = useMemo(function () {
     return getStyles$1(contextId);
   }, [contextId]);
-  var alwaysRef = React$1.useRef(null);
-  var dynamicRef = React$1.useRef(null);
+  var alwaysRef = React.useRef(null);
+  var dynamicRef = React.useRef(null);
   var setDynamicStyle = useCallback(memoizeOne(function (proposed) {
     var el = dynamicRef.current;
     !el ? process.env.NODE_ENV !== "production" ? invariant$1(false, 'Cannot set dynamic style element if it is not set') : invariant$1(false) : void 0;
@@ -50710,10 +50710,10 @@ function findDragHandle(contextId, draggableId) {
 }
 
 function useFocusMarshal(contextId) {
-  var entriesRef = React$1.useRef({});
-  var recordRef = React$1.useRef(null);
-  var restoreFocusFrameRef = React$1.useRef(null);
-  var isMountedRef = React$1.useRef(false);
+  var entriesRef = React.useRef({});
+  var recordRef = React.useRef(null);
+  var restoreFocusFrameRef = React.useRef(null);
+  var isMountedRef = React.useRef(false);
   var register = useCallback(function register(id, focus) {
     var entry = {
       id: id,
@@ -50940,7 +50940,7 @@ function createRegistry() {
 
 function useRegistry() {
   var registry = useMemo(createRegistry, []);
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     return function unmount() {
       requestAnimationFrame(registry.clean);
     };
@@ -50975,8 +50975,8 @@ function useAnnouncer(contextId) {
   var id = useMemo(function () {
     return getId(contextId);
   }, [contextId]);
-  var ref = React$1.useRef(null);
-  React$1.useEffect(function setup() {
+  var ref = React.useRef(null);
+  React.useEffect(function setup() {
     var el = document.createElement('div');
     ref.current = el;
     el.id = id;
@@ -51044,7 +51044,7 @@ function useHiddenTextElement(_ref2) {
       uniqueId: uniqueId
     });
   }, [uniqueId, contextId]);
-  React$1.useEffect(function mount() {
+  React.useEffect(function mount() {
     var el = document.createElement('div');
     el.id = id;
     el.textContent = text;
@@ -51141,7 +51141,7 @@ function useDev(useHook) {
 
 function useDevSetupWarning(fn, inputs) {
   useDev(function () {
-    React$1.useEffect(function () {
+    React.useEffect(function () {
       try {
         fn();
       } catch (e) {
@@ -51159,8 +51159,8 @@ function useStartupValidation() {
 }
 
 function usePrevious(current) {
-  var ref = React$1.useRef(current);
-  React$1.useEffect(function () {
+  var ref = React.useRef(current);
+  React.useEffect(function () {
     ref.current = current;
   });
   return ref;
@@ -51372,8 +51372,8 @@ function getCaptureBindings(_ref) {
 }
 
 function useMouseSensor(api) {
-  var phaseRef = React$1.useRef(idle$1);
-  var unbindEventsRef = React$1.useRef(noop$1);
+  var phaseRef = React.useRef(idle$1);
+  var unbindEventsRef = React.useRef(noop$1);
   var startCaptureBinding = useMemo(function () {
     return {
       eventName: 'mousedown',
@@ -51603,7 +51603,7 @@ function getDraggingBindings(actions, stop) {
 }
 
 function useKeyboardSensor(api) {
-  var unbindEventsRef = React$1.useRef(noop$1$1);
+  var unbindEventsRef = React.useRef(noop$1$1);
   var startCaptureBinding = useMemo(function () {
     return {
       eventName: 'keydown',
@@ -51805,8 +51805,8 @@ function getHandleBindings(_ref2) {
 }
 
 function useMouseSensor$1(api) {
-  var phaseRef = React$1.useRef(idle$2);
-  var unbindEventsRef = React$1.useRef(noop$1);
+  var phaseRef = React.useRef(idle$2);
+  var unbindEventsRef = React.useRef(noop$1);
   var getPhase = useCallback(function getPhase() {
     return phaseRef.current;
   }, []);
@@ -52362,7 +52362,7 @@ function useSensorMarshal(_ref4) {
       customSensors = _ref4.customSensors,
       enableDefaultSensors = _ref4.enableDefaultSensors;
   var useSensors = [].concat(enableDefaultSensors ? defaultSensors : [], customSensors || []);
-  var lockAPI = React$1.useState(function () {
+  var lockAPI = React.useState(function () {
     return create();
   })[0];
   var tryAbandonLock = useCallback(function tryAbandonLock(previous, current) {
@@ -52458,7 +52458,7 @@ function App(props) {
       sensors = props.sensors,
       nonce = props.nonce,
       dragHandleUsageInstructions = props.dragHandleUsageInstructions;
-  var lazyStoreRef = React$1.useRef(null);
+  var lazyStoreRef = React.useRef(null);
   useStartupValidation();
   var lastPropsRef = usePrevious(props);
   var getResponders = useCallback(function () {
@@ -52556,7 +52556,7 @@ function App(props) {
     customSensors: sensors,
     enableDefaultSensors: props.enableDefaultSensors !== false
   });
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     return tryResetStore;
   }, [tryResetStore]);
   return React__default['default'].createElement(AppContext.Provider, {
@@ -52859,7 +52859,7 @@ var getListenerOptions = (function (options) {
 });
 
 function useRequiredContext(Context) {
-  var result = React$1.useContext(Context);
+  var result = React.useContext(Context);
   !result ? process.env.NODE_ENV !== "production" ? invariant$1(false, 'Could not find required context') : invariant$1(false) : void 0;
   return result;
 }
@@ -52869,7 +52869,7 @@ var getClosestScrollableFromDrag = function getClosestScrollableFromDrag(draggin
 };
 
 function useDroppablePublisher(args) {
-  var whileDraggingRef = React$1.useRef(null);
+  var whileDraggingRef = React.useRef(null);
   var appContext = useRequiredContext(AppContext);
   var uniqueId = useUniqueId('droppable');
   var registry = appContext.registry,
@@ -52882,7 +52882,7 @@ function useDroppablePublisher(args) {
       mode: args.mode
     };
   }, [args.droppableId, args.mode, args.type]);
-  var publishedDescriptorRef = React$1.useRef(descriptor);
+  var publishedDescriptorRef = React.useRef(descriptor);
   var memoizedUpdateScroll = useMemo(function () {
     return memoizeOne(function (x, y) {
       !whileDraggingRef.current ? process.env.NODE_ENV !== "production" ? invariant$1(false, 'Can only update scroll when dragging') : invariant$1(false) : void 0;
@@ -53083,7 +53083,7 @@ var getStyle = function getStyle(_ref2) {
 };
 
 function Placeholder$1(props) {
-  var animateOpenTimerRef = React$1.useRef(null);
+  var animateOpenTimerRef = React.useRef(null);
   var tryClearAnimateOpenTimer = useCallback(function () {
     if (!animateOpenTimerRef.current) {
       return;
@@ -53097,11 +53097,11 @@ function Placeholder$1(props) {
       onClose = props.onClose,
       contextId = props.contextId;
 
-  var _useState = React$1.useState(props.animate === 'open'),
+  var _useState = React.useState(props.animate === 'open'),
       isAnimatingOpenOnMount = _useState[0],
       setIsAnimatingOpenOnMount = _useState[1];
 
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     if (!isAnimatingOpenOnMount) {
       return noop$2;
     }
@@ -53420,8 +53420,8 @@ function useDraggablePublisher(args) {
       getDimension: getDimension
     };
   }, [descriptor, getDimension, options, uniqueId]);
-  var publishedRef = React$1.useRef(entry);
-  var isFirstPublishRef = React$1.useRef(true);
+  var publishedRef = React.useRef(entry);
+  var isFirstPublishRef = React.useRef(true);
   useIsomorphicLayoutEffect$2(function () {
     registry.draggable.register(publishedRef.current);
     return function () {
@@ -53464,7 +53464,7 @@ function useValidation$1(props, contextId, getRef) {
 }
 function useClonePropValidation(isClone) {
   useDev(function () {
-    var initialRef = React$1.useRef(isClone);
+    var initialRef = React.useRef(isClone);
     useDevSetupWarning(function () {
       !(isClone === initialRef.current) ? process.env.NODE_ENV !== "production" ? invariant$1(false, 'Draggable isClone prop value changed during component life') : invariant$1(false) : void 0;
     }, [isClone]);
@@ -53476,7 +53476,7 @@ function preventHtml5Dnd(event) {
 }
 
 function Draggable(props) {
-  var ref = React$1.useRef(null);
+  var ref = React.useRef(null);
   var setRef = useCallback(function (el) {
     ref.current = el;
   }, []);
@@ -53850,12 +53850,12 @@ function PublicDraggable(props) {
 }
 
 function Droppable(props) {
-  var appContext = React$1.useContext(AppContext);
+  var appContext = React.useContext(AppContext);
   !appContext ? process.env.NODE_ENV !== "production" ? invariant$1(false, 'Could not find app context') : invariant$1(false) : void 0;
   var contextId = appContext.contextId,
       isMovementAllowed = appContext.isMovementAllowed;
-  var droppableRef = React$1.useRef(null);
-  var placeholderRef = React$1.useRef(null);
+  var droppableRef = React.useRef(null);
+  var placeholderRef = React.useRef(null);
   var children = props.children,
       droppableId = props.droppableId,
       type = props.type,
@@ -54338,7 +54338,7 @@ var KanbanColumn$1 = function KanbanColumn$1(_ref) {
       kanbanType = _ref.kanbanType,
       data = _ref.data,
       translate = _ref.translate;
-  var renderCards = React$1.useCallback(function () {
+  var renderCards = React.useCallback(function () {
     return items.map(function (item, index) {
       var _item$relationships, _item$relationships$a, _item$relationships$a2, _item$relationships2, _item$relationships2$, _item$relationships2$2, _item$relationships3, _item$relationships3$, _item$relationships3$2, _item$relationships4, _item$relationships4$, _item$relationships4$2;
 
@@ -54391,12 +54391,12 @@ var Kanban = function Kanban(_ref) {
       kanbanData = _ref.kanbanData,
       onChangeStatus = _ref.onChangeStatus;
 
-  var _useState = React$1.useState({}),
+  var _useState = React.useState({}),
       _useState2 = _slicedToArray(_useState, 2),
       columns = _useState2[0],
       setColumns = _useState2[1];
 
-  React$1.useEffect(function () {
+  React.useEffect(function () {
     var COLUMNS = {};
     colNames.forEach(function (cn) {
       COLUMNS[cn] = [];
@@ -54410,7 +54410,7 @@ var Kanban = function Kanban(_ref) {
     });
     setColumns(COLUMNS);
   }, [colNames, items, kanbanData]);
-  var handleChangeColumn = React$1.useCallback(function (params) {
+  var handleChangeColumn = React.useCallback(function (params) {
     var cardId = params.draggableId;
     var destinationColumn = params.destination.droppableId;
     var sourceColumn = params.source.droppableId;
@@ -54627,24 +54627,24 @@ var Logo = styled__default['default'].div(_templateObject$w(), function (props) 
 
 function _extends$g() { _extends$g = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$g.apply(this, arguments); }
 
-var _ref$2 = /*#__PURE__*/React$1.createElement("g", {
+var _ref$2 = /*#__PURE__*/React.createElement("g", {
   clipPath: "url(#logo-black_svg__clip0)"
-}, /*#__PURE__*/React$1.createElement("path", {
+}, /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
   clipRule: "evenodd",
   d: "M119.975 11.637h-11.636V0H98.322v11.637h-11.71v10.016h11.71V33.29h10.017V21.653h11.636V11.637zM33.29 21.653V11.637H0V45h10.016V21.653H33.29zm-6.629 6.702c-9.206 0-16.645 7.439-16.645 16.645h10.017a6.6 6.6 0 016.628-6.629A6.6 6.6 0 0133.29 45h20.032V21.653H76.67V11.637H43.306v33.338c-.014-9.195-7.447-16.62-16.645-16.62zM53.322 45c0-9.206 7.439-16.645 16.645-16.645 9.207 0 16.645 7.439 16.645 16.645H76.596a6.6 6.6 0 00-6.629-6.629A6.6 6.6 0 0063.34 45H53.322z",
   fill: "#171F46"
 }));
 
-var _ref2$1 = /*#__PURE__*/React$1.createElement("defs", null, /*#__PURE__*/React$1.createElement("clipPath", {
+var _ref2$1 = /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("clipPath", {
   id: "logo-black_svg__clip0"
-}, /*#__PURE__*/React$1.createElement("path", {
+}, /*#__PURE__*/React.createElement("path", {
   fill: "#fff",
   d: "M0 0h120v45H0z"
 })));
 
 function SvgLogoBlack(props) {
-  return /*#__PURE__*/React$1.createElement("svg", _extends$g({
+  return /*#__PURE__*/React.createElement("svg", _extends$g({
     width: 120,
     height: 45,
     fill: "none",
@@ -54654,24 +54654,24 @@ function SvgLogoBlack(props) {
 
 function _extends$h() { _extends$h = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$h.apply(this, arguments); }
 
-var _ref$3 = /*#__PURE__*/React$1.createElement("g", {
+var _ref$3 = /*#__PURE__*/React.createElement("g", {
   clipPath: "url(#logo-white_svg__clip0)"
-}, /*#__PURE__*/React$1.createElement("path", {
+}, /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
   clipRule: "evenodd",
   d: "M119.975 11.637h-11.636V0H98.322v11.637h-11.71v10.016h11.71V33.29h10.017V21.653h11.636V11.637zM33.29 21.653V11.637H0V45h10.016V21.653H33.29zm-6.629 6.702c-9.206 0-16.645 7.439-16.645 16.645h10.017a6.6 6.6 0 016.628-6.629A6.6 6.6 0 0133.29 45h20.032V21.653H76.67V11.637H43.306v33.338c-.014-9.195-7.447-16.62-16.645-16.62zM53.322 45c0-9.206 7.439-16.645 16.645-16.645 9.207 0 16.645 7.439 16.645 16.645H76.596a6.6 6.6 0 00-6.629-6.629A6.6 6.6 0 0063.34 45H53.322z",
   fill: "#fff"
 }));
 
-var _ref2$2 = /*#__PURE__*/React$1.createElement("defs", null, /*#__PURE__*/React$1.createElement("clipPath", {
+var _ref2$2 = /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("clipPath", {
   id: "logo-white_svg__clip0"
-}, /*#__PURE__*/React$1.createElement("path", {
+}, /*#__PURE__*/React.createElement("path", {
   fill: "#fff",
   d: "M0 0h120v45H0z"
 })));
 
 function SvgLogoWhite(props) {
-  return /*#__PURE__*/React$1.createElement("svg", _extends$h({
+  return /*#__PURE__*/React.createElement("svg", _extends$h({
     width: 120,
     height: 45,
     fill: "none",
@@ -54681,43 +54681,43 @@ function SvgLogoWhite(props) {
 
 function _extends$i() { _extends$i = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$i.apply(this, arguments); }
 
-var _ref$4 = /*#__PURE__*/React$1.createElement("g", {
+var _ref$4 = /*#__PURE__*/React.createElement("g", {
   clipPath: "url(#logo-colorful_svg__clip0)"
-}, /*#__PURE__*/React$1.createElement("path", {
+}, /*#__PURE__*/React.createElement("path", {
   d: "M107.983 21.58h-9.979v11.642h9.979V21.58zM107.983 0h-9.979v11.642h9.979V0z",
   fill: "#F0513A"
-}), /*#__PURE__*/React$1.createElement("path", {
+}), /*#__PURE__*/React.createElement("path", {
   d: "M9.98 21.58H0v23.243h9.98V21.58z",
   fill: "#DB1E3B"
-}), /*#__PURE__*/React$1.createElement("path", {
+}), /*#__PURE__*/React.createElement("path", {
   d: "M33.222 11.642H0v9.98h33.222v-9.98z",
   fill: "#C5E8F2"
-}), /*#__PURE__*/React$1.createElement("path", {
+}), /*#__PURE__*/React.createElement("path", {
   d: "M26.57 28.233c-9.19 0-16.59 7.443-16.59 16.59h9.979a6.601 6.601 0 016.61-6.61 6.601 6.601 0 016.612 6.61h9.98c.04-9.147-7.402-16.59-16.591-16.59z",
   fill: "#FEC35A"
-}), /*#__PURE__*/React$1.createElement("path", {
+}), /*#__PURE__*/React.createElement("path", {
   d: "M53.18 21.58h-9.978v23.243h9.979V21.58z",
   fill: "#5CB5E6"
-}), /*#__PURE__*/React$1.createElement("path", {
+}), /*#__PURE__*/React.createElement("path", {
   d: "M76.424 11.642H43.202v9.98h33.222v-9.98z",
   fill: "#DB1E3B"
-}), /*#__PURE__*/React$1.createElement("path", {
+}), /*#__PURE__*/React.createElement("path", {
   d: "M119.584 11.642H86.362v9.98h33.222v-9.98z",
   fill: "#5CB5E6"
-}), /*#__PURE__*/React$1.createElement("path", {
+}), /*#__PURE__*/React.createElement("path", {
   d: "M69.771 28.233c-9.189 0-16.59 7.443-16.59 16.59h9.98a6.601 6.601 0 016.61-6.61 6.601 6.601 0 016.612 6.61h9.979c0-9.147-7.443-16.59-16.59-16.59z",
   fill: "#F0513A"
 }));
 
-var _ref2$3 = /*#__PURE__*/React$1.createElement("defs", null, /*#__PURE__*/React$1.createElement("clipPath", {
+var _ref2$3 = /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("clipPath", {
   id: "logo-colorful_svg__clip0"
-}, /*#__PURE__*/React$1.createElement("path", {
+}, /*#__PURE__*/React.createElement("path", {
   fill: "#fff",
   d: "M0 0h120v45H0z"
 })));
 
 function SvgLogoColorful(props) {
-  return /*#__PURE__*/React$1.createElement("svg", _extends$i({
+  return /*#__PURE__*/React.createElement("svg", _extends$i({
     width: 120,
     height: 45,
     fill: "none",
@@ -54727,7 +54727,7 @@ function SvgLogoColorful(props) {
 
 function _extends$j() { _extends$j = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$j.apply(this, arguments); }
 
-var _ref$5 = /*#__PURE__*/React$1.createElement("path", {
+var _ref$5 = /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
   clipRule: "evenodd",
   d: "M108.313 33.23H98.295V21.632H86.697v-9.987h11.598V.035h10.018v11.61h11.681v9.987h-11.681V33.23zM0 11.603h33.332v9.988H10.018v23.207H0V11.603zm26.667 16.671c9.208 0 16.648 7.418 16.648 16.597H33.297a6.592 6.592 0 00-6.63-6.61 6.592 6.592 0 00-6.63 6.61H10.018c0-9.18 7.44-16.597 16.649-16.597zm26.666-16.67H43.315v33.194h10.018v-23.15h23.33v-9.987h-23.33v-.058zm16.649 16.67c9.208 0 16.648 7.418 16.648 16.597H76.612a6.592 6.592 0 00-6.63-6.61 6.592 6.592 0 00-6.63 6.61H53.333c0-9.18 7.44-16.597 16.649-16.597zM57.09 55.226c-.073.294-.073.588-.073.955V60h-.81v-1.983c-.074.147-.222.294-.443.44a4.943 4.943 0 00-.065.023l-.043.015c-.168.06-.31.11-.555.11-.294 0-.589-.074-.81-.22-.221-.148-.368-.368-.516-.588a1.951 1.951 0 01-.22-.881c0-.368.073-.661.22-.955.148-.294.295-.44.516-.661.221-.22.516-.22.81-.22.295 0 .516.073.663.146.221.147.369.294.442.514l.074-.587h.81v.073zm-1.105 2.497c.148-.22.221-.44.221-.807 0-.368-.073-.661-.22-.808-.148-.22-.37-.294-.664-.294-.294 0-.515.073-.663.294-.147.22-.22.44-.22.808 0 .367.073.587.22.807.148.22.369.294.663.294a.936.936 0 00.663-.294zm5.083.882v-3.379h-.884v1.836c0 .294-.073.515-.22.661a.838.838 0 01-.59.22c-.221 0-.369 0-.442-.146-.074-.074-.148-.294-.148-.514v-2.057h-.81v2.057c0 .954.442 1.395 1.253 1.395.22 0 .442-.073.589-.147l.028-.019.045-.03c.18-.117.304-.197.369-.391v.514h.81zm3.904-1.616h-2.357c0 .367.074.66.295.808.147.147.368.22.736.22.369 0 .737-.147 1.032-.367l.22.587c-.147.147-.368.22-.589.294-.22.074-.442.147-.736.147-.516 0-.958-.147-1.326-.44-.295-.294-.442-.735-.442-1.249 0-.367.074-.661.22-.881.148-.294.296-.44.59-.588.221-.147.516-.22.884-.22.442 0 .81.147 1.105.44.295.294.368.735.368 1.249zm-1.989-1.028c-.147.147-.22.294-.294.587h1.547c0-.22-.074-.44-.221-.587a.67.67 0 00-.516-.22c-.22 0-.442.073-.516.22zm7.883.587c0-.44-.074-.808-.295-1.028a.701.701 0 00-.737-.294c-.22 0-.442 0-.663.147-.147.074-.368.22-.442.44-.147-.44-.515-.66-1.031-.66-.244 0-.387.05-.555.11l-.108.037a.663.663 0 00-.442.44l-.074-.514h-.81c.074.294.074.588.074.955v2.424h.81v-1.91c0-.294.074-.514.221-.66.074-.148.295-.221.516-.221.22 0 .368 0 .442.147.073.147.147.294.147.587v2.057h.81v-1.91c0-.294.074-.514.221-.66.074-.148.295-.221.516-.221.22 0 .368 0 .442.147.074.147.147.294.147.587v2.057h.81v-2.057zm2.873 1.102c.368.294.736.367 1.252.367.22 0 .368 0 .442-.073.073-.074.147-.147.147-.294 0-.073-.073-.147-.147-.22a.564.564 0 00-.369-.147l-.589-.147c-.59-.147-.957-.44-.957-.955 0-.22.073-.367.147-.514.147-.147.294-.294.515-.367.221-.074.442-.147.737-.147.221 0 .442 0 .663.073.221.074.442.147.59.294l-.222.588c-.368-.22-.662-.367-1.03-.367-.222 0-.37 0-.443.073-.073.073-.147.147-.147.294 0 .073 0 .147.073.22a.386.386 0 00.154.087c.04.014.085.032.141.06l.59.147c.368.073.589.22.736.367a.833.833 0 01.221.588c0 .293-.147.587-.368.734a1.91 1.91 0 01-1.031.294 1.678 1.678 0 01-1.326-.367l.22-.588zm6.63.955v-3.379h-.811v.514a.663.663 0 00-.442-.44c-.221-.074-.442-.147-.663-.147-.295 0-.59 0-.81.22-.221.22-.369.367-.516.661a2.028 2.028 0 00-.22.955c0 .294.073.588.22.881.147.22.295.44.516.588.22.147.515.22.81.22.221 0 .442-.073.663-.147a.663.663 0 00.442-.44v.514h.81zm-.811-1.69c0 .368-.074.588-.221.808l-.023.016-.083.058h-.002v.001c-.168.118-.31.22-.555.22-.295 0-.516-.074-.663-.295-.147-.22-.22-.44-.22-.807 0-.368.073-.588.22-.808.147-.22.368-.294.663-.294.295 0 .516.073.663.294.147.147.221.44.221.808zm4.494-1.542c.22.147.368.367.515.588.148.294.221.587.221.881 0 .367-.073.661-.22.955-.148.294-.295.44-.516.587-.221.147-.516.22-.737.22-.221 0-.442-.073-.663-.146a.663.663 0 01-.442-.44v.587h-.81v-4.92h.81v2.055a.663.663 0 01.442-.44c.221-.074.442-.147.663-.147.22 0 .516.073.737.22zm-.369 2.35c.148-.22.221-.44.221-.807 0-.368-.073-.588-.22-.808-.148-.22-.37-.294-.664-.294-.294 0-.515.073-.663.294-.147.22-.22.44-.22.808 0 .367.073.66.22.807.148.22.369.294.663.294a.935.935 0 00.663-.294zm2.505-.734H88.545c0-.514-.073-.955-.368-1.248-.295-.294-.663-.441-1.105-.441-.368 0-.663.073-.884.22a1.149 1.149 0 00-.59.588c-.147.22-.22.514-.22.881 0 .514.147.955.442 1.248.368.294.81.441 1.326.441.294 0 .515-.073.736-.147.221-.073.442-.147.59-.294l-.221-.587c-.295.22-.663.367-1.032.367-.368 0-.59-.073-.736-.22-.222-.147-.295-.44-.295-.808zm0-.44c.073-.294.147-.441.294-.588a.67.67 0 01.516-.22.67.67 0 01.516.22.832.832 0 01.22.587h-1.546zm3.904 1.1v.588c0 .22-.074.441-.147.661-.074.22-.221.368-.442.588l-.369-.294c.18-.18.263-.358.327-.498l.042-.09h-.369v-.954h.958zm3.83-2.423v-.293c0-.367.222-.588.59-.588.03 0 .061.013.097.028.05.02.111.046.198.046v-.661c-.148-.074-.295-.074-.516-.074-.368 0-.663.074-.884.294-.221.22-.295.587-.295.955v.293h-.663v.661h.663v2.718h.81v-2.718h.737v-.66h-.736zm4.715 0v3.379h-.81v-.514a.663.663 0 01-.442.44c-.221.074-.442.147-.663.147a1.49 1.49 0 01-.81-.22c-.221-.147-.369-.367-.516-.588a1.951 1.951 0 01-.221-.881c0-.367.074-.661.22-.955.148-.294.296-.44.517-.66.22-.221.515-.221.81-.221.22 0 .442.073.663.147.22.073.368.22.442.44v-.514h.81zm-1.105 2.497c.148-.22.221-.44.221-.807 0-.368-.073-.661-.22-.808-.148-.22-.37-.294-.664-.294-.294 0-.515.073-.663.294-.147.22-.22.44-.22.808 0 .367.073.587.22.807.148.22.369.294.663.294a.935.935 0 00.663-.294zm4.788.22h-1.915l1.768-2.129v-.588h-2.8v.661h1.842l-1.841 2.13v.588h2.946v-.661zm5.452-2.57c.221.147.368.367.515.588a2.02 2.02 0 010 1.836c-.147.294-.294.44-.515.587-.221.147-.516.22-.737.22-.221 0-.442-.073-.663-.146a.664.664 0 01-.442-.44v.587h-.81v-4.92h.81v2.055a.664.664 0 01.442-.44c.221-.074.442-.147.663-.147.221 0 .516.073.737.22zm-.369 2.35c.148-.22.221-.44.221-.807 0-.368-.073-.588-.221-.808-.147-.22-.368-.294-.663-.294-.294 0-.515.073-.663.294-.147.22-.221.44-.221.808 0 .367.074.66.221.807.148.22.369.294.663.294a.934.934 0 00.663-.294zm2.431-.734h2.358c0-.514-.074-.955-.369-1.248-.294-.294-.663-.441-1.105-.441-.368 0-.663.073-.884.22a1.149 1.149 0 00-.589.588c-.147.22-.221.514-.221.881 0 .514.147.955.442 1.248.368.294.81.441 1.326.441.295 0 .516-.073.737-.147.221-.073.442-.147.589-.294l-.221-.587c-.295.22-.663.367-1.031.367-.369 0-.59-.073-.737-.22-.221-.147-.295-.44-.295-.808zm.074-.44c.074-.294.147-.441.295-.588a.668.668 0 01.515-.22.67.67 0 01.516.22.834.834 0 01.221.587h-1.547zm7.882-1.029c.221.22.295.588.295 1.028v2.057h-.811v-2.057c0-.293-.073-.44-.147-.587-.074-.147-.221-.147-.442-.147s-.442.073-.516.22c-.147.147-.221.367-.221.661v1.91h-.81v-2.057c0-.293-.074-.44-.147-.587-.074-.147-.221-.147-.442-.147s-.442.073-.516.22c-.147.147-.221.367-.221.661v1.91h-.81V56.18c0-.367 0-.66-.074-.955h.81l.074.514a.664.664 0 01.442-.44l.108-.037h.001c.167-.06.31-.11.554-.11.516 0 .884.22 1.031.66.074-.22.295-.366.442-.44.221-.147.442-.147.663-.147a.701.701 0 01.737.294zm2.136 2.13h-.957v.955h.957v-.955z",
@@ -54735,7 +54735,7 @@ var _ref$5 = /*#__PURE__*/React$1.createElement("path", {
 });
 
 function SvgLogoBlackTag(props) {
-  return /*#__PURE__*/React$1.createElement("svg", _extends$j({
+  return /*#__PURE__*/React.createElement("svg", _extends$j({
     width: 120,
     height: 60,
     fill: "none",
@@ -54745,7 +54745,7 @@ function SvgLogoBlackTag(props) {
 
 function _extends$k() { _extends$k = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$k.apply(this, arguments); }
 
-var _ref$6 = /*#__PURE__*/React$1.createElement("path", {
+var _ref$6 = /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
   clipRule: "evenodd",
   d: "M108.313 33.23H98.295V21.632H86.697v-9.987h11.598V.035h10.018v11.61h11.681v9.987h-11.681V33.23zM0 11.603h33.332v9.988H10.018v23.207H0V11.603zm26.667 16.671c9.208 0 16.648 7.418 16.648 16.597H33.297a6.592 6.592 0 00-6.63-6.61 6.592 6.592 0 00-6.63 6.61H10.018c0-9.18 7.44-16.597 16.649-16.597zm26.666-16.67H43.315v33.194h10.018v-23.15h23.33v-9.987h-23.33v-.058zm16.649 16.67c9.208 0 16.648 7.418 16.648 16.597H76.612a6.592 6.592 0 00-6.63-6.61 6.592 6.592 0 00-6.63 6.61H53.333c0-9.18 7.44-16.597 16.649-16.597zM57.09 55.226c-.073.294-.073.588-.073.955V60h-.81v-1.983c-.074.147-.222.294-.443.44a4.943 4.943 0 00-.065.023l-.043.015c-.168.06-.31.11-.555.11-.294 0-.589-.074-.81-.22-.221-.148-.368-.368-.516-.588a1.951 1.951 0 01-.22-.881c0-.368.073-.661.22-.955.148-.294.295-.44.516-.661.221-.22.516-.22.81-.22.295 0 .516.073.663.146.221.147.369.294.442.514l.074-.587h.81v.073zm-1.105 2.497c.148-.22.221-.44.221-.807 0-.368-.073-.661-.22-.808-.148-.22-.37-.294-.664-.294-.294 0-.515.073-.663.294-.147.22-.22.44-.22.808 0 .367.073.587.22.807.148.22.369.294.663.294a.936.936 0 00.663-.294zm5.083.882v-3.379h-.884v1.836c0 .294-.073.515-.22.661a.838.838 0 01-.59.22c-.221 0-.369 0-.442-.146-.074-.074-.148-.294-.148-.514v-2.057h-.81v2.057c0 .954.442 1.395 1.253 1.395.22 0 .442-.073.589-.147l.028-.019.045-.03c.18-.117.304-.197.369-.391v.514h.81zm3.904-1.616h-2.357c0 .367.074.66.295.808.147.147.368.22.736.22.369 0 .737-.147 1.032-.367l.22.587c-.147.147-.368.22-.589.294-.22.074-.442.147-.736.147-.516 0-.958-.147-1.326-.44-.295-.294-.442-.735-.442-1.249 0-.367.074-.661.22-.881.148-.294.296-.44.59-.588.221-.147.516-.22.884-.22.442 0 .81.147 1.105.44.295.294.368.735.368 1.249zm-1.989-1.028c-.147.147-.22.294-.294.587h1.547c0-.22-.074-.44-.221-.587a.67.67 0 00-.516-.22c-.22 0-.442.073-.516.22zm7.883.587c0-.44-.074-.808-.295-1.028a.701.701 0 00-.737-.294c-.22 0-.442 0-.663.147-.147.074-.368.22-.442.44-.147-.44-.515-.66-1.031-.66-.244 0-.387.05-.555.11l-.108.037a.663.663 0 00-.442.44l-.074-.514h-.81c.074.294.074.588.074.955v2.424h.81v-1.91c0-.294.074-.514.221-.66.074-.148.295-.221.516-.221.22 0 .368 0 .442.147.073.147.147.294.147.587v2.057h.81v-1.91c0-.294.074-.514.221-.66.074-.148.295-.221.516-.221.22 0 .368 0 .442.147.074.147.147.294.147.587v2.057h.81v-2.057zm2.873 1.102c.368.294.736.367 1.252.367.22 0 .368 0 .442-.073.073-.074.147-.147.147-.294 0-.073-.073-.147-.147-.22a.564.564 0 00-.369-.147l-.589-.147c-.59-.147-.957-.44-.957-.955 0-.22.073-.367.147-.514.147-.147.294-.294.515-.367.221-.074.442-.147.737-.147.221 0 .442 0 .663.073.221.074.442.147.59.294l-.222.588c-.368-.22-.662-.367-1.03-.367-.222 0-.37 0-.443.073-.073.073-.147.147-.147.294 0 .073 0 .147.073.22a.386.386 0 00.154.087c.04.014.085.032.141.06l.59.147c.368.073.589.22.736.367a.833.833 0 01.221.588c0 .293-.147.587-.368.734a1.91 1.91 0 01-1.031.294 1.678 1.678 0 01-1.326-.367l.22-.588zm6.63.955v-3.379h-.811v.514a.663.663 0 00-.442-.44c-.221-.074-.442-.147-.663-.147-.295 0-.59 0-.81.22-.221.22-.369.367-.516.661a2.028 2.028 0 00-.22.955c0 .294.073.588.22.881.147.22.295.44.516.588.22.147.515.22.81.22.221 0 .442-.073.663-.147a.663.663 0 00.442-.44v.514h.81zm-.811-1.69c0 .368-.074.588-.221.808l-.023.016-.083.058h-.002v.001c-.168.118-.31.22-.555.22-.295 0-.516-.074-.663-.295-.147-.22-.22-.44-.22-.807 0-.368.073-.588.22-.808.147-.22.368-.294.663-.294.295 0 .516.073.663.294.147.147.221.44.221.808zm4.494-1.542c.22.147.368.367.515.588.148.294.221.587.221.881 0 .367-.073.661-.22.955-.148.294-.295.44-.516.587-.221.147-.516.22-.737.22-.221 0-.442-.073-.663-.146a.663.663 0 01-.442-.44v.587h-.81v-4.92h.81v2.055a.663.663 0 01.442-.44c.221-.074.442-.147.663-.147.22 0 .516.073.737.22zm-.369 2.35c.148-.22.221-.44.221-.807 0-.368-.073-.588-.22-.808-.148-.22-.37-.294-.664-.294-.294 0-.515.073-.663.294-.147.22-.22.44-.22.808 0 .367.073.66.22.807.148.22.369.294.663.294a.935.935 0 00.663-.294zm2.505-.734H88.545c0-.514-.073-.955-.368-1.248-.295-.294-.663-.441-1.105-.441-.368 0-.663.073-.884.22a1.149 1.149 0 00-.59.588c-.147.22-.22.514-.22.881 0 .514.147.955.442 1.248.368.294.81.441 1.326.441.294 0 .515-.073.736-.147.221-.073.442-.147.59-.294l-.221-.587c-.295.22-.663.367-1.032.367-.368 0-.59-.073-.736-.22-.222-.147-.295-.44-.295-.808zm0-.44c.073-.294.147-.441.294-.588a.67.67 0 01.516-.22.67.67 0 01.516.22.832.832 0 01.22.587h-1.546zm3.904 1.1v.588c0 .22-.074.441-.147.661-.074.22-.221.368-.442.588l-.369-.294c.18-.18.263-.358.327-.498l.042-.09h-.369v-.954h.958zm3.83-2.423v-.293c0-.367.222-.588.59-.588.03 0 .061.013.097.028.05.02.111.046.198.046v-.661c-.148-.074-.295-.074-.516-.074-.368 0-.663.074-.884.294-.221.22-.295.587-.295.955v.293h-.663v.661h.663v2.718h.81v-2.718h.737v-.66h-.736zm4.715 0v3.379h-.81v-.514a.663.663 0 01-.442.44c-.221.074-.442.147-.663.147a1.49 1.49 0 01-.81-.22c-.221-.147-.369-.367-.516-.588a1.951 1.951 0 01-.221-.881c0-.367.074-.661.22-.955.148-.294.296-.44.517-.66.22-.221.515-.221.81-.221.22 0 .442.073.663.147.22.073.368.22.442.44v-.514h.81zm-1.105 2.497c.148-.22.221-.44.221-.807 0-.368-.073-.661-.22-.808-.148-.22-.37-.294-.664-.294-.294 0-.515.073-.663.294-.147.22-.22.44-.22.808 0 .367.073.587.22.807.148.22.369.294.663.294a.935.935 0 00.663-.294zm4.788.22h-1.915l1.768-2.129v-.588h-2.8v.661h1.842l-1.841 2.13v.588h2.946v-.661zm5.452-2.57c.221.147.368.367.515.588a2.02 2.02 0 010 1.836c-.147.294-.294.44-.515.587-.221.147-.516.22-.737.22-.221 0-.442-.073-.663-.146a.664.664 0 01-.442-.44v.587h-.81v-4.92h.81v2.055a.664.664 0 01.442-.44c.221-.074.442-.147.663-.147.221 0 .516.073.737.22zm-.369 2.35c.148-.22.221-.44.221-.807 0-.368-.073-.588-.221-.808-.147-.22-.368-.294-.663-.294-.294 0-.515.073-.663.294-.147.22-.221.44-.221.808 0 .367.074.66.221.807.148.22.369.294.663.294a.934.934 0 00.663-.294zm2.431-.734h2.358c0-.514-.074-.955-.369-1.248-.294-.294-.663-.441-1.105-.441-.368 0-.663.073-.884.22a1.149 1.149 0 00-.589.588c-.147.22-.221.514-.221.881 0 .514.147.955.442 1.248.368.294.81.441 1.326.441.295 0 .516-.073.737-.147.221-.073.442-.147.589-.294l-.221-.587c-.295.22-.663.367-1.031.367-.369 0-.59-.073-.737-.22-.221-.147-.295-.44-.295-.808zm.074-.44c.074-.294.147-.441.295-.588a.668.668 0 01.515-.22.67.67 0 01.516.22.834.834 0 01.221.587h-1.547zm7.882-1.029c.221.22.295.588.295 1.028v2.057h-.811v-2.057c0-.293-.073-.44-.147-.587-.074-.147-.221-.147-.442-.147s-.442.073-.516.22c-.147.147-.221.367-.221.661v1.91h-.81v-2.057c0-.293-.074-.44-.147-.587-.074-.147-.221-.147-.442-.147s-.442.073-.516.22c-.147.147-.221.367-.221.661v1.91h-.81V56.18c0-.367 0-.66-.074-.955h.81l.074.514a.664.664 0 01.442-.44l.108-.037h.001c.167-.06.31-.11.554-.11.516 0 .884.22 1.031.66.074-.22.295-.366.442-.44.221-.147.442-.147.663-.147a.701.701 0 01.737.294zm2.136 2.13h-.957v.955h.957v-.955z",
@@ -54753,7 +54753,7 @@ var _ref$6 = /*#__PURE__*/React$1.createElement("path", {
 });
 
 function SvgLogoWhiteTag(props) {
-  return /*#__PURE__*/React$1.createElement("svg", _extends$k({
+  return /*#__PURE__*/React.createElement("svg", _extends$k({
     width: 120,
     height: 60,
     fill: "none",
@@ -54763,53 +54763,53 @@ function SvgLogoWhiteTag(props) {
 
 function _extends$l() { _extends$l = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$l.apply(this, arguments); }
 
-var _ref$7 = /*#__PURE__*/React$1.createElement("path", {
+var _ref$7 = /*#__PURE__*/React.createElement("path", {
   d: "M108.359 21.58H98.345v11.642h10.014V21.58zM108.359 0H98.345v11.642h10.014V0z",
   fill: "#F0513A"
 });
 
-var _ref2$4 = /*#__PURE__*/React$1.createElement("path", {
+var _ref2$4 = /*#__PURE__*/React.createElement("path", {
   d: "M10.014 21.58H0v23.243h10.014V21.58z",
   fill: "#DB1E3B"
 });
 
-var _ref3 = /*#__PURE__*/React$1.createElement("path", {
+var _ref3 = /*#__PURE__*/React.createElement("path", {
   d: "M33.338 11.642H0v9.98h33.338v-9.98z",
   fill: "#C5E8F2"
 });
 
-var _ref4 = /*#__PURE__*/React$1.createElement("path", {
+var _ref4 = /*#__PURE__*/React.createElement("path", {
   d: "M26.662 28.233c-9.221 0-16.648 7.443-16.648 16.59h10.014c0-3.659 2.962-6.61 6.634-6.61s6.634 2.951 6.634 6.61H43.31c.042-9.147-7.427-16.59-16.648-16.59z",
   fill: "#FEC35A"
 });
 
-var _ref5 = /*#__PURE__*/React$1.createElement("path", {
+var _ref5 = /*#__PURE__*/React.createElement("path", {
   d: "M53.366 21.58H43.352v23.243h10.014V21.58z",
   fill: "#5CB5E6"
 });
 
-var _ref6 = /*#__PURE__*/React$1.createElement("path", {
+var _ref6 = /*#__PURE__*/React.createElement("path", {
   d: "M76.69 11.642H43.352v9.98H76.69v-9.98z",
   fill: "#DB1E3B"
 });
 
-var _ref7 = /*#__PURE__*/React$1.createElement("path", {
+var _ref7 = /*#__PURE__*/React.createElement("path", {
   d: "M120 11.642H86.662v9.98H120v-9.98z",
   fill: "#5CB5E6"
 });
 
-var _ref8 = /*#__PURE__*/React$1.createElement("path", {
+var _ref8 = /*#__PURE__*/React.createElement("path", {
   d: "M70.014 28.233c-9.221 0-16.648 7.443-16.648 16.59H63.38c0-3.659 2.962-6.61 6.634-6.61s6.634 2.951 6.634 6.61h10.014c0-9.147-7.469-16.59-16.648-16.59z",
   fill: "#F0513A"
 });
 
-var _ref9 = /*#__PURE__*/React$1.createElement("path", {
+var _ref9 = /*#__PURE__*/React.createElement("path", {
   d: "M56.203 55.8c-.083-.207-.25-.374-.459-.499a1.228 1.228 0 00-.667-.166 1.73 1.73 0 00-.793.208c-.25.125-.417.374-.543.624-.125.25-.208.582-.208.915 0 .332.041.665.167.914.125.25.292.458.542.624.209.125.5.208.793.208.25 0 .459-.042.626-.166.208-.084.334-.25.417-.416V60h.834v-3.825c0-.375 0-.666.042-.957h-.793l.042.582zm-.25 1.872a.752.752 0 01-.626.29c-.292 0-.5-.083-.668-.29-.167-.167-.25-.458-.25-.79 0-.333.083-.624.25-.832a.752.752 0 01.626-.291c.292 0 .5.083.668.29.167.209.208.458.208.833.042.332-.041.623-.208.79zM60.209 57.09c0 .249-.084.498-.209.623a.759.759 0 01-.584.25c-.209 0-.376-.042-.46-.167a.924.924 0 01-.166-.54v-2.038h-.835v2.038c0 .914.418 1.372 1.252 1.372.25 0 .417-.042.626-.166.167-.084.334-.25.417-.416v.499h.835v-3.368h-.835v1.912h-.041zM63.463 55.135a1.77 1.77 0 00-.834.208c-.25.125-.46.374-.584.624a2.11 2.11 0 00-.21.915c0 .54.168.956.46 1.288.334.291.75.458 1.293.458.25 0 .46-.042.71-.125.25-.083.417-.166.584-.291l-.25-.582c-.334.25-.668.374-1.044.374-.333 0-.542-.083-.709-.25-.167-.166-.25-.415-.25-.79h2.336v-.124c0-.54-.125-.915-.417-1.248-.25-.332-.626-.457-1.085-.457zm-.793 1.372c.042-.25.126-.457.25-.582a.795.795 0 01.543-.208c.209 0 .417.083.543.208.125.125.208.333.25.582H62.67zM69.722 55.135c-.25 0-.46.042-.668.166a1.21 1.21 0 00-.459.458c-.167-.416-.5-.624-1.001-.624-.25 0-.46.042-.626.166-.167.125-.334.25-.417.458l-.042-.54h-.793c.042.29.042.581.042.956v2.411h.835v-1.87c0-.292.083-.5.208-.666a.674.674 0 01.543-.25c.208 0 .333.042.417.167.083.125.125.29.125.582v2.037h.835v-1.87c0-.292.083-.5.208-.666.125-.166.292-.25.543-.25.208 0 .333.042.417.167.083.125.125.29.125.582v2.037h.834v-2.079c0-.457-.083-.831-.292-1.04-.166-.207-.459-.332-.834-.332zM75.396 56.632l-.584-.125c-.167-.041-.25-.083-.334-.166-.083-.042-.083-.125-.083-.25 0-.124.042-.207.167-.29a.751.751 0 01.459-.125c.375 0 .71.124 1.043.374l.25-.582a2.662 2.662 0 00-.584-.333 1.956 1.956 0 00-.71-.125c-.291 0-.5.042-.709.125a1.139 1.139 0 00-.5.374.834.834 0 00-.167.54c0 .5.292.79.918.957l.542.125c.167.041.292.083.376.166.083.042.125.125.125.25s-.042.208-.167.29c-.125.084-.25.084-.459.084-.459 0-.876-.125-1.252-.416l-.25.582c.376.291.834.416 1.46.416.418 0 .793-.083 1.002-.29.25-.167.375-.417.375-.75a.845.845 0 00-.25-.623c-.083 0-.334-.125-.668-.208zM79.527 55.717a.904.904 0 00-.459-.416 1.228 1.228 0 00-.667-.166 1.73 1.73 0 00-.793.208c-.209.166-.417.374-.543.624-.125.25-.208.582-.208.915 0 .332.041.665.167.914.125.25.292.458.542.624.209.125.5.208.793.208.25 0 .459-.042.668-.166.208-.125.333-.25.459-.416v.54h.834v-3.368h-.834v.5h.041zm-.208 1.955a.752.752 0 01-.626.29c-.292 0-.501-.083-.668-.29-.167-.167-.25-.458-.25-.79 0-.333.083-.624.25-.832a.752.752 0 01.626-.291c.292 0 .5.083.668.29.166.209.208.458.208.833 0 .332-.083.623-.208.79zM84.033 55.343a1.603 1.603 0 00-.792-.208c-.25 0-.46.042-.668.166-.209.125-.334.25-.459.416V53.68h-.835v4.906h.835v-.54c.084.208.25.332.417.457.167.125.417.166.668.166.292 0 .542-.083.75-.207.21-.167.418-.375.543-.624a2.11 2.11 0 00.209-.915c0-.333-.042-.665-.167-.915-.125-.332-.292-.499-.5-.665zm-.375 2.328a.752.752 0 01-.626.292c-.292 0-.5-.084-.668-.291-.166-.208-.208-.458-.208-.832 0-.333.083-.624.208-.832.167-.208.376-.29.668-.29.292 0 .5.082.668.29.166.208.208.458.208.79 0 .416-.083.707-.25.873zM86.996 55.135a1.77 1.77 0 00-.835.208c-.25.125-.459.374-.584.624a2.11 2.11 0 00-.209.915c0 .54.167.956.46 1.288.292.333.75.458 1.293.458.25 0 .459-.042.71-.125.25-.083.416-.166.583-.291l-.25-.582c-.334.25-.668.374-1.043.374-.334 0-.542-.083-.71-.25-.166-.166-.25-.415-.25-.79h2.337v-.124c0-.54-.125-.915-.417-1.248-.292-.332-.626-.457-1.085-.457zm-.793 1.372c.042-.25.125-.457.25-.582a.795.795 0 01.543-.208c.208 0 .417.083.542.208.125.125.209.333.25.582h-1.585zM89.165 58.586h.418c-.042.208-.167.416-.376.624l.334.291c.209-.208.334-.374.417-.582.084-.208.126-.416.126-.624v-.623h-.919v.914zM93.421 53.97c-.208.209-.292.541-.292.916v.332h-.626v.624h.626v2.744h.835v-2.744h.751v-.624h-.751v-.29c0-.375.167-.583.542-.583.084 0 .209 0 .334.042v-.666a1.856 1.856 0 00-.542-.083c-.376 0-.668.125-.877.333zM97.76 55.717a.903.903 0 00-.458-.416 1.228 1.228 0 00-.668-.166 1.73 1.73 0 00-.793.208c-.25.125-.417.374-.542.624a2.11 2.11 0 00-.209.915c0 .332.042.665.167.914.125.25.292.458.543.624.208.125.5.208.792.208.25 0 .46-.042.668-.166.209-.125.334-.25.459-.416v.54h.835v-3.368h-.835v.5h.042zm-.208 1.955a.752.752 0 01-.626.29c-.292 0-.5-.083-.667-.29-.167-.167-.25-.458-.25-.79 0-.333.083-.624.25-.832a.752.752 0 01.626-.291c.292 0 .5.083.667.29.167.209.209.458.209.833 0 .332-.042.623-.209.79zM102.309 55.8v-.582h-2.838v.624h1.836l-1.877 2.162v.582h2.962v-.623h-1.961l1.878-2.163zM107.733 55.343a1.605 1.605 0 00-.793-.208c-.25 0-.459.042-.667.166-.209.125-.334.25-.459.416V53.68h-.835v4.906h.835v-.54c.083.208.25.332.417.457.167.125.417.166.667.166.293 0 .543-.083.752-.207.208-.167.417-.375.542-.624.125-.25.209-.582.209-.915 0-.333-.042-.665-.167-.915-.084-.332-.251-.499-.501-.665zm-.334 2.328a.751.751 0 01-.626.292c-.292 0-.5-.084-.667-.291-.167-.208-.209-.458-.209-.832 0-.333.084-.624.209-.832.167-.208.375-.29.667-.29.292 0 .501.082.668.29.167.208.209.458.209.79-.042.416-.126.707-.251.873zM110.695 55.135c-.333 0-.584.083-.834.208-.25.166-.459.374-.584.624-.125.25-.209.582-.209.915 0 .54.167.956.459 1.288.292.333.751.458 1.294.458.25 0 .459-.042.709-.125.25-.083.417-.166.584-.291l-.25-.582c-.334.25-.668.374-1.043.374-.334 0-.543-.083-.71-.25-.167-.166-.25-.415-.25-.79h2.336v-.124c0-.54-.125-.915-.417-1.248-.25-.332-.626-.457-1.085-.457zm-.792 1.372c.041-.25.125-.457.25-.582a.795.795 0 01.542-.208c.209 0 .418.083.543.208.125.125.208.333.25.582h-1.585zM116.954 55.135c-.25 0-.459.042-.667.166-.209.125-.334.25-.459.458-.167-.416-.501-.624-1.002-.624-.25 0-.459.042-.626.166-.167.125-.333.25-.417.458l-.042-.54h-.792c.041.29.041.581.041.956v2.411h.835v-1.87c0-.292.083-.5.208-.666a.676.676 0 01.543-.25c.208 0 .334.042.417.167.084.125.125.29.125.582v2.037h.835v-1.87c0-.292.083-.5.208-.666.126-.166.292-.25.543-.25.208 0 .334.042.417.167.084.125.125.29.125.582v2.037h.835v-2.079c0-.457-.084-.831-.292-1.04-.167-.207-.459-.332-.835-.332zM119.875 57.63h-.918v.915h.918v-.915z",
   fill: "#FEC35A"
 });
 
 function SvgLogoColorfulTag(props) {
-  return /*#__PURE__*/React$1.createElement("svg", _extends$l({
+  return /*#__PURE__*/React.createElement("svg", _extends$l({
     width: 120,
     height: 60,
     fill: "none",
@@ -54971,7 +54971,7 @@ var Pagination = function Pagination(_ref) {
       totalPages = _ref$totalPages === void 0 ? currentPage : _ref$totalPages,
       action = _ref.action,
       translate = _ref.translate;
-  var boxes = React$1.useMemo(function () {
+  var boxes = React.useMemo(function () {
     if (totalPages >= 4) {
       if (currentPage === 1 || currentPage === totalPages || currentPage === totalPages - 1) {
         return currentPage === 1 ? [1, 2, '...', totalPages - 1, totalPages] : [1, '...', totalPages - 1, totalPages];
@@ -55146,7 +55146,7 @@ var Sidebar = function Sidebar(_ref) {
       translate = _ref.translate,
       isOpenable = _ref.isOpenable;
 
-  var _useState = React$1.useState(true),
+  var _useState = React.useState(true),
       _useState2 = _slicedToArray(_useState, 2),
       isOpen = _useState2[0],
       setIsOpen = _useState2[1]; // eslint-disable-next-line react/prop-types
@@ -55241,12 +55241,12 @@ var StarsRating = function StarsRating(_ref) {
       onChangeRating = _ref.onChangeRating,
       labels = _ref.labels;
 
-  var _useState = React$1.useState(defaultRating),
+  var _useState = React.useState(defaultRating),
       _useState2 = _slicedToArray(_useState, 2),
       rating = _useState2[0],
       setRating = _useState2[1];
 
-  var _useState3 = React$1.useState(-1),
+  var _useState3 = React.useState(-1),
       _useState4 = _slicedToArray(_useState3, 2),
       hoveredRating = _useState4[0],
       setHoveredRating = _useState4[1];
