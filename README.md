@@ -51,6 +51,7 @@ When commiting in master, a pre-commit hook will comnpile your changes and updat
 
 **Make sure the dist folder is also pushed by running `git status`**
 
+
 ## Form
 ### Schema Rules ⭐️
 

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import get from 'lodash.get';
-import { Link as RouterLink } from 'react-router-dom';
 
 export const Jumbo = styled.h1`
   font-family: Space Grotesk;
@@ -106,7 +105,7 @@ export const Tiny = styled.h3`
       : props.theme?.colors.text};
 `;
 
-export const Link = styled(RouterLink)`
+const StyledLink = styled.a`
   text-decoration: none;
   font-family: Space Grotesk;
   font-style: medium;
@@ -136,6 +135,7 @@ export const Link = styled(RouterLink)`
     color: ${props => props.theme?.colors.brand.red};
   }
 `;
+export const Link = ({to, newTab}) => <StyledLink href={to} target={newTab ? 'blank' : ''}/>
 
 export const ButtonText = styled.span`
   text-decoration: none;
