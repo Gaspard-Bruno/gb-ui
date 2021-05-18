@@ -20,6 +20,7 @@
   },
   "scripts": {
     "start": "PORT=3005 react-app-rewired start",
+    "prepare": "install-peers",
     "clean": "rimraf dist",
     "build": "yarn clean && rollup -c",
     "test": "react-app-rewired test",
