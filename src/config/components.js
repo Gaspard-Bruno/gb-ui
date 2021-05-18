@@ -4,11 +4,9 @@ import FORM from 'Components/utils/form';
 import THEME, { GlobalStyles } from 'Theme';
 import {
   Accordion,
-  Alerts,
   Avatar,
   Badge,
   Button,
-  ButtonGroup,
   Card,
   CheckBoxGroup,
   Divider,
@@ -60,30 +58,11 @@ import {
   AlertText,
   ErrorText,
   StarsRating,
-  SchedulePicker,
   FileUploader,
   TextInput
 } from 'Components';
 
 const components = [
-  {
-    label: 'Form ~ Prefilled',
-    section: 'Form',
-
-    disabled: false,
-    props: {
-      hiddenFields: ['login-buttons'],
-      questions: FORM.gardening.questions,
-      onSubmit: vals => {
-        localStorage.setItem('GARDENING_FORM', JSON.stringify(vals));
-      },
-      answers: JSON.parse(localStorage.getItem('GARDENING_FORM')) || {
-        district: 'Outro'
-      }
-    },
-
-    component: props => <Form {...props}></Form>
-  },
   {
     label: 'Form ~ Settings',
     section: 'Form',
@@ -91,10 +70,13 @@ const components = [
     disabled: false,
     props: {
       previewComponentTitle: 'Settings',
-      questions: FORM.settingsSchema.questions
+      questions: FORM.settingsSchema.questions,
+      onSubmit: vals => {
+        localStorage.setItem('SETTINGS', JSON.stringify(vals));
+      },
+      answers: JSON.parse(localStorage.getItem('SETTINGS')) || {},
     },
-
-    component: props => <Form {...props}></Form>
+    component: props => <Form {...props}></Form>,
   },
   {
     label: 'Avatar',
@@ -136,24 +118,6 @@ const components = [
       }
     },
     component: props => <TopBar {...props}></TopBar>
-  },
-  {
-    label: 'SchedulePicker',
-    props: {
-      value: {
-        monday: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
-        saturday: [9, 10, 11, 12, 13, 14, 15, 16],
-        sunday: [9, 10, 11, 12, 13, 14, 15, 16],
-        friday: [],
-        thursday: [],
-        tuesday: [],
-        wednesday: [9, 10, 11, 12, 13, 14, 15, 16]
-      },
-      action: values => console.log('action values', values),
-      name: 'Applied-key'
-    },
-    section: 'General',
-    component: props => <SchedulePicker {...props} />
   },
   {
     label: 'FileUploader',
@@ -229,64 +193,6 @@ const components = [
       }
     ]
   },
-  {
-    label: 'Form',
-    props: [
-      {
-        previewComponentTitle: 'Become Specialist',
-        answers: FORM.specialistFormAnswers,
-        questions: FORM.becomeSpecialist.questions
-        //isDisabled: true
-      },
-      {
-        previewComponentTitle: 'Gardening (Pre-filled) with errors',
-        questions: FORM.gardening.questions,
-        hiddenFields: ['district', 'login-buttons'],
-        answers: { ...FORM.gardeningAnswers, district: 'Outro' }
-      },
-      {
-        previewComponentTitle: 'Chef',
-        questions: FORM.chefAtHome.questions
-      },
-      {
-        questions: FORM.repairs.questions,
-        previewComponentTitle: 'Repairs'
-      },
-      {
-        previewComponentTitle: 'Music Lessons',
-        questions: FORM.musicLessons.questions
-      },
-      {
-        previewComponentTitle: 'Tailoring',
-        questions: FORM.sewing.questions
-      },
-      {
-        previewComponentTitle: 'Pet Sitting',
-        questions: FORM.petsitting.questions
-      }
-    ],
-    section: 'Form',
-    component: props => <Form {...props}></Form>
-  },
-  {
-    label: 'ButtonGroup',
-    props: {
-      list: [
-        { value: 0, label: 'S', isSelected: true },
-        { value: 1, label: 'T', isSelected: true },
-        { value: 2, label: 'Q', isSelected: true },
-        { value: 3, label: 'Q', isSelected: true },
-        { value: 4, label: 'S', isSelected: true },
-        { value: 5, label: 'S', isSelected: true },
-        { value: 6, label: 'D', isSelected: false }
-      ],
-      label: 'Button Group'
-    },
-    disabled: false,
-    section: 'Form',
-    component: props => <ButtonGroup {...props} />
-  },
-
   {
     label: 'CheckBoxGroup',
     props: [

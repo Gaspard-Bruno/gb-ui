@@ -1,9 +1,10 @@
 //========================================================================================
 /*                                                                                      *
- *                                         Usage                                        *
+ *                             TSV to JSON districts parser                             *
  *                                                                                      */
 //========================================================================================
 //──── node parse-districts {path to .tsv} {output path} ────────────────────────────────────
+//──── resulting prices.json will be used as options for the district widget ─────────────
 
 var fs = require('fs');
 var path = require('path');

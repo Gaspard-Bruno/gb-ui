@@ -10,14 +10,10 @@ import Select from '../Select';
 import TextArea from '../TextArea';
 import Accordion from '../Accordion';
 import CheckBoxGroup from '../CheckBoxGroup';
-import ButtonGroup from '../ButtonGroup';
 import RadioButton from '../RadioButton';
 import Switcher from '../Switcher';
-import SchedulePicker from '../SchedulePicker';
-
+import MultiFieldRender from '../MultiFieldRender';
 import FileUploader from '../FileUploader';
-import OfferTypeWidget from '../OfferTypeWidget';
-import ServiceTypeWidget from '../ServiceTypeWidget';
 import CheckBoxWidget from '../CheckBoxWidget';
 
 import Tabs from '../Tabs';
@@ -25,7 +21,6 @@ import MiniForm from '../MiniForm';
 import Button from '../Button';
 import { Body, Heading } from '../Text';
 import { Col, Row } from '../Layout';
-import MultiFieldRender from '../MultiFieldRender';
 import { FormContainer, StyledForm, StyledCol } from './styles';
 import useFormErrors from '../../hooks/useFormErrors';
 
@@ -86,10 +81,7 @@ const Form = ({
     const getAnswers = qs =>
       qs.forEach((q, parent) => {
         const typeDefault =
-          (q.type === 'array' || q.type === 'uniq-array') &&
-          !q.widget === 'schedule-picker'
-            ? []
-            : undefined;
+          q.type === 'array' || q.type === 'uniq-array' ? [] : undefined;
         if (q.key) {
           if (q.type === 'object') {
             getAnswers(q.questions);
@@ -235,33 +227,6 @@ const Form = ({
                   fieldProps.onChange(values, { key: 'files' });
                 }}
                 error={fieldProps?.error}
-              />
-            );
-          case 'offer-type':
-            return (
-              <OfferTypeWidget
-                key={'otw-' + (field.key || parentKey)}
-                offerType={field.formOfferType}
-                packOptions={field.options}
-                answers={answers}
-                errors={formErrors}
-                values={formik?.values}
-                urgentPrices={field?.urgentPrices}
-                action={values => {
-                  fieldProps.onChange(values.value, { key: values.name });
-                }}
-              />
-            );
-          case 'schedule-picker':
-            return (
-              <SchedulePicker
-                name={field.key}
-                key={field.key}
-                value={fieldProps.value}
-                t={translate}
-                action={values => {
-                  fieldProps.onChange(values, field);
-                }}
               />
             );
           case 'mini-form':
@@ -414,17 +379,6 @@ const Form = ({
                 }}
               />
             );
-          case 'service-type-detail':
-            return (
-              <React.Fragment key={'service-widget'}>
-                <ServiceTypeWidget
-                  heading={field?.heading}
-                  headerText={field?.headerText}
-                  body={field.body}
-                  extras={field.extras}
-                />
-              </React.Fragment>
-            );
           case 'district':
             return (
               <React.Fragment key={'district'}>
@@ -574,19 +528,6 @@ const Form = ({
                 action={values => {
                   fieldProps.onChange(values, field);
                 }}
-              />
-            );
-          case 'button-group':
-            return (
-              <ButtonGroup
-                name={fieldProps.key}
-                label={fieldProps?.label}
-                list={field?.options}
-                value={formik?.values[field.key]}
-                action={values => {
-                  fieldProps.onChange(values.value, field);
-                }}
-                {...fieldProps}
               />
             );
           default:
@@ -775,15 +716,12 @@ Form.propTypes = {
         'form',
         'object',
         'file-uploader',
-        'offer-type',
-        'schedule-pickker',
         'footnote',
         'array',
         'text-area',
         'tabs',
         'mini-text',
         'space',
-        'service-type-detail',
         'district',
         'add-field',
         'uniq-array',

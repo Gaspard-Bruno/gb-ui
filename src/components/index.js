@@ -1,9 +1,7 @@
 import Accordion from './Accordion';
-import Alerts from './Alerts';
 import Avatar from './Avatar';
 import Badge, { getBadgeColorFromStatus } from './Badge';
 import Button from './Button';
-import ButtonGroup from './ButtonGroup';
 import Card from './Card';
 import Checkbox from './Checkbox';
 import CheckBoxGroup from './CheckBoxGroup';
@@ -17,7 +15,6 @@ import IconSwitch from './IconSwitch';
 import Kanban from './Kanban';
 import KanbanCard from './KanbanCard';
 import KanbanColumn from './KanbanColumn';
-import SchedulePicker from './SchedulePicker';
 import {
   media,
   Page,
@@ -68,11 +65,9 @@ import {
 
 export {
   Accordion,
-  Alerts,
   Avatar,
   Badge,
   Button,
-  ButtonGroup,
   Card,
   Checkbox,
   CheckBoxGroup,
@@ -126,7 +121,6 @@ export {
   AlertTitle,
   AlertText,
   ErrorText,
-  SchedulePicker,
   FileUploader,
   Slider,
   StarsRating,
