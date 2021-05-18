@@ -22,7 +22,7 @@ const TextArea = styled.textarea`
     ${props =>
       props.error
         ? props.theme?.colors.feedback.error.default
-        : props.theme?.colors.mediumBeige};
+        : props.theme?.colors.brand?.altLight};
   font-family: Muli;
   font-style: normal;
   font-weight: normal;
@@ -39,7 +39,7 @@ const TextArea = styled.textarea`
         : props.theme?.colors.darkBlue};
   }
   &:disabled {
-    background-color: ${props => props.theme?.colors.lightBeige};
+    background-color: ${props => props.theme?.colors.brand?.altLight};
     color: ${props => props.theme?.colors.grey};
   }
 `;

@@ -2,24 +2,24 @@ import styled from 'styled-components';
 import { Row } from '../Layout';
 
 export const FileUploaderContainer = styled.div`
-  background: ${props => props.theme.colors.white};
-  border: 1px dashed ${props => props.theme.colors.mediumBeige};
-  box-sizing: border-box;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  outline: none;
-  transition: border 0.24s ease-in-out;
-  align-items: center;
-  button,
-  p {
-    margin: 8px !important;
-  }
-  svg {
-    margin: 10px;
-  }
-`;
+         background: ${props => props.theme.colors.white};
+         border: 1px dashed ${props => props.theme.colors.brand?.altLight};
+         box-sizing: border-box;
+         border-radius: 4px;
+         display: flex;
+         flex-direction: column;
+         padding: 20px;
+         outline: none;
+         transition: border 0.24s ease-in-out;
+         align-items: center;
+         button,
+         p {
+           margin: 8px !important;
+         }
+         svg {
+           margin: 10px;
+         }
+       `;
 
 export const UploaderRowWrapper = styled(Row)`
   align-items: center;
@@ -67,7 +67,7 @@ export const AnswersTitleHolder = styled.div`
   min-height: 48px;
   align-items: center;
   display: flex;
-  background-color: ${props => props.theme.colors.lightestBeige};
+  background-color: ${props => props.theme.colors?.brand?.altLight};
   p {
     margin: ${props => props.theme.margin}px;
   }

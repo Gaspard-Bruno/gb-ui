@@ -110,7 +110,6 @@ const components = [
       user: {
         attributes: {
           avatar: '#000',
-          avatarDefault: 'blue',
           location: 'non- settings',
           title: 'non-settings',
           fullName: 'David Morais'

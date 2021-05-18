@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledTable = styled.div`
   font-size: 14px;
@@ -8,7 +8,7 @@ const StyledTable = styled.div`
 
 export const Header = styled.div`
   border-radius: 2px;
-  background-color: ${props => props.theme?.colors.lightestBeige};
+  background-color: ${props => props.theme?.colors.brand?.altLight};
   height: 48px;
   width: 100%;
   display: flex;

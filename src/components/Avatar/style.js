@@ -38,7 +38,7 @@ const getRandomColor = (avatarDefault, theme, deleted) => {
 const getTextColor = (size, user, theme) => {
   const colorMap = {
     small: theme.colors.grey,
-    medium: theme.colors.brand.orange,
+    medium: theme.colors.brand.main,
     default: theme.colors.darkBlue
   };
 

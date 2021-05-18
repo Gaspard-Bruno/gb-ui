@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link, Tiny, ButtonText } from '../Text';
 
 const StyledSidebar = styled.div`
-  background-color: ${props => props.theme?.colors.brand.orange};
+  background-color: ${props => props.theme?.colors?.brand?.main};
   color: white;
   transition: width 0.5s linear;
   width: ${props => (props.open ? '240px' : '45px')};
@@ -68,7 +68,7 @@ const getActiveLinkStyle = (theme, active) => {
       `;
   } else {
     return `
-      background-color: ${theme?.colors.brand.orangeLight};
+      background-color: ${theme?.colors?.brand?.mainLight};
       border-left: solid 2px white;
       `;
   }

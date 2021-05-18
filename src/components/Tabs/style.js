@@ -22,7 +22,7 @@ export const TabButton = styled.button`
   cursor: pointer;
   border: none;
   background-color: ${props =>
-    props.isSelected ? props.theme?.colors.brand.orange : 'transparent'};
+    props.isSelected ? props.theme?.colors?.brand?.main : 'transparent'};
   margin-bottom: ${props => props.theme?.margin}px;
   transition: all 0.25s;
   > * {

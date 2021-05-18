@@ -15,27 +15,27 @@ const getStyleFromBtnType = (type = 'primary', disabled, theme) => {
     case 'primary':
       return `
         border: 1px solid transparent;
-        background-color: ${theme.colors.brand.yellow};
+        background-color: ${theme.colors?.brand?.alt};
         &:hover {
-          background-color: ${theme.colors.brand.lighter};
+          background-color: ${theme.colors.brand.mainLight};
         }
       `;
     case 'secondary':
       return `
         background-color: ${theme.colors.white};
-        border: 1px solid ${theme.colors.brand.yellow};
+        border: 1px solid ${theme.colors?.brand?.alt};
         &:hover {
           border: 1px solid transparent;
-          background-color: ${theme.colors.brand.lighter};
+          background-color: ${theme.colors.brand.mainLight};
         }
       `;
     case 'terceary':
       return `
-        background-color: ${theme.colors.brand.orange};
+        background-color: ${theme.colors?.brand?.main};
         border: transparent;
         &:hover {
           border: transparent;
-          background-color: ${theme.colors.brand.orangeLight};
+          background-color: ${theme.colors?.brand?.mainLight};
         }
       `;
     case 'transparent':
@@ -43,28 +43,28 @@ const getStyleFromBtnType = (type = 'primary', disabled, theme) => {
         background-color: transparent;
         border: transparent;
         > span {
-          color: ${theme.colors.brand.orange};
+          color: ${theme.colors?.brand?.main};
           &:hover {
-            color: ${theme.colors.brand.orangeDarker};
+            color: ${theme.colors?.brand?.mainDarker};
           }
         }
       `;
     case 'borded':
       return `
-        border: 1px solid ${theme.colors.brand.yellow};
+        border: 1px solid ${theme.colors?.brand?.alt};
         box-sizing: border-box;
         border-radius: 100px;
         background-color: ${theme.colors.white};
         > span {
           color: ${theme.colors.brand.darkBlue};
           &:hover {
-            color: ${theme.colors.brand.orangeDarker};
+            color: ${theme.colors?.brand?.mainDarker};
           }
         }
       `;
     case 'resting':
       return `
-        background-color: ${theme.colors.lightestBeige};
+        background-color: ${theme.colors.alt};
         border: 1px solid transparent;
         > span {
           color: ${theme.colors.grey};
@@ -72,12 +72,12 @@ const getStyleFromBtnType = (type = 'primary', disabled, theme) => {
       `;
     case 'active':
       return `
-        background-color: ${theme.colors.lightestBeige};
+        background-color: ${theme.colors.alt};
         border: 1px solid transparent;
         > span {
-          color: ${theme.colors.brand.orange};
+          color: ${theme.colors?.brand?.main};
           &:hover {
-            color: ${theme.colors.brand.orangeDarker};
+            color: ${theme.colors?.brand?.mainDarker};
           }
         }
       `;
@@ -107,7 +107,7 @@ const getIconStyle = (btnType, theme) => {
   switch (btnType) {
     case 'borded':
       return `
-        border: 1px solid ${theme.colors.brand.yellow};
+        border: 1px solid ${theme.colors?.brand?.alt};
         padding: 8px;
       `;
 

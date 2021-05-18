@@ -25,9 +25,9 @@ export const StyledRadio = styled.button`
   height: ${props => props.theme?.margin * 1.5}px;
   border-radius: 15px;
   border-color: transparent;
-  border: ${props => `1px solid ${props.theme?.colors.mediumBeige}`};
+  border: ${props => `1px solid ${props.theme?.colors.brand?.altLight}`};
   background-color: ${props =>
-    props.isSelected ? props.theme?.colors.brand.yellow : 'white'};
+    props.isSelected ? props.theme?.colors.brand.alt : 'white'};
   transition: all 0.25s;
   > * {
     color: ${props =>

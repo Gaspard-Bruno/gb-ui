@@ -3,13 +3,15 @@ import { media } from '../Layout';
 import theme from 'Theme';
 
 export const ListWrapper = styled.div`
-  white-space: pre-line;
-  padding: ${props => (props.padding ? props.padding : 0)}px;
-  border: ${props =>
-    props.isBorded ? `1px solid ${props.theme?.colors.mediumBeige}` : 'none'};
-  box-sizing: ${props => (props.isBorded ? 'border-box' : 'none')};
-  border-radius: ${props => (props.isBorded ? '10px' : 'none')};
-`;
+         white-space: pre-line;
+         padding: ${props => (props.padding ? props.padding : 0)}px;
+         border: ${props =>
+           props.isBorded
+             ? `1px solid ${props.theme?.colors.brand?.altLight}`
+             : 'none'};
+         box-sizing: ${props => (props.isBorded ? 'border-box' : 'none')};
+         border-radius: ${props => (props.isBorded ? '10px' : 'none')};
+       `;
 
 export const ListContainer = styled.ul`
   padding: 0px;
@@ -48,12 +50,12 @@ const getIconStyle = (style, isIndexed) => {
       font-size: 16px;
       margin-right: ${theme?.margin}px;
       color: white;
-      background: ${theme?.colors.brand.orange};
+      background: ${theme?.colors?.brand?.orange};
       border-radius: 2px;
       text-align: center;«
     }
     p {
-      color: ${isIndexed && theme?.colors.brand.orange};
+      color: ${isIndexed && theme?.colors?.brand?.orange};
     }
     `,
     completed: `
@@ -101,7 +103,7 @@ const regularStyle = `
       font-size: 16px;
       align-items: baseline;
       margin-right: 1.5rem;
-      background: ${theme?.colors.brand.orange};
+      background: ${theme?.colors?.brand?.orange};
       border-radius: 2px;
   }
   `;

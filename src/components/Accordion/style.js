@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const AccordionContainer = styled.div`
-  width: 100%;
-  display: flex;
-  margin-bottom: ${props => props.theme.margin}px;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  border-bottom: 1px solid ${props => props.theme?.colors.mediumBeige};
-`;
+         width: 100%;
+         display: flex;
+         margin-bottom: ${props => props.theme.margin}px;
+         flex-flow: column nowrap;
+         justify-content: flex-start;
+         border-bottom: 1px solid
+           ${props => props.theme?.colors.brand?.altLight};
+       `;
 
 export const AccordionTitle = styled.div`
   display: flex;
@@ -16,7 +17,7 @@ export const AccordionTitle = styled.div`
   justify-content: space-between;
   align-items: center;
   > h2 {
-    color: ${props => props.theme?.colors.brand.orange};
+    color: ${props => props.theme?.colors?.brand?.main};
   }
   > button {
     outline: none;

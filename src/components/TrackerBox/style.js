@@ -1,24 +1,24 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const getActiveStyles = (theme, isActive, type) => {
   if (isActive) {
     return `
             border: ${
-              type === "ellipsis"
-                ? "none"
-                : "1px solid " + theme?.colors.darkBlue
+              type === 'ellipsis'
+                ? 'none'
+                : '1px solid ' + theme?.colors.darkBlue
             };
             color: ${theme?.colors.darkBlue};
         `;
   } else {
     return `
             border: ${
-              type === "ellipsis"
-                ? "none"
-                : "1px solid " + theme?.colors.mediumBeige
+              type === 'ellipsis'
+                ? 'none'
+                : '1px solid ' + theme?.colors.brand?.altLight
             };
             h3 {
-                color: ${theme?.colors.mediumBeige};
+                color: ${theme?.colors.brand?.altLight};
             }
         `;
   }

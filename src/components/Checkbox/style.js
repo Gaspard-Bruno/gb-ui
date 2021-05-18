@@ -37,20 +37,20 @@ const StyledCheckBox = styled.div`
   width: 24px;
   height: 24px;
   border-radius: 3px;
-  border: 1px solid ${props => props.checked 
-    ? props.theme.colors.brand.yellow
-    : props.theme.colors.mediumBeige
-  };
+  border: 1px solid
+    ${props =>
+      props.checked
+        ? props.theme.colors.brand.alt
+        : props.theme.colors.brand?.altLight};
   transition: all 150ms;
   position: relative;
   margin: 0px;
-  background-color: ${props => props.checked 
-    ? props.theme.colors.brand.yellow 
-    : 'white'};
+  background-color: ${props =>
+    props.checked ? props.theme.colors.brand.main : 'white'};
 
-    ${IconContainer} {
-      visibility: ${props => (props.checked ? 'visible' : 'hidden')}
-    }    
+  ${IconContainer} {
+    visibility: ${props => (props.checked ? 'visible' : 'hidden')};
+  }
 `;
 
 export default StyledCheckBox;

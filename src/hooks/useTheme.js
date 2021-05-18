@@ -16,26 +16,32 @@ const useTheme = theme => {
   const [currentTheme, setCurrentTheme] = useState(
     localStorage.getItem(LOCAL_STORAGE_THEME_KEY) || getOSTheme()
   );
-
   const handleChangeTheme = newTheme => {
     if (THEMES[newTheme]) {
       localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
       setCurrentTheme(newTheme);
     }
   };
-
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, getOSTheme());
   }, []);
 
-  console.log('resulting theme', { ...THEMES[currentTheme], ...theme });
-
-  const Provider = (
-    <ThemeProvider theme={{ ...THEMES[currentTheme], ...theme, colors: {
-      ...THEMES[currentTheme].colors,
-      ...theme.colors,
-    } }} />
-  );
+  const Provider = ({ children }) => {
+    return (
+      <ThemeProvider
+        theme={{
+          ...THEMES[currentTheme],
+          ...theme,
+          colors: {
+            ...THEMES[currentTheme].colors,
+            ...theme.colors
+          }
+        }}
+      >
+        {children}
+      </ThemeProvider>
+    );
+  };
 
   return {
     Provider,

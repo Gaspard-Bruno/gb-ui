@@ -6,7 +6,7 @@ const Container = styled.div`
   justify-content: flex-start;
   padding: 0;
   input {
-    border: 1px solid ${props => props.theme.mediumBeige};
+    border: 1px solid ${props => props.theme.brand?.altLight};
   }
   position: relative;
 `;
@@ -18,9 +18,9 @@ const getStylesFromType = (theme, type) => {
     padding-left: 40px;
     color: ${theme.colors.darkBlue};
     position: relative;
-    border: 1px solid ${theme.colors.mediumBeige} !important;
+    border: 1px solid ${theme.colors.brand?.altLight} !important;
     &:focus {
-      outline: ${theme.colors.mediumBeige};
+      outline: ${theme.colors.brand?.altLight};
     }
   `;
   }
@@ -53,7 +53,7 @@ const Input = styled.input`
 const Button = styled.button`
   border-radius: 0 48px 48px 0;
   outline: none !important;
-  background-color: ${props => props.theme.colors.brand.yellow};
+  background-color: ${props => props.theme.colors.brand.alt};
   border: none;
   padding: 0 ${props => props.theme.margin * 1}px;
   flex: 1;

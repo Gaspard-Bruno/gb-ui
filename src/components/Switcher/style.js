@@ -18,7 +18,7 @@ const StyledSwitcher = styled.div`
   border: 1px solid ${props =>
     props.checked || props.disabled
       ? 'transparent'
-      : props.theme.colors.mediumBeige};
+      : props.theme.colors.brand?.altLight};
   box-sizing: border-box;
   border-radius: 30px;
   height: 24px;
@@ -31,7 +31,7 @@ const StyledSwitcher = styled.div`
   ${props =>
     props.disabled &&
     `
-    background-color: ${props.theme.colors.lightBeige};`}
+    background-color: ${props.theme.colors.brand?.altLight};`}
 
   ${props => !props.disabled && 'cursor: pointer;'}
 `;
@@ -41,7 +41,7 @@ export const InnerToggle = styled.div`
   width: 20px;
   border-radius: 50%;
   background-color: ${props =>
-    props.checked || props.disabled ? 'white' : props.theme.colors.mediumBeige};
+    props.checked || props.disabled ? 'white' : props.theme.colors.brand?.altLight};
 `;
 
 export default StyledSwitcher;

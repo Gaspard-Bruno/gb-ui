@@ -1,10 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
+import { BrowserRouter } from 'react-router-dom';
+// import { ThemeProvider } from 'styled-components';
 
-import components from 'Config/components';
+import components from 'showcase/components';
 
-import THEME, { GlobalStyles } from 'Theme';
+import { GlobalStyles, theme55 } from 'Theme';
+import useTheme from 'Hooks/useTheme';
 
 import { Row, Sidebar } from 'Components';
 
@@ -27,9 +28,10 @@ components.forEach(component => {
   });
 });
 
-const Router = () => {
+const ShowCase = () => {
+  const { Provider } = useTheme(theme55);
   return (
-    <ThemeProvider theme={THEME}>
+    <Provider>
       <GlobalStyles />
       <BrowserRouter>
         <Row noWrap inlineStyle={`overflow: hidden; max-height: 100vh;`}>
@@ -37,8 +39,8 @@ const Router = () => {
           <ComponentPage />
         </Row>
       </BrowserRouter>
-    </ThemeProvider>
+    </Provider>
   );
 };
 
-export default Router;
+export default ShowCase;

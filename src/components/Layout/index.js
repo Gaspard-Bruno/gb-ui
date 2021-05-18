@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import get from 'lodash.get';
 
 const media = {
   mobile: styles => `
@@ -26,8 +27,8 @@ const getPageBackground = props => {
   switch (props.bg) {
     case 'white':
       return props.theme?.colors.white;
-    case 'orange':
-      return props.theme?.colors.brand.orange;
+    case 'main':
+      return props.theme?.colors?.brand?.main;
     default:
       return props.theme?.colors.white;
   }
@@ -41,7 +42,7 @@ const Code = styled.div`
     max-height: 50vh;
     overflow-y: scroll;
     padding: 16px;
-    background-color: ${props => props.theme?.colors.mediumBeige}ff;
+    background-color: ${props => props.theme?.colors.brand?.altLight}ff;
   }
 `;
 
@@ -57,7 +58,7 @@ const Page = styled.div`
   &::-webkit-scrollbar {
     margin-top: 32px;
     height: 4px;
-    background-color: ${props => props.theme?.colors.lightestBeige};
+    background-color: ${props => props.theme?.colors.brand?.altLight};
   }
 
   &::-webkit-scrollbar-thumb {
@@ -94,7 +95,7 @@ const BackofficeKanbanContainer = styled.div`
   &::-webkit-scrollbar {
     margin-top: 32px;
     height: 4px;
-    background-color: ${props => props.theme?.colors.lightestBeige};
+    background-color: ${props => props.theme?.colors.brand?.altLight};
   }
 
   &::-webkit-scrollbar-thumb {
@@ -173,21 +174,9 @@ export {
   BackofficeKanbanContainer
 };
 
-export const getSelectedBackground = props => {
-  switch (props.bg) {
-    case 'alt':
-      return props.theme?.colors.lightBeige;
-    case 'secondary':
-      return props.theme?.colors.brand.yellow;
-    case 'terceary':
-      return props.theme?.colors.brand.lightBlue;
-    case 'transparent':
-      return 'transparent';
-    default:
-      return 'transparent';
-  }
+const getSelectedBackground = props => {
+  return get(props.theme?.colors, props.bg, 'transparent');
 };
-
 const FullPage = styled.div`
   background-color: ${props => getSelectedBackground(props)};
 `;

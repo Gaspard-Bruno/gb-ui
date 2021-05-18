@@ -1,31 +1,23 @@
 import styled from 'styled-components';
 import { Heading } from '../Text';
+import get from 'lodash.get';
 
 const getSelectedBackground = props => {
-  switch (props.bg) {
-    case 'alt':
-      return props.theme?.colors.lightBeige;
-    case 'secondary':
-      return props.theme?.colors.brand.yellow;
-    case 'terceary':
-      return props.theme?.colors.brand.lightBlue;
-    default:
-      return props.bg || props.theme?.colors?.white;
-  }
+  return get(props.theme?.colors, props.bg, props.theme?.colors.darkBlue);
 };
 
 export const StyledRemoveSpan = styled.span`
-  color: ${props => props.theme.colors.brand.red};
+  color: ${props => props.theme.colors.feedback?.error?.default};
   fontweight: bold;
   cursor: pointer;
 `;
 export const StyledServiceHeader = styled.div`
   display: flex;
-  background-color: ${props => props.theme.colors.lightBeige};
+  background-color: ${props => props.theme.colors?.brand?.altLight};
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  border-bottom: ${props => `1px solid ${props.theme.colors.mediumBeige}`};
+  border-bottom: ${props => `1px solid ${props.theme.colors?.brand?.altLight}`};
 `;
 
 export const StyledHeaderInfo = styled(Heading)`
@@ -38,7 +30,7 @@ export const StyledForm = styled.div`
   flex-flow: column;
   background-color: ${props => getSelectedBackground(props)};
   margin-bottom: ${props => props.theme?.margin}px;
-  border: ${props => `1px solid ${props.theme.colors.mediumBeige}`};
+  border: ${props => `1px solid ${props.theme.colors?.brand?.altLight}`};
   > h1,
   h2,
   h3,

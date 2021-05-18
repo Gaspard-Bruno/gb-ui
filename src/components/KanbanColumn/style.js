@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const KanbanColumn = styled.div`
-  background-color: ${props => props.theme?.colors.lightestBeige};
+  background-color: ${props => props.theme?.colors.brand?.altLight};
   border-radius: 4px;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@ export const ColumnCardsContainer = styled.div`
     margin-top: 32px;
     height: 4px;
     width: 4px;
-    background-color: ${props => props.theme?.colors.lightestBeige};
+    background-color: ${props => props.theme?.colors.brand?.altLight};
   }
 
   &::-webkit-scrollbar-thumb {
@@ -34,7 +34,7 @@ export const Header = styled.div`
   display: flex;
   position: sticky;
   top: 0;
-  background-color: ${props => props.theme?.colors.lightestBeige};
+  background-color: ${props => props.theme?.colors.brand?.altLight};
   align-items: baseline;
   justify-content: space-between;
   width: 85%;

@@ -133,23 +133,19 @@ export const theme55 = {
   boxShadow: '0 0 3rem #333',
   //──── Colors ────────────────────────────────────────────────────────────────────────────
   colors: {
-    darkBlue: '#171F46',
-    grey: '#88827C',
-    mediumBeige: '#D2CCC6',
-    lightBeige: '#F3E9E1',
-    lightestBeige: '#F8F7F7',
     white: '#FFF',
+    black: '#000',
+    main: '#060e9f',
+    alt: '#88827c',
+    grey: '#31303E',
+    darkBlue: '#272948',
     brand: {
-      yellow: '#dadcff',
-      hover: '#FECE7B',
-      lighter: '#FED58B',
-      darker: '#FDAA15',
-      orange: '#060e9f',
-      orangeLight: ' #F37C6B',
-      orangeDarker: '#DD2A10',
-      blue: '#5CB5E6',
-      lightBlue: '#C5E8F2',
-      red: '#DB1E3B'
+      main: '#060e9f',
+      mainLight: ' #777ab1',
+      mainDarker: '#272948',
+      alt: '#88827C',
+      altLight: '#c7bfb7',
+      altDarker: '#2f2d2a'
     },
     feedback: {
       success: {

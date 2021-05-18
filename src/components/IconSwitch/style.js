@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledSwitch = styled.div`
-  background-color: ${props => props.theme?.colors.lightestBeige};
+  background-color: ${props => props.theme?.colors.brand?.altLight};
   border-radius: 30px;
   display: flex;
   width: 90px;
@@ -16,7 +16,7 @@ const getActive = (active, theme) => {
 
 export const Left = styled.div`
   padding: 10px;
-  border-right: 1px solid ${props => props.theme?.colors.mediumBeige};
+  border-right: 1px solid ${props => props.theme?.colors.brand?.altLight};
 
   path {
     ${props => getActive(props.active, props.theme)};

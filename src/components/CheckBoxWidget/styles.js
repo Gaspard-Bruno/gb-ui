@@ -15,10 +15,10 @@ export const CheckboxWidgetContainer = styled.div`
 `;
 
 export const StyledCheckbox = styled.input`
-  width: ${props => props.theme?.margin * 1.5}px;
-  height: ${props => props.theme?.margin * 1.5}px;
-  border: ${props => `1px solid ${props.theme?.colors.mediumBeige}`};
-`;
+         width: ${props => props.theme?.margin * 1.5}px;
+         height: ${props => props.theme?.margin * 1.5}px;
+         border: ${props => `1px solid ${props.theme?.colors.brand?.altLight}`};
+       `;
 
 export const ContentRow = styled(Row)`
   > div {

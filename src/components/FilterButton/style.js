@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledFilterButton = styled.div`
-  background-color: ${props => props.theme?.colors.lightestBeige};
+  background-color: ${props => props.theme?.colors.brand?.altLight};
   border-radius: 30px;
   display: flex;
   height: 40px;
@@ -17,13 +17,13 @@ const StyledFilterButton = styled.div`
 `;
 
 export const Dropdown = styled.div`
-  position: absolute;
-  top: 40px;
-  background-color: white;
-  padding: 5px;
-  border: solid 1px ${props => props.theme?.colors.mediumBeige};
-  width: 280px;
-`;
+         position: absolute;
+         top: 40px;
+         background-color: white;
+         padding: 5px;
+         border: solid 1px ${props => props.theme?.colors.brand?.altLight};
+         width: 280px;
+       `;
 
 const getIconColor = (filterLabel, theme) => {
   if (filterLabel === "service") {
@@ -57,16 +57,16 @@ export const FilterTitle = styled.div`
 `;
 
 export const CloseContainer = styled.div`
-  border-left: 1px solid ${props => props.theme?.colors.mediumBeige};
-  height: 100%;
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-  margin-left: 10px;
+         border-left: 1px solid ${props => props.theme?.colors.brand?.altLight};
+         height: 100%;
+         display: flex;
+         align-items: center;
+         padding-left: 10px;
+         margin-left: 10px;
 
-  path {
-    fill: ${props => props.theme?.colors.feedback.error.default};
-  }
-`;
+         path {
+           fill: ${props => props.theme?.colors.feedback.error.default};
+         }
+       `;
 
 export default StyledFilterButton;

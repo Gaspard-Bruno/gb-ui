@@ -1,9 +1,9 @@
 import React from 'react';
-import {Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
-import components from 'Config/components';
+import components from 'showcase/components';
 
-import THEME from 'Theme';
+import { theme55 } from 'Theme';
 
 import {
   Accordion,
@@ -54,9 +54,9 @@ const PreviewPage = () => {
                     ? route.props.map((props, i) => (
                         <Row
                           key={route.label + i}
-                          inlineStyle={`padding-bottom: ${THEME.margin}px;
-                                    margin-top: ${THEME.margin}px;
-                                    border-bottom: 1px solid ${THEME.colors.grey};`}
+                          inlineStyle={`padding-bottom: ${theme55.margin}px;
+                                    margin-top: ${theme55.margin}px;
+                                    border-bottom: 1px solid ${theme55.colors.grey};`}
                         >
                           <Row>
                             <Col size={2}>
@@ -95,10 +95,7 @@ const PreviewPage = () => {
             path={'/'}
             component={() => (
               <Row>
-                <Col
-                  size={2}
-                  inlineStyle={`border-right: 2px solid ${THEME.colors.brand.orange};`}
-                >
+                <Col size={2}>
                   <Col>
                     <Heading>ChangeTheme</Heading>
                   </Col>

@@ -27,7 +27,7 @@ export const InputContainer = styled.div`
     ${props =>
       props.error
         ? props.theme?.colors.feedback.error.default
-        : props.theme?.colors.mediumBeige};
+        : props.theme?.colors.brand?.altLight};
   font-family: Muli;
   font-style: normal;
   font-weight: normal;
@@ -44,7 +44,7 @@ export const InputContainer = styled.div`
         : props.theme?.colors.darkBlue};
   }
   &:disabled {
-    background-color: ${props => props.theme?.colors.lightBeige};
+    background-color: ${props => props.theme?.colors.brand?.altLight};
     color: ${props => props.theme?.colors.grey};
   }
 `;

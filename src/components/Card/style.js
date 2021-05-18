@@ -1,18 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+
+import get from 'lodash.get';
 
 const getSelectedBackground = props => {
-  switch (props.bg) {
-    case "alt":
-      return props.theme?.colors.lightBeige;
-    case "secondary":
-      return props.theme?.colors.brand.yellow;
-    case "terceary":
-      return props.theme?.colors.brand.lightBlue;
-    case "transparent":
-      return "transparent";
-    default:
-      return props.theme?.colors.white;
-  }
+  return get(props.theme?.colors, props.bg, props.theme?.colors.white);
 };
 
 const Card = styled.div`
@@ -21,9 +12,9 @@ const Card = styled.div`
   box-shadow: ${props => (props.shadow ? props.theme?.boxShadow : 0)};
   background-color: ${props => getSelectedBackground(props)};
   color: ${props => props.theme?.colors.darkBlue};
-  align-items: ${props => (props.align ? `${props.align}` : "")};
-  justify-content: ${props => (props.justify ? `${props.justify}` : "none")};
-  ${props => props?.customStyle(props) ?? ""}
+  align-items: ${props => (props.align ? `${props.align}` : '')};
+  justify-content: ${props => (props.justify ? `${props.justify}` : 'none')};
+  ${props => props?.customStyle(props) ?? ''}
 `;
 
 export default Card;

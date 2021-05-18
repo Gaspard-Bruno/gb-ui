@@ -1,17 +1,10 @@
 import styled from 'styled-components';
 import { media, Col } from '../Layout';
 
+import get from 'lodash.get';
+
 const getSelectedBackground = props => {
-  switch (props.bg) {
-    case 'alt':
-      return props.theme?.colors.lightBeige;
-    case 'secondary':
-      return props.theme?.colors.brand.yellow;
-    case 'terceary':
-      return props.theme?.colors.brand.lightBlue;
-    default:
-      return props.bg;
-  }
+  return get(props.theme?.colors, props.bg, 'transparent');
 };
 
 export const StyledCol = styled(Col)`
