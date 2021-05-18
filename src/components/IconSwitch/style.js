@@ -10,7 +10,7 @@ const StyledSwitch = styled.div`
 `;
 
 const getActive = (active, theme) => {
-  const textColor = active ? theme?.colors.darkBlue : theme?.colors.grey;
+  const textColor = active ? theme?.colors.text : theme?.colors.grey;
   return `fill: ${textColor};`;
 };
 

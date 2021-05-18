@@ -4,11 +4,9 @@ const getActiveStyles = (theme, isActive, type) => {
   if (isActive) {
     return `
             border: ${
-              type === 'ellipsis'
-                ? 'none'
-                : '1px solid ' + theme?.colors.darkBlue
+              type === 'ellipsis' ? 'none' : '1px solid ' + theme?.colors.text
             };
-            color: ${theme?.colors.darkBlue};
+            color: ${theme?.colors.text};
         `;
   } else {
     return `

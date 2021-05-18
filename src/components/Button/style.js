@@ -15,14 +15,17 @@ const getStyleFromBtnType = (type = 'primary', disabled, theme) => {
     case 'primary':
       return `
         border: 1px solid transparent;
-        background-color: ${theme.colors?.brand?.alt};
+        background-color: ${theme.colors?.brand?.main};
+        > span {
+          color: ${theme.colors.white};
+        }
         &:hover {
           background-color: ${theme.colors.brand.mainLight};
         }
       `;
     case 'secondary':
       return `
-        background-color: ${theme.colors.white};
+        background-color: ${theme.colors.text};
         border: 1px solid ${theme.colors?.brand?.alt};
         &:hover {
           border: 1px solid transparent;
@@ -45,7 +48,7 @@ const getStyleFromBtnType = (type = 'primary', disabled, theme) => {
         > span {
           color: ${theme.colors?.brand?.main};
           &:hover {
-            color: ${theme.colors?.brand?.mainDarker};
+            color: ${theme.colors?.brand?.main};
           }
         }
       `;
@@ -54,11 +57,11 @@ const getStyleFromBtnType = (type = 'primary', disabled, theme) => {
         border: 1px solid ${theme.colors?.brand?.alt};
         box-sizing: border-box;
         border-radius: 100px;
-        background-color: ${theme.colors.white};
+        background-color: 'transparent';
         > span {
-          color: ${theme.colors.brand.darkBlue};
+          color: ${theme.colors.brand.text};
           &:hover {
-            color: ${theme.colors?.brand?.mainDarker};
+            color: ${theme.colors?.brand?.main};
           }
         }
       `;
@@ -77,7 +80,7 @@ const getStyleFromBtnType = (type = 'primary', disabled, theme) => {
         > span {
           color: ${theme.colors?.brand?.main};
           &:hover {
-            color: ${theme.colors?.brand?.mainDarker};
+            color: ${theme.colors?.brand?.main};
           }
         }
       `;

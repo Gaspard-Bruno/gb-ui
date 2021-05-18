@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, createContext } from 'react';
 import { ThemeProvider } from 'styled-components';
-import THEMES from '../theme';
+import THEMES, { theme55 } from '../theme';
 
 const DARK_THEME = 'DARK';
 const LIGHT_THEME = 'LIGHT';
@@ -11,8 +11,8 @@ const getOSTheme = () =>
     ? DARK_THEME
     : LIGHT_THEME;
 
-const useTheme = theme => {
-  // const ThemeContext = createContext(getOSTheme());
+const ThemeContext = createContext(getOSTheme());
+const useTheme = (theme = theme55) => {
   const [currentTheme, setCurrentTheme] = useState(
     localStorage.getItem(LOCAL_STORAGE_THEME_KEY) || getOSTheme()
   );
@@ -22,29 +22,46 @@ const useTheme = theme => {
       setCurrentTheme(newTheme);
     }
   };
+  const toggleTheme = () => {
+    const newTheme = currentTheme === DARK_THEME ? LIGHT_THEME : DARK_THEME;
+    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
+    setCurrentTheme(newTheme);
+  };
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, getOSTheme());
   }, []);
 
-  const Provider = ({ children }) => {
-    return (
-      <ThemeProvider
-        theme={{
-          ...THEMES[currentTheme],
-          ...theme,
-          colors: {
-            ...THEMES[currentTheme].colors,
-            ...theme.colors
-          }
-        }}
-      >
-        {children}
-      </ThemeProvider>
-    );
-  };
+  const Provider = useCallback(
+    ({ children }) => {
+      return (
+        <ThemeContext.Provider value={{ currentTheme }}>
+          <ThemeContext.Consumer>
+            {ctx =>
+              ctx && (
+                <ThemeProvider
+                  theme={{
+                    ...theme,
+                    ...THEMES[ctx.currentTheme],
+                    colors: {
+                      ...theme.colors,
+                      ...THEMES[ctx.currentTheme].colors
+                    }
+                  }}
+                >
+                  {children}
+                </ThemeProvider>
+              )
+            }
+          </ThemeContext.Consumer>
+        </ThemeContext.Provider>
+      );
+    },
+    [currentTheme]
+  );
 
   return {
     Provider,
+    toggleTheme,
     handleChangeTheme
   };
 };

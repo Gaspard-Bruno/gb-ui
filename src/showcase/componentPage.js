@@ -10,10 +10,12 @@ import {
   Page,
   Code,
   Row,
+  Button,
   Col,
   Heading,
   SubHeading
 } from 'Components';
+import useTheme from 'Hooks/useTheme';
 
 const SECTIONS = {};
 
@@ -38,7 +40,7 @@ const extractPreviewProps = ({
   ...props
 }) => props;
 
-const PreviewPage = () => {
+const PreviewPage = ({ toggleTheme }) => {
   return (
     <Page>
       <Col>
@@ -100,6 +102,11 @@ const PreviewPage = () => {
                     <Heading>ChangeTheme</Heading>
                   </Col>
                   <Heading>Select a component from the sidebar</Heading>
+                  <Button
+                    text='Change Theme'
+                    type='primary'
+                    action={toggleTheme}
+                  />
                 </Col>
               </Row>
             )}

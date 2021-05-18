@@ -4,7 +4,7 @@ import theme from 'Theme';
 const getSwitcherStylesFromChecked = checked => {
   if (checked) {
     return `
-          background-color: ${theme.colors.feedback.success.default};
+          background-color: ${theme.colors.feedback.success};
           justify-content: flex-end;
         `;
   } else {

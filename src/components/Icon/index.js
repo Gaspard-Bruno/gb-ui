@@ -1,11 +1,17 @@
-import React from "react";
-import IcoMoon from "icomoon-react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import iconSet from "Assets/fonts/icons/icons.json";
+import StyledIcoMoon from './style'
+import iconSet from 'Assets/fonts/icons/icons.json';
 
-const Icon = ({ name, ...props }) => (
-  <IcoMoon iconSet={iconSet} title={name} icon={name} {...props} />
+const Icon = ({ name, color, ...props }) => (
+  <StyledIcoMoon
+    iconSet={iconSet}
+    title={name}
+    icon={name}
+    color={color}
+    {...props}
+  />
 );
 
 Icon.propTypes = {

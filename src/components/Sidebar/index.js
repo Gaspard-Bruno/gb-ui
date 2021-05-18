@@ -33,9 +33,9 @@ const Sidebar = ({ sidebarSections, translate, isOpenable }) => {
     <StyledSidebar open={isOpen}>
       <Col>
         <NavSection open={isOpen}>
-          <Row align='center'>
+          <Row align='center' bg="transparent">
             <Col>
-              <SubHeading color='white'>55+ UI Kit</SubHeading>
+              <SubHeading color='white'>GB UI</SubHeading>
               <NavHeader>by Gaspard+Bruno</NavHeader>
             </Col>
             {isOpenable && (

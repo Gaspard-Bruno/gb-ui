@@ -67,12 +67,12 @@ const getIconStyle = (style, isIndexed) => {
       font-size: 16px;
       margin-right: ${theme?.margin}px;
       color: white;
-      background: ${theme?.colors.darkBlue};
+      background: ${theme?.colors.text};
       border-radius: 2px;
       text-align: center;
     }
     p {
-      color: ${theme?.colors.darkBlue}
+      color: ${theme?.colors.text}
     }
     `,
     grey: `

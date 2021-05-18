@@ -16,7 +16,7 @@ const getStylesFromType = (theme, type) => {
     return `
     border-radius: 2px;
     padding-left: 40px;
-    color: ${theme.colors.darkBlue};
+    color: ${theme.colors.text};
     position: relative;
     border: 1px solid ${theme.colors.brand?.altLight} !important;
     &:focus {

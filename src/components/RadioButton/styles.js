@@ -32,13 +32,13 @@ export const StyledRadio = styled.button`
   > * {
     color: ${props =>
       props.isSelected
-        ? props.theme?.colors.white
-        : props.theme?.colors.darkBlue};
+        ? props.theme?.colors.background
+        : props.theme?.colors.text};
     &:hover {
       color: ${props =>
         props.isSelected
-          ? props.theme?.colors.white
-          : props.theme?.colors.darkBlue};
+          ? props.theme?.colors.background
+          : props.theme?.colors.text};
     }
   }
 `;

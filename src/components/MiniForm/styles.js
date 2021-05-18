@@ -3,7 +3,7 @@ import { Heading } from '../Text';
 import get from 'lodash.get';
 
 const getSelectedBackground = props => {
-  return get(props.theme?.colors, props.bg, props.theme?.colors.darkBlue);
+  return get(props.theme?.colors, props.bg, props.theme?.colors.background);
 };
 
 export const StyledRemoveSpan = styled.span`

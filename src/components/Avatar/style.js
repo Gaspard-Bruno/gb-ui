@@ -39,7 +39,7 @@ const getTextColor = (size, user, theme) => {
   const colorMap = {
     small: theme.colors.grey,
     medium: theme.colors.brand.main,
-    default: theme.colors.darkBlue
+    default: theme.colors.text
   };
 
   if (user?.adminStatus === 'deleted') return `${theme.colors.grey}`;
@@ -81,7 +81,7 @@ const AvatarContainer = styled.div`
   }
   cursor: pointer;
   p {
-    color: ${props => props.theme.colors.darkBlue};
+    color: ${props => props.theme.colors.text};
   }
   ${props =>
     props.user?.adminStatus === 'deleted' && getDeletedStyles(props.theme)}
@@ -106,7 +106,7 @@ export const AvatarInitials = styled.span`
   margin-right: 8px;
   text-transform: uppercase;
   ${props => getStyleFromAvatarSize(props.size)};
-  color: ${props => props.theme.colors.darkBlue};
+  color: ${props => props.theme.colors.text};
 `;
 
 export const Link = styled.a`

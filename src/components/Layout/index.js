@@ -29,8 +29,11 @@ const getPageBackground = props => {
       return props.theme?.colors.white;
     case 'main':
       return props.theme?.colors?.brand?.main;
+    case 'contrast':
+      return props.theme?.colors?.text;
+    case 'bg':
     default:
-      return props.theme?.colors.white;
+      return props.theme?.colors.background;
   }
 };
 
@@ -63,7 +66,7 @@ const Page = styled.div`
 
   &::-webkit-scrollbar-thumb {
     margin-top: 30px;
-    background: ${props => props.theme?.colors.darkBlue};
+    background: ${props => props.theme?.colors.brand.altDarker};
     border-radius: 30px;
   }
 `;
@@ -100,7 +103,7 @@ const BackofficeKanbanContainer = styled.div`
 
   &::-webkit-scrollbar-thumb {
     margin-top: 30px;
-    background: ${props => props.theme?.colors.darkBlue};
+    background: ${props => props.theme?.colors.brand.altDarker};
     border-radius: 30px;
   }
 `;
@@ -175,7 +178,7 @@ export {
 };
 
 const getSelectedBackground = props => {
-  return get(props.theme?.colors, props.bg, 'transparent');
+  return get(props.theme?.colors, props.bg, props.theme.colors.background);
 };
 const FullPage = styled.div`
   background-color: ${props => getSelectedBackground(props)};

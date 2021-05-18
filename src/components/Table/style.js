@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledTable = styled.div`
   font-size: 14px;
   line-height: 16px;
-  color: ${props => props.theme?.colors.darkBlue};
+  color: ${props => props.theme?.colors.text};
 `;
 
 export const Header = styled.div`

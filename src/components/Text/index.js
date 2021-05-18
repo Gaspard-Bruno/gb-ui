@@ -10,8 +10,8 @@ export const Jumbo = styled.h1`
   line-height: 64px;
   color: ${props =>
     props.color
-      ? get(props.theme?.colors, props.color, props.theme?.colors.darkBlue)
-      : props.theme?.colors.darkBlue};
+      ? get(props.theme?.colors, props.color, props.theme?.colors.text)
+      : props.theme?.colors.text};
 `;
 
 const headingSizes = [
@@ -48,8 +48,8 @@ export const Heading = styled.h2`
   ${props => (props.size ? headingSizes[props.size - 1] : headingSizes[0])}
   color: ${props =>
     props.color
-      ? get(props.theme?.colors, props.color, props.theme?.colors.darkBlue)
-      : props.theme?.colors.darkBlue};
+      ? get(props.theme?.colors, props.color, props.theme?.colors.text)
+      : props.theme?.colors.text};
   ${props => props.center && `text-align: center`}
 `;
 
@@ -60,8 +60,8 @@ export const SubHeading = styled.h3`
   ${props => (props.size ? headingSizes[props.size - 1] : headingSizes[2])}
   color: ${props =>
     props.color
-      ? get(props.theme?.colors, props.color, props.theme?.colors.darkBlue)
-      : props.theme?.colors.darkBlue};
+      ? get(props.theme?.colors, props.color, props.theme?.colors.text)
+      : props.theme?.colors.text};
 `;
 
 export const Body = styled.p`
@@ -71,7 +71,7 @@ export const Body = styled.p`
   font-size: 16px;
   line-height: 24px;
   color: ${props =>
-    props.alt ? props.theme?.colors.grey : props.theme?.colors.darkBlue};
+    props.alt ? props.theme?.colors.grey : props.theme?.colors.text};
 `;
 export const SmallBody = styled.p`
   font-family: Muli;
@@ -81,8 +81,8 @@ export const SmallBody = styled.p`
   line-height: 16px;
   color: ${props =>
     props.color
-      ? get(props.theme?.colors, props.color, props.theme?.colors.darkBlue)
-      : props.theme?.colors.darkBlue};
+      ? get(props.theme?.colors, props.color, props.theme?.colors.text)
+      : props.theme?.colors.text};
 `;
 export const SmallBodyFAQ = styled.p`
   font-family: Space Grotesk;
@@ -102,8 +102,8 @@ export const Tiny = styled.h3`
   text-transform: uppercase;
   color: ${props =>
     props.color
-      ? get(props.theme?.colors, props.color, props.theme?.colors.darkBlue)
-      : props.theme?.colors.darkBlue};
+      ? get(props.theme?.colors, props.color, props.theme?.colors.text)
+      : props.theme?.colors.text};
 `;
 
 export const Link = styled(RouterLink)`
@@ -113,8 +113,8 @@ export const Link = styled(RouterLink)`
   font-weight: 500;
   color: ${props =>
     props.color
-      ? get(props.theme?.colors, props.color, props.theme?.colors.darkBlue)
-      : props.theme?.colors.darkBlue};
+      ? get(props.theme?.colors, props.color, props.theme?.colors.text)
+      : props.theme?.colors.text};
   font-size: 16px;
   line-height: 24px;
   :hover {
@@ -123,14 +123,14 @@ export const Link = styled(RouterLink)`
   :active {
     color: ${props =>
       props.color
-        ? get(props.theme?.colors, props.color, props.theme?.colors.darkBlue)
-        : props.theme?.colors.darkBlue};
+        ? get(props.theme?.colors, props.color, props.theme?.colors.text)
+        : props.theme?.colors.text};
   }
   :visited {
     color: ${props =>
       props.color
-        ? get(props.theme?.colors, props.color, props.theme?.colors.darkBlue)
-        : props.theme?.colors.darkBlue};
+        ? get(props.theme?.colors, props.color, props.theme?.colors.text)
+        : props.theme?.colors.text};
   }
   :focus {
     color: ${props => props.theme?.colors.brand.red};
@@ -144,27 +144,27 @@ export const ButtonText = styled.span`
   font-weight: 500;
   color: ${props =>
     props.color
-      ? get(props.theme?.colors, props.color, props.theme?.colors.darkBlue)
-      : props.theme?.colors.darkBlue};
+      ? get(props.theme?.colors, props.color, props.theme?.colors.text)
+      : props.theme?.colors.text};
   font-size: 16px;
   line-height: 24px;
   :hover {
     color: ${props =>
       props.color
-        ? get(props.theme?.colors, props.color, props.theme?.colors.darkBlue)
-        : props.theme?.colors.darkBlue};
+        ? get(props.theme?.colors, props.color, props.theme?.colors.text)
+        : props.theme?.colors.text};
   }
   :active {
     color: ${props =>
       props.color
-        ? get(props.theme?.colors, props.color, props.theme?.colors.darkBlue)
-        : props.theme?.colors.darkBlue};
+        ? get(props.theme?.colors, props.color, props.theme?.colors.text)
+        : props.theme?.colors.text};
   }
   :visited {
     color: ${props =>
       props.color
-        ? get(props.theme?.colors, props.color, props.theme?.colors.darkBlue)
-        : props.theme?.colors.darkBlue};
+        ? get(props.theme?.colors, props.color, props.theme?.colors.text)
+        : props.theme?.colors.text};
   }
 `;
 
@@ -192,7 +192,7 @@ export const AlertTitle = styled.h3`
 `;
 
 export const ErrorText = styled(SmallBody)`
-  color: ${props => props.theme.colors.feedback.error.default};
+  color: ${props => props.theme.colors.feedback.error};
   transition: all 0.2s;
   opacity: ${props => (props.error ? 1 : 0)};
   margin: 0 !important;

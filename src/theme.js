@@ -34,7 +34,8 @@ const GLOBAL = {
     white900: '#FFFEFD',
     white800: '#FAF9F6',
     white700: '#F5F4F1',
-    white600: '#EAE8E3'
+    white600: '#EAE8E3',
+    transparent: 'transparent'
   }
 };
 
@@ -43,6 +44,8 @@ export const DARK = {
   colors: {
     ...GLOBAL.colors,
     main: '#A3A1FF',
+    background: '#111111',
+    text: '#ffffff',
     mainGradient: `linear-gradient(180deg, rgba(97, 141, 255, 0.4) 0%, rgba(123, 97, 255, 0.2) 100%)`,
     logoBorders: '#E9EFF6',
     typoPrimary: '#ffffff',
@@ -81,7 +84,10 @@ export const DARK = {
 export const LIGHT = {
   ...GLOBAL,
   colors: {
+    ...GLOBAL.colors,
     main: '#4F2DEC',
+    background: '#ffffff',
+    text: '#111111',
     mainGradient: `linear-gradient(180deg, rgba(97, 141, 255, 0.4) 0%, rgba(123, 97, 255, 0.2) 100%)`,
     logoBorders: '#E9EFF6',
     typoPrimary: '#18181A',
@@ -139,6 +145,7 @@ export const theme55 = {
     alt: '#88827c',
     grey: '#31303E',
     darkBlue: '#272948',
+    background: '#fff',
     brand: {
       main: '#060e9f',
       mainLight: ' #777ab1',
@@ -148,21 +155,9 @@ export const theme55 = {
       altDarker: '#2f2d2a'
     },
     feedback: {
-      success: {
-        default: '#2DCA73',
-        hover: '#57D48F',
-        background: '#EAF9F1'
-      },
-      error: {
-        default: '#DB1E3B',
-        hover: '#E24B61',
-        background: '#FBE8EB'
-      },
-      warning: {
-        default: '#FEC35A',
-        hover: '#FECE7B',
-        background: '#FEF8EE'
-      }
+      success: '#2DCA73',
+      error: '#DB1E3B',
+      warning: '#FEC35A',
     },
     muted: {
       red: '#F1A5B1',

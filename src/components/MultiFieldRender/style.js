@@ -8,8 +8,8 @@ export const StyledAddItem = styled.span`
 
 export const StyledContentContainer = styled(Row)`
   & > button {
-    background-color: ${props => props.theme.colors.white};
-    border: 1px solid ${props => props.theme.colors.feedback.warning.default};
+    background-color: 'transparent';
+    border: 1px solid ${props => props.theme.colors.feedback.warning};
     width: 40px;
     height: 40px;
     position: relative;

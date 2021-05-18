@@ -25,7 +25,7 @@ export const ColumnCardsContainer = styled.div`
 
   &::-webkit-scrollbar-thumb {
     margin-top: 30px;
-    background: ${props => props.theme?.colors.darkBlue};
+    background: ${props => props.theme?.colors.text};
     border-radius: 30px;
   }
 `;

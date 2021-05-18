@@ -29,14 +29,14 @@ components.forEach(component => {
 });
 
 const ShowCase = () => {
-  const { Provider } = useTheme(theme55);
+  const { Provider, toggleTheme } = useTheme(theme55);
   return (
     <Provider>
       <GlobalStyles />
       <BrowserRouter>
-        <Row noWrap inlineStyle={`overflow: hidden; max-height: 100vh;`}>
+        <Row noWrap inlineStyle={`overflow: hidden; max-height: 100vh;`} bg="bg">
           <Sidebar sidebarSections={SECTIONS} isOpenable />
-          <ComponentPage />
+          <ComponentPage toggleTheme={toggleTheme} />
         </Row>
       </BrowserRouter>
     </Provider>

@@ -9,7 +9,7 @@ export const SelectContainer = styled.div`
   width: ${props => (props.mini ? '48%' : 'auto')};
   color: ${props =>
     props.error
-      ? props.theme?.colors?.feedback.error.default
+      ? props.theme?.colors?.feedback.error
       : props.theme?.colors?.main};
   > p {
     min-height: 24px;
@@ -40,7 +40,7 @@ export const selectStyles = {
     minHeight: 48,
     backgroundColor: isDisabled
       ? theme?.colors?.brand?.altLight
-      : theme?.colors?.white,
+      : theme?.colors?.background,
     color: theme?.colors?.grey,
     boxShadow: 'none',
     borderColor: isFocused ? theme?.colors?.main : theme?.colors?.alt,
@@ -50,7 +50,7 @@ export const selectStyles = {
   }),
   option: (provided, state) => {
     const color = state.isDisabled ? theme?.colors?.grey : theme?.colors?.main;
-    const backgroundColor = theme?.colors?.white;
+    const backgroundColor = theme?.colors?.background;
     const transition = 'opacity 300ms';
 
     return {
@@ -67,10 +67,10 @@ export const selectStyles = {
 
 const Select = styled(ReactSelect)`
   border: ${props =>
-    props.error && `1px solid ${props.theme.colors?.feedback.error.default}`};
+    props.error && `1px solid ${props.theme.colors?.feedback.error}`};
   color: ${props =>
     props.error
-      ? props.theme?.colors?.feedback.error.default
+      ? props.theme?.colors?.feedback.error
       : props.theme?.colors?.alt};
   font-family: Muli;
   font-style: normal;
