@@ -2284,7 +2284,7 @@ function _templateObject9() {
 }
 
 function _templateObject8() {
-  var data = _taggedTemplateLiteral(["\n  text-decoration: none;\n  font-family: Space Grotesk;\n  font-style: medium;\n  font-weight: 500;\n  display: block;\n\n  line-height: 16px;\n  font-size: 14px;\n  color: ", ";\n  font-size: 16px;\n  line-height: 24px;\n  :hover {\n    color: ", ";\n  }\n  :active {\n    color: ", ";\n  }\n  :visited {\n    color: ", ";\n  }\n  :focus {\n    color: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  text-decoration: none;\n  font-family: Space Grotesk;\n  font-style: medium;\n  font-weight: 500;\n  display: block;\n  line-height: 16px;\n  font-size: 14px;\n  color: ", ";\n  font-size: 16px;\n  line-height: 24px;\n  :hover {\n    color: ", ";\n  }\n  :active {\n    color: ", ";\n  }\n  :visited {\n    color: ", ";\n  }\n  :focus {\n    color: ", ";\n  }\n"]);
 
   _templateObject8 = function _templateObject8() {
     return data;

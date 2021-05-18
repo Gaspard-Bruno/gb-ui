@@ -112,7 +112,6 @@ const StyledLink = styled.a`
   font-style: medium;
   font-weight: 500;
   display: block;
-
   line-height: 16px;
   font-size: 14px;
   color: ${props =>
