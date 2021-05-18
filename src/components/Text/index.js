@@ -111,6 +111,10 @@ const StyledLink = styled.a`
   font-family: Space Grotesk;
   font-style: medium;
   font-weight: 500;
+  display: block;
+
+  line-height: 16px;
+  font-size: 14px;
   color: ${props =>
     props.color
       ? get(props.theme?.colors, props.color, props.theme?.colors.text)
@@ -136,8 +140,10 @@ const StyledLink = styled.a`
     color: ${props => props.theme?.colors.brand.red};
   }
 `;
-export const Link = ({ to, newTab }) => (
-  <StyledLink href={to} target={newTab ? 'blank' : ''} />
+export const Link = ({ to, newTab, children }) => (
+  <StyledLink href={to} target={newTab ? 'blank' : ''}>
+    {children}
+  </StyledLink>
 );
 
 export const ButtonText = styled.span`
