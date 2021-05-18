@@ -7,7 +7,7 @@
   "source": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Gaspard-Bruno/UI.55.git"
+    "url": "git+https://github.com/Gaspard-Bruno/gb-ui.git"
   },
   "prettier": {
     "singleQuote": true,
