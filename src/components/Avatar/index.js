@@ -5,8 +5,7 @@ import Icon from '../Icon';
 
 import AvatarContainer, { AvatarImage, AvatarInitials } from './style';
 
-const Avatar = ({ action, size, hasCarat, hasText, hasEmail, user }) => {
-  const isDeleted = user?.adminStatus === 'deleted';
+const Avatar = ({ action, size, hasCarat, hasText, user }) => {
   const fullName = user?.fullName ?? user?.full_name ?? '';
   const avatarDefault = user?.avatar_default || user?.avatarDefault;
   return (
@@ -14,16 +13,9 @@ const Avatar = ({ action, size, hasCarat, hasText, hasEmail, user }) => {
       {size && user && user.avatar && (
         <AvatarImage avatar={`${user.avatar}`} size={size}></AvatarImage>
       )}
-
-      {isDeleted ? (
-        <AvatarInitials size={size} isDeleted={isDeleted}>
-          ?
-        </AvatarInitials>
-      ) : (
-        <AvatarInitials size={size} avatarDefault={avatarDefault}>
-          {fullName ? fullName.slice(0, 2) : ''}
-        </AvatarInitials>
-      )}
+      <AvatarInitials size={size} avatarDefault={avatarDefault}>
+        {fullName ? fullName.slice(0, 2) : ''}
+      </AvatarInitials>
       {hasText && <p>{fullName}</p>}
       {hasCarat && <Icon name='chevron-down' />}
     </AvatarContainer>

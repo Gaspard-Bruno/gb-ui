@@ -16,14 +16,6 @@ const TopBar = ({
   onAvatarClick,
   onBackClick
 }) => {
-  const memoUser = useMemo(
-    () => ({
-      avatar: user?.attributes?.avatar,
-      avatarDefault: user?.attributes?.avatarDefault,
-      fullName: user?.attributes?.fullName
-    }),
-    [user]
-  );
 
   return (
     <StyledTopBar>
@@ -49,7 +41,7 @@ const TopBar = ({
             size='medium'
             hasCarat={true}
             hasText={true}
-            user={memoUser}
+            user={user}
             action={onAvatarClick}
           />
         )}
