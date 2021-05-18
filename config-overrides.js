@@ -14,7 +14,8 @@ module.exports = override(
     Components: path.resolve(__dirname, 'src/components'),
     Config: path.resolve(__dirname, './src/config'),
     Utils: path.resolve(__dirname, './src/utils'),
-    Theme: path.resolve(__dirname, './src/theme.js'),
+    Hooks: path.resolve(__dirname, 'src/hooks'),
+    Theme: path.resolve(__dirname, './src/theme.js')
   }),
   multipleEntry.addMultiEntry
 );
