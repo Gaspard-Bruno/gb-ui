@@ -7,14 +7,13 @@ This repository contains the shared components between the 55+ project Landing P
 In the project directory, you can run:
 
 # Starting the project
+
+First install all the dependencies using `yarn install-all`
 ## `yarn start`
-> Note: you need to change your project's package.json's "peerDependencies" to "dependencies"
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-
-> Note: you need to change your project's package.json's "dependencies" to "peerDependencies" for the first time you run `yarn install`
 
 ## **IMPORTANT**
 ### 👉  Before committing, make sure `react`, `react-dom` and `styled-components` are set as peerDependencies 👈
