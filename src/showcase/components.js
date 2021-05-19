@@ -37,8 +37,6 @@ import {
   Table,
   Tabs,
   TextArea,
-  TopBar,
-  TrackerBox,
   Heading,
   SubHeading,
   Body,
@@ -68,6 +66,56 @@ const components = [
     component: () => <TypographyShowcase />
   },
   {
+    label: 'Button',
+    section: 'General',
+    disabled: false,
+    props: [
+      {
+        previewComponentOpen: true,
+        previewComponentTitle: 'Primary',
+        btnType: 'primary',
+        action: () => alert('Im a button 🚀'),
+        text: 'Button'
+      },
+      {
+        previewComponentOpen: true,
+        previewComponentTitle: 'Secondary',
+        btnType: 'secondary',
+        isSmall: true,
+        action: () => alert('Im a button 🚀'),
+        text: 'Button'
+      },
+      {
+        previewComponentOpen: true,
+        previewComponentTitle: 'Terceary',
+        btnType: 'terceary',
+        isFullWidth: true,
+        action: () => alert('Im a button 🚀'),
+        text: 'Button'
+      },
+      {
+        previewComponentOpen: true,
+        previewComponentTitle: 'Transparent',
+        btnType: 'transparent',
+        borderColor: 'brand.main',
+        textColor: 'brand.mainLight',
+        action: () => alert('Im a button 🚀'),
+        text: 'Button'
+      },
+      {
+        previewComponentOpen: true,
+        previewComponentTitle: 'Icon Button',
+        btnType: 'transparent',
+        borderColor: 'brand.main',
+        icon: 'star',
+        iconColor: 'text',
+        borderColor: 'text',
+        action: () => alert('Im a button 🚀'),
+      }
+    ],
+    component: props => <Button {...props} />
+  },
+  {
     label: 'Avatar',
     props: { user: { fullName: 'Test user' }, hasText: true },
     disabled: false,
@@ -91,21 +139,6 @@ const components = [
       action: () => console.log('cenas')
     },
     component: props => <Pagination {...props}></Pagination>
-  },
-  {
-    label: 'TopBar',
-    section: 'General',
-    props: {
-      user: {
-        attributes: {
-          avatar: '#000',
-          location: 'non- settings',
-          title: 'non-settings',
-          fullName: 'David Morais'
-        }
-      }
-    },
-    component: props => <TopBar {...props}></TopBar>
   },
   {
     label: 'Form',

@@ -71,7 +71,8 @@ const Code = styled.div`
     max-height: 50vh;
     overflow-y: scroll;
     padding: 16px;
-    background-color: ${props => props.theme?.colors.brand?.altLight}ff;
+    background: ${props => props.theme?.colors.mainGradient};
+    color: ${props => props.theme?.colors.main}ff;
   }
 `;
 

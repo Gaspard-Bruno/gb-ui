@@ -7,6 +7,7 @@ import Button from '../Button';
 import { Col, Row } from '../Layout';
 import StyledSidebar, {
   NavSection,
+  ScrollView,
   NavLink,
   NavText,
   NavHeader
@@ -45,29 +46,31 @@ const Sidebar = ({
                 open={isOpen}
                 icon='arrow-left'
                 action={() => setIsOpen(!isOpen)}
-                btnType={'terceary'}
+                btnType='transparent'
               />
             )}
           </Row>
         </NavSection>
-        <SidebarLink route={'/'} text='Home'></SidebarLink>
-        {Object.keys(sidebarSections).map(s => {
-          const section = sidebarSections[s];
-          return (
-            <NavSection key={'section-' + section.title}>
-              <NavHeader>{t(translate, section.title)}</NavHeader>
-              {section.items.map(item => (
-                <SidebarLink
-                  key={'sidebar-' + item.label}
-                  route={item.route}
-                  text={t(translate, item.label)}
-                  disabled={item.disabled}
-                  disabledIcon='🚧'
-                />
-              ))}
-            </NavSection>
-          );
-        })}
+        <ScrollView>
+          <SidebarLink route={'/'} text='Home'></SidebarLink>
+          {Object.keys(sidebarSections).map(s => {
+            const section = sidebarSections[s];
+            return (
+              <NavSection key={'section-' + section.title}>
+                <NavHeader>{t(translate, section.title)}</NavHeader>
+                {section.items.map(item => (
+                  <SidebarLink
+                    key={'sidebar-' + item.label}
+                    route={item.route}
+                    text={t(translate, item.label)}
+                    disabled={item.disabled}
+                    disabledIcon='🚧'
+                  />
+                ))}
+              </NavSection>
+            );
+          })}
+        </ScrollView>
       </Col>
     </StyledSidebar>
   );

@@ -29,8 +29,6 @@ import Table from './Table';
 import Tabs from './Tabs';
 import TextArea from './TextArea';
 import TextInput from './TextInput';
-import TopBar from './TopBar';
-import TrackerBox from './TrackerBox';
 import FileUploader from './FileUploader';
 import Slider from './Slider';
 import Switcher from './Switcher';
@@ -82,8 +80,6 @@ export {
   Tabs,
   TextArea,
   TextInput,
-  TopBar,
-  TrackerBox,
   Heading,
   SubHeading,
   Body,

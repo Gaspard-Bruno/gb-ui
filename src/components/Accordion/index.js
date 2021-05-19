@@ -6,7 +6,7 @@ import Button from '../Button';
 import { AccordionContainer, AccordionTitle, ContentContainer } from './style';
 import { useEffect } from 'react';
 
-const Accordion = ({ title, isOpen, content, action }) => {
+const Accordion = ({ title, isOpen, content, action, chevronColor }) => {
   const [setOpen, setSetOpen] = useState(isOpen);
   const handleChangeState = () => {
     setSetOpen(!setOpen);
@@ -17,7 +17,7 @@ const Accordion = ({ title, isOpen, content, action }) => {
     if (isOpen !== setOpen) {
       setSetOpen(isOpen);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
   return (
     <AccordionContainer>
@@ -26,6 +26,7 @@ const Accordion = ({ title, isOpen, content, action }) => {
         <Button
           type='button'
           btnType='transparent'
+          iconColor={chevronColor}
           icon='chevron-down'
           action={handleChangeState}
         />
@@ -37,11 +38,15 @@ const Accordion = ({ title, isOpen, content, action }) => {
 
 Accordion.propTypes = {
   title: PropTypes.string,
+  chevronColor: PropTypes.string,
   content: PropTypes.func,
   action: PropTypes.func,
   isOpen: PropTypes.bool
 };
 
+Accordion.defaultProps = {
+  chevronColor: 'text'
+};
 // Accordion.whyDidYouRender = {
 //   customName: 'Accordion'
 // };

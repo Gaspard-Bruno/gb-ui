@@ -2569,7 +2569,7 @@ function _templateObject2$1() {
 }
 
 function _templateObject$2() {
-  var data = _taggedTemplateLiteral(["\n  border-radius: 40px;\n  outline: none;\n  width: ", ";\n  margin-top: ", ";\n  margin-bottom: ", ";\n  padding: ", "px;\n  > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  border-radius: 40px;\n  outline: none;\n  width: ", ";\n  margin-top: ", ";\n  margin-bottom: ", ";\n  padding: ", "px;\n  > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n  ", "\n  ", "\n    ", "\n"]);
 
   _templateObject$2 = function _templateObject() {
     return data;
@@ -2578,8 +2578,14 @@ function _templateObject$2() {
   return data;
 }
 
+var getSelectedColor = function getSelectedColor(props) {
+  var _props$theme;
+
+  return lodash_get((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors, props.color, props.color);
+};
+
 var getStyleFromBtnType = function getStyleFromBtnType() {
-  var _theme$colors, _theme$colors$brand, _theme$colors2, _theme$colors2$brand, _theme$colors3, _theme$colors3$brand, _theme$colors4, _theme$colors4$brand, _theme$colors5, _theme$colors5$brand, _theme$colors6, _theme$colors6$brand, _theme$colors7, _theme$colors7$brand, _theme$colors8, _theme$colors8$brand, _theme$colors9, _theme$colors9$brand, _theme$colors10, _theme$colors10$brand;
+  var _theme$colors, _theme$colors$brand, _theme$colors2, _theme$colors2$brand, _theme$colors3, _theme$colors4, _theme$colors5, _theme$colors5$brand, _theme$colors6, _theme$colors6$brand;
 
   var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'primary';
   var disabled = arguments.length > 1 ? arguments[1] : undefined;
@@ -2594,22 +2600,13 @@ var getStyleFromBtnType = function getStyleFromBtnType() {
       return "\n        border: 1px solid transparent;\n        background-color: ".concat((_theme$colors = theme.colors) === null || _theme$colors === void 0 ? void 0 : (_theme$colors$brand = _theme$colors.brand) === null || _theme$colors$brand === void 0 ? void 0 : _theme$colors$brand.main, ";\n        > span {\n          color: ").concat(theme.colors.white, ";\n        }\n        &:hover {\n          background-color: ").concat(theme.colors.brand.mainLight, ";\n        }\n      ");
 
     case 'secondary':
-      return "\n        background-color: ".concat(theme.colors.text, ";\n        border: 1px solid ").concat((_theme$colors2 = theme.colors) === null || _theme$colors2 === void 0 ? void 0 : (_theme$colors2$brand = _theme$colors2.brand) === null || _theme$colors2$brand === void 0 ? void 0 : _theme$colors2$brand.alt, ";\n        &:hover {\n          border: 1px solid transparent;\n          background-color: ").concat(theme.colors.brand.mainLight, ";\n        }\n      ");
+      return "\n        background-color: ".concat(theme.colors.alt, ";\n        border: 1px solid ").concat((_theme$colors2 = theme.colors) === null || _theme$colors2 === void 0 ? void 0 : (_theme$colors2$brand = _theme$colors2.brand) === null || _theme$colors2$brand === void 0 ? void 0 : _theme$colors2$brand.alt, ";\n        span {\n          color: ").concat(theme.colors.background, ";\n        }\n        &:hover {\n          border: 1px solid transparent;\n          background-color: ").concat(theme.colors.brand.altLight, ";\n          span {\n            color: ").concat(theme.colors.background, ";\n          }\n        }\n      ");
 
     case 'terceary':
-      return "\n        background-color: ".concat((_theme$colors3 = theme.colors) === null || _theme$colors3 === void 0 ? void 0 : (_theme$colors3$brand = _theme$colors3.brand) === null || _theme$colors3$brand === void 0 ? void 0 : _theme$colors3$brand.main, ";\n        border: transparent;\n        &:hover {\n          border: transparent;\n          background-color: ").concat((_theme$colors4 = theme.colors) === null || _theme$colors4 === void 0 ? void 0 : (_theme$colors4$brand = _theme$colors4.brand) === null || _theme$colors4$brand === void 0 ? void 0 : _theme$colors4$brand.mainLight, ";\n        }\n      ");
+      return "\n        background-color: ".concat((_theme$colors3 = theme.colors) === null || _theme$colors3 === void 0 ? void 0 : _theme$colors3.text, ";\n        border: transparent;\n        span {\n          color: ").concat(theme.colors.background, ";\n        }\n        &:hover {\n          border: transparent;\n          background-color: ").concat((_theme$colors4 = theme.colors) === null || _theme$colors4 === void 0 ? void 0 : _theme$colors4.text, ";\n          span {\n            color: ").concat(theme.colors.background, ";\n          }\n        }\n      ");
 
     case 'transparent':
       return "\n        background-color: transparent;\n        border: transparent;\n        > span {\n          color: ".concat((_theme$colors5 = theme.colors) === null || _theme$colors5 === void 0 ? void 0 : (_theme$colors5$brand = _theme$colors5.brand) === null || _theme$colors5$brand === void 0 ? void 0 : _theme$colors5$brand.main, ";\n          &:hover {\n            color: ").concat((_theme$colors6 = theme.colors) === null || _theme$colors6 === void 0 ? void 0 : (_theme$colors6$brand = _theme$colors6.brand) === null || _theme$colors6$brand === void 0 ? void 0 : _theme$colors6$brand.main, ";\n          }\n        }\n      ");
-
-    case 'borded':
-      return "\n        border: 1px solid ".concat((_theme$colors7 = theme.colors) === null || _theme$colors7 === void 0 ? void 0 : (_theme$colors7$brand = _theme$colors7.brand) === null || _theme$colors7$brand === void 0 ? void 0 : _theme$colors7$brand.alt, ";\n        box-sizing: border-box;\n        border-radius: 100px;\n        background-color: 'transparent';\n        > span {\n          color: ").concat(theme.colors.brand.text, ";\n          &:hover {\n            color: ").concat((_theme$colors8 = theme.colors) === null || _theme$colors8 === void 0 ? void 0 : (_theme$colors8$brand = _theme$colors8.brand) === null || _theme$colors8$brand === void 0 ? void 0 : _theme$colors8$brand.main, ";\n          }\n        }\n      ");
-
-    case 'resting':
-      return "\n        background-color: ".concat(theme.colors.alt, ";\n        border: 1px solid transparent;\n        > span {\n          color: ").concat(theme.colors.grey, ";\n        }\n      ");
-
-    case 'active':
-      return "\n        background-color: ".concat(theme.colors.alt, ";\n        border: 1px solid transparent;\n        > span {\n          color: ").concat((_theme$colors9 = theme.colors) === null || _theme$colors9 === void 0 ? void 0 : (_theme$colors9$brand = _theme$colors9.brand) === null || _theme$colors9$brand === void 0 ? void 0 : _theme$colors9$brand.main, ";\n          &:hover {\n            color: ").concat((_theme$colors10 = theme.colors) === null || _theme$colors10 === void 0 ? void 0 : (_theme$colors10$brand = _theme$colors10.brand) === null || _theme$colors10$brand === void 0 ? void 0 : _theme$colors10$brand.main, ";\n          }\n        }\n      ");
   }
 };
 
@@ -2620,26 +2617,26 @@ var Button = styled.button(_templateObject$2(), function (props) {
 }, function (props) {
   return props.fullWidth ? '20px' : '';
 }, function (props) {
-  return props.small ? props.theme.margin * 0.75 : props.theme.margin;
+  return props.small ? props.theme.margin * 0.25 : props.theme.margin;
 }, function (props) {
   return getStyleFromBtnType(props.btnType, props.disabled, props.theme);
+}, function (props) {
+  return props.textColor && "\n  > span {\n    color: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
+    color: props.textColor
+  })), ";\n  }");
+}, function (props) {
+  return props.borderColor && "\n  border: 1px solid ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
+    color: props.borderColor
+  })), ";\n  ");
 });
-
-var getIconStyle = function getIconStyle(btnType, theme) {
-  var _theme$colors11, _theme$colors11$brand;
-
-  switch (btnType) {
-    case 'borded':
-      return "\n        border: 1px solid ".concat((_theme$colors11 = theme.colors) === null || _theme$colors11 === void 0 ? void 0 : (_theme$colors11$brand = _theme$colors11.brand) === null || _theme$colors11$brand === void 0 ? void 0 : _theme$colors11$brand.alt, ";\n        padding: 8px;\n      ");
-  }
-};
-
 var IconButton = styled.button(_templateObject2$1(), function (props) {
   return props.theme.margin;
 }, function (props) {
   return getStyleFromBtnType(props.btnType, props.disabled, props.theme);
 }, function (props) {
-  return getIconStyle(props.btnType, props.theme);
+  return props.borderColor && "\n  border: 1px solid ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
+    color: props.borderColor
+  })), ";\n  ");
 });
 
 var Button$1 = function Button$1(_ref) {
@@ -2652,7 +2649,10 @@ var Button$1 = function Button$1(_ref) {
       type = _ref.type,
       isFullWidth = _ref.isFullWidth,
       children = _ref.children,
-      otherProps = _objectWithoutProperties(_ref, ["isDisabled", "btnType", "text", "isSmall", "icon", "action", "type", "isFullWidth", "children"]);
+      iconColor = _ref.iconColor,
+      textColor = _ref.textColor,
+      borderColor = _ref.borderColor,
+      otherProps = _objectWithoutProperties(_ref, ["isDisabled", "btnType", "text", "isSmall", "icon", "action", "type", "isFullWidth", "children", "iconColor", "textColor", "borderColor"]);
 
   if (text) {
     return /*#__PURE__*/React.createElement(Button, _extends({
@@ -2661,6 +2661,8 @@ var Button$1 = function Button$1(_ref) {
       disabled: isDisabled,
       small: isSmall,
       onClick: action,
+      textColor: textColor,
+      borderColor: borderColor,
       type: type
     }, otherProps), children, text && /*#__PURE__*/React.createElement(ButtonText, null, text), icon && /*#__PURE__*/React.createElement(Icon, {
       name: icon
@@ -2673,9 +2675,11 @@ var Button$1 = function Button$1(_ref) {
       disabled: isDisabled,
       small: isSmall,
       onClick: action,
+      borderColor: borderColor,
       type: type
     }, /*#__PURE__*/React.createElement(Icon, {
-      name: icon
+      name: icon,
+      color: iconColor
     }));
   }
 
@@ -2686,11 +2690,14 @@ Button$1.propTypes = {
   isDisabled: propTypes.bool,
   action: propTypes.func,
   isSmall: propTypes.bool,
+  borderColor: propTypes.string,
+  iconColor: propTypes.string,
+  textColor: propTypes.string,
   isFullWidth: propTypes.bool,
   type: propTypes.string,
   text: propTypes.string,
   children: propTypes.oneOfType([propTypes.element, propTypes.array]),
-  btnType: propTypes.oneOf(['primary', 'secondary', 'terceary', 'transparent', 'borded', 'resting', 'active']),
+  btnType: propTypes.oneOf(['primary', 'secondary', 'terceary', 'transparent']),
   icon: propTypes.string
 };
 Button$1.defaultProps = {
@@ -2762,7 +2769,8 @@ var Accordion = function Accordion(_ref) {
   var title = _ref.title,
       isOpen = _ref.isOpen,
       content = _ref.content,
-      action = _ref.action;
+      action = _ref.action,
+      chevronColor = _ref.chevronColor;
 
   var _useState = useState(isOpen),
       _useState2 = _slicedToArray(_useState, 2),
@@ -2787,6 +2795,7 @@ var Accordion = function Accordion(_ref) {
   }, title), /*#__PURE__*/React.createElement(Button$1, {
     type: "button",
     btnType: "transparent",
+    iconColor: chevronColor,
     icon: "chevron-down",
     action: handleChangeState
   })), /*#__PURE__*/React.createElement(ContentContainer, {
@@ -2796,9 +2805,13 @@ var Accordion = function Accordion(_ref) {
 
 Accordion.propTypes = {
   title: propTypes.string,
+  chevronColor: propTypes.string,
   content: propTypes.func,
   action: propTypes.func,
   isOpen: propTypes.bool
+};
+Accordion.defaultProps = {
+  chevronColor: 'text'
 }; // Accordion.whyDidYouRender = {
 
 function _templateObject6$1() {
@@ -9945,7 +9958,7 @@ function _templateObject2$9() {
 }
 
 function _templateObject$e() {
-  var data = _taggedTemplateLiteral(["\n  flex-flow: row nowrap;\n  max-width: 600px;\n  display: flex;\n  > pre {\n    max-height: 50vh;\n    overflow-y: scroll;\n    padding: 16px;\n    background-color: ", "ff;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  flex-flow: row nowrap;\n  max-width: 600px;\n  display: flex;\n  > pre {\n    max-height: 50vh;\n    overflow-y: scroll;\n    padding: 16px;\n    background: ", ";\n    color: ", "ff;\n  }\n"]);
 
   _templateObject$e = function _templateObject() {
     return data;
@@ -10017,39 +10030,43 @@ var setMarginFromProps = function setMarginFromProps(props) {
 };
 
 var Code = styled.div(_templateObject$e(), function (props) {
-  var _props$theme6, _props$theme6$colors$;
+  var _props$theme6;
 
-  return (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : (_props$theme6$colors$ = _props$theme6.colors.brand) === null || _props$theme6$colors$ === void 0 ? void 0 : _props$theme6$colors$.altLight;
-});
-var Page = styled.div(_templateObject2$9(), function (props) {
+  return (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.mainGradient;
+}, function (props) {
   var _props$theme7;
 
-  return props.bg ? getPageBackground(props) : (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.background;
-}, function (props) {
+  return (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.main;
+});
+var Page = styled.div(_templateObject2$9(), function (props) {
   var _props$theme8;
 
-  return ((_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.margin) * 2;
+  return props.bg ? getPageBackground(props) : (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.background;
 }, function (props) {
-  var _props$theme9, _props$theme9$colors$;
+  var _props$theme9;
 
-  return props.scrollBackground ? getSelectedBackground$2(_objectSpread2(_objectSpread2({}, props), {}, {
-    bg: props.scrollBackground
-  })) : (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : (_props$theme9$colors$ = _props$theme9.colors.brand) === null || _props$theme9$colors$ === void 0 ? void 0 : _props$theme9$colors$.altLight;
+  return ((_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.margin) * 2;
 }, function (props) {
   var _props$theme10, _props$theme10$colors;
 
-  return props.scrollColor ? getSelectedBackground$2(_objectSpread2(_objectSpread2({}, props), {}, {
-    bg: props.scrollColor
-  })) : (_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : (_props$theme10$colors = _props$theme10.colors.brand) === null || _props$theme10$colors === void 0 ? void 0 : _props$theme10$colors.altDarker;
-});
-var KanbanContainer = styled.div(_templateObject3$6(), function (props) {
+  return props.scrollBackground ? getSelectedBackground$2(_objectSpread2(_objectSpread2({}, props), {}, {
+    bg: props.scrollBackground
+  })) : (_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : (_props$theme10$colors = _props$theme10.colors.brand) === null || _props$theme10$colors === void 0 ? void 0 : _props$theme10$colors.altLight;
+}, function (props) {
   var _props$theme11, _props$theme11$colors;
 
-  return (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : (_props$theme11$colors = _props$theme11.colors.brand) === null || _props$theme11$colors === void 0 ? void 0 : _props$theme11$colors.altLight;
-}, function (props) {
-  var _props$theme12;
+  return props.scrollColor ? getSelectedBackground$2(_objectSpread2(_objectSpread2({}, props), {}, {
+    bg: props.scrollColor
+  })) : (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : (_props$theme11$colors = _props$theme11.colors.brand) === null || _props$theme11$colors === void 0 ? void 0 : _props$theme11$colors.altDarker;
+});
+var KanbanContainer = styled.div(_templateObject3$6(), function (props) {
+  var _props$theme12, _props$theme12$colors;
 
-  return (_props$theme12 = props.theme) === null || _props$theme12 === void 0 ? void 0 : _props$theme12.colors.brand.altDarker;
+  return (_props$theme12 = props.theme) === null || _props$theme12 === void 0 ? void 0 : (_props$theme12$colors = _props$theme12.colors.brand) === null || _props$theme12$colors === void 0 ? void 0 : _props$theme12$colors.altLight;
+}, function (props) {
+  var _props$theme13;
+
+  return (_props$theme13 = props.theme) === null || _props$theme13 === void 0 ? void 0 : _props$theme13.colors.brand.altDarker;
 });
 var Row = styled.div(_templateObject4$4(), function (props) {
   return props.noWrap ? 'nowrap' : 'wrap';
@@ -10082,9 +10099,9 @@ var Col = styled.div(_templateObject5$2(), function (props) {
 }, function (props) {
   return props.justify ? props.justify : 'none';
 }, function (props) {
-  var _props$padding, _props$theme13;
+  var _props$padding, _props$theme14;
 
-  return (_props$padding = props.padding) !== null && _props$padding !== void 0 ? _props$padding : (_props$theme13 = props.theme) === null || _props$theme13 === void 0 ? void 0 : _props$theme13.margin;
+  return (_props$padding = props.padding) !== null && _props$padding !== void 0 ? _props$padding : (_props$theme14 = props.theme) === null || _props$theme14 === void 0 ? void 0 : _props$theme14.margin;
 }, function (props) {
   return props.collapse && media[props.collapse]("\n  display: none;\n  ");
 }, function (props) {
@@ -54370,10 +54387,10 @@ var ListItens = styled.li(_templateObject3$i(), function (props) {
 }, function (props) {
   return props.justify ? props.justify : 'center';
 }, function (props) {
-  return props.hasIcon && props.indexedList ? getIconStyle$1(props.indexedStyle, props.indexedList) : props.hasIcon ? getIconStyle$1('main') : regularStyle;
+  return props.hasIcon && props.indexedList ? getIconStyle(props.indexedStyle, props.indexedList) : props.hasIcon ? getIconStyle('main') : regularStyle;
 });
 
-var getIconStyle$1 = function getIconStyle(style, isIndexed) {
+var getIconStyle = function getIconStyle(style, isIndexed) {
   var _theme$colors, _theme$colors$brand, _theme$colors2, _theme$colors2$brand;
 
   var customStyles = {
@@ -54704,8 +54721,38 @@ Logo$1.defaultProps = {
   color: 'colorful'
 };
 
-function _templateObject$x() {
+function _templateObject4$e() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  margin-right: 8px;\n  height: 24px;\n  min-width: 23px;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  box-sizing: border-box;\n  border-radius: 2px;\n  font-size: 12px;\n  ", ";\n\n  &:hover {\n    cursor: pointer;\n  }\n\n  h3 {\n    margin: 0px;\n  }\n\n  svg {\n    height: 24px;\n    width: 24px;\n  }\n"]);
+
+  _templateObject4$e = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3$j() {
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n"]);
+
+  _templateObject3$j = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2$r() {
+  var data = _taggedTemplateLiteral(["\n  p {\n    color: ", ";\n  }\n"]);
+
+  _templateObject2$r = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$x() {
+  var data = _taggedTemplateLiteral(["\n  margin: 24px 0px 32px;\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n"]);
 
   _templateObject$x = function _templateObject() {
     return data;
@@ -54713,6 +54760,11 @@ function _templateObject$x() {
 
   return data;
 }
+var StyledPagination = styled.div(_templateObject$x());
+var Left$1 = styled.div(_templateObject2$r(), function (props) {
+  return props.theme.colors.grey;
+});
+var Right$1 = styled.div(_templateObject3$j());
 
 var getActiveStyles = function getActiveStyles(theme, isActive, type) {
   if (isActive) {
@@ -54724,7 +54776,7 @@ var getActiveStyles = function getActiveStyles(theme, isActive, type) {
   }
 };
 
-var StyledTracker = styled.div(_templateObject$x(), function (props) {
+var StyledTracker = styled.div(_templateObject4$e(), function (props) {
   return getActiveStyles(props.theme, props.isActive, props.type);
 });
 
@@ -54783,48 +54835,13 @@ TrackerBox.propTypes = {
   action: propTypes.func
 };
 
-function _templateObject3$j() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n"]);
-
-  _templateObject3$j = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2$r() {
-  var data = _taggedTemplateLiteral(["\n  p {\n    color: ", ";\n  }\n"]);
-
-  _templateObject2$r = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject$y() {
-  var data = _taggedTemplateLiteral(["\n  margin: 24px 0px 32px;\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n"]);
-
-  _templateObject$y = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-var StyledPagination = styled.div(_templateObject$y());
-var Left$1 = styled.div(_templateObject2$r(), function (props) {
-  return props.theme.colors.grey;
-});
-var Right$1 = styled.div(_templateObject3$j());
-
-var Pagination = function Pagination(_ref) {
-  var _ref$currentPage = _ref.currentPage,
-      currentPage = _ref$currentPage === void 0 ? 1 : _ref$currentPage,
-      _ref$totalPages = _ref.totalPages,
-      totalPages = _ref$totalPages === void 0 ? currentPage : _ref$totalPages,
-      action = _ref.action,
-      translate = _ref.translate;
+var Pagination = function Pagination(_ref2) {
+  var _ref2$currentPage = _ref2.currentPage,
+      currentPage = _ref2$currentPage === void 0 ? 1 : _ref2$currentPage,
+      _ref2$totalPages = _ref2.totalPages,
+      totalPages = _ref2$totalPages === void 0 ? currentPage : _ref2$totalPages,
+      action = _ref2.action,
+      translate = _ref2.translate;
   var boxes = useMemo$1(function () {
     if (totalPages >= 4) {
       if (currentPage === 1 || currentPage === totalPages || currentPage === totalPages - 1) {
@@ -54881,8 +54898,18 @@ Pagination.propTypes = {
   translate: propTypes.func
 };
 
-function _templateObject5$7() {
+function _templateObject6$4() {
   var data = _taggedTemplateLiteral(["\n  padding: 0px 30px;\n  height: 40px;\n  display: flex;\n  align-items: center;\n\n  color: ", ";\n  ", "\n"]);
+
+  _templateObject6$4 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5$7() {
+  var data = _taggedTemplateLiteral(["\n  padding: 0px 30px;\n  height: 40px;\n  display: flex;\n  align-items: center;\n  color: ", ";\n  &:visited {\n    color: ", ";\n  }\n  ", ";\n"]);
 
   _templateObject5$7 = function _templateObject5() {
     return data;
@@ -54891,10 +54918,10 @@ function _templateObject5$7() {
   return data;
 }
 
-function _templateObject4$e() {
-  var data = _taggedTemplateLiteral(["\n  padding: 0px 30px;\n  height: 40px;\n  display: flex;\n  align-items: center;\n  color: ", ";\n  &:visited {\n    color: ", ";\n  }\n  ", ";\n"]);
+function _templateObject4$f() {
+  var data = _taggedTemplateLiteral(["\n  margin-bottom: ", "px;\n  button {\n    transition: all 0.5s;\n    svg {\n      transition: all 0.5s;\n      transform: ", ";\n      > path {\n        fill: ", ";\n      }\n    }\n    ", "\n  }\n"]);
 
-  _templateObject4$e = function _templateObject4() {
+  _templateObject4$f = function _templateObject4() {
     return data;
   };
 
@@ -54902,7 +54929,7 @@ function _templateObject4$e() {
 }
 
 function _templateObject3$k() {
-  var data = _taggedTemplateLiteral(["\n  margin-bottom: ", "px;\n  button {\n    transition: all 0.5s;\n    svg {\n      transition: all 0.5s;\n      transform: ", ";\n      > path {\n        fill: ", ";\n      }\n    }\n    ", "\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  text-transform: uppercase;\n  margin-top: ", ";\n  color: ", ";\n"]);
 
   _templateObject3$k = function _templateObject3() {
     return data;
@@ -54912,7 +54939,7 @@ function _templateObject3$k() {
 }
 
 function _templateObject2$s() {
-  var data = _taggedTemplateLiteral(["\n  text-transform: uppercase;\n  margin-top: ", ";\n  color: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  overflow-y: scroll;\n  max-height: 75vh;\n"]);
 
   _templateObject2$s = function _templateObject2() {
     return data;
@@ -54921,16 +54948,16 @@ function _templateObject2$s() {
   return data;
 }
 
-function _templateObject$z() {
+function _templateObject$y() {
   var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  color: white;\n  transition: width 0.5s linear;\n  width: ", ";\n  height: 100vh;\n  svg {\n    margin-top: ", "px;\n  }\n  button svg {\n    margin-top: 0;\n  }\n  > div {\n    transition: all 0.5s linear;\n\n    ", "\n  }\n"]);
 
-  _templateObject$z = function _templateObject() {
+  _templateObject$y = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledSidebar = styled.div(_templateObject$z(), function (props) {
+var StyledSidebar = styled.div(_templateObject$y(), function (props) {
   var _props$theme, _props$theme$colors, _props$theme$colors$b;
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : (_props$theme$colors = _props$theme.colors) === null || _props$theme$colors === void 0 ? void 0 : (_props$theme$colors$b = _props$theme$colors.brand) === null || _props$theme$colors$b === void 0 ? void 0 : _props$theme$colors$b.main;
@@ -54943,7 +54970,8 @@ var StyledSidebar = styled.div(_templateObject$z(), function (props) {
 }, function (props) {
   return !props.open ? "\n    position: fixed;\n    left: -240px;\n  " : "\n    position: fixed;\n    left: 0px;";
 });
-var NavHeader = styled(Tiny)(_templateObject2$s(), function (props) {
+var ScrollView = styled.div(_templateObject2$s());
+var NavHeader = styled(Tiny)(_templateObject3$k(), function (props) {
   var _props$theme3;
 
   return ((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.margin) * 2;
@@ -54952,7 +54980,7 @@ var NavHeader = styled(Tiny)(_templateObject2$s(), function (props) {
 
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.white;
 });
-var NavSection = styled.div(_templateObject3$k(), function (props) {
+var NavSection = styled.div(_templateObject4$f(), function (props) {
   var _props$theme5;
 
   return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) * 2;
@@ -54963,7 +54991,7 @@ var NavSection = styled.div(_templateObject3$k(), function (props) {
 
   return (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.white;
 }, function (props) {
-  return !props.open ? "\n    position: fixed;\n    top: 64px;\n    left: 8px;\n  " : "\n    position: fixed;\n    top: 64px;\n    left: ".concat(240 - 16, "px;\n    ");
+  return !props.open ? "\n    position: fixed;\n    top: 64px;\n    left: 8px;\n  " : "\n    position: fixed;\n    top: 64px;\n    left: ".concat(240 - 64 - 16, "px;\n    ");
 });
 
 var getActiveLinkStyle = function getActiveLinkStyle(theme, active) {
@@ -54976,7 +55004,7 @@ var getActiveLinkStyle = function getActiveLinkStyle(theme, active) {
   }
 };
 
-var NavLink = styled(Link)(_templateObject4$e(), function (props) {
+var NavLink = styled(Link)(_templateObject5$7(), function (props) {
   var _props$theme7;
 
   return (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.white;
@@ -54987,7 +55015,7 @@ var NavLink = styled(Link)(_templateObject4$e(), function (props) {
 }, function (props) {
   return getActiveLinkStyle(props.theme, props.disabled);
 });
-var NavText = styled(ButtonText)(_templateObject5$7(), function (props) {
+var NavText = styled(ButtonText)(_templateObject6$4(), function (props) {
   var _props$theme9;
 
   return (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors.white;
@@ -55034,8 +55062,8 @@ var Sidebar = function Sidebar(_ref) {
     action: function action() {
       return setIsOpen(!isOpen);
     },
-    btnType: 'terceary'
-  }))), /*#__PURE__*/React.createElement(SidebarLink, {
+    btnType: "transparent"
+  }))), /*#__PURE__*/React.createElement(ScrollView, null, /*#__PURE__*/React.createElement(SidebarLink, {
     route: '/',
     text: "Home"
   }), Object.keys(sidebarSections).map(function (s) {
@@ -55051,7 +55079,7 @@ var Sidebar = function Sidebar(_ref) {
         disabledIcon: "\uD83D\uDEA7"
       });
     }));
-  })));
+  }))));
 };
 
 Sidebar.propTypes = {
@@ -55065,16 +55093,16 @@ Sidebar.defaultProps = {
   sidebarSections: []
 };
 
-function _templateObject$A() {
+function _templateObject$z() {
   var data = _taggedTemplateLiteral(["\n  padding: 0;\n  outline: none;\n  margin: 0;\n  background: transparent;\n  cursor: ", ";\n  border: none;\n  &:hover {\n    svg path {\n      fill: ", " !important;\n    }\n  }\n"]);
 
-  _templateObject$A = function _templateObject() {
+  _templateObject$z = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledIconButton = styled.button(_templateObject$A(), function (_ref) {
+var StyledIconButton = styled.button(_templateObject$z(), function (_ref) {
   var isInteractive = _ref.isInteractive;
   return isInteractive ? 'pointer' : 'initial';
 }, function (_ref2) {
@@ -55260,16 +55288,16 @@ StarsRating.defaultProps = {
   defaultRating: 0
 };
 
-function _templateObject$B() {
+function _templateObject$A() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  font-weight: normal;\n  border-bottom: 1px solid ", ";\n\n  .service {\n    font-weight: 500;\n    font-size: 16px;\n    line-height: 24px;\n    color: ", ";\n  }\n"]);
 
-  _templateObject$B = function _templateObject() {
+  _templateObject$A = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledTableRow = styled.div(_templateObject$B(), function (props) {
+var StyledTableRow = styled.div(_templateObject$A(), function (props) {
   var _props$theme;
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.alt;
@@ -55384,16 +55412,16 @@ function _templateObject2$t() {
   return data;
 }
 
-function _templateObject$C() {
+function _templateObject$B() {
   var data = _taggedTemplateLiteral(["\n  font-size: 14px;\n  line-height: 16px;\n  color: ", ";\n"]);
 
-  _templateObject$C = function _templateObject() {
+  _templateObject$B = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledTable = styled.div(_templateObject$C(), function (props) {
+var StyledTable = styled.div(_templateObject$B(), function (props) {
   var _props$theme;
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.text;
@@ -55503,88 +55531,6 @@ var Table = function Table(_ref) {
       item: item
     });
   }));
-};
-
-function _templateObject4$f() {
-  var data = _taggedTemplateLiteral(["\n  text-transform: capitalize;\n  font-weight: bold;\n  font-size: 24px;\n  line-height: 32px;\n  margin: 0px;\n"]);
-
-  _templateObject4$f = function _templateObject4() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject3$l() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n\n  svg {\n    margin-right: 26px;\n  }\n"]);
-
-  _templateObject3$l = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2$u() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  padding-left: 32px;\n\n  svg {\n    margin-right: 24px;\n  }\n\n  p {\n    margin: 0px;\n  }\n\n  span {\n    font-weight: bold;\n    font-size: 12px;\n    line-height: 10px;\n    letter-spacing: 1px;\n    text-transform: uppercase;\n    color: ", ";\n  }\n"]);
-
-  _templateObject2$u = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject$D() {
-  var data = _taggedTemplateLiteral(["\n  height: 80px;\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 24px;\n  padding-bottom: 10px;\n  -webkit-box-shadow: 0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n  -moz-box-shadow: 0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n  box-shadow: 0px 2px 2px 0px rgba(113, 109, 106, 0.05);\n"]);
-
-  _templateObject$D = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-var StyledTopBar = styled.div(_templateObject$D());
-var LeftSection = styled.div(_templateObject2$u(), function (props) {
-  return props.theme.colors.grey;
-});
-var RightSection = styled.div(_templateObject3$l());
-var ClientName = styled.div(_templateObject4$f());
-
-var TopBar = function TopBar(_ref) {
-  var location = _ref.location,
-      title = _ref.title,
-      back = _ref.back,
-      user = _ref.user,
-      onAvatarClick = _ref.onAvatarClick,
-      onBackClick = _ref.onBackClick;
-  return /*#__PURE__*/React.createElement(StyledTopBar, null, /*#__PURE__*/React.createElement(LeftSection, null, back && /*#__PURE__*/React.createElement(Button$1, {
-    icon: "chevron-left",
-    btnType: "transparent",
-    action: onBackClick
-  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("span", null, location)), /*#__PURE__*/React.createElement(ClientName, null, title))), /*#__PURE__*/React.createElement(RightSection, null, /*#__PURE__*/React.createElement(Icon, {
-    name: "Bell"
-  }), user && /*#__PURE__*/React.createElement(Avatar, {
-    size: "medium",
-    hasCarat: true,
-    hasText: true,
-    user: user,
-    action: onAvatarClick
-  })));
-};
-
-TopBar.propTypes = {
-  location: propTypes.object,
-  title: propTypes.string,
-  user: propTypes.object,
-  back: propTypes.bool,
-  onBackClick: propTypes.func,
-  onAvatarClick: propTypes.func
-};
-TopBar.defaultProps = {
-  onBackClick: function onBackClick() {
-    return console.log('🔴 ~~ TopBar Component 👉 "back" prop requires you to specificy "onBackClick" callback');
-  }
 };
 
 var initialState_1 = createCommonjsModule(function (module, exports) {
@@ -60172,38 +60118,38 @@ exports["default"] = _default;
 
 var Slider = unwrapExports(lib$1);
 
-function _templateObject3$m() {
+function _templateObject3$l() {
   var data = _taggedTemplateLiteral(["\n  width: 368px;\n  height: 220px;\n"]);
 
-  _templateObject3$m = function _templateObject3() {
+  _templateObject3$l = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$v() {
+function _templateObject2$u() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: space-around;\n  outline: none;\n"]);
 
-  _templateObject2$v = function _templateObject2() {
+  _templateObject2$u = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$E() {
+function _templateObject$C() {
   var data = _taggedTemplateLiteral(["\n  margin-top: 10px;\n  display: flex;\n  flex-direction: column;\n  flex: 1;\n  width: 105%;\n  & > button {\n    display: flex;\n    margin: 0 auto;\n    width: calc(100% / 5);\n  }\n"]);
 
-  _templateObject$E = function _templateObject() {
+  _templateObject$C = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var CarouselContainer = styled.div(_templateObject$E());
-var ItemContainer = styled.div(_templateObject2$v());
-var ItemImage = styled.img(_templateObject3$m());
+var CarouselContainer = styled.div(_templateObject$C());
+var ItemContainer = styled.div(_templateObject2$u());
+var ItemImage = styled.img(_templateObject3$l());
 
 var CardSlider = function CardSlider(_ref) {
   var list = _ref.list;
@@ -60244,16 +60190,16 @@ CardSlider.propTypes = {
   hasButton: propTypes.bool
 };
 
-function _templateObject$F() {
+function _templateObject$D() {
   var data = _taggedTemplateLiteral(["\n    html {\n      scroll-behavior: smooth;\n    }\n    body {\n      margin: 0;\n      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',\n        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',\n        sans-serif;\n      -webkit-font-smoothing: antialiased;\n      -moz-osx-font-smoothing: grayscale;\n    }\n    code {\n      font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',\n        monospace;\n    }\n"]);
 
-  _templateObject$F = function _templateObject() {
+  _templateObject$D = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var GlobalStyles = createGlobalStyle(_templateObject$F());
+var GlobalStyles = createGlobalStyle(_templateObject$D());
 var GLOBAL = {
   margin: 16,
   boxShadow: function boxShadow() {
@@ -60292,12 +60238,11 @@ var DARK = _objectSpread2(_objectSpread2({}, GLOBAL), {}, {
   colors: _objectSpread2(_objectSpread2({}, GLOBAL.colors), {}, {
     main: '#A3A1FF',
     background: '#111111',
-    text: '#ffffff',
     mainGradient: "linear-gradient(180deg, rgba(97, 141, 255, 0.4) 0%, rgba(123, 97, 255, 0.2) 100%)",
     logoBorders: '#E9EFF6',
-    typoPrimary: '#ffffff',
-    typoSecondary: '#C9C7C4',
-    typoInverse: '#000000',
+    text: '#ffffff',
+    textSecondary: '#C9C7C4',
+    textInverse: '#000000',
     gradient900: 'linear-gradient(180deg, #110F19 10.84%, rgba(17, 15, 25, 0) 59.6%)',
     gradient800: 'linear-gradient(180deg, #191A25 10.84%, rgba(25, 26, 37, 0) 59.6%)',
     gradient700: 'linear-gradient(180deg, #262633 10.84%, rgba(38, 38, 51, 0) 59.6%)',
@@ -60327,12 +60272,11 @@ var LIGHT = _objectSpread2(_objectSpread2({}, GLOBAL), {}, {
   colors: _objectSpread2(_objectSpread2({}, GLOBAL.colors), {}, {
     main: '#4F2DEC',
     background: '#ffffff',
-    text: '#111111',
     mainGradient: "linear-gradient(180deg, rgba(97, 141, 255, 0.4) 0%, rgba(123, 97, 255, 0.2) 100%)",
     logoBorders: '#E9EFF6',
-    typoPrimary: '#18181A',
-    typoSecondary: '#6D6478',
-    typoInverse: '#FFFFFF',
+    text: '#18181A',
+    textSecondary: '#6D6478',
+    textInverse: '#FFFFFF',
     gray900: '#110F19',
     gray800: '#191A25',
     gray700: '#262633',
@@ -60431,7 +60375,9 @@ var useTheme = function useTheme(THEMES) {
   };
 
   useEffect(function () {
-    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, getOSTheme());
+    if (!localStorage.getItem(LOCAL_STORAGE_THEME_KEY)) {
+      localStorage.setItem(LOCAL_STORAGE_THEME_KEY, getOSTheme());
+    }
   }, []);
   var Provider = useCallback$1(function (_ref) {
     var children = _ref.children;
@@ -60460,4 +60406,4 @@ var useTheme = function useTheme(THEMES) {
   };
 };
 
-export { Accordion, Avatar, Badge$1 as Badge, Body, Button$1 as Button, ButtonText, Card$1 as Card, CheckBoxGroup, Checkbox, Code, Col, Divider, DropDownMenu, ErrorText, FileUploader, FilterBar, FilterButton, Form$1 as Form, Heading, Icon, IconSwitch, Kanban, KanbanCard$1 as KanbanCard, KanbanColumn$1 as KanbanColumn, KanbanContainer, Link, List, Loading as Loader, Logo$1 as Logo, Page, Pagination, RadioButton, Row, SearchInput as Search, Select$2 as Select, Sidebar, CardSlider as Slider, SmallBody, StarsRating, SubHeading, Switcher, Table, Tabs, TextArea$1 as TextArea, TextInput, Tiny, TopBar, TrackerBox, media, useTheme };
+export { Accordion, Avatar, Badge$1 as Badge, Body, Button$1 as Button, ButtonText, Card$1 as Card, CheckBoxGroup, Checkbox, Code, Col, Divider, DropDownMenu, ErrorText, FileUploader, FilterBar, FilterButton, Form$1 as Form, Heading, Icon, IconSwitch, Kanban, KanbanCard$1 as KanbanCard, KanbanColumn$1 as KanbanColumn, KanbanContainer, Link, List, Loading as Loader, Logo$1 as Logo, Page, Pagination, RadioButton, Row, SearchInput as Search, Select$2 as Select, Sidebar, CardSlider as Slider, SmallBody, StarsRating, SubHeading, Switcher, Table, Tabs, TextArea$1 as TextArea, TextInput, Tiny, media, useTheme };

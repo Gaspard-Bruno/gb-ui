@@ -12,7 +12,7 @@ const getOSTheme = () =>
     : LIGHT_THEME;
 
 const ThemeContext = createContext(getOSTheme());
-const useTheme = (THEMES) => {
+const useTheme = THEMES => {
   const [currentTheme, setCurrentTheme] = useState(
     localStorage.getItem(LOCAL_STORAGE_THEME_KEY) || getOSTheme()
   );
@@ -28,7 +28,9 @@ const useTheme = (THEMES) => {
     setCurrentTheme(newTheme);
   };
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, getOSTheme());
+    if (!localStorage.getItem(LOCAL_STORAGE_THEME_KEY)) {
+      localStorage.setItem(LOCAL_STORAGE_THEME_KEY, getOSTheme());
+    }
   }, []);
 
   const Provider = useCallback(

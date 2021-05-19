@@ -27,7 +27,10 @@ const StyledSidebar = styled.div`
     left: 0px;`}
   }
 `;
-
+export const ScrollView = styled.div`
+  overflow-y: scroll;
+  max-height: 75vh;
+`;
 export const NavHeader = styled(Tiny)`
   text-transform: uppercase;
   margin-top: ${props => props.theme?.margin * 2};
@@ -55,7 +58,7 @@ export const NavSection = styled.div`
         : `
     position: fixed;
     top: 64px;
-    left: ${240 - 16}px;
+    left: ${240 - 64 - 16}px;
     `}
   }
 `;

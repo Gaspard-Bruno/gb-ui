@@ -2,9 +2,60 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import t from '../utils/translation';
-import { SmallBody } from '../Text';
-import TrackerBox from '../TrackerBox';
-import StyledPagination, { Left, Right } from './style';
+import { SmallBody, Tiny } from '../Text';
+import StyledPagination, { Left, Right, StyledTracker } from './style';
+import Icon from '../Icon';
+
+const TrackerBox = ({
+  text,
+  currentPage,
+  totalPages,
+  iconName,
+  isActive,
+  boxType,
+  action
+}) => {
+  const handleClick = () => {
+    switch (boxType) {
+      case 'last':
+        if (currentPage > 1) {
+          action(currentPage - 1);
+        }
+        break;
+      case 'ellipsis':
+        break;
+      case 'next':
+        if (currentPage !== totalPages) {
+          action(currentPage + 1);
+        }
+        break;
+      default:
+        action(text);
+        break;
+    }
+  };
+
+  return (
+    <StyledTracker
+      isActive={isActive}
+      onClick={e => handleClick(e, text, currentPage)}
+      type={boxType}
+    >
+      {text ? <Tiny>{text}</Tiny> : <Icon name={iconName} />}
+    </StyledTracker>
+  );
+};
+
+TrackerBox.propTypes = {
+  text: PropTypes.string,
+  iconName: PropTypes.string,
+  isActive: PropTypes.bool,
+  currentPage: PropTypes.number,
+  totalPage: PropTypes.number,
+  boxType: PropTypes.oneOf(['single', 'ellipsis', 'last', 'next']),
+  action: PropTypes.func
+};
+
 
 const Pagination = ({
   currentPage = 1,

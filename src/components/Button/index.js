@@ -15,6 +15,9 @@ const Button = ({
   type,
   isFullWidth,
   children,
+  iconColor,
+  textColor,
+  borderColor,
   ...otherProps
 }) => {
   if (text) {
@@ -25,6 +28,8 @@ const Button = ({
         disabled={isDisabled}
         small={isSmall}
         onClick={action}
+        textColor={textColor}
+        borderColor={borderColor}
         type={type}
         {...otherProps}
       >
@@ -41,32 +46,28 @@ const Button = ({
         disabled={isDisabled}
         small={isSmall}
         onClick={action}
+        borderColor={borderColor}
         type={type}
       >
-        <Icon name={icon} />
+        <Icon name={icon} color={iconColor} />
       </IconButton>
     );
   }
-  return <StyledButton  />;
+  return <StyledButton />;
 };
 
 Button.propTypes = {
   isDisabled: PropTypes.bool,
   action: PropTypes.func,
   isSmall: PropTypes.bool,
+  borderColor: PropTypes.string,
+  iconColor: PropTypes.string,
+  textColor: PropTypes.string,
   isFullWidth: PropTypes.bool,
   type: PropTypes.string,
   text: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
-  btnType: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'terceary',
-    'transparent',
-    'borded',
-    'resting',
-    'active'
-  ]),
+  btnType: PropTypes.oneOf(['primary', 'secondary', 'terceary', 'transparent']),
   icon: PropTypes.string
 };
 

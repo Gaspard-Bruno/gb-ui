@@ -1,5 +1,9 @@
 import styled from 'styled-components';
+import get from 'lodash.get';
 
+const getSelectedColor = props => {
+  return get(props.theme?.colors, props.color, props.color);
+};
 const getStyleFromBtnType = (type = 'primary', disabled, theme) => {
   if (disabled) {
     return `
@@ -25,58 +29,38 @@ const getStyleFromBtnType = (type = 'primary', disabled, theme) => {
       `;
     case 'secondary':
       return `
-        background-color: ${theme.colors.text};
+        background-color: ${theme.colors.alt};
         border: 1px solid ${theme.colors?.brand?.alt};
+        span {
+          color: ${theme.colors.background};
+        }
         &:hover {
           border: 1px solid transparent;
-          background-color: ${theme.colors.brand.mainLight};
+          background-color: ${theme.colors.brand.altLight};
+          span {
+            color: ${theme.colors.background};
+          }
         }
       `;
     case 'terceary':
       return `
-        background-color: ${theme.colors?.brand?.main};
+        background-color: ${theme.colors?.text};
         border: transparent;
+        span {
+          color: ${theme.colors.background};
+        }
         &:hover {
           border: transparent;
-          background-color: ${theme.colors?.brand?.mainLight};
+          background-color: ${theme.colors?.text};
+          span {
+            color: ${theme.colors.background};
+          }
         }
       `;
     case 'transparent':
       return `
         background-color: transparent;
         border: transparent;
-        > span {
-          color: ${theme.colors?.brand?.main};
-          &:hover {
-            color: ${theme.colors?.brand?.main};
-          }
-        }
-      `;
-    case 'borded':
-      return `
-        border: 1px solid ${theme.colors?.brand?.alt};
-        box-sizing: border-box;
-        border-radius: 100px;
-        background-color: 'transparent';
-        > span {
-          color: ${theme.colors.brand.text};
-          &:hover {
-            color: ${theme.colors?.brand?.main};
-          }
-        }
-      `;
-    case 'resting':
-      return `
-        background-color: ${theme.colors.alt};
-        border: 1px solid transparent;
-        > span {
-          color: ${theme.colors.grey};
-        }
-      `;
-    case 'active':
-      return `
-        background-color: ${theme.colors.alt};
-        border: 1px solid transparent;
         > span {
           color: ${theme.colors?.brand?.main};
           &:hover {
@@ -96,7 +80,7 @@ const Button = styled.button`
   margin-top: ${props => (props.fullWidth ? '20px' : '')};
   margin-bottom: ${props => (props.fullWidth ? '20px' : '')};
   padding: ${props =>
-    props.small ? props.theme.margin * 0.75 : props.theme.margin}px;
+    props.small ? props.theme.margin * 0.25 : props.theme.margin}px;
   > * {
     margin: 0 auto;
   }
@@ -104,20 +88,18 @@ const Button = styled.button`
     cursor: pointer;
   }
   ${props => getStyleFromBtnType(props.btnType, props.disabled, props.theme)}
+  ${props =>
+    props.textColor &&
+    `
+  > span {
+    color: ${getSelectedColor({ ...props, color: props.textColor })};
+  }`}
+    ${props =>
+      props.borderColor &&
+      `
+  border: 1px solid ${getSelectedColor({ ...props, color: props.borderColor })};
+  `}
 `;
-
-const getIconStyle = (btnType, theme) => {
-  switch (btnType) {
-    case 'borded':
-      return `
-        border: 1px solid ${theme.colors?.brand?.alt};
-        padding: 8px;
-      `;
-
-    default:
-      break;
-  }
-};
 
 export const IconButton = styled.button`
   border-radius: 50%;
@@ -129,7 +111,11 @@ export const IconButton = styled.button`
   &:hover {
     cursor: pointer;
   }
-  ${props => getIconStyle(props.btnType, props.theme)}
+  ${props =>
+    props.borderColor &&
+    `
+  border: 1px solid ${getSelectedColor({ ...props, color: props.borderColor })};
+  `}
 `;
 
 export default Button;
