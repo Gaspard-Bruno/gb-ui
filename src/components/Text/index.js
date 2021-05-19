@@ -80,6 +80,7 @@ export const Tiny = styled.h3`
   line-height: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
+  margin-top: 32px;
   color: ${props =>
     props.color
       ? get(props.theme?.colors, props.color, props.theme?.colors.text)

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, createContext } from 'react';
 import { ThemeProvider } from 'styled-components';
-import THEMES, { theme55 } from '../theme';
+import { uiTheme } from '../theme';
 
 const DARK_THEME = 'DARK';
 const LIGHT_THEME = 'LIGHT';
@@ -12,7 +12,7 @@ const getOSTheme = () =>
     : LIGHT_THEME;
 
 const ThemeContext = createContext(getOSTheme());
-const useTheme = (theme = theme55) => {
+const useTheme = (THEMES) => {
   const [currentTheme, setCurrentTheme] = useState(
     localStorage.getItem(LOCAL_STORAGE_THEME_KEY) || getOSTheme()
   );
@@ -40,11 +40,23 @@ const useTheme = (theme = theme55) => {
               ctx && (
                 <ThemeProvider
                   theme={{
-                    ...theme,
+                    ...uiTheme,
                     ...THEMES[ctx.currentTheme],
                     colors: {
-                      ...theme.colors,
-                      ...THEMES[ctx.currentTheme].colors
+                      ...uiTheme?.colors,
+                      ...THEMES[ctx.currentTheme].colors,
+                      feedback: {
+                        ...uiTheme?.colors?.feedback,
+                        ...THEMES[ctx.currentTheme]?.colors?.feedback
+                      },
+                      brand: {
+                        ...uiTheme?.colors?.brand,
+                        ...THEMES[ctx.currentTheme]?.colors?.brand
+                      },
+                      muted: {
+                        ...uiTheme?.colors?.muted,
+                        ...THEMES[ctx.currentTheme]?.colors?.muted
+                      }
                     }
                   }}
                 >

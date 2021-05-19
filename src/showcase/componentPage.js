@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import components from 'showcase/components';
 
-import { theme55 } from 'Theme';
+import { uiTheme } from 'Theme';
 
 import {
   Accordion,
@@ -15,7 +15,6 @@ import {
   Heading,
   SubHeading
 } from 'Components';
-import useTheme from 'Hooks/useTheme';
 
 const SECTIONS = {};
 
@@ -56,9 +55,9 @@ const PreviewPage = ({ toggleTheme }) => {
                     ? route.props.map((props, i) => (
                         <Row
                           key={route.label + i}
-                          inlineStyle={`padding-bottom: ${theme55.margin}px;
-                                    margin-top: ${theme55.margin}px;
-                                    border-bottom: 1px solid ${theme55.colors.grey};`}
+                          inlineStyle={`padding-bottom: ${uiTheme.margin}px;
+                                    margin-top: ${uiTheme.margin}px;
+                                    border-bottom: 1px solid ${uiTheme.colors.grey};`}
                         >
                           <Row>
                             <Col size={2}>

@@ -134,7 +134,8 @@ export default {
   DARK
 };
 
-export const theme55 = {
+export const uiTheme = {
+  ...GLOBAL,
   margin: 16,
   heroSize: 680,
   maxWidth: 1152,

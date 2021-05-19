@@ -2286,7 +2286,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n  ", "\n  font-style: normal;\n  font-weight: bold;\n  font-size: 10px;\n  line-height: 10px;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  color: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  ", "\n  font-style: normal;\n  font-weight: bold;\n  font-size: 10px;\n  line-height: 10px;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  margin-top: 32px;\n  color: ", ";\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -60481,11 +60481,7 @@ var LIGHT = _objectSpread2(_objectSpread2({}, GLOBAL), {}, {
     }
   })
 });
-var THEMES = {
-  LIGHT: LIGHT,
-  DARK: DARK
-};
-var theme55 = {
+var uiTheme = _objectSpread2(_objectSpread2({}, GLOBAL), {}, {
   margin: 16,
   heroSize: 680,
   maxWidth: 1152,
@@ -60522,7 +60518,7 @@ var theme55 = {
       purple: '#CBABEA'
     }
   }
-};
+});
 
 var DARK_THEME = 'DARK';
 var LIGHT_THEME = 'LIGHT';
@@ -60534,9 +60530,7 @@ var getOSTheme = function getOSTheme() {
 
 var ThemeContext$1 = /*#__PURE__*/React.createContext(getOSTheme());
 
-var useTheme = function useTheme() {
-  var theme = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : theme55;
-
+var useTheme = function useTheme(THEMES) {
   var _useState = React.useState(localStorage.getItem(LOCAL_STORAGE_THEME_KEY) || getOSTheme()),
       _useState2 = _slicedToArray(_useState, 2),
       currentTheme = _useState2[0],
@@ -60565,9 +60559,15 @@ var useTheme = function useTheme() {
         currentTheme: currentTheme
       }
     }, /*#__PURE__*/React__default['default'].createElement(ThemeContext$1.Consumer, null, function (ctx) {
+      var _uiTheme$colors, _THEMES$ctx$currentTh, _THEMES$ctx$currentTh2, _uiTheme$colors2, _THEMES$ctx$currentTh3, _THEMES$ctx$currentTh4, _uiTheme$colors3, _THEMES$ctx$currentTh5, _THEMES$ctx$currentTh6;
+
       return ctx && /*#__PURE__*/React__default['default'].createElement(styled.ThemeProvider, {
-        theme: _objectSpread2(_objectSpread2(_objectSpread2({}, theme), THEMES[ctx.currentTheme]), {}, {
-          colors: _objectSpread2(_objectSpread2({}, theme.colors), THEMES[ctx.currentTheme].colors)
+        theme: _objectSpread2(_objectSpread2(_objectSpread2({}, uiTheme), THEMES[ctx.currentTheme]), {}, {
+          colors: _objectSpread2(_objectSpread2(_objectSpread2({}, uiTheme === null || uiTheme === void 0 ? void 0 : uiTheme.colors), THEMES[ctx.currentTheme].colors), {}, {
+            feedback: _objectSpread2(_objectSpread2({}, uiTheme === null || uiTheme === void 0 ? void 0 : (_uiTheme$colors = uiTheme.colors) === null || _uiTheme$colors === void 0 ? void 0 : _uiTheme$colors.feedback), (_THEMES$ctx$currentTh = THEMES[ctx.currentTheme]) === null || _THEMES$ctx$currentTh === void 0 ? void 0 : (_THEMES$ctx$currentTh2 = _THEMES$ctx$currentTh.colors) === null || _THEMES$ctx$currentTh2 === void 0 ? void 0 : _THEMES$ctx$currentTh2.feedback),
+            brand: _objectSpread2(_objectSpread2({}, uiTheme === null || uiTheme === void 0 ? void 0 : (_uiTheme$colors2 = uiTheme.colors) === null || _uiTheme$colors2 === void 0 ? void 0 : _uiTheme$colors2.brand), (_THEMES$ctx$currentTh3 = THEMES[ctx.currentTheme]) === null || _THEMES$ctx$currentTh3 === void 0 ? void 0 : (_THEMES$ctx$currentTh4 = _THEMES$ctx$currentTh3.colors) === null || _THEMES$ctx$currentTh4 === void 0 ? void 0 : _THEMES$ctx$currentTh4.brand),
+            muted: _objectSpread2(_objectSpread2({}, uiTheme === null || uiTheme === void 0 ? void 0 : (_uiTheme$colors3 = uiTheme.colors) === null || _uiTheme$colors3 === void 0 ? void 0 : _uiTheme$colors3.muted), (_THEMES$ctx$currentTh5 = THEMES[ctx.currentTheme]) === null || _THEMES$ctx$currentTh5 === void 0 ? void 0 : (_THEMES$ctx$currentTh6 = _THEMES$ctx$currentTh5.colors) === null || _THEMES$ctx$currentTh6 === void 0 ? void 0 : _THEMES$ctx$currentTh6.muted)
+          })
         })
       }, children);
     }));

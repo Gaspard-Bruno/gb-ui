@@ -4,9 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 import components from 'showcase/components';
 
-import { GlobalStyles, theme55 } from 'Theme';
+import THEMES, { GlobalStyles } from 'Theme';
 import useTheme from 'Hooks/useTheme';
-
 import { Row, Sidebar } from 'Components';
 
 import ComponentPage from './componentPage';
@@ -29,7 +28,7 @@ components.forEach(component => {
 });
 
 const ShowCase = () => {
-  const { Provider, toggleTheme } = useTheme(theme55);
+  const { Provider, toggleTheme } = useTheme(THEMES);
   return (
     <Provider>
       <GlobalStyles />
