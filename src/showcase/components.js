@@ -1,7 +1,8 @@
 import React from 'react';
 import FORM from 'Components/utils/form';
 /* eslint-disable */
-import THEME, { GlobalStyles } from 'Theme';
+import LayoutShowcase from './layoutShowcase';
+import TypographyShowcase from './typographyShowcase';
 import {
   Accordion,
   Avatar,
@@ -57,70 +58,14 @@ const components = [
     label: 'Layout',
     section: 'Getting Started',
     disabled: false,
-    props: {
-      previewcomponentTitle: 'Layout Usage Example'
-    },
-    component: () => (
-      <Page>
-        <Col
-          justify='flex-start'
-          padding={0}
-          bg='background'
-          size={2}
-          inlineStyle={() => `border: 2px solid #ff00dd;`}
-          marginVertical={8}
-        >
-          <Row
-            align='center'
-            justify='space-around'
-            size={1}
-            marginHorizontal={8}
-            marginVertical={8}
-            bg='brand.main'
-            inlineStyle={() => `border: 2px solid #ffcb00;`}
-          >
-            <Col
-              size={2}
-              marginHorizontal={8}
-              marginVertical={8}
-              inlineStyle={() => `border: 2px solid #0063ff;`}
-            />
-            <Col
-              size={2}
-              marginHorizontal={8}
-              marginVertical={8}
-              inlineStyle={() => `border: 2px solid #0063ff;`}
-            />
-          </Row>
-          <Row size={2} inlineStyle={() => `border: 2px solid #ff0038;`}>
-            <Col size={1} />
-            <Col
-              size={2}
-              center
-              marginHorizontal={16}
-              marginVertical={8}
-              inlineStyle={() => `border: 2px solid #00ff2e;`}
-            ></Col>
-            <Col size={1} />
-          </Row>
-        </Col>
-        <Col size={3} inlineStyle={() => `border: 2px solid #ccff00;`} />
-      </Page>
-    )
+    component: () => <LayoutShowcase />
   },
   {
-    label: 'Form',
-    section: 'Form',
+    label: 'Typography',
+    section: 'Getting Started',
     disabled: false,
-    props: {
-      previewComponentTitle: 'Settings',
-      questions: FORM.settingsSchema.questions,
-      onSubmit: vals => {
-        localStorage.setItem('SETTINGS', JSON.stringify(vals));
-      },
-      answers: JSON.parse(localStorage.getItem('SETTINGS')) || {}
-    },
-    component: props => <Form {...props}></Form>
+    props: {},
+    component: () => <TypographyShowcase />
   },
   {
     label: 'Avatar',
@@ -161,6 +106,20 @@ const components = [
       }
     },
     component: props => <TopBar {...props}></TopBar>
+  },
+  {
+    label: 'Form',
+    section: 'Form',
+    disabled: false,
+    props: {
+      previewComponentTitle: 'Settings',
+      questions: FORM.settingsSchema.questions,
+      onSubmit: vals => {
+        localStorage.setItem('SETTINGS', JSON.stringify(vals));
+      },
+      answers: JSON.parse(localStorage.getItem('SETTINGS')) || {}
+    },
+    component: props => <Form {...props}></Form>
   },
   {
     label: 'FileUploader',

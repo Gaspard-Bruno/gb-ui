@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
 export const AccordionContainer = styled.div`
-         width: 100%;
-         display: flex;
-         margin-bottom: ${props => props.theme.margin}px;
-         flex-flow: column nowrap;
-         justify-content: flex-start;
-         border-bottom: 1px solid
-           ${props => props.theme?.colors.brand?.altLight};
-       `;
+  width: 100%;
+  display: flex;
+  margin-bottom: ${props => props.theme.margin}px;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  border-bottom: 1px solid ${props => props.theme?.colors.brand?.altLight};
+`;
 
 export const AccordionTitle = styled.div`
   display: flex;

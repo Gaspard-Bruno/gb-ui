@@ -54,37 +54,36 @@ const PreviewPage = ({ toggleTheme }) => {
                   Array.isArray(route.props)
                     ? route.props.map((props, i) => (
                         <Row
+                          fullWidth
                           key={route.label + i}
                           inlineStyle={() => `padding-bottom: ${uiTheme.margin}px;
                                     margin-top: ${uiTheme.margin}px;
-                                    border-bottom: 1px solid ${uiTheme.colors.grey};`}
+                                    border-bottom: 1px solid ${uiTheme.colors.main};`}
                         >
-                          <Row>
-                            <Col size={2}>
-                              <SubHeading>Props</SubHeading>
-                              <Code>
-                                <pre>
-                                  {JSON.stringify(
-                                    extractPreviewProps(props),
-                                    0,
-                                    2
-                                  )}
-                                </pre>
-                              </Code>
-                            </Col>
-                            <Col size={2}>
-                              <SubHeading>
-                                {props.previewComponentTitle}
-                              </SubHeading>
-                              <Accordion
-                                isOpen={props.previewComponentOpen}
-                                title={`${route.label} Component`}
-                                content={route.component(
-                                  extractPreviewProps(props)
+                          <Col size={2}>
+                            <SubHeading>Props</SubHeading>
+                            <Code>
+                              <pre>
+                                {JSON.stringify(
+                                  extractPreviewProps(props),
+                                  0,
+                                  2
                                 )}
-                              />
-                            </Col>
-                          </Row>
+                              </pre>
+                            </Code>
+                          </Col>
+                          <Col size={2}>
+                            <SubHeading>
+                              {props.previewComponentTitle}
+                            </SubHeading>
+                            <Accordion
+                              isOpen={props.previewComponentOpen}
+                              title={`${route.label} Component`}
+                              content={route.component(
+                                extractPreviewProps(props)
+                              )}
+                            />
+                          </Col>
                         </Row>
                       ))
                     : route.component(route.props)

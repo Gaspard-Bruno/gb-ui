@@ -2276,7 +2276,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n  text-decoration: none;\n  ", "\n  font-style: medium;\n  font-weight: 500;\n  display: block;\n  line-height: 16px;\n  font-size: 14px;\n  color: ", ";\n  font-size: 16px;\n  line-height: 24px;\n  :hover {\n    color: ", ";\n  }\n  :active {\n    color: ", ";\n  }\n  :visited {\n    color: ", ";\n  }\n  :focus {\n    color: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  text-decoration: none;\n  ", "\n  font-size: ", ";\n  display: block;\n  font-size: ", ";\n  color: ", ";\n  line-height: 24px;\n  :hover {\n    color: ", ";\n  }\n  :active {\n    color: ", ";\n  }\n  :visited {\n    color: ", ";\n  }\n  :focus {\n    color: ", ";\n  }\n"]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -2306,7 +2306,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n         ", "\n         font-style: normal;\n         font-weight: normal;\n         font-size: 16px;\n         line-height: 24px;\n         color: ", ";\n       "]);
+  var data = _taggedTemplateLiteral(["\n  ", "\n  font-style: normal;\n  font-weight: normal;\n  font-size: ", ";\n  line-height: 24px;\n  color: ", ";\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -2335,9 +2335,10 @@ function _templateObject() {
   return data;
 }
 var headingSizes = ["\n  font-size: 48px;\n  line-height: 64px;\n  ", "\n  font-size: 32px;\n  line-height: 40px;\n  ", "\n  font-size: 24px;\n  line-height: 32px;\n  ", "\n  font-size: 20px;\n  line-height: 24px;\n  ", "\n  font-size: 18px;\n  line-height: 24px;\n  ", "\n  font-size: 16px;\n  line-height: 24px;\n  "];
-var Heading = styled__default['default'].h2(_templateObject(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.fontPrimary();
+var Heading = styled__default['default'].h1(_templateObject(), function (_ref) {
+  var theme = _ref.theme,
+      secondary = _ref.secondary;
+  return secondary ? theme.fontSecondary() : theme.fontPrimary();
 }, function (props) {
   return props.size ? headingSizes[props.size - 1] : headingSizes[0];
 }, function (props) {
@@ -2358,15 +2359,19 @@ var SubHeading = styled__default['default'].h3(_templateObject2(), function (_re
   return props.color ? lodash_get((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors, props.color, (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.text) : (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.text;
 });
 var Body = styled__default['default'].p(_templateObject3(), function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.fontPrimary();
+  var theme = _ref3.theme,
+      primary = _ref3.primary;
+  return primary ? theme.fontPrimary() : theme.fontSecondary();
+}, function (_ref4) {
+  var size = _ref4.size;
+  return size ? size : '16px';
 }, function (props) {
   var _props$theme7, _props$theme8, _props$theme9;
 
   return props.color ? lodash_get((_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors, props.color, (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.text) : (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors.text;
 });
-var SmallBody = styled__default['default'].p(_templateObject4(), function (_ref4) {
-  var theme = _ref4.theme;
+var SmallBody = styled__default['default'].p(_templateObject4(), function (_ref5) {
+  var theme = _ref5.theme;
   return theme.fontPrimary();
 }, function (props) {
   return props.bold ? 'bold' : 'normal';
@@ -2375,17 +2380,24 @@ var SmallBody = styled__default['default'].p(_templateObject4(), function (_ref4
 
   return props.color ? lodash_get((_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.colors, props.color, (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.colors.text) : (_props$theme12 = props.theme) === null || _props$theme12 === void 0 ? void 0 : _props$theme12.colors.text;
 });
-var Tiny = styled__default['default'].h3(_templateObject5(), function (_ref5) {
-  var theme = _ref5.theme;
+var Tiny = styled__default['default'].h3(_templateObject5(), function (_ref6) {
+  var theme = _ref6.theme;
   return theme.fontPrimary();
 }, function (props) {
   var _props$theme13, _props$theme14, _props$theme15;
 
   return props.color ? lodash_get((_props$theme13 = props.theme) === null || _props$theme13 === void 0 ? void 0 : _props$theme13.colors, props.color, (_props$theme14 = props.theme) === null || _props$theme14 === void 0 ? void 0 : _props$theme14.colors.text) : (_props$theme15 = props.theme) === null || _props$theme15 === void 0 ? void 0 : _props$theme15.colors.text;
 });
-var StyledLink = styled__default['default'].a(_templateObject6(), function (_ref6) {
-  var theme = _ref6.theme;
-  return theme.fontPrimary();
+var StyledLink = styled__default['default'].a(_templateObject6(), function (_ref7) {
+  var theme = _ref7.theme,
+      primary = _ref7.primary;
+  return primary ? theme.fontPrimary() : theme.fontSecondary();
+}, function (_ref8) {
+  var size = _ref8.size;
+  return size ? size : '16px';
+}, function (_ref9) {
+  var size = _ref9.size;
+  return size ? size : '16px';
 }, function (props) {
   var _props$theme16, _props$theme17, _props$theme18;
 
@@ -2393,7 +2405,7 @@ var StyledLink = styled__default['default'].a(_templateObject6(), function (_ref
 }, function (props) {
   var _props$theme19;
 
-  return (_props$theme19 = props.theme) === null || _props$theme19 === void 0 ? void 0 : _props$theme19.colors.grey;
+  return (_props$theme19 = props.theme) === null || _props$theme19 === void 0 ? void 0 : _props$theme19.colors.text;
 }, function (props) {
   var _props$theme20, _props$theme21, _props$theme22;
 
@@ -2405,19 +2417,24 @@ var StyledLink = styled__default['default'].a(_templateObject6(), function (_ref
 }, function (props) {
   var _props$theme26;
 
-  return (_props$theme26 = props.theme) === null || _props$theme26 === void 0 ? void 0 : _props$theme26.colors.brand.red;
-});
-var Link = function Link(_ref7) {
-  var to = _ref7.to,
-      newTab = _ref7.newTab,
-      children = _ref7.children;
-  return /*#__PURE__*/React__default['default'].createElement(StyledLink, {
+  return (_props$theme26 = props.theme) === null || _props$theme26 === void 0 ? void 0 : _props$theme26.colors.brand.text;
+}); // eslint-disable-next-line react/prop-types
+
+var Link = function Link(_ref10) {
+  var to = _ref10.to,
+      newTab = _ref10.newTab,
+      children = _ref10.children,
+      className = _ref10.className,
+      props = _objectWithoutProperties(_ref10, ["to", "newTab", "children", "className"]);
+
+  return /*#__PURE__*/React__default['default'].createElement(StyledLink, _extends({
     href: to,
-    target: newTab ? 'blank' : ''
-  }, children);
+    target: newTab ? '_blank' : '',
+    className: className
+  }, props), children);
 };
-var ButtonText = styled__default['default'].span(_templateObject7(), function (_ref8) {
-  var theme = _ref8.theme;
+var ButtonText = styled__default['default'].span(_templateObject7(), function (_ref11) {
+  var theme = _ref11.theme;
   return theme.fontPrimary();
 }, function (props) {
   var _props$theme27, _props$theme28, _props$theme29;
@@ -2713,7 +2730,7 @@ function _templateObject2$2() {
 }
 
 function _templateObject$3() {
-  var data = _taggedTemplateLiteral(["\n         width: 100%;\n         display: flex;\n         margin-bottom: ", "px;\n         flex-flow: column nowrap;\n         justify-content: flex-start;\n         border-bottom: 1px solid\n           ", ";\n       "]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  display: flex;\n  margin-bottom: ", "px;\n  flex-flow: column nowrap;\n  justify-content: flex-start;\n  border-bottom: 1px solid ", ";\n"]);
 
   _templateObject$3 = function _templateObject() {
     return data;

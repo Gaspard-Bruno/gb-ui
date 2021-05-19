@@ -29,8 +29,9 @@ const headingSizes = [
   `
 ];
 
-export const Heading = styled.h2`
-${({ theme }) => theme.fontPrimary()}
+export const Heading = styled.h1`
+${({ theme, secondary }) =>
+  secondary ? theme.fontSecondary() : theme.fontPrimary()}
   font-style: normal;
   font-weight: bold;
   ${props => (props.size ? headingSizes[props.size - 1] : headingSizes[0])}
@@ -53,16 +54,17 @@ ${({ theme }) => theme.fontPrimary()}
 `;
 
 export const Body = styled.p`
-         ${({ theme }) => theme.fontPrimary()}
-         font-style: normal;
-         font-weight: normal;
-         font-size: 16px;
-         line-height: 24px;
-         color: ${props =>
-           props.color
-             ? get(props.theme?.colors, props.color, props.theme?.colors.text)
-             : props.theme?.colors.text};
-       `;
+  ${({ theme, primary }) =>
+    primary ? theme.fontPrimary() : theme.fontSecondary()}
+  font-style: normal;
+  font-weight: normal;
+  font-size: ${({ size }) => (size ? size : '16px')};
+  line-height: 24px;
+  color: ${props =>
+    props.color
+      ? get(props.theme?.colors, props.color, props.theme?.colors.text)
+      : props.theme?.colors.text};
+`;
 export const SmallBody = styled.p`
   ${({ theme }) => theme.fontPrimary()}
   font-style: normal;
@@ -91,20 +93,18 @@ export const Tiny = styled.h3`
 
 const StyledLink = styled.a`
   text-decoration: none;
-  ${({ theme }) => theme.fontPrimary()}
-  font-style: medium;
-  font-weight: 500;
+  ${({ theme, primary }) =>
+    primary ? theme.fontPrimary() : theme.fontSecondary()}
+  font-size: ${({ size }) => (size ? size : '16px')};
   display: block;
-  line-height: 16px;
-  font-size: 14px;
+  font-size: ${({ size }) => (size ? size : '16px')};
   color: ${props =>
     props.color
       ? get(props.theme?.colors, props.color, props.theme?.colors.text)
       : props.theme?.colors.text};
-  font-size: 16px;
   line-height: 24px;
   :hover {
-    color: ${props => props.theme?.colors.grey};
+    color: ${props => props.theme?.colors.text};
   }
   :active {
     color: ${props =>
@@ -119,11 +119,17 @@ const StyledLink = styled.a`
         : props.theme?.colors.text};
   }
   :focus {
-    color: ${props => props.theme?.colors.brand.red};
+    color: ${props => props.theme?.colors.brand.text};
   }
 `;
-export const Link = ({ to, newTab, children }) => (
-  <StyledLink href={to} target={newTab ? 'blank' : ''}>
+// eslint-disable-next-line react/prop-types
+export const Link = ({ to, newTab, children, className, ...props }) => (
+  <StyledLink
+    href={to}
+    target={newTab ? '_blank' : ''}
+    className={className}
+    {...props}
+  >
     {children}
   </StyledLink>
 );
