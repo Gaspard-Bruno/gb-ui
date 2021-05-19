@@ -6,7 +6,8 @@ import components from 'showcase/components';
 
 import THEMES, { GlobalStyles } from 'Theme';
 import useTheme from 'Hooks/useTheme';
-import { Row, Sidebar } from 'Components';
+import { Row, Sidebar, Col, SubHeading } from 'Components';
+import { NavHeader } from 'Components/Sidebar/style';
 
 import ComponentPage from './componentPage';
 
@@ -33,8 +34,21 @@ const ShowCase = () => {
     <Provider>
       <GlobalStyles />
       <BrowserRouter>
-        <Row noWrap inlineStyle={`overflow: hidden; max-height: 100vh;`} bg="bg">
-          <Sidebar sidebarSections={SECTIONS} isOpenable />
+        <Row
+          noWrap
+          inlineStyle={`overflow: hidden; max-height: 100vh;`}
+          bg='bg'
+        >
+          <Sidebar
+            sidebarSections={SECTIONS}
+            isOpenable
+            sidebarHeading={() => (
+              <Col>
+                <SubHeading color='white'>GB UI</SubHeading>
+                <NavHeader>by Gaspard+Bruno</NavHeader>
+              </Col>
+            )}
+          />
           <ComponentPage toggleTheme={toggleTheme} />
         </Row>
       </BrowserRouter>

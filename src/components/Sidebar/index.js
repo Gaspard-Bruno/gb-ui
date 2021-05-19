@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import t from '../utils/translation';
 
-import { SubHeading } from '../Text';
 import Button from '../Button';
 import { Col, Row } from '../Layout';
 import StyledSidebar, {
@@ -13,7 +12,13 @@ import StyledSidebar, {
   NavHeader
 } from './style';
 
-const Sidebar = ({ sidebarSections, translate, isOpenable, className }) => {
+const Sidebar = ({
+  sidebarSections,
+  translate,
+  isOpenable,
+  className,
+  sidebarHeading
+}) => {
   const [isOpen, setIsOpen] = useState(true);
 
   // eslint-disable-next-line react/prop-types
@@ -34,10 +39,7 @@ const Sidebar = ({ sidebarSections, translate, isOpenable, className }) => {
       <Col>
         <NavSection open={isOpen}>
           <Row align='center' bg='transparent'>
-            <Col>
-              <SubHeading color='white'>GB UI</SubHeading>
-              <NavHeader>by Gaspard+Bruno</NavHeader>
-            </Col>
+            {sidebarHeading && sidebarHeading()}
             {isOpenable && (
               <Button
                 open={isOpen}
@@ -74,7 +76,9 @@ const Sidebar = ({ sidebarSections, translate, isOpenable, className }) => {
 Sidebar.propTypes = {
   isOpenable: PropTypes.bool,
   translate: PropTypes.func,
-  sidebarSections: PropTypes.object
+  sidebarSections: PropTypes.object,
+  sidebarHeading: PropTypes.func,
+  className: PropTypes.string
 };
 
 Sidebar.defaultProps = {

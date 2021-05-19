@@ -2966,82 +2966,33 @@ function _templateObject$5() {
 
   return data;
 }
-var getBadgeColorFromStatus = function getBadgeColorFromStatus(theme, status) {
-  var _theme$brand$brand;
 
-  return {
-    contact: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
-    received: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
-    complete: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
-    closed: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
-    analysis: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
-    awaiting_specialist: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
-    awaiting_visit_payment: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
-    awaiting_interview: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
-    awaiting_payment: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
-    awaiting_visit: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
-    awaiting_conclusion: theme === null || theme === void 0 ? void 0 : theme.feedback.success,
-    canceled: theme === null || theme === void 0 ? void 0 : theme.feedback.error,
-    rejected: theme === null || theme === void 0 ? void 0 : theme.feedback.error,
-    new_candidate: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
-    accepted: theme === null || theme === void 0 ? void 0 : theme.brand.green,
-    casa: theme === null || theme === void 0 ? void 0 : theme.muted.blue,
-    acompanhamento: theme === null || theme === void 0 ? void 0 : theme.muted.green,
-    aulas: theme === null || theme === void 0 ? void 0 : theme.muted.yellow,
-    reparações: theme === null || theme === void 0 ? void 0 : theme.muted.blue,
-    comingSoon: theme === null || theme === void 0 ? void 0 : (_theme$brand$brand = theme.brand.brand) === null || _theme$brand$brand === void 0 ? void 0 : _theme$brand$brand.altLight,
-    // Backoffice
-    awaiting_service_payment: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
-    awaiting_meeting: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
-    cancelled: theme === null || theme === void 0 ? void 0 : theme.feedback.error,
-    awaiting_details: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
-    reopened: theme === null || theme === void 0 ? void 0 : theme.brand.yellow,
-    // services
-    Costura: theme === null || theme === void 0 ? void 0 : theme.muted.blue,
-    'Apoio a Seniores': theme === null || theme === void 0 ? void 0 : theme.muted.green,
-    Jardinagem: theme === null || theme === void 0 ? void 0 : theme.muted.blue,
-    Limpezas: theme === null || theme === void 0 ? void 0 : theme.muted.blue,
-    'Experiência Gastronómica': theme === null || theme === void 0 ? void 0 : theme.muted.blue,
-    'Apoio Familiar a Crianças': theme === null || theme === void 0 ? void 0 : theme.muted.green,
-    Petsitting: theme === null || theme === void 0 ? void 0 : theme.muted.green,
-    Petcare: theme === null || theme === void 0 ? void 0 : theme.muted.green,
-    'Aulas de Música': theme === null || theme === void 0 ? void 0 : theme.muted.yellow,
-    Reparações: theme === null || theme === void 0 ? void 0 : theme.muted.blue,
-    'Passar a Ferro': theme === null || theme === void 0 ? void 0 : theme.muted.blue,
-    'Chef em Casa': theme === null || theme === void 0 ? void 0 : theme.muted.blue,
-    'Aulas de Línguas': theme === null || theme === void 0 ? void 0 : theme.muted.yellow,
-    // serviceType
-    standard: theme === null || theme === void 0 ? void 0 : theme.brand.blue,
-    premium: theme === null || theme === void 0 ? void 0 : theme.feedback.success,
-    test: theme === null || theme === void 0 ? void 0 : theme.feedback.warning,
-    // payments
-    draft: theme === null || theme === void 0 ? void 0 : theme.grey,
-    open: theme === null || theme === void 0 ? void 0 : theme.feedback.error,
-    paid: theme === null || theme === void 0 ? void 0 : theme.feedback.success,
-    uncollectible: theme === null || theme === void 0 ? void 0 : theme.grey,
-    void: theme === null || theme === void 0 ? void 0 : theme.grey
-  }[status];
+var getBadgeBg = function getBadgeBg(props) {
+  var _props$theme;
+
+  return lodash_get((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors, props.bg, props.theme.colors.brand.main);
 };
+
 var Badge = styled.span(_templateObject$5(), function (props) {
-  var _props$theme, _props$theme$colors$b, _props$theme2;
+  var _props$theme2, _props$theme2$colors$, _props$theme3;
 
-  return props.chip ? (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : (_props$theme$colors$b = _props$theme.colors.brand) === null || _props$theme$colors$b === void 0 ? void 0 : _props$theme$colors$b.altLight : getBadgeColorFromStatus((_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors, props.status);
+  return props.chip ? (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : (_props$theme2$colors$ = _props$theme2.colors.brand) === null || _props$theme2$colors$ === void 0 ? void 0 : _props$theme2$colors$.altLight : getBadgeBg((_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors, props.status);
 }, function (props) {
-  var _props$theme3, _props$theme4;
+  var _props$theme4, _props$theme5;
 
-  return props.chip ? (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.text : (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.black;
-}, function (props) {
-  var _props$theme5;
-
-  return ((_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.margin) / 4;
+  return props.chip ? (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.text : (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.black;
 }, function (props) {
   var _props$theme6;
 
-  return ((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.margin) * 0.75;
+  return ((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.margin) / 4;
 }, function (props) {
   var _props$theme7;
 
   return ((_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.margin) * 0.75;
+}, function (props) {
+  var _props$theme8;
+
+  return ((_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.margin) * 0.75;
 });
 
 var Badge$1 = function Badge$1(_ref) {
@@ -55110,7 +55061,8 @@ var Sidebar = function Sidebar(_ref) {
   var sidebarSections = _ref.sidebarSections,
       translate = _ref.translate,
       isOpenable = _ref.isOpenable,
-      className = _ref.className;
+      className = _ref.className,
+      sidebarHeading = _ref.sidebarHeading;
 
   var _useState = useState(true),
       _useState2 = _slicedToArray(_useState, 2),
@@ -55139,9 +55091,7 @@ var Sidebar = function Sidebar(_ref) {
   }, /*#__PURE__*/React.createElement(Row, {
     align: "center",
     bg: "transparent"
-  }, /*#__PURE__*/React.createElement(Col, null, /*#__PURE__*/React.createElement(SubHeading, {
-    color: "white"
-  }, "GB UI"), /*#__PURE__*/React.createElement(NavHeader, null, "by Gaspard+Bruno")), isOpenable && /*#__PURE__*/React.createElement(Button$1, {
+  }, sidebarHeading && sidebarHeading(), isOpenable && /*#__PURE__*/React.createElement(Button$1, {
     open: isOpen,
     icon: "arrow-left",
     action: function action() {
@@ -55170,7 +55120,9 @@ var Sidebar = function Sidebar(_ref) {
 Sidebar.propTypes = {
   isOpenable: propTypes.bool,
   translate: propTypes.func,
-  sidebarSections: propTypes.object
+  sidebarSections: propTypes.object,
+  sidebarHeading: propTypes.func,
+  className: propTypes.string
 };
 Sidebar.defaultProps = {
   sidebarSections: []
