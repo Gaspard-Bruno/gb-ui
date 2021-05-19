@@ -67,7 +67,7 @@ const fieldValidator = (field = {}, value) => {
   return false;
 };
 
-const useFormErrors = ({}) => {
+const useFormErrors = () => {
   const validateField = useCallback((field, value) => {
     const fieldError = fieldValidator(field, value);
     if (fieldError) {

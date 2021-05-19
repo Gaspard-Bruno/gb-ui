@@ -12,8 +12,6 @@ import {
   CheckBoxGroup,
   Divider,
   DropDownMenu,
-  FilterBar,
-  FilterButton,
   Form,
   Icon,
   IconSwitch,

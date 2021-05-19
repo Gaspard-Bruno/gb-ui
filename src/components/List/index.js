@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Body } from '../Text';
 import PropTypes from 'prop-types';
 import { Col } from '../Layout';

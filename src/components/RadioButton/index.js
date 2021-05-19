@@ -3,13 +3,10 @@ import {
   StyledContainer,
   StyledRadio,
   RadioGroudContainer,
-  SplitSelectContainer,
   FocusedRadio
 } from './styles';
 import PropTypes from 'prop-types';
-import Select from '../Select';
 import { Body, ErrorText } from '../Text';
-import TextInput from '../TextInput';
 
 const RadioButton = ({
   align,
@@ -68,7 +65,8 @@ RadioButton.propTypes = {
   label: PropTypes.string,
   list: PropTypes.array,
   name: PropTypes.string,
-  error: PropTypes.string
+  error: PropTypes.string,
+  value: PropTypes.string,
 };
 
 export default RadioButton;

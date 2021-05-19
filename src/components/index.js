@@ -7,8 +7,6 @@ import Checkbox from './Checkbox';
 import CheckBoxGroup from './CheckBoxGroup';
 import Divider from './Divider';
 import DropDownMenu from './DropDownMenu';
-import FilterBar from './FilterBar';
-import FilterButton from './FilterButton';
 import Form from './Form';
 import Icon from './Icon';
 import IconSwitch from './IconSwitch';
@@ -53,8 +51,6 @@ export {
   CheckBoxGroup,
   Divider,
   DropDownMenu,
-  FilterBar,
-  FilterButton,
   Form,
   Icon,
   IconSwitch,

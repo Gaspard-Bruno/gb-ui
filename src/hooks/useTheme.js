@@ -70,6 +70,7 @@ const useTheme = THEMES => {
         </ThemeContext.Provider>
       );
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [currentTheme]
   );
 

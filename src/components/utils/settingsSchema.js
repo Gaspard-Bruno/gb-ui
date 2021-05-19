@@ -65,25 +65,9 @@ const stepTwo = () => {
   ];
 };
 
-const stepThree = () => {
-  return [
-    {
-      type: 'footnote',
-      label:
-        'Receba notificações, pedidos e outros lembreres relacionados com as suas atividades na plataforma.',
-      widget: 'note'
-    },
-    {
-      key: 'accepted_newsletter',
-      label: 'Receber notificações por email',
-      type: 'bool'
-    }
-  ];
-};
-
 const steps = [
   stepOne(),
-  stepTwo(),
+  stepTwo()
   // ! Uncoment when email notifications go live
   //stepThree()
 ];
