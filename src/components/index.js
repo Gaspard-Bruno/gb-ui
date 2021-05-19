@@ -1,6 +1,6 @@
 import Accordion from './Accordion';
 import Avatar from './Avatar';
-import Badge, { getBadgeColorFromStatus } from './Badge';
+import Badge from './Badge';
 import Button from './Button';
 import Card from './Card';
 import Checkbox from './Checkbox';
@@ -62,7 +62,7 @@ import {
   AlertText,
   ErrorText
 } from './Text';
-
+import useTheme from 'utils/useTheme';
 export {
   Accordion,
   Avatar,
@@ -124,5 +124,5 @@ export {
   FileUploader,
   Slider,
   StarsRating,
-  getBadgeColorFromStatus
+  useTheme
 };

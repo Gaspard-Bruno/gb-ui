@@ -7,6 +7,7 @@ var styled = require('styled-components');
 var iconSet = require('Assets/fonts/icons/icons.json');
 var ne = require('react-dom');
 var theme = require('Theme');
+var useTheme = require('utils/useTheme');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -15,6 +16,7 @@ var styled__default = /*#__PURE__*/_interopDefaultLegacy(styled);
 var iconSet__default = /*#__PURE__*/_interopDefaultLegacy(iconSet);
 var ne__default = /*#__PURE__*/_interopDefaultLegacy(ne);
 var theme__default = /*#__PURE__*/_interopDefaultLegacy(theme);
+var useTheme__default = /*#__PURE__*/_interopDefaultLegacy(useTheme);
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -60389,6 +60391,12 @@ CardSlider.propTypes = {
   hasButton: propTypes.bool
 };
 
+Object.defineProperty(exports, 'useTheme', {
+  enumerable: true,
+  get: function () {
+    return useTheme__default['default'];
+  }
+});
 exports.Accordion = Accordion;
 exports.AlertText = AlertText;
 exports.AlertTitle = AlertTitle;
@@ -60448,5 +60456,4 @@ exports.TextInput = TextInput;
 exports.Tiny = Tiny;
 exports.TopBar = TopBar;
 exports.TrackerBox = TrackerBox;
-exports.getBadgeColorFromStatus = getBadgeColorFromStatus;
 exports.media = media;

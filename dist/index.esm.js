@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import iconSet from 'Assets/fonts/icons/icons.json';
 import ne, { createPortal, findDOMNode, unstable_batchedUpdates } from 'react-dom';
 import theme from 'Theme';
+export { default as useTheme } from 'utils/useTheme';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -60377,4 +60378,4 @@ CardSlider.propTypes = {
   hasButton: propTypes.bool
 };
 
-export { Accordion, AlertText, AlertTitle, Avatar, BackofficeContainer, BackofficeKanbanContainer, BackofficePage, Badge$1 as Badge, Body, Button$1 as Button, ButtonText, Card$1 as Card, CheckBoxGroup, Checkbox, Code, Col, Divider, DropDownMenu, ErrorText, FileUploader, FilterBar, FilterButton, Form$1 as Form, FullPage, GridCol, GridRow, Heading, Hero, Icon, IconSwitch, Jumbo, Kanban, KanbanCard$1 as KanbanCard, KanbanColumn$1 as KanbanColumn, Link, List, Loading as Loader, Logo$1 as Logo, Page, Pagination, RadioButton, ReversedColumn, Row, SearchInput as Search, Select$2 as Select, Sidebar, CardSlider as Slider, SmallBody, SmallBodyFAQ, StarsRating, SubHeading, Switcher, Table, Tabs, TextArea$1 as TextArea, TextInput, Tiny, TopBar, TrackerBox, getBadgeColorFromStatus, media };
+export { Accordion, AlertText, AlertTitle, Avatar, BackofficeContainer, BackofficeKanbanContainer, BackofficePage, Badge$1 as Badge, Body, Button$1 as Button, ButtonText, Card$1 as Card, CheckBoxGroup, Checkbox, Code, Col, Divider, DropDownMenu, ErrorText, FileUploader, FilterBar, FilterButton, Form$1 as Form, FullPage, GridCol, GridRow, Heading, Hero, Icon, IconSwitch, Jumbo, Kanban, KanbanCard$1 as KanbanCard, KanbanColumn$1 as KanbanColumn, Link, List, Loading as Loader, Logo$1 as Logo, Page, Pagination, RadioButton, ReversedColumn, Row, SearchInput as Search, Select$2 as Select, Sidebar, CardSlider as Slider, SmallBody, SmallBodyFAQ, StarsRating, SubHeading, Switcher, Table, Tabs, TextArea$1 as TextArea, TextInput, Tiny, TopBar, TrackerBox, media };
