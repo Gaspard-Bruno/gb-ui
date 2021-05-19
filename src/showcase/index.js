@@ -36,8 +36,8 @@ const ShowCase = () => {
       <BrowserRouter>
         <Row
           noWrap
-          inlineStyle={`overflow: hidden; max-height: 100vh;`}
-          bg='bg'
+          inlineStyle={() => `overflow: hidden; max-height: 100vh;`}
+          bg='background'
         >
           <Sidebar
             sidebarSections={SECTIONS}

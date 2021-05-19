@@ -38,7 +38,7 @@ const Sidebar = ({
     <StyledSidebar open={isOpen} className={className}>
       <Col>
         <NavSection open={isOpen}>
-          <Row align='center' bg='transparent'>
+          <Row align='center'>
             {sidebarHeading && sidebarHeading()}
             {isOpenable && (
               <Button

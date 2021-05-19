@@ -41,7 +41,7 @@ const extractPreviewProps = ({
 
 const PreviewPage = ({ toggleTheme }) => {
   return (
-    <Page>
+    <Page bg='background'>
       <Col>
         <Heading>Preview</Heading>
         <Switch>
@@ -55,7 +55,7 @@ const PreviewPage = ({ toggleTheme }) => {
                     ? route.props.map((props, i) => (
                         <Row
                           key={route.label + i}
-                          inlineStyle={`padding-bottom: ${uiTheme.margin}px;
+                          inlineStyle={() => `padding-bottom: ${uiTheme.margin}px;
                                     margin-top: ${uiTheme.margin}px;
                                     border-bottom: 1px solid ${uiTheme.colors.grey};`}
                         >
@@ -101,11 +101,13 @@ const PreviewPage = ({ toggleTheme }) => {
                     <Heading>ChangeTheme</Heading>
                   </Col>
                   <Heading>Select a component from the sidebar</Heading>
-                  <Button
-                    text='Change Theme'
-                    type='primary'
-                    action={toggleTheme}
-                  />
+                  <Row>
+                    <Button
+                      text='Change Theme'
+                      type='primary'
+                      action={toggleTheme}
+                    />
+                  </Row>
                 </Col>
               </Row>
             )}

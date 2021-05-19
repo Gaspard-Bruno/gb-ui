@@ -2521,9 +2521,9 @@ function _templateObject$1() {
 }
 
 var getSelectedBackground = function getSelectedBackground(props) {
-  var _props$theme, _props$theme2;
+  var _props$theme;
 
-  return lodash_get((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors, props.bg, (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.text);
+  return lodash_get((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors, props.color, props.color);
 };
 
 var StyledIcoMoon = styled__default['default'](IcoMoon)(_templateObject$1(), function (props) {
@@ -2533,10 +2533,11 @@ var StyledIcoMoon = styled__default['default'](IcoMoon)(_templateObject$1(), fun
 var Icon = function Icon(_ref) {
   var name = _ref.name,
       color = _ref.color,
-      props = _objectWithoutProperties(_ref, ["name", "color"]);
+      set = _ref.set,
+      props = _objectWithoutProperties(_ref, ["name", "color", "set"]);
 
   return /*#__PURE__*/React__default['default'].createElement(StyledIcoMoon, _extends({
-    iconSet: iconSet__default['default'],
+    iconSet: set || iconSet__default['default'],
     title: name,
     icon: name,
     color: color
@@ -2544,7 +2545,9 @@ var Icon = function Icon(_ref) {
 };
 
 Icon.propTypes = {
-  name: propTypes.string
+  name: propTypes.string,
+  color: propTypes.string,
+  set: propTypes.object
 };
 Icon.defaultProps = {
   size: 24
@@ -9896,78 +9899,8 @@ var Select$1 = styled__default['default'](index)(_templateObject2$8(), function 
   return theme.fontPrimary();
 });
 
-function _templateObject12() {
-  var data = _taggedTemplateLiteral(["\n  ", "\n"]);
-
-  _templateObject12 = function _templateObject12() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject11() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  height: ", "px;\n  background-color: ", ";\n  ", "\n"]);
-
-  _templateObject11 = function _templateObject11() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject10() {
-  var data = _taggedTemplateLiteral(["\n  text-align: ", ";\n  width: ", ";\n  align-self: ", ";\n  justify-content: ", ";\n  ", ";\n  ", ";\n  ", "\n"]);
-
-  _templateObject10 = function _templateObject10() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject9() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n  flex-wrap: nowrap;\n  background-color: ", ";\n  align-items: ", ";\n  justify-content: ", ";\n  max-width: ", "px;\n\n  ", "\n  ", "\n  ", "\n  ", "\n  ", ";\n  ", ";\n"]);
-
-  _templateObject9 = function _templateObject9() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject8$1() {
-  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n"]);
-
-  _templateObject8$1 = function _templateObject8() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject7$1() {
-  var data = _taggedTemplateLiteral(["\n  flex: ", ";\n  display: flex;\n  flex-flow: column nowrap;\n  align-items: ", ";\n  justify-content: ", ";\n  padding: ", "px;\n  ", "\n  ", "\n  ", "\n  ", "\n"]);
-
-  _templateObject7$1 = function _templateObject7() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject6$2() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row ", ";\n  background-color: ", ";\n  align-items: ", ";\n  width: 100%;\n  justify-content: ", ";\n  min-height: ", "px;\n  ", ";\n  ", "\n  ", "\n  ", "\n"]);
-
-  _templateObject6$2 = function _templateObject6() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject5$2() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  max-height: calc(70vh);\n  overflow-x: scroll;\n  overflow-y: hidden;\n  padding-bottom: 40px;\n  transition: height 0.3s ease-out;\n\n  > * {\n    margin-right: 16px;\n  }\n\n  &::-webkit-scrollbar {\n    margin-top: 32px;\n    height: 4px;\n    background-color: ", ";\n  }\n\n  &::-webkit-scrollbar-thumb {\n    margin-top: 30px;\n    background: ", ";\n    border-radius: 30px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  ", ";\n  display: flex;\n  flex-flow: column nowrap;\n  background-color: ", ";\n  align-items: ", ";\n  justify-content: ", ";\n  padding: ", "px;\n  ", "\n    ", "\n  ", "\n  ", "\n"]);
 
   _templateObject5$2 = function _templateObject5() {
     return data;
@@ -9977,7 +9910,7 @@ function _templateObject5$2() {
 }
 
 function _templateObject4$4() {
-  var data = _taggedTemplateLiteral(["\n  margin: 0px 32px;\n  overflow: scroll;\n  height: calc(100vh - 90px);\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row ", ";\n  background-color: ", ";\n  align-items: ", ";\n  width: ", ";\n  justify-content: ", ";\n  ", ";\n  ", "\n  ", "\n  ", "\n"]);
 
   _templateObject4$4 = function _templateObject4() {
     return data;
@@ -9987,7 +9920,7 @@ function _templateObject4$4() {
 }
 
 function _templateObject3$6() {
-  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  height: 100vh;\n  width: calc(100vw - 240px);\n  margin-left: 240px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  max-height: calc(70vh);\n  overflow-x: scroll;\n  overflow-y: hidden;\n  padding-bottom: 40px;\n  transition: height 0.3s ease-out;\n\n  > * {\n    margin-right: 16px;\n  }\n\n  &::-webkit-scrollbar {\n    margin-top: 32px;\n    height: 4px;\n    background-color: ", ";\n  }\n\n  &::-webkit-scrollbar-thumb {\n    margin-top: 30px;\n    background: ", ";\n    border-radius: 30px;\n  }\n"]);
 
   _templateObject3$6 = function _templateObject3() {
     return data;
@@ -9997,7 +9930,7 @@ function _templateObject3$6() {
 }
 
 function _templateObject2$9() {
-  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  min-height: 100vh;\n  display: flex;\n  flex-flow: column nowrap;\n  flex: 1;\n  margin-left: ", "px;\n  overflow: auto;\n\n  &::-webkit-scrollbar {\n    margin-top: 32px;\n    height: 4px;\n    background-color: ", ";\n  }\n\n  &::-webkit-scrollbar-thumb {\n    margin-top: 30px;\n    background: ", ";\n    border-radius: 30px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  min-height: 50vh;\n  display: flex;\n  flex-flow: column nowrap;\n  flex: 1;\n  margin-left: ", "px;\n  overflow: auto;\n\n  &::-webkit-scrollbar {\n    margin-top: 32px;\n    height: 4px;\n    background-color: ", ";\n  }\n\n  &::-webkit-scrollbar-thumb {\n    margin-top: 30px;\n    background-color: ", ";\n    border-radius: 30px;\n  }\n"]);
 
   _templateObject2$9 = function _templateObject2() {
     return data;
@@ -10030,148 +9963,134 @@ var media = {
   }
 };
 
+var getSelectedBackground$2 = function getSelectedBackground(props) {
+  var _props$theme;
+
+  return lodash_get((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors, props.bg, props.bg);
+};
+
 var getPageBackground = function getPageBackground(props) {
-  var _props$theme, _props$theme2, _props$theme2$colors, _props$theme2$colors$, _props$theme3, _props$theme3$colors, _props$theme4;
+  var _props$theme2, _props$theme3, _props$theme3$colors, _props$theme3$colors$, _props$theme4, _props$theme4$colors, _props$theme5;
 
   switch (props.bg) {
     case 'white':
-      return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.white;
+      return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.white;
 
     case 'main':
-      return (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : (_props$theme2$colors = _props$theme2.colors) === null || _props$theme2$colors === void 0 ? void 0 : (_props$theme2$colors$ = _props$theme2$colors.brand) === null || _props$theme2$colors$ === void 0 ? void 0 : _props$theme2$colors$.main;
+      return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : (_props$theme3$colors = _props$theme3.colors) === null || _props$theme3$colors === void 0 ? void 0 : (_props$theme3$colors$ = _props$theme3$colors.brand) === null || _props$theme3$colors$ === void 0 ? void 0 : _props$theme3$colors$.main;
 
     case 'contrast':
-      return (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : (_props$theme3$colors = _props$theme3.colors) === null || _props$theme3$colors === void 0 ? void 0 : _props$theme3$colors.text;
+      return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : (_props$theme4$colors = _props$theme4.colors) === null || _props$theme4$colors === void 0 ? void 0 : _props$theme4$colors.text;
 
     case 'bg':
+      return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.background;
+
     default:
-      return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors.background;
+      return getSelectedBackground$2(props);
   }
 };
 
-var Code = styled__default['default'].div(_templateObject$e(), function (props) {
-  var _props$theme5, _props$theme5$colors$;
+var setMarginFromProps = function setMarginFromProps(props) {
+  var margin = props.margin,
+      marginVertical = props.marginVertical,
+      marginHorizontal = props.marginHorizontal;
+  var style = '';
 
-  return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : (_props$theme5$colors$ = _props$theme5.colors.brand) === null || _props$theme5$colors$ === void 0 ? void 0 : _props$theme5$colors$.altLight;
+  if (margin) {
+    style += "\n      margin: ".concat(margin, ";\n    ");
+  }
+
+  if (marginVertical) {
+    style += "\n    margin-bottom: ".concat(marginVertical, "px;\n    margin-top: ").concat(marginVertical, "px;\n    ");
+  }
+
+  if (marginHorizontal) {
+    style += "\n    margin-left: ".concat(marginHorizontal, "px;\n    margin-right: ").concat(marginHorizontal, "px;\n    ");
+  }
+
+  return style;
+};
+
+var Code = styled__default['default'].div(_templateObject$e(), function (props) {
+  var _props$theme6, _props$theme6$colors$;
+
+  return (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : (_props$theme6$colors$ = _props$theme6.colors.brand) === null || _props$theme6$colors$ === void 0 ? void 0 : _props$theme6$colors$.altLight;
 });
 var Page = styled__default['default'].div(_templateObject2$9(), function (props) {
-  return getPageBackground(props);
-}, function (props) {
-  var _props$theme6;
+  var _props$theme7;
 
-  return ((_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.margin) * 2;
-}, function (props) {
-  var _props$theme7, _props$theme7$colors$;
-
-  return (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : (_props$theme7$colors$ = _props$theme7.colors.brand) === null || _props$theme7$colors$ === void 0 ? void 0 : _props$theme7$colors$.altLight;
+  return props.bg ? getPageBackground(props) : (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.background;
 }, function (props) {
   var _props$theme8;
 
-  return (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.brand.altDarker;
-});
-var BackofficePage = styled__default['default'].div(_templateObject3$6(), function (props) {
-  return getPageBackground(props);
-});
-var BackofficeContainer = styled__default['default'].div(_templateObject4$4());
-var BackofficeKanbanContainer = styled__default['default'].div(_templateObject5$2(), function (props) {
+  return ((_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.margin) * 2;
+}, function (props) {
   var _props$theme9, _props$theme9$colors$;
 
-  return (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : (_props$theme9$colors$ = _props$theme9.colors.brand) === null || _props$theme9$colors$ === void 0 ? void 0 : _props$theme9$colors$.altLight;
+  return props.scrollBackground ? getSelectedBackground$2(_objectSpread2(_objectSpread2({}, props), {}, {
+    bg: props.scrollBackground
+  })) : (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : (_props$theme9$colors$ = _props$theme9.colors.brand) === null || _props$theme9$colors$ === void 0 ? void 0 : _props$theme9$colors$.altLight;
 }, function (props) {
-  var _props$theme10;
+  var _props$theme10, _props$theme10$colors;
 
-  return (_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.colors.brand.altDarker;
+  return props.scrollColor ? getSelectedBackground$2(_objectSpread2(_objectSpread2({}, props), {}, {
+    bg: props.scrollColor
+  })) : (_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : (_props$theme10$colors = _props$theme10.colors.brand) === null || _props$theme10$colors === void 0 ? void 0 : _props$theme10$colors.altDarker;
 });
-var Row = styled__default['default'].div(_templateObject6$2(), function (props) {
+var KanbanContainer = styled__default['default'].div(_templateObject3$6(), function (props) {
+  var _props$theme11, _props$theme11$colors;
+
+  return (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : (_props$theme11$colors = _props$theme11.colors.brand) === null || _props$theme11$colors === void 0 ? void 0 : _props$theme11$colors.altLight;
+}, function (props) {
+  var _props$theme12;
+
+  return (_props$theme12 = props.theme) === null || _props$theme12 === void 0 ? void 0 : _props$theme12.colors.brand.altDarker;
+});
+var Row = styled__default['default'].div(_templateObject4$4(), function (props) {
   return props.noWrap ? 'nowrap' : 'wrap';
 }, function (props) {
-  return getSelectedBackground$2(props);
+  return props.bg ? getSelectedBackground$2(props) : 'transparent';
 }, function (props) {
   return props.align ? props.align : 'none';
+}, function (_ref) {
+  var fullWidth = _ref.fullWidth;
+  return fullWidth ? '100%' : 'auto';
 }, function (props) {
   return props.justify ? props.justify : 'none';
-}, function (props) {
-  var _props$theme11;
-
-  return ((_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.margin) * (props.size || 0);
 }, function (props) {
   return props.size ? "flex: ".concat(props.size) : '';
 }, function (props) {
   return props.collapse && media[props.collapse]("\n      display: none;\n  ");
 }, function (props) {
-  return props.margin && "\n    ".concat(media.desktop("\n    margin: 0 auto;\n  "), "\n  ").concat(media.smallDesktop("\n    margin: 0 120px;\n  "), "\n  ").concat(media.tablet("\n    margin: 0 48px;\n  "), "\n  ").concat(media.mobile("\n    margin: 0 32px;\n  "), "\n  ") || 'margin: 0 auto;';
+  return setMarginFromProps(props);
 }, function (props) {
-  return props.inlineStyle || '';
+  var _props$inlineStyle;
+
+  return (props === null || props === void 0 ? void 0 : (_props$inlineStyle = props.inlineStyle) === null || _props$inlineStyle === void 0 ? void 0 : _props$inlineStyle.call(props, props.theme)) || '';
 });
-var Col = styled__default['default'].div(_templateObject7$1(), function (props) {
-  return props.size || 1;
+var Col = styled__default['default'].div(_templateObject5$2(), function (props) {
+  return props.size ? "flex: ".concat(props.size) : '';
 }, function (props) {
-  return props.center ? 'center' : 'flex-start';
-}, function (props) {
-  return props.justify ? props.justify : 'none';
-}, function (props) {
-  var _props$padding, _props$theme12;
-
-  return (_props$padding = props.padding) !== null && _props$padding !== void 0 ? _props$padding : (_props$theme12 = props.theme) === null || _props$theme12 === void 0 ? void 0 : _props$theme12.margin;
-}, function (props) {
-  return props.collapse && media[props.collapse]("\n  display: none;\n  ");
-}, function (props) {
-  return props.center && 'margin: 0 auto;';
-}, function (props) {
-  return props.inlineStyle || '';
-}, function (props) {
-  return props.src ? "\n          background-image: url(".concat(props.src, ");\n          background-size: cover;\n          background-position: center;\n        ") : '';
-});
-
-var getSelectedBackground$2 = function getSelectedBackground(props) {
-  var _props$theme13;
-
-  return lodash_get((_props$theme13 = props.theme) === null || _props$theme13 === void 0 ? void 0 : _props$theme13.colors, props.bg, props.theme.colors.background);
-};
-
-var FullPage = styled__default['default'].div(_templateObject8$1(), function (props) {
-  return getSelectedBackground$2(props);
-});
-var GridRow = styled__default['default'].div(_templateObject9(), function (props) {
-  return getSelectedBackground$2(props);
+  return props.bg ? getSelectedBackground$2(props) : 'transparent';
 }, function (props) {
   return props.align ? props.align : 'none';
 }, function (props) {
   return props.justify ? props.justify : 'none';
 }, function (props) {
-  var _props$theme14;
+  var _props$padding, _props$theme13;
 
-  return (_props$theme14 = props.theme) === null || _props$theme14 === void 0 ? void 0 : _props$theme14.maxWidth;
-}, media.desktop("\n    margin: 0 auto;\n  "), media.smallDesktop("\n    margin: 0 120px;\n  "), media.tablet("\n    margin: 0 48px;\n  "), media.mobile("\n    margin: 0 32px;\n  "), function (props) {
-  return props.collapse && media[props.collapse]("\n  display: none;\n  ");
-}, function (props) {
-  return props.show && media[props.show]("\n  display: initial;\n  ");
-});
-var GridCol = styled__default['default'].div(_templateObject10(), function (props) {
-  return props.text ? 'center' : 'left';
-}, function (props) {
-  return "".concat(100 * props.size / 12, "%");
-}, function (props) {
-  return props.self ? 'center' : '';
-}, function (props) {
-  return props.justify ? props.justify : 'none';
+  return (_props$padding = props.padding) !== null && _props$padding !== void 0 ? _props$padding : (_props$theme13 = props.theme) === null || _props$theme13 === void 0 ? void 0 : _props$theme13.margin;
 }, function (props) {
   return props.collapse && media[props.collapse]("\n  display: none;\n  ");
 }, function (props) {
-  return props.show && media[props.show]("\n  display: initial;\n  ");
+  return setMarginFromProps(props);
 }, function (props) {
-  return props.src ? "\n          background-image: url(".concat(props.src, ");\n          background-size: ").concat(props.contain ? 'contain' : 'cover', ";\n          background-position: center;\n          background-repeat: no-repeat;\n        ") : '';
-});
-var Hero = styled__default['default'].div(_templateObject11(), function (props) {
-  var _props$theme15;
+  return props.center && 'margin: 0 auto;';
+}, function (props) {
+  var _props$inlineStyle2;
 
-  return (_props$theme15 = props.theme) === null || _props$theme15 === void 0 ? void 0 : _props$theme15.heroSize;
-}, function (props) {
-  return getSelectedBackground$2(props);
-}, function (props) {
-  return props.top ? "\n      position: relative;\n      top: -80px;\n    " : "";
+  return ((_props$inlineStyle2 = props.inlineStyle) === null || _props$inlineStyle2 === void 0 ? void 0 : _props$inlineStyle2.call(props, props.theme)) || '';
 });
-var ReversedColumn = styled__default['default'](GridRow)(_templateObject12(), media.mobile("\n    flex-flow: column-reverse;\n    text-align: center\n  "));
 
 var Select$2 = function Select(_ref) {
   var error = _ref.error,
@@ -33811,70 +33730,70 @@ MultiFieldRender.propTypes = {
   removeAction: propTypes.func
 };
 
-function _templateObject12$1() {
+function _templateObject12() {
   var data = _taggedTemplateLiteral(["\n  flex: 0;\n  svg {\n    path {\n      fill: ", ";\n    }\n  }\n"]);
 
-  _templateObject12$1 = function _templateObject12() {
+  _templateObject12 = function _templateObject12() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject11$1() {
+function _templateObject11() {
   var data = _taggedTemplateLiteral(["\n  margin-left: ", "px;\n  flex: 1;\n"]);
 
-  _templateObject11$1 = function _templateObject11() {
+  _templateObject11 = function _templateObject11() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject10$1() {
+function _templateObject10() {
   var data = _taggedTemplateLiteral(["\n  border-bottom: 1px solid #d2ccc6;\n  margin-top: ", "px;\n  padding: 0px ", "px;\n  display: flex;\n  align-items: center;\n  span {\n    cursor: pointer;\n  }\n"]);
 
-  _templateObject10$1 = function _templateObject10() {
+  _templateObject10 = function _templateObject10() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject9$1() {
+function _templateObject9() {
   var data = _taggedTemplateLiteral(["\n  border-radius: 2px;\n  min-height: 48px;\n  align-items: center;\n  display: flex;\n  background-color: ", ";\n  p {\n    margin: ", "px;\n  }\n"]);
 
-  _templateObject9$1 = function _templateObject9() {
+  _templateObject9 = function _templateObject9() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject8$2() {
+function _templateObject8$1() {
   var data = _taggedTemplateLiteral(["\n  width: 100%;\n"]);
 
-  _templateObject8$2 = function _templateObject8() {
+  _templateObject8$1 = function _templateObject8() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject7$2() {
+function _templateObject7$1() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  overflow: hidden;\n"]);
 
-  _templateObject7$2 = function _templateObject7() {
+  _templateObject7$1 = function _templateObject7() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject6$3() {
+function _templateObject6$2() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  margin-top: 16px;\n"]);
 
-  _templateObject6$3 = function _templateObject6() {
+  _templateObject6$2 = function _templateObject6() {
     return data;
   };
 
@@ -33941,25 +33860,25 @@ var UploaderRowWrapper = styled__default['default'](Row)(_templateObject2$i());
 var UploaderPreviewContainer = styled__default['default'].div(_templateObject3$b());
 var UploadedImages = styled__default['default'].img(_templateObject4$8());
 var UploaderInput = styled__default['default'].input(_templateObject5$5());
-var ThumbsContainer = styled__default['default'].div(_templateObject6$3());
-var UploaderPreviewInner = styled__default['default'].div(_templateObject7$2());
-var AnswersContainer = styled__default['default'].div(_templateObject8$2());
-var AnswersTitleHolder = styled__default['default'].div(_templateObject9$1(), function (props) {
+var ThumbsContainer = styled__default['default'].div(_templateObject6$2());
+var UploaderPreviewInner = styled__default['default'].div(_templateObject7$1());
+var AnswersContainer = styled__default['default'].div(_templateObject8$1());
+var AnswersTitleHolder = styled__default['default'].div(_templateObject9(), function (props) {
   var _props$theme$colors, _props$theme$colors$b2;
 
   return (_props$theme$colors = props.theme.colors) === null || _props$theme$colors === void 0 ? void 0 : (_props$theme$colors$b2 = _props$theme$colors.brand) === null || _props$theme$colors$b2 === void 0 ? void 0 : _props$theme$colors$b2.altLight;
 }, function (props) {
   return props.theme.margin;
 });
-var AnswersFilesContainer = styled__default['default'].div(_templateObject10$1(), function (props) {
+var AnswersFilesContainer = styled__default['default'].div(_templateObject10(), function (props) {
   return props.theme.margin;
 }, function (props) {
   return props.theme.margin;
 });
-var AnswersTextHolder = styled__default['default'].div(_templateObject11$1(), function (props) {
+var AnswersTextHolder = styled__default['default'].div(_templateObject11(), function (props) {
   return props.theme.margin * 2.5;
 });
-var AnswersIconHolder = styled__default['default'].div(_templateObject12$1(), function (props) {
+var AnswersIconHolder = styled__default['default'].div(_templateObject12(), function (props) {
   return props.theme.colors.grey;
 });
 
@@ -43600,7 +43519,9 @@ var Form$1 = function Form(_ref) {
         return /*#__PURE__*/React__default['default'].createElement(Row, {
           key: "".concat(key, "-children-cols-").concat(i),
           align: "center",
-          inlineStyle: "\n              ".concat(col.length === 1 && "\n                > div > div {\n                width: 100%;\n              ", "\n            ")
+          inlineStyle: function inlineStyle() {
+            return "\n              ".concat(col.length === 1 && "\n                > div > div {\n                width: 100%;\n              ", "\n            ");
+          }
         }, col);
       }));
     };
@@ -54053,20 +53974,20 @@ var ConnectedDroppable = connect(makeMapStateToProps$1, mapDispatchToProps$1, nu
 })(Droppable);
 ConnectedDroppable.defaultProps = defaultProps$3;
 
-function _templateObject7$3() {
+function _templateObject7$2() {
   var data = _taggedTemplateLiteral([""]);
 
-  _templateObject7$3 = function _templateObject7() {
+  _templateObject7$2 = function _templateObject7() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject6$4() {
+function _templateObject6$3() {
   var data = _taggedTemplateLiteral(["\n  margin: 8px 0px;\n  text-transform: capitalize;\n\n  span {\n    color: ", ";\n  }\n"]);
 
-  _templateObject6$4 = function _templateObject6() {
+  _templateObject6$3 = function _templateObject6() {
     return data;
   };
 
@@ -54143,12 +54064,12 @@ var AdminContainer = styled__default['default'].div(_templateObject4$b(), functi
   return (_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : (_props$theme4$colors$ = _props$theme4.colors.brand) === null || _props$theme4$colors$ === void 0 ? void 0 : _props$theme4$colors$.altLight;
 });
 var Details = styled__default['default'].div(_templateObject5$6());
-var ServiceDetails = styled__default['default'](SmallBody)(_templateObject6$4(), function (props) {
+var ServiceDetails = styled__default['default'](SmallBody)(_templateObject6$3(), function (props) {
   var _props$theme5;
 
   return (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.grey;
 });
-var Recurrent = styled__default['default'].div(_templateObject7$3());
+var Recurrent = styled__default['default'].div(_templateObject7$2());
 
 var KanbanCard$1 = function KanbanCard$1(_ref) {
   var cardKey = _ref.cardKey,
@@ -54360,7 +54281,7 @@ var Kanban = function Kanban(_ref) {
   }, [columns, items, onChangeStatus]);
   return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(DragDropContext, {
     onDragEnd: handleChangeColumn
-  }, /*#__PURE__*/React__default['default'].createElement(BackofficeKanbanContainer, null, columns && Object.keys(columns).map(function (key, index) {
+  }, /*#__PURE__*/React__default['default'].createElement(KanbanContainer, null, columns && Object.keys(columns).map(function (key, index) {
     return /*#__PURE__*/React__default['default'].createElement(KanbanColumn$1, {
       key: 'kanbanCol' + index,
       colName: key,
@@ -55101,8 +55022,7 @@ var Sidebar = function Sidebar(_ref) {
   }, /*#__PURE__*/React__default['default'].createElement(Col, null, /*#__PURE__*/React__default['default'].createElement(NavSection, {
     open: isOpen
   }, /*#__PURE__*/React__default['default'].createElement(Row, {
-    align: "center",
-    bg: "transparent"
+    align: "center"
   }, sidebarHeading && sidebarHeading(), isOpenable && /*#__PURE__*/React__default['default'].createElement(Button$1, {
     open: isOpen,
     icon: "arrow-left",
@@ -60358,6 +60278,8 @@ var GLOBAL = {
     white800: '#FAF9F6',
     white700: '#F5F4F1',
     white600: '#EAE8E3',
+    white: "#fff",
+    black: '#000',
     transparent: 'transparent'
   }
 };
@@ -60535,9 +60457,6 @@ var useTheme = function useTheme(THEMES) {
 
 exports.Accordion = Accordion;
 exports.Avatar = Avatar;
-exports.BackofficeContainer = BackofficeContainer;
-exports.BackofficeKanbanContainer = BackofficeKanbanContainer;
-exports.BackofficePage = BackofficePage;
 exports.Badge = Badge$1;
 exports.Body = Body;
 exports.Button = Button$1;
@@ -60554,16 +60473,13 @@ exports.FileUploader = FileUploader;
 exports.FilterBar = FilterBar;
 exports.FilterButton = FilterButton;
 exports.Form = Form$1;
-exports.FullPage = FullPage;
-exports.GridCol = GridCol;
-exports.GridRow = GridRow;
 exports.Heading = Heading;
-exports.Hero = Hero;
 exports.Icon = Icon;
 exports.IconSwitch = IconSwitch;
 exports.Kanban = Kanban;
 exports.KanbanCard = KanbanCard$1;
 exports.KanbanColumn = KanbanColumn$1;
+exports.KanbanContainer = KanbanContainer;
 exports.Link = Link;
 exports.List = List;
 exports.Loader = Loading;
@@ -60571,7 +60487,6 @@ exports.Logo = Logo$1;
 exports.Page = Page;
 exports.Pagination = Pagination;
 exports.RadioButton = RadioButton;
-exports.ReversedColumn = ReversedColumn;
 exports.Row = Row;
 exports.Search = SearchInput;
 exports.Select = Select$2;

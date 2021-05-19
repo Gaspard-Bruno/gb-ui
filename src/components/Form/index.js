@@ -561,7 +561,7 @@ const Form = ({
           <Row
             key={`${key}-children-cols-${i}`}
             align='center'
-            inlineStyle={`
+            inlineStyle={() => `
               ${col.length === 1 &&
                 `
                 > div > div {

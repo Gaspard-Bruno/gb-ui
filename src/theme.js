@@ -37,6 +37,8 @@ const GLOBAL = {
     white800: '#FAF9F6',
     white700: '#F5F4F1',
     white600: '#EAE8E3',
+    white: "#fff",
+    black: '#000',
     transparent: 'transparent'
   }
 };

@@ -24,14 +24,7 @@ import {
   Code,
   Row,
   Col,
-  BackofficePage,
-  BackofficeContainer,
-  BackofficeKanbanContainer,
-  GridCol,
-  GridRow,
-  ReversedColumn,
-  FullPage,
-  Hero,
+  KanbanContainer,
   List,
   Loader,
   Logo,
@@ -61,9 +54,63 @@ import {
 
 const components = [
   {
-    label: 'Form ~ Settings',
+    label: 'Layout',
+    section: 'Getting Started',
+    disabled: false,
+    props: {
+      previewcomponentTitle: 'Layout Usage Example'
+    },
+    component: () => (
+      <Page>
+        <Col
+          justify='flex-start'
+          padding={0}
+          bg='background'
+          size={2}
+          inlineStyle={() => `border: 2px solid #ff00dd;`}
+          marginVertical={8}
+        >
+          <Row
+            align='center'
+            justify='space-around'
+            size={1}
+            marginHorizontal={8}
+            marginVertical={8}
+            bg='brand.main'
+            inlineStyle={() => `border: 2px solid #ffcb00;`}
+          >
+            <Col
+              size={2}
+              marginHorizontal={8}
+              marginVertical={8}
+              inlineStyle={() => `border: 2px solid #0063ff;`}
+            />
+            <Col
+              size={2}
+              marginHorizontal={8}
+              marginVertical={8}
+              inlineStyle={() => `border: 2px solid #0063ff;`}
+            />
+          </Row>
+          <Row size={2} inlineStyle={() => `border: 2px solid #ff0038;`}>
+            <Col size={1} />
+            <Col
+              size={2}
+              center
+              marginHorizontal={16}
+              marginVertical={8}
+              inlineStyle={() => `border: 2px solid #00ff2e;`}
+            ></Col>
+            <Col size={1} />
+          </Row>
+        </Col>
+        <Col size={3} inlineStyle={() => `border: 2px solid #ccff00;`} />
+      </Page>
+    )
+  },
+  {
+    label: 'Form',
     section: 'Form',
-
     disabled: false,
     props: {
       previewComponentTitle: 'Settings',
@@ -71,9 +118,9 @@ const components = [
       onSubmit: vals => {
         localStorage.setItem('SETTINGS', JSON.stringify(vals));
       },
-      answers: JSON.parse(localStorage.getItem('SETTINGS')) || {},
+      answers: JSON.parse(localStorage.getItem('SETTINGS')) || {}
     },
-    component: props => <Form {...props}></Form>,
+    component: props => <Form {...props}></Form>
   },
   {
     label: 'Avatar',
@@ -142,7 +189,7 @@ const components = [
     )
   },
   {
-    label: 'Select multi',
+    label: 'Select',
     props: {
       options: [
         { label: 'option1', value: 0 },
@@ -155,7 +202,7 @@ const components = [
     component: props => <Select {...props} />
   },
   {
-    label: 'Badge',
+    label: 'Badges',
     props: [
       { category: 'contact', text: 'Text Badge', previewComponentOpen: true },
       { category: 'canceled', text: 'Cancelled', previewComponentOpen: true }
@@ -184,7 +231,7 @@ const components = [
         isInteractive: true
       },
       {
-        defaultRating: 2.6  ,
+        defaultRating: 2.6,
         isInteractive: true
       }
     ]

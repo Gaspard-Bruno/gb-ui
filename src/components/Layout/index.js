@@ -23,6 +23,10 @@ const media = {
     }
   `
 };
+const getSelectedBackground = props => {
+  return get(props.theme?.colors, props.bg, props.bg);
+};
+
 const getPageBackground = props => {
   switch (props.bg) {
     case 'white':
@@ -32,11 +36,33 @@ const getPageBackground = props => {
     case 'contrast':
       return props.theme?.colors?.text;
     case 'bg':
-    default:
       return props.theme?.colors.background;
+    default:
+      return getSelectedBackground(props);
   }
 };
-
+const setMarginFromProps = props => {
+  const { margin, marginVertical, marginHorizontal } = props;
+  let style = '';
+  if (margin) {
+    style += `
+      margin: ${margin};
+    `;
+  }
+  if (marginVertical) {
+    style += `
+    margin-bottom: ${marginVertical}px;
+    margin-top: ${marginVertical}px;
+    `;
+  }
+  if (marginHorizontal) {
+    style += `
+    margin-left: ${marginHorizontal}px;
+    margin-right: ${marginHorizontal}px;
+    `;
+  }
+  return style;
+};
 const Code = styled.div`
   flex-flow: row nowrap;
   max-width: 600px;
@@ -50,8 +76,9 @@ const Code = styled.div`
 `;
 
 const Page = styled.div`
-  background-color: ${props => getPageBackground(props)};
-  min-height: 100vh;
+  background-color: ${props =>
+    props.bg ? getPageBackground(props) : props.theme?.colors.background};
+  min-height: 50vh;
   display: flex;
   flex-flow: column nowrap;
   flex: 1;
@@ -61,29 +88,23 @@ const Page = styled.div`
   &::-webkit-scrollbar {
     margin-top: 32px;
     height: 4px;
-    background-color: ${props => props.theme?.colors.brand?.altLight};
+    background-color: ${props =>
+      props.scrollBackground
+        ? getSelectedBackground({ ...props, bg: props.scrollBackground })
+        : props.theme?.colors.brand?.altLight};
   }
 
   &::-webkit-scrollbar-thumb {
     margin-top: 30px;
-    background: ${props => props.theme?.colors.brand.altDarker};
+    background-color: ${props =>
+      props.scrollColor
+        ? getSelectedBackground({ ...props, bg: props.scrollColor })
+        : props.theme?.colors.brand?.altDarker};
     border-radius: 30px;
   }
 `;
-const BackofficePage = styled.div`
-  background-color: ${props => getPageBackground(props)};
-  height: 100vh;
-  width: calc(100vw - 240px);
-  margin-left: 240px;
-`;
 
-const BackofficeContainer = styled.div`
-  margin: 0px 32px;
-  overflow: scroll;
-  height: calc(100vh - 90px);
-`;
-
-const BackofficeKanbanContainer = styled.div`
+const KanbanContainer = styled.div`
   display: flex;
   max-height: calc(70vh);
   overflow-x: scroll;
@@ -111,42 +132,28 @@ const BackofficeKanbanContainer = styled.div`
 const Row = styled.div`
   display: flex;
   flex-flow: row ${props => (props.noWrap ? 'nowrap' : 'wrap')};
-  background-color: ${props => getSelectedBackground(props)};
+  background-color: ${props =>
+    props.bg ? getSelectedBackground(props) : 'transparent'};
   align-items: ${props => (props.align ? props.align : 'none')};
-  width: 100%;
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'auto')};
   justify-content: ${props => (props.justify ? props.justify : 'none')};
-  min-height: ${props => props.theme?.margin * (props.size || 0)}px;
   ${props => (props.size ? `flex: ${props.size}` : '')};
   ${props =>
     props.collapse &&
     media[props.collapse](`
       display: none;
   `)}
-  ${props =>
-    (props.margin &&
-      `
-    ${media.desktop(`
-    margin: 0 auto;
-  `)}
-  ${media.smallDesktop(`
-    margin: 0 120px;
-  `)}
-  ${media.tablet(`
-    margin: 0 48px;
-  `)}
-  ${media.mobile(`
-    margin: 0 32px;
-  `)}
-  `) ||
-    'margin: 0 auto;'}
-  ${props => props.inlineStyle || ''}
+  ${props => setMarginFromProps(props)}
+  ${props => props?.inlineStyle?.(props.theme) || ''}
 `;
 
 const Col = styled.div`
-  flex: ${props => props.size || 1};
+  ${props => (props.size ? `flex: ${props.size}` : '')};
   display: flex;
   flex-flow: column nowrap;
-  align-items: ${props => (props.center ? 'center' : 'flex-start')};
+  background-color: ${props =>
+    props.bg ? getSelectedBackground(props) : 'transparent'};
+  align-items: ${props => (props.align ? props.align : 'none')};
   justify-content: ${props => (props.justify ? props.justify : 'none')};
   padding: ${props => props.padding ?? props.theme?.margin}px;
   ${props =>
@@ -154,114 +161,9 @@ const Col = styled.div`
     media[props.collapse](`
   display: none;
   `)}
+    ${props => setMarginFromProps(props)}
   ${props => props.center && 'margin: 0 auto;'}
-  ${props => props.inlineStyle || ''}
-  ${props =>
-    props.src
-      ? `
-          background-image: url(${props.src});
-          background-size: cover;
-          background-position: center;
-        `
-      : ''}
+  ${props => props.inlineStyle?.(props.theme) || ''}
 `;
 
-export {
-  media,
-  Page,
-  Row,
-  Col,
-  Code,
-  BackofficePage,
-  BackofficeContainer,
-  BackofficeKanbanContainer
-};
-
-const getSelectedBackground = props => {
-  return get(props.theme?.colors, props.bg, props.theme.colors.background);
-};
-const FullPage = styled.div`
-  background-color: ${props => getSelectedBackground(props)};
-`;
-
-const GridRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  background-color: ${props => getSelectedBackground(props)};
-  align-items: ${props => (props.align ? props.align : 'none')};
-  justify-content: ${props => (props.justify ? props.justify : 'none')};
-  max-width: ${props => props.theme?.maxWidth}px;
-
-  ${media.desktop(`
-    margin: 0 auto;
-  `)}
-  ${media.smallDesktop(`
-    margin: 0 120px;
-  `)}
-  ${media.tablet(`
-    margin: 0 48px;
-  `)}
-  ${media.mobile(`
-    margin: 0 32px;
-  `)}
-  ${props =>
-    props.collapse &&
-    media[props.collapse](`
-  display: none;
-  `)};
-  ${props =>
-    props.show &&
-    media[props.show](`
-  display: initial;
-  `)};
-`;
-
-const GridCol = styled.div`
-  text-align: ${props => (props.text ? 'center' : 'left')};
-  width: ${props => `${(100 * props.size) / 12}%`};
-  align-self: ${props => (props.self ? 'center' : '')};
-  justify-content: ${props => (props.justify ? props.justify : 'none')};
-  ${props =>
-    props.collapse &&
-    media[props.collapse](`
-  display: none;
-  `)};
-  ${props =>
-    props.show &&
-    media[props.show](`
-  display: initial;
-  `)};
-  ${props =>
-    props.src
-      ? `
-          background-image: url(${props.src});
-          background-size: ${props.contain ? 'contain' : 'cover'};
-          background-position: center;
-          background-repeat: no-repeat;
-        `
-      : ''}
-`;
-
-const Hero = styled.div`
-  display: flex;
-  align-items: center;
-  height: ${props => props.theme?.heroSize}px;
-  background-color: ${props => getSelectedBackground(props)};
-  ${props =>
-    props.top
-      ? `
-      position: relative;
-      top: -80px;
-    `
-      : ``}
-`;
-
-const ReversedColumn = styled(GridRow)`
-  ${media.mobile(`
-    flex-flow: column-reverse;
-    text-align: center
-  `)}
-`;
-
-export { GridCol, GridRow, ReversedColumn, FullPage, Hero };
+export { media, Page, Row, Col, Code, KanbanContainer };

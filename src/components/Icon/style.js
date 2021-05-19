@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import get from 'lodash.get';
 
 const getSelectedBackground = props => {
-  return get(props.theme?.colors, props.bg, props.theme?.colors.text);
+  return get(props.theme?.colors, props.color, props.color);
 };
 const StyledIcoMoon = styled(IcoMoon)`
   path {

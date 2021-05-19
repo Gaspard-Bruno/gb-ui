@@ -15,21 +15,7 @@ import IconSwitch from './IconSwitch';
 import Kanban from './Kanban';
 import KanbanCard from './KanbanCard';
 import KanbanColumn from './KanbanColumn';
-import {
-  media,
-  Page,
-  Code,
-  Row,
-  Col,
-  BackofficePage,
-  BackofficeContainer,
-  BackofficeKanbanContainer,
-  GridCol,
-  GridRow,
-  ReversedColumn,
-  FullPage,
-  Hero
-} from './Layout';
+import { media, Page, Code, Row, Col, KanbanContainer } from './Layout';
 import List from './List';
 import Loader from './Loader';
 import Logo from './Logo';
@@ -82,14 +68,7 @@ export {
   Code,
   Row,
   Col,
-  BackofficePage,
-  BackofficeContainer,
-  BackofficeKanbanContainer,
-  GridCol,
-  GridRow,
-  ReversedColumn,
-  FullPage,
-  Hero,
+  KanbanContainer,
   List,
   Loader,
   Logo,
