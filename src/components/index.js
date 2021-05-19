@@ -58,7 +58,7 @@ import {
   ButtonText,
   ErrorText
 } from './Text';
-import useTheme from 'utils/useTheme';
+import useTheme from './utils/useTheme';
 export {
   Accordion,
   Avatar,

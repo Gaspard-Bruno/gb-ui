@@ -1150,3 +1150,44 @@
     opacity: .75;
     color: black;
 }
+
+
+
+
+
+    @font-face {
+        font-family: "Space Grotesk";
+        src: local('Space Grotesk'), local('SpaceGrotesk'),
+        url("./assets/fonts/SpaceGrotesk-Bold.ttf") format('truetype');
+        font-weight: bold;
+        font-style: bold;
+    }
+
+    @font-face {
+        font-family: "Space Grotesk";
+        src: local('Space Grotesk'), local('SpaceGrotesk'),
+        url("./assets/fonts/SpaceGrotesk-Regular.ttf") format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "Space Grotesk";
+        src: local('Space Grotesk'), local('SpaceGrotesk'),
+        url("./assets/fonts/SpaceGrotesk-Medium.ttf") format('truetype');
+        font-weight: medium;
+        font-style: medium;
+    }
+
+    @font-face {
+      font-family: Muli;
+      src: url('./assets/fonts/Muli.ttf') format("truetype");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: Muli;
+      src: url('./assets/fonts/Muli-Bold.ttf') format("truetype");
+      font-weight: bold;
+      font-style: bold;
+    }
