@@ -55109,7 +55109,8 @@ var NavText = styled(ButtonText)(_templateObject5$7(), function (props) {
 var Sidebar = function Sidebar(_ref) {
   var sidebarSections = _ref.sidebarSections,
       translate = _ref.translate,
-      isOpenable = _ref.isOpenable;
+      isOpenable = _ref.isOpenable,
+      className = _ref.className;
 
   var _useState = useState(true),
       _useState2 = _slicedToArray(_useState, 2),
@@ -55131,7 +55132,8 @@ var Sidebar = function Sidebar(_ref) {
   };
 
   return /*#__PURE__*/React.createElement(StyledSidebar, {
-    open: isOpen
+    open: isOpen,
+    className: className
   }, /*#__PURE__*/React.createElement(Col, null, /*#__PURE__*/React.createElement(NavSection, {
     open: isOpen
   }, /*#__PURE__*/React.createElement(Row, {

@@ -13,7 +13,7 @@ import StyledSidebar, {
   NavHeader
 } from './style';
 
-const Sidebar = ({ sidebarSections, translate, isOpenable }) => {
+const Sidebar = ({ sidebarSections, translate, isOpenable, className }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   // eslint-disable-next-line react/prop-types
@@ -30,10 +30,10 @@ const Sidebar = ({ sidebarSections, translate, isOpenable }) => {
   };
 
   return (
-    <StyledSidebar open={isOpen}>
+    <StyledSidebar open={isOpen} className={className}>
       <Col>
         <NavSection open={isOpen}>
-          <Row align='center' bg="transparent">
+          <Row align='center' bg='transparent'>
             <Col>
               <SubHeading color='white'>GB UI</SubHeading>
               <NavHeader>by Gaspard+Bruno</NavHeader>
