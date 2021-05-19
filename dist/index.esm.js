@@ -2244,48 +2244,8 @@ function get(object, path, defaultValue) {
 
 var lodash_get = get;
 
-function _templateObject12() {
-  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  transition: all 0.2s;\n  opacity: ", ";\n  margin: 0 !important;\n"]);
-
-  _templateObject12 = function _templateObject12() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject11() {
-  var data = _taggedTemplateLiteral(["\n  display: inline-flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  text-decoration: none;\n  font-family: Space Grotesk;\n  font-style: normal;\n  font-weight: bolder;\n  color: ", ";\n  font-size: 16px;\n  line-height: 24px;\n"]);
-
-  _templateObject11 = function _templateObject11() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject10() {
-  var data = _taggedTemplateLiteral(["\n  text-decoration: none;\n  font-family: Muli;\n  font-style: normal;\n  font-weight: normal;\n  color: ", ";\n  font-size: 16px;\n  line-height: 24px;\n"]);
-
-  _templateObject10 = function _templateObject10() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject9() {
-  var data = _taggedTemplateLiteral(["\n  text-decoration: none;\n  font-family: Space Grotesk;\n  font-style: medium;\n  font-weight: 500;\n  color: ", ";\n  font-size: 16px;\n  line-height: 24px;\n  :hover {\n    color: ", ";\n  }\n  :active {\n    color: ", ";\n  }\n  :visited {\n    color: ", ";\n  }\n"]);
-
-  _templateObject9 = function _templateObject9() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject8() {
-  var data = _taggedTemplateLiteral(["\n  text-decoration: none;\n  font-family: Space Grotesk;\n  font-style: medium;\n  font-weight: 500;\n  display: block;\n  line-height: 16px;\n  font-size: 14px;\n  color: ", ";\n  font-size: 16px;\n  line-height: 24px;\n  :hover {\n    color: ", ";\n  }\n  :active {\n    color: ", ";\n  }\n  :visited {\n    color: ", ";\n  }\n  :focus {\n    color: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  transition: all 0.2s;\n  opacity: ", ";\n  margin: 0 !important;\n"]);
 
   _templateObject8 = function _templateObject8() {
     return data;
@@ -2295,7 +2255,7 @@ function _templateObject8() {
 }
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n  font-family: Muli;\n  font-style: normal;\n  font-weight: bold;\n  font-size: 10px;\n  line-height: 10px;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  color: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  text-decoration: none;\n  ", "\n  font-style: medium;\n  font-weight: 500;\n  color: ", ";\n  font-size: 16px;\n  line-height: 24px;\n  :hover {\n    color: ", ";\n  }\n  :active {\n    color: ", ";\n  }\n  :visited {\n    color: ", ";\n  }\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -2305,7 +2265,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n  font-family: Space Grotesk;\n  font-style: normal;\n  font-weight: bold;\n  font-size: 14px;\n  line-height: 24px;\n  color: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  text-decoration: none;\n  ", "\n  font-style: medium;\n  font-weight: 500;\n  display: block;\n  line-height: 16px;\n  font-size: 14px;\n  color: ", ";\n  font-size: 16px;\n  line-height: 24px;\n  :hover {\n    color: ", ";\n  }\n  :active {\n    color: ", ";\n  }\n  :visited {\n    color: ", ";\n  }\n  :focus {\n    color: ", ";\n  }\n"]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -2315,7 +2275,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n  font-family: Muli;\n  font-style: normal;\n  font-weight: ", ";\n  font-size: 14px;\n  line-height: 16px;\n  color: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  ", "\n  font-style: normal;\n  font-weight: bold;\n  font-size: 10px;\n  line-height: 10px;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  color: ", ";\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -2325,7 +2285,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  font-family: Muli;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  color: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  ", "\n  font-style: normal;\n  font-weight: ", ";\n  font-size: 14px;\n  line-height: 16px;\n  color: ", ";\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -2335,7 +2295,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  font-family: Space Grotesk;\n  font-style: normal;\n  font-weight: bold;\n  ", "\n  color: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  ", "\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  color: ", ";\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -2345,7 +2305,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  font-family: Space Grotesk;\n  font-style: normal;\n  font-weight: bold;\n  ", "\n  color: ", ";\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n", "\n  font-style: normal;\n  font-weight: bold;\n  ", "\n  color: ", ";\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -2355,7 +2315,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  font-family: Space Grotesk;\n  font-style: normal;\n  font-weight: bold;\n  font-size: 48px;\n  line-height: 64px;\n  color: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n", "\n  font-style: normal;\n  font-weight: bold;\n  ", "\n  color: ", ";\n  ", "\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -2363,108 +2323,109 @@ function _templateObject() {
 
   return data;
 }
-var Jumbo = styled.h1(_templateObject(), function (props) {
+var headingSizes = ["\n  font-size: 48px;\n  line-height: 64px;\n  ", "\n  font-size: 32px;\n  line-height: 40px;\n  ", "\n  font-size: 24px;\n  line-height: 32px;\n  ", "\n  font-size: 20px;\n  line-height: 24px;\n  ", "\n  font-size: 18px;\n  line-height: 24px;\n  ", "\n  font-size: 16px;\n  line-height: 24px;\n  "];
+var Heading = styled.h2(_templateObject(), function (_ref) {
+  var theme = _ref.theme;
+  return theme.fontPrimary();
+}, function (props) {
+  return props.size ? headingSizes[props.size - 1] : headingSizes[0];
+}, function (props) {
   var _props$theme, _props$theme2, _props$theme3;
 
   return props.color ? lodash_get((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors, props.color, (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.text) : (_props$theme3 = props.theme) === null || _props$theme3 === void 0 ? void 0 : _props$theme3.colors.text;
+}, function (props) {
+  return props.center && "text-align: center";
 });
-var headingSizes = ["\n  font-size: 48px;\n  line-height: 64px;\n  ", "\n  font-size: 32px;\n  line-height: 40px;\n  ", "\n  font-size: 24px;\n  line-height: 32px;\n  ", "\n  font-size: 20px;\n  line-height: 24px;\n  ", "\n  font-size: 18px;\n  line-height: 24px;\n  ", "\n  font-size: 16px;\n  line-height: 24px;\n  "];
-var Heading = styled.h2(_templateObject2(), function (props) {
-  return props.size ? headingSizes[props.size - 1] : headingSizes[0];
+var SubHeading = styled.h3(_templateObject2(), function (_ref2) {
+  var theme = _ref2.theme;
+  return theme.fontPrimary();
+}, function (props) {
+  return props.size ? headingSizes[props.size - 1] : headingSizes[2];
 }, function (props) {
   var _props$theme4, _props$theme5, _props$theme6;
 
   return props.color ? lodash_get((_props$theme4 = props.theme) === null || _props$theme4 === void 0 ? void 0 : _props$theme4.colors, props.color, (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : _props$theme5.colors.text) : (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.text;
+});
+var Body = styled.p(_templateObject3(), function (_ref3) {
+  var theme = _ref3.theme;
+  return theme.fontPrimary();
 }, function (props) {
-  return props.center && "text-align: center";
+  var _props$theme7, _props$theme8;
+
+  return props.alt ? (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.grey : (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.text;
 });
-var SubHeading = styled.h3(_templateObject3(), function (props) {
-  return props.size ? headingSizes[props.size - 1] : headingSizes[2];
+var SmallBody = styled.p(_templateObject4(), function (_ref4) {
+  var theme = _ref4.theme;
+  return theme.fontPrimary();
 }, function (props) {
-  var _props$theme7, _props$theme8, _props$theme9;
-
-  return props.color ? lodash_get((_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors, props.color, (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.text) : (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors.text;
-});
-var Body = styled.p(_templateObject4(), function (props) {
-  var _props$theme10, _props$theme11;
-
-  return props.alt ? (_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.colors.grey : (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.colors.text;
-});
-var SmallBody = styled.p(_templateObject5(), function (props) {
   return props.bold ? 'bold' : 'normal';
+}, function (props) {
+  var _props$theme9, _props$theme10, _props$theme11;
+
+  return props.color ? lodash_get((_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors, props.color, (_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.colors.text) : (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.colors.text;
+});
+var Tiny = styled.h3(_templateObject5(), function (_ref5) {
+  var theme = _ref5.theme;
+  return theme.fontPrimary();
 }, function (props) {
   var _props$theme12, _props$theme13, _props$theme14;
 
   return props.color ? lodash_get((_props$theme12 = props.theme) === null || _props$theme12 === void 0 ? void 0 : _props$theme12.colors, props.color, (_props$theme13 = props.theme) === null || _props$theme13 === void 0 ? void 0 : _props$theme13.colors.text) : (_props$theme14 = props.theme) === null || _props$theme14 === void 0 ? void 0 : _props$theme14.colors.text;
 });
-var SmallBodyFAQ = styled.p(_templateObject6(), function (props) {
-  var _props$theme15;
+var StyledLink = styled.a(_templateObject6(), function (_ref6) {
+  var theme = _ref6.theme;
+  return theme.fontPrimary();
+}, function (props) {
+  var _props$theme15, _props$theme16, _props$theme17;
 
-  return (_props$theme15 = props.theme) === null || _props$theme15 === void 0 ? void 0 : _props$theme15.colors.grey;
-});
-var Tiny = styled.h3(_templateObject7(), function (props) {
-  var _props$theme16, _props$theme17, _props$theme18;
+  return props.color ? lodash_get((_props$theme15 = props.theme) === null || _props$theme15 === void 0 ? void 0 : _props$theme15.colors, props.color, (_props$theme16 = props.theme) === null || _props$theme16 === void 0 ? void 0 : _props$theme16.colors.text) : (_props$theme17 = props.theme) === null || _props$theme17 === void 0 ? void 0 : _props$theme17.colors.text;
+}, function (props) {
+  var _props$theme18;
 
-  return props.color ? lodash_get((_props$theme16 = props.theme) === null || _props$theme16 === void 0 ? void 0 : _props$theme16.colors, props.color, (_props$theme17 = props.theme) === null || _props$theme17 === void 0 ? void 0 : _props$theme17.colors.text) : (_props$theme18 = props.theme) === null || _props$theme18 === void 0 ? void 0 : _props$theme18.colors.text;
-});
-var StyledLink = styled.a(_templateObject8(), function (props) {
+  return (_props$theme18 = props.theme) === null || _props$theme18 === void 0 ? void 0 : _props$theme18.colors.grey;
+}, function (props) {
   var _props$theme19, _props$theme20, _props$theme21;
 
   return props.color ? lodash_get((_props$theme19 = props.theme) === null || _props$theme19 === void 0 ? void 0 : _props$theme19.colors, props.color, (_props$theme20 = props.theme) === null || _props$theme20 === void 0 ? void 0 : _props$theme20.colors.text) : (_props$theme21 = props.theme) === null || _props$theme21 === void 0 ? void 0 : _props$theme21.colors.text;
 }, function (props) {
-  var _props$theme22;
+  var _props$theme22, _props$theme23, _props$theme24;
 
-  return (_props$theme22 = props.theme) === null || _props$theme22 === void 0 ? void 0 : _props$theme22.colors.grey;
+  return props.color ? lodash_get((_props$theme22 = props.theme) === null || _props$theme22 === void 0 ? void 0 : _props$theme22.colors, props.color, (_props$theme23 = props.theme) === null || _props$theme23 === void 0 ? void 0 : _props$theme23.colors.text) : (_props$theme24 = props.theme) === null || _props$theme24 === void 0 ? void 0 : _props$theme24.colors.text;
 }, function (props) {
-  var _props$theme23, _props$theme24, _props$theme25;
+  var _props$theme25;
 
-  return props.color ? lodash_get((_props$theme23 = props.theme) === null || _props$theme23 === void 0 ? void 0 : _props$theme23.colors, props.color, (_props$theme24 = props.theme) === null || _props$theme24 === void 0 ? void 0 : _props$theme24.colors.text) : (_props$theme25 = props.theme) === null || _props$theme25 === void 0 ? void 0 : _props$theme25.colors.text;
-}, function (props) {
-  var _props$theme26, _props$theme27, _props$theme28;
-
-  return props.color ? lodash_get((_props$theme26 = props.theme) === null || _props$theme26 === void 0 ? void 0 : _props$theme26.colors, props.color, (_props$theme27 = props.theme) === null || _props$theme27 === void 0 ? void 0 : _props$theme27.colors.text) : (_props$theme28 = props.theme) === null || _props$theme28 === void 0 ? void 0 : _props$theme28.colors.text;
-}, function (props) {
-  var _props$theme29;
-
-  return (_props$theme29 = props.theme) === null || _props$theme29 === void 0 ? void 0 : _props$theme29.colors.brand.red;
+  return (_props$theme25 = props.theme) === null || _props$theme25 === void 0 ? void 0 : _props$theme25.colors.brand.red;
 });
-var Link = function Link(_ref) {
-  var to = _ref.to,
-      newTab = _ref.newTab,
-      children = _ref.children;
+var Link = function Link(_ref7) {
+  var to = _ref7.to,
+      newTab = _ref7.newTab,
+      children = _ref7.children;
   return /*#__PURE__*/React.createElement(StyledLink, {
     href: to,
     target: newTab ? 'blank' : ''
   }, children);
 };
-var ButtonText = styled.span(_templateObject9(), function (props) {
-  var _props$theme30, _props$theme31, _props$theme32;
-
-  return props.color ? lodash_get((_props$theme30 = props.theme) === null || _props$theme30 === void 0 ? void 0 : _props$theme30.colors, props.color, (_props$theme31 = props.theme) === null || _props$theme31 === void 0 ? void 0 : _props$theme31.colors.text) : (_props$theme32 = props.theme) === null || _props$theme32 === void 0 ? void 0 : _props$theme32.colors.text;
+var ButtonText = styled.span(_templateObject7(), function (_ref8) {
+  var theme = _ref8.theme;
+  return theme.fontPrimary();
 }, function (props) {
-  var _props$theme33, _props$theme34, _props$theme35;
+  var _props$theme26, _props$theme27, _props$theme28;
 
-  return props.color ? lodash_get((_props$theme33 = props.theme) === null || _props$theme33 === void 0 ? void 0 : _props$theme33.colors, props.color, (_props$theme34 = props.theme) === null || _props$theme34 === void 0 ? void 0 : _props$theme34.colors.text) : (_props$theme35 = props.theme) === null || _props$theme35 === void 0 ? void 0 : _props$theme35.colors.text;
+  return props.color ? lodash_get((_props$theme26 = props.theme) === null || _props$theme26 === void 0 ? void 0 : _props$theme26.colors, props.color, (_props$theme27 = props.theme) === null || _props$theme27 === void 0 ? void 0 : _props$theme27.colors.text) : (_props$theme28 = props.theme) === null || _props$theme28 === void 0 ? void 0 : _props$theme28.colors.text;
 }, function (props) {
-  var _props$theme36, _props$theme37, _props$theme38;
+  var _props$theme29, _props$theme30, _props$theme31;
 
-  return props.color ? lodash_get((_props$theme36 = props.theme) === null || _props$theme36 === void 0 ? void 0 : _props$theme36.colors, props.color, (_props$theme37 = props.theme) === null || _props$theme37 === void 0 ? void 0 : _props$theme37.colors.text) : (_props$theme38 = props.theme) === null || _props$theme38 === void 0 ? void 0 : _props$theme38.colors.text;
+  return props.color ? lodash_get((_props$theme29 = props.theme) === null || _props$theme29 === void 0 ? void 0 : _props$theme29.colors, props.color, (_props$theme30 = props.theme) === null || _props$theme30 === void 0 ? void 0 : _props$theme30.colors.text) : (_props$theme31 = props.theme) === null || _props$theme31 === void 0 ? void 0 : _props$theme31.colors.text;
 }, function (props) {
-  var _props$theme39, _props$theme40, _props$theme41;
+  var _props$theme32, _props$theme33, _props$theme34;
 
-  return props.color ? lodash_get((_props$theme39 = props.theme) === null || _props$theme39 === void 0 ? void 0 : _props$theme39.colors, props.color, (_props$theme40 = props.theme) === null || _props$theme40 === void 0 ? void 0 : _props$theme40.colors.text) : (_props$theme41 = props.theme) === null || _props$theme41 === void 0 ? void 0 : _props$theme41.colors.text;
-});
-var AlertText = styled.p(_templateObject10(), function (props) {
-  var _props$theme42;
+  return props.color ? lodash_get((_props$theme32 = props.theme) === null || _props$theme32 === void 0 ? void 0 : _props$theme32.colors, props.color, (_props$theme33 = props.theme) === null || _props$theme33 === void 0 ? void 0 : _props$theme33.colors.text) : (_props$theme34 = props.theme) === null || _props$theme34 === void 0 ? void 0 : _props$theme34.colors.text;
+}, function (props) {
+  var _props$theme35, _props$theme36, _props$theme37;
 
-  return (_props$theme42 = props.theme) === null || _props$theme42 === void 0 ? void 0 : _props$theme42.colors.red;
+  return props.color ? lodash_get((_props$theme35 = props.theme) === null || _props$theme35 === void 0 ? void 0 : _props$theme35.colors, props.color, (_props$theme36 = props.theme) === null || _props$theme36 === void 0 ? void 0 : _props$theme36.colors.text) : (_props$theme37 = props.theme) === null || _props$theme37 === void 0 ? void 0 : _props$theme37.colors.text;
 });
-var AlertTitle = styled.h3(_templateObject11(), function (props) {
-  var _props$theme43;
-
-  return (_props$theme43 = props.theme) === null || _props$theme43 === void 0 ? void 0 : _props$theme43.colors.red;
-});
-var ErrorText = styled(SmallBody)(_templateObject12(), function (props) {
+var ErrorText = styled(SmallBody)(_templateObject8(), function (props) {
   return props.theme.colors.feedback.error;
 }, function (props) {
   return props.error ? 1 : 0;
@@ -3458,7 +3419,7 @@ function _templateObject4$3() {
 }
 
 function _templateObject3$5() {
-  var data = _taggedTemplateLiteral(["\n  flex: 3;\n  border-radius: 48px 0 0 48px;\n  color: ", ";\n  padding: 0 ", "px;\n  &:focus {\n    outline: none;\n  }\n  font-family: Muli;\n  font-size: 16px;\n  line-height: 24px;\n  color: ", ";\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  flex: 3;\n  border-radius: 48px 0 0 48px;\n  color: ", ";\n  padding: 0 ", "px;\n  &:focus {\n    outline: none;\n  }\n\n  ", "\n  font-size: 16px;\n  line-height: 24px;\n  color: ", ";\n  ", "\n"]);
 
   _templateObject3$5 = function _templateObject3() {
     return data;
@@ -3505,6 +3466,9 @@ var Input = styled.input(_templateObject3$5(), function (props) {
   return props.theme.colors.grey;
 }, function (props) {
   return props.theme.margin * 1.5;
+}, function (_ref) {
+  var theme = _ref.theme;
+  return theme.fontPrimary();
 }, function (props) {
   return props.theme.grey;
 }, function (props) {
@@ -9864,7 +9828,7 @@ var manageState = function manageState(SelectComponent) {
 var index = manageState(Select);
 
 function _templateObject2$8() {
-  var data = _taggedTemplateLiteral(["\n  border: ", ";\n  color: ", ";\n  font-family: Muli;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  input {\n    font-family: Muli;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 16px;\n    line-height: 24px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  border: ", ";\n  color: ", ";\n\n  ", "\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  input {\n    ", "\n    font-style: normal;\n    font-weight: normal;\n    font-size: 16px;\n    line-height: 24px;\n  }\n"]);
 
   _templateObject2$8 = function _templateObject2() {
     return data;
@@ -9962,42 +9926,48 @@ var Select$1 = styled(index)(_templateObject2$8(), function (props) {
   var _props$theme5, _props$theme5$colors, _props$theme6, _props$theme6$colors;
 
   return props.error ? (_props$theme5 = props.theme) === null || _props$theme5 === void 0 ? void 0 : (_props$theme5$colors = _props$theme5.colors) === null || _props$theme5$colors === void 0 ? void 0 : _props$theme5$colors.feedback.error : (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : (_props$theme6$colors = _props$theme6.colors) === null || _props$theme6$colors === void 0 ? void 0 : _props$theme6$colors.alt;
+}, function (_ref3) {
+  var theme = _ref3.theme;
+  return theme.fontPrimary();
+}, function (_ref4) {
+  var theme = _ref4.theme;
+  return theme.fontPrimary();
 });
 
-function _templateObject12$1() {
+function _templateObject12() {
   var data = _taggedTemplateLiteral(["\n  ", "\n"]);
 
-  _templateObject12$1 = function _templateObject12() {
+  _templateObject12 = function _templateObject12() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject11$1() {
+function _templateObject11() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  height: ", "px;\n  background-color: ", ";\n  ", "\n"]);
 
-  _templateObject11$1 = function _templateObject11() {
+  _templateObject11 = function _templateObject11() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject10$1() {
+function _templateObject10() {
   var data = _taggedTemplateLiteral(["\n  text-align: ", ";\n  width: ", ";\n  align-self: ", ";\n  justify-content: ", ";\n  ", ";\n  ", ";\n  ", "\n"]);
 
-  _templateObject10$1 = function _templateObject10() {
+  _templateObject10 = function _templateObject10() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject9$1() {
+function _templateObject9() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n  flex-wrap: nowrap;\n  background-color: ", ";\n  align-items: ", ";\n  justify-content: ", ";\n  max-width: ", "px;\n\n  ", "\n  ", "\n  ", "\n  ", "\n  ", ";\n  ", ";\n"]);
 
-  _templateObject9$1 = function _templateObject9() {
+  _templateObject9 = function _templateObject9() {
     return data;
   };
 
@@ -10200,7 +10170,7 @@ var getSelectedBackground$2 = function getSelectedBackground(props) {
 var FullPage = styled.div(_templateObject8$1(), function (props) {
   return getSelectedBackground$2(props);
 });
-var GridRow = styled.div(_templateObject9$1(), function (props) {
+var GridRow = styled.div(_templateObject9(), function (props) {
   return getSelectedBackground$2(props);
 }, function (props) {
   return props.align ? props.align : 'none';
@@ -10215,7 +10185,7 @@ var GridRow = styled.div(_templateObject9$1(), function (props) {
 }, function (props) {
   return props.show && media[props.show]("\n  display: initial;\n  ");
 });
-var GridCol = styled.div(_templateObject10$1(), function (props) {
+var GridCol = styled.div(_templateObject10(), function (props) {
   return props.text ? 'center' : 'left';
 }, function (props) {
   return "".concat(100 * props.size / 12, "%");
@@ -10230,7 +10200,7 @@ var GridCol = styled.div(_templateObject10$1(), function (props) {
 }, function (props) {
   return props.src ? "\n          background-image: url(".concat(props.src, ");\n          background-size: ").concat(props.contain ? 'contain' : 'cover', ";\n          background-position: center;\n          background-repeat: no-repeat;\n        ") : '';
 });
-var Hero = styled.div(_templateObject11$1(), function (props) {
+var Hero = styled.div(_templateObject11(), function (props) {
   var _props$theme15;
 
   return (_props$theme15 = props.theme) === null || _props$theme15 === void 0 ? void 0 : _props$theme15.heroSize;
@@ -10239,7 +10209,7 @@ var Hero = styled.div(_templateObject11$1(), function (props) {
 }, function (props) {
   return props.top ? "\n      position: relative;\n      top: -80px;\n    " : "";
 });
-var ReversedColumn = styled(GridRow)(_templateObject12$1(), media.mobile("\n    flex-flow: column-reverse;\n    text-align: center\n  "));
+var ReversedColumn = styled(GridRow)(_templateObject12(), media.mobile("\n    flex-flow: column-reverse;\n    text-align: center\n  "));
 
 var Select$2 = function Select(_ref) {
   var error = _ref.error,
@@ -33322,7 +33292,7 @@ function _templateObject2$d() {
 }
 
 function _templateObject$i() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  .react-datepicker {\n    button {\n      margin-top:0px;\n    }\n  }\n\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n  input {\n\n  background-color: ", ";\n  border-radius: 2px;\n  padding: ", "px ", "px;\n  border: 1px solid\n    ", ";\n  font-family: Muli;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  color: ", ";\n  outline: none;\n  &:focus {\n    outline: none;\n    border-radius: 2px;\n    border-color: ", ";\n  }\n  &:disabled {\n    background-color: ", ";\n    color: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-end;\n  width: ", ";\n  .react-datepicker {\n    button {\n      margin-top:0px;\n    }\n  }\n\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n  input {\n\n  background-color: ", ";\n  border-radius: 2px;\n  padding: ", "px ", "px;\n  border: 1px solid\n    ", ";\n  ", "\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  color: ", ";\n  outline: none;\n  &:focus {\n    outline: none;\n    border-radius: 2px;\n    border-color: ", ";\n  }\n  &:disabled {\n    background-color: ", ";\n    color: ", ";\n  }\n"]);
 
   _templateObject$i = function _templateObject() {
     return data;
@@ -33356,6 +33326,9 @@ var InputContainer = styled.div(_templateObject$i(), function (props) {
   var _props$theme7, _props$theme8, _props$theme8$colors$;
 
   return props.error ? (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.feedback.error : (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : (_props$theme8$colors$ = _props$theme8.colors.brand) === null || _props$theme8$colors$ === void 0 ? void 0 : _props$theme8$colors$.altLight;
+}, function (_ref) {
+  var theme = _ref.theme;
+  return theme.fontPrimary();
 }, function (props) {
   var _props$theme9;
 
@@ -33509,7 +33482,7 @@ TextInput.propTypes = {
 };
 
 function _templateObject2$e() {
-  var data = _taggedTemplateLiteral(["\n  border-radius: 2px;\n  resize: none;\n  padding: ", "px\n    ", "px;\n  border: 1px solid\n    ", ";\n  font-family: Muli;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  color: ", ";\n  outline: none;\n  &:focus {\n    outline: none;\n    border-radius: 2px;\n    border-color: ", ";\n  }\n  &:disabled {\n    background-color: ", ";\n    color: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  border-radius: 2px;\n  resize: none;\n  padding: ", "px\n    ", "px;\n  border: 1px solid\n    ", ";\n\n  ", "\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  color: ", ";\n  outline: none;\n  &:focus {\n    outline: none;\n    border-radius: 2px;\n    border-color: ", ";\n  }\n  &:disabled {\n    background-color: ", ";\n    color: ", ";\n  }\n"]);
 
   _templateObject2$e = function _templateObject2() {
     return data;
@@ -33548,6 +33521,9 @@ var TextArea = styled.textarea(_templateObject2$e(), function (props) {
   var _props$theme6, _props$theme7, _props$theme7$colors$;
 
   return props.error ? (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.feedback.error : (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : (_props$theme7$colors$ = _props$theme7.colors.brand) === null || _props$theme7$colors$ === void 0 ? void 0 : _props$theme7$colors$.altLight;
+}, function (_ref) {
+  var theme = _ref.theme;
+  return theme.fontPrimary();
 }, function (props) {
   var _props$theme8;
 
@@ -33873,40 +33849,40 @@ MultiFieldRender.propTypes = {
   removeAction: propTypes.func
 };
 
-function _templateObject12$2() {
+function _templateObject12$1() {
   var data = _taggedTemplateLiteral(["\n  flex: 0;\n  svg {\n    path {\n      fill: ", ";\n    }\n  }\n"]);
 
-  _templateObject12$2 = function _templateObject12() {
+  _templateObject12$1 = function _templateObject12() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject11$2() {
+function _templateObject11$1() {
   var data = _taggedTemplateLiteral(["\n  margin-left: ", "px;\n  flex: 1;\n"]);
 
-  _templateObject11$2 = function _templateObject11() {
+  _templateObject11$1 = function _templateObject11() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject10$2() {
+function _templateObject10$1() {
   var data = _taggedTemplateLiteral(["\n  border-bottom: 1px solid #d2ccc6;\n  margin-top: ", "px;\n  padding: 0px ", "px;\n  display: flex;\n  align-items: center;\n  span {\n    cursor: pointer;\n  }\n"]);
 
-  _templateObject10$2 = function _templateObject10() {
+  _templateObject10$1 = function _templateObject10() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject9$2() {
+function _templateObject9$1() {
   var data = _taggedTemplateLiteral(["\n  border-radius: 2px;\n  min-height: 48px;\n  align-items: center;\n  display: flex;\n  background-color: ", ";\n  p {\n    margin: ", "px;\n  }\n"]);
 
-  _templateObject9$2 = function _templateObject9() {
+  _templateObject9$1 = function _templateObject9() {
     return data;
   };
 
@@ -34006,22 +33982,22 @@ var UploaderInput = styled.input(_templateObject5$5());
 var ThumbsContainer = styled.div(_templateObject6$3());
 var UploaderPreviewInner = styled.div(_templateObject7$2());
 var AnswersContainer = styled.div(_templateObject8$2());
-var AnswersTitleHolder = styled.div(_templateObject9$2(), function (props) {
+var AnswersTitleHolder = styled.div(_templateObject9$1(), function (props) {
   var _props$theme$colors, _props$theme$colors$b2;
 
   return (_props$theme$colors = props.theme.colors) === null || _props$theme$colors === void 0 ? void 0 : (_props$theme$colors$b2 = _props$theme$colors.brand) === null || _props$theme$colors$b2 === void 0 ? void 0 : _props$theme$colors$b2.altLight;
 }, function (props) {
   return props.theme.margin;
 });
-var AnswersFilesContainer = styled.div(_templateObject10$2(), function (props) {
+var AnswersFilesContainer = styled.div(_templateObject10$1(), function (props) {
   return props.theme.margin;
 }, function (props) {
   return props.theme.margin;
 });
-var AnswersTextHolder = styled.div(_templateObject11$2(), function (props) {
+var AnswersTextHolder = styled.div(_templateObject11$1(), function (props) {
   return props.theme.margin * 2.5;
 });
-var AnswersIconHolder = styled.div(_templateObject12$2(), function (props) {
+var AnswersIconHolder = styled.div(_templateObject12$1(), function (props) {
   return props.theme.colors.grey;
 });
 
@@ -60378,4 +60354,4 @@ CardSlider.propTypes = {
   hasButton: propTypes.bool
 };
 
-export { Accordion, AlertText, AlertTitle, Avatar, BackofficeContainer, BackofficeKanbanContainer, BackofficePage, Badge$1 as Badge, Body, Button$1 as Button, ButtonText, Card$1 as Card, CheckBoxGroup, Checkbox, Code, Col, Divider, DropDownMenu, ErrorText, FileUploader, FilterBar, FilterButton, Form$1 as Form, FullPage, GridCol, GridRow, Heading, Hero, Icon, IconSwitch, Jumbo, Kanban, KanbanCard$1 as KanbanCard, KanbanColumn$1 as KanbanColumn, Link, List, Loading as Loader, Logo$1 as Logo, Page, Pagination, RadioButton, ReversedColumn, Row, SearchInput as Search, Select$2 as Select, Sidebar, CardSlider as Slider, SmallBody, SmallBodyFAQ, StarsRating, SubHeading, Switcher, Table, Tabs, TextArea$1 as TextArea, TextInput, Tiny, TopBar, TrackerBox, media };
+export { Accordion, Avatar, BackofficeContainer, BackofficeKanbanContainer, BackofficePage, Badge$1 as Badge, Body, Button$1 as Button, ButtonText, Card$1 as Card, CheckBoxGroup, Checkbox, Code, Col, Divider, DropDownMenu, ErrorText, FileUploader, FilterBar, FilterButton, Form$1 as Form, FullPage, GridCol, GridRow, Heading, Hero, Icon, IconSwitch, Kanban, KanbanCard$1 as KanbanCard, KanbanColumn$1 as KanbanColumn, Link, List, Loading as Loader, Logo$1 as Logo, Page, Pagination, RadioButton, ReversedColumn, Row, SearchInput as Search, Select$2 as Select, Sidebar, CardSlider as Slider, SmallBody, StarsRating, SubHeading, Switcher, Table, Tabs, TextArea$1 as TextArea, TextInput, Tiny, TopBar, TrackerBox, media };

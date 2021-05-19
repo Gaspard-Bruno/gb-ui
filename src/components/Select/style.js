@@ -72,13 +72,14 @@ const Select = styled(ReactSelect)`
     props.error
       ? props.theme?.colors?.feedback.error
       : props.theme?.colors?.alt};
-  font-family: Muli;
+
+  ${({ theme }) => theme.fontPrimary()}
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
   input {
-    font-family: Muli;
+    ${({ theme }) => theme.fontPrimary()}
     font-style: normal;
     font-weight: normal;
     font-size: 16px;

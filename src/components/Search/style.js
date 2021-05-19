@@ -44,7 +44,8 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
-  font-family: Muli;
+
+  ${({ theme }) => theme.fontPrimary()}
   font-size: 16px;
   line-height: 24px;
   color: ${props => props.theme.grey};

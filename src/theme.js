@@ -26,6 +26,8 @@ const GLOBAL = {
   borderRadius: radius => `border-radius:${radius};`,
   shadowE01: () => `filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.05));`,
   shadowE02: () => `drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15));`,
+  fontPrimary: () => 'font-family: Space Grotesk;',
+  fontSecondary: () => `font-family: Muli;`,
   colors: {
     gray900: '#110F19',
     gray800: '#191A25',

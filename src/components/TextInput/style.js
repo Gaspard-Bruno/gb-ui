@@ -24,13 +24,13 @@ export const InputContainer = styled.div`
   background-color: ${props => props.theme?.colors.background};
   border-radius: 2px;
   padding: ${props => props.theme?.margin - 5}px ${props =>
-         props.theme?.margin / 2}px;
+  props.theme?.margin / 2}px;
   border: 1px solid
     ${props =>
       props.error
         ? props.theme?.colors.feedback.error
         : props.theme?.colors.brand?.altLight};
-  font-family: Muli;
+  ${({ theme }) => theme.fontPrimary()}
   font-style: normal;
   font-weight: normal;
   font-size: 16px;

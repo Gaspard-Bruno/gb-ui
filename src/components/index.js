@@ -49,17 +49,13 @@ import FileUploader from './FileUploader';
 import Slider from './Slider';
 import Switcher from './Switcher';
 import {
-  Jumbo,
   Heading,
   SubHeading,
   Body,
   SmallBody,
-  SmallBodyFAQ,
   Link,
   Tiny,
   ButtonText,
-  AlertTitle,
-  AlertText,
   ErrorText
 } from './Text';
 import useTheme from 'utils/useTheme';
@@ -109,17 +105,13 @@ export {
   TextInput,
   TopBar,
   TrackerBox,
-  Jumbo,
   Heading,
   SubHeading,
   Body,
   SmallBody,
-  SmallBodyFAQ,
   Link,
   Tiny,
   ButtonText,
-  AlertTitle,
-  AlertText,
   ErrorText,
   FileUploader,
   Slider,

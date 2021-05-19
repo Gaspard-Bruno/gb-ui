@@ -23,7 +23,8 @@ const TextArea = styled.textarea`
       props.error
         ? props.theme?.colors.feedback.error
         : props.theme?.colors.brand?.altLight};
-  font-family: Muli;
+
+  ${({ theme }) => theme.fontPrimary()}
   font-style: normal;
   font-weight: normal;
   font-size: 16px;

@@ -2,18 +2,6 @@ import styled from 'styled-components';
 import React from 'react';
 import get from 'lodash.get';
 
-export const Jumbo = styled.h1`
-  font-family: Space Grotesk;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 48px;
-  line-height: 64px;
-  color: ${props =>
-    props.color
-      ? get(props.theme?.colors, props.color, props.theme?.colors.text)
-      : props.theme?.colors.text};
-`;
-
 const headingSizes = [
   `
   font-size: 48px;
@@ -42,7 +30,7 @@ const headingSizes = [
 ];
 
 export const Heading = styled.h2`
-  font-family: Space Grotesk;
+${({ theme }) => theme.fontPrimary()}
   font-style: normal;
   font-weight: bold;
   ${props => (props.size ? headingSizes[props.size - 1] : headingSizes[0])}
@@ -54,7 +42,7 @@ export const Heading = styled.h2`
 `;
 
 export const SubHeading = styled.h3`
-  font-family: Space Grotesk;
+${({ theme }) => theme.fontPrimary()}
   font-style: normal;
   font-weight: bold;
   ${props => (props.size ? headingSizes[props.size - 1] : headingSizes[2])}
@@ -65,7 +53,7 @@ export const SubHeading = styled.h3`
 `;
 
 export const Body = styled.p`
-  font-family: Muli;
+  ${({ theme }) => theme.fontPrimary()}
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -74,7 +62,7 @@ export const Body = styled.p`
     props.alt ? props.theme?.colors.grey : props.theme?.colors.text};
 `;
 export const SmallBody = styled.p`
-  font-family: Muli;
+  ${({ theme }) => theme.fontPrimary()}
   font-style: normal;
   font-weight: ${props => (props.bold ? 'bold' : 'normal')};
   font-size: 14px;
@@ -84,16 +72,8 @@ export const SmallBody = styled.p`
       ? get(props.theme?.colors, props.color, props.theme?.colors.text)
       : props.theme?.colors.text};
 `;
-export const SmallBodyFAQ = styled.p`
-  font-family: Space Grotesk;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 24px;
-  color: ${props => props.theme?.colors.grey};
-`;
 export const Tiny = styled.h3`
-  font-family: Muli;
+  ${({ theme }) => theme.fontPrimary()}
   font-style: normal;
   font-weight: bold;
   font-size: 10px;
@@ -108,7 +88,7 @@ export const Tiny = styled.h3`
 
 const StyledLink = styled.a`
   text-decoration: none;
-  font-family: Space Grotesk;
+  ${({ theme }) => theme.fontPrimary()}
   font-style: medium;
   font-weight: 500;
   display: block;
@@ -147,7 +127,7 @@ export const Link = ({ to, newTab, children }) => (
 
 export const ButtonText = styled.span`
   text-decoration: none;
-  font-family: Space Grotesk;
+  ${({ theme }) => theme.fontPrimary()}
   font-style: medium;
   font-weight: 500;
   color: ${props =>
@@ -176,29 +156,6 @@ export const ButtonText = styled.span`
   }
 `;
 
-export const AlertText = styled.p`
-  text-decoration: none;
-  font-family: Muli;
-  font-style: normal;
-  font-weight: normal;
-  color: ${props => props.theme?.colors.red};
-  font-size: 16px;
-  line-height: 24px;
-`;
-
-export const AlertTitle = styled.h3`
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  text-decoration: none;
-  font-family: Space Grotesk;
-  font-style: normal;
-  font-weight: bolder;
-  color: ${props => props.theme?.colors.red};
-  font-size: 16px;
-  line-height: 24px;
-`;
-
 export const ErrorText = styled(SmallBody)`
   color: ${props => props.theme.colors.feedback.error};
   transition: all 0.2s;
@@ -207,16 +164,12 @@ export const ErrorText = styled(SmallBody)`
 `;
 
 export default {
-  Jumbo,
   Heading,
   SubHeading,
   Body,
   SmallBody,
-  SmallBodyFAQ,
   Tiny,
   Link,
   ButtonText,
-  AlertText,
-  AlertTitle,
   ErrorText
 };
