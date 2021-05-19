@@ -37,7 +37,7 @@ const GLOBAL = {
     white800: '#FAF9F6',
     white700: '#F5F4F1',
     white600: '#EAE8E3',
-    white: "#fff",
+    white: '#fff',
     black: '#000',
     transparent: 'transparent'
   }
@@ -162,7 +162,7 @@ export const uiTheme = {
     feedback: {
       success: '#2DCA73',
       error: '#DB1E3B',
-      warning: '#FEC35A',
+      warning: '#FEC35A'
     },
     muted: {
       red: '#F1A5B1',

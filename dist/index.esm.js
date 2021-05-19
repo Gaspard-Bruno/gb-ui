@@ -2294,7 +2294,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  ", "\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  color: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n         ", "\n         font-style: normal;\n         font-weight: normal;\n         font-size: 16px;\n         line-height: 24px;\n         color: ", ";\n       "]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -2349,9 +2349,9 @@ var Body = styled.p(_templateObject3(), function (_ref3) {
   var theme = _ref3.theme;
   return theme.fontPrimary();
 }, function (props) {
-  var _props$theme7, _props$theme8;
+  var _props$theme7, _props$theme8, _props$theme9;
 
-  return props.alt ? (_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors.grey : (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.text;
+  return props.color ? lodash_get((_props$theme7 = props.theme) === null || _props$theme7 === void 0 ? void 0 : _props$theme7.colors, props.color, (_props$theme8 = props.theme) === null || _props$theme8 === void 0 ? void 0 : _props$theme8.colors.text) : (_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors.text;
 });
 var SmallBody = styled.p(_templateObject4(), function (_ref4) {
   var theme = _ref4.theme;
@@ -2359,41 +2359,41 @@ var SmallBody = styled.p(_templateObject4(), function (_ref4) {
 }, function (props) {
   return props.bold ? 'bold' : 'normal';
 }, function (props) {
-  var _props$theme9, _props$theme10, _props$theme11;
+  var _props$theme10, _props$theme11, _props$theme12;
 
-  return props.color ? lodash_get((_props$theme9 = props.theme) === null || _props$theme9 === void 0 ? void 0 : _props$theme9.colors, props.color, (_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.colors.text) : (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.colors.text;
+  return props.color ? lodash_get((_props$theme10 = props.theme) === null || _props$theme10 === void 0 ? void 0 : _props$theme10.colors, props.color, (_props$theme11 = props.theme) === null || _props$theme11 === void 0 ? void 0 : _props$theme11.colors.text) : (_props$theme12 = props.theme) === null || _props$theme12 === void 0 ? void 0 : _props$theme12.colors.text;
 });
 var Tiny = styled.h3(_templateObject5(), function (_ref5) {
   var theme = _ref5.theme;
   return theme.fontPrimary();
 }, function (props) {
-  var _props$theme12, _props$theme13, _props$theme14;
+  var _props$theme13, _props$theme14, _props$theme15;
 
-  return props.color ? lodash_get((_props$theme12 = props.theme) === null || _props$theme12 === void 0 ? void 0 : _props$theme12.colors, props.color, (_props$theme13 = props.theme) === null || _props$theme13 === void 0 ? void 0 : _props$theme13.colors.text) : (_props$theme14 = props.theme) === null || _props$theme14 === void 0 ? void 0 : _props$theme14.colors.text;
+  return props.color ? lodash_get((_props$theme13 = props.theme) === null || _props$theme13 === void 0 ? void 0 : _props$theme13.colors, props.color, (_props$theme14 = props.theme) === null || _props$theme14 === void 0 ? void 0 : _props$theme14.colors.text) : (_props$theme15 = props.theme) === null || _props$theme15 === void 0 ? void 0 : _props$theme15.colors.text;
 });
 var StyledLink = styled.a(_templateObject6(), function (_ref6) {
   var theme = _ref6.theme;
   return theme.fontPrimary();
 }, function (props) {
-  var _props$theme15, _props$theme16, _props$theme17;
+  var _props$theme16, _props$theme17, _props$theme18;
 
-  return props.color ? lodash_get((_props$theme15 = props.theme) === null || _props$theme15 === void 0 ? void 0 : _props$theme15.colors, props.color, (_props$theme16 = props.theme) === null || _props$theme16 === void 0 ? void 0 : _props$theme16.colors.text) : (_props$theme17 = props.theme) === null || _props$theme17 === void 0 ? void 0 : _props$theme17.colors.text;
+  return props.color ? lodash_get((_props$theme16 = props.theme) === null || _props$theme16 === void 0 ? void 0 : _props$theme16.colors, props.color, (_props$theme17 = props.theme) === null || _props$theme17 === void 0 ? void 0 : _props$theme17.colors.text) : (_props$theme18 = props.theme) === null || _props$theme18 === void 0 ? void 0 : _props$theme18.colors.text;
 }, function (props) {
-  var _props$theme18;
+  var _props$theme19;
 
-  return (_props$theme18 = props.theme) === null || _props$theme18 === void 0 ? void 0 : _props$theme18.colors.grey;
+  return (_props$theme19 = props.theme) === null || _props$theme19 === void 0 ? void 0 : _props$theme19.colors.grey;
 }, function (props) {
-  var _props$theme19, _props$theme20, _props$theme21;
+  var _props$theme20, _props$theme21, _props$theme22;
 
-  return props.color ? lodash_get((_props$theme19 = props.theme) === null || _props$theme19 === void 0 ? void 0 : _props$theme19.colors, props.color, (_props$theme20 = props.theme) === null || _props$theme20 === void 0 ? void 0 : _props$theme20.colors.text) : (_props$theme21 = props.theme) === null || _props$theme21 === void 0 ? void 0 : _props$theme21.colors.text;
+  return props.color ? lodash_get((_props$theme20 = props.theme) === null || _props$theme20 === void 0 ? void 0 : _props$theme20.colors, props.color, (_props$theme21 = props.theme) === null || _props$theme21 === void 0 ? void 0 : _props$theme21.colors.text) : (_props$theme22 = props.theme) === null || _props$theme22 === void 0 ? void 0 : _props$theme22.colors.text;
 }, function (props) {
-  var _props$theme22, _props$theme23, _props$theme24;
+  var _props$theme23, _props$theme24, _props$theme25;
 
-  return props.color ? lodash_get((_props$theme22 = props.theme) === null || _props$theme22 === void 0 ? void 0 : _props$theme22.colors, props.color, (_props$theme23 = props.theme) === null || _props$theme23 === void 0 ? void 0 : _props$theme23.colors.text) : (_props$theme24 = props.theme) === null || _props$theme24 === void 0 ? void 0 : _props$theme24.colors.text;
+  return props.color ? lodash_get((_props$theme23 = props.theme) === null || _props$theme23 === void 0 ? void 0 : _props$theme23.colors, props.color, (_props$theme24 = props.theme) === null || _props$theme24 === void 0 ? void 0 : _props$theme24.colors.text) : (_props$theme25 = props.theme) === null || _props$theme25 === void 0 ? void 0 : _props$theme25.colors.text;
 }, function (props) {
-  var _props$theme25;
+  var _props$theme26;
 
-  return (_props$theme25 = props.theme) === null || _props$theme25 === void 0 ? void 0 : _props$theme25.colors.brand.red;
+  return (_props$theme26 = props.theme) === null || _props$theme26 === void 0 ? void 0 : _props$theme26.colors.brand.red;
 });
 var Link = function Link(_ref7) {
   var to = _ref7.to,
@@ -2408,21 +2408,21 @@ var ButtonText = styled.span(_templateObject7(), function (_ref8) {
   var theme = _ref8.theme;
   return theme.fontPrimary();
 }, function (props) {
-  var _props$theme26, _props$theme27, _props$theme28;
+  var _props$theme27, _props$theme28, _props$theme29;
 
-  return props.color ? lodash_get((_props$theme26 = props.theme) === null || _props$theme26 === void 0 ? void 0 : _props$theme26.colors, props.color, (_props$theme27 = props.theme) === null || _props$theme27 === void 0 ? void 0 : _props$theme27.colors.text) : (_props$theme28 = props.theme) === null || _props$theme28 === void 0 ? void 0 : _props$theme28.colors.text;
+  return props.color ? lodash_get((_props$theme27 = props.theme) === null || _props$theme27 === void 0 ? void 0 : _props$theme27.colors, props.color, (_props$theme28 = props.theme) === null || _props$theme28 === void 0 ? void 0 : _props$theme28.colors.text) : (_props$theme29 = props.theme) === null || _props$theme29 === void 0 ? void 0 : _props$theme29.colors.text;
 }, function (props) {
-  var _props$theme29, _props$theme30, _props$theme31;
+  var _props$theme30, _props$theme31, _props$theme32;
 
-  return props.color ? lodash_get((_props$theme29 = props.theme) === null || _props$theme29 === void 0 ? void 0 : _props$theme29.colors, props.color, (_props$theme30 = props.theme) === null || _props$theme30 === void 0 ? void 0 : _props$theme30.colors.text) : (_props$theme31 = props.theme) === null || _props$theme31 === void 0 ? void 0 : _props$theme31.colors.text;
+  return props.color ? lodash_get((_props$theme30 = props.theme) === null || _props$theme30 === void 0 ? void 0 : _props$theme30.colors, props.color, (_props$theme31 = props.theme) === null || _props$theme31 === void 0 ? void 0 : _props$theme31.colors.text) : (_props$theme32 = props.theme) === null || _props$theme32 === void 0 ? void 0 : _props$theme32.colors.text;
 }, function (props) {
-  var _props$theme32, _props$theme33, _props$theme34;
+  var _props$theme33, _props$theme34, _props$theme35;
 
-  return props.color ? lodash_get((_props$theme32 = props.theme) === null || _props$theme32 === void 0 ? void 0 : _props$theme32.colors, props.color, (_props$theme33 = props.theme) === null || _props$theme33 === void 0 ? void 0 : _props$theme33.colors.text) : (_props$theme34 = props.theme) === null || _props$theme34 === void 0 ? void 0 : _props$theme34.colors.text;
+  return props.color ? lodash_get((_props$theme33 = props.theme) === null || _props$theme33 === void 0 ? void 0 : _props$theme33.colors, props.color, (_props$theme34 = props.theme) === null || _props$theme34 === void 0 ? void 0 : _props$theme34.colors.text) : (_props$theme35 = props.theme) === null || _props$theme35 === void 0 ? void 0 : _props$theme35.colors.text;
 }, function (props) {
-  var _props$theme35, _props$theme36, _props$theme37;
+  var _props$theme36, _props$theme37, _props$theme38;
 
-  return props.color ? lodash_get((_props$theme35 = props.theme) === null || _props$theme35 === void 0 ? void 0 : _props$theme35.colors, props.color, (_props$theme36 = props.theme) === null || _props$theme36 === void 0 ? void 0 : _props$theme36.colors.text) : (_props$theme37 = props.theme) === null || _props$theme37 === void 0 ? void 0 : _props$theme37.colors.text;
+  return props.color ? lodash_get((_props$theme36 = props.theme) === null || _props$theme36 === void 0 ? void 0 : _props$theme36.colors, props.color, (_props$theme37 = props.theme) === null || _props$theme37 === void 0 ? void 0 : _props$theme37.colors.text) : (_props$theme38 = props.theme) === null || _props$theme38 === void 0 ? void 0 : _props$theme38.colors.text;
 });
 var ErrorText = styled(SmallBody)(_templateObject8(), function (props) {
   return props.theme.colors.feedback.error;
@@ -54326,7 +54326,7 @@ function _templateObject2$p() {
 }
 
 function _templateObject$u() {
-  var data = _taggedTemplateLiteral(["\n         white-space: pre-line;\n         padding: ", "px;\n         border: ", ";\n         box-sizing: ", ";\n         border-radius: ", ";\n       "]);
+  var data = _taggedTemplateLiteral(["\n  white-space: pre-line;\n  padding: ", "px;\n  border: ", ";\n  box-sizing: ", ";\n  border-radius: ", ";\n"]);
 
   _templateObject$u = function _templateObject() {
     return data;
@@ -60266,7 +60266,7 @@ var GLOBAL = {
     white800: '#FAF9F6',
     white700: '#F5F4F1',
     white600: '#EAE8E3',
-    white: "#fff",
+    white: '#fff',
     black: '#000',
     transparent: 'transparent'
   }

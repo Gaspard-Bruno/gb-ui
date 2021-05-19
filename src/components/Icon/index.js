@@ -17,7 +17,7 @@ const Icon = ({ name, color, set, ...props }) => (
 Icon.propTypes = {
   name: PropTypes.string,
   color: PropTypes.string,
-  set: PropTypes.object,
+  set: PropTypes.object
 };
 
 Icon.defaultProps = {

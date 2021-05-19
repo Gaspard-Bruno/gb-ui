@@ -3,15 +3,15 @@ import { media } from '../Layout';
 import theme from 'Theme';
 
 export const ListWrapper = styled.div`
-         white-space: pre-line;
-         padding: ${props => (props.padding ? props.padding : 0)}px;
-         border: ${props =>
-           props.isBorded
-             ? `1px solid ${props.theme?.colors.brand?.altLight}`
-             : 'none'};
-         box-sizing: ${props => (props.isBorded ? 'border-box' : 'none')};
-         border-radius: ${props => (props.isBorded ? '10px' : 'none')};
-       `;
+  white-space: pre-line;
+  padding: ${props => (props.padding ? props.padding : 0)}px;
+  border: ${props =>
+    props.isBorded
+      ? `1px solid ${props.theme?.colors.brand?.altLight}`
+      : 'none'};
+  box-sizing: ${props => (props.isBorded ? 'border-box' : 'none')};
+  border-radius: ${props => (props.isBorded ? '10px' : 'none')};
+`;
 
 export const ListContainer = styled.ul`
   padding: 0px;

@@ -53,14 +53,16 @@ ${({ theme }) => theme.fontPrimary()}
 `;
 
 export const Body = styled.p`
-  ${({ theme }) => theme.fontPrimary()}
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 24px;
-  color: ${props =>
-    props.alt ? props.theme?.colors.grey : props.theme?.colors.text};
-`;
+         ${({ theme }) => theme.fontPrimary()}
+         font-style: normal;
+         font-weight: normal;
+         font-size: 16px;
+         line-height: 24px;
+         color: ${props =>
+           props.color
+             ? get(props.theme?.colors, props.color, props.theme?.colors.text)
+             : props.theme?.colors.text};
+       `;
 export const SmallBody = styled.p`
   ${({ theme }) => theme.fontPrimary()}
   font-style: normal;
