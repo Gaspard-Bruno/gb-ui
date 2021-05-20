@@ -102,7 +102,7 @@ const Button = styled.button`
     ${props =>
       props.bgColor &&
       `
-    background-color: ${getSelectedColor({ ...props, color: props.textColor })};
+    background: ${getSelectedColor({ ...props, color: props.bgColor })};
   }`}
 `;
 
@@ -124,7 +124,7 @@ export const IconButton = styled.button`
   ${props =>
     props.bgColor &&
     `
-    background-color: ${getSelectedColor({ ...props, color: props.textColor })};
+    background: ${getSelectedColor({ ...props, color: props.bgColor })};
   }`}
 `;
 

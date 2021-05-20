@@ -2625,8 +2625,8 @@ var Button = styled.button(_templateObject$2(), function (props) {
     color: props.borderColor
   })), ";\n  ");
 }, function (props) {
-  return props.bgColor && "\n    background-color: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
-    color: props.textColor
+  return props.bgColor && "\n    background: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
+    color: props.bgColor
   })), ";\n  }");
 });
 var IconButton = styled.button(_templateObject2$1(), function (props) {
@@ -2638,8 +2638,8 @@ var IconButton = styled.button(_templateObject2$1(), function (props) {
     color: props.borderColor
   })), ";\n  ");
 }, function (props) {
-  return props.bgColor && "\n    background-color: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
-    color: props.textColor
+  return props.bgColor && "\n    background: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
+    color: props.bgColor
   })), ";\n  }");
 });
 
