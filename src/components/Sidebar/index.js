@@ -46,7 +46,7 @@ const Sidebar = ({
                 open={isOpen}
                 icon='arrow-left'
                 action={() => setIsOpen(!isOpen)}
-                btnType='transparent'
+                variant='transparent'
               />
             )}
           </Row>

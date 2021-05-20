@@ -71,14 +71,14 @@ const components = [
       {
         previewComponentOpen: true,
         previewComponentTitle: 'Primary',
-        btnType: 'primary',
+        variant: 'primary',
         action: () => alert('Im a button 🚀'),
         text: 'Button'
       },
       {
         previewComponentOpen: true,
         previewComponentTitle: 'Secondary',
-        btnType: 'secondary',
+        variant: 'secondary',
         isSmall: true,
         action: () => alert('Im a button 🚀'),
         text: 'Button'
@@ -86,7 +86,7 @@ const components = [
       {
         previewComponentOpen: true,
         previewComponentTitle: 'Terceary',
-        btnType: 'terceary',
+        variant: 'terceary',
         isFullWidth: true,
         action: () => alert('Im a button 🚀'),
         text: 'Button'
@@ -94,7 +94,7 @@ const components = [
       {
         previewComponentOpen: true,
         previewComponentTitle: 'Transparent',
-        btnType: 'transparent',
+        variant: 'transparent',
         borderColor: 'brand.main',
         textColor: 'brand.mainLight',
         action: () => alert('Im a button 🚀'),
@@ -103,7 +103,7 @@ const components = [
       {
         previewComponentOpen: true,
         previewComponentTitle: 'Icon Button',
-        btnType: 'transparent',
+        variant: 'transparent',
         borderColor: 'brand.main',
         icon: 'star',
         iconColor: 'text',

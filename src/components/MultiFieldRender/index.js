@@ -9,12 +9,7 @@ const MultiFieldRender = ({ label, content, addAction, removeAction }) => {
       <StyledContentContainer>
         {content}
         {content && content.length ? (
-          <Button
-            type='button'
-            icon='trash'
-            btnType='iconHolder'
-            action={removeAction}
-          />
+          <Button type='button' icon='trash' action={removeAction} />
         ) : null}
       </StyledContentContainer>
       <Row>

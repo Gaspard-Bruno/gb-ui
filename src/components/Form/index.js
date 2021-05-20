@@ -208,7 +208,7 @@ const Form = ({
                     {field.submit && (
                       <Button
                         type='submit'
-                        btnType={'primary'}
+                        variant={'primary'}
                         text={field.submitLabel || 'Submit'}
                       />
                     )}
@@ -343,7 +343,7 @@ const Form = ({
                   <Button
                     type='submit'
                     action={() => handleSubmit(formik.values, field.buttonId)}
-                    btnType={'primary'}
+                    variant={'primary'}
                     text={field.submitLabel || 'Submit'}
                   />
                 )}
@@ -675,7 +675,7 @@ const Form = ({
                 isDisabled={isDisabled}
                 type={btnType}
                 action={() => btnType !== 'submit' && btnAction(formik.values)}
-                btnType={'primary'}
+                variant={'primary'}
                 isFullWidth
                 text={submitLabel}
               />

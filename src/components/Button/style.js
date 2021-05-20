@@ -87,7 +87,7 @@ const Button = styled.button`
   &:hover {
     cursor: pointer;
   }
-  ${props => getStyleFromBtnType(props.btnType, props.disabled, props.theme)}
+  ${props => getStyleFromBtnType(props.variant, props.disabled, props.theme)}
   ${props =>
     props.textColor &&
     `
@@ -99,13 +99,18 @@ const Button = styled.button`
       `
   border: 1px solid ${getSelectedColor({ ...props, color: props.borderColor })};
   `}
+    ${props =>
+      props.bgColor &&
+      `
+    background-color: ${getSelectedColor({ ...props, color: props.textColor })};
+  }`}
 `;
 
 export const IconButton = styled.button`
   border-radius: 50%;
   padding: ${props => props.theme.margin}px;
   ${props =>
-    getStyleFromBtnType(props.btnType, props.disabled, props.theme)} > * {
+    getStyleFromBtnType(props.variant, props.disabled, props.theme)} > * {
     margin: 0 auto;
   }
   &:hover {
@@ -116,6 +121,11 @@ export const IconButton = styled.button`
     `
   border: 1px solid ${getSelectedColor({ ...props, color: props.borderColor })};
   `}
+  ${props =>
+    props.bgColor &&
+    `
+    background-color: ${getSelectedColor({ ...props, color: props.textColor })};
+  }`}
 `;
 
 export default Button;

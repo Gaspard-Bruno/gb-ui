@@ -13,7 +13,7 @@ const renderMenuList = menuOptions => {
     return (
       <ListContainer key={`${item}-${index}`}>
         <Button
-          btnType='transparent'
+          variant='transparent'
           text={item.label}
           action={item.action}
           icon={icon}

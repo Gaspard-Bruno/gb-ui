@@ -7,7 +7,7 @@ import StyledButton, { IconButton } from './style';
 
 const Button = ({
   isDisabled,
-  btnType,
+  variant,
   text,
   isSmall,
   icon,
@@ -18,18 +18,20 @@ const Button = ({
   iconColor,
   textColor,
   borderColor,
+  bgColor,
   ...otherProps
 }) => {
   if (text) {
     return (
       <StyledButton
         fullWidth={isFullWidth}
-        btnType={btnType}
+        variant={variant}
         disabled={isDisabled}
         small={isSmall}
         onClick={action}
         textColor={textColor}
         borderColor={borderColor}
+        bgColor={bgColor}
         type={type}
         {...otherProps}
       >
@@ -42,11 +44,12 @@ const Button = ({
   if (icon) {
     return (
       <IconButton
-        btnType={btnType}
+        variant={variant}
         disabled={isDisabled}
         small={isSmall}
         onClick={action}
         borderColor={borderColor}
+        bgColor={bgColor}
         type={type}
       >
         <Icon name={icon} color={iconColor} />
@@ -62,12 +65,13 @@ Button.propTypes = {
   isSmall: PropTypes.bool,
   borderColor: PropTypes.string,
   iconColor: PropTypes.string,
+  bgColor: PropTypes.string,
   textColor: PropTypes.string,
   isFullWidth: PropTypes.bool,
   type: PropTypes.string,
   text: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
-  btnType: PropTypes.oneOf(['primary', 'secondary', 'terceary', 'transparent']),
+  variant: PropTypes.oneOf(['primary', 'secondary', 'terceary', 'transparent']),
   icon: PropTypes.string
 };
 

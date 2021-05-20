@@ -25,7 +25,7 @@ const Accordion = ({ title, isOpen, content, action, chevronColor }) => {
         <Heading size={6}>{title}</Heading>
         <Button
           type='button'
-          btnType='transparent'
+          variant='transparent'
           iconColor={chevronColor}
           icon='chevron-down'
           action={handleChangeState}

@@ -149,7 +149,7 @@ const FileUploader = ({ title, name, action, answers, error }) => {
               action={open}
               type='button'
               text='Carregue aqui'
-              btnType='primary'
+              variant='primary'
             />
           </>
           <ThumbsContainer>{filesPreview}</ThumbsContainer>

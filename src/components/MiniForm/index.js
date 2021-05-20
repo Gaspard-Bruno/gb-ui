@@ -20,7 +20,6 @@ const MiniForm = ({ onSubmit, content, title, onRemove }) => {
         </StyledRemoveSpan>
       </StyledServiceHeader>
       <Col padding={20}>{content}</Col>
-      {/*  <Button type='submit' btnType={'primary'} text='Submit' /> */}
     </StyledForm>
   );
 };

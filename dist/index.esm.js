@@ -2555,7 +2555,7 @@ Icon.defaultProps = {
 };
 
 function _templateObject2$1() {
-  var data = _taggedTemplateLiteral(["\n  border-radius: 50%;\n  padding: ", "px;\n  ", " > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  border-radius: 50%;\n  padding: ", "px;\n  ", " > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n  ", "\n  ", "\n"]);
 
   _templateObject2$1 = function _templateObject2() {
     return data;
@@ -2565,7 +2565,7 @@ function _templateObject2$1() {
 }
 
 function _templateObject$2() {
-  var data = _taggedTemplateLiteral(["\n  border-radius: 40px;\n  outline: none;\n  width: ", ";\n  margin-top: ", ";\n  margin-bottom: ", ";\n  padding: ", "px;\n  > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n  ", "\n  ", "\n    ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  border-radius: 40px;\n  outline: none;\n  width: ", ";\n  margin-top: ", ";\n  margin-bottom: ", ";\n  padding: ", "px;\n  > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n  ", "\n  ", "\n    ", "\n    ", "\n"]);
 
   _templateObject$2 = function _templateObject() {
     return data;
@@ -2615,7 +2615,7 @@ var Button = styled.button(_templateObject$2(), function (props) {
 }, function (props) {
   return props.small ? props.theme.margin * 0.25 : props.theme.margin;
 }, function (props) {
-  return getStyleFromBtnType(props.btnType, props.disabled, props.theme);
+  return getStyleFromBtnType(props.variant, props.disabled, props.theme);
 }, function (props) {
   return props.textColor && "\n  > span {\n    color: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
     color: props.textColor
@@ -2624,20 +2624,28 @@ var Button = styled.button(_templateObject$2(), function (props) {
   return props.borderColor && "\n  border: 1px solid ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
     color: props.borderColor
   })), ";\n  ");
+}, function (props) {
+  return props.bgColor && "\n    background-color: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
+    color: props.textColor
+  })), ";\n  }");
 });
 var IconButton = styled.button(_templateObject2$1(), function (props) {
   return props.theme.margin;
 }, function (props) {
-  return getStyleFromBtnType(props.btnType, props.disabled, props.theme);
+  return getStyleFromBtnType(props.variant, props.disabled, props.theme);
 }, function (props) {
   return props.borderColor && "\n  border: 1px solid ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
     color: props.borderColor
   })), ";\n  ");
+}, function (props) {
+  return props.bgColor && "\n    background-color: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
+    color: props.textColor
+  })), ";\n  }");
 });
 
 var Button$1 = function Button$1(_ref) {
   var isDisabled = _ref.isDisabled,
-      btnType = _ref.btnType,
+      variant = _ref.variant,
       text = _ref.text,
       isSmall = _ref.isSmall,
       icon = _ref.icon,
@@ -2648,17 +2656,19 @@ var Button$1 = function Button$1(_ref) {
       iconColor = _ref.iconColor,
       textColor = _ref.textColor,
       borderColor = _ref.borderColor,
-      otherProps = _objectWithoutProperties(_ref, ["isDisabled", "btnType", "text", "isSmall", "icon", "action", "type", "isFullWidth", "children", "iconColor", "textColor", "borderColor"]);
+      bgColor = _ref.bgColor,
+      otherProps = _objectWithoutProperties(_ref, ["isDisabled", "variant", "text", "isSmall", "icon", "action", "type", "isFullWidth", "children", "iconColor", "textColor", "borderColor", "bgColor"]);
 
   if (text) {
     return /*#__PURE__*/React.createElement(Button, _extends({
       fullWidth: isFullWidth,
-      btnType: btnType,
+      variant: variant,
       disabled: isDisabled,
       small: isSmall,
       onClick: action,
       textColor: textColor,
       borderColor: borderColor,
+      bgColor: bgColor,
       type: type
     }, otherProps), children, text && /*#__PURE__*/React.createElement(ButtonText, null, text), icon && /*#__PURE__*/React.createElement(Icon, {
       name: icon
@@ -2667,11 +2677,12 @@ var Button$1 = function Button$1(_ref) {
 
   if (icon) {
     return /*#__PURE__*/React.createElement(IconButton, {
-      btnType: btnType,
+      variant: variant,
       disabled: isDisabled,
       small: isSmall,
       onClick: action,
       borderColor: borderColor,
+      bgColor: bgColor,
       type: type
     }, /*#__PURE__*/React.createElement(Icon, {
       name: icon,
@@ -2688,12 +2699,13 @@ Button$1.propTypes = {
   isSmall: propTypes.bool,
   borderColor: propTypes.string,
   iconColor: propTypes.string,
+  bgColor: propTypes.string,
   textColor: propTypes.string,
   isFullWidth: propTypes.bool,
   type: propTypes.string,
   text: propTypes.string,
   children: propTypes.oneOfType([propTypes.element, propTypes.array]),
-  btnType: propTypes.oneOf(['primary', 'secondary', 'terceary', 'transparent']),
+  variant: propTypes.oneOf(['primary', 'secondary', 'terceary', 'transparent']),
   icon: propTypes.string
 };
 Button$1.defaultProps = {
@@ -2790,7 +2802,7 @@ var Accordion = function Accordion(_ref) {
     size: 6
   }, title), /*#__PURE__*/React.createElement(Button$1, {
     type: "button",
-    btnType: "transparent",
+    variant: "transparent",
     iconColor: chevronColor,
     icon: "chevron-down",
     action: handleChangeState
@@ -3370,7 +3382,7 @@ var renderMenuList = function renderMenuList(menuOptions) {
     return /*#__PURE__*/React.createElement(ListContainer, {
       key: "".concat(item, "-").concat(index)
     }, /*#__PURE__*/React.createElement(Button$1, {
-      btnType: "transparent",
+      variant: "transparent",
       text: item.label,
       action: item.action,
       icon: icon
@@ -33205,7 +33217,6 @@ var MultiFieldRender = function MultiFieldRender(_ref) {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(StyledContentContainer, null, content, content && content.length ? /*#__PURE__*/React.createElement(Button$1, {
     type: "button",
     icon: "trash",
-    btnType: "iconHolder",
     action: removeAction
   }) : null), /*#__PURE__*/React.createElement(Row, null, /*#__PURE__*/React.createElement(StyledAddItem, {
     onClick: addAction,
@@ -34801,7 +34812,7 @@ var FileUploader = function FileUploader(_ref) {
     action: open,
     type: "button",
     text: "Carregue aqui",
-    btnType: "primary"
+    variant: "primary"
   })), /*#__PURE__*/React.createElement(ThumbsContainer, null, filesPreview)), /*#__PURE__*/React.createElement(ErrorText, {
     error: error
   }, error));
@@ -42689,7 +42700,7 @@ var Form$1 = function Form(_ref) {
             },
             content: /*#__PURE__*/React.createElement(React.Fragment, null, renderFields(formik, field.questions, true), field.submit && /*#__PURE__*/React.createElement(Button$1, {
               type: "submit",
-              btnType: 'primary',
+              variant: 'primary',
               text: field.submitLabel || 'Submit'
             }))
           });
@@ -42819,7 +42830,7 @@ var Form$1 = function Form(_ref) {
             action: function action() {
               return handleSubmit(formik.values, field.buttonId);
             },
-            btnType: 'primary',
+            variant: 'primary',
             text: field.submitLabel || 'Submit'
           }));
 
@@ -43114,7 +43125,7 @@ var Form$1 = function Form(_ref) {
       action: function action() {
         return btnType !== 'submit' && btnAction(formik.values);
       },
-      btnType: 'primary',
+      variant: 'primary',
       isFullWidth: true,
       text: submitLabel
     }));
@@ -54740,7 +54751,7 @@ var Sidebar = function Sidebar(_ref) {
     action: function action() {
       return setIsOpen(!isOpen);
     },
-    btnType: "transparent"
+    variant: "transparent"
   }))), /*#__PURE__*/React.createElement(ScrollView, null, /*#__PURE__*/React.createElement(SidebarLink, {
     route: '/',
     text: "Home"
