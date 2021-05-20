@@ -104,6 +104,37 @@ const Button = styled.button`
       `
     background: ${getSelectedColor({ ...props, color: props.bgColor })};
   }`}
+  ${({ hoverStyles, ...props }) =>
+    hoverStyles &&
+    `
+    &:hover {
+      ${
+        hoverStyles.bgColor
+          ? `background: ${getSelectedColor({
+              ...props,
+              color: hoverStyles.bgColor
+            })};`
+          : ''
+      }
+      ${
+        hoverStyles.borderColor
+          ? `border: 1px solid ${getSelectedColor({
+              ...props,
+              color: props.borderColor
+            })};`
+          : ''
+      }
+      ${
+        hoverStyles.textColor
+          ? `> span {
+              color: ${getSelectedColor({
+                ...props,
+                color: props.textColor
+              })};
+          }`
+          : ''
+      }
+  `}
 `;
 
 export const IconButton = styled.button`

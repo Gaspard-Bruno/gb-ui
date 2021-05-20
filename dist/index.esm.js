@@ -2565,7 +2565,7 @@ function _templateObject2$1() {
 }
 
 function _templateObject$2() {
-  var data = _taggedTemplateLiteral(["\n  border-radius: 40px;\n  outline: none;\n  width: ", ";\n  margin-top: ", ";\n  margin-bottom: ", ";\n  padding: ", "px;\n  > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n  ", "\n  ", "\n    ", "\n    ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  border-radius: 40px;\n  outline: none;\n  width: ", ";\n  margin-top: ", ";\n  margin-bottom: ", ";\n  padding: ", "px;\n  > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n  ", "\n  ", "\n    ", "\n    ", "\n  ", "\n"]);
 
   _templateObject$2 = function _templateObject() {
     return data;
@@ -2628,6 +2628,17 @@ var Button = styled.button(_templateObject$2(), function (props) {
   return props.bgColor && "\n    background: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
     color: props.bgColor
   })), ";\n  }");
+}, function (_ref) {
+  var hoverStyles = _ref.hoverStyles,
+      props = _objectWithoutProperties(_ref, ["hoverStyles"]);
+
+  return hoverStyles && "\n    &:hover {\n      ".concat(hoverStyles.bgColor ? "background: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
+    color: hoverStyles.bgColor
+  })), ";") : '', "\n      ").concat(hoverStyles.borderColor ? "border: 1px solid ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
+    color: props.borderColor
+  })), ";") : '', "\n      ").concat(hoverStyles.textColor ? "> span {\n              color: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
+    color: props.textColor
+  })), ";\n          }") : '', "\n  ");
 });
 var IconButton = styled.button(_templateObject2$1(), function (props) {
   return props.theme.margin;
@@ -2657,7 +2668,8 @@ var Button$1 = function Button$1(_ref) {
       textColor = _ref.textColor,
       borderColor = _ref.borderColor,
       bgColor = _ref.bgColor,
-      otherProps = _objectWithoutProperties(_ref, ["isDisabled", "variant", "text", "isSmall", "icon", "action", "type", "isFullWidth", "children", "iconColor", "textColor", "borderColor", "bgColor"]);
+      hoverStyles = _ref.hoverStyles,
+      otherProps = _objectWithoutProperties(_ref, ["isDisabled", "variant", "text", "isSmall", "icon", "action", "type", "isFullWidth", "children", "iconColor", "textColor", "borderColor", "bgColor", "hoverStyles"]);
 
   if (text) {
     return /*#__PURE__*/React.createElement(Button, _extends({
@@ -2669,7 +2681,8 @@ var Button$1 = function Button$1(_ref) {
       textColor: textColor,
       borderColor: borderColor,
       bgColor: bgColor,
-      type: type
+      type: type,
+      hoverStyles: hoverStyles
     }, otherProps), children, text && /*#__PURE__*/React.createElement(ButtonText, null, text), icon && /*#__PURE__*/React.createElement(Icon, {
       name: icon
     }));
@@ -2706,6 +2719,11 @@ Button$1.propTypes = {
   text: propTypes.string,
   children: propTypes.oneOfType([propTypes.element, propTypes.array]),
   variant: propTypes.oneOf(['primary', 'secondary', 'terceary', 'transparent']),
+  hoverStyles: propTypes.shape({
+    textColor: propTypes.string,
+    bgColor: propTypes.string,
+    borderColor: propTypes.string
+  }),
   icon: propTypes.string
 };
 Button$1.defaultProps = {

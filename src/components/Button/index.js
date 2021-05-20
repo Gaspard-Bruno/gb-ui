@@ -19,6 +19,7 @@ const Button = ({
   textColor,
   borderColor,
   bgColor,
+  hoverStyles,
   ...otherProps
 }) => {
   if (text) {
@@ -33,6 +34,7 @@ const Button = ({
         borderColor={borderColor}
         bgColor={bgColor}
         type={type}
+        hoverStyles={hoverStyles}
         {...otherProps}
       >
         {children}
@@ -72,6 +74,11 @@ Button.propTypes = {
   text: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
   variant: PropTypes.oneOf(['primary', 'secondary', 'terceary', 'transparent']),
+  hoverStyles: PropTypes.shape({
+    textColor: PropTypes.string,
+    bgColor: PropTypes.string,
+    borderColor: PropTypes.string
+  }),
   icon: PropTypes.string
 };
 
