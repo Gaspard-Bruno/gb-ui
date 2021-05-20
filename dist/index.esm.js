@@ -54752,10 +54752,7 @@ var Sidebar = function Sidebar(_ref) {
       return setIsOpen(!isOpen);
     },
     variant: "transparent"
-  }))), /*#__PURE__*/React.createElement(ScrollView, null, /*#__PURE__*/React.createElement(SidebarLink, {
-    route: '/',
-    text: "Home"
-  }), Object.keys(sidebarSections).map(function (s) {
+  }))), /*#__PURE__*/React.createElement(ScrollView, null, Object.keys(sidebarSections).map(function (s) {
     var section = sidebarSections[s];
     return /*#__PURE__*/React.createElement(NavSection, {
       key: 'section-' + section.title

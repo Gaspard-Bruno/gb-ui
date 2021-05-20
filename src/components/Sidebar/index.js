@@ -52,7 +52,6 @@ const Sidebar = ({
           </Row>
         </NavSection>
         <ScrollView>
-          <SidebarLink route={'/'} text='Home'></SidebarLink>
           {Object.keys(sidebarSections).map(s => {
             const section = sidebarSections[s];
             return (
