@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import StyledIcoMoon from './style';
-import iconSet from 'Assets/fonts/icons/icons.json';
+import iconSet from '../../assets/fonts/icons/icons.json';
 
 const Icon = ({ name, color, set, ...props }) => (
   <StyledIcoMoon
