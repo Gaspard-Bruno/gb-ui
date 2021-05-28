@@ -22,6 +22,7 @@ const Button = ({
   hoverStyles,
   ...otherProps
 }) => {
+
   if (text) {
     return (
       <StyledButton
@@ -56,7 +57,10 @@ const Button = ({
         onClick={action}
         borderColor={borderColor}
         bgColor={bgColor}
+        iconColor={iconColor}
         type={type}
+        textColor={textColor}
+        hoverStyles={hoverStyles}
         {...otherProps}
       >
         {typeof icon === 'string' ? (

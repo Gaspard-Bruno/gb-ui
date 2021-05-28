@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import get from 'lodash.get';
 
 const getSelectedColor = props => {
+  console.log(
+    'gettng color',
+    props.color,
+    get(props.theme?.colors, props.color, props.color)
+  );
   return get(props.theme?.colors, props.color, props.color);
 };
 const getStyleFromBtnType = (type = 'primary', disabled, theme) => {
@@ -63,7 +68,9 @@ const getStyleFromBtnType = (type = 'primary', disabled, theme) => {
         border: transparent;
         > span {
           color: ${theme.colors?.brand?.main};
-          &:hover {
+        }
+        &:hover {
+          span {
             color: ${theme.colors?.brand?.main};
           }
         }
@@ -73,18 +80,34 @@ const getStyleFromBtnType = (type = 'primary', disabled, theme) => {
   }
 };
 
-const addStyleProps = props => `
-  ${getStyleFromBtnType(props.variant, props.disabled, props.theme)}
-  ${props.textColor &&
+const Button = styled.button`
+  border-radius: 40px;
+  outline: none;
+  width: ${props => (props.fullWidth ? '244px' : '')};
+  margin-top: ${props => (props.fullWidth ? '20px' : '')};
+  margin-bottom: ${props => (props.fullWidth ? '20px' : '')};
+  padding: ${props =>
+    props.small ? props.theme.margin * 0.25 : props.theme.margin}px;
+  > * {
+    margin: 0 auto;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+    ${props => getStyleFromBtnType(props.variant, props.disabled, props.theme)}
+  ${props =>
+    props.textColor &&
     `
   > span {
     color: ${getSelectedColor({ ...props, color: props.textColor })};
   }`}
-    ${props.borderColor &&
+    ${props =>
+      props.borderColor &&
       `
   border: 1px solid ${getSelectedColor({ ...props, color: props.borderColor })};
   `}
-    ${props.bgColor &&
+    ${props =>
+      props.bgColor &&
       `
     background: ${getSelectedColor({ ...props, color: props.bgColor })};
   }`}
@@ -118,23 +141,7 @@ const addStyleProps = props => `
           }`
           : ''
       }
-  `}`;
-
-const Button = styled.button`
-  border-radius: 40px;
-  outline: none;
-  width: ${props => (props.fullWidth ? '244px' : '')};
-  margin-top: ${props => (props.fullWidth ? '20px' : '')};
-  margin-bottom: ${props => (props.fullWidth ? '20px' : '')};
-  padding: ${props =>
-    props.small ? props.theme.margin * 0.25 : props.theme.margin}px;
-  > * {
-    margin: 0 auto;
-  }
-  &:hover {
-    cursor: pointer;
-  }
-  ${props => addStyleProps(props)}
+  `}
 `;
 
 export const IconButton = styled.button`
@@ -147,8 +154,56 @@ export const IconButton = styled.button`
   &:hover {
     cursor: pointer;
   }
+      ${props =>
+        getStyleFromBtnType(props.variant, props.disabled, props.theme)}
+  ${props =>
+    props.textColor &&
+    `
+  > span {
+    color: ${getSelectedColor({ ...props, color: props.textColor })};
+  }`}
+    ${props =>
+      props.borderColor &&
+      `
+  border: 1px solid ${getSelectedColor({ ...props, color: props.borderColor })};
+  `}
+    ${props =>
+      props.bgColor &&
+      `
+    background: ${getSelectedColor({ ...props, color: props.bgColor })};
+  }`}
+  ${({ hoverStyles, ...props }) =>
+    hoverStyles &&
+    `
+    &:hover {
+      ${
+        hoverStyles.bgColor
+          ? `background: ${getSelectedColor({
+              ...props,
+              color: hoverStyles.bgColor
+            })};`
+          : ''
+      }
+      ${
+        hoverStyles.borderColor
+          ? `border: 1px solid ${getSelectedColor({
+              ...props,
+              color: props.borderColor
+            })};`
+          : ''
+      }
+      ${
+        hoverStyles.textColor
+          ? `> span {
+              color: ${getSelectedColor({
+                ...props,
+                color: props.textColor
+              })};
+          }`
+          : ''
+      }
+  `}
 
-  ${props => addStyleProps(props)}
 `;
 
 export default Button;

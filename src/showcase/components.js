@@ -87,16 +87,30 @@ const components = [
         previewComponentOpen: true,
         previewComponentTitle: 'Terceary',
         variant: 'terceary',
+        borderColor: 'white',
+        textColor: 'green',
+        iconColor: 'white',
+        hoverStyles: {
+          textColor: 'white',
+          bgColor: 'green',
+          borderColor: 'red',
+        },
         isFullWidth: true,
         action: () => alert('Im a button 🚀'),
         text: 'Button'
       },
       {
         previewComponentOpen: true,
-        previewComponentTitle: 'Transparent',
+        previewComponentTitle: 'Transparent With Custom Colors',
         variant: 'transparent',
-        borderColor: 'brand.main',
-        textColor: 'brand.mainLight',
+        borderColor: 'white',
+        textColor: 'green',
+        iconColor: 'white',
+        hoverStyles: {
+          textColor: 'white',
+          bgColor: 'green',
+          borderColor: 'red',
+        },
         action: () => alert('Im a button 🚀'),
         text: 'Button'
       },
