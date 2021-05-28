@@ -4848,7 +4848,8 @@ var Button$1 = function Button$1(_ref) {
       type: type,
       hoverStyles: hoverStyles
     }, otherProps), children, text && /*#__PURE__*/React.createElement(ButtonText, null, text), typeof icon === 'string' ? /*#__PURE__*/React.createElement(Icon, {
-      name: icon
+      name: icon,
+      color: iconColor
     }) : icon);
   }
 
@@ -4861,10 +4862,10 @@ var Button$1 = function Button$1(_ref) {
       borderColor: borderColor,
       bgColor: bgColor,
       type: type
-    }, /*#__PURE__*/React.createElement(Icon, {
+    }, typeof icon === 'string' ? /*#__PURE__*/React.createElement(Icon, {
       name: icon,
       color: iconColor
-    }));
+    }) : icon);
   }
 
   return /*#__PURE__*/React.createElement(Button, null);
