@@ -20,6 +20,7 @@ const Button = ({
   borderColor,
   bgColor,
   hoverStyles,
+  className,
   ...otherProps
 }) => {
 
@@ -36,6 +37,7 @@ const Button = ({
         bgColor={bgColor}
         type={type}
         hoverStyles={hoverStyles}
+        className={className}
         {...otherProps}
       >
         {children}
@@ -61,6 +63,7 @@ const Button = ({
         type={type}
         textColor={textColor}
         hoverStyles={hoverStyles}
+        className={className}
         {...otherProps}
       >
         {typeof icon === 'string' ? (
@@ -77,6 +80,7 @@ const Button = ({
 Button.propTypes = {
   isDisabled: PropTypes.bool,
   action: PropTypes.func,
+  className: PropTypes.string,
   isSmall: PropTypes.bool,
   borderColor: PropTypes.string,
   iconColor: PropTypes.string,
