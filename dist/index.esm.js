@@ -4719,7 +4719,7 @@ Icon.defaultProps = {
 };
 
 function _templateObject2$1() {
-  var data = _taggedTemplateLiteral(["\n  border-radius: 50%;\n  padding: ", "px;\n  ", " > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n  ", "\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  border-radius: 50%;\n  padding: ", "px;\n  ", " > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n\n  ", "\n"]);
 
   _templateObject2$1 = function _templateObject2() {
     return data;
@@ -4729,7 +4729,7 @@ function _templateObject2$1() {
 }
 
 function _templateObject$2() {
-  var data = _taggedTemplateLiteral(["\n  border-radius: 40px;\n  outline: none;\n  width: ", ";\n  margin-top: ", ";\n  margin-bottom: ", ";\n  padding: ", "px;\n  > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n  ", "\n  ", "\n    ", "\n    ", "\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  border-radius: 40px;\n  outline: none;\n  width: ", ";\n  margin-top: ", ";\n  margin-bottom: ", ";\n  padding: ", "px;\n  > * {\n    margin: 0 auto;\n  }\n  &:hover {\n    cursor: pointer;\n  }\n  ", "\n"]);
 
   _templateObject$2 = function _templateObject() {
     return data;
@@ -4770,6 +4770,27 @@ var getStyleFromBtnType = function getStyleFromBtnType() {
   }
 };
 
+var addStyleProps = function addStyleProps(props) {
+  return "\n  ".concat(getStyleFromBtnType(props.variant, props.disabled, props.theme), "\n  ").concat(props.textColor && "\n  > span {\n    color: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
+    color: props.textColor
+  })), ";\n  }"), "\n    ").concat(props.borderColor && "\n  border: 1px solid ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
+    color: props.borderColor
+  })), ";\n  "), "\n    ").concat(props.bgColor && "\n    background: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
+    color: props.bgColor
+  })), ";\n  }"), "\n  ").concat(function (_ref) {
+    var hoverStyles = _ref.hoverStyles,
+        props = _objectWithoutProperties(_ref, ["hoverStyles"]);
+
+    return hoverStyles && "\n    &:hover {\n      ".concat(hoverStyles.bgColor ? "background: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
+      color: hoverStyles.bgColor
+    })), ";") : '', "\n      ").concat(hoverStyles.borderColor ? "border: 1px solid ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
+      color: props.borderColor
+    })), ";") : '', "\n      ").concat(hoverStyles.textColor ? "> span {\n              color: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
+      color: props.textColor
+    })), ";\n          }") : '', "\n  ");
+  });
+};
+
 var Button = styled.button(_templateObject$2(), function (props) {
   return props.fullWidth ? '244px' : '';
 }, function (props) {
@@ -4779,43 +4800,14 @@ var Button = styled.button(_templateObject$2(), function (props) {
 }, function (props) {
   return props.small ? props.theme.margin * 0.25 : props.theme.margin;
 }, function (props) {
-  return getStyleFromBtnType(props.variant, props.disabled, props.theme);
-}, function (props) {
-  return props.textColor && "\n  > span {\n    color: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
-    color: props.textColor
-  })), ";\n  }");
-}, function (props) {
-  return props.borderColor && "\n  border: 1px solid ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
-    color: props.borderColor
-  })), ";\n  ");
-}, function (props) {
-  return props.bgColor && "\n    background: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
-    color: props.bgColor
-  })), ";\n  }");
-}, function (_ref) {
-  var hoverStyles = _ref.hoverStyles,
-      props = _objectWithoutProperties(_ref, ["hoverStyles"]);
-
-  return hoverStyles && "\n    &:hover {\n      ".concat(hoverStyles.bgColor ? "background: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
-    color: hoverStyles.bgColor
-  })), ";") : '', "\n      ").concat(hoverStyles.borderColor ? "border: 1px solid ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
-    color: props.borderColor
-  })), ";") : '', "\n      ").concat(hoverStyles.textColor ? "> span {\n              color: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
-    color: props.textColor
-  })), ";\n          }") : '', "\n  ");
+  return addStyleProps(props);
 });
 var IconButton = styled.button(_templateObject2$1(), function (props) {
   return props.theme.margin;
 }, function (props) {
   return getStyleFromBtnType(props.variant, props.disabled, props.theme);
 }, function (props) {
-  return props.borderColor && "\n  border: 1px solid ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
-    color: props.borderColor
-  })), ";\n  ");
-}, function (props) {
-  return props.bgColor && "\n    background: ".concat(getSelectedColor(_objectSpread2(_objectSpread2({}, props), {}, {
-    color: props.bgColor
-  })), ";\n  }");
+  return addStyleProps(props);
 });
 
 var Button$1 = function Button$1(_ref) {
@@ -4854,7 +4846,7 @@ var Button$1 = function Button$1(_ref) {
   }
 
   if (icon) {
-    return /*#__PURE__*/React.createElement(IconButton, {
+    return /*#__PURE__*/React.createElement(IconButton, _extends({
       variant: variant,
       disabled: isDisabled,
       small: isSmall,
@@ -4862,7 +4854,7 @@ var Button$1 = function Button$1(_ref) {
       borderColor: borderColor,
       bgColor: bgColor,
       type: type
-    }, typeof icon === 'string' ? /*#__PURE__*/React.createElement(Icon, {
+    }, otherProps), typeof icon === 'string' ? /*#__PURE__*/React.createElement(Icon, {
       name: icon,
       color: iconColor
     }) : icon);

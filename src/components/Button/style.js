@@ -73,34 +73,18 @@ const getStyleFromBtnType = (type = 'primary', disabled, theme) => {
   }
 };
 
-const Button = styled.button`
-  border-radius: 40px;
-  outline: none;
-  width: ${props => (props.fullWidth ? '244px' : '')};
-  margin-top: ${props => (props.fullWidth ? '20px' : '')};
-  margin-bottom: ${props => (props.fullWidth ? '20px' : '')};
-  padding: ${props =>
-    props.small ? props.theme.margin * 0.25 : props.theme.margin}px;
-  > * {
-    margin: 0 auto;
-  }
-  &:hover {
-    cursor: pointer;
-  }
-  ${props => getStyleFromBtnType(props.variant, props.disabled, props.theme)}
-  ${props =>
-    props.textColor &&
+const addStyleProps = props => `
+  ${getStyleFromBtnType(props.variant, props.disabled, props.theme)}
+  ${props.textColor &&
     `
   > span {
     color: ${getSelectedColor({ ...props, color: props.textColor })};
   }`}
-    ${props =>
-      props.borderColor &&
+    ${props.borderColor &&
       `
   border: 1px solid ${getSelectedColor({ ...props, color: props.borderColor })};
   `}
-    ${props =>
-      props.bgColor &&
+    ${props.bgColor &&
       `
     background: ${getSelectedColor({ ...props, color: props.bgColor })};
   }`}
@@ -134,7 +118,23 @@ const Button = styled.button`
           }`
           : ''
       }
-  `}
+  `}`;
+
+const Button = styled.button`
+  border-radius: 40px;
+  outline: none;
+  width: ${props => (props.fullWidth ? '244px' : '')};
+  margin-top: ${props => (props.fullWidth ? '20px' : '')};
+  margin-bottom: ${props => (props.fullWidth ? '20px' : '')};
+  padding: ${props =>
+    props.small ? props.theme.margin * 0.25 : props.theme.margin}px;
+  > * {
+    margin: 0 auto;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  ${props => addStyleProps(props)}
 `;
 
 export const IconButton = styled.button`
@@ -147,16 +147,8 @@ export const IconButton = styled.button`
   &:hover {
     cursor: pointer;
   }
-  ${props =>
-    props.borderColor &&
-    `
-  border: 1px solid ${getSelectedColor({ ...props, color: props.borderColor })};
-  `}
-  ${props =>
-    props.bgColor &&
-    `
-    background: ${getSelectedColor({ ...props, color: props.bgColor })};
-  }`}
+
+  ${props => addStyleProps(props)}
 `;
 
 export default Button;
