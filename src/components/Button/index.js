@@ -39,7 +39,7 @@ const Button = ({
       >
         {children}
         {text && <ButtonText>{text}</ButtonText>}
-        {typeof icon === 'string' ? <Icon name={icon} /> : icon}
+        {typeof icon === 'string' ? <Icon name={icon} color={iconColor} /> : icon}
       </StyledButton>
     );
   }
@@ -54,7 +54,8 @@ const Button = ({
         bgColor={bgColor}
         type={type}
       >
-        <Icon name={icon} color={iconColor} />
+
+        {typeof icon === 'string' ? <Icon name={icon} color={iconColor} /> : icon}
       </IconButton>
     );
   }
