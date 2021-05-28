@@ -39,7 +39,7 @@ const Button = ({
       >
         {children}
         {text && <ButtonText>{text}</ButtonText>}
-        {icon && <Icon name={icon} />}
+        {typeof icon === 'string' ? <Icon name={icon} /> : icon}
       </StyledButton>
     );
   }
@@ -79,7 +79,7 @@ Button.propTypes = {
     bgColor: PropTypes.string,
     borderColor: PropTypes.string
   }),
-  icon: PropTypes.string
+  icon: PropTypes.oneOfType(PropTypes.string, PropTypes.element)
 };
 
 Button.defaultProps = {

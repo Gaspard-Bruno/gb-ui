@@ -4858,9 +4858,9 @@ var Button$1 = function Button$1(_ref) {
       bgColor: bgColor,
       type: type,
       hoverStyles: hoverStyles
-    }, otherProps), children, text && /*#__PURE__*/React__default['default'].createElement(ButtonText, null, text), icon && /*#__PURE__*/React__default['default'].createElement(Icon, {
+    }, otherProps), children, text && /*#__PURE__*/React__default['default'].createElement(ButtonText, null, text), typeof icon === 'string' ? /*#__PURE__*/React__default['default'].createElement(Icon, {
       name: icon
-    }));
+    }) : icon);
   }
 
   if (icon) {
@@ -4899,7 +4899,7 @@ Button$1.propTypes = {
     bgColor: propTypes.string,
     borderColor: propTypes.string
   }),
-  icon: propTypes.string
+  icon: propTypes.oneOfType(propTypes.string, propTypes.element)
 };
 Button$1.defaultProps = {
   type: 'primary'
