@@ -193,7 +193,6 @@ const Form = ({
                 title={field.label}
                 action={open => {
                   if (field.closeOthers) {
-                    console.log('closing other');
                     setOpenAccordions({ [field.key]: open });
                   } else {
                     setOpenAccordions({

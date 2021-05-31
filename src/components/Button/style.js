@@ -2,11 +2,6 @@ import styled from 'styled-components';
 import get from 'lodash.get';
 
 const getSelectedColor = props => {
-  console.log(
-    'gettng color',
-    props.color,
-    get(props.theme?.colors, props.color, props.color)
-  );
   return get(props.theme?.colors, props.color, props.color);
 };
 const getStyleFromBtnType = (type = 'primary', disabled, theme) => {

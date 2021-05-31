@@ -4739,10 +4739,9 @@ function _templateObject$2() {
 }
 
 var getSelectedColor = function getSelectedColor(props) {
-  var _props$theme, _props$theme2;
+  var _props$theme;
 
-  console.log('gettng color', props.color, lodash_get((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors, props.color, props.color));
-  return lodash_get((_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors, props.color, props.color);
+  return lodash_get((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors, props.color, props.color);
 };
 
 var getStyleFromBtnType = function getStyleFromBtnType() {
@@ -44896,7 +44895,6 @@ var Form$1 = function Form(_ref) {
             title: field.label,
             action: function action(open) {
               if (field.closeOthers) {
-                console.log('closing other');
                 setOpenAccordions(_defineProperty({}, field.key, open));
               } else {
                 setOpenAccordions(_objectSpread2(_objectSpread2({}, openAccordions), {}, _defineProperty({}, field.key, open)));
