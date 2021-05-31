@@ -4854,26 +4854,7 @@ var Button$1 = function Button$1(_ref) {
       className = _ref.className,
       otherProps = _objectWithoutProperties(_ref, ["isDisabled", "variant", "text", "isSmall", "icon", "action", "type", "isFullWidth", "children", "iconColor", "textColor", "borderColor", "bgColor", "hoverStyles", "className"]);
 
-  if (text) {
-    return /*#__PURE__*/React.createElement(Button, _extends({
-      fullWidth: isFullWidth,
-      variant: variant,
-      disabled: isDisabled,
-      small: isSmall,
-      onClick: action,
-      textColor: textColor,
-      borderColor: borderColor,
-      bgColor: bgColor,
-      type: type,
-      hoverStyles: hoverStyles,
-      className: className
-    }, otherProps), children, text && /*#__PURE__*/React.createElement(ButtonText, null, text), typeof icon === 'string' ? /*#__PURE__*/React.createElement(Icon, {
-      name: icon,
-      color: iconColor
-    }) : icon);
-  }
-
-  if (icon) {
+  if (icon && !text) {
     return /*#__PURE__*/React.createElement(IconButton, _extends({
       variant: variant,
       disabled: isDisabled,
@@ -4892,7 +4873,22 @@ var Button$1 = function Button$1(_ref) {
     }) : icon);
   }
 
-  return /*#__PURE__*/React.createElement(Button, null);
+  return /*#__PURE__*/React.createElement(Button, _extends({
+    fullWidth: isFullWidth,
+    variant: variant,
+    disabled: isDisabled,
+    small: isSmall,
+    onClick: action,
+    textColor: textColor,
+    borderColor: borderColor,
+    bgColor: bgColor,
+    type: type,
+    hoverStyles: hoverStyles,
+    className: className
+  }, otherProps), children, text && /*#__PURE__*/React.createElement(ButtonText, null, text), typeof icon === 'string' ? /*#__PURE__*/React.createElement(Icon, {
+    name: icon,
+    color: iconColor
+  }) : icon);
 };
 
 Button$1.propTypes = {

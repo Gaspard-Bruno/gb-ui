@@ -23,34 +23,7 @@ const Button = ({
   className,
   ...otherProps
 }) => {
-
-  if (text) {
-    return (
-      <StyledButton
-        fullWidth={isFullWidth}
-        variant={variant}
-        disabled={isDisabled}
-        small={isSmall}
-        onClick={action}
-        textColor={textColor}
-        borderColor={borderColor}
-        bgColor={bgColor}
-        type={type}
-        hoverStyles={hoverStyles}
-        className={className}
-        {...otherProps}
-      >
-        {children}
-        {text && <ButtonText>{text}</ButtonText>}
-        {typeof icon === 'string' ? (
-          <Icon name={icon} color={iconColor} />
-        ) : (
-          icon
-        )}
-      </StyledButton>
-    );
-  }
-  if (icon) {
+  if (icon && !text) {
     return (
       <IconButton
         variant={variant}
@@ -74,7 +47,26 @@ const Button = ({
       </IconButton>
     );
   }
-  return <StyledButton />;
+  return (
+    <StyledButton
+      fullWidth={isFullWidth}
+      variant={variant}
+      disabled={isDisabled}
+      small={isSmall}
+      onClick={action}
+      textColor={textColor}
+      borderColor={borderColor}
+      bgColor={bgColor}
+      type={type}
+      hoverStyles={hoverStyles}
+      className={className}
+      {...otherProps}
+    >
+      {children}
+      {text && <ButtonText>{text}</ButtonText>}
+      {typeof icon === 'string' ? <Icon name={icon} color={iconColor} /> : icon}
+    </StyledButton>
+  );
 };
 
 Button.propTypes = {
