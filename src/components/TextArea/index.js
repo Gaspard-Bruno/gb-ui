@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { ErrorText, Body } from '../Text';
 import StyledTextArea, { TextAreaContainer } from './style';
 
-const TextArea = ({ error, placeholder, value, label, onChange }) => (
+const TextArea = ({ error, placeholder, value, label, onChange, ...otherProps }) => (
   <TextAreaContainer error={error}>
     {label && <Body>{label}</Body>}
     <StyledTextArea
@@ -13,6 +13,7 @@ const TextArea = ({ error, placeholder, value, label, onChange }) => (
       error={error}
       placeholder={placeholder}
       value={value}
+      {...otherProps}
     ></StyledTextArea>
     <ErrorText error={error}>{error}</ErrorText>
   </TextAreaContainer>

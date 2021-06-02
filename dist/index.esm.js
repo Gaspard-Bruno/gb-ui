@@ -35132,10 +35132,12 @@ var TextArea$1 = function TextArea$1(_ref) {
       placeholder = _ref.placeholder,
       value = _ref.value,
       label = _ref.label,
-      _onChange = _ref.onChange;
+      _onChange = _ref.onChange,
+      otherProps = _objectWithoutProperties(_ref, ["error", "placeholder", "value", "label", "onChange"]);
+
   return /*#__PURE__*/React.createElement(TextAreaContainer, {
     error: error
-  }, label && /*#__PURE__*/React.createElement(Body, null, label), /*#__PURE__*/React.createElement(TextArea, {
+  }, label && /*#__PURE__*/React.createElement(Body, null, label), /*#__PURE__*/React.createElement(TextArea, _extends({
     resize: false,
     onChange: function onChange(e) {
       return _onChange(e.target.value);
@@ -35143,7 +35145,7 @@ var TextArea$1 = function TextArea$1(_ref) {
     error: error,
     placeholder: placeholder,
     value: value
-  }), /*#__PURE__*/React.createElement(ErrorText, {
+  }, otherProps)), /*#__PURE__*/React.createElement(ErrorText, {
     error: error
   }, error));
 };
