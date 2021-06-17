@@ -4909,7 +4909,7 @@ Button$1.propTypes = {
     bgColor: propTypes.string,
     borderColor: propTypes.string
   }),
-  icon: propTypes.oneOfType(propTypes.string, propTypes.element)
+  icon: propTypes.oneOfType([propTypes.string, propTypes.element])
 };
 Button$1.defaultProps = {
   type: 'primary'

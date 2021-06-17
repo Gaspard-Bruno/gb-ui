@@ -88,7 +88,7 @@ Button.propTypes = {
     bgColor: PropTypes.string,
     borderColor: PropTypes.string
   }),
-  icon: PropTypes.oneOfType(PropTypes.string, PropTypes.element)
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
 };
 
 Button.defaultProps = {
