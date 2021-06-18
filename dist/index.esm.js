@@ -62243,10 +62243,10 @@ var LIGHT_THEME = 'LIGHT';
 var LOCAL_STORAGE_THEME_KEY = 'THEME';
 
 var getOSTheme = function getOSTheme() {
-  if (window && window.matchMedia) {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? DARK_THEME : LIGHT_THEME;
-  } else {
+  if (typeof window !== 'undefined') {
     return LIGHT_THEME;
+  } else {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? DARK_THEME : LIGHT_THEME;
   }
 };
 

@@ -7,12 +7,12 @@ const LIGHT_THEME = 'LIGHT';
 const LOCAL_STORAGE_THEME_KEY = 'THEME';
 
 const getOSTheme = () => {
-  if (window && window.matchMedia) {
+  if (typeof window !== 'undefined') {
+    return LIGHT_THEME;
+  } else {
     return window.matchMedia('(prefers-color-scheme: dark)').matches
       ? DARK_THEME
       : LIGHT_THEME;
-  } else {
-    return LIGHT_THEME;
   }
 };
 
