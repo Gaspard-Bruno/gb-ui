@@ -62253,7 +62253,11 @@ var LIGHT_THEME = 'LIGHT';
 var LOCAL_STORAGE_THEME_KEY = 'THEME';
 
 var getOSTheme = function getOSTheme() {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? DARK_THEME : LIGHT_THEME;
+  if (window && window.matchMedia) {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? DARK_THEME : LIGHT_THEME;
+  } else {
+    return LIGHT_THEME;
+  }
 };
 
 var ThemeContext$1 = /*#__PURE__*/React.createContext(getOSTheme());

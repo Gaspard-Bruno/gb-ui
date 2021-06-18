@@ -6,10 +6,15 @@ const DARK_THEME = 'DARK';
 const LIGHT_THEME = 'LIGHT';
 const LOCAL_STORAGE_THEME_KEY = 'THEME';
 
-const getOSTheme = () =>
-  window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? DARK_THEME
-    : LIGHT_THEME;
+const getOSTheme = () => {
+  if (window && window.matchMedia) {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? DARK_THEME
+      : LIGHT_THEME;
+  } else {
+    return LIGHT_THEME;
+  }
+};
 
 const ThemeContext = createContext(getOSTheme());
 const useTheme = THEMES => {
