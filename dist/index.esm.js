@@ -62243,11 +62243,7 @@ var LIGHT_THEME = 'LIGHT';
 var LOCAL_STORAGE_THEME_KEY = 'THEME';
 
 var getOSTheme = function getOSTheme() {
-  if (typeof window !== 'undefined') {
-    return LIGHT_THEME;
-  } else {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? DARK_THEME : LIGHT_THEME;
-  }
+  return LIGHT_THEME;
 };
 
 var ThemeContext$1 = /*#__PURE__*/createContext$1(getOSTheme());
