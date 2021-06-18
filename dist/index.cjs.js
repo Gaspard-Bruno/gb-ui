@@ -5,14 +5,12 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var React = require('react');
 var styled = require('styled-components');
 var ne = require('react-dom');
-var theme = require('Theme');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var styled__default = /*#__PURE__*/_interopDefaultLegacy(styled);
 var ne__default = /*#__PURE__*/_interopDefaultLegacy(ne);
-var theme__default = /*#__PURE__*/_interopDefaultLegacy(theme);
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -34710,6 +34708,165 @@ var manageState = function manageState(SelectComponent) {
 
 var index = manageState(Select);
 
+function _templateObject$d() {
+  var data = _taggedTemplateLiteral(["\n    html {\n      scroll-behavior: smooth;\n    }\n    body {\n      margin: 0;\n      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',\n        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',\n        sans-serif;\n      -webkit-font-smoothing: antialiased;\n      -moz-osx-font-smoothing: grayscale;\n    }\n    code {\n      font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',\n        monospace;\n    }\n"]);
+
+  _templateObject$d = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var GlobalStyles = styled.createGlobalStyle(_templateObject$d());
+var GLOBAL = {
+  margin: 16,
+  boxShadow: function boxShadow() {
+    return 'box-shadow: 0 0 3rem #333;';
+  },
+  borderRadius: function borderRadius(radius) {
+    return "border-radius:".concat(radius, ";");
+  },
+  shadowE01: function shadowE01() {
+    return "filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.05));";
+  },
+  shadowE02: function shadowE02() {
+    return "drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15));";
+  },
+  fontPrimary: function fontPrimary() {
+    return 'font-family: Space Grotesk;';
+  },
+  fontSecondary: function fontSecondary() {
+    return "font-family: Muli;";
+  },
+  colors: {
+    gray900: '#110F19',
+    gray800: '#191A25',
+    gray700: '#262633',
+    gray600: '#31303E',
+    white900: '#FFFEFD',
+    white800: '#FAF9F6',
+    white700: '#F5F4F1',
+    white600: '#EAE8E3',
+    white: '#fff',
+    black: '#000',
+    transparent: 'transparent'
+  }
+};
+var DARK = _objectSpread2(_objectSpread2({}, GLOBAL), {}, {
+  colors: _objectSpread2(_objectSpread2({}, GLOBAL.colors), {}, {
+    main: '#A3A1FF',
+    background: '#111111',
+    mainGradient: "linear-gradient(180deg, rgba(97, 141, 255, 0.4) 0%, rgba(123, 97, 255, 0.2) 100%)",
+    logoBorders: '#E9EFF6',
+    text: '#ffffff',
+    textSecondary: '#C9C7C4',
+    textInverse: '#000000',
+    gradient900: 'linear-gradient(180deg, #110F19 10.84%, rgba(17, 15, 25, 0) 59.6%)',
+    gradient800: 'linear-gradient(180deg, #191A25 10.84%, rgba(25, 26, 37, 0) 59.6%)',
+    gradient700: 'linear-gradient(180deg, #262633 10.84%, rgba(38, 38, 51, 0) 59.6%)',
+    gradient600: 'linear-gradient(180deg, #31303E 10.84%, rgba(49, 48, 62, 0) 59.6%)',
+    glass: 'rgba(25, 26, 37, 0.9)',
+    backdrop: 'rgba(17, 15, 25, 0.7)',
+    feedback: {
+      positive: '#AFE4AA',
+      positiveTint: '#1F352C',
+      positiveTint2: 'rgba(31, 53, 44, 0.4)',
+      negative: '#FF9C8E',
+      negativeTint: '#864037',
+      negativeTint2: 'rgba(134, 64, 55, 0.4)',
+      warning: '#F3BD83',
+      warningTint: '#935D04',
+      warningTint2: 'rgba(147, 93, 4, 0.4)'
+    },
+    surfaces: {
+      900: GLOBAL.colors.gray900,
+      800: GLOBAL.colors.gray800,
+      700: GLOBAL.colors.gray700,
+      600: GLOBAL.colors.gray600
+    }
+  })
+});
+var LIGHT = _objectSpread2(_objectSpread2({}, GLOBAL), {}, {
+  colors: _objectSpread2(_objectSpread2({}, GLOBAL.colors), {}, {
+    main: '#4F2DEC',
+    background: '#ffffff',
+    mainGradient: "linear-gradient(180deg, rgba(97, 141, 255, 0.4) 0%, rgba(123, 97, 255, 0.2) 100%)",
+    logoBorders: '#E9EFF6',
+    text: '#18181A',
+    textSecondary: '#6D6478',
+    textInverse: '#FFFFFF',
+    gray900: '#110F19',
+    gray800: '#191A25',
+    gray700: '#262633',
+    gray600: '#31303E',
+    gradient900: 'linear-gradient(180deg, #110F19 10.84%, rgba(17, 15, 25, 0) 59.6%)',
+    gradient800: 'linear-gradient(180deg, #191A25 10.84%, rgba(25, 26, 37, 0) 59.6%)',
+    gradient700: 'linear-gradient(180deg, #262633 10.84%, rgba(38, 38, 51, 0) 59.6%)',
+    gradient600: 'linear-gradient(180deg, #31303E 10.84%, rgba(49, 48, 62, 0) 59.6%)',
+    glass: 'rgba(25, 26, 37, 0.9)',
+    backdrop: 'rgba(17, 15, 25, 0.7)',
+    feedback: {
+      positive: '#1EA16A',
+      positiveTint: '#E2F2EB',
+      positiveTint2: 'rgba(226, 242, 235, 0.4)',
+      negative: '#DC4D3A',
+      negativeTint: '#F8C6C0',
+      negativeTint2: 'rgba(248, 198, 192, 0.4)',
+      warning: '#E8900E',
+      warningTint: '#F9D79D',
+      warningTint2: 'rgba(249, 215, 157, 0.4)'
+    },
+    surfaces: {
+      900: GLOBAL.colors.white900,
+      800: GLOBAL.colors.white800,
+      700: GLOBAL.colors.white700,
+      600: GLOBAL.colors.white600
+    }
+  })
+});
+var theme = {
+  LIGHT: LIGHT,
+  DARK: DARK
+};
+var uiTheme = _objectSpread2(_objectSpread2({}, GLOBAL), {}, {
+  margin: 16,
+  heroSize: 680,
+  maxWidth: 1152,
+  boxShadow: '0 0 3rem #333',
+  //──── Colors ────────────────────────────────────────────────────────────────────────────
+  colors: {
+    white: '#FFF',
+    black: '#000',
+    main: '#060e9f',
+    alt: '#88827c',
+    grey: '#31303E',
+    darkBlue: '#272948',
+    background: '#fff',
+    brand: {
+      main: '#060e9f',
+      mainLight: ' #777ab1',
+      mainDarker: '#272948',
+      alt: '#88827C',
+      altLight: '#c7bfb7',
+      altDarker: '#2f2d2a'
+    },
+    feedback: {
+      success: '#2DCA73',
+      error: '#DB1E3B',
+      warning: '#FEC35A'
+    },
+    muted: {
+      red: '#F1A5B1',
+      orange: '#F9B9B0',
+      yellow: '#FFE7BD',
+      blue: '#BEE1F5',
+      lightBlue: '#E8F6FA',
+      green: '#ABEAC7',
+      purple: '#CBABEA'
+    }
+  }
+});
+
 function _templateObject2$8() {
   var data = _taggedTemplateLiteral(["\n  border: ", ";\n  color: ", ";\n\n  ", "\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n  input {\n    ", "\n    font-style: normal;\n    font-weight: normal;\n    font-size: 16px;\n    line-height: 24px;\n  }\n"]);
 
@@ -34720,16 +34877,16 @@ function _templateObject2$8() {
   return data;
 }
 
-function _templateObject$d() {
+function _templateObject$e() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-start;\n  width: ", ";\n  color: ", ";\n  > p {\n    min-height: 24px;\n    margin: ", "px 0;\n  }\n  button {\n    margin-right: ", "px !important;\n  }\n"]);
 
-  _templateObject$d = function _templateObject() {
+  _templateObject$e = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var SelectContainer$1 = styled__default['default'].div(_templateObject$d(), function (props) {
+var SelectContainer$1 = styled__default['default'].div(_templateObject$e(), function (props) {
   return props.mini ? '48%' : 'auto';
 }, function (props) {
   var _props$theme, _props$theme$colors, _props$theme2, _props$theme2$colors;
@@ -34750,7 +34907,7 @@ var selectStyles = {
 
     return _objectSpread2(_objectSpread2({}, provided), {}, {
       filter: 'drop-shadow(0px 4px 13px rgba(193, 188, 183, 0.3))',
-      border: "1px solid ".concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : (_theme$colors = theme__default['default'].colors) === null || _theme$colors === void 0 ? void 0 : _theme$colors.alt),
+      border: "1px solid ".concat(theme === null || theme === void 0 ? void 0 : (_theme$colors = theme.colors) === null || _theme$colors === void 0 ? void 0 : _theme$colors.alt),
       marginTop: 3,
       borderRadius: 2
     });
@@ -34776,27 +34933,27 @@ var selectStyles = {
     return _objectSpread2(_objectSpread2({}, provided), {}, {
       borderRadius: 2,
       minHeight: 48,
-      backgroundColor: isDisabled ? theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : (_theme$colors2 = theme__default['default'].colors) === null || _theme$colors2 === void 0 ? void 0 : (_theme$colors2$brand = _theme$colors2.brand) === null || _theme$colors2$brand === void 0 ? void 0 : _theme$colors2$brand.altLight : theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : (_theme$colors3 = theme__default['default'].colors) === null || _theme$colors3 === void 0 ? void 0 : _theme$colors3.background,
-      color: theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : (_theme$colors4 = theme__default['default'].colors) === null || _theme$colors4 === void 0 ? void 0 : _theme$colors4.grey,
+      backgroundColor: isDisabled ? theme === null || theme === void 0 ? void 0 : (_theme$colors2 = theme.colors) === null || _theme$colors2 === void 0 ? void 0 : (_theme$colors2$brand = _theme$colors2.brand) === null || _theme$colors2$brand === void 0 ? void 0 : _theme$colors2$brand.altLight : theme === null || theme === void 0 ? void 0 : (_theme$colors3 = theme.colors) === null || _theme$colors3 === void 0 ? void 0 : _theme$colors3.background,
+      color: theme === null || theme === void 0 ? void 0 : (_theme$colors4 = theme.colors) === null || _theme$colors4 === void 0 ? void 0 : _theme$colors4.grey,
       boxShadow: 'none',
-      borderColor: isFocused ? theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : (_theme$colors5 = theme__default['default'].colors) === null || _theme$colors5 === void 0 ? void 0 : _theme$colors5.main : theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : (_theme$colors6 = theme__default['default'].colors) === null || _theme$colors6 === void 0 ? void 0 : _theme$colors6.alt,
+      borderColor: isFocused ? theme === null || theme === void 0 ? void 0 : (_theme$colors5 = theme.colors) === null || _theme$colors5 === void 0 ? void 0 : _theme$colors5.main : theme === null || theme === void 0 ? void 0 : (_theme$colors6 = theme.colors) === null || _theme$colors6 === void 0 ? void 0 : _theme$colors6.alt,
       '&:hover': {
-        borderColor: isFocused ? theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : (_theme$colors7 = theme__default['default'].colors) === null || _theme$colors7 === void 0 ? void 0 : _theme$colors7.main : theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : (_theme$colors8 = theme__default['default'].colors) === null || _theme$colors8 === void 0 ? void 0 : _theme$colors8.alt
+        borderColor: isFocused ? theme === null || theme === void 0 ? void 0 : (_theme$colors7 = theme.colors) === null || _theme$colors7 === void 0 ? void 0 : _theme$colors7.main : theme === null || theme === void 0 ? void 0 : (_theme$colors8 = theme.colors) === null || _theme$colors8 === void 0 ? void 0 : _theme$colors8.alt
       }
     });
   },
   option: function option(provided, state) {
     var _theme$colors9, _theme$colors10, _theme$colors11, _theme$colors12, _theme$colors12$brand;
 
-    var color = state.isDisabled ? theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : (_theme$colors9 = theme__default['default'].colors) === null || _theme$colors9 === void 0 ? void 0 : _theme$colors9.grey : theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : (_theme$colors10 = theme__default['default'].colors) === null || _theme$colors10 === void 0 ? void 0 : _theme$colors10.main;
-    var backgroundColor = theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : (_theme$colors11 = theme__default['default'].colors) === null || _theme$colors11 === void 0 ? void 0 : _theme$colors11.background;
+    var color = state.isDisabled ? theme === null || theme === void 0 ? void 0 : (_theme$colors9 = theme.colors) === null || _theme$colors9 === void 0 ? void 0 : _theme$colors9.grey : theme === null || theme === void 0 ? void 0 : (_theme$colors10 = theme.colors) === null || _theme$colors10 === void 0 ? void 0 : _theme$colors10.main;
+    var backgroundColor = theme === null || theme === void 0 ? void 0 : (_theme$colors11 = theme.colors) === null || _theme$colors11 === void 0 ? void 0 : _theme$colors11.background;
     var transition = 'opacity 300ms';
     return _objectSpread2(_objectSpread2({}, provided), {}, {
       color: color,
       transition: transition,
       backgroundColor: backgroundColor,
       '&:hover': {
-        backgroundColor: theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : (_theme$colors12 = theme__default['default'].colors) === null || _theme$colors12 === void 0 ? void 0 : (_theme$colors12$brand = _theme$colors12.brand) === null || _theme$colors12$brand === void 0 ? void 0 : _theme$colors12$brand.altLight
+        backgroundColor: theme === null || theme === void 0 ? void 0 : (_theme$colors12 = theme.colors) === null || _theme$colors12 === void 0 ? void 0 : (_theme$colors12$brand = _theme$colors12.brand) === null || _theme$colors12$brand === void 0 ? void 0 : _theme$colors12$brand.altLight
       }
     });
   }
@@ -34857,10 +35014,10 @@ function _templateObject2$9() {
   return data;
 }
 
-function _templateObject$e() {
+function _templateObject$f() {
   var data = _taggedTemplateLiteral(["\n  flex-flow: row nowrap;\n  max-width: 600px;\n  display: flex;\n  > pre {\n    max-height: 50vh;\n    overflow-y: scroll;\n    padding: 16px;\n    background: ", ";\n    color: ", "ff;\n  }\n"]);
 
-  _templateObject$e = function _templateObject() {
+  _templateObject$f = function _templateObject() {
     return data;
   };
 
@@ -34929,7 +35086,7 @@ var setMarginFromProps = function setMarginFromProps(props) {
   return style;
 };
 
-var Code = styled__default['default'].div(_templateObject$e(), function (props) {
+var Code = styled__default['default'].div(_templateObject$f(), function (props) {
   var _props$theme6;
 
   return (_props$theme6 = props.theme) === null || _props$theme6 === void 0 ? void 0 : _props$theme6.colors.mainGradient;
@@ -35087,16 +35244,16 @@ function _templateObject2$a() {
   return data;
 }
 
-function _templateObject$f() {
+function _templateObject$g() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-start;\n  color: ", ";\n  > p {\n    margin: ", "px 0;\n  }\n"]);
 
-  _templateObject$f = function _templateObject() {
+  _templateObject$g = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var TextAreaContainer = styled__default['default'].div(_templateObject$f(), function (props) {
+var TextAreaContainer = styled__default['default'].div(_templateObject$g(), function (props) {
   var _props$theme, _props$theme2;
 
   return props.error ? (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.feedback.error : (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.text;
@@ -35209,16 +35366,16 @@ function _templateObject2$b() {
   return data;
 }
 
-function _templateObject$g() {
+function _templateObject$h() {
   var data = _taggedTemplateLiteral([""]);
 
-  _templateObject$g = function _templateObject() {
+  _templateObject$h = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledContainer$1 = styled__default['default'].div(_templateObject$g());
+var StyledContainer$1 = styled__default['default'].div(_templateObject$h());
 var RadioGroudContainer = styled__default['default'].div(_templateObject2$b(), function (props) {
   return props.isVerticalAligned ? 'flex' : 'inline-flex';
 }, function (props) {
@@ -35333,10 +35490,10 @@ function _templateObject2$c() {
   return data;
 }
 
-function _templateObject$h() {
+function _templateObject$i() {
   var data = _taggedTemplateLiteral(["\n  border: 1px solid ", ";\n  box-sizing: border-box;\n  border-radius: 30px;\n  height: 24px;\n  width: 44px;\n  display: flex;\n  align-items: center;\n  padding: 0px 1px;\n\n  ", "\n  ", "\n\n  ", "\n"]);
 
-  _templateObject$h = function _templateObject() {
+  _templateObject$i = function _templateObject() {
     return data;
   };
 
@@ -35345,13 +35502,13 @@ function _templateObject$h() {
 
 var getSwitcherStylesFromChecked = function getSwitcherStylesFromChecked(checked) {
   if (checked) {
-    return "\n          background-color: ".concat(theme__default['default'].colors.feedback.success, ";\n          justify-content: flex-end;\n        ");
+    return "\n          background-color: ".concat(theme.colors.feedback.success, ";\n          justify-content: flex-end;\n        ");
   } else {
     return "\n          background-color: white;\n        ";
   }
 };
 
-var StyledSwitcher = styled__default['default'].div(_templateObject$h(), function (props) {
+var StyledSwitcher = styled__default['default'].div(_templateObject$i(), function (props) {
   var _props$theme$colors$b;
 
   return props.checked || props.disabled ? 'transparent' : (_props$theme$colors$b = props.theme.colors.brand) === null || _props$theme$colors$b === void 0 ? void 0 : _props$theme$colors$b.altLight;
@@ -35407,16 +35564,16 @@ function _templateObject2$d() {
   return data;
 }
 
-function _templateObject$i() {
+function _templateObject$j() {
   var data = _taggedTemplateLiteral(["\n  color: ", ";\n  cursor: pointer;\n"]);
 
-  _templateObject$i = function _templateObject() {
+  _templateObject$j = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledAddItem = styled__default['default'].span(_templateObject$i(), function (props) {
+var StyledAddItem = styled__default['default'].span(_templateObject$j(), function (props) {
   var _props$theme;
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.brand.red;
@@ -35557,16 +35714,16 @@ function _templateObject2$e() {
   return data;
 }
 
-function _templateObject$j() {
+function _templateObject$k() {
   var data = _taggedTemplateLiteral(["\n  background: ", ";\n  border: 1px dashed ", ";\n  box-sizing: border-box;\n  border-radius: 4px;\n  display: flex;\n  flex-direction: column;\n  padding: 20px;\n  outline: none;\n  transition: border 0.24s ease-in-out;\n  align-items: center;\n  button,\n  p {\n    margin: 8px !important;\n  }\n  svg {\n    margin: 10px;\n  }\n"]);
 
-  _templateObject$j = function _templateObject() {
+  _templateObject$k = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var FileUploaderContainer = styled__default['default'].div(_templateObject$j(), function (props) {
+var FileUploaderContainer = styled__default['default'].div(_templateObject$k(), function (props) {
   return props.theme.colors.background;
 }, function (props) {
   var _props$theme$colors$b;
@@ -37072,16 +37229,16 @@ function _templateObject2$f() {
   return data;
 }
 
-function _templateObject$k() {
+function _templateObject$l() {
   var data = _taggedTemplateLiteral([""]);
 
-  _templateObject$k = function _templateObject() {
+  _templateObject$l = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledContainer$2 = styled__default['default'].div(_templateObject$k());
+var StyledContainer$2 = styled__default['default'].div(_templateObject$l());
 var CheckboxWidgetContainer = styled__default['default'].div(_templateObject2$f(), function (props) {
   var _props$theme;
 
@@ -37218,16 +37375,16 @@ function _templateObject2$g() {
   return data;
 }
 
-function _templateObject$l() {
+function _templateObject$m() {
   var data = _taggedTemplateLiteral(["\n  width: 100%;\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-start;\n"]);
 
-  _templateObject$l = function _templateObject() {
+  _templateObject$m = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var TabContainer = styled__default['default'].div(_templateObject$l());
+var TabContainer = styled__default['default'].div(_templateObject$m());
 var TabGroup = styled__default['default'].div(_templateObject2$g(), function (props) {
   return props.justify ? props.justify : 'flex-start';
 });
@@ -37341,10 +37498,10 @@ function _templateObject2$h() {
   return data;
 }
 
-function _templateObject$m() {
+function _templateObject$n() {
   var data = _taggedTemplateLiteral(["\n  color: ", ";\n  fontweight: bold;\n  cursor: pointer;\n"]);
 
-  _templateObject$m = function _templateObject() {
+  _templateObject$n = function _templateObject() {
     return data;
   };
 
@@ -37357,7 +37514,7 @@ var getSelectedBackground$3 = function getSelectedBackground(props) {
   return lodash_get((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors, props.bg, (_props$theme2 = props.theme) === null || _props$theme2 === void 0 ? void 0 : _props$theme2.colors.background);
 };
 
-var StyledRemoveSpan = styled__default['default'].span(_templateObject$m(), function (props) {
+var StyledRemoveSpan = styled__default['default'].span(_templateObject$n(), function (props) {
   var _props$theme$colors$f, _props$theme$colors$f2;
 
   return (_props$theme$colors$f = props.theme.colors.feedback) === null || _props$theme$colors$f === void 0 ? void 0 : (_props$theme$colors$f2 = _props$theme$colors$f.error) === null || _props$theme$colors$f2 === void 0 ? void 0 : _props$theme$colors$f2.default;
@@ -37433,10 +37590,10 @@ function _templateObject2$i() {
   return data;
 }
 
-function _templateObject$n() {
+function _templateObject$o() {
   var data = _taggedTemplateLiteral(["\n  && {\n    ", "\n  }\n"]);
 
-  _templateObject$n = function _templateObject() {
+  _templateObject$o = function _templateObject() {
     return data;
   };
 
@@ -37449,7 +37606,7 @@ var getSelectedBackground$4 = function getSelectedBackground(props) {
   return lodash_get((_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors, props.bg, 'transparent');
 };
 
-var StyledCol = styled__default['default'](Col)(_templateObject$n(), function (props) {
+var StyledCol = styled__default['default'](Col)(_templateObject$o(), function (props) {
   return props.hidden && media.mobile("display: none; flex: 0;");
 });
 var FormContainer = styled__default['default'].div(_templateObject2$i(), function (props) {
@@ -45432,16 +45589,16 @@ function _templateObject2$j() {
   return data;
 }
 
-function _templateObject$o() {
+function _templateObject$p() {
   var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border-radius: 30px;\n  display: flex;\n  width: 90px;\n  height: 40px;\n  cursor: pointer;\n"]);
 
-  _templateObject$o = function _templateObject() {
+  _templateObject$p = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledSwitch = styled__default['default'].div(_templateObject$o(), function (props) {
+var StyledSwitch = styled__default['default'].div(_templateObject$p(), function (props) {
   var _props$theme, _props$theme$colors$b;
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : (_props$theme$colors$b = _props$theme.colors.brand) === null || _props$theme$colors$b === void 0 ? void 0 : _props$theme$colors$b.altLight;
@@ -55843,16 +56000,16 @@ function _templateObject2$k() {
   return data;
 }
 
-function _templateObject$p() {
+function _templateObject$q() {
   var data = _taggedTemplateLiteral(["\n  width: 260px;\n  border: 1px solid ", ";\n  box-sizing: border-box;\n  border-radius: 4px;\n  padding: 16px 8px 8px;\n  background-color: white;\n  margin-bottom: ", "px;\n"]);
 
-  _templateObject$p = function _templateObject() {
+  _templateObject$q = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var KanbanCard = styled__default['default'].div(_templateObject$p(), function (props) {
+var KanbanCard = styled__default['default'].div(_templateObject$q(), function (props) {
   var _props$theme, _props$theme$colors$b;
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : (_props$theme$colors$b = _props$theme.colors.brand) === null || _props$theme$colors$b === void 0 ? void 0 : _props$theme$colors$b.altLight;
@@ -55956,16 +56113,16 @@ function _templateObject2$l() {
   return data;
 }
 
-function _templateObject$q() {
+function _templateObject$r() {
   var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border-radius: 4px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 0px 16px 16px 16px;\n  min-width: 260px;\n\n  .items > * {\n    margin-bottom: 16px;\n  }\n"]);
 
-  _templateObject$q = function _templateObject() {
+  _templateObject$r = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var KanbanColumn = styled__default['default'].div(_templateObject$q(), function (props) {
+var KanbanColumn = styled__default['default'].div(_templateObject$r(), function (props) {
   var _props$theme, _props$theme$colors$b;
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : (_props$theme$colors$b = _props$theme.colors.brand) === null || _props$theme$colors$b === void 0 ? void 0 : _props$theme$colors$b.altLight;
@@ -56146,16 +56303,16 @@ function _templateObject2$m() {
   return data;
 }
 
-function _templateObject$r() {
+function _templateObject$s() {
   var data = _taggedTemplateLiteral(["\n  white-space: pre-line;\n  padding: ", "px;\n  border: ", ";\n  box-sizing: ", ";\n  border-radius: ", ";\n"]);
 
-  _templateObject$r = function _templateObject() {
+  _templateObject$s = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var ListWrapper = styled__default['default'].div(_templateObject$r(), function (props) {
+var ListWrapper = styled__default['default'].div(_templateObject$s(), function (props) {
   return props.padding ? props.padding : 0;
 }, function (props) {
   var _props$theme, _props$theme$colors$b;
@@ -56181,14 +56338,14 @@ var getIconStyle = function getIconStyle(style, isIndexed) {
   var _theme$colors, _theme$colors$brand, _theme$colors2, _theme$colors2$brand;
 
   var customStyles = {
-    main: "\n    nav {\n      width: 20px;\n      height: 20px;\n      padding: 2px;\n      font-weight: bold;\n      font-size: 16px;\n      margin-right: ".concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].margin, "px;\n      color: white;\n      background: ").concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : (_theme$colors = theme__default['default'].colors) === null || _theme$colors === void 0 ? void 0 : (_theme$colors$brand = _theme$colors.brand) === null || _theme$colors$brand === void 0 ? void 0 : _theme$colors$brand.orange, ";\n      border-radius: 2px;\n      text-align: center;\xAB\n    }\n    p {\n      color: ").concat(isIndexed && (theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : (_theme$colors2 = theme__default['default'].colors) === null || _theme$colors2 === void 0 ? void 0 : (_theme$colors2$brand = _theme$colors2.brand) === null || _theme$colors2$brand === void 0 ? void 0 : _theme$colors2$brand.orange), ";\n    }\n    "),
-    completed: "\n    nav {\n      width: 20px;\n      height: 20px;\n      padding: 2px;\n      font-weight: bold;\n      font-size: 16px;\n      margin-right: ".concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].margin, "px;\n      color: white;\n      background: ").concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.text, ";\n      border-radius: 2px;\n      text-align: center;\n    }\n    p {\n      color: ").concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.text, "\n    }\n    "),
-    grey: "\n    nav {\n      width: 20px;\n      height: 20px;\n      padding: 2px;\n      font-weight: bold;\n      font-size: 16px;\n      margin-right: ".concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].margin, "px;\n      color: white;\n      background: ").concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.grey, ";\n      border-radius: 2px;\n      text-align: center;\xAB\n    }\n    p {\n      color: ").concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : theme__default['default'].colors.grey, "\n    }")
+    main: "\n    nav {\n      width: 20px;\n      height: 20px;\n      padding: 2px;\n      font-weight: bold;\n      font-size: 16px;\n      margin-right: ".concat(theme === null || theme === void 0 ? void 0 : theme.margin, "px;\n      color: white;\n      background: ").concat(theme === null || theme === void 0 ? void 0 : (_theme$colors = theme.colors) === null || _theme$colors === void 0 ? void 0 : (_theme$colors$brand = _theme$colors.brand) === null || _theme$colors$brand === void 0 ? void 0 : _theme$colors$brand.orange, ";\n      border-radius: 2px;\n      text-align: center;\xAB\n    }\n    p {\n      color: ").concat(isIndexed && (theme === null || theme === void 0 ? void 0 : (_theme$colors2 = theme.colors) === null || _theme$colors2 === void 0 ? void 0 : (_theme$colors2$brand = _theme$colors2.brand) === null || _theme$colors2$brand === void 0 ? void 0 : _theme$colors2$brand.orange), ";\n    }\n    "),
+    completed: "\n    nav {\n      width: 20px;\n      height: 20px;\n      padding: 2px;\n      font-weight: bold;\n      font-size: 16px;\n      margin-right: ".concat(theme === null || theme === void 0 ? void 0 : theme.margin, "px;\n      color: white;\n      background: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.text, ";\n      border-radius: 2px;\n      text-align: center;\n    }\n    p {\n      color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.text, "\n    }\n    "),
+    grey: "\n    nav {\n      width: 20px;\n      height: 20px;\n      padding: 2px;\n      font-weight: bold;\n      font-size: 16px;\n      margin-right: ".concat(theme === null || theme === void 0 ? void 0 : theme.margin, "px;\n      color: white;\n      background: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.grey, ";\n      border-radius: 2px;\n      text-align: center;\xAB\n    }\n    p {\n      color: ").concat(theme === null || theme === void 0 ? void 0 : theme.colors.grey, "\n    }")
   };
   return customStyles[style];
 };
 
-var regularStyle = "\n  &::before {\n      content: \"\";\n      padding: 5px;\n      font-weight: bold;\n      font-size: 16px;\n      align-items: baseline;\n      margin-right: 1.5rem;\n      background: ".concat(theme__default['default'] === null || theme__default['default'] === void 0 ? void 0 : (_theme$colors3 = theme__default['default'].colors) === null || _theme$colors3 === void 0 ? void 0 : (_theme$colors3$brand = _theme$colors3.brand) === null || _theme$colors3$brand === void 0 ? void 0 : _theme$colors3$brand.orange, ";\n      border-radius: 2px;\n  }\n  ");
+var regularStyle = "\n  &::before {\n      content: \"\";\n      padding: 5px;\n      font-weight: bold;\n      font-size: 16px;\n      align-items: baseline;\n      margin-right: 1.5rem;\n      background: ".concat(theme === null || theme === void 0 ? void 0 : (_theme$colors3 = theme.colors) === null || _theme$colors3 === void 0 ? void 0 : (_theme$colors3$brand = _theme$colors3.brand) === null || _theme$colors3$brand === void 0 ? void 0 : _theme$colors3$brand.orange, ";\n      border-radius: 2px;\n  }\n  ");
 var StyledIcon = styled__default['default'].nav(_templateObject4$a());
 
 var List = function List(_ref) {
@@ -56247,16 +56404,16 @@ function _templateObject2$n() {
   return data;
 }
 
-function _templateObject$s() {
+function _templateObject$t() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: center;\n  min-height: 555px;\n  ", "\n"]);
 
-  _templateObject$s = function _templateObject() {
+  _templateObject$t = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledLoadingContainer = styled__default['default'].div(_templateObject$s(), media.mobile("\n    min-height: 10px;\n  "));
+var StyledLoadingContainer = styled__default['default'].div(_templateObject$t(), media.mobile("\n    min-height: 10px;\n  "));
 var StyledLoader = styled__default['default'].img(_templateObject2$n(), media.mobile("\n    width: 100%;\n  "));
 
 var Loading = function Loading() {
@@ -56266,16 +56423,16 @@ var Loading = function Loading() {
   }));
 };
 
-function _templateObject$t() {
+function _templateObject$u() {
   var data = _taggedTemplateLiteral(["\n  min-width: ", "px;\n  ", "\n  svg {\n    width: ", "px;\n    vertical-align: middle;\n    z-index: 1000;\n  }\n"]);
 
-  _templateObject$t = function _templateObject() {
+  _templateObject$u = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var Logo = styled__default['default'].div(_templateObject$t(), function (props) {
+var Logo = styled__default['default'].div(_templateObject$u(), function (props) {
   return props.size || 120;
 }, function (props) {
   return props.center && "\n      display: flex;\n      flex-flow: row nowrap;\n      justify-content: center;\n  ";
@@ -56538,16 +56695,16 @@ function _templateObject2$o() {
   return data;
 }
 
-function _templateObject$u() {
+function _templateObject$v() {
   var data = _taggedTemplateLiteral(["\n  margin: 24px 0px 32px;\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n"]);
 
-  _templateObject$u = function _templateObject() {
+  _templateObject$v = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledPagination = styled__default['default'].div(_templateObject$u());
+var StyledPagination = styled__default['default'].div(_templateObject$v());
 var Left$1 = styled__default['default'].div(_templateObject2$o(), function (props) {
   return props.theme.colors.grey;
 });
@@ -56715,16 +56872,16 @@ function _templateObject2$p() {
   return data;
 }
 
-function _templateObject$v() {
+function _templateObject$w() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-flow: row nowrap;\n  justify-content: flex-start;\n  padding: 0;\n  input {\n    border: 1px solid ", ";\n  }\n  position: relative;\n"]);
 
-  _templateObject$v = function _templateObject() {
+  _templateObject$w = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var Container = styled__default['default'].div(_templateObject$v(), function (props) {
+var Container = styled__default['default'].div(_templateObject$w(), function (props) {
   var _props$theme$brand;
 
   return (_props$theme$brand = props.theme.brand) === null || _props$theme$brand === void 0 ? void 0 : _props$theme$brand.altLight;
@@ -56852,16 +57009,16 @@ function _templateObject2$q() {
   return data;
 }
 
-function _templateObject$w() {
+function _templateObject$x() {
   var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  color: white;\n  transition: width 0.5s linear;\n  width: ", ";\n  height: 100vh;\n  svg {\n    margin-top: ", "px;\n  }\n  button svg {\n    margin-top: 0;\n  }\n  > div {\n    transition: all 0.5s linear;\n\n    ", "\n  }\n"]);
 
-  _templateObject$w = function _templateObject() {
+  _templateObject$x = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledSidebar = styled__default['default'].div(_templateObject$w(), function (props) {
+var StyledSidebar = styled__default['default'].div(_templateObject$x(), function (props) {
   var _props$theme, _props$theme$colors, _props$theme$colors$b;
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : (_props$theme$colors = _props$theme.colors) === null || _props$theme$colors === void 0 ? void 0 : (_props$theme$colors$b = _props$theme$colors.brand) === null || _props$theme$colors$b === void 0 ? void 0 : _props$theme$colors$b.main;
@@ -56994,16 +57151,16 @@ Sidebar.defaultProps = {
   sidebarSections: []
 };
 
-function _templateObject$x() {
+function _templateObject$y() {
   var data = _taggedTemplateLiteral(["\n  padding: 0;\n  outline: none;\n  margin: 0;\n  background: transparent;\n  cursor: ", ";\n  border: none;\n  &:hover {\n    svg path {\n      fill: ", " !important;\n    }\n  }\n"]);
 
-  _templateObject$x = function _templateObject() {
+  _templateObject$y = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledIconButton = styled__default['default'].button(_templateObject$x(), function (_ref) {
+var StyledIconButton = styled__default['default'].button(_templateObject$y(), function (_ref) {
   var isInteractive = _ref.isInteractive;
   return isInteractive ? 'pointer' : 'initial';
 }, function (_ref2) {
@@ -57189,16 +57346,16 @@ StarsRating.defaultProps = {
   defaultRating: 0
 };
 
-function _templateObject$y() {
+function _templateObject$z() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  font-weight: normal;\n  border-bottom: 1px solid ", ";\n\n  .service {\n    font-weight: 500;\n    font-size: 16px;\n    line-height: 24px;\n    color: ", ";\n  }\n"]);
 
-  _templateObject$y = function _templateObject() {
+  _templateObject$z = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledTableRow = styled__default['default'].div(_templateObject$y(), function (props) {
+var StyledTableRow = styled__default['default'].div(_templateObject$z(), function (props) {
   var _props$theme;
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.alt;
@@ -57313,16 +57470,16 @@ function _templateObject2$r() {
   return data;
 }
 
-function _templateObject$z() {
+function _templateObject$A() {
   var data = _taggedTemplateLiteral(["\n  font-size: 14px;\n  line-height: 16px;\n  color: ", ";\n"]);
 
-  _templateObject$z = function _templateObject() {
+  _templateObject$A = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledTable = styled__default['default'].div(_templateObject$z(), function (props) {
+var StyledTable = styled__default['default'].div(_templateObject$A(), function (props) {
   var _props$theme;
 
   return (_props$theme = props.theme) === null || _props$theme === void 0 ? void 0 : _props$theme.colors.text;
@@ -62039,16 +62196,16 @@ function _templateObject2$s() {
   return data;
 }
 
-function _templateObject$A() {
+function _templateObject$B() {
   var data = _taggedTemplateLiteral(["\n  margin-top: 10px;\n  display: flex;\n  flex-direction: column;\n  flex: 1;\n  width: 105%;\n  & > button {\n    display: flex;\n    margin: 0 auto;\n    width: calc(100% / 5);\n  }\n"]);
 
-  _templateObject$A = function _templateObject() {
+  _templateObject$B = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var CarouselContainer = styled__default['default'].div(_templateObject$A());
+var CarouselContainer = styled__default['default'].div(_templateObject$B());
 var ItemContainer = styled__default['default'].div(_templateObject2$s());
 var ItemImage = styled__default['default'].img(_templateObject3$j());
 
@@ -62090,161 +62247,6 @@ CardSlider.propTypes = {
   list: propTypes.array.isRequired,
   hasButton: propTypes.bool
 };
-
-function _templateObject$B() {
-  var data = _taggedTemplateLiteral(["\n    html {\n      scroll-behavior: smooth;\n    }\n    body {\n      margin: 0;\n      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',\n        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',\n        sans-serif;\n      -webkit-font-smoothing: antialiased;\n      -moz-osx-font-smoothing: grayscale;\n    }\n    code {\n      font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',\n        monospace;\n    }\n"]);
-
-  _templateObject$B = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-var GlobalStyles = styled.createGlobalStyle(_templateObject$B());
-var GLOBAL = {
-  margin: 16,
-  boxShadow: function boxShadow() {
-    return 'box-shadow: 0 0 3rem #333;';
-  },
-  borderRadius: function borderRadius(radius) {
-    return "border-radius:".concat(radius, ";");
-  },
-  shadowE01: function shadowE01() {
-    return "filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.05));";
-  },
-  shadowE02: function shadowE02() {
-    return "drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15));";
-  },
-  fontPrimary: function fontPrimary() {
-    return 'font-family: Space Grotesk;';
-  },
-  fontSecondary: function fontSecondary() {
-    return "font-family: Muli;";
-  },
-  colors: {
-    gray900: '#110F19',
-    gray800: '#191A25',
-    gray700: '#262633',
-    gray600: '#31303E',
-    white900: '#FFFEFD',
-    white800: '#FAF9F6',
-    white700: '#F5F4F1',
-    white600: '#EAE8E3',
-    white: '#fff',
-    black: '#000',
-    transparent: 'transparent'
-  }
-};
-var DARK = _objectSpread2(_objectSpread2({}, GLOBAL), {}, {
-  colors: _objectSpread2(_objectSpread2({}, GLOBAL.colors), {}, {
-    main: '#A3A1FF',
-    background: '#111111',
-    mainGradient: "linear-gradient(180deg, rgba(97, 141, 255, 0.4) 0%, rgba(123, 97, 255, 0.2) 100%)",
-    logoBorders: '#E9EFF6',
-    text: '#ffffff',
-    textSecondary: '#C9C7C4',
-    textInverse: '#000000',
-    gradient900: 'linear-gradient(180deg, #110F19 10.84%, rgba(17, 15, 25, 0) 59.6%)',
-    gradient800: 'linear-gradient(180deg, #191A25 10.84%, rgba(25, 26, 37, 0) 59.6%)',
-    gradient700: 'linear-gradient(180deg, #262633 10.84%, rgba(38, 38, 51, 0) 59.6%)',
-    gradient600: 'linear-gradient(180deg, #31303E 10.84%, rgba(49, 48, 62, 0) 59.6%)',
-    glass: 'rgba(25, 26, 37, 0.9)',
-    backdrop: 'rgba(17, 15, 25, 0.7)',
-    feedback: {
-      positive: '#AFE4AA',
-      positiveTint: '#1F352C',
-      positiveTint2: 'rgba(31, 53, 44, 0.4)',
-      negative: '#FF9C8E',
-      negativeTint: '#864037',
-      negativeTint2: 'rgba(134, 64, 55, 0.4)',
-      warning: '#F3BD83',
-      warningTint: '#935D04',
-      warningTint2: 'rgba(147, 93, 4, 0.4)'
-    },
-    surfaces: {
-      900: GLOBAL.colors.gray900,
-      800: GLOBAL.colors.gray800,
-      700: GLOBAL.colors.gray700,
-      600: GLOBAL.colors.gray600
-    }
-  })
-});
-var LIGHT = _objectSpread2(_objectSpread2({}, GLOBAL), {}, {
-  colors: _objectSpread2(_objectSpread2({}, GLOBAL.colors), {}, {
-    main: '#4F2DEC',
-    background: '#ffffff',
-    mainGradient: "linear-gradient(180deg, rgba(97, 141, 255, 0.4) 0%, rgba(123, 97, 255, 0.2) 100%)",
-    logoBorders: '#E9EFF6',
-    text: '#18181A',
-    textSecondary: '#6D6478',
-    textInverse: '#FFFFFF',
-    gray900: '#110F19',
-    gray800: '#191A25',
-    gray700: '#262633',
-    gray600: '#31303E',
-    gradient900: 'linear-gradient(180deg, #110F19 10.84%, rgba(17, 15, 25, 0) 59.6%)',
-    gradient800: 'linear-gradient(180deg, #191A25 10.84%, rgba(25, 26, 37, 0) 59.6%)',
-    gradient700: 'linear-gradient(180deg, #262633 10.84%, rgba(38, 38, 51, 0) 59.6%)',
-    gradient600: 'linear-gradient(180deg, #31303E 10.84%, rgba(49, 48, 62, 0) 59.6%)',
-    glass: 'rgba(25, 26, 37, 0.9)',
-    backdrop: 'rgba(17, 15, 25, 0.7)',
-    feedback: {
-      positive: '#1EA16A',
-      positiveTint: '#E2F2EB',
-      positiveTint2: 'rgba(226, 242, 235, 0.4)',
-      negative: '#DC4D3A',
-      negativeTint: '#F8C6C0',
-      negativeTint2: 'rgba(248, 198, 192, 0.4)',
-      warning: '#E8900E',
-      warningTint: '#F9D79D',
-      warningTint2: 'rgba(249, 215, 157, 0.4)'
-    },
-    surfaces: {
-      900: GLOBAL.colors.white900,
-      800: GLOBAL.colors.white800,
-      700: GLOBAL.colors.white700,
-      600: GLOBAL.colors.white600
-    }
-  })
-});
-var uiTheme = _objectSpread2(_objectSpread2({}, GLOBAL), {}, {
-  margin: 16,
-  heroSize: 680,
-  maxWidth: 1152,
-  boxShadow: '0 0 3rem #333',
-  //──── Colors ────────────────────────────────────────────────────────────────────────────
-  colors: {
-    white: '#FFF',
-    black: '#000',
-    main: '#060e9f',
-    alt: '#88827c',
-    grey: '#31303E',
-    darkBlue: '#272948',
-    background: '#fff',
-    brand: {
-      main: '#060e9f',
-      mainLight: ' #777ab1',
-      mainDarker: '#272948',
-      alt: '#88827C',
-      altLight: '#c7bfb7',
-      altDarker: '#2f2d2a'
-    },
-    feedback: {
-      success: '#2DCA73',
-      error: '#DB1E3B',
-      warning: '#FEC35A'
-    },
-    muted: {
-      red: '#F1A5B1',
-      orange: '#F9B9B0',
-      yellow: '#FFE7BD',
-      blue: '#BEE1F5',
-      lightBlue: '#E8F6FA',
-      green: '#ABEAC7',
-      purple: '#CBABEA'
-    }
-  }
-});
 
 var DARK_THEME = 'DARK';
 var LIGHT_THEME = 'LIGHT';

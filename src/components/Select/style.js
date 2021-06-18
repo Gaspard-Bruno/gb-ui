@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import ReactSelect from 'react-select';
-import theme from 'Theme';
+import theme from '../../theme';
 
 export const SelectContainer = styled.div`
   display: flex;

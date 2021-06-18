@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { media } from '../Layout';
-import theme from 'Theme';
+import theme from '../../theme';
 
 export const ListWrapper = styled.div`
   white-space: pre-line;
